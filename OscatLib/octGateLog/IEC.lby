@@ -2,9 +2,9 @@
 <?AutomationStudio Version=4.6.4.67 SP?>
 <Library Version="3.31.0" SubType="IEC" Description="Oscat Lib - Gate logic" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
-    <File Description="Exported data types">octGateLogic.typ</File>
-    <File Description="Exported constants">octGateLogic.var</File>
-    <File Description="Exported functions and function blocks">octGateLogic.fun</File>
+    <File Description="Exported data types">octGateLog.typ</File>
+    <File Description="Exported constants">octGateLog.var</File>
+    <File Description="Exported functions and function blocks">octGateLog.fun</File>
     <File Description="Source code of function BCDC_TO_INT">BCDC_TO_INT.st</File>
     <File Description="Source code of function BIT_COUNT">BIT_COUNT.st</File>
     <File Description="Source code of function BIT_LOAD_B">BIT_LOAD_B.st</File>
