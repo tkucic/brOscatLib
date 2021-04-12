@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat library" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Lib - Memory handling" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octMem.typ</File>
     <File Description="Exported constants">octMem.var</File>
