@@ -4,7 +4,7 @@ FUNCTION_BLOCK CALIBRATE
     	OFFSET := Y_Offset - X;
     ELSIF CS THEN
     	SCALE := Y_scale / (X + OFFSET);
-    END_IF;
+    END_IF
     (* calculate output *)
     Y := (X + OFFSET) * SCALE;
 

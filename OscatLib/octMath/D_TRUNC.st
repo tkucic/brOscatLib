@@ -1,10 +1,10 @@
 FUNCTION D_TRUNC
     D_TRUNC := REAL_TO_DINT(X);
     IF X > 0.0 THEN
-    	IF DINT_TO_REAL(D_TRUNC) > X THEN D_TRUNC := D_TRUNC - 1; END_IF;
+    	IF DINT_TO_REAL(D_TRUNC) > X THEN D_TRUNC := D_TRUNC - 1; END_IF
     ELSE
-    	IF DINT_TO_REAL(D_TRUNC) < X THEN D_TRUNC := D_TRUNC + 1; END_IF;
-    END_IF;
+    	IF DINT_TO_REAL(D_TRUNC) < X THEN D_TRUNC := D_TRUNC + 1; END_IF
+    END_IF
 
 
     (* for systems that support a dint truncation this routine can be replaced by trunc() *)

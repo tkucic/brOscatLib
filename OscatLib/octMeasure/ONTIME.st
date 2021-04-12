@@ -16,9 +16,9 @@ FUNCTION_BLOCK ONTIME
     	IF ms >= 1000 THEN
     		seconds := seconds + 1;
     		ms := ms - 1000;
-    	END_IF;
+    	END_IF
     	cycles := cycles + BOOL_TO_UINT(NOT edge);
-    END_IF;
+    END_IF
     last := tx;
     edge := in;
 

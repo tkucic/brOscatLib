@@ -7,11 +7,11 @@ FUNCTION_BLOCK PIN_CODE
     			(* proper code is detected *)
     			TP := TRUE;
     			pos := 1;
-    		END_IF;
+    		END_IF
     	ELSE
     		pos := 1;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
     (* revision history

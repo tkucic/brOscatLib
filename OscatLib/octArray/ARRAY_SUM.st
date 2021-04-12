@@ -3,7 +3,7 @@ FUNCTION ARRAY_SUM
     array_sum := pt^[0];
     FOR i := 1 TO stop DO
     	array_sum := array_sum + pt^[i];
-    END_FOR;
+    END_FOR
 
     (* revision history
     hm 	2. oct. 2006	rev 1.0

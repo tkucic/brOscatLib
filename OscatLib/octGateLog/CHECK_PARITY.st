@@ -3,13 +3,13 @@ FUNCTION CHECK_PARITY
     WHILE in > 0 DO
     	CHECK_PARITY := CHECK_PARITY XOR in.0 XOR in.1 XOR in.2 XOR in.3;
     	in := SHR(in,4);
-    END_WHILE;
+    END_WHILE
 
     (* code before rev 1.2
     WHILE in > 0 DO
-    	IF in.0 THEN cnt := cnt + 1; END_IF;
+    	IF in.0 THEN cnt := cnt + 1; END_IF
     	in := SHR(in,1);
-    END_WHILE;
+    END_WHILE
     check_parity := even(cnt) XOR P;
     *)
 

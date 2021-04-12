@@ -2,8 +2,8 @@ FUNCTION ARRAY_MIN
     stop := (size - SIZEOF(pt)) / SIZEOF(pt);
     array_min := pt^[0];
     FOR i := 1 TO stop DO
-    	IF pt^[i] < array_min THEN array_min := pt^[i]; END_IF;
-    END_FOR;
+    	IF pt^[i] < array_min THEN array_min := pt^[i]; END_IF
+    END_FOR
 
 
     (* revision history

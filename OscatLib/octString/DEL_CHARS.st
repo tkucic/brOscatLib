@@ -10,8 +10,8 @@ FUNCTION DEL_CHARS
     	ELSE
     		(* charcter not found skip to next one *)
     		pos := pos + 1;
-    	END_IF;
-    END_WHILE;
+    	END_IF
+    END_WHILE
 
 
 

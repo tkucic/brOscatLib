@@ -12,15 +12,15 @@ FUNCTION_BLOCK STACK_16
     		Dout := stack[pt];
     		EMPTY := pt = 0;
     		FULL := FALSE;
-    	END_IF;
+    	END_IF
     	IF NOT FULL AND WD THEN
     		(* write one element *)
     		stack[pt] := Din;
     		pt := pt + 1;
     		FULL := pt > n;
     		EMPTY := FALSE;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
     (* revision history

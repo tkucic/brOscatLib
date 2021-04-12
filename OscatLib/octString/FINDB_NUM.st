@@ -4,9 +4,9 @@ FUNCTION FINDB_NUM
     	IF (PT^ > 47 AND PT^ < 58) OR PT^ = 46 THEN
     		FINDB_NUM := pos;
     		RETURN;
-    	END_IF;
+    	END_IF
     	PT := PT - 1;
-    END_FOR;
+    END_FOR
     FINDB_NUM := 0;
 
     (* revision history

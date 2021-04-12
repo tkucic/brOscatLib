@@ -5,11 +5,11 @@ FUNCTION REAL_TO_STRF
     O := ABS(in) * EXP10(N);
     REAL_TO_STRF := DINT_TO_STRING(REAL_TO_DINT(O));
     (* add zeroes in front to make sure sting is at least 8 digits long *)
-    FOR i := LEN(REAL_TO_STRF) TO N DO REAL_TO_STRF := CONCAT('0', REAL_TO_STRF); END_FOR;
+    FOR i := LEN(REAL_TO_STRF) TO N DO REAL_TO_STRF := CONCAT('0', REAL_TO_STRF); END_FOR
     (* add a dot if n > 0 *)
-    IF n > 0 THEN REAL_TO_STRF := INSERT(REAL_TO_STRF, '.', LEN(REAL_TO_STRF) - N); END_IF;
+    IF n > 0 THEN REAL_TO_STRF := INSERT(REAL_TO_STRF, '.', LEN(REAL_TO_STRF) - N); END_IF
     (* add a minus sign if in is negative *)
-    IF in < 0 THEN REAL_TO_STRF := CONCAT('-', REAL_TO_STRF); END_IF;
+    IF in < 0 THEN REAL_TO_STRF := CONCAT('-', REAL_TO_STRF); END_IF
 
 
     (* revision history

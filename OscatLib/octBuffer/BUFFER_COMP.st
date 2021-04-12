@@ -8,17 +8,17 @@ FUNCTION BUFFER_COMP
     			(* first character matches, now compare rest of array *)
     			j := 1;
     			WHILE j < size2 DO
-    				IF pt2^[j] <> pt1^[j+i] THEN EXIT; END_IF;
+    				IF pt2^[j] <> pt1^[j+i] THEN EXIT; END_IF
     				j := j + 1;
-    			END_WHILE;
+    			END_WHILE
     			(* when J > size2 a match was found return the position i in buffer1 *)
     			IF j = size2 THEN
     				BUFFER_COMP := i;
     				RETURN;
-    			END_IF;
-    		END_IF;
-    	END_FOR;
-    END_IF;
+    			END_IF
+    		END_IF
+    	END_FOR
+    END_IF
     BUFFER_COMP := -1;
 
 

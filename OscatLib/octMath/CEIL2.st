@@ -2,7 +2,7 @@ FUNCTION CEIL2
     CEIL2 := REAL_TO_DINT(X);
     IF DINT_TO_REAL(CEIL2) < X THEN
     	CEIL2 := CEIL2 + 1;
-    END_IF;
+    END_IF
 
 
     (* revision history

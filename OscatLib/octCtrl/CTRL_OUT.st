@@ -7,7 +7,7 @@ FUNCTION_BLOCK CTRL_OUT
     ELSE
     	Y := LIMIT(LIM_L, Y, LIM_H);
     	LIM := TRUE;
-    END_IF;
+    END_IF
 
 
 

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK SH_T
-    IF E THEN out := in; END_IF;
+    IF E THEN out := in; END_IF
 
 
 

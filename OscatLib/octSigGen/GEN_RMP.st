@@ -2,24 +2,24 @@ FUNCTION_BLOCK GEN_RMP
     (* read system time and prepare input data *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
     DL := MODR(dl,1.0);
-    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF;
+    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF
 
     (* init section *)
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
     	tx := t#0s;
-    END_IF;
+    END_IF
 
     (* add last if one cycle is finished *)
     IF tx >= pt THEN
     	last := last + pt;
     	tx := tx - pt;
-    END_IF;
+    END_IF
 
     (* generate sine wave *)
     ltemp := temp;
-    IF pt > t#0s THEN temp := FRACT(TIME_TO_REAL(tx + MULTIME(pt, dl)) / TIME_TO_REAL(pt)); END_IF;
+    IF pt > t#0s THEN temp := FRACT(TIME_TO_REAL(tx + MULTIME(pt, dl)) / TIME_TO_REAL(pt)); END_IF
     out := am * temp + os;
 
     (* boolean output Q *)

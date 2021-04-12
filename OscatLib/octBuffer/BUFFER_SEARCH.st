@@ -5,14 +5,14 @@ FUNCTION BUFFER_SEARCH
     lx := lx - 1;
     FOR i := pos TO end DO
     	FOR k := 0 TO lx DO
-    		IF IGN THEN chx := TO_UPPER(pt^[i+k]); ELSE chx := pt^[i+k]; END_IF;
-    		IF ps^[k] <> chx THEN EXIT; END_IF;
-    	END_FOR;
+    		IF IGN THEN chx := TO_UPPER(pt^[i+k]); ELSE chx := pt^[i+k]; END_IF
+    		IF ps^[k] <> chx THEN EXIT; END_IF
+    	END_FOR
     	IF k > lx THEN
     		BUFFER_SEARCH := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     BUFFER_SEARCH := -1;
 
 

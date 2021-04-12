@@ -13,7 +13,7 @@ FUNCTION_BLOCK RMP_SOFT
     ELSE
     	(* no ramp necessary *)
     	rmp(E := FALSE, rmp := out);
-    END_IF;
+    END_IF
 
 
     (* revision history

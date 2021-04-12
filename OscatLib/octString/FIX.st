@@ -7,7 +7,7 @@ FUNCTION FIX
     		FIX := RIGHT(str,L);
     	ELSE
     		FIX := LEFT(str,L);
-    	END_IF;
+    	END_IF
     ELSIF M = 1 THEN
     	(* connect fill characters at the beginning *)
     	sx := FILL(C,N);
@@ -23,7 +23,7 @@ FUNCTION FIX
     	(* connect fill characters at the end *)
     	SX := FILL(C,N);
     	FIX := CONCAT(str,SX);
-    END_IF;
+    END_IF
 
 
     (* revision histroy

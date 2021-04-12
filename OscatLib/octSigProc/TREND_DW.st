@@ -13,7 +13,7 @@ FUNCTION_BLOCK TREND_DW
     	TU := FALSE;
     	TD := FALSE;
     	D := 0;
-    END_IF;
+    END_IF
     last_X := X;
 
 

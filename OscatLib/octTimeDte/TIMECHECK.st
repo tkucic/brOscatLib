@@ -3,7 +3,7 @@ FUNCTION TIMECHECK
     	TIMECHECK := start <= TD OR TD < stop;
     ELSE
     	TIMECHECK := start <= TD AND TD < stop;
-    END_IF;
+    END_IF
 
 
 

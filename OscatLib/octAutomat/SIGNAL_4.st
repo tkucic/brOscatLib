@@ -11,7 +11,7 @@ FUNCTION_BLOCK SIGNAL_4
     	sig(in := TRUE, sig := s4, TS := TS);
     ELSE
     	sig(in := FALSE);
-    END_IF;
+    END_IF
 
     (* set the output *)
     Q := sig.Q;

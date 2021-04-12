@@ -4,7 +4,7 @@ FUNCTION CMP
     	tmp := EXP10(INT_TO_REAL(FLOOR(LOG(tmp))-N+1));
     ELSE
     	tmp := EXP10(tmp);
-    END_IF;
+    END_IF
     CMP := ABS(X - Y) < tmp;
 
 

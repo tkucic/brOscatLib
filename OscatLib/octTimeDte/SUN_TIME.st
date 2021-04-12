@@ -3,7 +3,7 @@ FUNCTION_BLOCK SUN_TIME
     MIDDAY := SUN_MIDDAY(longitude, utc);
     DK := 0.40954 * SIN(0.0172 * (INT_TO_REAL(DAY_OF_YEAR(utc)) - 79.35));
     sun_declination := DEG(DK);
-    IF sun_declination > 180.0 THEN sun_declination := sun_declination - 360.0; END_IF;
+    IF sun_declination > 180.0 THEN sun_declination := sun_declination - 360.0; END_IF
     sun_declination := 90.0 - LATITUDE + sun_declination;
     delta := HOUR_TO_TIME(ACOS((SIN(RAD(H)) - SIN(B) * SIN(DK)) / (COS(B) * COS(DK))) * 3.819718632);
     sun_rise := MIDDAY - delta;

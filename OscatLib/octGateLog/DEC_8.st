@@ -19,7 +19,7 @@ FUNCTION_BLOCK DEC_8
     	5 : Q5 := D;
     	6 : Q6 := D;
     	7 : Q7 := D;
-    END_CASE;
+    END_CASE
 
 
 

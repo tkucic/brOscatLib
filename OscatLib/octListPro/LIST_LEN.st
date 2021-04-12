@@ -3,8 +3,8 @@ FUNCTION LIST_LEN
     LIST_LEN := 1;
     l := LEN(list);
     FOR pos := 1 TO l DO
-    	IF pt^[pos] = SEP THEN LIST_LEN := LIST_LEN + 1; END_IF;
-    END_FOR;
+    	IF pt^[pos] = SEP THEN LIST_LEN := LIST_LEN + 1; END_IF
+    END_FOR
 
 
 

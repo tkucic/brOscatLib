@@ -5,7 +5,7 @@ FUNCTION BAND_B
     	BAND_B := 255;
     ELSE
     	BAND_B := X;
-    END_IF;
+    END_IF
 
 
 

@@ -2,7 +2,7 @@ FUNCTION V3_NORM
     la := V3_ABS(A);
     IF la > 0.0 THEN
     	V3_NORM := V3_SMUL(A, 1.0 / la);
-    END_IF;
+    END_IF
 
     (* revision history
     hm	11 dec 2007	rev 1.0

@@ -8,12 +8,12 @@ FUNCTION_BLOCK FT_TN64
     	init := TRUE;
     	last := tx;
     ELSIF tx - last >= T / length THEN
-    	IF cnt = length - 1 THEN cnt := 0; ELSE cnt := cnt + 1; END_IF;
+    	IF cnt = length - 1 THEN cnt := 0; ELSE cnt := cnt + 1; END_IF
     	Out := X[cnt];
     	x[cnt] := in;
     	last := tx;
     	trig := TRUE;
-    END_IF;
+    END_IF
 
     (* revision history
     hm		1. jan 2007		rev 1.0

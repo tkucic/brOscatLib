@@ -8,27 +8,27 @@ FUNCTION_BLOCK GEN_SQR
     	out := am * 0.5 + os;
     	Q := TRUE;
     	RETURN;
-    END_IF;
+    END_IF
 
     (* read system time and prepare input data *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
     DL := MODR(dl,1.0);
-    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF;
+    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF
     dc := MODR(dc,1.0);
-    IF dc < 0.0 THEN dc := 1.0 - dc; END_IF;
+    IF dc < 0.0 THEN dc := 1.0 - dc; END_IF
 
     (* init section *)
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
     	tx := t#0s;
-    END_IF;
+    END_IF
 
     (* add last if one cycle is finished *)
     IF tx >= pt THEN
     	last := last + pt;
     	tx := tx - pt;
-    END_IF;
+    END_IF
 
     (* check if falling or rising edge first *)
     IF MULTIME(pt, dl + dc) >= pt THEN
@@ -36,24 +36,24 @@ FUNCTION_BLOCK GEN_SQR
     	IF tx >= MULTIME(pt, dl + dc - 1) THEN
     		out := -am * 0.5 + os;
     		Q := FALSE;
-    	END_IF;
+    	END_IF
     	(* generate rising edge *)
     	IF tx >= MULTIME(pt, dl) THEN
     		out := am * 0.5 + os;
     		Q := TRUE;
-    	END_IF;
+    	END_IF
     ELSE
     	(* generate rising edge first *)
     	IF tx >= MULTIME(pt, dl) THEN
     		out := am * 0.5 + os;
     		Q := TRUE;
-    	END_IF;
+    	END_IF
     	(* generate falling edge *)
     	IF tx >= MULTIME(pt, dl + dc) THEN
     		out := -am * 0.5 +os;
     		Q := FALSE;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
     (* revision history
 

@@ -1,5 +1,5 @@
 FUNCTION INV
-    IF X <> 0.0 THEN INV := 1.0 / X; END_IF;
+    IF X <> 0.0 THEN INV := 1.0 / X; END_IF
 
 
 

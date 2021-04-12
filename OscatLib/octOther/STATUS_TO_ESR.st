@@ -5,7 +5,7 @@ FUNCTION STATUS_TO_ESR
     	status_to_ESR.typ := 2;
     ELSE
     	status_to_ESR.typ := 3;
-    END_IF;
+    END_IF
     status_to_ESR.adress:= adress;
     status_to_ESR.DS := DT_in;
     status_to_ESR.TS := TS;

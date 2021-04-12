@@ -5,7 +5,7 @@ FUNCTION MIRROR
     FOR i := lx TO 1 BY - 1 DO
     	po^ := pi^[i];
     	po := po + 1;
-    END_FOR;
+    END_FOR
     (* close output string *)
     po^:= 0;
 

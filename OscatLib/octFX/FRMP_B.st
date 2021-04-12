@@ -5,10 +5,10 @@ FUNCTION FRMP_B
     		FRMP_B := START + FRMP_B;
     	ELSE
     		FRMP_B := START - FRMP_B;
-    	END_IF;
+    	END_IF
     ELSE
     	FRMP_B := SEL(DIR, 0, 255);
-    END_IF;
+    END_IF
 
 
     (* revision history

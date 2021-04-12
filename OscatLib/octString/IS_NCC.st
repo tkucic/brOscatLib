@@ -1,8 +1,8 @@
 FUNCTION IS_NCC
     L := LEN(str);
     FOR pos := 1 TO L DO
-    	IF FIND(CMP,MID(str,1,pos)) > 0 THEN RETURN; END_IF;
-    END_FOR;
+    	IF FIND(CMP,MID(str,1,pos)) > 0 THEN RETURN; END_IF
+    END_FOR
     IS_NCC := TRUE;
 
 

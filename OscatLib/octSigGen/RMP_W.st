@@ -7,7 +7,7 @@ FUNCTION_BLOCK RMP_W
     	out := 0;
     ELSIF SET THEN
     	out := 65535;
-    END_IF;
+    END_IF
 
     (* checks for outputs stable and reset or set busy flag *)
     low := out = 0;

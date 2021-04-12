@@ -3,7 +3,7 @@ FUNCTION BIT_LOAD_W2
     	BIT_LOAD_W2 := ROL(SHR(WORD#65535, 16 - N) OR ROR(i, P), P);
     ELSE
     	BIT_LOAD_W2 := ROL(SHL(WORD#65535, N) AND ROR(I, P), P);
-    END_IF;
+    END_IF
 
 
 

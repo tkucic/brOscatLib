@@ -3,7 +3,7 @@ FUNCTION EXEC
     EXEC := UPPERCASE(TRIM(str));
 
     pos := FINDB_NONUM(EXEC);
-    IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(EXEC,pos-1)); END_IF;
+    IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(EXEC,pos-1)); END_IF
     R2 := STRING_TO_REAL(RIGHT(EXEC,LEN(EXEC)-pos));
     EXEC := LEFT(EXEC,pos);
     pos := FINDB_NUM(EXEC);
@@ -14,7 +14,7 @@ FUNCTION EXEC
     ELSIF operator = '' THEN
     	EXEC := str;
     	RETURN;
-    END_IF;
+    END_IF
     IF operator = '^' THEN
     	EXEC := REAL_TO_STRING(EXPT(R1, R2));
     ELSIF operator = 'SQRT' THEN
@@ -28,14 +28,14 @@ FUNCTION EXEC
     ELSIF operator = '*' THEN
     	EXEC := REAL_TO_STRING(R1 * R2);
     ELSIF operator = '/' THEN
-    	IF R2 <> 0 THEN EXEC := REAL_TO_STRING(R1 / R2); ELSE EXEC := 'ERROR'; END_IF;
+    	IF R2 <> 0 THEN EXEC := REAL_TO_STRING(R1 / R2); ELSE EXEC := 'ERROR'; END_IF
     ELSIF operator = '+' THEN
     	EXEC := REAL_TO_STRING(r1 + r2);
     ELSIF operator = '-' THEN
     	EXEC := REAL_TO_STRING(r1 - r2);
     ELSE
     	EXEC := 'ERROR';
-    END_IF;
+    END_IF
 
     IF EXEC = 'ERROR' THEN
     	RETURN;
@@ -45,7 +45,7 @@ FUNCTION EXEC
     (* some systems deliver n. instead of n.0 ! *)
     ELSIF RIGHT(EXEC,1) = '.' THEN
     	EXEC := CONCAT(EXEC,'0');
-    END_IF;
+    END_IF
 
 
     (* revision history

@@ -12,7 +12,7 @@ FUNCTION_BLOCK TMAX
     ELSIF (tx - start >= PT) AND Q THEN
     	Q := FALSE;
     	Z := TRUE;
-    END_IF;
+    END_IF
 
     last_in := IN;
 

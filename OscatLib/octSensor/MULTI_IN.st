@@ -10,15 +10,15 @@ FUNCTION MULTI_IN
     		MULTI_IN := in_1;
     	ELSE
     		MULTI_IN := 0.0;
-    	END_IF;
+    	END_IF
     	IF F2 THEN
     		count := count + 1;
     		MULTI_IN := MULTI_IN + in_2;
-    	END_IF;
+    	END_IF
     	IF F3 THEN
     		count := count + 1;
     		MULTI_IN := MULTI_IN + in_3;
-    	END_IF;
+    	END_IF
     	MULTI_IN := SEL(count = 0, MULTI_IN / INT_TO_REAL(count), default);
 
     1:	MULTI_IN := SEL(F1, default, IN_1);
@@ -30,14 +30,14 @@ FUNCTION MULTI_IN
     4:	MULTI_IN := default;
 
     5:	MULTI_IN := SEL(F1, in_max, IN_1);
-    	IF F2 AND in_2 < MULTI_IN THEN MULTI_IN := in_2; END_IF;
-    	IF F3 AND in_3 < MULTI_IN THEN MULTI_IN := in_3; END_IF;
-    	IF MULTI_IN = in_max THEN MULTI_IN := default; END_IF;
+    	IF F2 AND in_2 < MULTI_IN THEN MULTI_IN := in_2; END_IF
+    	IF F3 AND in_3 < MULTI_IN THEN MULTI_IN := in_3; END_IF
+    	IF MULTI_IN = in_max THEN MULTI_IN := default; END_IF
 
     6:	MULTI_IN := SEL(F1, in_min, IN_1);
-    	IF F2 AND in_2 > MULTI_IN THEN MULTI_IN := in_2; END_IF;
-    	IF F3 AND in_3 > MULTI_IN THEN MULTI_IN := in_3; END_IF;
-    	IF MULTI_IN = in_min THEN MULTI_IN := default; END_IF;
+    	IF F2 AND in_2 > MULTI_IN THEN MULTI_IN := in_2; END_IF
+    	IF F3 AND in_3 > MULTI_IN THEN MULTI_IN := in_3; END_IF
+    	IF MULTI_IN = in_min THEN MULTI_IN := default; END_IF
 
     7:	IF F1 AND F2 AND F3 THEN MULTI_IN := MID3(in_1, in_2, in_3);
     	ELSIF F1 AND F2 THEN MULTI_IN := MIN(in_1, in_2);
@@ -47,9 +47,9 @@ FUNCTION MULTI_IN
     	ELSIF F2 THEN MULTI_IN := in_2;
     	ELSIF F3 THEN MULTI_IN := in_3;
     	ELSE MULTI_IN := default;
-    	END_IF;
+    	END_IF
 
-    END_CASE;
+    END_CASE
 
     (*
     hm 1.1.2007		rev 1.1

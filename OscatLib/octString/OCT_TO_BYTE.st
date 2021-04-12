@@ -7,9 +7,9 @@ FUNCTION OCT_TO_BYTE
     	(* calculate the value of the digit *)
     	IF X > 47 AND x < 56 THEN
     		OCT_TO_BYTE := SHL(OCT_TO_BYTE,3) + X - 48;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
 
 

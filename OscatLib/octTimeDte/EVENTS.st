@@ -15,9 +15,9 @@ FUNCTION_BLOCK EVENTS
     			y_int := TRUE;
     			name_int := check.name;
     			EXIT;
-    		END_IF;
-    	END_FOR;
-    END_IF;
+    		END_IF
+    	END_FOR
+    END_IF
 
     IF ENA THEN
     	Y := y_int;
@@ -25,7 +25,7 @@ FUNCTION_BLOCK EVENTS
     ELSE
     	Y := FALSE;
     	NAME := '';
-    END_IF;
+    END_IF
 
     (* revision history
     hm  18. jan. 2011	rev 1.0

@@ -5,13 +5,13 @@ FUNCTION_BLOCK M_D
     	et := t#0ms;
     	startup := FALSE;
     	run := FALSE;
-    END_IF;
+    END_IF
 
     (* avoid timers to start when input is true at startup *)
     IF NOT startup THEN
     	edge := start;
     	startup := TRUE;
-    END_IF;
+    END_IF
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
@@ -24,9 +24,9 @@ FUNCTION_BLOCK M_D
     ELSIF stop AND run THEN
     	pt := et;
     	run := FALSE;
-    END_IF;
+    END_IF
     edge := start;
-    IF run THEN et := tx - t0; END_IF;
+    IF run THEN et := tx - t0; END_IF
 
     (* revision history
     hm		2.5.2007	rev 1.0

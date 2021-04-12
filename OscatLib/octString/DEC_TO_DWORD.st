@@ -7,9 +7,9 @@ FUNCTION DEC_TO_DWORD
     	(* calculate the value of the digit *)
     	IF X > 47 AND x < 58 THEN
     		DEC_TO_DWORD := DEC_TO_DWORD * 10 + X - 48;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
 
 

@@ -1,6 +1,6 @@
 FUNCTION_BLOCK HOLIDAY
     (* for performance reasons only activate once a day *)
-    IF last_active = date_in THEN RETURN; END_IF;
+    IF last_active = date_in THEN RETURN; END_IF
     last_active := DATE_IN;
 
     (* determine language *)
@@ -8,7 +8,7 @@ FUNCTION_BLOCK HOLIDAY
     	lx := language.DEFAULT;
     ELSE
     	lx := MIN(language.LMAX, LANGU);
-    END_IF;
+    END_IF
 
     (* berechnung von ostern für das aktuelle jahr *)
     jahr := YEAR_OF_DATE(date_in);
@@ -25,23 +25,23 @@ FUNCTION_BLOCK HOLIDAY
     			Y := TRUE;
     			NAME := HOLIDAYS[i].NAME;
     			RETURN;
-    		END_IF;
+    		END_IF
     	ELSIF HOLIDAYS[i].USE = 1 AND HOLIDAYS[i].MONTH = 0 THEN
     		(* check for holiday in reference to easter *)
     		IF DATE_ADD(ostern, HOLIDAYS[i].DAY ,0,0,0) = date_in THEN
     			Y := TRUE;
     			NAME := HOLIDAYS[i].NAME;
     			RETURN;
-    		END_IF;
+    		END_IF
     	ELSIF HOLIDAYS[i].USE < 0 THEN
     		(* check for holiday on a weekday before date *)
     		IF DAY_OF_WEEK(date_in) = ABS(HOLIDAYS[i].USE) AND date_in < x_date AND date_in >= DATE_ADD(x_date,-7,0,0,0) THEN
     			Y := TRUE;
     			NAME := HOLIDAYS[i].NAME;
     			RETURN;
-    		END_IF;
-    	END_IF;
-    END_FOR;
+    		END_IF
+    	END_IF
+    END_FOR
 
     (* check array if today is weekend *)
     IF NOT Y AND (wdx = 5 AND FRIDAY OR wdx = 6 AND SATURDAY OR wdx = 7 AND SUNDAY) THEN
@@ -49,7 +49,7 @@ FUNCTION_BLOCK HOLIDAY
     	NAME := LANGUAGE.WEEKDAYS[LOCATION.LANGUAGE[lx],wdx];
     ELSE
     	NAME := '';
-    END_IF;
+    END_IF
 
 
     (*

@@ -14,7 +14,7 @@ FUNCTION_BLOCK DT_SIMU
     	td := (tc / 1000) * 1000;
     	DTS := DTS + DWORD_TO_TIME(td);
     	last := last + REAL_TO_DWORD(DWORD_TO_REAL(td) / speed);
-    END_IF;
+    END_IF
 
     (* revision history
     hm	11. sep. 2008	rev 1.0

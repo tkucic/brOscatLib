@@ -6,7 +6,7 @@ FUNCTION SET_DATE
     	SET_DATE := DWORD_TO_DATE((count - 1) * 86400);
     ELSE
     	SET_DATE := DWORD_TO_DATE(count * 86400);
-    END_IF;
+    END_IF
 
 
     (* revision history

@@ -5,9 +5,9 @@ FUNCTION IS_LOWER
     	IF NOT (ISC_LOWER(pt^)) THEN
     		IS_LOWER := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_LOWER := L > 0;
 
 

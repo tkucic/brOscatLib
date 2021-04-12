@@ -11,7 +11,7 @@ FUNCTION_BLOCK LTCH_4
     	Q1 := D1;
     	Q2 := D2;
     	Q3 := D3;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	4. aug 2006	rev 1.0

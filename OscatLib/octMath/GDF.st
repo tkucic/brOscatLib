@@ -7,7 +7,7 @@ FUNCTION GDF
     	GDF := -math.PI05;
     ELSE
     	GDF := ATAN(EXP(X)) * 2.0 - math.PI05;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	27. apr. 2008	rev 1.0

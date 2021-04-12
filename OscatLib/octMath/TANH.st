@@ -5,7 +5,7 @@ FUNCTION TANH
     	TANH := -1.0;
     ELSE
     	TANH := 1.0 - 2.0 / (EXP(2.0 * x) + 1.0);
-    END_IF;
+    END_IF
 
 
     (* revision hisdtory

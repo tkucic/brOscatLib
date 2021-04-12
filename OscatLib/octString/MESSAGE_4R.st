@@ -11,14 +11,14 @@ FUNCTION_BLOCK MESSAGE_4R
     				1 : MX := M1;
     				2 : MX := M2;
     				3 : MX := M3;
-    			END_CASE;
-    	END_IF;
+    			END_CASE
+    	END_IF
     	edge := clk;
     	timer( in := CLK, pt := T1);
     ELSE
     	MX := '';
     	MN := 0;
-    END_IF;
+    END_IF
 
 
 

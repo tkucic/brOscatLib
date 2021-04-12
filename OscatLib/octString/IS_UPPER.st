@@ -5,9 +5,9 @@ FUNCTION IS_UPPER
     	IF NOT (ISC_UPPER(pt^)) THEN
     		IS_UPPER := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_UPPER := L > 0;
 
 

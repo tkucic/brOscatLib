@@ -10,8 +10,8 @@ FUNCTION FLOAT_TO_REAL
     	ELSIF X = 45 THEN
     		(* code 45 is sign *)
     		sign := -1;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
     (* now we scan numbers till end or dot or E is reached *)
     FOR i := i TO stop DO
@@ -21,8 +21,8 @@ FUNCTION FLOAT_TO_REAL
     	(* calculate the value of the digit *)
     	ELSIF X > 47 AND x < 58 THEN
     		tmp := tmp * 10 + X - 48;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
     (* process the portion after the comma if comma or dot is reached exit if exponent starts *)
     IF x = 44 OR X = 46 THEN
@@ -33,14 +33,14 @@ FUNCTION FLOAT_TO_REAL
     		ELSIF x > 47 AND x < 58 THEN
     			tmp := tmp * 10 + X - 48;
     			d := d - 1;
-    		END_IF;
-    	END_FOR;
-    END_IF;
+    		END_IF
+    	END_FOR
+    END_IF
 
     (* process exponent if present *)
     IF X = 69 OR X = 101 THEN
     	d := d + DEC_TO_INT(RIGHT(FLT, stop - i));
-    END_IF;
+    END_IF
 
     FLOAT_TO_REAL :=  EXPN(10, d) * DINT_TO_REAL(TMP * SIGN);
 

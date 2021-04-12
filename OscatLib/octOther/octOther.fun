@@ -83,10 +83,10 @@ FUNCTION_BLOCK ESR_MON_R4
         ESR_Out : ARRAY[0..3] OF esr_data; (**)
     END_VAR
     VAR
-        p0 : POINTER TO DWORD; (**)
-        p1 : POINTER TO DWORD; (**)
-        p2 : POINTER TO DWORD; (**)
-        p3 : POINTER TO DWORD; (**)
+        p0 : REFERENCE TO DWORD; (**)
+        p1 : REFERENCE TO DWORD; (**)
+        p2 : REFERENCE TO DWORD; (**)
+        p3 : REFERENCE TO DWORD; (**)
         x0 : REAL; (**)
         x1 : REAL; (**)
         x2 : REAL; (**)
@@ -150,7 +150,7 @@ FUNCTION STATUS_TO_ESR : esr_data
 END_FUNCTION
 FUNCTION CRC_GEN : DWORD
     VAR_INPUT
-        PT : POINTER TO ARRAY[0..32000] OF BYTE; (**)
+        PT : REFERENCE TO ARRAY[0..32000] OF BYTE; (**)
         SIZE : INT; (**)
         PL : INT; (**)
         PN : DWORD; (**)

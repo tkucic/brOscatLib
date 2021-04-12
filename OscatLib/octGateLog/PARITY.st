@@ -2,14 +2,14 @@ FUNCTION PARITY
     WHILE in > 0 DO
     	PARITY := PARITY XOR in.0 XOR in.1 XOR in.2 XOR in.3;
     	in := SHR(in,4);
-    END_WHILE;
+    END_WHILE
 
     (* code before rev 1.2
     WHILE in > 0 DO
-    	IF in.0 THEN cnt := cnt +1; END_IF;
+    	IF in.0 THEN cnt := cnt +1; END_IF
     	in := SHR(in,1);
-    END_WHILE;
-    IF (cnt MOD 2) = 1 THEN parity := TRUE; ELSE parity := FALSE; END_IF;
+    END_WHILE
+    IF (cnt MOD 2) = 1 THEN parity := TRUE; ELSE parity := FALSE; END_IF
     *)
 
     (* revision history

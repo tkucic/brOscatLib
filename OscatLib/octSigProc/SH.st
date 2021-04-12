@@ -4,7 +4,7 @@ FUNCTION_BLOCK SH
     	trig := TRUE;
     ELSE;
     	trig := FALSE;
-    END_IF;
+    END_IF
     edge := clk;
 
     (* revision history

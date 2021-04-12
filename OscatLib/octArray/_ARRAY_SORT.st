@@ -29,7 +29,7 @@ FUNCTION _ARRAY_SORT
     				   tmp := PT^[j];
     				PT^[j] := PT^[i];
     				PT^[i] := tmp;
-    			END_IF;
+    			END_IF
 
     		UNTIL ende_innen END_REPEAT;
 
@@ -40,7 +40,7 @@ FUNCTION _ARRAY_SORT
     		ELSE
     			ende_aussen := TRUE;
     			_ARRAY_SORT := FALSE;					(* Fehler: Stack zu klein *)
-    		END_IF;
+    		END_IF
 
     		(* linken Teil sortiern *)
     		rechts := MAX(links, i-1);
@@ -56,11 +56,11 @@ FUNCTION _ARRAY_SORT
     			(* pop stack *)
     			stack_count := stack_count -1;		(* jetzt rechten Teil sortierne *)
     			rechts:= stack[stack_count];
-    		END_IF;
+    		END_IF
 
-    	END_IF;
+    	END_IF
 
-    END_WHILE;
+    END_WHILE
 
     _ARRAY_SORT := TRUE;				(* Sortierung beendet *)
 
@@ -75,15 +75,15 @@ FUNCTION _ARRAY_SORT
          	stop := j * 2 + 1;
             IF stop > UINT_TO_INT(SIZE) THEN stop := stop - 1;
             ELSIF pt^[stop-1] > pt^[stop] THEN stop := stop - 1;
-    		END_IF;
+    		END_IF
             IF pt^[j] < pt^[stop] THEN
              	temp := pt^[j];
                 pt^[j] := pt^[stop];
                 pt^[stop] := temp;
-            END_IF;
+            END_IF
             j := stop;
-        END_WHILE;
-    END_FOR;
+        END_WHILE
+    END_FOR
 
     *)
 
@@ -97,16 +97,16 @@ FUNCTION _ARRAY_SORT
            	stop := i * 2 + 1;  
             	IF stop > heapsize THEN stop := stop - 1;
             	ELSIF pt^[stop-1] > pt^[stop] THEN stop := stop - 1;
-    	 	END_IF;
+    	 	END_IF
             	IF pt^[i] < pt^[stop] THEN
                 		temp := pt^[i];
                 		pt^[i] := pt^[stop];
                 		pt^[stop] := temp;
-            	END_IF;
+            	END_IF
             	i := stop;
-        	END_WHILE;
+        	END_WHILE
     	pt^[heapsize] := popmax;
-    END_FOR;
+    END_FOR
 
     _ARRAY_SORT2 := TRUE;
     *)
@@ -119,9 +119,9 @@ FUNCTION _ARRAY_SORT
     			temp := pt^[i];
     			pt^[i] := pt^[m];
     			pt^[m] := temp;
-    		END_IF;
-    	END_FOR;
-    END_FOR;
+    		END_IF
+    	END_FOR
+    END_FOR
     _array_sort := TRUE;
 
     *)

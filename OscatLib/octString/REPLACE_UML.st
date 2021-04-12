@@ -17,13 +17,13 @@ FUNCTION REPLACE_UML
     		IF pto < ptm AND pt2^ > 0 THEN
     			pto := pto + 1;
     			pto^ := pt2^;
-    		END_IF;
-    	END_IF;
+    		END_IF
+    	END_IF
     	(* increment pointers *)
     	pt := pt + 1;
     	pto := pto + 1;
     	pos := pos + 1;
-    END_WHILE;
+    END_WHILE
 
     (* properly close the output string *)
     pto^ := 0;

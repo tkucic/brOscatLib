@@ -3,7 +3,7 @@ FUNCTION FRACT
     	FRACT := x - DINT_TO_REAL(D_TRUNC(x));
     ELSE
     	FRACT := 0.0;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	4. aug 2006	rev 1.0

@@ -11,7 +11,7 @@ FUNCTION T_PLC_MS
     *)
     IF debug THEN
     	T_PLC_MS := (SHL(T_PLC_MS,N) OR SHL(DWORD#1,N)-1) + OFFSET;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	14.9.2007	rev 1.0

@@ -12,40 +12,40 @@ FUNCTION DAY_OF_MONTH
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[12];
     		ELSE
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[11];
-    		END_IF;
+    		END_IF
     	ELSE
     		IF DAY_OF_MONTH > setup.mth_ofs[10] THEN
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[10];
     		ELSE
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[9];
-    		END_IF;
-    	END_IF;
+    		END_IF
+    	END_IF
     ELSIF DAY_OF_MONTH > setup.MTH_OFS[5] THEN
     	IF DAY_OF_MONTH > setup.MTH_OFS[7] THEN
     		IF DAY_OF_MONTH > setup.mth_ofs[8] THEN
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[8];
     		ELSE
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[7];
-    		END_IF;
+    		END_IF
     	ELSE
     		IF DAY_OF_MONTH > setup.mth_ofs[6] THEN
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[6];
     		ELSE
     			DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[5];
-    		END_IF;
-    	END_IF;
+    		END_IF
+    	END_IF
     ELSIF DAY_OF_MONTH > setup.MTH_OFS[3] THEN
     	IF DAY_OF_MONTH > setup.MTH_OFS[4] THEN
     		DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[4];
     	ELSE
     		DAY_OF_MONTH := DAY_OF_MONTH - setup.MTH_OFS[3];
-    	END_IF;
+    	END_IF
     ELSE
     	(* since now we must be in february or january we need to add leap again *)
     	DAY_OF_MONTH := DAY_OF_MONTH + leap;
-    	IF DAY_OF_MONTH > setup.MTH_OFS[2] THEN DAY_OF_MONTH := DAY_OF_MONTH - setup.mth_ofs[2]; END_IF;
+    	IF DAY_OF_MONTH > setup.MTH_OFS[2] THEN DAY_OF_MONTH := DAY_OF_MONTH - setup.mth_ofs[2]; END_IF
     	(* since nothing was true before, day_of_month must already be good *)
-    END_IF;
+    END_IF
 
 
     (*

@@ -8,20 +8,20 @@ FUNCTION _BUFFER_INIT
     	pt^ := init;
     	pt := pt + 1;
     	temp := temp + 1;
-    END_WHILE;
+    END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
     ptw := pt;
     temp := SHL(BYTE_TO_DWORD(init),24) OR SHL(BYTE_TO_DWORD(init),16) OR SHL(BYTE_TO_DWORD(init),8) OR BYTE_TO_DWORD(init);
     WHILE ptw < end32 DO
     	ptw^ := temp;
     	ptw := ptw + 4;
-    END_WHILE;
+    END_WHILE
     (* copy the remaining bytes in byte mode *)
     pt := ptw;
     WHILE pt < end DO
     	pt^ := init;
     	pt := pt + 1;
-    END_WHILE;
+    END_WHILE
 
     _BUFFER_INIT := TRUE;
 

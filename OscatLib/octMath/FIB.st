@@ -12,10 +12,10 @@ FUNCTION FIB
     		X := X-2;
     		t1 := t1 + t2;
     		t2 := t1 + t2;
-    	END_WHILE;
-    	IF X > 2 THEN t1 := t1 + t2; END_IF;
+    	END_WHILE
+    	IF X > 2 THEN t1 := t1 + t2; END_IF
     	fib := t1 + t2;
-    END_IF;
+    END_IF
 
     (* alternative code for very big numbers
 
@@ -23,7 +23,7 @@ FUNCTION FIB
     	fib := 0.4472136 * (expn(1.618034,X) - expn(-0.618034,X));
     ELSE
     	fib := 0.4472133 * expn(1.618034,X);
-    END_IF;
+    END_IF
 
     *)
 

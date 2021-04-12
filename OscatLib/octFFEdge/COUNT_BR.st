@@ -7,7 +7,7 @@ FUNCTION_BLOCK COUNT_BR
     	cnt := INT_TO_BYTE(INC(cnt,step,mx));
     ELSIF dn AND NOT last_dn THEN
     	cnt := INT_TO_BYTE(inc(cnt,-step,mx));
-    END_IF;
+    END_IF
     last_up := up;
     last_dn := dn;
 

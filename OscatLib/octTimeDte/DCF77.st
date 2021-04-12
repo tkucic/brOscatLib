@@ -14,7 +14,7 @@ FUNCTION_BLOCK DCF77
     		tp := NOT error;
     	ELSIF NOT rec AND tx > t#700ms AND tx < t#1000ms THEN
     		(* second switch detected *)
-    		IF state < 58 THEN state := state +1; ELSE state := 0; END_IF;
+    		IF state < 58 THEN state := state +1; ELSE state := 0; END_IF
     	ELSIF rec AND tx  < t#120ms THEN
     		(* bit 0 detected  *)
     		bits[state] := 0;
@@ -25,23 +25,23 @@ FUNCTION_BLOCK DCF77
     		(* error condition received signal is not valid *)
     		error := TRUE;
     		state := 0;
-    	END_IF;
+    	END_IF
     	last := last + tx;
     	IF rec AND state = 58 THEN
     		error := FALSE;
 
     		(* decode the bits and check for possible errors *)
-    		IF bits[0] OR NOT (bits[17] XOR bits[18]) OR NOT bits[20] THEN error := TRUE; END_IF;
+    		IF bits[0] OR NOT (bits[17] XOR bits[18]) OR NOT bits[20] THEN error := TRUE; END_IF
     		(* decode minute *)
     		MINUTE := 0;
     		MINUTE.0 := bits[21];
     		MINUTE.1 := bits[22];
     		MINUTE.2 := bits[23];
     		MINUTE.3 := bits[24];
-    		IF bits[25] THEN MINUTE := MINUTE + 10; END_IF;
-    		IF bits[26] THEN MINUTE := MINUTE + 20; END_IF;
-    		IF bits[27] THEN MINUTE := MINUTE + 40; END_IF;
-    		IF MINUTE > 59 OR (bits[21] XOR bits[22] XOR bits[23] XOR bits[24] XOR bits[25] XOR bits[26] XOR bits[27] XOR bits[28]) THEN error := TRUE; END_IF;
+    		IF bits[25] THEN MINUTE := MINUTE + 10; END_IF
+    		IF bits[26] THEN MINUTE := MINUTE + 20; END_IF
+    		IF bits[27] THEN MINUTE := MINUTE + 40; END_IF
+    		IF MINUTE > 59 OR (bits[21] XOR bits[22] XOR bits[23] XOR bits[24] XOR bits[25] XOR bits[26] XOR bits[27] XOR bits[28]) THEN error := TRUE; END_IF
 
     		(* decode hour *)
     		HOUR := 0;
@@ -49,9 +49,9 @@ FUNCTION_BLOCK DCF77
     		HOUR.1 := bits[30];
     		HOUR.2 := bits[31];
     		HOUR.3 := bits[32];
-    		IF bits[33] THEN HOUR := HOUR + 10; END_IF;
-    		IF bits[34] THEN HOUR := HOUR +20; END_IF;
-    		IF HOUR > 23 OR (bits[29] XOR bits[30] XOR bits[31] XOR bits[32] XOR bits[33] XOR bits[34] XOR bits[35]) THEN error := TRUE; END_IF;
+    		IF bits[33] THEN HOUR := HOUR + 10; END_IF
+    		IF bits[34] THEN HOUR := HOUR +20; END_IF
+    		IF HOUR > 23 OR (bits[29] XOR bits[30] XOR bits[31] XOR bits[32] XOR bits[33] XOR bits[34] XOR bits[35]) THEN error := TRUE; END_IF
 
     		(* decode day of month *)
     		day := 0;
@@ -59,16 +59,16 @@ FUNCTION_BLOCK DCF77
     		day.1 := bits[37];
     		day.2 := bits[38];
     		day.3 := bits[39];
-    		IF bits[40] THEN day := day + 10; END_IF;
-    		IF bits[41] THEN day := day + 20; END_IF;
-    		IF day > 31 THEN error := TRUE; END_IF;
+    		IF bits[40] THEN day := day + 10; END_IF
+    		IF bits[41] THEN day := day + 20; END_IF
+    		IF day > 31 THEN error := TRUE; END_IF
 
     		(* decode day of week *)
     		wday := 0;
     		wday.0 := bits[42];
     		wday.1 := bits[43];
     		wday.2 := bits[44];
-    		IF wday > 7 OR wday < 1 THEN error := TRUE; END_IF;
+    		IF wday > 7 OR wday < 1 THEN error := TRUE; END_IF
 
     		(* decode month *)
     		MONTH := 0;
@@ -76,8 +76,8 @@ FUNCTION_BLOCK DCF77
     		MONTH.1 := bits[46];
     		MONTH.2 := bits[47];
     		MONTH.3 := bits[48];
-    		IF bits[49] THEN MONTH := MONTH +10; END_IF;
-    		IF MONTH > 12 THEN error := TRUE; END_IF;
+    		IF bits[49] THEN MONTH := MONTH +10; END_IF
+    		IF MONTH > 12 THEN error := TRUE; END_IF
 
     		(* decode year *)
     		YEAR := 0;
@@ -85,34 +85,34 @@ FUNCTION_BLOCK DCF77
     		YEAR.1 := bits[51];
     		YEAR.2 := bits[52];
     		YEAR.3 := bits[53];
-    		IF bits[54] THEN YEAR := YEAR + 10; END_IF;
-    		IF bits[55] THEN YEAR := YEAR + 20; END_IF;
-    		IF bits[56] THEN YEAR := YEAR + 40; END_IF;
-    		IF bits[57] THEN YEAR := YEAR + 80; END_IF;
+    		IF bits[54] THEN YEAR := YEAR + 10; END_IF
+    		IF bits[55] THEN YEAR := YEAR + 20; END_IF
+    		IF bits[56] THEN YEAR := YEAR + 40; END_IF
+    		IF bits[57] THEN YEAR := YEAR + 80; END_IF
 
     		(* check parity for bits 36 to 58 *)
     		cnt := 0;
-    		FOR i := 36 TO 58 DO IF bits[i] THEN cnt := cnt + 1; END_IF; END_FOR;
-    		IF NOT EVEN(cnt) THEN error := TRUE; END_IF;
+    		FOR i := 36 TO 58 DO IF bits[i] THEN cnt := cnt + 1; END_IF END_FOR
+    		IF NOT EVEN(cnt) THEN error := TRUE; END_IF
 
     		(* time must be valid for two cycles to clear error flag *)
     		IF NOT error THEN
     			(* set outputs *)
     			old_time := mez;
-    			IF YEAR >= 70 THEN YEAR := YEAR + 1900; ELSE YEAR := YEAR + 2000; END_IF;
+    			IF YEAR >= 70 THEN YEAR := YEAR + 1900; ELSE YEAR := YEAR + 2000; END_IF
     			mez := SET_DT(YEAR,MONTH,day,HOUR,MINUTE,0);
     			DS := bits[17];
     			IF DS THEN
     				UTC := DWORD_TO_DT(DT_TO_DWORD(mez) - 7200);
     			ELSE
     				UTC := DWORD_TO_DT(DT_TO_DWORD(mez) - 3600);
-    			END_IF;
+    			END_IF
 
     			(* set trigger signal only if the receiver has received 2 successive minutes *)
-    			IF mez <> old_time + t#1m THEN error := TRUE ; END_IF;
-    		END_IF;
-    	END_IF;
-    END_IF;
+    			IF mez <> old_time + t#1m THEN error := TRUE ; END_IF
+    		END_IF
+    	END_IF
+    END_IF
 
     (* this portion implements a free running clock which is triggered by the dcf77 signal *)
     tz := DWORD_TO_TIME(INT_TO_DWORD(ABS(time_offset))* 3600000);
@@ -123,15 +123,15 @@ FUNCTION_BLOCK DCF77
     	utc := sdt;
     	tp := TRUE;
     	DS := DSI;
-    END_IF;
+    END_IF
 
     IF tp THEN
     	rtc := utc;
     	IF DS AND dst_en THEN
-    		IF time_offset < 0 THEN	rtc1 := rtc - tz + t#1h; ELSE rtc1 := rtc + tz + t#1h; END_IF;
+    		IF time_offset < 0 THEN	rtc1 := rtc - tz + t#1h; ELSE rtc1 := rtc + tz + t#1h; END_IF
     	ELSE
-    		IF time_offset < 0 THEN rtc1 := rtc - tz; ELSE rtc1 := rtc + tz; END_IF;
-    	END_IF;
+    		IF time_offset < 0 THEN rtc1 := rtc - tz; ELSE rtc1 := rtc + tz; END_IF
+    	END_IF
     	sync := TRUE;
     	last_sync := last;
     	ty := last;
@@ -142,7 +142,7 @@ FUNCTION_BLOCK DCF77
     	sync := ty - last_sync < sync_timeout AND last_sync > DWORD_TO_TIME(0);
     	wday := DAY_OF_WEEK(DT_TO_DATE(rtc1));
     	DS := dst_en AND DST(utc);
-    END_IF;
+    END_IF
     msec := TIME_TO_INT(t1 - ty);
 
 

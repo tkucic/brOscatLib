@@ -8,7 +8,7 @@ FUNCTION_BLOCK INTEGRATE
     ELSIF E THEN
     	Y := (X + X_LAST) * 0.5E-3 * DWORD_TO_REAL(tx-last) * K + Y;
     	X_last := X;
-    END_IF;
+    END_IF
     last := tx;
 
 

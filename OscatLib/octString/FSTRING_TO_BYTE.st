@@ -11,7 +11,7 @@ FUNCTION FSTRING_TO_BYTE
     ELSE
     	(* we assume decimal representation *)
     	FSTRING_TO_BYTE := DEC_TO_BYTE(CLEAN(in,'0123456789'));
-    END_IF;
+    END_IF
 
 
     (* revision histroy

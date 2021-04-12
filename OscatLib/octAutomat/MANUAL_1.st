@@ -14,7 +14,7 @@ FUNCTION_BLOCK MANUAL_1
     ELSIF NOT edge THEN
     	Q := M_I;
     	status := 103;
-    END_IF;
+    END_IF
 
     (* remember levels of manual signals *)
     s_edge := SET;

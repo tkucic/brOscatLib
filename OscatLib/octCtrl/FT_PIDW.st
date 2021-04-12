@@ -5,7 +5,7 @@ FUNCTION_BLOCK FT_PIDW
     	YI := 0.0;
     ELSE
     	integ(X := IN, K := 1.0 / TN, E := NOT LIM, Y := YI);
-    END_IF;
+    END_IF
 
     (* add up integrator and linear part *)
     Y := KP * (IN + YI);
@@ -18,7 +18,7 @@ FUNCTION_BLOCK FT_PIDW
     	LIM := FALSE;
     ELSE
     	LIM := TRUE;
-    END_IF;
+    END_IF
 
     (* add differential part and limit output Y *)
 

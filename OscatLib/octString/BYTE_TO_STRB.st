@@ -6,16 +6,16 @@ FUNCTION BYTE_TO_STRB
     	pt^ := BOOL_TO_BYTE(in.7) + 48;
     	in := SHL(in,1);
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
     (* der ausgabestring muss noch mit 0 abgeschlossen werden *)
     pt^ := 0;
 
     (* code before rev 1.1
     FOR i := 1 TO 8 DO
-    	IF in.0 = 0 THEN temp := CONCAT('0', temp); ELSE temp := CONCAT('1', temp); END_IF;
+    	IF in.0 = 0 THEN temp := CONCAT('0', temp); ELSE temp := CONCAT('1', temp); END_IF
     	in := SHR(in, 1);
-    END_FOR;
+    END_FOR
     BYTE_TO_STRB := temp;
     *)
 

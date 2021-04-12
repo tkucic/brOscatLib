@@ -3,7 +3,7 @@ FUNCTION DEAD_ZONE
     	dead_zone := X;
     ELSE
     	DEAD_ZONE := 0.0;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	12. feb. 2007	rev 1.0

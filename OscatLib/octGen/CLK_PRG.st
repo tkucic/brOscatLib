@@ -6,11 +6,11 @@ FUNCTION_BLOCK CLK_PRG
     IF NOT init THEN
     	init := TRUE;
     	last := tx - pt;
-    END_IF;
+    END_IF
 
     (* generate output pulse when next_pulse is reached *)
     Q := tx - last >= pt;
-    IF Q THEN last := tx; END_IF;
+    IF Q THEN last := tx; END_IF
 
 
     (* revision hiostory

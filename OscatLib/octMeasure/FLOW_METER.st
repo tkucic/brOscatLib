@@ -5,7 +5,7 @@ FUNCTION_BLOCK FLOW_METER
     	x_last := X;
     	y_last := Y;
     	int1.K := 2.7777777777777777E-4;
-    END_IF;
+    END_IF
 
     (* run integrator *)
     int1(E := NOT (RST OR PULSE_MODE) AND E, X := VX, Y := X);	(* gated operation *)
@@ -17,8 +17,8 @@ FUNCTION_BLOCK FLOW_METER
     	x_last := 0.0;
     	y_last := 0;
     ELSIF E AND PULSE_MODE THEN	(* check for pulse mode *)
-    	IF NOT e_last THEN X := X + VX; END_IF;
-    END_IF;
+    	IF NOT e_last THEN X := X + VX; END_IF
+    END_IF
     e_last := E;
 
     (* reduce X to be less than 1 and increase Y respectively *)
@@ -26,7 +26,7 @@ FUNCTION_BLOCK FLOW_METER
     	tmp := FLOOR(X);
     	Y := Y + INT_TO_UDINT(tmp);
     	X := X - INT_TO_REAL(tmp);
-    END_IF;
+    END_IF
 
     (* calculate the current flow *)
     tx := DWORD_TO_TIME(T_PLC_MS());
@@ -35,7 +35,7 @@ FUNCTION_BLOCK FLOW_METER
     	y_last := Y;
     	x_last := X;
     	tl := tx;
-    END_IF;
+    END_IF
 
 
 

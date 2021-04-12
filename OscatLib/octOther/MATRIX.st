@@ -33,7 +33,7 @@ FUNCTION_BLOCK MATRIX
     			CODE := 5;
     			CODE.7 := X[i].4;
     			L[i].4 := X[i].4;
-    		END_IF;
+    		END_IF
     		TP := TRUE;
     		CODE.4 := Line.0;
     		CODE.5 := Line.1;
@@ -43,10 +43,10 @@ FUNCTION_BLOCK MATRIX
     		IF NOT release AND CODE < 127 THEN
     			CODE := 0;
     			TP := FALSE;
-    		END_IF;
+    		END_IF
     		EXIT;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
     (* increment scan line every cycle *)
     line := (line + 1) AND 2#0000_0011;

@@ -13,7 +13,7 @@ FUNCTION_BLOCK FT_DERIV
     	old := in;
     ELSE
     	out := 0.0;
-    END_IF;
+    END_IF
 
 
 

@@ -2,7 +2,7 @@ FUNCTION V3_ANG
     d := V3_ABS(A) * V3_ABS(B);
     IF d > 0 THEN
     	V3_ANG := ACOS(LIMIT(-1.0, V3_DPRO(A, B) / d,1.0));
-    END_IF;
+    END_IF
 
     (* revision history
     hm	11. dec. 2007	rev 1.0

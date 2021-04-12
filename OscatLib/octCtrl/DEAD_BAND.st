@@ -5,7 +5,7 @@ FUNCTION DEAD_BAND
     	DEAD_BAND := X + L;
     ELSE
     	DEAD_BAND := 0.0;
-    END_IF;
+    END_IF
 
 
     (* revision history

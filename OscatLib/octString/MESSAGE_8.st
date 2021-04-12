@@ -18,7 +18,7 @@ FUNCTION_BLOCK MESSAGE_8
     	M := S8;
     ELSE
     	M := '';
-    END_IF;
+    END_IF
 
     (* revision history
     hm	26.12.2007		rev 1.0

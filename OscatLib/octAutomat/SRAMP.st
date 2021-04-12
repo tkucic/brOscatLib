@@ -31,7 +31,7 @@ FUNCTION_BLOCK SRAMP
     	v := MAX(-SQRT((Y-X) * 2.0 * A_UP), v);
     	(* calculate the output and obey limits *)
     	y := LIMIT(limit_low, y + MAX(v * cycle_time.TC, X-Y), limit_high);
-    END_IF;
+    END_IF
 
 
     (* revision history

@@ -3,7 +3,7 @@ FUNCTION BIN_TO_BYTE : BYTE
         BIN : STRING[12]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -14,7 +14,7 @@ FUNCTION BIN_TO_DWORD : DWORD
         BIN : STRING[40]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -26,7 +26,7 @@ FUNCTION BYTE_TO_STRB : STRING[8]
     END_VAR
     VAR
         i : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION BYTE_TO_STRH : STRING[2]
@@ -35,7 +35,7 @@ FUNCTION BYTE_TO_STRH : STRING[2]
     END_VAR
     VAR
         temp : BYTE; (**)
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CAPITALIZE : STRING[STRING_LENGTH]
@@ -43,7 +43,7 @@ FUNCTION CAPITALIZE : STRING[STRING_LENGTH]
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
     VAR
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
         pos : INT; (**)
         L : INT; (**)
         first : BOOL := TRUE; (**)
@@ -74,7 +74,7 @@ FUNCTION CHR_TO_STRING : STRING[1]
         C : BYTE; (**)
     END_VAR
     VAR
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CLEAN : STRING[STRING_LENGTH]
@@ -93,7 +93,7 @@ FUNCTION CODE : BYTE
         POS : INT; (**)
     END_VAR
     VAR
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION COUNT_CHAR : INT
@@ -103,7 +103,7 @@ FUNCTION COUNT_CHAR : INT
     END_VAR
     VAR
         l : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -122,7 +122,7 @@ FUNCTION DEC_TO_BYTE : BYTE
         DEC : STRING[10]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -133,7 +133,7 @@ FUNCTION DEC_TO_DWORD : DWORD
         DEC : STRING[20]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -144,7 +144,7 @@ FUNCTION DEC_TO_INT : INT
         DEC : STRING[10]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         sign : BOOL; (**)
@@ -178,7 +178,7 @@ FUNCTION DWORD_TO_STRB : STRING[32]
         IN : DWORD; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
     END_VAR
 END_FUNCTION
@@ -195,7 +195,7 @@ FUNCTION DWORD_TO_STRH : STRING[8]
     VAR
         i : INT; (**)
         temp : BYTE; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION EXEC : STRING[STRING_LENGTH]
@@ -226,7 +226,7 @@ FUNCTION FIND_CHAR : INT
     END_VAR
     VAR
         i : INT; (**)
-        pt : POINTER TO ARRAY[1..255] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
         stop : INT; (**)
         X : BYTE; (**)
     END_VAR
@@ -238,7 +238,7 @@ FUNCTION FIND_CTRL : INT
     END_VAR
     VAR
         i : INT; (**)
-        pt : POINTER TO ARRAY[1..255] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
         stop : INT; (**)
         x : BYTE; (**)
     END_VAR
@@ -250,7 +250,7 @@ FUNCTION FIND_NONUM : INT
     END_VAR
     VAR
         i : INT; (**)
-        pt : POINTER TO ARRAY[1..255] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
         end : INT; (**)
         X : BYTE; (**)
     END_VAR
@@ -262,7 +262,7 @@ FUNCTION FIND_NUM : INT
     END_VAR
     VAR
         i : INT; (**)
-        pt : POINTER TO ARRAY[1..255] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
         stop : INT; (**)
         X : BYTE; (**)
     END_VAR
@@ -283,7 +283,7 @@ FUNCTION FINDB_NONUM : INT
     END_VAR
     VAR
         pos : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION FINDB_NUM : INT
@@ -292,7 +292,7 @@ FUNCTION FINDB_NUM : INT
     END_VAR
     VAR
         pos : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
 FUNCTION FINDP : INT
@@ -325,7 +325,7 @@ FUNCTION FLOAT_TO_REAL : REAL
         FLT : STRING[20]; (**)
     END_VAR
     VAR
-        pt : POINTER TO ARRAY[1..20] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..20] OF BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         sign : INT := 1; (**)
@@ -388,7 +388,7 @@ FUNCTION HEX_TO_BYTE : BYTE
         HEX : STRING[5]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -399,7 +399,7 @@ FUNCTION HEX_TO_DWORD : DWORD
         Hex : STRING[20]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -411,7 +411,7 @@ FUNCTION IS_ALNUM : BOOL
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -421,7 +421,7 @@ FUNCTION IS_ALPHA : BOOL
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -441,7 +441,7 @@ FUNCTION IS_CTRL : BOOL
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -451,7 +451,7 @@ FUNCTION IS_HEX : BOOL
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -461,7 +461,7 @@ FUNCTION IS_LOWER : BOOL
     END_VAR
     VAR
         l : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -481,7 +481,7 @@ FUNCTION IS_NUM : BOOL
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -491,7 +491,7 @@ FUNCTION IS_UPPER : BOOL
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
     END_VAR
 END_FUNCTION
@@ -530,7 +530,7 @@ FUNCTION LOWERCASE : STRING[STRING_LENGTH]
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
     VAR
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
         pos : INT; (**)
         l : INT; (**)
     END_VAR
@@ -584,8 +584,8 @@ FUNCTION MIRROR : STRING[STRING_LENGTH]
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
     VAR
-        pi : POINTER TO ARRAY[1..255] OF BYTE; (**)
-        po : POINTER TO BYTE; (**)
+        pi : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
+        po : REFERENCE TO BYTE; (**)
         lx : INT; (**)
         i : INT; (**)
     END_VAR
@@ -605,7 +605,7 @@ FUNCTION OCT_TO_BYTE : BYTE
         OCT : STRING[10]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -616,7 +616,7 @@ FUNCTION OCT_TO_DWORD : DWORD
         OCT : STRING[20]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
         X : BYTE; (**)
         stop : INT; (**)
@@ -663,11 +663,11 @@ FUNCTION REPLACE_UML : STRING[STRING_LENGTH]
     END_VAR
     VAR
         L : INT; (**)
-        pt : POINTER TO BYTE; (**)
-        pto : POINTER TO BYTE; (**)
-        ptm : POINTER TO BYTE; (**)
-        pt1 : POINTER TO BYTE; (**)
-        pt2 : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
+        pto : REFERENCE TO BYTE; (**)
+        ptm : REFERENCE TO BYTE; (**)
+        pt1 : REFERENCE TO BYTE; (**)
+        pt2 : REFERENCE TO BYTE; (**)
         su : STRING[2]; (**)
         pos : INT; (**)
     END_VAR
@@ -729,7 +729,7 @@ FUNCTION UPPERCASE : STRING[STRING_LENGTH]
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
     VAR
-        pt : POINTER TO BYTE; (**)
+        pt : REFERENCE TO BYTE; (**)
         pos : INT; (**)
         l : INT; (**)
     END_VAR

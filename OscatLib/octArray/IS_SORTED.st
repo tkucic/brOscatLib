@@ -4,8 +4,8 @@ FUNCTION IS_SORTED
     	IF pt^[i] > pt^[i+1] THEN
     		IS_SORTED := FALSE;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
     IS_SORTED := TRUE;
 

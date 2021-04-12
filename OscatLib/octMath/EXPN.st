@@ -1,14 +1,14 @@
 FUNCTION EXPN
     sign := n.15;
     N := ABS(N);
-    IF N.0 THEN EXPN := X; ELSE EXPN := 1.0; END_IF;
+    IF N.0 THEN EXPN := X; ELSE EXPN := 1.0; END_IF
     N := SHR(N,1);
     WHILE N > 0 DO
        X := X * X;
-       IF N.0 THEN EXPN := EXPN * X; END_IF;
+       IF N.0 THEN EXPN := EXPN * X; END_IF
        N := SHR(N,1);
-    END_WHILE;
-    IF sign THEN EXPN := 1.0 / EXPN; END_IF;
+    END_WHILE
+    IF sign THEN EXPN := 1.0 / EXPN; END_IF
 
 
 

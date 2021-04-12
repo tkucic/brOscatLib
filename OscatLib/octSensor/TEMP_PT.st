@@ -7,18 +7,18 @@ FUNCTION TEMP_PT
     		TEMP_PT := 10000.0;
     	ELSE
     		TEMP_PT := (-X + SQRT(t1)) / (2.0 * Y);
-    	END_IF;
+    	END_IF
     ELSE
     	pt := ADR(step);
     	(* since the formula cannot be solved this is a successive approximation *)
     	TEMP_PT := -100.0;
     	WHILE step > accuracy DO
     		(* test if result greater or less *)
-    		IF RES_PT(TEMP_PT, R0) < res THEN TEMP_PT := TEMP_PT + step; ELSE TEMP_PT := TEMP_PT - step; END_IF;
+    		IF RES_PT(TEMP_PT, R0) < res THEN TEMP_PT := TEMP_PT + step; ELSE TEMP_PT := TEMP_PT - step; END_IF
     		pt^ := pt^ - 8388608;  (* this is a super fast divide by 2 method for non floating point CPUs *)
     		(* the alternative code: step := step * 0.5; *)
-    	END_WHILE;
-    END_IF;
+    	END_WHILE
+    END_IF
 
     (* revision history
 

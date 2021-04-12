@@ -5,5 +5,5 @@ FUNCTION MAX3
     	max3 := in2;
     ELSE
     	max3 := in3;
-    END_IF;
+    END_IF
 END_FUNCTION

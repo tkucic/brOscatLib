@@ -5,14 +5,14 @@ FUNCTION AOUT1
     	in2 := ABS(in);
     ELSE
     	in2 := in;
-    END_IF;
+    END_IF
 
     (* begrenze in auf die zulässigen werte *)
     in2 := LIMIT(low, in2, high);
 
     (* Berechne den Ausgangswert *)
     AOUT1 := SHL(REAL_TO_DWORD((in2 - low) / (high - low) * DWORD_TO_REAL(SHL(ff,bit_n - Bit_0 + 1) -1)),Bit_0);
-    IF sx THEN AOUT1 := SHL(ff,sign) OR AOUT1; END_IF;
+    IF sx THEN AOUT1 := SHL(ff,sign) OR AOUT1; END_IF
 
 
     (* revision history

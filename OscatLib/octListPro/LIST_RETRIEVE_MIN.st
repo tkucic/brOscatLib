@@ -8,11 +8,11 @@ FUNCTION LIST_RETRIEVE_MIN
     			mpos := last + 1;
     			lx := pos - last - 1;
     			(* if we found an element with length 0 then we can stop *)
-    		END_IF;
+    		END_IF
     		last := pos;
-    		IF lx = 0 THEN EXIT; END_IF;
-    	END_IF;
-    END_FOR;
+    		IF lx = 0 THEN EXIT; END_IF
+    	END_IF
+    END_FOR
 
     (* check length of last element *)
     IF l - last < lx THEN
@@ -23,7 +23,7 @@ FUNCTION LIST_RETRIEVE_MIN
     ELSE
     	LIST_RETRIEVE_MIN := MID(LIST, lx, mpos);
     	LIST := DELETE(LIST, lx + 1, mpos);
-    END_IF;
+    END_IF
 
 
 

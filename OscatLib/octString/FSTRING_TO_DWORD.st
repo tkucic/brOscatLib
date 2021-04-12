@@ -11,7 +11,7 @@ FUNCTION FSTRING_TO_DWORD
     ELSE
     	(* we assume decimal representation *)
     	FSTRING_TO_DWORD := DEC_TO_DWORD(CLEAN(in,'0123456789'));
-    END_IF;
+    END_IF
 
 
     (* revision histroy

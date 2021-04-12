@@ -11,7 +11,7 @@ FUNCTION_BLOCK SH_2
     	M := LIMIT(1,N,16);
 
     	(* edge detected lets take the sample *)
-    	FOR i := M - 1 TO 1 BY -1 DO buf2[i] := buf2[i-1]; END_FOR;
+    	FOR i := M - 1 TO 1 BY -1 DO buf2[i] := buf2[i-1]; END_FOR
     	buf2[0] := in;
     	out := in;
     	buf := buf2;
@@ -23,22 +23,22 @@ FUNCTION_BLOCK SH_2
     				temp := buf[start];
     				buf[start] := buf[i];
     				buf[i] := temp;
-    			END_IF;
-    		END_FOR;
-    	END_FOR;
+    			END_IF
+    		END_FOR
+    	END_FOR
 
     	(* any calculation with the samples is here *)
     	stop := M - 1 - d2;
     	start := d2;
-    	IF NOT even(disc) THEN start := start + 1; END_IF;
+    	IF NOT even(disc) THEN start := start + 1; END_IF
     	avg := 0;
-    	FOR i := start TO stop DO avg := avg + buf[i]; END_FOR;
+    	FOR i := start TO stop DO avg := avg + buf[i]; END_FOR
     	avg := avg / INT_TO_REAL(stop - start +1);
     	low := buf[start];
     	high := buf[stop];
     ELSE
     	Trig := FALSE;
-    END_IF;
+    END_IF
 
     (* revision history
     hm 20. jan. 2007	rev 1.1

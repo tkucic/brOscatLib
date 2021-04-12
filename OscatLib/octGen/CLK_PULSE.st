@@ -12,7 +12,7 @@ FUNCTION_BLOCK CLK_PULSE
     	CNT := CNT + 1;
     	Q := TRUE;
     	tn := tn + TIME_TO_DWORD(PT);
-    END_IF;
+    END_IF
 
 
 

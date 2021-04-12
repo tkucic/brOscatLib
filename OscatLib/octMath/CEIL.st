@@ -2,7 +2,7 @@ FUNCTION CEIL
     CEIL := REAL_TO_INT(x);
     IF CEIL < X THEN
     	CEIL := CEIL + 1;
-    END_IF;
+    END_IF
 
 
     (* revision history

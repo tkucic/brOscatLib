@@ -7,8 +7,8 @@ FUNCTION LIST_INSERT
     WHILE (cnt < pos) AND (i < LIST_LENGTH) AND (c > 0) DO
     	i := i + 1;
     	c := pt^[i];
-    	IF c = sep THEN cnt := cnt + 1; END_IF;
-    END_WHILE;
+    	IF c = sep THEN cnt := cnt + 1; END_IF
+    END_WHILE
 
     (* copy the new element into the list *)
     tmp := CHR_TO_STRING(SEP);
@@ -18,7 +18,7 @@ FUNCTION LIST_INSERT
     ELSE
     	tmp := CONCAT(tmp, INS);
     	LIST := INSERT(LIST, tmp, i - 1);
-    END_IF;
+    END_IF
 
 
     LIST_INSERT := TRUE;

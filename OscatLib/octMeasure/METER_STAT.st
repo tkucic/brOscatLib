@@ -17,7 +17,7 @@ FUNCTION_BLOCK METER_STAT
     	Current_Week := In - Week_Start;
     	Current_Month := IN - Month_Start;
     	Current_Year := IN - Year_Start;
-    END_IF;
+    END_IF
 
     IF YEAR_OF_DATE(DI) > YEAR_OF_DATE(last_run) THEN
     	(* a new year has started *)
@@ -43,13 +43,13 @@ FUNCTION_BLOCK METER_STAT
     	last_day := current_day;
     	current_day := 0.0;
     	day_start := in;
-    END_IF;
+    END_IF
     IF DAY_OF_WEEK(DI) < DAY_OF_WEEK(last_run) THEN
     	(* a new week has started *)
     	last_week := current_week;
     	current_week := 0.0;
     	week_start := in;
-    END_IF;
+    END_IF
     last_run := di;
 
     (* revision history

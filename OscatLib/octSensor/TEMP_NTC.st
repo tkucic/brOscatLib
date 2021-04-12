@@ -1,7 +1,7 @@
 FUNCTION TEMP_NTC
     IF res > 0.0 THEN
     	TEMP_NTC := B * 298.15 / (B + LN(RES / RN) * 298.15) -273.15;
-    END_IF;
+    END_IF
 
 
     (* revision history

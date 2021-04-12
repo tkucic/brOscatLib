@@ -8,9 +8,9 @@ FUNCTION BIN_TO_DWORD
     		BIN_TO_DWORD := SHL(BIN_TO_DWORD,1);
     	ELSIF X = 49 THEN
     		BIN_TO_DWORD := SHL(BIN_TO_DWORD,1) OR 1;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
 
 

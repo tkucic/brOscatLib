@@ -2,7 +2,7 @@ FUNCTION V3_ZANG
     la := V3_ABS(a);
     IF la > 0.0 THEN
     	V3_ZANG := ACOS(A.Z / la);
-    END_IF;
+    END_IF
 
     (* revision history
     hm	11 dec 2007	rev 1.0

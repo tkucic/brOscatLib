@@ -6,8 +6,8 @@ FUNCTION FIND_CHAR
     	IF X > 31 AND ((setup.EXTENDED_ASCII AND X <> 127) OR (NOT setup.EXTENDED_ASCII AND X < 127)) THEN
     		FIND_CHAR := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FIND_CHAR := 0;
 
 

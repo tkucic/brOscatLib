@@ -3,7 +3,7 @@ FUNCTION ARRAY_AVG
     ARRAY_AVG := pt^[0];
     FOR i := 1 TO stop DO
     	ARRAY_AVG := ARRAY_AVG + pt^[i];
-    END_FOR;
+    END_FOR
     ARRAY_AVG := ARRAY_AVG / UINT_TO_REAL(stop + 1);
 
 

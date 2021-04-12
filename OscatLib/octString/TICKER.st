@@ -5,7 +5,7 @@ FUNCTION_BLOCK TICKER
     	IF NOT delay.Q THEN
     		(* increase step for next tick *)
     		step := step + 1;
-    		IF step > LEN(text) THEN step := 1; END_IF;
+    		IF step > LEN(text) THEN step := 1; END_IF
     		(* extract dispay from text *)
     		display := MID(text, N, step);
     		(* set delay timer for next tick *)
@@ -13,10 +13,10 @@ FUNCTION_BLOCK TICKER
     	ELSE;
     		(* execute delay timer *)
     		delay(in := FALSE);
-    	END_IF;
+    	END_IF
     ELSE
     	display := text;
-    END_IF;
+    END_IF
     (* revision history
     hm	4. dec. 2007	rev 1.0
     	original version

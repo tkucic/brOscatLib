@@ -3,7 +3,7 @@ FUNCTION BIT_LOAD_B
     	BIT_LOAD_B := in OR SHL(dat,pos);
     ELSE
     	BIT_LOAD_B := in AND (NOT SHL(dat,pos));
-    END_IF;
+    END_IF
 
 
     (* revision history

@@ -8,10 +8,10 @@ FUNCTION CHARCODE
     	WHILE pos = 0 AND (i < 4) DO
     		i := i + 1;
     		pos := FIND(setup.CHARNAMES[i], search);
-    	END_WHILE;
+    	END_WHILE
     	found := MID(setup.CHARNAMES[i], 1, pos - 1);
     	CHARCODE := CODE(found, 1);
-    END_IF;
+    END_IF
 
 
 

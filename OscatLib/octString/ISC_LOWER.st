@@ -3,7 +3,7 @@ FUNCTION ISC_LOWER
     	ISC_LOWER := ((in > 96) AND (in < 123)) OR ((in > 222) AND (in <> 247));
     ELSE
     	ISC_LOWER := ((in > 96) AND (in < 123));
-    END_IF;
+    END_IF
 
     (* revision history
     hm	6. mar. 2008	rev 1.0

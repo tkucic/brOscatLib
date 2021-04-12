@@ -3,9 +3,9 @@ FUNCTION COUNT_CHAR
     l := LEN(str);
     COUNT_CHAR := 0;
     FOR pos := 1 TO l DO
-    	IF pt^ = CHR THEN COUNT_CHAR := COUNT_CHAR + 1; END_IF;
+    	IF pt^ = CHR THEN COUNT_CHAR := COUNT_CHAR + 1; END_IF
         PT := PT + 1;
-    END_FOR;
+    END_FOR
 
 
     (* revision history

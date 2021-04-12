@@ -1,5 +1,5 @@
 FUNCTION_BLOCK CONTROL_SET2
-    IF TU > 0.0 AND KS > 0.0 THEN TX := TG / TU / KS; END_IF;
+    IF TU > 0.0 AND KS > 0.0 THEN TX := TG / TU / KS; END_IF
     IF pi AND PID THEN
     	KP := 0.0;
     	TN := 0.0;
@@ -13,10 +13,10 @@ FUNCTION_BLOCK CONTROL_SET2
     	TN := PI_TN * TU;
     ELSE
     	KP := P_K * TX;
-    END_IF;
+    END_IF
 
     (* KI and KD are calculated *)
-    IF TN > 0.0 THEN KI := KP / TN; ELSE KI := 0.0; END_IF;
+    IF TN > 0.0 THEN KI := KP / TN; ELSE KI := 0.0; END_IF
     KD := KP * TV;
 
     (* revision history

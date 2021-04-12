@@ -10,7 +10,7 @@ FUNCTION_BLOCK SUN_POS
     cos_d := COS(d);
     sin_d := SIN(d);
     a := ATAN(COS(e) * sin_d / cos_d);
-    IF cos_d < 0.0 THEN a := a + math.PI; END_IF;
+    IF cos_d < 0.0 THEN a := a + math.PI; END_IF
     c := ASIN(SIN(e) * sin_d);
 
     (* also here we must be very careful utc is from 1.1.1970 for step7 the formula must change *)
@@ -21,10 +21,10 @@ FUNCTION_BLOCK SUN_POS
     cos_tau := COS(tau);
     t1 := cos_tau * sin_lat - TAN(c) * cos_lat;
     B := ATAN(SIN(tau) / t1);
-    IF t1< 0.0 THEN B := B + math.PI2; ELSE B := B + math.PI; END_IF;
+    IF t1< 0.0 THEN B := B + math.PI2; ELSE B := B + math.PI; END_IF
     B := DEG(MODR(B, math.PI2));
     h := DEG(ASIN(COS(C) * cos_tau * cos_lat +SIN(c) * sin_lat));
-    IF h > 180.0 THEN h := h - 360.0; END_IF;
+    IF h > 180.0 THEN h := h - 360.0; END_IF
     (* consider refraction *)
     HR := h + REFRACTION(h);
 

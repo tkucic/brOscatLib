@@ -4,7 +4,7 @@ FUNCTION_BLOCK PWM_DC
     	CLK(PT := REAL_TO_TIME(tmp));
     	Pulse(in := clk.Q, pt := REAL_TO_TIME(tmp * DC));
     	Q := pulse.Q;
-    END_IF;
+    END_IF
 
     (* revision history
 

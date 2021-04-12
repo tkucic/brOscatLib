@@ -4,8 +4,8 @@ FUNCTION_BLOCK FF_JKE
     ELSIF clk AND NOT edge THEN
     	IF J XOR K THEN Q := J;
     	ELSE Q := K XOR Q;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     edge := CLK;
 
     (* revision history

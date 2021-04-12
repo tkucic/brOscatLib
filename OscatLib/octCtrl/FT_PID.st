@@ -4,7 +4,7 @@ FUNCTION_BLOCK FT_PID
     	integ(IN := IN, K := 1.0 / TN, RUN := IEN, RST := RST, OUT_MIN := ILIM_L, OUT_MAX := ILIM_H);
     ELSE
     	integ(RST := FALSE);
-    END_IF;
+    END_IF
 
     (* run differentiator *)
     diff(IN := IN, K := TV);

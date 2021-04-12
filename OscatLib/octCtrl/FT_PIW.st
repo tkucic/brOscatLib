@@ -14,7 +14,7 @@ FUNCTION_BLOCK FT_PIW
     	LIM := TRUE;
     ELSE
     	LIM := FALSE;
-    END_IF;
+    END_IF
 
 
 

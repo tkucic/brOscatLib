@@ -7,9 +7,9 @@ FUNCTION DEC_TO_BYTE
     	(* calculate the value of the digit *)
     	IF X > 47 AND x < 58 THEN
     		DEC_TO_BYTE := DEC_TO_BYTE * 10 + X - 48;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
 
 

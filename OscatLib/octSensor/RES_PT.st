@@ -5,7 +5,7 @@ FUNCTION RES_PT
     	RES_PT := R0 * ( 1.0 + A * T + B * T2);
     ELSE
     	RES_PT := R0 * ( 1.0 + A * T + B * T2 + C * (T - 100.0) * T2 * T);
-    END_IF;
+    END_IF
 
 
 

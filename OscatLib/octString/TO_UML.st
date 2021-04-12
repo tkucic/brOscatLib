@@ -16,7 +16,7 @@ FUNCTION TO_UML
     		TO_UML := 'ue';
     ELSE
     	TO_UML := CHR_TO_STRING(IN);
-    END_CASE;
+    END_CASE
 
 
 

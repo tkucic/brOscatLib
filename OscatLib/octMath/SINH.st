@@ -3,7 +3,7 @@ FUNCTION SINH
     	SINH := X;
     ELSE
     	SINH := (EXP(x) - EXP(-x)) * 0.5;
-    END_IF;
+    END_IF
 
 
     (* revision history

@@ -5,7 +5,7 @@ FUNCTION MID3
     	mid3 := in2;
     ELSE
     	mid3 := in3;
-    END_IF;
+    END_IF
 
     (*
     hm	1.1.2007	rev 1.1

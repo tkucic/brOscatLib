@@ -16,7 +16,7 @@ FUNCTION_BLOCK CALENDAR_CALC
     	IF  tmp <> last_hour THEN
     		XCAL.DST_ON := DST(XCAL.UTC) AND xcal.DST_EN;
     		last_hour := tmp;
-    	END_IF;
+    	END_IF
     	xcal.night := utod < xcal.SUN_RISE OR utod > xcal.SUN_SET;
 
     	(* run once per day *)
@@ -36,7 +36,7 @@ FUNCTION_BLOCK CALENDAR_CALC
     		XCAL.SUN_MIDDAY := DINT_TO_TOD(TOD_TO_DINT(sun.MIDDAY) + XCAL.OFFSET * 60000 + SEL(XCAL.DST_ON,DINT#0,3600000));
     		XCAL.SUN_HEIGTH := sun.sun_declination;
     		XCAL.WORK_WEEK := WORK_WEEK(XCAL.LDATE);
-    	END_IF;
+    	END_IF
 
     	(* calculate the suns position every 10 seconds when SPE = TRUE *)
     	IF SPE AND xcal.UTC -  plast >= t#25s THEN
@@ -44,8 +44,8 @@ FUNCTION_BLOCK CALENDAR_CALC
     		pos(latitude := xcal.LATITUDE, longitude := xcal.LONGITUDE, utc := xcal.UTC);
     		xcal.SUN_HOR := pos.B;
     		xcal.SUN_VER := pos.HR;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
 

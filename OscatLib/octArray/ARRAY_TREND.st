@@ -1,12 +1,12 @@
 FUNCTION ARRAY_TREND
     stop := SHR(size,2)-1;
     stop2 := SHR(stop,1);
-    FOR i := 0 TO stop2 DO x := x - pt^[i]; END_FOR;
+    FOR i := 0 TO stop2 DO x := x - pt^[i]; END_FOR
     IF EVEN(UINT_TO_INT(stop)) THEN
-    	FOR i := stop2 TO stop DO X := X + pt^[i]; END_FOR;
+    	FOR i := stop2 TO stop DO X := X + pt^[i]; END_FOR
     ELSE
-    	FOR i := stop2 + 1 TO stop DO X := X + pt^[i]; END_FOR;
-    END_IF;
+    	FOR i := stop2 + 1 TO stop DO X := X + pt^[i]; END_FOR
+    END_IF
     ARRAY_TREND := x / UINT_TO_REAL(stop2 + 1);
 
     (* revision history

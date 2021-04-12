@@ -7,7 +7,7 @@ FUNCTION_BLOCK GEN_RDM
     	init := TRUE;
     	last := tx;
     	tx := t#0s;
-    END_IF;
+    END_IF
 
     (* add last if one cycle is finished *)
     IF tx >= pt THEN
@@ -19,7 +19,7 @@ FUNCTION_BLOCK GEN_RDM
     	q := TRUE;
     ELSE
     	q := FALSE;
-    END_IF;
+    END_IF
 
     (* revision history
 

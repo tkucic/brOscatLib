@@ -6,7 +6,7 @@ FUNCTION REPLACE_ALL
     WHILE pos > 0 DO
     	REPLACE_ALL := REPLACE(REPLACE_ALL,rep,lx, pos);
     	pos := FINDP(REPLACE_ALL, src, pos + lp);
-    END_WHILE;
+    END_WHILE
 
     (* revision histroy
     hm	4. feb. 2008	rev 1.0

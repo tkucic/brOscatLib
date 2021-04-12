@@ -14,7 +14,7 @@ FUNCTION_BLOCK DEAD_BAND_A
     	Y := X + L;
     ELSE
     	Y := 0.0;
-    END_IF;
+    END_IF
 
 
     (* revision history

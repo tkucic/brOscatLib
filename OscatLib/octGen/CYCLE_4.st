@@ -5,7 +5,7 @@ FUNCTION_BLOCK CYCLE_4
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
-    END_IF;
+    END_IF
 
     IF E THEN
     	IF SL THEN
@@ -20,28 +20,28 @@ FUNCTION_BLOCK CYCLE_4
     				IF tx - last >= T0 THEN
     					state := 1;
     					last := tx;
-    				END_IF;
+    				END_IF
     			1 : (* wait for T1 over 1st cycle *)
     				IF tx - last >= T1 THEN
     					state := 2;
     					last := tx;
-    				END_IF;
+    				END_IF
     			2 : (* wait for T1 over 1st cycle *)
     				IF tx - last >= T2 THEN
     					state := 3;
     					last := tx;
-    				END_IF;
+    				END_IF
     			3 : (* wait for T2 over 2nd cycle *)
     				IF tx - last >= T3 THEN
-    					IF S0 THEN State := 0; END_IF; (* if S0 is false, the sequence stops at state 3 *)
+    					IF S0 THEN State := 0; END_IF (* if S0 is false, the sequence stops at state 3 *)
     					last := tx;
-    				END_IF;
-    		END_CASE;
-    	END_IF;
+    				END_IF
+    		END_CASE
+    	END_IF
     ELSE
     	state := 0;
     	last := tx;
-    END_IF;
+    END_IF
 
 
 

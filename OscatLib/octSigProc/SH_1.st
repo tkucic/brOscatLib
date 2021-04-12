@@ -8,7 +8,7 @@ FUNCTION_BLOCK SH_1
     	trig := TRUE;
     ELSE
     	trig := FALSE;
-    END_IF;
+    END_IF
 
     (* revision history
 

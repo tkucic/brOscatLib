@@ -4,11 +4,11 @@ FUNCTION DATE_ADD
     WHILE mo > 12 DO
     	mo := mo - 12;
     	yr := yr + 1;
-    END_WHILE;
+    END_WHILE
     WHILE mo < 1 DO
     	mo := mo + 12;
     	yr := yr - 1;
-    END_WHILE;
+    END_WHILE
     DATE_ADD := SET_DATE(yr, mo, D + DAY_OF_YEAR(idate) + W * 7);
 
 

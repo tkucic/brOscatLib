@@ -5,7 +5,7 @@ FUNCTION_BLOCK DEAD_ZONE2
     	Y := L;
     ELSE
     	Y := -L;
-    END_IF;
+    END_IF
 
 
 

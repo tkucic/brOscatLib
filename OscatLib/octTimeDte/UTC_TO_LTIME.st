@@ -5,7 +5,7 @@ FUNCTION UTC_TO_LTIME
     	UTC_TO_LTIME := DWORD_TO_DT(DT_TO_DWORD(UTC) -  INT_TO_DWORD(tmp));
     ELSE
     	UTC_TO_LTIME := DWORD_TO_DT(DT_TO_DWORD(UTC) +  INT_TO_DWORD(tmp));
-    END_IF;
+    END_IF
 
 
     (* revision history

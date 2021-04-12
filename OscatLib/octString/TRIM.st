@@ -2,7 +2,7 @@ FUNCTION TRIM
     TRIM := str;
     REPEAT
     	pos := FIND(trim,' ');
-    	IF pos > 0 THEN TRIM := REPLACE(TRIM,'',1,pos); END_IF;
+    	IF pos > 0 THEN TRIM := REPLACE(TRIM,'',1,pos); END_IF
     UNTIL pos = 0	END_REPEAT;
 
 

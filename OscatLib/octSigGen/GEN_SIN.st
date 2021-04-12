@@ -2,23 +2,23 @@ FUNCTION_BLOCK GEN_SIN
     (* read system time and prepare input data *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
     DL := MODR(dl,1.0);
-    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF;
+    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF
 
     (* init section *)
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
     	tx := t#0s;
-    END_IF;
+    END_IF
 
     (* add last if one cycle is finished *)
     IF tx >= pt THEN
     	last := last + pt;
     	tx := tx - pt;
-    END_IF;
+    END_IF
 
     (* generate sine wave *)
-    IF pt > t#0s THEN temp := SIN(math.PI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(pt, dl))) / DWORD_TO_REAL(TIME_TO_DWORD(pt))); END_IF;
+    IF pt > t#0s THEN temp := SIN(math.PI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(pt, dl))) / DWORD_TO_REAL(TIME_TO_DWORD(pt))); END_IF
     out := am * 0.5 *  temp + os;
 
     (* boolean output Q *)

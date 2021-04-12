@@ -5,7 +5,7 @@ FUNCTION_BLOCK FF_D2E
     ELSIF clk AND NOT edge THEN
     	Q0 := D0;
     	Q1 := D1;
-    END_IF;
+    END_IF
     edge := CLK;
 
     (* revision history

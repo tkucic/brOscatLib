@@ -9,7 +9,7 @@ FUNCTION_BLOCK TOF_1
     	start := tx;
     ELSIF tx - start >= PT THEN
     	Q := FALSE;
-    END_IF;
+    END_IF
 
 
 

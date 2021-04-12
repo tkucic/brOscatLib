@@ -6,7 +6,7 @@ FUNCTION _ARRAY_SHUFFLE
             temp := pt^[i];
             pt^[i] := pt^[pos];
             pt^[pos] := temp;
-    END_FOR;
+    END_FOR
 
     _ARRAY_SHUFFLE := TRUE;
 

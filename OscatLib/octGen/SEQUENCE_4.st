@@ -7,7 +7,7 @@ FUNCTION_BLOCK SEQUENCE_4
     	last := tx;
     	init := TRUE;
     	status := 110;
-    END_IF;
+    END_IF
 
     (* asynchronous reset *)
     IF rst THEN
@@ -29,11 +29,11 @@ FUNCTION_BLOCK SEQUENCE_4
     	Q2 := 0;
     	Q3 := 0;
     	run := 1;
-    END_IF;
+    END_IF
     edge := start;
 
     (* check if stop on status is necessary *)
-    IF status > 0 AND status < 100 AND stop_on_error THEN RETURN; END_IF;
+    IF status > 0 AND status < 100 AND stop_on_error THEN RETURN; END_IF
 
     (* sequence is running *)
     IF run AND step = 0 THEN
@@ -46,8 +46,8 @@ FUNCTION_BLOCK SEQUENCE_4
     	ELSIF q0 AND tx - last >= delay0 THEN
     		step := 1;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 1 THEN
     	IF NOT q1 AND in1 AND tx - last <= wait1 THEN
     		Q0 := FALSE;
@@ -60,8 +60,8 @@ FUNCTION_BLOCK SEQUENCE_4
     	ELSIF q1 AND tx - last >= delay1 THEN
     		step := 2;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 2 THEN
     	IF NOT q2 AND in2 AND tx - last <= wait2 THEN
     		Q1 := FALSE;
@@ -74,8 +74,8 @@ FUNCTION_BLOCK SEQUENCE_4
     	ELSIF q2 AND tx - last >= delay2 THEN
     		step := 3;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 3 THEN
     	IF NOT q3 AND in3 AND tx - last <= wait3 THEN
     		Q2 := FALSE;
@@ -90,8 +90,8 @@ FUNCTION_BLOCK SEQUENCE_4
     		q3 := FALSE;
     		run := FALSE;
     		status := 110;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     QX := q0 OR q1 OR q2 OR q3;
 
     (*

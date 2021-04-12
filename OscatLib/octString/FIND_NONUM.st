@@ -6,8 +6,8 @@ FUNCTION FIND_NONUM
     	IF (X < 48 AND X <> 46) OR X > 57 THEN
     		FIND_NONUM := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FIND_NONUM := 0;
 
 

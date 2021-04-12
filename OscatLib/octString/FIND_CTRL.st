@@ -6,8 +6,8 @@ FUNCTION FIND_CTRL
     	IF x < 32 OR X = 127 THEN
     		FIND_CTRL := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FIND_CTRL := 0;
 
 

@@ -5,9 +5,9 @@ FUNCTION FILL
     (* create a string of characters to be connected to str *)
     FOR i := 1 TO 8 DO
     	FILL := CONCAT(FILL,FILL);
-    	IF L.7 THEN FILL := CONCAT(FILL,Sx); END_IF;
+    	IF L.7 THEN FILL := CONCAT(FILL,Sx); END_IF
     	L := SHL(L,1);
-    END_FOR;
+    END_FOR
 
 
 

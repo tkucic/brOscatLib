@@ -9,8 +9,8 @@ FUNCTION LIST_SORT_L
     		element := LIST_RETRIEVE_MIN(SEP,LIST);
     		LIST_SORT_L := CONCAT(LIST_SORT_L, element);
     		LIST_SORT_L := CONCAT(LIST_SORT_L, sepx);
-    	END_IF;
-    END_WHILE;
+    	END_IF
+    END_WHILE
     (* delete the last separation character *)
     LIST_SORT_L := LEFT(LIST_SORT_L, LEN(LIST_SORT_L) - 1);
 

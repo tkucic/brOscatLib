@@ -14,8 +14,8 @@ FUNCTION REAL_TO_FRAC
     	t := m[1,0] * ai + m[1,1];
     	m[1,1] := m[1,0];
     	m[1,0] := t;
-    	IF X = DINT_TO_REAL(ai) THEN EXIT; ELSE X := 1.0 / (x - DINT_TO_REAL(ai)); END_IF;
-    END_WHILE;
+    	IF X = DINT_TO_REAL(ai) THEN EXIT; ELSE X := 1.0 / (x - DINT_TO_REAL(ai)); END_IF
+    END_WHILE
 
     (* choose the correct duplet from matrix *)
     IF ABS(m[1,0]) > N THEN
@@ -24,10 +24,10 @@ FUNCTION REAL_TO_FRAC
     ELSE
     	REAL_TO_FRAC.NUMERATOR := DINT_TO_INT(ABS(m[0,0]));
     	REAL_TO_FRAC.DENOMINATOR := DINT_TO_INT(ABS(m[1,0]));
-    END_IF;
+    END_IF
 
     (* correct sign if X was negative *)
-    IF sign THEN REAL_TO_FRAC.NUMERATOR := -REAL_TO_FRAC.numerator; END_IF;
+    IF sign THEN REAL_TO_FRAC.NUMERATOR := -REAL_TO_FRAC.numerator; END_IF
 
     (*
         }

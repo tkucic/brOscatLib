@@ -1,7 +1,7 @@
 FUNCTION BINOM
     IF 2 * K > n THEN
     	k := n - k;
-    END_IF;
+    END_IF
     IF k > n THEN
     	RETURN;
     ELSIF k = 0 OR k = n THEN
@@ -13,8 +13,8 @@ FUNCTION BINOM
     	n := n + 1;
     	FOR i := 2 TO k DO
     		BINOM := BINOM * (n - i) / i;
-    	END_FOR;
-    END_IF;
+    	END_FOR
+    END_IF
 
 
 

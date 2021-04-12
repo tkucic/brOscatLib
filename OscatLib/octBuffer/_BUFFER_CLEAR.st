@@ -8,19 +8,19 @@ FUNCTION _BUFFER_CLEAR
     	pt^ := 0;
     	pt := pt + 1;
     	temp := temp + 1;
-    END_WHILE;
+    END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
     ptw := pt;
     WHILE ptw < end32 DO (* *)
     	ptw^ := 0;
     	ptw := ptw + 4;
-    END_WHILE;
+    END_WHILE
     (* copy the remaining bytes in byte mode *)
     pt := ptw;
     WHILE pt < end DO
     	pt^ := 0;
     	pt := pt + 1;
-    END_WHILE;
+    END_WHILE
 
     _BUFFER_CLEAR := TRUE;
 

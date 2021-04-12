@@ -3,7 +3,7 @@ FUNCTION ISC_ALPHA
     	ISC_ALPHA := (in > 64 AND in < 91) OR (in > 191  AND in <> 215 AND in <> 247) OR (in > 96 AND in < 123);
     ELSE
     	ISC_ALPHA := (IN > 64 AND IN < 91) OR (in > 96 AND in < 123);
-    END_IF;
+    END_IF
 
     (* revision history
     hm	6. mar. 2008	rev 1.0

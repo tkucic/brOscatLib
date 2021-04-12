@@ -3,7 +3,7 @@ FUNCTION SCALE_R
     	SCALE_R := O_LO;
     ELSE
     	SCALE_R := (O_HI - O_LO) / (I_HI - I_LO) * (LIMIT(I_LO, X, I_HI) - I_LO) + O_LO;
-    END_IF;
+    END_IF
 
 
     (* revision history

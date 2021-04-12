@@ -18,8 +18,8 @@ FUNCTION_BLOCK SEQUENCE_64
     		STATE := INC2(STATE, 1, -1, SMAX);
     		last := tx;
     		TRIG := TRUE;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
     edge := START;
 

@@ -8,14 +8,14 @@ FUNCTION_BLOCK COUNT_DR
     		CNT := CNT - MX + STEP - 1;
     	ELSE
     		CNT := CNT + STEP;
-    	END_IF;
+    	END_IF
     ELSIF dn AND NOT last_dn THEN
     	IF STEP > CNT THEN
     		CNT := CNT - STEP + MX + 1;
     	ELSE
     		CNT := CNT - STEP;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     last_up := up;
     last_dn := dn;
 

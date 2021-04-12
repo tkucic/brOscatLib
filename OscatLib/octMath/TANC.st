@@ -3,7 +3,7 @@ FUNCTION TANC
     	TANC := 1.0;
     ELSE
     	TANC := TAN(x) / x;
-    END_IF;
+    END_IF
 
 
     (* revision histroy

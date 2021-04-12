@@ -5,13 +5,13 @@ FUNCTION_BLOCK FT_AVG
     IF NOT init OR rst THEN
     	FOR i := 1 TO N DO
     		buff(in := in);
-    	END_FOR;
+    	END_FOR
     	avg := in;
     	init := TRUE;
     ELSIF E THEN
     	buff(in := in);
     	avg := avg + (in - buff.out ) / INT_TO_REAL(N);
-    END_IF;
+    END_IF
 
     (* revision history
 

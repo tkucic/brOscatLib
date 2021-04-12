@@ -6,11 +6,11 @@ FUNCTION_BLOCK M_T
     	PT :=  t#0s;
     	ET := t#0s;
     ELSIF IN THEN
-    	IF NOT edge THEN start := tx; END_IF;
+    	IF NOT edge THEN start := tx; END_IF
     	ET := tx - start;
     ELSE
     	PT := ET;
-    END_IF;
+    END_IF
     edge := IN;
 
 

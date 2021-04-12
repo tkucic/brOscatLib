@@ -1,13 +1,13 @@
 FUNCTION EASTER
     b := (204 - 11 * (YEAR MOD 19)) MOD 30;
-    IF b > 27 THEN b := b - 1; END_IF;
+    IF b > 27 THEN b := b - 1; END_IF
     c := (year + SHR(year,2) + b - 13) MOD 7;
     oday := 28 + b - c;
     IF oday > 33 THEN
     	EASTER := SET_DATE(year, 4, oday - 31);
     ELSE
     	EASTER := SET_DATE(year, 3, oday);
-    END_IF;
+    END_IF
 
 
 

@@ -11,16 +11,16 @@ FUNCTION_BLOCK SHR_8PLE
     		register := SHR(register,1);
     		register.7 := Din;
     		Dout := register.0;
-    	END_IF;
+    	END_IF
     	IF load THEN							(* the byte on Din will be loaded if load = true *)
     		register := Dload;
-    		IF up THEN Dout := register.7; ELSE Dout := register.0; END_IF;
-    	END_IF;
-    END_IF;
-    IF NOT clk THEN edge := TRUE; END_IF;	(* sobald clk wieder low wird warten auf nächste flanke *)
+    		IF up THEN Dout := register.7; ELSE Dout := register.0; END_IF
+    	END_IF
+    END_IF
+    IF NOT clk THEN edge := TRUE; END_IF	(* sobald clk wieder low wird warten auf nächste flanke *)
     IF rst THEN									(* wenn reset aktiv dann ausgang rücksetzen *)
     	register := 0;
     	Dout := FALSE;
-    END_IF;
+    END_IF
 
 END_FUNCTION_BLOCK

@@ -9,7 +9,7 @@ FUNCTION_BLOCK FF_D4E
     	Q1 := D1;
     	Q2 := D2;
     	Q3 := D3;
-    END_IF;
+    END_IF
     edge := CLK;
 
     (* revision history

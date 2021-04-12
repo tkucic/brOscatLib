@@ -3,7 +3,7 @@ FUNCTION ISC_UPPER
     	ISC_UPPER :=  ((in > 64) AND (in < 91)) OR (((in > 191) AND (in < 223)) AND (in <> 215));
     ELSE
     	ISC_UPPER := ((in > 64) AND (in < 91));
-    END_IF;
+    END_IF
 
 
     (* revision history

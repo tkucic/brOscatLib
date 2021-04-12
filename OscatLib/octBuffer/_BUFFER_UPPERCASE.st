@@ -3,7 +3,7 @@ FUNCTION _BUFFER_UPPERCASE
     WHILE pos < size DO
     	PT^[pos] := TO_UPPER(pt^[pos]);
     	pos := pos + 1;
-    END_WHILE;
+    END_WHILE
 
     _BUFFER_UPPERCASE := TRUE;
 

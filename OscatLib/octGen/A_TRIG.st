@@ -1,7 +1,7 @@
 FUNCTION_BLOCK A_TRIG
     D := IN - LAST_IN;
     Q := ABS(D) > res;
-    IF Q THEN last_in := IN; END_IF;
+    IF Q THEN last_in := IN; END_IF
     D := IN - LAST_IN;
 
 

@@ -2,7 +2,7 @@ FUNCTION CIRCLE_SEG
     IF RX > 0.0 THEN
     	CIRCLE_SEG := 2.0 * ACOS(1.0 - LIMIT(0.0, HX / RX, 2.0));
     	CIRCLE_SEG := (CIRCLE_SEG - SIN(CIRCLE_SEG)) *RX * RX / 2.0;
-    END_IF;
+    END_IF
 
 
     (* revision histroy

@@ -2,15 +2,15 @@ FUNCTION_BLOCK GEN_PULSE
     
     IF enq THEN
     	tx := DWORD_TO_TIME(T_PLC_MS());
-    	IF NOT init THEN init := TRUE; tn := tx; END_IF;
+    	IF NOT init THEN init := TRUE; tn := tx; END_IF
     	IF tx - tn >= SEL(Q, PTL, PTH) THEN
     		Q := NOT Q;
     		tn := tn + SEL(Q, PTL, PTH);
-    	END_IF;
+    	END_IF
     ELSE
     	Q := FALSE;
     	init := FALSE;
-    END_IF;
+    END_IF
 
 
     (* revision history

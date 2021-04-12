@@ -3,7 +3,7 @@ FUNCTION_BLOCK TOGGLE
     	q := 0;
     ELSIF clk AND NOT edge THEN
     	Q := NOT Q;
-    END_IF;
+    END_IF
     edge := clk;
 
     (* revision history

@@ -3,7 +3,7 @@ FUNCTION LANGEVIN
     	LANGEVIN := 0.0;
     ELSE
     	LANGEVIN := COTH(X) - 1.0 / X;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	10.12.2007	rev 1.0

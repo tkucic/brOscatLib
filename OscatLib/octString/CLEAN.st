@@ -10,8 +10,8 @@ FUNCTION CLEAN
     		(* wrong chracter needs to be deleted *)
     		CLEAN := DELETE(CLEAN, 1, pos);
     		stop := stop - 1;	(* the string is one character shorter now *)
-    	END_IF;
-    END_WHILE;
+    	END_IF
+    END_WHILE
 
 
 

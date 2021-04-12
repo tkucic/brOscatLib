@@ -5,7 +5,7 @@ FUNCTION SIGMOID
     	SIGMOID := 0.0;
     ELSE
     	SIGMOID := 1.0 / (1.0 + EXP(-X));
-    END_IF;
+    END_IF
 
 
     (* revision history

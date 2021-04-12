@@ -19,11 +19,11 @@ FUNCTION FSTRING_TO_DT
     			end := FIND(sdt, LEFT(fmt,1))-1;
     			tmp := LEFT(sdt, end);
     			sdt := DELETE(sdt, end,1);
-    		END_IF;
+    		END_IF
     		(* extract information from substring *)
     		IF c = 'Y' THEN
     			dy := STRING_TO_INT(tmp);
-    			IF dy < 100 THEN dy := dy + 2000; END_IF;
+    			IF dy < 100 THEN dy := dy + 2000; END_IF
     		ELSIF c = 'M' THEN
     			dm := STRING_TO_INT(tmp);
     		ELSIF c = 'N' THEN
@@ -36,15 +36,15 @@ FUNCTION FSTRING_TO_DT
     			tm := STRING_TO_INT(tmp);
     		ELSIF c = 's' THEN
     			ts := STRING_TO_INT(tmp);
-    		END_IF;
+    		END_IF
     	ELSIF c = LEFT(sdt,1) THEN
     		(* skip matching characters *)
     		fmt := DELETE(fmt,1,1);
     		sdt := DELETE(sdt,1,1);
     	ELSE
     		RETURN;
-    	END_IF;
-    END_WHILE;
+    	END_IF
+    END_WHILE
 
     FSTRING_TO_DT := SET_DT(dy,dm,dd,th,tm,ts);
 

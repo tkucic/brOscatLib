@@ -5,9 +5,9 @@ FUNCTION IS_NUM
     	IF NOT (ISC_NUM(pt^)) THEN
     		IS_NUM := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_NUM := L > 0;
 
 

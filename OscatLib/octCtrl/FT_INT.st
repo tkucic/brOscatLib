@@ -3,7 +3,7 @@ FUNCTION_BLOCK FT_INT
     	out := 0.0;
     ELSE
     	integ(X := IN, E := RUN, K := K, Y := out);
-    END_IF;
+    END_IF
 
     (* limit the outputs *)
     IF out >= OUT_MAX THEN
@@ -14,7 +14,7 @@ FUNCTION_BLOCK FT_INT
     	lim := TRUE;
     ELSE
     	lim := FALSE;
-    END_IF;
+    END_IF
 
 
     (*

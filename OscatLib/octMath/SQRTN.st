@@ -3,7 +3,7 @@ FUNCTION SQRTN
     	SQRTN := EXP(LN(x) / INT_TO_REAL(n));
     ELSE
     	SQRTN := 0.0;
-    END_IF;
+    END_IF
 
 
     (* revision history

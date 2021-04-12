@@ -5,8 +5,8 @@ FUNCTION ARRAY_SPR
     FOR i := 1 TO stop DO
     	IF pt^[i] > array_max THEN array_max := pt^[i];
     	ELSIF pt^[i] < array_min THEN array_min := pt^[i];
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     array_spr := array_max - array_min;
 
 

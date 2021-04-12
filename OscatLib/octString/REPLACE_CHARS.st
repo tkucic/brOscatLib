@@ -7,7 +7,7 @@ FUNCTION REPLACE_CHARS
     	rep := LEFT(rep, a);
     ELSIF b < a THEN
     	src := LEFT(src, b);
-    END_IF;
+    END_IF
 
     (* search the string and replace if necessary *)
     stp := LEN(str);
@@ -16,8 +16,8 @@ FUNCTION REPLACE_CHARS
     	b := FIND(src, c);
     	IF b > 0 THEN
     		REPLACE_CHARS := REPLACE(REPLACE_CHARS, MID(rep, 1, b), 1, a);
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
 
 

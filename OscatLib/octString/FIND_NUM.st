@@ -6,8 +6,8 @@ FUNCTION FIND_NUM
     	IF (X > 47 AND X < 58) OR X = 46 THEN
     		FIND_NUM := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FIND_NUM := 0;
 
 

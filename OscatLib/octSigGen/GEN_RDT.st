@@ -7,7 +7,7 @@ FUNCTION_BLOCK GEN_RDT
     		 rRDMTime := RDM ( last:= rRDMTime ) ;
     		 tRDMTime := REAL_TO_TIME ( rRDMTime * DINT_TO_REAL(TIME_TO_DINT( Max_Time_ms - Min_Time_ms ) + TIME_TO_DINT(Min_Time_ms ))) ;
     		 tonRDMTimer ( IN:= FALSE );
-    END_IF;
+    END_IF
 
     (* revision history
     J. Schohaus	19. nov 2007	rev 1.0

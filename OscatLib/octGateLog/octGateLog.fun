@@ -135,7 +135,7 @@ FUNCTION CHK_REAL : BYTE
         X : REAL; (**)
     END_VAR
     VAR
-        pt : POINTER TO DWORD; (**)
+        pt : REFERENCE TO DWORD; (**)
         tmp : DWORD; (**)
     END_VAR
 END_FUNCTION
@@ -188,7 +188,7 @@ FUNCTION DW_TO_REAL : REAL
         X : DWORD; (**)
     END_VAR
     VAR
-        pt : POINTER TO REAL; (**)
+        pt : REFERENCE TO REAL; (**)
     END_VAR
 END_FUNCTION
 FUNCTION DWORD_OF_BYTE : DWORD
@@ -242,7 +242,7 @@ FUNCTION REAL_TO_DW : DWORD
         X : REAL; (**)
     END_VAR
     VAR
-        pt : POINTER TO DWORD; (**)
+        pt : REFERENCE TO DWORD; (**)
     END_VAR
 END_FUNCTION
 FUNCTION REFLECT : DWORD

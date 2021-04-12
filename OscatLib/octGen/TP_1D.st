@@ -9,7 +9,7 @@ FUNCTION_BLOCK TP_1D
     ELSIF W THEN
     	IF tx - start >= PTD THEN
     		W := FALSE;
-    	END_IF;
+    	END_IF
     ELSIF IN AND NOT ix THEN
     	Q := TRUE;
     	start := tx;
@@ -18,7 +18,7 @@ FUNCTION_BLOCK TP_1D
     	Q := FALSE;
     	W := TRUE;
     	start := tx;
-    END_IF;
+    END_IF
 
     ix := IN;
 

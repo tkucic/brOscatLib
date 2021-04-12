@@ -1,18 +1,18 @@
 FUNCTION BUFFER_TO_STRING
     ps := ADR(BUFFER_TO_STRING);
-    IF size = 0 THEN RETURN; END_IF;
+    IF size = 0 THEN RETURN; END_IF
     sta := MIN(start, size -1);
     stp := MIN(stop, size -1);
 
     (* check for maximum string_length *)
     IF UINT_TO_INT(stp - sta + 1) >= STRING_LENGTH THEN
     	stp := sta + INT_TO_UINT(STRING_LENGTH) - 1;
-    END_IF;
+    END_IF
 
     FOR i := sta TO stp DO
     	ps^ := pt^[i];
     	ps := ps + 1;
-    END_FOR;
+    END_FOR
 
     (* terminate the string *)
 

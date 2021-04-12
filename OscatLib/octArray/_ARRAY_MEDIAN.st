@@ -6,7 +6,7 @@ FUNCTION _ARRAY_MEDIAN
     ELSE
     	i := SHR(stop,1);
     	_ARRAY_MEDIAN := (pt^[i] + pt^[i+1]) * 0.5;
-    END_IF;
+    END_IF
 
     (* old code
     stop := (size - SIZEOF(pt)) / SIZEOF(pt);
@@ -16,15 +16,15 @@ FUNCTION _ARRAY_MEDIAN
     			temp := pt^[i];
     			pt^[i] := pt^[m];
     			pt^[m] := temp;
-    		END_IF;
-    	END_FOR;
-    END_FOR;
+    		END_IF
+    	END_FOR
+    END_FOR
     IF even(stop) THEN
     	_array_median := pt^[stop/2];
     ELSE
     	i := stop/2;
     	_array_median := (pt^[i] + pt^[i+1])/2;
-    END_IF;
+    END_IF
     *)
     (* revision history
     hm 	3.3.2007		rev 1.1

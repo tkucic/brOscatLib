@@ -11,9 +11,9 @@ FUNCTION HEX_TO_DWORD
     		HEX_TO_DWORD := SHL(HEX_TO_DWORD,4) + X - 55;
     	ELSIF X > 96 AND X < 103 THEN
     		HEX_TO_DWORD := SHL(HEX_TO_DWORD,4) + X - 87;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
 
 

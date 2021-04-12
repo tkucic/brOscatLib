@@ -12,7 +12,7 @@ FUNCTION_BLOCK FADE
     	rmx(PT := TF, UP := FALSE, e := TRUE, rst := FALSE, set := FALSE);
     ELSE
     	rmx(e := FALSE, rst := FALSE, set := FALSE);
-    END_IF;
+    END_IF
     Y := (WORD_TO_REAL(rmx.out) * in1 + WORD_TO_REAL(FF - rmx.out) * IN2) / FF;
     *)
 

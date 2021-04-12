@@ -11,9 +11,9 @@ FUNCTION HEX_TO_BYTE
     		HEX_TO_BYTE := SHL(HEX_TO_BYTE,4) + X - 55;
     	ELSIF X > 96 AND X < 103 THEN
     		HEX_TO_BYTE := SHL(HEX_TO_BYTE,4) + X - 87;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
 
 

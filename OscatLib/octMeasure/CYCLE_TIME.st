@@ -7,18 +7,18 @@ FUNCTION_BLOCK CYCLE_TIME
     ELSIF last_cycle > t#0s THEN
     	IF tx < ct_min THEN ct_min := tx;
     	ELSIF tx > ct_max THEN ct_max := tx;
-    	END_IF;
+    	END_IF
     	ct_last := tx;
     ELSIF ct_min = t#0s THEN
     	ct_min := t#0s - t#1ms;
-    END_IF;
+    END_IF
     IF init THEN
     	systime := systime + tx;
     		IF systime >= t#1d THEN
     			systime := systime - t#1d;
     			sysdays := sysdays + 1;
-    		END_IF;
-    END_IF;
+    		END_IF
+    END_IF
     init := TRUE;
     last_cycle := last_cycle + tx;
     cycles := cycles + 1;

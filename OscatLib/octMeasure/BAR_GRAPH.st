@@ -15,8 +15,8 @@ FUNCTION_BLOCK BAR_GRAPH
     		T3 := T2 + temp;
     		T4 := T3 + temp;
     		T5 := T4 + temp;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
     (* clear outputs before checking *)
     Q1 := FALSE;
@@ -28,13 +28,13 @@ FUNCTION_BLOCK BAR_GRAPH
     status := 110;
 
     (* low, high and alarm can only be cleared with rst depending on alarm_low and alarm_high *)
-    IF NOT alarm_low THEN low := FALSE; END_IF;
-    IF NOT alarm_high THEN high := FALSE; END_IF;
+    IF NOT alarm_low THEN low := FALSE; END_IF
+    IF NOT alarm_high THEN high := FALSE; END_IF
     IF rst THEN
     	alarm := FALSE;
     	low := FALSE;
     	high := FALSE;
-    END_IF;
+    END_IF
 
     (* check and set outputs *)
     IF X < trigger_low THEN
@@ -43,7 +43,7 @@ FUNCTION_BLOCK BAR_GRAPH
     	IF alarm_low THEN
     		alarm := TRUE;
     		status := 1;
-    	END_IF;
+    	END_IF
     ELSIF X < T1 THEN
     	Q1 := TRUE;
     ELSIF x < t2 THEN
@@ -62,8 +62,8 @@ FUNCTION_BLOCK BAR_GRAPH
     	IF alarm_high THEN
     		alarm := TRUE;
     		status := 2;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
     (* revision history
     hm	22. feb 2007	rev 1.0

@@ -7,7 +7,7 @@ FUNCTION CHARNAME
     	WHILE pos = 0 AND (i < 4) DO
     		i := i + 1;
     		pos := FIND(setup.CHARNAMES[i], CHARNAME);
-    	END_WHILE;
+    	END_WHILE
     	IF pos > 0 THEN
     		CHARNAME := MID(setup.CHARNAMES[i], 10, pos + 3);
     		(* search for end of name and truncate *)
@@ -15,10 +15,10 @@ FUNCTION CHARNAME
     		CHARNAME := LEFT(CHARNAME,pos - 1);
     	ELSE
     		CHARNAME := CHR_TO_STRING(C);
-    	END_IF;
+    	END_IF
     ELSE
     	CHARNAME := '';
-    END_IF;
+    END_IF
 
 
 

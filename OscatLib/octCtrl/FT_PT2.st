@@ -10,7 +10,7 @@ FUNCTION_BLOCK FT_PT2
     	int1(X := in * K / tn2 - I1 * 0.5 * D / TN - I2 / TN2, Y := I1);
     	int2(X := I1,Y := I2);
     	out := I2;
-    END_IF;
+    END_IF
 
 
     (* revision history

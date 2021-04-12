@@ -5,7 +5,7 @@ FUNCTION CODE
     ELSE
     	PT := ADR(STR) + INT_TO_DWORD(pos - 1);
     	CODE := pt^;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	9. mar. 2008	rev 1.0

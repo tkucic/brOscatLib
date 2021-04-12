@@ -5,24 +5,24 @@ FUNCTION_BLOCK _RMP_W
     	IF dir XOR last_dir THEN
     	 tl := tx;
     	 last_dir := dir;
-    	END_IF;
+    	END_IF
     	(* check_elapsed time and calculate only if necessary *)
     	IF tr > t#0s THEN
     		step := DWORD_TO_DINT(SHL(tx-tl, 16) / TIME_TO_DWORD(TR));
     	ELSE
     		step := 65535;
-    	END_IF;
+    	END_IF
     	IF step > 0 THEN
     		(* perform the step on the ramp *)
     		tl := tx;
     		(* calculate the step response *)
-    		IF NOT dir THEN step := - step; END_IF;
+    		IF NOT dir THEN step := - step; END_IF
     		rmp := DINT_TO_WORD(LIMIT(0, WORD_TO_DINT(rmp) + step, 65535));
-    	END_IF;
+    	END_IF
     ELSE
     	tl := tx;
     	init := TRUE;
-    END_IF;
+    END_IF
 
 
     (* revison history

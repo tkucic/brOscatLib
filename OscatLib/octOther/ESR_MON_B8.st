@@ -19,7 +19,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X0 := S0;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s1 <> X1 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s1);
     	esr_out[cnt].adress := a1;
@@ -28,7 +28,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X1 := S1;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s2 <> X2 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s2);
     	esr_out[cnt].adress := a2;
@@ -37,7 +37,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X2 := S2;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s3 <> X3 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s3);
     	esr_out[cnt].adress := a3;
@@ -46,7 +46,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X3 := S3;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s4 <> X4 AND cnt < 4 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s4);
     	esr_out[cnt].adress := a4;
@@ -55,7 +55,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X4 := S4;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s5 <> X5  AND cnt < 4 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s5);
     	esr_out[cnt].adress := a5;
@@ -64,7 +64,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X5 := S5;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s6 <> X6  AND cnt < 4 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s6);
     	esr_out[cnt].adress := a6;
@@ -73,7 +73,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X6 := S6;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF s7 <> X7  AND cnt < 4 THEN
     	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s7);
     	esr_out[cnt].adress := a7;
@@ -82,7 +82,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	X7 := S7;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	26. jan 2007	rev 1.0

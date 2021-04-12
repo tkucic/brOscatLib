@@ -8,7 +8,7 @@ FUNCTION_BLOCK FF_RSE
     ELSIF CS AND NOT es THEN
     	(* rising edge on CS *)
     	Q := TRUE;
-    END_IF;
+    END_IF
 
     es := CS;
     er := CR;

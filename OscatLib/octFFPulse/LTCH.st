@@ -5,7 +5,7 @@ FUNCTION_BLOCK LTCH
     	Q := FALSE;
     ELSIF L THEN			(* latch is transparent *)
     	Q := D;
-    END_IF;
+    END_IF
 
 
     (* revision history

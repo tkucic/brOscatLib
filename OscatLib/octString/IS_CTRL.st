@@ -5,9 +5,9 @@ FUNCTION IS_CTRL
     	IF NOT (ISC_CTRL(pt^)) THEN
     		IS_CTRL := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_CTRL := L > 0;
 
 

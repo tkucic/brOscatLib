@@ -7,7 +7,7 @@ FUNCTION_BLOCK TC_US
     	TC := 0;
     ELSE
     	tc := tx - last;
-    END_IF;
+    END_IF
     last := tx;
 
     (* revision history

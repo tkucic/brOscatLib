@@ -6,7 +6,7 @@ FUNCTION DWORD_TO_STRB
     	pt^:= BOOL_TO_BYTE(in.31) + 48;
     	in := SHL(in,1);
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
     (* der ausgabestring muss nochg mit 0 abgeschlossen werden *)
     pt^ := 0;

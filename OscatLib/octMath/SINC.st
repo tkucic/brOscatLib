@@ -3,7 +3,7 @@ FUNCTION SINC
     	SINC := 1.0;
     ELSE
     	SINC := SIN(x) / x;
-    END_IF;
+    END_IF
 
 
     (* revision histroy

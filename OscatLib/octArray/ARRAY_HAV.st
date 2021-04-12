@@ -6,8 +6,8 @@ FUNCTION ARRAY_HAV
     	ELSE
     		ARRAY_HAV := 0.0;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     ARRAY_HAV := UINT_TO_REAL(stop + 1) / ARRAY_HAV;
 
 

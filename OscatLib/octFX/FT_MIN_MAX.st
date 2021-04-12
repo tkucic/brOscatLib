@@ -5,5 +5,5 @@ FUNCTION_BLOCK FT_MIN_MAX
     	init := TRUE;
     ELSIF in < mn THEN mn := in;
     ELSIF in > mx THEN mx := in;
-    END_IF;
+    END_IF
 END_FUNCTION_BLOCK

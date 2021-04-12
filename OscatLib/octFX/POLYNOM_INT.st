@@ -11,15 +11,15 @@ FUNCTION POLYNOM_INT
     	stop := i + 1;
        	FOR j := pts TO stop BY -1 DO
        		XY[j,1] := (XY[j,1] - XY[j-1,1]) / (XY[j,0] - XY[j-i,0]);
-    	END_FOR;
-    END_FOR;
+    	END_FOR
+    END_FOR
 
 
     (* this part is the actual calculation *)
     POLYNOM_INT := 0.0;
     FOR i := pts TO 1 BY -1 DO
            POLYNOM_INT := POLYNOM_INT * (X - XY[i,0]) + XY[i,1];
-    END_FOR;
+    END_FOR
 
 
     (* revision history

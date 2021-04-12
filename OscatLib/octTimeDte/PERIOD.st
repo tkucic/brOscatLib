@@ -2,16 +2,16 @@ FUNCTION PERIOD
     day1 := DAY_OF_YEAR(d1);
     day2 := DAY_OF_YEAR(d2);
     dayx := DAY_OF_YEAR(dx);
-    IF NOT LEAP_OF_DATE(dx) AND dayx > 58 THEN dayx := dayx + 1; END_IF;
-    IF NOT LEAP_OF_DATE(d1) AND day1 > 58 THEN day1 := day1 + 1; END_IF;
-    IF NOT LEAP_OF_DATE(d2) AND day2 > 58 THEN day2 := day2 + 1; END_IF;
+    IF NOT LEAP_OF_DATE(dx) AND dayx > 58 THEN dayx := dayx + 1; END_IF
+    IF NOT LEAP_OF_DATE(d1) AND day1 > 58 THEN day1 := day1 + 1; END_IF
+    IF NOT LEAP_OF_DATE(d2) AND day2 > 58 THEN day2 := day2 + 1; END_IF
 
     IF day2 < day1 THEN
     	(* the period spans over the new year *)
     	PERIOD := dayx <= day2 OR dayx >= day1;
     ELSE
     	PERIOD := dayx >= day1 AND dayx <= day2;
-    END_IF;
+    END_IF
 
     (* code before rev 1.2
     yx := year(dx);
@@ -22,7 +22,7 @@ FUNCTION PERIOD
     	period := dx <= p2  AND dx >= p1;
     ELSE
     	period := dx <= p2 OR dx >= p1;
-    END_IF;
+    END_IF
     *)
 
 

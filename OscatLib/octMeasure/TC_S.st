@@ -7,7 +7,7 @@ FUNCTION_BLOCK TC_S
     	TC := 0.0;
     ELSE
     	tc := DWORD_TO_REAL(tx - last)*1.0E-6;
-    END_IF;
+    END_IF
     last := tx;
 
     (* revision history

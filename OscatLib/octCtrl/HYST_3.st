@@ -4,12 +4,12 @@ FUNCTION_BLOCK HYST_3
     	q1 := TRUE;
     ELSIF in > val1 + X THEN
     	q1 := FALSE;
-    END_IF;
+    END_IF
     IF in < val2 - X THEN
     	q2 := FALSE;
     ELSIF in > val2 + X THEN
     	q2 := TRUE;
-    END_IF;
+    END_IF
 
 
 

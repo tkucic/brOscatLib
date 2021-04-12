@@ -7,7 +7,7 @@ FUNCTION_BLOCK FT_INT2
     	val := R2_ADD(val, ix);
     	ix := 0.0;
     	OUT := val.RX;
-    END_IF;
+    END_IF
 
     (* check output for limits *)
     IF out > OUT_MIN AND out < OUT_MAX THEN
@@ -16,7 +16,7 @@ FUNCTION_BLOCK FT_INT2
     	OUT := LIMIT(OUT_MIN, OUT, OUT_MAX);
     	val := R2_SET(OUT);
     	LIM := TRUE;
-    END_IF;
+    END_IF
 
 
 

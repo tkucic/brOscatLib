@@ -9,14 +9,14 @@ FUNCTION_BLOCK STORE_8
     	q6 := q0;
     	q7 := q0;
     ELSE
-    	IF D0 THEN Q0 := TRUE; END_IF;
-    	IF D1 THEN Q1 := TRUE; END_IF;
-    	IF D2 THEN Q2 := TRUE; END_IF;
-    	IF D3 THEN Q3 := TRUE; END_IF;
-    	IF D4 THEN Q4 := TRUE; END_IF;
-    	IF D5 THEN Q5 := TRUE; END_IF;
-    	IF D6 THEN Q6 := TRUE; END_IF;
-    	IF D7 THEN Q7 := TRUE; END_IF;
+    	IF D0 THEN Q0 := TRUE; END_IF
+    	IF D1 THEN Q1 := TRUE; END_IF
+    	IF D2 THEN Q2 := TRUE; END_IF
+    	IF D3 THEN Q3 := TRUE; END_IF
+    	IF D4 THEN Q4 := TRUE; END_IF
+    	IF D5 THEN Q5 := TRUE; END_IF
+    	IF D6 THEN Q6 := TRUE; END_IF
+    	IF D7 THEN Q7 := TRUE; END_IF
 
     	IF clr AND NOT edge THEN
     		IF q0 THEN q0 := FALSE;
@@ -27,10 +27,10 @@ FUNCTION_BLOCK STORE_8
     		ELSIF q5 THEN q5 := FALSE;
     		ELSIF q6 THEN q6 := FALSE;
     		ELSE q7 := FALSE;
-    		END_IF;
-    	END_IF;
+    		END_IF
+    	END_IF
     	edge := clr;
-    END_IF;
+    END_IF
 
 
     (* revision history

@@ -5,7 +5,7 @@ FUNCTION UPPERCASE
     FOR pos := 1 TO l DO
     	pt^ := TO_UPPER(pt^);
     	pt := pt + 1;
-    END_FOR;
+    END_FOR
 
     (* revision histroy
     hm	6. oct. 2006	rev 1.0

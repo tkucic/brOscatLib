@@ -1,11 +1,11 @@
 FUNCTION _STRING_TO_BUFFER
     ps := ADR(str);
     end := MIN(pos + LEN(str), UINT_TO_INT(size));
-    IF end > 0 THEN end := end -1; END_IF;
+    IF end > 0 THEN end := end -1; END_IF
     FOR i := pos TO end DO
     	pt^[i] := ps^;
     	ps := ps + 1;
-    END_FOR;
+    END_FOR
 
     _STRING_TO_BUFFER := TRUE;
 

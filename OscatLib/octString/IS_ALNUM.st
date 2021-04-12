@@ -5,9 +5,9 @@ FUNCTION IS_ALNUM
     	IF NOT (ISC_ALPHA(pt^) OR ISC_NUM(pt^)) THEN
     		IS_ALNUM := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_ALNUM := L > 0;
 
 

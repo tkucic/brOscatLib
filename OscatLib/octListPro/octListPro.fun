@@ -6,7 +6,7 @@ FUNCTION LIST_CLEAN : BOOL
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
     VAR
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         pos : INT; (**)
         pw : INT; (**)
         last : BYTE; (**)
@@ -24,8 +24,8 @@ FUNCTION LIST_GET : STRING[LIST_LENGTH]
     VAR
         i : INT := 1; (**)
         o : INT := 1; (**)
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
-        po : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        po : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         cnt : INT; (**)
         c : BYTE; (**)
     END_VAR
@@ -41,7 +41,7 @@ FUNCTION LIST_INSERT : BOOL
     END_VAR
     VAR
         i : INT; (**)
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         cnt : INT; (**)
         c : BYTE; (**)
         tmp : STRING[LIST_LENGTH]; (**)
@@ -55,7 +55,7 @@ FUNCTION LIST_LEN : INT
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
     VAR
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         l : INT; (**)
         pos : INT; (**)
     END_VAR
@@ -73,7 +73,7 @@ FUNCTION_BLOCK LIST_NEXT
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
     VAR
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         stop : INT; (**)
         start : INT; (**)
         pos : INT := 1; (**)
@@ -90,8 +90,8 @@ FUNCTION LIST_RETRIEVE : STRING[LIST_LENGTH]
     VAR
         i : INT; (**)
         o : INT; (**)
-        pt : POINTER TO ARRAY[0..LIST_LENGTH] OF BYTE; (**)
-        po : POINTER TO ARRAY[0..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[0..LIST_LENGTH] OF BYTE; (**)
+        po : REFERENCE TO ARRAY[0..LIST_LENGTH] OF BYTE; (**)
         cnt : INT; (**)
         c : BYTE; (**)
         p : INT; (**)
@@ -106,7 +106,7 @@ FUNCTION LIST_RETRIEVE_MAX : STRING[LIST_LENGTH]
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
     VAR
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         l : INT; (**)
         pos : INT; (**)
         last : INT; (**)
@@ -122,7 +122,7 @@ FUNCTION LIST_RETRIEVE_MIN : STRING[LIST_LENGTH]
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
     VAR
-        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
+        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE; (**)
         l : INT; (**)
         pos : INT; (**)
         last : INT; (**)

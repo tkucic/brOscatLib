@@ -8,15 +8,15 @@ FUNCTION LIST_CLEAN
        IF last <> sep OR c <> sep THEN
           pw := pw + 1;
           pt^[pw] := c;
-       END_IF;
+       END_IF
        last := c;
     UNTIL pos >= LIST_LENGTH OR c = 0
     END_REPEAT;
 
     IF pw > 1 THEN
       pw := pw - 1;
-      IF pt^[pw] = sep THEN pt^[pw] := 0; END_IF;
-    END_IF;
+      IF pt^[pw] = sep THEN pt^[pw] := 0; END_IF
+    END_IF
 
     (* retrun TRUE *)
     LIST_CLEAN := TRUE;

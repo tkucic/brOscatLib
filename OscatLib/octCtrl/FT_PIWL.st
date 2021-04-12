@@ -29,7 +29,7 @@ FUNCTION_BLOCK FT_PIWL
     			i := LIM_H - p;
     		ELSE
     			i := 0.0;
-    		END_IF;
+    		END_IF
     		LIM := TRUE;
     	ELSIF Y <= LIM_L THEN
     		Y := LIM_L;
@@ -37,12 +37,12 @@ FUNCTION_BLOCK FT_PIWL
     			i := LIM_L - p;
     		ELSE
     			i := 0.0;
-    		END_IF;
+    		END_IF
     		LIM := TRUE;
     	ELSE
     		LIM := FALSE;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
 

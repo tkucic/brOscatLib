@@ -1,12 +1,12 @@
 FUNCTION WEEKDAY_TO_STRING
-    IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF;
+    IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF
     IF wday < 1 OR wday > 7 THEN
     	RETURN;
     ELSIF LX = 0 THEN
     	WEEKDAY_TO_STRING := language.WEEKDAYS[ly, WDAY];
     ELSIF Lx = 2 THEN
     	WEEKDAY_TO_STRING := language.WEEKDAYS2[ly, WDAY];
-    END_IF;
+    END_IF
 
 
     (* revisison history

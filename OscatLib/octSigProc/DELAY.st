@@ -2,7 +2,7 @@ FUNCTION_BLOCK DELAY
     stop := LIMIT(0,N,32) - 1;
     IF rst OR NOT init THEN
     	init := TRUE;
-    	FOR i := 0 TO stop DO buf[i] := in; END_FOR;
+    	FOR i := 0 TO stop DO buf[i] := in; END_FOR
     	out := in;
     	i := 0;
     ELSIF stop < 0 THEN
@@ -11,7 +11,7 @@ FUNCTION_BLOCK DELAY
     	out := buf[i];
     	buf[i] := in;
     	i := INC1(i, N);
-    END_IF;
+    END_IF
 
 
 

@@ -3,20 +3,20 @@ FUNCTION FACT
     	FACT := 1;
     	FOR i := 2 TO x DO
     		FACT := FACT * i;
-    	END_FOR;
+    	END_FOR
     ELSIF x <= 9 THEN
     	FACT := 720;
     	FOR i := 7 TO x DO
     		FACT := FACT * i;
-    	END_FOR;
+    	END_FOR
     ELSIF x <= 13 THEN
     	FACT := 3628800;
     	FOR i := 11 TO x DO
     		FACT := FACT * i;
-    	END_FOR;
+    	END_FOR
     ELSE
     	FACT := -1;
-    END_IF;
+    END_IF
 
 
 

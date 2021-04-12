@@ -10,7 +10,7 @@ FUNCTION_BLOCK METER
     	RETURN;
     ELSE
     	tc := DWORD_TO_REAL(tx - last) * 0.001;
-    END_IF;
+    END_IF
     last := tx;
 
     (* reset *)
@@ -19,13 +19,13 @@ FUNCTION_BLOCK METER
     	mr.RX := 0.0;
     ELSE
     	(* current consumption measurement *)
-    	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF;
-    	IF I2 THEN MX2 := M2; ELSE MX2 := 0.0; END_IF;
+    	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF
+    	IF I2 THEN MX2 := M2; ELSE MX2 := 0.0; END_IF
     	(* add up the current values in a double real *)
     	MR := R2_ADD(MR,(SEL(I1,0.0,mx1) + SEL(I2, 0.0, mx2)) / D * TC);
     	(* set the current output value *)
     	MX := mr.RX;
-    END_IF;
+    END_IF
 
 
 

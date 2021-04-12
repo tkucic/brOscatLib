@@ -5,11 +5,11 @@ FUNCTION AIN
     	sx := temp1.0;
     ELSE
     	sx := FALSE;
-    END_IF;
+    END_IF
     temp1 := SHR(ff, 32-bits);
     temp2 := in AND temp1;
     AIN := (high - low) * DWORD_TO_REAL(temp2) / DWORD_TO_REAL(temp1) + low;
-    IF sx THEN AIN := -AIN; END_IF;
+    IF sx THEN AIN := -AIN; END_IF
 
     (* revision history
     hm 18.8.2006	rev 1.1

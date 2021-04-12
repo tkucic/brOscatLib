@@ -8,7 +8,7 @@ FUNCTION LINEAR_INT
     	below and above the defined segments we interpolate the last segment *)
     WHILE (i < pts) AND (XY[i,0] < X) DO
     	i := i + 1;
-    END_WHILE;
+    END_WHILE
 
     (* calculate the output value on the corresponding segment coordinates *)
     LINEAR_INT := ((XY[i,1] - XY[i-1,1]) * X - XY[i,1] * XY[i-1,0] + XY[i-1,1] * XY[i,0]) / (XY[i,0] - XY[i-1,0]);

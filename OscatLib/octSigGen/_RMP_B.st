@@ -9,7 +9,7 @@ FUNCTION_BLOCK _RMP_B
     	tl := tx;
     	tn := tr;
     	start := RMP;
-    END_IF;
+    END_IF
     last_dir := dir;
 
 

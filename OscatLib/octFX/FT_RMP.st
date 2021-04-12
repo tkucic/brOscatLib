@@ -7,7 +7,7 @@ FUNCTION_BLOCK FT_RMP
     	last := tx;
     	tx := t#0s;
     	out := in;
-    END_IF;
+    END_IF
     IF NOT rmp THEN
     	out := in;
     	busy := FALSE;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK FT_RMP
     	(* ramp up *)
     	out := out + TIME_TO_REAL(tx) * 0.001 * KR;
     	out := MIN(in, out);
-    END_IF;
+    END_IF
 
     (* set busy and dir flags *)
     IF out < in THEN
@@ -30,7 +30,7 @@ FUNCTION_BLOCK FT_RMP
     	ud := FALSE;
     ELSE
     	busy := FALSE;
-    END_IF;
+    END_IF
     last := last + tx;
 
 

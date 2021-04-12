@@ -6,8 +6,8 @@ FUNCTION CRC_GEN
     (* load first 4 bytes into register minimum message size is 4 bytes
     	for smaller messages fill with 0#s at the beginning*)
     FOR pos := 0 TO 3 DO
-    	IF REV_IN THEN CRC_GEN := SHL(CRC_GEN, 8) OR REVERSE(PT^[pos]); ELSE CRC_GEN := SHL(CRC_GEN, 8) OR PT^[pos]; END_IF;
-    END_FOR;
+    	IF REV_IN THEN CRC_GEN := SHL(CRC_GEN, 8) OR REVERSE(PT^[pos]); ELSE CRC_GEN := SHL(CRC_GEN, 8) OR PT^[pos]; END_IF
+    END_FOR
     pos := 4;
 
     (* xor with init value *)
@@ -15,7 +15,7 @@ FUNCTION CRC_GEN
 
     (* calculate CRC for each byte *)
     WHILE pos < size DO
-    	IF REV_IN THEN DX := REVERSE(PT^[pos]); ELSE DX := PT^[pos]; END_IF;
+    	IF REV_IN THEN DX := REVERSE(PT^[pos]); ELSE DX := PT^[pos]; END_IF
     	pos := pos + 1;
     	(* crc calculation for one byte *)
     	FOR bits := 0 TO 7 DO
@@ -23,10 +23,10 @@ FUNCTION CRC_GEN
     			CRC_GEN := (SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7)) XOR PN;
     		ELSE
     			CRC_GEN := SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7);
-    		END_IF;
+    		END_IF
     		dx := SHL(dx, 1);
-    	END_FOR;
-    END_WHILE;
+    	END_FOR
+    END_WHILE
 
     (* all bytes are processed, need to finish the registers 32 bits *)
     FOR bits := 0 TO 31 DO
@@ -34,14 +34,14 @@ FUNCTION CRC_GEN
     		CRC_GEN := (SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7)) XOR PN;
     	ELSE
     		CRC_GEN := SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7);
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
     (* final XOR *)
     CRC_GEN := SHR(CRC_GEN, shift) XOR XOR_OUT;
 
     (* reverse the crc_out put if necessary *)
-    IF REV_OUT THEN CRC_GEN := REFLECT(CRC_GEN, PL); END_IF;
+    IF REV_OUT THEN CRC_GEN := REFLECT(CRC_GEN, PL); END_IF
 
 
     (* typical crc polynoms

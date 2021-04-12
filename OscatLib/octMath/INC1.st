@@ -3,7 +3,7 @@ FUNCTION INC1
     	INC1 := 0;
     ELSE
     	INC1 := X + 1;
-    END_IF;
+    END_IF
 
 
 

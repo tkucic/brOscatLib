@@ -3,7 +3,7 @@ FUNCTION MODR
     	MODR := 0.0;
     ELSE
     	MODR := in - DINT_TO_REAL(FLOOR2(in / divi)) * divi;
-    END_IF;
+    END_IF
 
     (* revision history
 

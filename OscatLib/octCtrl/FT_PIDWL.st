@@ -10,7 +10,7 @@ FUNCTION_BLOCK FT_PIDWL
     		piwl(in := IN * KP, KP := 1.0, KI := 0.0, LIM_L := LIM_L, LIM_H := LIM_H);
     	ELSE
     		piwl(in := IN * KP, KP := 1.0, KI := 1.0 / TN, LIM_L := LIM_L, LIM_H := LIM_H);
-    	END_IF;
+    	END_IF
 
     	(* run differentiator and add_to_output *)
     	diff(IN := IN, K := KP * TV);
@@ -25,8 +25,8 @@ FUNCTION_BLOCK FT_PIDWL
     		Y := LIM_H;
     	ELSE
     		LIM := FALSE;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
 

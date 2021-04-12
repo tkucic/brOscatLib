@@ -12,10 +12,10 @@ FUNCTION_BLOCK CONTROL_SET1
     	TN := PI_TN * Tt;
     ELSE
     	KP := P_K * Kt;
-    END_IF;
+    END_IF
 
     (* KI and KD are calculated *)
-    IF tn > 0.0 THEN KI := KP / TN; ELSE KI := 0.0; END_IF;
+    IF tn > 0.0 THEN KI := KP / TN; ELSE KI := 0.0; END_IF
     KD := KP * TV;
 
     (* revision history

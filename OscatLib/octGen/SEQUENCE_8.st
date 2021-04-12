@@ -7,7 +7,7 @@ FUNCTION_BLOCK SEQUENCE_8
     	last := tx;
     	init := TRUE;
     	status := 110;
-    END_IF;
+    END_IF
 
     (* asynchronous reset *)
     IF rst THEN
@@ -37,11 +37,11 @@ FUNCTION_BLOCK SEQUENCE_8
     	Q6 := 0;
     	Q7 := 0;
     	run := 1;
-    END_IF;
+    END_IF
     edge := start;
 
     (* check if stop on error is necessary *)
-    IF status > 0 AND status < 100 AND stop_on_error THEN RETURN; END_IF;
+    IF status > 0 AND status < 100 AND stop_on_error THEN RETURN; END_IF
 
     (* sequence is running *)
     IF run AND step = 0 THEN
@@ -54,8 +54,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q0 AND tx - last >= delay0 THEN
     		step := 1;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 1 THEN
     	IF NOT q1 AND in1 AND tx - last <= wait1 THEN
     		Q0 := FALSE;
@@ -68,8 +68,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q1 AND tx - last >= delay1 THEN
     		step := 2;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 2 THEN
     	IF NOT q2 AND in2 AND tx - last <= wait2 THEN
     		Q1 := FALSE;
@@ -82,8 +82,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q2 AND tx - last >= delay2 THEN
     		step := 3;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 3 THEN
     	IF NOT q3 AND in3 AND tx - last <= wait3 THEN
     		Q2 := FALSE;
@@ -96,8 +96,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q3 AND tx - last >= delay3 THEN
     		step := 4;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 4 THEN
     	IF NOT q4 AND in4 AND tx - last <= wait4 THEN
     		Q3 := FALSE;
@@ -110,8 +110,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q4 AND tx - last >= delay4 THEN
     		step := 5;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 5 THEN
     	IF NOT q5 AND in5 AND tx - last <= wait5 THEN
     		Q4 := FALSE;
@@ -124,8 +124,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q5 AND tx - last >= delay5 THEN
     		step := 6;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 6 THEN
     	IF NOT q6 AND in6 AND tx - last <= wait6 THEN
     		Q5 := FALSE;
@@ -138,8 +138,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF q6 AND tx - last >= delay6 THEN
     		step := 7;
     		last := tx;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     IF run AND step = 7 THEN
     	IF NOT q7 AND in7 AND tx - last <= wait7 THEN
     		Q6 := FALSE;
@@ -154,8 +154,8 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q7 := FALSE;
     		Run := FALSE;
     		status := 110;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     QX := q0 OR q1 OR q2 OR q3 OR q4 OR q5 OR q6 OR q7;
 
     (*

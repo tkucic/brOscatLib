@@ -4,7 +4,7 @@ FUNCTION_BLOCK AIN1
     IF error THEN
     	out := error_output;
     	RETURN;
-    END_IF;
+    END_IF
 
     (* strip off the data input *)
     tb := SHR(SHL(in, 31 - bit_N), 31 - bit_N + Bit_0);
@@ -14,14 +14,14 @@ FUNCTION_BLOCK AIN1
     IF overflow THEN
     	out := overflow_output;
     	RETURN;
-    END_IF;
+    END_IF
 
     (* extract sign bit *)
     sign := (SHR(in,sign_bit) AND 16#0000_0001) = 1;
 
     (* convert in to out *)
     out := (DWORD_TO_REAL(tb - code_min) * (out_max - out_min) / DWORD_TO_REAL(code_max - code_min) + out_min);
-    IF sign THEN out := out * -1.0; END_IF;
+    IF sign THEN out := out * -1.0; END_IF
 
 
 

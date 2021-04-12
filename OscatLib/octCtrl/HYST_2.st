@@ -8,7 +8,7 @@ FUNCTION_BLOCK HYST_2
     	win := FALSE;
     ELSE
     	win := TRUE;
-    END_IF;
+    END_IF
 
 
 

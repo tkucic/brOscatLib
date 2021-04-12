@@ -5,5 +5,5 @@ FUNCTION MIN3
     	min3 := in2;
     ELSE
     	min3 := in3;
-    END_IF;
+    END_IF
 END_FUNCTION

@@ -6,10 +6,10 @@ FUNCTION LIST_RETRIEVE_MAX
     		IF pos - last - 1 > lx THEN
     			mpos := last + 1;
     			lx := pos - last - 1;
-    		END_IF;
+    		END_IF
     		last := pos;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
 
     (* check length of last element *)
     IF l - last > lx THEN
@@ -20,7 +20,7 @@ FUNCTION LIST_RETRIEVE_MAX
     ELSE
     	LIST_RETRIEVE_MAX := MID(LIST, lx, mpos);
     	LIST := DELETE(LIST, lx + 1, mpos);
-    END_IF;
+    END_IF
 
 
 

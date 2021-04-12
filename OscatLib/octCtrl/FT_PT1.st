@@ -8,8 +8,8 @@ FUNCTION_BLOCK FT_PT1
     	out := K * in;
     ELSE
     	out := out + (in * K - out) * DWORD_TO_REAL(Tx - last) / TIME_TO_REAL(T) * 1.0E-3;
-    	IF ABS(out) < 1.0E-20 THEN out := 0.0; END_IF;
-    END_IF;
+    	IF ABS(out) < 1.0E-20 THEN out := 0.0; END_IF
+    END_IF
     last := tx;
 
 

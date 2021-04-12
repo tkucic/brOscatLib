@@ -5,7 +5,7 @@ FUNCTION ARRAY_VAR
     avg := pt^[0];
     FOR i := 1 TO stop DO
     	avg := avg + pt^[i];
-    END_FOR;
+    END_FOR
     avg := avg / UINT_TO_REAL(stop + 1);
 
     (* in a second run we calculate the variance of the array *)
@@ -13,7 +13,7 @@ FUNCTION ARRAY_VAR
     array_var := (pt^[0] - avg) * (pt^[0] - avg);
     FOR i := 1 TO stop DO
     	array_var := array_var + (pt^[i] - avg) * (pt^[i] - avg);
-    END_FOR;
+    END_FOR
     ARRAY_VAR := ARRAY_VAR / UINT_TO_REAL(stop);
 
     (* revision history

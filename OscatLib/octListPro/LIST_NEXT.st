@@ -7,13 +7,13 @@ FUNCTION_BLOCK LIST_NEXT
     	start := 0;
     	pos := 1;
     	NUL := FALSE;
-    END_IF;
+    END_IF
 
     (* search next occurence of separation character or end of list *)
     WHILE pos <= stop DO
-    	IF pt^[pos] = SEP THEN EXIT; END_IF;
+    	IF pt^[pos] = SEP THEN EXIT; END_IF
     	pos := pos + 1;
-    END_WHILE;
+    END_WHILE
     IF start <= stop THEN
     	LEL := MID(LIST, pos - start - 1, start + 1);
     	start := pos;
@@ -21,7 +21,7 @@ FUNCTION_BLOCK LIST_NEXT
     ELSE
     	LEL := '';
     	NUL := TRUE;
-    END_IF;
+    END_IF
 
 
 

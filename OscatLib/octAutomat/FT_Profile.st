@@ -13,7 +13,7 @@ FUNCTION_BLOCK FT_Profile
     	vb := value_1;
     	temp := value_0;
     	state := 1;
-    END_IF;
+    END_IF
     edge := E;
 
     (* generate startup profile *)
@@ -28,7 +28,7 @@ FUNCTION_BLOCK FT_Profile
     				state := 2;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
+    			END_IF
     		2:	IF tx - ta >= tb THEN
     				ta := ta + tb;
     				tb := multime(time_3 - time_2, M);
@@ -38,7 +38,7 @@ FUNCTION_BLOCK FT_Profile
     				state := 3;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
+    			END_IF
     		3:	IF tx - ta >= tb THEN
     				ta := ta + tb;
     				tb := multime(time_10 - time_3, M);
@@ -48,23 +48,23 @@ FUNCTION_BLOCK FT_Profile
     				state := 4;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
+    			END_IF
     		4 :	IF tx - ta >= tb THEN
     				ta := ta + tb;
     				tb := multime(time_11 - time_10, M);
     				va := value_10;
     				vb := value_11;
     				temp := value_10;
-    				IF E THEN state := 5; ELSE state := 6; END_IF;
+    				IF E THEN state := 5; ELSE state := 6; END_IF
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
+    			END_IF
     		5:	(* extend the signal while E is true *)
     			IF E THEN
     				ta := tx;
     			ELSE
     				state := 6;
-    			END_IF;
+    			END_IF
     		6:	IF tx - ta >= tb THEN
     				ta := ta + tb;
     				tb := multime(time_12 - time_11, M);
@@ -74,7 +74,7 @@ FUNCTION_BLOCK FT_Profile
     				state := 7;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
+    			END_IF
     		7:	IF tx - ta >= tb THEN
     				ta := ta + tb;
     				tb := multime(time_13 - time_12, M);
@@ -84,17 +84,17 @@ FUNCTION_BLOCK FT_Profile
     				state := 8;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
+    			END_IF
     		8:	IF tx - ta >= tb THEN
     				temp := value_13;
     				run := FALSE;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
-    			END_IF;
-    	END_CASE;
+    			END_IF
+    	END_CASE
     	Y := temp * K + O;
     	ET := tx - t0;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	27 feb 2007		rev 1.0

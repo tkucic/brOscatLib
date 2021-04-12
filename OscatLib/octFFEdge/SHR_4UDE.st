@@ -18,8 +18,8 @@ FUNCTION_BLOCK SHR_4UDE
     		Q2 := Q1;
     		Q1 := Q0;
     		Q0 := D0;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
 

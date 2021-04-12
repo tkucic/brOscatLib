@@ -5,7 +5,7 @@ FUNCTION TO_UPPER
        TO_UPPER := in AND 16#DF;
     ELSE
        TO_UPPER := in;
-    END_IF;
+    END_IF
 
 
 

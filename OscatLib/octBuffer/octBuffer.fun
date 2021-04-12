@@ -1,10 +1,10 @@
 FUNCTION _BUFFER_CLEAR : BOOL
     VAR_INPUT
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
         SIZE : UINT; (**)
     END_VAR
     VAR
-        ptw : POINTER TO DWORD; (**)
+        ptw : REFERENCE TO DWORD; (**)
         temp : DWORD; (**)
         end : DWORD; (**)
         end32 : DWORD; (**)
@@ -12,12 +12,12 @@ FUNCTION _BUFFER_CLEAR : BOOL
 END_FUNCTION
 FUNCTION _BUFFER_INIT : BOOL
     VAR_INPUT
-        PT : POINTER TO BYTE; (**)
+        PT : REFERENCE TO BYTE; (**)
         SIZE : UINT; (**)
         INIT : BYTE; (**)
     END_VAR
     VAR
-        ptw : POINTER TO DWORD; (**)
+        ptw : REFERENCE TO DWORD; (**)
         temp : DWORD; (**)
         end : DWORD; (**)
         end32 : DWORD; (**)
@@ -27,7 +27,7 @@ FUNCTION _BUFFER_INSERT : BOOL
     VAR_INPUT
         STR : STRING[STRING_LENGTH]; (**)
         POS : INT; (**)
-        PT : POINTER TO ARRAY[0..32767] OF BYTE; (**)
+        PT : REFERENCE TO ARRAY[0..32767] OF BYTE; (**)
         SIZE : UINT; (**)
     END_VAR
     VAR
@@ -38,7 +38,7 @@ FUNCTION _BUFFER_INSERT : BOOL
 END_FUNCTION
 FUNCTION _BUFFER_UPPERCASE : BOOL
     VAR_INPUT
-        PT : POINTER TO ARRAY[0..32000] OF BYTE; (**)
+        PT : REFERENCE TO ARRAY[0..32000] OF BYTE; (**)
         SIZE : INT; (**)
     END_VAR
     VAR
@@ -49,20 +49,20 @@ FUNCTION _STRING_TO_BUFFER : BOOL
     VAR_INPUT
         STR : STRING[STRING_LENGTH]; (**)
         POS : INT; (**)
-        PT : POINTER TO ARRAY[0..32767] OF BYTE; (**)
+        PT : REFERENCE TO ARRAY[0..32767] OF BYTE; (**)
         SIZE : UINT; (**)
     END_VAR
     VAR
-        ps : POINTER TO BYTE; (**)
+        ps : REFERENCE TO BYTE; (**)
         i : INT; (**)
         end : INT; (**)
     END_VAR
 END_FUNCTION
 FUNCTION BUFFER_COMP : INT
     VAR_INPUT
-        PT1 : POINTER TO ARRAY[0..32767] OF BYTE; (**)
+        PT1 : REFERENCE TO ARRAY[0..32767] OF BYTE; (**)
         SIZE1 : INT; (**)
-        PT2 : POINTER TO ARRAY[0..32767] OF BYTE; (**)
+        PT2 : REFERENCE TO ARRAY[0..32767] OF BYTE; (**)
         SIZE2 : INT; (**)
         START : INT; (**)
     END_VAR
@@ -75,14 +75,14 @@ FUNCTION BUFFER_COMP : INT
 END_FUNCTION
 FUNCTION BUFFER_SEARCH : INT
     VAR_INPUT
-        PT : POINTER TO ARRAY[0..32767] OF BYTE; (**)
+        PT : REFERENCE TO ARRAY[0..32767] OF BYTE; (**)
         SIZE : INT; (**)
         STR : STRING[STRING_LENGTH]; (**)
         POS : INT; (**)
         IGN : BOOL; (**)
     END_VAR
     VAR
-        ps : POINTER TO ARRAY[0..STRING_LENGTH] OF BYTE; (**)
+        ps : REFERENCE TO ARRAY[0..STRING_LENGTH] OF BYTE; (**)
         chx : BYTE; (**)
         i : INT; (**)
         end : INT; (**)
@@ -92,13 +92,13 @@ FUNCTION BUFFER_SEARCH : INT
 END_FUNCTION
 FUNCTION BUFFER_TO_STRING : STRING[STRING_LENGTH]
     VAR_INPUT
-        PT : POINTER TO ARRAY[0..32767] OF BYTE; (**)
+        PT : REFERENCE TO ARRAY[0..32767] OF BYTE; (**)
         SIZE : UINT; (**)
         START : UINT; (**)
         STOP : UINT; (**)
     END_VAR
     VAR
-        ps : POINTER TO BYTE; (**)
+        ps : REFERENCE TO BYTE; (**)
         i : UINT; (**)
         stp : UINT; (**)
         sta : UINT; (**)

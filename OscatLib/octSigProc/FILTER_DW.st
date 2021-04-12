@@ -8,7 +8,7 @@ FUNCTION_BLOCK FILTER_DW
     	Yi := DWORD_TO_REAL(X);
     ELSE
     	Yi := Yi + (DWORD_TO_REAL(X) - DWORD_TO_REAL(Y)) * DWORD_TO_REAL(tx - last) / TIME_TO_REAL(T);
-    END_IF;
+    END_IF
     last := tx;
 
     Y := REAL_TO_DWORD(Yi);

@@ -3,7 +3,7 @@ FUNCTION SCALE_D
     	SCALE_D := O_LO;
     ELSE
     	SCALE_D := (O_HI - O_LO) / DWORD_TO_REAL(I_HI - I_LO) * DWORD_TO_REAL(LIMIT(I_LO, X, I_HI) - I_LO) + O_LO;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	18. may. 2008	rev 1.0

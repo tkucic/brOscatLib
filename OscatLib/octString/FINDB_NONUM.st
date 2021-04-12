@@ -4,9 +4,9 @@ FUNCTION FINDB_NONUM
     	IF (PT^ < 48 AND PT^ <> 46) OR PT^ > 57 THEN
     		FINDB_NONUM := pos;
     		RETURN;
-    	END_IF;
+    	END_IF
     	PT := PT - 1;
-    END_FOR;
+    END_FOR
     FINDB_NONUM := 0;
 
 

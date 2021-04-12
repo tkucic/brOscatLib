@@ -4,7 +4,7 @@ FUNCTION _BUFFER_INSERT
     (* first move the upper part of the buffer to make space for the string *)
     FOR i := UINT_TO_INT(size) - 1 TO end BY -1 DO
     	pt^[i] := pt^[i-lx];
-    END_FOR;
+    END_FOR
     (* copy the string *)
     _BUFFER_INSERT := _STRING_TO_BUFFER(str, pos, PT, size);
 

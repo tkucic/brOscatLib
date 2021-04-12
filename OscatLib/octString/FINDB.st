@@ -4,8 +4,8 @@ FUNCTION FINDB
     	IF MID(str1,length,pos) = str2 THEN
     		FindB := pos;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FindB := 0;
 
     (* revision history

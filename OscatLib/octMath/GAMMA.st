@@ -1,11 +1,11 @@
 FUNCTION GAMMA
     IF x > 0.0 THEN
     	GAMMA := SQRT(math.PI2 / X) * EXPT(math.E_INV * (x + 1.0 / (12.0 * x - 0.1 / X)), X);
-    END_IF;
+    END_IF
 
 
     (* the stirling formula is not very accurate for small values of X
-    IF X >=0 THEN GAMMA := SQRT(math.PI2 * X) * EXPT(X / math.E, X); END_IF;
+    IF X >=0 THEN GAMMA := SQRT(math.PI2 * X) * EXPT(X / math.E, X); END_IF
     *)
 
 

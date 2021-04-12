@@ -7,7 +7,7 @@ FUNCTION_BLOCK SELECT_8
     	state := inc(state,1,7);
     ELSIF dn AND NOT last_dn THEN
     	state := inc(state,-1,7);
-    END_IF;
+    END_IF
     last_UP := UP;
     last_DN := DN;
 
@@ -30,8 +30,8 @@ FUNCTION_BLOCK SELECT_8
     		5: Q5 := TRUE;
     		6: Q6 := TRUE;
     		7: Q7 := TRUE;
-    	END_CASE;
-    END_IF;
+    	END_CASE
+    END_IF
 
     (* revision history
     hm	16. jan 2008	rev 1.0

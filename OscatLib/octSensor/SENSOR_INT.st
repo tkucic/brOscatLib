@@ -2,7 +2,7 @@ FUNCTION SENSOR_INT
     IF current <> 0.0 THEN
     	RG := voltage / current;
     	SENSOR_INT := RP * ( RG - RS) / ( RP + RS - RG);
-    END_IF;
+    END_IF
 
     (* revisaion history
 

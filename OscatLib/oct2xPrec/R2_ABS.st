@@ -5,7 +5,7 @@ FUNCTION R2_ABS
     ELSE
     	R2_ABS.RX := -X.RX;
     	R2_ABS.R1 := -X.R1;
-    END_IF;
+    END_IF
 
 
     (* revision history

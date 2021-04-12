@@ -27,7 +27,7 @@ FUNCTION_BLOCK SEL2_OF_3
     	(* no calculation possible *)
     	E := TRUE;
     	W := 4;
-    END_IF;
+    END_IF
 
 
     (* revision history

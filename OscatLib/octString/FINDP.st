@@ -1,14 +1,14 @@
 FUNCTION FINDP
     ls := LEN(str);
     lx := LEN(src);
-    IF ls < lx OR lx = 0 THEN RETURN; END_IF;
+    IF ls < lx OR lx = 0 THEN RETURN; END_IF
     stp := ls - lx + 1;
     FOR i := MAX(pos,1) TO stp DO
     	IF MID(str,lx,i) = src THEN
     		FINDP := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FINDP := 0;
 
     (* revision histroy

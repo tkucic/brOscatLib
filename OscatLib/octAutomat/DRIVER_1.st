@@ -1,14 +1,14 @@
 FUNCTION_BLOCK DRIVER_1
-    IF off.Q THEN Q := FALSE; END_IF;
+    IF off.Q THEN Q := FALSE; END_IF
     IF rst THEN
     	Q := FALSE;
     ELSIF set THEN
     	Q := TRUE;
     ELSIF IN AND NOT edge THEN
-    	IF toggle_mode THEN q := NOT Q; ELSE q := TRUE; END_IF;
-    END_IF;
+    	IF toggle_mode THEN q := NOT Q; ELSE q := TRUE; END_IF
+    END_IF
     edge := in;
-    IF timeout > t#0s THEN off(in := Q, PT := Timeout); END_IF;
+    IF timeout > t#0s THEN off(in := Q, PT := Timeout); END_IF
 
 
     (* revision history

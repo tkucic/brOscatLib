@@ -11,8 +11,8 @@ FUNCTION_BLOCK TP_X
     	IF ET >= PT THEN
     		Q := FALSE;
     		ET := t#0ms;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     edge := IN;
 
     (* revision history

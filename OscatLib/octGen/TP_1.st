@@ -9,7 +9,7 @@ FUNCTION_BLOCK TP_1
     	start := tx;
     ELSIF tx - start >= PT THEN
     	Q := FALSE;
-    END_IF;
+    END_IF
 
     ix:= IN;
 

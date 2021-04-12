@@ -5,9 +5,9 @@ FUNCTION IS_ALPHA
     	IF NOT ISC_ALPHA(pt^) THEN
     		IS_ALPHA := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_ALPHA := L > 0;
 
 

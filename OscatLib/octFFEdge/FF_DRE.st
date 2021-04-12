@@ -3,7 +3,7 @@ FUNCTION_BLOCK FF_DRE
     	Q := NOT rst;
     ELSIF clk AND NOT edge THEN
     	Q := D;
-    END_IF;
+    END_IF
     edge := CLK;
 
     (* revision history

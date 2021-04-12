@@ -26,7 +26,7 @@ FUNCTION_BLOCK ESR_MON_R4
     	X0 := R0;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF differ(R1,  X1, S1) THEN
     	esr_out[cnt].typ := 20;
     	esr_out[cnt].adress := a1;
@@ -39,7 +39,7 @@ FUNCTION_BLOCK ESR_MON_R4
     	X1 := R1;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF differ(R2,  X2, S2) THEN
     	esr_out[cnt].typ := 20;
     	esr_out[cnt].adress := a2;
@@ -52,7 +52,7 @@ FUNCTION_BLOCK ESR_MON_R4
     	X2 := R2;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
     IF DIFFER(R3,  X3, S3) THEN
     	esr_out[cnt].typ := 20;
     	esr_out[cnt].adress := a3;
@@ -65,7 +65,7 @@ FUNCTION_BLOCK ESR_MON_R4
     	X3 := R3;
     	cnt := cnt + 1;
     	esr_flag := TRUE;
-    END_IF;
+    END_IF
 
 
     (* revision history

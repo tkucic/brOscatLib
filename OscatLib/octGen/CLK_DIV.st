@@ -19,7 +19,7 @@ FUNCTION_BLOCK CLK_DIV
     	Q5 := cnt.5;
     	Q6 := cnt.6;
     	Q7 := cnt.7;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	4. aug. 2006	rev 1.0

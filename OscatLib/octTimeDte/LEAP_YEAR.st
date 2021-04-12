@@ -7,7 +7,7 @@ FUNCTION LEAP_YEAR
     ELSIF yr MOD 100 = 0 THEN leap_year := FALSE;
     ELSIF yr MOD 4 =0 THEN leap_year := TRUE;
     ELSE leap_year := FALSE;
-    END_IF;
+    END_IF
 
     *)
 

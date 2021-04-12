@@ -9,10 +9,10 @@ FUNCTION DEC_TO_INT
     		DEC_TO_INT := DEC_TO_INT * 10 + X - 48;
     	ELSIF X = 45 AND DEC_TO_INT = 0 THEN
     		sign := TRUE;
-    	END_IF;
+    	END_IF
     	pt := pt + 1;
-    END_FOR;
-    IF sign THEN DEC_TO_INT := -DEC_TO_INT; END_IF;
+    END_FOR
+    IF sign THEN DEC_TO_INT := -DEC_TO_INT; END_IF
 
 
     (* revision histroy

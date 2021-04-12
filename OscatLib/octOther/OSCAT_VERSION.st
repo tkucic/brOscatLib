@@ -3,7 +3,7 @@ FUNCTION OSCAT_VERSION
     	OSCAT_VERSION := DATE_TO_DWORD(D#2011-03-05);
     ELSE
     	OSCAT_VERSION := 331;
-    END_IF;
+    END_IF
 
     (* revision history
     hm	6. oct 2006	rev 1.0

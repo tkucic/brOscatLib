@@ -3,9 +3,9 @@ FUNCTION_BLOCK TONOF
       X(IN := FALSE, PT := SEL(IN,T_OFF,T_ON));
       mode := IN;
       old := IN;
-    END_IF;
+    END_IF
     X(IN := TRUE);
-    IF X.Q THEN Q := mode;END_IF;
+    IF X.Q THEN Q := mode;END_IF
 
     (* revision history
     hm	10. dec 2007	rev 1.0

@@ -7,8 +7,8 @@ FUNCTION ARRAY_GAV
     	ELSE
     		ARRAY_GAV := 0.0;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     ARRAY_GAV := SQRTN(ARRAY_GAV,UINT_TO_INT(stop)+1);
 
 

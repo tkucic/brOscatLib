@@ -3,7 +3,7 @@ FUNCTION MUX_R4
     	MUX_R4 := SEL(A0, IN2, IN3);
     ELSE
     	MUX_R4 := SEL(A0, IN0, IN1);
-    END_IF;
+    END_IF
 
 
 

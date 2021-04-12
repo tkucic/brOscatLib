@@ -11,7 +11,7 @@ FUNCTION_BLOCK CLICK_CNT
     ELSIF NOT tx.Q THEN
     	Q := cnt = N;
     	cnt := -1;
-    END_IF;
+    END_IF
 
     (* remember the status of IN *)
     edge := IN;

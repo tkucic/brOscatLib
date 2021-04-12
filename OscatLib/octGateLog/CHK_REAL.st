@@ -9,7 +9,7 @@ FUNCTION CHK_REAL
     	CHK_REAL := 16#40;		(* X is -infinity see IEEE754 *)
     ELSE
     	CHK_REAL := 16#80;		(* X is NAN see IEEE754 *)
-    END_IF;
+    END_IF
 
 
     (* revision history

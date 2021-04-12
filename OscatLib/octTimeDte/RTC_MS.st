@@ -11,8 +11,8 @@ FUNCTION_BLOCK RTC_MS
     	IF XMS > 999 THEN
     		XDT := XDT + T#1s;
     		XMS := XMS - 1000;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
     last := tx;
 
 

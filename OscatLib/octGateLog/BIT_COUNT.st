@@ -1,8 +1,8 @@
 FUNCTION BIT_COUNT
     WHILE in > 0 DO
-    	IF in.0 THEN Bit_Count := Bit_Count + 1; END_IF;
+    	IF in.0 THEN Bit_Count := Bit_Count + 1; END_IF
     	in := SHR(in,1);
-    END_WHILE;
+    END_WHILE
 
 
 

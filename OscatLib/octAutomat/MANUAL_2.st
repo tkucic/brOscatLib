@@ -12,11 +12,11 @@ FUNCTION_BLOCK MANUAL_2
     	ELSE
     		Q := MAN;
     		STATUS := 103;
-    	END_IF;
+    	END_IF
     ELSE
     	Q := FALSE;
     	STATUS := 104;
-    END_IF;
+    END_IF
 
 
 

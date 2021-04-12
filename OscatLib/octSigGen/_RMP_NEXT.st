@@ -4,19 +4,19 @@ FUNCTION_BLOCK _RMP_NEXT
     t_lock(in := FALSE, pt := TL);
 
     IF dirx.TU AND (OUT < IN) THEN
-    	IF NOT xdir AND xen THEN t_lock(in := TRUE); END_IF;
+    	IF NOT xdir AND xen THEN t_lock(in := TRUE); END_IF
     	xen := TRUE;
     	xdir := TRUE;
     ELSIF dirx.TD AND (OUT > IN) THEN
-    	IF xdir AND xen THEN t_lock(in := TRUE); END_IF;
+    	IF xdir AND xen THEN t_lock(in := TRUE); END_IF
     	xen := TRUE;
     	xdir := FALSE;
     ELSIF xen THEN
     	IF (xdir AND (out >= in)) OR (NOT xdir AND (out <= in)) THEN
     		xen := FALSE;
-    		IF tl > t#0s THEN t_lock(IN := TRUE); END_IF;
-    	END_IF;
-    END_IF;
+    		IF tl > t#0s THEN t_lock(IN := TRUE); END_IF
+    	END_IF
+    END_IF
 
     IF NOT t_lock.Q AND xen THEN
     		UP := XDIR;
@@ -25,7 +25,7 @@ FUNCTION_BLOCK _RMP_NEXT
     ELSE
     	UP := FALSE;
     	DN := FALSE;
-    END_IF;
+    END_IF
 
     rmx(rmp := OUT, E := E AND (UP OR DN) , dir := DIR, tr := SEL(dir, TF, TR));
 

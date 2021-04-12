@@ -10,14 +10,14 @@ FUNCTION_BLOCK FIFO_16
     		pr := INC1(pr,n);
     		EMPTY := pr = pw;
     		FULL := FALSE;
-    	END_IF;
+    	END_IF
     	IF NOT FULL AND WD THEN
     		fifo[pw] := Din;
     		pw := INC1(pw,n);
     		FULL := pw = pr;
     		EMPTY := FALSE;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
     (* revision history

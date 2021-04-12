@@ -8,15 +8,15 @@ FUNCTION_BLOCK FLOW_CONTROL
     ELSIF ENQ THEN
     	IF IN THEN
     		status := 101;
-    	END_IF;
+    	END_IF
     	IF REQ THEN
     		(* timer will generate a timed pulse after TP goes high *)
     		timer.PT1 := T_AUTO;
     		timer.PTD := T_DELAY;
     		timer.IN := TRUE;
     		STATUS := 102;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
     (* set output and run timer *)

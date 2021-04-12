@@ -17,7 +17,7 @@ FUNCTION_BLOCK TUNE
     	ELSE
     		(* step down *)
     		in := sd;
-    	END_IF;
+    	END_IF
     	(* check for single step operation *)
     	IF NOT in AND tx - start <= TIME_TO_DWORD(T1) THEN
     		Y := Y_start + step;
@@ -32,7 +32,7 @@ FUNCTION_BLOCK TUNE
     		Y_start2 := Y;
     	ELSIF NOT in THEN
     		state := 0;
-    	END_IF;
+    	END_IF
     ELSIF su THEN
     	(* slow step up *)
     	state := 1;
@@ -47,7 +47,7 @@ FUNCTION_BLOCK TUNE
     	step := -ss;
     	speed := -1000.0;
     	Y_start := Y;
-    END_IF;
+    END_IF
 
     (* make sure output does not exceed limits *)
     Y := LIMIT(LIMIT_L, Y, LIMIT_H);

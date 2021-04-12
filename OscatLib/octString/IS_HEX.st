@@ -5,9 +5,9 @@ FUNCTION IS_HEX
     	IF NOT (ISC_HEX(pt^)) THEN
     		IS_HEX := FALSE;
     		RETURN;
-    	END_IF;
+    	END_IF
         	PT := PT + 1;
-    END_FOR;
+    END_FOR
     IS_HEX := L > 0;
 
 

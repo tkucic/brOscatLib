@@ -7,7 +7,7 @@ FUNCTION_BLOCK GEN_BIT
     		(* check for step counter reached and reset to 0 if cnt = steps *)
     		IF cnt = steps THEN
     			cnt := 0;
-    		END_IF;
+    		END_IF
 
     		(* when cnt = 0 then reload the inputs into the registers *)
     		IF cnt = 0 THEN
@@ -15,7 +15,7 @@ FUNCTION_BLOCK GEN_BIT
     			r1 := in1;
     			r2 := in2;
     			r3 := in3;
-    		END_IF;
+    		END_IF
 
     		(* when cnt < steps, shift the lowest bits to the outputs *)
     		IF (cnt < steps) THEN
@@ -27,13 +27,13 @@ FUNCTION_BLOCK GEN_BIT
     			r1 := SHR(r1,1);
     			r2 := SHR(r2,1);
     			r3 := SHR(r3,1);
-    		END_IF;
+    		END_IF
 
     		(* increment the step counter *)
     		cnt := cnt +1;
-    		IF (cnt = steps) AND (rep <> 0) THEN rx := rx +1; END_IF;
-    		IF (rx > rep) AND (rep <> 0) THEN run := FALSE; END_IF;
-    	END_IF;
+    		IF (cnt = steps) AND (rep <> 0) THEN rx := rx +1; END_IF
+    		IF (rx > rep) AND (rep <> 0) THEN run := FALSE; END_IF
+    	END_IF
     ELSE
     	IF rst THEN
     		run := FALSE;
@@ -47,8 +47,8 @@ FUNCTION_BLOCK GEN_BIT
     		r3 := 0;
     		cnt := 0;
     		rx := 1;
-    	END_IF;
-    END_IF;
+    	END_IF
+    END_IF
 
 
 

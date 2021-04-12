@@ -1,5 +1,5 @@
 FUNCTION FSTRING_TO_WEEKDAY
-    IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF;
+    IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF
     (* tmp needs to be calculated first otherwise find can return wrong values *)
     tmp := TRIM(wday);
     tmp := CAPITALIZE(LOWERCASE(tmp));
@@ -7,8 +7,8 @@ FUNCTION FSTRING_TO_WEEKDAY
     	IF language.WEEKDAYS2[ly, i] = tmp THEN
     		FSTRING_TO_WEEKDAY := i;
     		RETURN;
-    	END_IF;
-    END_FOR;
+    	END_IF
+    END_FOR
     FSTRING_TO_WEEKDAY := STRING_TO_INT(WDAY);
 
 

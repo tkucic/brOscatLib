@@ -3,7 +3,7 @@ FUNCTION_BLOCK PWM_PW
     	CLK(PT := REAL_TO_TIME(1000.0 / F));
     	Pulse(in := clk.Q, pt := pw);
     	Q := pulse.Q;
-    END_IF;
+    END_IF
 
     (* revision history
 

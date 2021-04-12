@@ -3,7 +3,7 @@ FUNCTION DAYS_DELTA
     	DAYS_DELTA := - DWORD_TO_DINT((DATE_TO_DWORD(date_1) - DATE_TO_DWORD(date_2)) / 86400);
     ELSE
     	DAYS_DELTA := DWORD_TO_DINT((DATE_TO_DWORD(date_2) - DATE_TO_DWORD(date_1)) / 86400);
-    END_IF;
+    END_IF
 
     (* revision history
     hm	27. dec 2006	rev 1.0

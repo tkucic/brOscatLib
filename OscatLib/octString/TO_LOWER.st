@@ -5,7 +5,7 @@ FUNCTION TO_LOWER
        TO_LOWER := in OR 16#20;
     ELSE
        TO_LOWER := in;
-    END_IF;
+    END_IF
 
 
     (* revision history
