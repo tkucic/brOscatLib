@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octComplex.typ</File>
+    <File Description="Exported constants">octComplex.var</File>
+    <File Description="Exported functions and function blocks">octComplex.fun</File>
+    <File Description="Source code of function CABS">CABS.st</File>
+    <File Description="Source code of function CACOS">CACOS.st</File>
+    <File Description="Source code of function CACOSH">CACOSH.st</File>
+    <File Description="Source code of function CADD">CADD.st</File>
+    <File Description="Source code of function CARG">CARG.st</File>
+    <File Description="Source code of function CASIN">CASIN.st</File>
+    <File Description="Source code of function CASINH">CASINH.st</File>
+    <File Description="Source code of function CATAN">CATAN.st</File>
+    <File Description="Source code of function CATANH">CATANH.st</File>
+    <File Description="Source code of function CCON">CCON.st</File>
+    <File Description="Source code of function CCOS">CCOS.st</File>
+    <File Description="Source code of function CCOSH">CCOSH.st</File>
+    <File Description="Source code of function CDIV">CDIV.st</File>
+    <File Description="Source code of function CEXP">CEXP.st</File>
+    <File Description="Source code of function CINV">CINV.st</File>
+    <File Description="Source code of function CLOG">CLOG.st</File>
+    <File Description="Source code of function CMUL">CMUL.st</File>
+    <File Description="Source code of function CPOL">CPOL.st</File>
+    <File Description="Source code of function CPOW">CPOW.st</File>
+    <File Description="Source code of function CSET">CSET.st</File>
+    <File Description="Source code of function CSIN">CSIN.st</File>
+    <File Description="Source code of function CSINH">CSINH.st</File>
+    <File Description="Source code of function CSQRT">CSQRT.st</File>
+    <File Description="Source code of function CSUB">CSUB.st</File>
+    <File Description="Source code of function CTAN">CTAN.st</File>
+    <File Description="Source code of function CTANH">CTANH.st</File>
+  </Files>
+  <Dependencies />
+</Library>

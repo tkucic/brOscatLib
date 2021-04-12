@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octVectMath.typ</File>
+    <File Description="Exported constants">octVectMath.var</File>
+    <File Description="Exported functions and function blocks">octVectMath.fun</File>
+    <File Description="Source code of function V3_ABS">V3_ABS.st</File>
+    <File Description="Source code of function V3_ADD">V3_ADD.st</File>
+    <File Description="Source code of function V3_ANG">V3_ANG.st</File>
+    <File Description="Source code of function V3_DPRO">V3_DPRO.st</File>
+    <File Description="Source code of function V3_NORM">V3_NORM.st</File>
+    <File Description="Source code of function V3_NUL">V3_NUL.st</File>
+    <File Description="Source code of function V3_PAR">V3_PAR.st</File>
+    <File Description="Source code of function V3_REV">V3_REV.st</File>
+    <File Description="Source code of function V3_SMUL">V3_SMUL.st</File>
+    <File Description="Source code of function V3_SUB">V3_SUB.st</File>
+    <File Description="Source code of function V3_XANG">V3_XANG.st</File>
+    <File Description="Source code of function V3_XPRO">V3_XPRO.st</File>
+    <File Description="Source code of function V3_YANG">V3_YANG.st</File>
+    <File Description="Source code of function V3_ZANG">V3_ZANG.st</File>
+  </Files>
+  <Dependencies />
+</Library>

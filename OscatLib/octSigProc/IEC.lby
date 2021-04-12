@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octSigProc.typ</File>
+    <File Description="Exported constants">octSigProc.var</File>
+    <File Description="Exported functions and function blocks">octSigProc.fun</File>
+    <File Description="Source code of function AIN">AIN.st</File>
+    <File Description="Source code of functionBlock AIN1">AIN1.st</File>
+    <File Description="Source code of function AOUT">AOUT.st</File>
+    <File Description="Source code of function AOUT1">AOUT1.st</File>
+    <File Description="Source code of function BYTE_TO_RANGE">BYTE_TO_RANGE.st</File>
+    <File Description="Source code of functionBlock DELAY">DELAY.st</File>
+    <File Description="Source code of functionBlock DELAY_4">DELAY_4.st</File>
+    <File Description="Source code of functionBlock FADE">FADE.st</File>
+    <File Description="Source code of functionBlock FILTER_DW">FILTER_DW.st</File>
+    <File Description="Source code of functionBlock FILTER_I">FILTER_I.st</File>
+    <File Description="Source code of functionBlock FILTER_MAV_DW">FILTER_MAV_DW.st</File>
+    <File Description="Source code of functionBlock FILTER_MAV_W">FILTER_MAV_W.st</File>
+    <File Description="Source code of functionBlock FILTER_W">FILTER_W.st</File>
+    <File Description="Source code of functionBlock FILTER_WAV">FILTER_WAV.st</File>
+    <File Description="Source code of function MIX">MIX.st</File>
+    <File Description="Source code of function MUX_R2">MUX_R2.st</File>
+    <File Description="Source code of function MUX_R4">MUX_R4.st</File>
+    <File Description="Source code of function OFFSET">OFFSET.st</File>
+    <File Description="Source code of function OFFSET2">OFFSET2.st</File>
+    <File Description="Source code of function OVERRIDE">OVERRIDE.st</File>
+    <File Description="Source code of function RANGE_TO_BYTE">RANGE_TO_BYTE.st</File>
+    <File Description="Source code of function RANGE_TO_WORD">RANGE_TO_WORD.st</File>
+    <File Description="Source code of function SCALE">SCALE.st</File>
+    <File Description="Source code of function SCALE_B">SCALE_B.st</File>
+    <File Description="Source code of function SCALE_B2">SCALE_B2.st</File>
+    <File Description="Source code of function SCALE_B4">SCALE_B4.st</File>
+    <File Description="Source code of function SCALE_B8">SCALE_B8.st</File>
+    <File Description="Source code of function SCALE_D">SCALE_D.st</File>
+    <File Description="Source code of function SCALE_R">SCALE_R.st</File>
+    <File Description="Source code of function SCALE_X2">SCALE_X2.st</File>
+    <File Description="Source code of function SCALE_X4">SCALE_X4.st</File>
+    <File Description="Source code of function SCALE_X8">SCALE_X8.st</File>
+    <File Description="Source code of functionBlock SEL2_OF_3">SEL2_OF_3.st</File>
+    <File Description="Source code of functionBlock SEL2_OF_3B">SEL2_OF_3B.st</File>
+    <File Description="Source code of functionBlock SH">SH.st</File>
+    <File Description="Source code of functionBlock SH_1">SH_1.st</File>
+    <File Description="Source code of functionBlock SH_2">SH_2.st</File>
+    <File Description="Source code of functionBlock SH_T">SH_T.st</File>
+    <File Description="Source code of function STAIR">STAIR.st</File>
+    <File Description="Source code of functionBlock STAIR2">STAIR2.st</File>
+    <File Description="Source code of functionBlock TREND">TREND.st</File>
+    <File Description="Source code of functionBlock TREND_DW">TREND_DW.st</File>
+    <File Description="Source code of function WORD_TO_RANGE">WORD_TO_RANGE.st</File>
+  </Files>
+  <Dependencies />
+</Library>

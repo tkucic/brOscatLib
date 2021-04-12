@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octAutomat.typ</File>
+    <File Description="Exported constants">octAutomat.var</File>
+    <File Description="Exported functions and function blocks">octAutomat.fun</File>
+    <File Description="Source code of functionBlock DRIVER_1">DRIVER_1.st</File>
+    <File Description="Source code of functionBlock DRIVER_4">DRIVER_4.st</File>
+    <File Description="Source code of functionBlock DRIVER_4C">DRIVER_4C.st</File>
+    <File Description="Source code of functionBlock FLOW_CONTROL">FLOW_CONTROL.st</File>
+    <File Description="Source code of functionBlock FT_Profile">FT_Profile.st</File>
+    <File Description="Source code of functionBlock INC_DEC">INC_DEC.st</File>
+    <File Description="Source code of functionBlock INTERLOCK">INTERLOCK.st</File>
+    <File Description="Source code of functionBlock INTERLOCK_4">INTERLOCK_4.st</File>
+    <File Description="Source code of function MANUAL">MANUAL.st</File>
+    <File Description="Source code of functionBlock MANUAL_1">MANUAL_1.st</File>
+    <File Description="Source code of functionBlock MANUAL_2">MANUAL_2.st</File>
+    <File Description="Source code of functionBlock MANUAL_4">MANUAL_4.st</File>
+    <File Description="Source code of functionBlock PARSET">PARSET.st</File>
+    <File Description="Source code of functionBlock PARSET2">PARSET2.st</File>
+    <File Description="Source code of functionBlock SIGNAL">SIGNAL.st</File>
+    <File Description="Source code of functionBlock SIGNAL_4">SIGNAL_4.st</File>
+    <File Description="Source code of functionBlock SRAMP">SRAMP.st</File>
+    <File Description="Source code of functionBlock TUNE">TUNE.st</File>
+    <File Description="Source code of functionBlock TUNE2">TUNE2.st</File>
+  </Files>
+  <Dependencies />
+</Library>

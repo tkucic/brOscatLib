@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octGen.typ</File>
+    <File Description="Exported constants">octGen.var</File>
+    <File Description="Exported functions and function blocks">octGen.fun</File>
+    <File Description="Source code of functionBlock A_TRIG">A_TRIG.st</File>
+    <File Description="Source code of functionBlock B_TRIG">B_TRIG.st</File>
+    <File Description="Source code of functionBlock CLICK_CNT">CLICK_CNT.st</File>
+    <File Description="Source code of functionBlock CLICK_DEC">CLICK_DEC.st</File>
+    <File Description="Source code of functionBlock CLK_DIV">CLK_DIV.st</File>
+    <File Description="Source code of functionBlock CLK_N">CLK_N.st</File>
+    <File Description="Source code of functionBlock CLK_PRG">CLK_PRG.st</File>
+    <File Description="Source code of functionBlock CLK_PULSE">CLK_PULSE.st</File>
+    <File Description="Source code of functionBlock CYCLE_4">CYCLE_4.st</File>
+    <File Description="Source code of functionBlock D_TRIG">D_TRIG.st</File>
+    <File Description="Source code of functionBlock GEN_BIT">GEN_BIT.st</File>
+    <File Description="Source code of functionBlock GEN_SQ">GEN_SQ.st</File>
+    <File Description="Source code of functionBlock SCHEDULER">SCHEDULER.st</File>
+    <File Description="Source code of functionBlock SCHEDULER_2">SCHEDULER_2.st</File>
+    <File Description="Source code of functionBlock SEQUENCE_4">SEQUENCE_4.st</File>
+    <File Description="Source code of functionBlock SEQUENCE_64">SEQUENCE_64.st</File>
+    <File Description="Source code of functionBlock SEQUENCE_8">SEQUENCE_8.st</File>
+    <File Description="Source code of functionBlock TMAX">TMAX.st</File>
+    <File Description="Source code of functionBlock TMIN">TMIN.st</File>
+    <File Description="Source code of functionBlock TOF_1">TOF_1.st</File>
+    <File Description="Source code of functionBlock TONOF">TONOF.st</File>
+    <File Description="Source code of functionBlock TP_1">TP_1.st</File>
+    <File Description="Source code of functionBlock TP_1D">TP_1D.st</File>
+    <File Description="Source code of functionBlock TP_X">TP_X.st</File>
+  </Files>
+  <Dependencies />
+</Library>
