@@ -70,14 +70,14 @@ FUNCTION _ARRAY_SORT : BOOL
     END_VAR
     VAR
         stack_count : UINT; (* Laufvariable Stack*)
-        stack : ARRAY[1..32] OF UINT; (* Stackgrˆﬂe~ 1,6*Log(n)/log(2) *)
+        stack : ARRAY[1..32] OF UINT; (* Stackgr√∂√üe~ 1,6*Log(n)/log(2) *)
         links : UINT; (* Anfangselement des Arrays *)
         rechts : UINT; (* Endelement des Arrays *)
-        pivot : REAL; (* tempor‰rer Schwellwert f¸r Tauschbedingung *)
+        pivot : REAL; (* tempor√§rer Schwellwert f√ºr Tauschbedingung *)
         i : UINT; (* Laufvariable1 *)
         j : UINT; (* Laufvariable2 *)
         ende_innen : BOOL; (* Ende innere Schleife *)
-        ende_aussen : BOOL; (* Ende ‰uﬂere Schleife *)
+        ende_aussen : BOOL; (* Ende √§u√üere Schleife *)
         tmp : REAL; (* Hilfsvariable zum Tauschen von Werten *)
     END_VAR
 END_FUNCTION

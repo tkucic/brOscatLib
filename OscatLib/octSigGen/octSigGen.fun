@@ -123,7 +123,7 @@ FUNCTION_BLOCK GEN_RDT
     END_VAR
     VAR
         tonRDMTimer : TON; (* Zeitbaustein Taktgenerator *)
-        tof_xQ : TOF; (* Ausschaltverzögerung Taktgenerator *)
+        tof_xQ : TOF; (* AusschaltverzÃ¶gerung Taktgenerator *)
         tRDMTime : TIME; (* Sollzeit *)
         rRDMTime : REAL; (* Zufalswert Timer *)
     END_VAR

@@ -8,12 +8,12 @@ TYPE
         LMAX : INT := 3; (**)
         WEEKDAYS : ARRAY[1..3, 1..7] OF STRING[10] := ["'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'", "'Montag'", "'Dienstag'", "'Mittwoch'", "'Donnerstag'", "'Freitag'", "'Samstag'", "'Sonntag'", "'Lundi'", "'Mardi'", "'Mercredi'", "'Jeudi'", "'Vendredi'", "'Samedi'", "'Dimanche'"]; (**)
         WEEKDAYS2 : ARRAY[1..3, 1..7] OF STRING[2] := ["'Mo'", "'Tu'", "'We'", "'Th'", "'Fr'", "'Sa'", "'Su'", "'Mo'", "'Di'", "'Mi'", "'Do'", "'Fr'", "'Sa'", "'So'", "'Lu'", "'Ma'", "'Me'", "'Je'", "'Ve'", "'Sa'", "'Di'"]; (**)
-        MONTHS : ARRAY[1..3, 1..12] OF STRING[10] := ["'January'", "'February'", "'March'", "'April'", "'May'", "'June'", "'July'", "'August'", "'September'", "'October'", "'November'", "'December'", "'Januar'", "'Februar'", "'März'", "'April'", "'Mai'", "'Juni'", "'Juli'", "'August'", "'September'", "'Oktober'", "'November'", "'Dezember'", "'Janvier'", "'Février'", "'mars'", "'Avril'", "'Mai'", "'Juin'", "'Juillet'", "'Août'", "'Septembre'", "'Octobre'", "'Novembre'", "'Decembre'"]; (**)
+        MONTHS : ARRAY[1..3, 1..12] OF STRING[10] := ["'January'", "'February'", "'March'", "'April'", "'May'", "'June'", "'July'", "'August'", "'September'", "'October'", "'November'", "'December'", "'Januar'", "'Februar'", "'MÃ¤rz'", "'April'", "'Mai'", "'Juni'", "'Juli'", "'August'", "'September'", "'Oktober'", "'November'", "'Dezember'", "'Janvier'", "'FÃ©vrier'", "'mars'", "'Avril'", "'Mai'", "'Juin'", "'Juillet'", "'AoÃ»t'", "'Septembre'", "'Octobre'", "'Novembre'", "'Decembre'"]; (**)
         MONTHS3 : ARRAY[1..3, 1..12] OF STRING[3] := ["'Jan'", "'Feb'", "'Mar'", "'Apr'", "'May'", "'Jun'", "'Jul'", "'Aug'", "'Sep'", "'Oct'", "'Nov'", "'Dec'", "'Jan'", "'Feb'", "'Mrz'", "'Apr'", "'Mai'", "'Jun'", "'Jul'", "'Aug'", "'Sep'", "'Okt'", "'Nov'", "'Dez'", "'Jan'", "'Fev'", "'Mar'", "'Avr'", "'Mai'", "'Jun'", "'Jul'", "'Aou'", "'Sep'", "'Oct'", "'Nov'", "'Dec'"]; (**)
         DIRS : ARRAY[1..3, 0..15] OF STRING[3] := ["'N'", "'NNE'", "'NE'", "'ENE'", "'E'", "'ESE'", "'SE'", "'SSE'", "'S'", "'SSW'", "'SW'", "'WSW'", "'W'", "'WNW'", "'NW'", "'NNW'", "'N'", "'NNO'", "'NO'", "'ONO'", "'O'", "'OSO'", "'SO'", "'SSO'", "'S'", "'SSW'", "'SW'", "'WSW'", "'W'", "'WNW'", "'NW'", "'NNW'", "'N'", "'NNO'", "'NO'", "'ONO'", "'O'", "'OSO'", "'SO'", "'SSO'", "'S'", "'SSW'", "'SW'", "'WSW'", "'W'", "'WNW'", "'NW'", "'NNW'"]; (**)
     END_STRUCT;
     CONSTANTS_LOCATION :    STRUCT
-        DEFAULT : INT := 1; (* 1=germany, 2=austria 3=france 4=belgium-german 5= italien-Südtirol *)
+        DEFAULT : INT := 1; (* 1=germany, 2=austria 3=france 4=belgium-german 5= italien-SÃ¼dtirol *)
         LMAX : INT := 5; (**)
         LANGUAGE : ARRAY[1..5] OF INT := ['2', '2', '3', '2', '2']; (* language spoken in the location *)
     END_STRUCT;
@@ -31,14 +31,17 @@ TYPE
     CONSTANTS_PHYS :    STRUCT
         C : REAL := 299792458; (* Lichtgeschwindigkeit in m/s *)
         E : REAL := 1.60217653E-19; (* elementarladung in Colomb = A * s *)
-        G : REAL := 9.80665; (* Erdbeschleunigung in m / s² *)
-        T0 : REAL := -273.15; (* absoluter Nullpunkt in °C *)
-        RU : REAL := 8.314472; (* Universelle Gaskonstante in J / (mol · K) *)
+        G : REAL := 9.80665; (* Erdbeschleunigung in m / sÂ² *)
+        T0 : REAL := -273.15; (* absoluter Nullpunkt in Â°C *)
+        RU : REAL := 8.314472; (* Universelle Gaskonstante in J / (mol Â· K) *)
         PN : REAL := 101325; (* NormalDruck in Pa *)
     END_STRUCT;
     CONSTANTS_SETUP :    STRUCT
         EXTENDED_ASCII : BOOL := TRUE; (* setup Parameters *)
-        CHARNAMES : ARRAY[1..4] OF STRING[253] := ['\';"&quot;&&amp;<&lt;>&gt;\x80&euro;\xa0&nbsp;¡&iexcl;¢&cent;£&pound;¤&curren;¥&yen;¦&brvbar;§&sect;¨&uml;©&copy;ª&ordf;«&laquo;¬&not;\xad&shy;®&reg;¯&macr;°&deg;±&plusmn;²&sup2;³&sup3;´&acute;µ&micro;¶&para;·&middot;¸&cedil;¹&sup1;º&ordm;»&raquo;¼&frac14;Û&Ucirc;\'', "';¾&frac34;¿&iquest;À&Agrave;Á&Aacute;Â&Acirc;Ã&Atilde;Ä&Auml;Å&Aring;Æ&AElig;Ç&Ccedil;È&Egrave;É&Eacute;Ê&Ecirc;Ë&Euml;Ì&Igrave;Í&Iacute;Î&Icirc;Ï&Iuml;Ğ&ETH;Ñ&Ntilde;Ò&Ograve;Ó&Oacute;Ô&Ocirc;Õ&Otilde;Ö&Ouml;×&times;Ø&Oslash;Ù&Ugrave;Ú&Uacute;½&frac12;'", "';Ü&Uuml;İ&Yacute;Ş&THORN;ß&szlig;à&agrave;á&aacute;â&acirc;ã&atilde;ä&auml;å&aring;æ&aelig;ç&ccedil;è&egrave;é&eacute;ê&ecirc;ë&euml;ì&igrave;í&iacute;î&icirc;ï&iuml;ğ&eth;ñ&ntilde;ò&ograve;ó&oacute;ô&ocirc;õ&otilde;ö&ouml;÷&divide;ø&oslash;ù&ugrave;'", "';ú&uacute;û&ucirc;ü&uuml;ı&yacute;ş&thorn;ÿ&yuml;'"]; (**)
+        CHARNAMES : ARRAY[1..4] OF STRING[253] := ';"&quot;&&amp;<&lt;>&gt;Â€&euro;Â &nbsp;Â¡&iexcl;Â¢&cent;Â£&pound;Â¤&curren;Â¥&yen;Â¦&brvbar;Â§&sect;Â¨&uml;Â©&copy;Âª&ordf;Â«&laquo;Â¬&not;Â­&shy;Â®&reg;Â¯&macr;Â°&deg;Â±&plusmn;Â²&sup2;Â³&sup3;Â´&acute;Âµ&micro;Â¶&para;Â·&middot;Â¸&cedil;Â¹&sup1;Âº&ordm;Â»&raquo;Â¼&frac14;Ã›&Ucirc;',
+		';Â¾&frac34;Â¿&iquest;Ã€&Agrave;Ã&Aacute;Ã‚&Acirc;Ãƒ&Atilde;Ã„&Auml;Ã…&Aring;Ã†&AElig;Ã‡&Ccedil;Ãˆ&Egrave;Ã‰&Eacute;ÃŠ&Ecirc;Ã‹&Euml;ÃŒ&Igrave;Ã&Iacute;Ã&Icirc;Ã&Iuml;Ã&ETH;Ã‘&Ntilde;Ã’&Ograve;Ã“&Oacute;Ã”&Ocirc;Ã•&Otilde;Ã–&Ouml;Ã—&times;Ã˜&Oslash;Ã™&Ugrave;Ãš&Uacute;Â½&frac12;',
+		';Ãœ&Uuml;Ã&Yacute;Ã&THORN;ÃŸ&szlig;Ã &agrave;Ã¡&aacute;Ã¢&acirc;Ã£&atilde;Ã¤&auml;Ã¥&aring;Ã¦&aelig;Ã§&ccedil;Ã¨&egrave;Ã©&eacute;Ãª&ecirc;Ã«&euml;Ã¬&igrave;Ã­&iacute;Ã®&icirc;Ã¯&iuml;Ã°&eth;Ã±&ntilde;Ã²&ograve;Ã³&oacute;Ã´&ocirc;Ãµ&otilde;Ã¶&ouml;Ã·&divide;Ã¸&oslash;Ã¹&ugrave;',
+		';Ãº&uacute;Ã»&ucirc;Ã¼&uuml;Ã½&yacute;Ã¾&thorn;Ã¿&yuml;'; (**)
         MTH_OFS : ARRAY[1..12] OF INT := ['0', '31', '59', '90', '120', '151', '181', '212', '243', '273', '304', '334']; (**)
         DECADES : ARRAY[0..8] OF REAL := ['1', '10', '100', '1000', '10000', '10000', '100000', '1000000', '10000000']; (**)
     END_STRUCT;

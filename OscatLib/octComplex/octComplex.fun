@@ -3,7 +3,7 @@ FUNCTION CABS : REAL
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CACOS : complex
+FUNCTION CACOS : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -11,7 +11,7 @@ FUNCTION CACOS : complex
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CACOSH : complex
+FUNCTION CACOSH : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -19,7 +19,7 @@ FUNCTION CACOSH : complex
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CADD : complex
+FUNCTION CADD : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
@@ -30,7 +30,7 @@ FUNCTION CARG : REAL
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CASIN : complex
+FUNCTION CASIN : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -38,7 +38,7 @@ FUNCTION CASIN : complex
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CASINH : complex
+FUNCTION CASINH : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -46,7 +46,7 @@ FUNCTION CASINH : complex
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CATAN : complex
+FUNCTION CATAN : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -56,7 +56,7 @@ FUNCTION CATAN : complex
         den : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CATANH : complex
+FUNCTION CATANH : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -66,22 +66,22 @@ FUNCTION CATANH : complex
         den : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CCON : complex
+FUNCTION CCON : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CCOS : complex
+FUNCTION CCOS : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CCOSH : complex
+FUNCTION CCOSH : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CDIV : complex
+FUNCTION CDIV : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
@@ -90,7 +90,7 @@ FUNCTION CDIV : complex
         Temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CEXP : complex
+FUNCTION CEXP : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -98,7 +98,7 @@ FUNCTION CEXP : complex
         Temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CINV : complex
+FUNCTION CINV : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -106,46 +106,46 @@ FUNCTION CINV : complex
         temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CLOG : complex
+FUNCTION CLOG : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CMUL : complex
+FUNCTION CMUL : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CPOL : complex
+FUNCTION CPOL : COMPLEX
     VAR_INPUT
         L : REAL; (**)
         A : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CPOW : complex
+FUNCTION CPOW : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CSET : complex
+FUNCTION CSET : COMPLEX
     VAR_INPUT
         RE : REAL; (**)
         IM : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CSIN : complex
+FUNCTION CSIN : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CSINH : complex
+FUNCTION CSINH : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CSQRT : complex
+FUNCTION CSQRT : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -153,13 +153,13 @@ FUNCTION CSQRT : complex
         temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CSUB : complex
+FUNCTION CSUB : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CTAN : complex
+FUNCTION CTAN : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
@@ -169,7 +169,7 @@ FUNCTION CTAN : complex
         xr2 : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CTANH : complex
+FUNCTION CTANH : COMPLEX
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR

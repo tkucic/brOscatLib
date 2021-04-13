@@ -109,8 +109,8 @@ FUNCTION COUNT_CHAR : INT
 END_FUNCTION
 FUNCTION COUNT_SUBSTRING : INT
     VAR_INPUT
-        SEARCH : STRING[None]; (**)
-        STR : STRING[None]; (**)
+        SEARCH : STRING[255]; (**)
+        STR : STRING[255]; (**)
     END_VAR
     VAR
         pos : INT; (**)
@@ -165,7 +165,7 @@ FUNCTION DT_TO_STRF : STRING[None]
     VAR_INPUT
         DTI : DT; (**)
         MS : INT; (**)
-        FMT : STRING[None]; (**)
+        FMT : STRING[255]; (**)
         LANG : INT; (**)
     END_VAR
     VAR
@@ -667,8 +667,8 @@ END_FUNCTION
 FUNCTION REPLACE_CHARS : STRING[STRING_LENGTH]
     VAR_INPUT
         STR : STRING[STRING_LENGTH]; (**)
-        SRC : STRING[None]; (**)
-        REP : STRING[None]; (**)
+        SRC : STRING[255]; (**)
+        REP : STRING[255]; (**)
     END_VAR
     VAR
         a : INT; (**)

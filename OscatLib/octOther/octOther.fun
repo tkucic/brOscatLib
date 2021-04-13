@@ -143,7 +143,7 @@ FUNCTION OSCAT_VERSION : DWORD
         IN : BOOL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION STATUS_TO_ESR : esr_data
+FUNCTION STATUS_TO_ESR : ESR_DATA
     VAR_INPUT
         status : BYTE; (**)
         adress : STRING[10]; (**)
