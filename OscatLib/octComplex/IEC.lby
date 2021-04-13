@@ -34,5 +34,6 @@
   </Files>
   <Dependencies>
     <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
   </Dependencies>
 </Library>
