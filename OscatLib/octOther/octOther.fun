@@ -1,17 +1,17 @@
 FUNCTION_BLOCK ESR_COLLECT
     VAR_INPUT
-        ESR_0 : ARRAY[0..3] OF esr_data; (**)
-        ESR_1 : ARRAY[0..3] OF esr_data; (**)
-        ESR_2 : ARRAY[0..3] OF esr_data; (**)
-        ESR_3 : ARRAY[0..3] OF esr_data; (**)
-        ESR_4 : ARRAY[0..3] OF esr_data; (**)
-        ESR_5 : ARRAY[0..3] OF esr_data; (**)
-        ESR_6 : ARRAY[0..3] OF esr_data; (**)
-        ESR_7 : ARRAY[0..3] OF esr_data; (**)
+        ESR_0 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_1 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_2 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_3 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_4 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_5 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_6 : ARRAY[0..3] OF ESR_DATA; (**)
+        ESR_7 : ARRAY[0..3] OF ESR_DATA; (**)
         rst : BOOL; (**)
     END_VAR
     VAR_OUTPUT
-        ESR_OUT : ARRAY[0..31] OF esr_data; (**)
+        ESR_OUT : ARRAY[0..31] OF ESR_DATA; (**)
     END_VAR
     VAR_IN_OUT
         pos : INT; (**)
@@ -48,7 +48,7 @@ FUNCTION_BLOCK ESR_MON_B8
         ESR_Flag : BOOL; (**)
     END_VAR
     VAR_IN_OUT
-        ESR_Out : ARRAY[0..3] OF esr_data; (**)
+        ESR_Out : ARRAY[0..3] OF ESR_DATA; (**)
     END_VAR
     VAR
         x0 : BOOL; (**)
@@ -83,7 +83,7 @@ FUNCTION_BLOCK ESR_MON_R4
         ESR_Flag : BOOL; (**)
     END_VAR
     VAR_IN_OUT
-        ESR_Out : ARRAY[0..3] OF esr_data; (**)
+        ESR_Out : ARRAY[0..3] OF ESR_DATA; (**)
     END_VAR
     VAR
         p0 : REFERENCE TO DWORD; (**)
@@ -123,7 +123,7 @@ FUNCTION_BLOCK ESR_MON_X8
         ESR_Flag : BOOL; (**)
     END_VAR
     VAR_IN_OUT
-        ESR_Out : ARRAY[0..3] OF esr_data; (**)
+        ESR_Out : ARRAY[0..3] OF ESR_DATA; (**)
     END_VAR
     VAR
         x0 : BYTE; (**)
