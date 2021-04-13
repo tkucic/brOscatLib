@@ -161,7 +161,7 @@ FUNCTION DEL_CHARS : STRING[STRING_LENGTH]
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DT_TO_STRF : STRING[None]
+FUNCTION DT_TO_STRF : STRING[255]
     VAR_INPUT
         DTI : DT; (**)
         MS : INT; (**)
@@ -178,8 +178,8 @@ FUNCTION DT_TO_STRF : STRING[None]
         f : INT; (**)
     END_VAR
     VAR CONSTANT
-        FILL : STRING[1] := 0; (**)
-        BLANK : STRING[1] :=  ; (**)
+        FILL : STRING[1] := '0'; (**)
+        BLANK : STRING[1] := ' '; (**)
     END_VAR
 END_FUNCTION
 FUNCTION DWORD_TO_STRB : STRING[32]
@@ -365,8 +365,8 @@ FUNCTION FSTRING_TO_DT : DT
         ts : INT; (**)
     END_VAR
     VAR CONSTANT
-        ignore : STRING[1] := *; (* ignore character is * *)
-        fchar : STRING[1] := #; (* format character is # *)
+        ignore : STRING[1] := '*'; (* ignore character is * *)
+        fchar : STRING[1] := '#'; (* format character is # *)
     END_VAR
 END_FUNCTION
 FUNCTION FSTRING_TO_DWORD : DWORD
