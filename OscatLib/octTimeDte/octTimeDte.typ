@@ -1,5 +1,5 @@
 TYPE
-    STRUCT CALENDAR :
+    CALENDAR :    STRUCT
         UTC : DT; (* world time UTC *)
         YEAR : INT; (* year of LDATE *)
         MONTH : INT; (* month of LDATE *)
@@ -23,7 +23,7 @@ TYPE
         HOLY_NAME : STRING[30]; (* name of holiday *)
         WORK_WEEK : INT; (* current work week *)
     END_STRUCT;
-    STRUCT HOLIDAY_DATA :
+    HOLIDAY_DATA :    STRUCT
         NAME : STRING[30]; (**)
         DAY : SINT; (**)
         MONTH : SINT; (**)

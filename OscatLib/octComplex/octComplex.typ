@@ -1,5 +1,5 @@
 TYPE
-    STRUCT COMPLEX :
+    COMPLEX :    STRUCT
         re : REAL; (**)
         im : REAL; (**)
     END_STRUCT;
