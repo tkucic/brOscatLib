@@ -5,7 +5,7 @@ FUNCTION R2_ABS : REAL2
 END_FUNCTION
 FUNCTION R2_ADD : REAL2
     VAR_INPUT
-        X : Real2; (**)
+        X : REAL2; (**)
         Y : REAL; (**)
     END_VAR
     VAR
@@ -14,7 +14,7 @@ FUNCTION R2_ADD : REAL2
 END_FUNCTION
 FUNCTION R2_ADD2 : REAL2
     VAR_INPUT
-        X : Real2; (**)
+        X : REAL2; (**)
         Y : REAL2; (**)
     END_VAR
 END_FUNCTION

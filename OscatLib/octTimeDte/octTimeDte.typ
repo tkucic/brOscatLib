@@ -29,4 +29,14 @@ TYPE
         MONTH : SINT; (**)
         USE : SINT; (**)
     END_STRUCT;
+    SDT :    STRUCT
+        YEAR : INT; (**)
+        MONTH : INT; (**)
+        DAY : INT; (**)
+        WEEKDAY : INT; (**)
+        HOUR : INT; (**)
+        MINUTE : INT; (**)
+        SECOND : INT; (**)
+        MS : INT; (**)
+    END_STRUCT;
 END_TYPE

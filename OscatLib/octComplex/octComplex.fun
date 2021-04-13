@@ -1,54 +1,54 @@
 FUNCTION CABS : REAL
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CACOS : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
-        Y : complex; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CACOSH : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
-        Y : complex; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CADD : complex
     VAR_INPUT
-        X : complex; (**)
-        Y : complex; (**)
+        X : COMPLEX; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CARG : REAL
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CASIN : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
-        Y : complex; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CASINH : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
-        Y : complex; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CATAN : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         r2 : REAL; (**)
@@ -58,7 +58,7 @@ FUNCTION CATAN : complex
 END_FUNCTION
 FUNCTION CATANH : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         i2 : REAL; (**)
@@ -68,23 +68,23 @@ FUNCTION CATANH : complex
 END_FUNCTION
 FUNCTION CCON : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CCOS : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CCOSH : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CDIV : complex
     VAR_INPUT
-        X : complex; (**)
-        Y : complex; (**)
+        X : COMPLEX; (**)
+        Y : COMPLEX; (**)
     END_VAR
     VAR
         Temp : REAL; (**)
@@ -92,7 +92,7 @@ FUNCTION CDIV : complex
 END_FUNCTION
 FUNCTION CEXP : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         Temp : REAL; (**)
@@ -100,7 +100,7 @@ FUNCTION CEXP : complex
 END_FUNCTION
 FUNCTION CINV : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         temp : REAL; (**)
@@ -108,13 +108,13 @@ FUNCTION CINV : complex
 END_FUNCTION
 FUNCTION CLOG : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CMUL : complex
     VAR_INPUT
-        X : complex; (**)
-        Y : complex; (**)
+        X : COMPLEX; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CPOL : complex
@@ -125,8 +125,8 @@ FUNCTION CPOL : complex
 END_FUNCTION
 FUNCTION CPOW : complex
     VAR_INPUT
-        X : complex; (**)
-        Y : Complex; (**)
+        X : COMPLEX; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CSET : complex
@@ -137,17 +137,17 @@ FUNCTION CSET : complex
 END_FUNCTION
 FUNCTION CSIN : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CSINH : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CSQRT : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         temp : REAL; (**)
@@ -155,13 +155,13 @@ FUNCTION CSQRT : complex
 END_FUNCTION
 FUNCTION CSUB : complex
     VAR_INPUT
-        X : complex; (**)
-        Y : complex; (**)
+        X : COMPLEX; (**)
+        Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
 FUNCTION CTAN : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         temp : REAL; (**)
@@ -171,7 +171,7 @@ FUNCTION CTAN : complex
 END_FUNCTION
 FUNCTION CTANH : complex
     VAR_INPUT
-        X : complex; (**)
+        X : COMPLEX; (**)
     END_VAR
     VAR
         temp : REAL; (**)
