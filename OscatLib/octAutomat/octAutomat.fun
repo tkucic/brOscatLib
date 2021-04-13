@@ -43,7 +43,7 @@ FUNCTION_BLOCK DRIVER_4C
         IN : BOOL; (**)
         RST : BOOL; (**)
         Timeout : TIME; (**)
-        SX : ARRAY[1..7] OF BYTE := ['1', '3', '7', '15']; (**)
+        SX : ARRAY[1..7] OF BYTE := [1, 3, 7, 15]; (**)
     END_VAR
     VAR_OUTPUT
         SN : INT; (**)
