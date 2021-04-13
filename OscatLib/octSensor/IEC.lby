@@ -16,5 +16,7 @@
     <File Description="Source code of function TEMP_PT">TEMP_PT.st</File>
     <File Description="Source code of function TEMP_SI">TEMP_SI.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

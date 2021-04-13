@@ -27,5 +27,7 @@
     <File Description="Source code of functionBlock SPEED">SPEED.st</File>
     <File Description="Source code of functionBlock TEMPERATURE">TEMPERATURE.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

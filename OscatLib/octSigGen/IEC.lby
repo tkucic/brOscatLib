@@ -21,5 +21,7 @@
     <File Description="Source code of functionBlock RMP_SOFT">RMP_SOFT.st</File>
     <File Description="Source code of functionBlock RMP_W">RMP_W.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

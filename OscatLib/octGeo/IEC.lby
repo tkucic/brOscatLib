@@ -14,5 +14,7 @@
     <File Description="Source code of function SPHERE_V">SPHERE_V.st</File>
     <File Description="Source code of function TRIANGLE_A">TRIANGLE_A.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

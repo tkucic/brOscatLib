@@ -9,5 +9,7 @@
     <File Description="Source code of functionBlock LTCH_4">LTCH_4.st</File>
     <File Description="Source code of functionBlock STORE_8">STORE_8.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

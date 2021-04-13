@@ -40,5 +40,7 @@
     <File Description="Source code of functionBlock HYST_3">HYST_3.st</File>
     <File Description="Source code of functionBlock INTEGRATE">INTEGRATE.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

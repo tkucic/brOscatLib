@@ -81,5 +81,7 @@
     <File Description="Source code of function UPPERCASE">UPPERCASE.st</File>
     <File Description="Source code of function WEEKDAY_TO_STRING">WEEKDAY_TO_STRING.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

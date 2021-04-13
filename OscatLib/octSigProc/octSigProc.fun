@@ -7,6 +7,11 @@ FUNCTION AIN : REAL
         high : REAL := 10; (**)
     END_VAR
     VAR
+        temp1 : DWORD; (**)
+        temp2 : DWORD; (**)
+        sx : BOOL; (**)
+    END_VAR
+    VAR_CONSTANT
         ff : DWORD := 16#FFFFFFFF; (**)
     END_VAR
 END_FUNCTION
@@ -48,6 +53,10 @@ FUNCTION AOUT : DWORD
         high : REAL := 10; (**)
     END_VAR
     VAR
+        in2 : REAL; (**)
+        sx : BOOL; (**)
+    END_VAR
+    VAR_CONSTANT
         ff : DWORD := 2#1; (**)
     END_VAR
 END_FUNCTION
@@ -61,6 +70,10 @@ FUNCTION AOUT1 : DWORD
         high : REAL := 10; (**)
     END_VAR
     VAR
+        sx : BOOL; (**)
+        in2 : REAL; (**)
+    END_VAR
+    VAR_CONSTANT
         ff : DWORD := 2#1; (**)
     END_VAR
 END_FUNCTION

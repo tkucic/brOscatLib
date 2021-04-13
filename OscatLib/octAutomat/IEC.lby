@@ -25,5 +25,7 @@
     <File Description="Source code of functionBlock TUNE">TUNE.st</File>
     <File Description="Source code of functionBlock TUNE2">TUNE2.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

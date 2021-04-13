@@ -21,6 +21,9 @@ FUNCTION RES_NI : REAL
         R0 : REAL; (**)
     END_VAR
     VAR
+        T2 : REAL; (**)
+    END_VAR
+    VAR_CONSTANT
         A : REAL := 0.5485; (**)
         B : REAL := 0.000665; (**)
         C : REAL := 2.805E-09; (**)
@@ -39,6 +42,9 @@ FUNCTION RES_PT : REAL
         R0 : REAL; (**)
     END_VAR
     VAR
+        T2 : REAL; (**)
+    END_VAR
+    VAR_CONSTANT
         A : REAL := 0.00390802; (**)
         B : REAL := -5.802E-07; (**)
         C : REAL := -4.2735E-12; (**)
@@ -51,6 +57,9 @@ FUNCTION RES_SI : REAL
         TS : REAL; (**)
     END_VAR
     VAR
+        TX : REAL; (**)
+    END_VAR
+    VAR_CONSTANT
         A : REAL := 0.00764; (**)
         B : REAL := 1.66E-05; (**)
     END_VAR
@@ -85,6 +94,13 @@ FUNCTION TEMP_PT : REAL
         R0 : REAL; (**)
     END_VAR
     VAR
+        step : REAL := 50; (**)
+        X : REAL; (**)
+        Y : REAL; (**)
+        t1 : REAL; (**)
+        pt : REFERENCE TO DWORD; (**)
+    END_VAR
+    VAR_CONSTANT
         A : REAL := 0.0039083; (**)
         B : REAL := -5.775E-07; (**)
         accuracy : REAL := 0.01; (**)

@@ -32,5 +32,7 @@
     <File Description="Source code of function CTAN">CTAN.st</File>
     <File Description="Source code of function CTANH">CTANH.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

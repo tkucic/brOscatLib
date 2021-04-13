@@ -24,5 +24,7 @@
     <File Description="Source code of function ARRAY_VAR">ARRAY_VAR.st</File>
     <File Description="Source code of function IS_SORTED">IS_SORTED.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

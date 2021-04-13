@@ -20,5 +20,7 @@
     <File Description="Source code of function V3_YANG">V3_YANG.st</File>
     <File Description="Source code of function V3_ZANG">V3_ZANG.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

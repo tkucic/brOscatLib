@@ -72,5 +72,7 @@
     <File Description="Source code of function WINDOW">WINDOW.st</File>
     <File Description="Source code of function WINDOW2">WINDOW2.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

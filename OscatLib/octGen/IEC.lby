@@ -30,5 +30,7 @@
     <File Description="Source code of functionBlock TP_1D">TP_1D.st</File>
     <File Description="Source code of functionBlock TP_X">TP_X.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

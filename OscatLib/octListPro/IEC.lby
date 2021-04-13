@@ -15,5 +15,7 @@
     <File Description="Source code of function LIST_RETRIEVE_MIN">LIST_RETRIEVE_MIN.st</File>
     <File Description="Source code of function LIST_SORT_L">LIST_SORT_L.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

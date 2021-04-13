@@ -196,6 +196,15 @@ FUNCTION_BLOCK HOLIDAY
         HOLIDAYS : ARRAY[0..29] OF HOLIDAY_DATA; (**)
     END_VAR
     VAR
+        last_active : DATE; (**)
+        ostern : DATE; (**)
+        i : INT; (**)
+        jahr : INT; (**)
+        x_date : DATE; (**)
+        lx : INT; (**)
+        wdx : INT; (**)
+    END_VAR
+    VAR_CONSTANT
         SIZE : INT := 29; (**)
     END_VAR
 END_FUNCTION_BLOCK

@@ -248,6 +248,9 @@ FUNCTION_BLOCK ONTIME
 END_FUNCTION_BLOCK
 FUNCTION T_PLC_MS : DWORD
     VAR
+        tx : TIME; (**)
+    END_VAR
+    VAR_CONSTANT
         debug : BOOL := 0; (**)
         N : INT := 0; (**)
         offset : DWORD := 0; (**)
@@ -255,6 +258,9 @@ FUNCTION T_PLC_MS : DWORD
 END_FUNCTION
 FUNCTION T_PLC_US : DWORD
     VAR
+        tx : TIME; (**)
+    END_VAR
+    VAR_CONSTANT
         debug : BOOL := 0; (**)
         N : INT := 0; (**)
         offset : DWORD := 0; (**)

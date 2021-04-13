@@ -49,5 +49,7 @@
     <File Description="Source code of functionBlock TREND_DW">TREND_DW.st</File>
     <File Description="Source code of function WORD_TO_RANGE">WORD_TO_RANGE.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

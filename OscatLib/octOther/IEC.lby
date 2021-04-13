@@ -15,5 +15,7 @@
     <File Description="Source code of functionBlock MATRIX">MATRIX.st</File>
     <File Description="Source code of functionBlock PIN_CODE">PIN_CODE.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

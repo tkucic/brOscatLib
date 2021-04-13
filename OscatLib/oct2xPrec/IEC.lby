@@ -11,5 +11,7 @@
     <File Description="Source code of function R2_MUL">R2_MUL.st</File>
     <File Description="Source code of function R2_SET">R2_SET.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

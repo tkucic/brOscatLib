@@ -62,5 +62,7 @@
     <File Description="Source code of function YEAR_END">YEAR_END.st</File>
     <File Description="Source code of function YEAR_OF_DATE">YEAR_OF_DATE.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

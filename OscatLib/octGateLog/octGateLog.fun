@@ -14,7 +14,7 @@ FUNCTION BIT_LOAD_B : BYTE
         VAL : BOOL; (**)
         POS : INT; (**)
     END_VAR
-    VAR
+    VAR_CONSTANT
         dat : BYTE := 1; (**)
     END_VAR
 END_FUNCTION
@@ -32,7 +32,7 @@ FUNCTION BIT_LOAD_DW : DWORD
         VAL : BOOL; (**)
         POS : INT; (**)
     END_VAR
-    VAR
+    VAR_CONSTANT
         dat : DWORD := 1; (**)
     END_VAR
 END_FUNCTION
@@ -50,7 +50,7 @@ FUNCTION BIT_LOAD_W : WORD
         VAL : BOOL; (**)
         POS : INT; (**)
     END_VAR
-    VAR
+    VAR_CONSTANT
         dat : WORD := 1; (**)
     END_VAR
 END_FUNCTION
@@ -264,7 +264,7 @@ FUNCTION SHL1 : DWORD
         IN : DWORD; (**)
         N : INT; (**)
     END_VAR
-    VAR
+    VAR_CONSTANT
         temp : DWORD := 16#FFFFFFFF; (**)
     END_VAR
 END_FUNCTION
@@ -273,7 +273,7 @@ FUNCTION SHR1 : DWORD
         IN : DWORD; (**)
         N : INT; (**)
     END_VAR
-    VAR
+    VAR_CONSTANT
         temp : DWORD := 16#FFFFFFFF; (**)
     END_VAR
 END_FUNCTION

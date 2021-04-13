@@ -17,5 +17,7 @@
     <File Description="Source code of function LINEAR_INT">LINEAR_INT.st</File>
     <File Description="Source code of function POLYNOM_INT">POLYNOM_INT.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

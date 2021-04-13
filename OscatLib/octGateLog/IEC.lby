@@ -44,5 +44,7 @@
     <File Description="Source code of function WORD_OF_BYTE">WORD_OF_BYTE.st</File>
     <File Description="Source code of function WORD_OF_DWORD">WORD_OF_DWORD.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

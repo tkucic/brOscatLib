@@ -10,5 +10,7 @@
     <File Description="Source code of functionBlock STACK_16">STACK_16.st</File>
     <File Description="Source code of functionBlock STACK_32">STACK_32.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
 </Library>

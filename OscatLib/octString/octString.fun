@@ -169,6 +169,15 @@ FUNCTION DT_TO_STRF : STRING[None]
         LANG : INT; (**)
     END_VAR
     VAR
+        ly : INT; (**)
+        dx : DATE; (**)
+        fs : STRING[10]; (**)
+        td : TOD; (**)
+        tmp : INT; (**)
+        pos : INT; (**)
+        f : INT; (**)
+    END_VAR
+    VAR_CONSTANT
         FILL : STRING[1] := '0'; (**)
         BLANK : STRING[1] := ' '; (**)
     END_VAR
@@ -345,6 +354,17 @@ FUNCTION FSTRING_TO_DT : DT
         FMT : STRING[60]; (**)
     END_VAR
     VAR
+        c : STRING[1]; (**)
+        tmp : STRING[20]; (**)
+        end : INT; (**)
+        dy : INT := 1970; (**)
+        dm : INT := 1; (**)
+        dd : INT := 1; (**)
+        th : INT; (**)
+        tm : INT; (**)
+        ts : INT; (**)
+    END_VAR
+    VAR_CONSTANT
         ignore : STRING[1] := '*'; (* ignore character is * *)
         fchar : STRING[1] := '#'; (* format character is # *)
     END_VAR
