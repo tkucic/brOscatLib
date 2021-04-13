@@ -320,7 +320,7 @@ FUNCTION_BLOCK SIGNAL
         tx : DWORD; (**)
         step : BYTE; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         one : BYTE := 1; (**)
     END_VAR
 END_FUNCTION_BLOCK

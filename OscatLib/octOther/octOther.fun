@@ -19,7 +19,7 @@ FUNCTION_BLOCK ESR_COLLECT
     VAR
         cnt : INT := -1; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         max_in : INT := 3; (* max limit of input array *)
         max_out : INT := 32; (* number of elements in array *)
     END_VAR

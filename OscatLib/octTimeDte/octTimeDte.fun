@@ -204,7 +204,7 @@ FUNCTION_BLOCK HOLIDAY
         lx : INT; (**)
         wdx : INT; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         SIZE : INT := 29; (**)
     END_VAR
 END_FUNCTION_BLOCK

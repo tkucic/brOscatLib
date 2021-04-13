@@ -177,7 +177,7 @@ FUNCTION DT_TO_STRF : STRING[None]
         pos : INT; (**)
         f : INT; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         FILL : STRING[1] := '0'; (**)
         BLANK : STRING[1] := ' '; (**)
     END_VAR
@@ -364,7 +364,7 @@ FUNCTION FSTRING_TO_DT : DT
         tm : INT; (**)
         ts : INT; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         ignore : STRING[1] := '*'; (* ignore character is * *)
         fchar : STRING[1] := '#'; (* format character is # *)
     END_VAR

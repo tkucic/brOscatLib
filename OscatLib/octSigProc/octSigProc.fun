@@ -11,7 +11,7 @@ FUNCTION AIN : REAL
         temp2 : DWORD; (**)
         sx : BOOL; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         ff : DWORD := 16#FFFFFFFF; (**)
     END_VAR
 END_FUNCTION
@@ -56,7 +56,7 @@ FUNCTION AOUT : DWORD
         in2 : REAL; (**)
         sx : BOOL; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         ff : DWORD := 2#1; (**)
     END_VAR
 END_FUNCTION
@@ -73,7 +73,7 @@ FUNCTION AOUT1 : DWORD
         sx : BOOL; (**)
         in2 : REAL; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         ff : DWORD := 2#1; (**)
     END_VAR
 END_FUNCTION

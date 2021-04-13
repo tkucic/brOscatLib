@@ -250,7 +250,7 @@ FUNCTION T_PLC_MS : DWORD
     VAR
         tx : TIME; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         debug : BOOL := 0; (**)
         N : INT := 0; (**)
         offset : DWORD := 0; (**)
@@ -260,7 +260,7 @@ FUNCTION T_PLC_US : DWORD
     VAR
         tx : TIME; (**)
     END_VAR
-    VAR_CONSTANT
+    VAR CONSTANT
         debug : BOOL := 0; (**)
         N : INT := 0; (**)
         offset : DWORD := 0; (**)
