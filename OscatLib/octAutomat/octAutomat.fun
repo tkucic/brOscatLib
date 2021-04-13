@@ -303,7 +303,7 @@ FUNCTION_BLOCK PARSET2
         P4 : REAL; (**)
     END_VAR
     VAR
-        Pset : parset; (**)
+        Pset : PARSET; (**)
         init : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
