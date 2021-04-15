@@ -14,3 +14,4 @@ Here we list all the known quirks and differences between the source and the B&R
 
 - Codesys uses syntax POINTER TO while AS uses REFERENCE TO. This problem is solved during the automatic porting
 - Pointer dereferencing is not the same between systems. Needs to be fixed manually
+- All identifiers like variables, functions, data types etc are case sensitive. Some problems have been fixed with the script
