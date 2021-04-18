@@ -13,7 +13,7 @@ This repo is a port of the popular [Oscat lib](www.oscat.de) to the B&R Automati
 
 ## Documentation
 
-Documentation of this project is not created yet. There are tools for programatic documentation generation of B&R projects but that is yet to be decided if that is necessary. There is a [quirks file](quirks.md) file that should be updated every time a new "quirk" between CODESYS and Automation studio has been found. For the time being the complete documentation can be found from www.oscat.de. English version of the documentation is located [here](https://www.tecomat.cz/uploads/files/sw/Mosaic/OSCAT/oscat_building100_en.pdf).
+Documentation of this project is not created yet. There are tools for programatic documentation generation of B&R projects but that is yet to be decided if that is necessary. There is a [quirks file](quirks.md) file that should be updated every time a new "quirk" between CODESYS and Automation studio has been found. For the time being the complete documentation can be found from www.oscat.de. English version of the documentation is located [here](http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf).
 
 ## Installation
 
