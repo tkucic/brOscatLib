@@ -248,7 +248,10 @@ FUNCTION_BLOCK ONTIME
         ms : DWORD; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION T_PLC_MS : DWORD
+FUNCTION T_PLC_MS : BOOL
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR
         tx : TIME; (**)
     END_VAR
@@ -258,7 +261,10 @@ FUNCTION T_PLC_MS : DWORD
         offset : DWORD := 0; (**)
     END_VAR
 END_FUNCTION
-FUNCTION T_PLC_US : DWORD
+FUNCTION T_PLC_US : BOOL
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR
         tx : TIME; (**)
     END_VAR

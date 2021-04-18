@@ -1,7 +1,10 @@
-FUNCTION BIN_TO_BYTE : BYTE
+FUNCTION BIN_TO_BYTE : BOOL
     VAR_INPUT
         BIN : STRING[12]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
@@ -9,10 +12,13 @@ FUNCTION BIN_TO_BYTE : BYTE
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BIN_TO_DWORD : DWORD
+FUNCTION BIN_TO_DWORD : BOOL
     VAR_INPUT
         BIN : STRING[40]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
@@ -20,27 +26,36 @@ FUNCTION BIN_TO_DWORD : DWORD
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_STRB : STRING[8]
+FUNCTION BYTE_TO_STRB : BOOL
     VAR_INPUT
         IN : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[8] := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
         pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_STRH : STRING[2]
+FUNCTION BYTE_TO_STRH : BOOL
     VAR_INPUT
         IN : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[2] := ; (*Return value of the function*)
     END_VAR
     VAR
         temp : BYTE; (**)
         PT : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CAPITALIZE : STRING[STRING_LENGTH]
+FUNCTION CAPITALIZE : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         PT : REFERENCE TO BYTE; (**)
@@ -49,9 +64,12 @@ FUNCTION CAPITALIZE : STRING[STRING_LENGTH]
         first : BOOL := TRUE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CHARCODE : BYTE
+FUNCTION CHARCODE : BOOL
     VAR_INPUT
         STR : STRING[10]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
     VAR
         found : STRING[1]; (**)
@@ -60,46 +78,61 @@ FUNCTION CHARCODE : BYTE
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CHARNAME : STRING[10]
+FUNCTION CHARNAME : BOOL
     VAR_INPUT
         C : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[10] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CHR_TO_STRING : STRING[1]
+FUNCTION CHR_TO_STRING : BOOL
     VAR_INPUT
         C : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[1] := ; (*Return value of the function*)
     END_VAR
     VAR
         PT : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CLEAN : STRING[STRING_LENGTH]
+FUNCTION CLEAN : BOOL
     VAR_INPUT
         IN : STRING[STRING_LENGTH]; (**)
         CX : STRING[80]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT := 1; (**)
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CODE : BYTE
+FUNCTION CODE : BOOL
     VAR_INPUT
         STR : STRING[STRING_LENGTH]; (**)
         POS : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
     VAR
         PT : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION COUNT_CHAR : INT
+FUNCTION COUNT_CHAR : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         chr : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         l : INT; (**)
@@ -107,19 +140,25 @@ FUNCTION COUNT_CHAR : INT
         pos : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION COUNT_SUBSTRING : INT
+FUNCTION COUNT_SUBSTRING : BOOL
     VAR_INPUT
         SEARCH : STRING[255]; (**)
         STR : STRING[255]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
         size : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DEC_TO_BYTE : BYTE
+FUNCTION DEC_TO_BYTE : BOOL
     VAR_INPUT
         DEC : STRING[10]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
@@ -128,10 +167,13 @@ FUNCTION DEC_TO_BYTE : BYTE
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DEC_TO_DWORD : DWORD
+FUNCTION DEC_TO_DWORD : BOOL
     VAR_INPUT
         DEC : STRING[20]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
@@ -139,9 +181,12 @@ FUNCTION DEC_TO_DWORD : DWORD
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DEC_TO_INT : INT
+FUNCTION DEC_TO_INT : BOOL
     VAR_INPUT
         DEC : STRING[10]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
@@ -151,22 +196,28 @@ FUNCTION DEC_TO_INT : INT
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DEL_CHARS : STRING[STRING_LENGTH]
+FUNCTION DEL_CHARS : BOOL
     VAR_INPUT
         IN : STRING[STRING_LENGTH]; (**)
         CX : STRING[80]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT := 1; (**)
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DT_TO_STRF : STRING[255]
+FUNCTION DT_TO_STRF : BOOL
     VAR_INPUT
         DTI : DT; (**)
         MS : INT; (**)
         FMT : STRING[255]; (**)
         LANG : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[255] := ; (*Return value of the function*)
     END_VAR
     VAR
         ly : INT; (**)
@@ -182,24 +233,33 @@ FUNCTION DT_TO_STRF : STRING[255]
         BLANK : STRING[1] := ' '; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DWORD_TO_STRB : STRING[32]
+FUNCTION DWORD_TO_STRB : BOOL
     VAR_INPUT
         IN : DWORD; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[32] := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DWORD_TO_STRF : STRING[20]
+FUNCTION DWORD_TO_STRF : BOOL
     VAR_INPUT
         IN : DWORD; (**)
         N : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : STRING[20] := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION DWORD_TO_STRH : STRING[8]
+FUNCTION DWORD_TO_STRH : BOOL
     VAR_INPUT
         IN : DWORD; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[8] := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -207,9 +267,12 @@ FUNCTION DWORD_TO_STRH : STRING[8]
         pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION EXEC : STRING[STRING_LENGTH]
+FUNCTION EXEC : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
@@ -218,20 +281,26 @@ FUNCTION EXEC : STRING[STRING_LENGTH]
         operator : STRING[10]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FILL : STRING[STRING_LENGTH]
+FUNCTION FILL : BOOL
     VAR_INPUT
         C : BYTE; (**)
         L : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
         sx : STRING[1]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FIND_CHAR : INT
+FUNCTION FIND_CHAR : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         pos : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -240,10 +309,13 @@ FUNCTION FIND_CHAR : INT
         X : BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FIND_CTRL : INT
+FUNCTION FIND_CTRL : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         pos : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -252,10 +324,13 @@ FUNCTION FIND_CTRL : INT
         x : BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FIND_NONUM : INT
+FUNCTION FIND_NONUM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         pos : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -264,10 +339,13 @@ FUNCTION FIND_NONUM : INT
         X : BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FIND_NUM : INT
+FUNCTION FIND_NUM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         pos : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -276,39 +354,51 @@ FUNCTION FIND_NUM : INT
         X : BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FINDB : INT
+FUNCTION FINDB : BOOL
     VAR_INPUT
         str1 : STRING[STRING_LENGTH]; (**)
         str2 : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
         length : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FINDB_NONUM : INT
+FUNCTION FINDB_NONUM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
         pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FINDB_NUM : INT
+FUNCTION FINDB_NUM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
         pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FINDP : INT
+FUNCTION FINDP : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         src : STRING[STRING_LENGTH]; (**)
         pos : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -317,21 +407,27 @@ FUNCTION FINDP : INT
         stp : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FIX : STRING[STRING_LENGTH]
+FUNCTION FIX : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         L : INT; (**)
         C : BYTE; (**)
         M : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
+    END_VAR
     VAR
         N : INT; (**)
         SX : STRING[STRING_LENGTH]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FLOAT_TO_REAL : REAL
+FUNCTION FLOAT_TO_REAL : BOOL
     VAR_INPUT
         FLT : STRING[20]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO ARRAY[1..20] OF BYTE; (**)
@@ -343,15 +439,21 @@ FUNCTION FLOAT_TO_REAL : REAL
         d : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_BYTE : BYTE
+FUNCTION FSTRING_TO_BYTE : BOOL
     VAR_INPUT
         IN : STRING[12]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_DT : DT
+FUNCTION FSTRING_TO_DT : BOOL
     VAR_INPUT
         SDT : STRING[60]; (**)
         FMT : STRING[60]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DT := ; (*Return value of the function*)
     END_VAR
     VAR
         c : STRING[1]; (**)
@@ -369,33 +471,45 @@ FUNCTION FSTRING_TO_DT : DT
         fchar : STRING[1] := '#'; (* format character is # *)
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_DWORD : DWORD
+FUNCTION FSTRING_TO_DWORD : BOOL
     VAR_INPUT
         IN : STRING[40]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_MONTH : INT
+FUNCTION FSTRING_TO_MONTH : BOOL
     VAR_INPUT
         MTH : STRING[20]; (**)
         LANG : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         lx : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_WEEK : BYTE
+FUNCTION FSTRING_TO_WEEK : BOOL
     VAR_INPUT
         WEEK : STRING[60]; (**)
         LANG : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_WEEKDAY : INT
+FUNCTION FSTRING_TO_WEEKDAY : BOOL
     VAR_INPUT
         WDAY : STRING[20]; (**)
         LANG : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         tmp : STRING[2]; (**)
@@ -403,9 +517,12 @@ FUNCTION FSTRING_TO_WEEKDAY : INT
         ly : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION HEX_TO_BYTE : BYTE
+FUNCTION HEX_TO_BYTE : BOOL
     VAR_INPUT
         HEX : STRING[5]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
@@ -414,9 +531,12 @@ FUNCTION HEX_TO_BYTE : BYTE
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION HEX_TO_DWORD : DWORD
+FUNCTION HEX_TO_DWORD : BOOL
     VAR_INPUT
         Hex : STRING[20]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
@@ -429,6 +549,9 @@ FUNCTION IS_ALNUM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR
         L : INT; (**)
         pt : REFERENCE TO BYTE; (**)
@@ -438,6 +561,9 @@ END_FUNCTION
 FUNCTION IS_ALPHA : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
     VAR
         L : INT; (**)
@@ -450,6 +576,9 @@ FUNCTION IS_CC : BOOL
         str : STRING[STRING_LENGTH]; (**)
         cmp : STRING[STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR
         L : INT; (**)
         pos : INT; (**)
@@ -458,6 +587,9 @@ END_FUNCTION
 FUNCTION IS_CTRL : BOOL
     VAR_INPUT
         STR : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
     VAR
         L : INT; (**)
@@ -469,6 +601,9 @@ FUNCTION IS_HEX : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR
         L : INT; (**)
         pt : REFERENCE TO BYTE; (**)
@@ -478,6 +613,9 @@ END_FUNCTION
 FUNCTION IS_LOWER : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
     VAR
         l : INT; (**)
@@ -490,6 +628,9 @@ FUNCTION IS_NCC : BOOL
         str : STRING[STRING_LENGTH]; (**)
         cmp : STRING[STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR
         L : INT; (**)
         pos : INT; (**)
@@ -498,6 +639,9 @@ END_FUNCTION
 FUNCTION IS_NUM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
     VAR
         L : INT; (**)
@@ -509,6 +653,9 @@ FUNCTION IS_UPPER : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR
         L : INT; (**)
         pt : REFERENCE TO BYTE; (**)
@@ -519,35 +666,56 @@ FUNCTION ISC_ALPHA : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION ISC_CTRL : BOOL
     VAR_INPUT
         IN : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION ISC_HEX : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION ISC_LOWER : BOOL
     VAR_INPUT
         IN : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION ISC_NUM : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION ISC_UPPER : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION LOWERCASE : STRING[STRING_LENGTH]
+FUNCTION LOWERCASE : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         PT : REFERENCE TO BYTE; (**)
@@ -599,9 +767,12 @@ FUNCTION_BLOCK MESSAGE_8
         M : STRING[STRING_LENGTH]; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MIRROR : STRING[STRING_LENGTH]
+FUNCTION MIRROR : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pi : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
@@ -610,20 +781,26 @@ FUNCTION MIRROR : STRING[STRING_LENGTH]
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_TO_STRING : STRING[10]
+FUNCTION MONTH_TO_STRING : BOOL
     VAR_INPUT
         MTH : INT; (**)
         LANG : INT; (**)
         LX : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : STRING[10] := ; (*Return value of the function*)
+    END_VAR
     VAR
         ly : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION OCT_TO_BYTE : BYTE
+FUNCTION OCT_TO_BYTE : BOOL
     VAR_INPUT
         OCT : STRING[10]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
@@ -631,10 +808,13 @@ FUNCTION OCT_TO_BYTE : BYTE
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION OCT_TO_DWORD : DWORD
+FUNCTION OCT_TO_DWORD : BOOL
     VAR_INPUT
         OCT : STRING[20]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
         i : INT; (**)
@@ -642,22 +822,28 @@ FUNCTION OCT_TO_DWORD : DWORD
         stop : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION REAL_TO_STRF : STRING[20]
+FUNCTION REAL_TO_STRF : BOOL
     VAR_INPUT
         IN : REAL; (**)
         N : INT; (**)
         D : STRING[1]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[20] := ; (*Return value of the function*)
     END_VAR
     VAR
         O : REAL; (**)
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION REPLACE_ALL : STRING[STRING_LENGTH]
+FUNCTION REPLACE_ALL : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
         src : STRING[STRING_LENGTH]; (**)
         rep : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
@@ -665,11 +851,14 @@ FUNCTION REPLACE_ALL : STRING[STRING_LENGTH]
         lx : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION REPLACE_CHARS : STRING[STRING_LENGTH]
+FUNCTION REPLACE_CHARS : BOOL
     VAR_INPUT
         STR : STRING[STRING_LENGTH]; (**)
         SRC : STRING[255]; (**)
         REP : STRING[255]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         a : INT; (**)
@@ -678,9 +867,12 @@ FUNCTION REPLACE_CHARS : STRING[STRING_LENGTH]
         stp : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION REPLACE_UML : STRING[STRING_LENGTH]
+FUNCTION REPLACE_UML : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         L : INT; (**)
@@ -709,45 +901,66 @@ FUNCTION_BLOCK TICKER
         step : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TO_LOWER : BYTE
+FUNCTION TO_LOWER : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION TO_UML : STRING[2]
+FUNCTION TO_UML : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : STRING[2] := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION TO_UPPER : BYTE
+FUNCTION TO_UPPER : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION TRIM : STRING[STRING_LENGTH]
+FUNCTION TRIM : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION TRIM1 : STRING[STRING_LENGTH]
+FUNCTION TRIM1 : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION TRIME : STRING[string_length]
+FUNCTION TRIME : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : STRING[string_length] := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION UPPERCASE : STRING[STRING_LENGTH]
+FUNCTION UPPERCASE : BOOL
     VAR_INPUT
         str : STRING[STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO BYTE; (**)
@@ -755,11 +968,14 @@ FUNCTION UPPERCASE : STRING[STRING_LENGTH]
         l : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION WEEKDAY_TO_STRING : STRING[10]
+FUNCTION WEEKDAY_TO_STRING : BOOL
     VAR_INPUT
         WDAY : INT; (**)
         LANG : INT; (**)
         LX : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[10] := ; (*Return value of the function*)
     END_VAR
     VAR
         ly : INT; (**)

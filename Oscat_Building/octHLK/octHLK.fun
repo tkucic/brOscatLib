@@ -1,18 +1,24 @@
-FUNCTION AIR_DENSITY : REAL
+FUNCTION AIR_DENSITY : BOOL
     VAR_INPUT
         T : REAL; (**)
         P : REAL; (**)
         RH : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR CONSTANT
         RL : REAL := 287.05; (**)
         RX : REAL := 0.003773319; (**)
     END_VAR
 END_FUNCTION
-FUNCTION AIR_ENTHALPY : REAL
+FUNCTION AIR_ENTHALPY : BOOL
     VAR_INPUT
         T : REAL; (**)
         RH : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR CONSTANT
         CPL : REAL := 1.00482; (**)
@@ -98,22 +104,31 @@ FUNCTION_BLOCK BURNER
         cycles2 : UDINT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DEW_CON : REAL
+FUNCTION DEW_CON : BOOL
     VAR_INPUT
         RH : REAL; (**)
         T : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION DEW_RH : REAL
+FUNCTION DEW_RH : BOOL
     VAR_INPUT
         VC : REAL; (**)
         T : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION DEW_TEMP : REAL
+FUNCTION DEW_TEMP : BOOL
     VAR_INPUT
         RH : REAL; (**)
         T : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         V : REAL; (**)
@@ -123,10 +138,13 @@ FUNCTION DEW_TEMP : REAL
         b : REAL := 237.3; (**)
     END_VAR
 END_FUNCTION
-FUNCTION HEAT_INDEX : REAL
+FUNCTION HEAT_INDEX : BOOL
     VAR_INPUT
         T : REAL; (**)
         RH : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         RH2 : REAL; (**)
@@ -231,20 +249,29 @@ FUNCTION_BLOCK LEGIONELLA
         init : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION SDD : REAL
+FUNCTION SDD : BOOL
     VAR_INPUT
         T : REAL; (**)
         ICE : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SDD_NH3 : REAL
+FUNCTION SDD_NH3 : BOOL
     VAR_INPUT
         T : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SDT_NH3 : REAL
+FUNCTION SDT_NH3 : BOOL
     VAR_INPUT
         P : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK T_AVG24
@@ -299,17 +326,23 @@ FUNCTION_BLOCK TANK_LEVEL
         open : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TANK_VOL1 : REAL
+FUNCTION TANK_VOL1 : BOOL
     VAR_INPUT
         TR : REAL; (**)
         TL : REAL; (**)
         H : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION TANK_VOL2 : REAL
+FUNCTION TANK_VOL2 : BOOL
     VAR_INPUT
         TR : REAL; (**)
         H : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK TEMP_EXT
@@ -353,19 +386,25 @@ FUNCTION_BLOCK TEMP_EXT
         day : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION WATER_CP : REAL
+FUNCTION WATER_CP : BOOL
     VAR_INPUT
         T : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         Pts : INT := 10; (**)
         data : ARRAY[1..20, 0..1] OF REAL := [0, 4.228, 5, 4.2, 10, 4.188, 15, 4.184, 50, 4.181, 60, 4.183, 70, 4.187, 80, 4.194, 90, 4.204, 100, 4.22]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION WATER_DENSITY : REAL
+FUNCTION WATER_DENSITY : BOOL
     VAR_INPUT
         T : REAL; (**)
         Sat : BOOL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         T2 : REAL; (**)
@@ -381,18 +420,24 @@ FUNCTION WATER_DENSITY : REAL
         b : REAL := 0.0168872; (**)
     END_VAR
 END_FUNCTION
-FUNCTION WATER_ENTHALPY : REAL
+FUNCTION WATER_ENTHALPY : BOOL
     VAR_INPUT
         T : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         Pts : INT := 11; (**)
         data : ARRAY[1..20, 0..1] OF REAL := [0, 0.06, 10, 42.1, 20, 83.9, 30, 125.8, 40, 167.58, 50, 209.4, 60, 251.2, 70, 293.1, 80, 335, 90, 377, 100, 419.1]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION WCT : REAL
+FUNCTION WCT : BOOL
     VAR_INPUT
         T : REAL; (**)
         V : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION

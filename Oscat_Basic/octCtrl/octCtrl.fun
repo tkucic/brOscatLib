@@ -1,7 +1,10 @@
-FUNCTION BAND_B : BYTE
+FUNCTION BAND_B : BOOL
     VAR_INPUT
         X : BYTE; (**)
         B : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK CONTROL_SET1
@@ -50,11 +53,14 @@ FUNCTION_BLOCK CONTROL_SET2
         TX : REAL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION CTRL_IN : REAL
+FUNCTION CTRL_IN : BOOL
     VAR_INPUT
         SET_POINT : REAL; (**)
         ACTUAL : REAL; (**)
         NOISE : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK CTRL_OUT
@@ -134,10 +140,13 @@ FUNCTION_BLOCK CTRL_PWM
         PW : PWM_DC; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DEAD_BAND : REAL
+FUNCTION DEAD_BAND : BOOL
     VAR_INPUT
         X : REAL; (**)
         L : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK DEAD_BAND_A
@@ -156,10 +165,13 @@ FUNCTION_BLOCK DEAD_BAND_A
         tp2 : FT_PT1; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DEAD_ZONE : REAL
+FUNCTION DEAD_ZONE : BOOL
     VAR_INPUT
         X : REAL; (**)
         L : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK DEAD_ZONE2

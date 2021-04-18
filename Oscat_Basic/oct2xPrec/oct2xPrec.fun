@@ -1,31 +1,46 @@
-FUNCTION R2_ABS : REAL2
+FUNCTION R2_ABS : BOOL
     VAR_INPUT
         X : REAL2; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL2 := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION R2_ADD : REAL2
+FUNCTION R2_ADD : BOOL
     VAR_INPUT
         X : REAL2; (**)
         Y : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL2 := ; (*Return value of the function*)
     END_VAR
     VAR
         temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION R2_ADD2 : REAL2
+FUNCTION R2_ADD2 : BOOL
     VAR_INPUT
         X : REAL2; (**)
         Y : REAL2; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL2 := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION R2_MUL : REAL2
+FUNCTION R2_MUL : BOOL
     VAR_INPUT
         X : REAL2; (**)
         Y : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL2 := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION R2_SET : REAL2
+FUNCTION R2_SET : BOOL
     VAR_INPUT
         X : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL2 := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION

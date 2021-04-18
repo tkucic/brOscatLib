@@ -1,4 +1,4 @@
-FUNCTION MULTI_IN : REAL
+FUNCTION MULTI_IN : BOOL
     VAR_INPUT
         in_1 : REAL; (**)
         in_2 : REAL; (**)
@@ -8,6 +8,9 @@ FUNCTION MULTI_IN : REAL
         in_max : REAL; (**)
         mode : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
     VAR
         count : INT; (**)
         F1 : BOOL; (**)
@@ -15,10 +18,13 @@ FUNCTION MULTI_IN : REAL
         F3 : BOOL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION RES_NI : REAL
+FUNCTION RES_NI : BOOL
     VAR_INPUT
         T : REAL; (**)
         R0 : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         T2 : REAL; (**)
@@ -29,17 +35,23 @@ FUNCTION RES_NI : REAL
         C : REAL := 2.805E-09; (**)
     END_VAR
 END_FUNCTION
-FUNCTION RES_NTC : REAL
+FUNCTION RES_NTC : BOOL
     VAR_INPUT
         T : REAL; (**)
         RN : REAL; (**)
         B : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION RES_PT : REAL
+FUNCTION RES_PT : BOOL
     VAR_INPUT
         T : REAL; (**)
         R0 : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         T2 : REAL; (**)
@@ -50,11 +62,14 @@ FUNCTION RES_PT : REAL
         C : REAL := -4.2735E-12; (**)
     END_VAR
 END_FUNCTION
-FUNCTION RES_SI : REAL
+FUNCTION RES_SI : BOOL
     VAR_INPUT
         T : REAL; (**)
         RS : REAL; (**)
         TS : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         TX : REAL; (**)
@@ -64,34 +79,46 @@ FUNCTION RES_SI : REAL
         B : REAL := 1.66E-05; (**)
     END_VAR
 END_FUNCTION
-FUNCTION SENSOR_INT : REAL
+FUNCTION SENSOR_INT : BOOL
     VAR_INPUT
         Voltage : REAL; (**)
         Current : REAL; (**)
         RP : REAL; (**)
         RS : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
     VAR
         RG : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION TEMP_NI : REAL
+FUNCTION TEMP_NI : BOOL
     VAR_INPUT
         Res : REAL; (**)
         R0 : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION TEMP_NTC : REAL
+FUNCTION TEMP_NTC : BOOL
     VAR_INPUT
         RES : REAL; (**)
         RN : REAL; (**)
         B : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION TEMP_PT : REAL
+FUNCTION TEMP_PT : BOOL
     VAR_INPUT
         Res : REAL; (**)
         R0 : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         step : REAL := 50; (**)
@@ -106,10 +133,13 @@ FUNCTION TEMP_PT : REAL
         accuracy : REAL := 0.01; (**)
     END_VAR
 END_FUNCTION
-FUNCTION TEMP_SI : REAL
+FUNCTION TEMP_SI : BOOL
     VAR_INPUT
         Res : REAL; (**)
         RS : REAL; (**)
         TS : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION

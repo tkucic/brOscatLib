@@ -291,9 +291,12 @@ FUNCTION_BLOCK TN_SC_READ_CHAR
         in_Offset : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TN_SC_SHADOW_ATTR : BYTE
+FUNCTION TN_SC_SHADOW_ATTR : BOOL
     VAR_INPUT
         Iby_ATTR : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK TN_SC_VIEWPORT
@@ -397,11 +400,17 @@ FUNCTION TN_SC_XY2_ERROR : BOOL
         X2 : INT; (**)
         Y2 : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION TN_SC_XY_ERROR : BOOL
     VAR_INPUT
         X : INT; (**)
         Y : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK TN_SEND_ROWS

@@ -12,35 +12,50 @@ FUNCTION_BLOCK ASTRO
         YLJ : REAL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BFT_TO_MS : REAL
+FUNCTION BFT_TO_MS : BOOL
     VAR_INPUT
         BFT : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION C_TO_F : REAL
+FUNCTION C_TO_F : BOOL
     VAR_INPUT
         celsius : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION C_TO_K : REAL
+FUNCTION C_TO_K : BOOL
     VAR_INPUT
         Celsius : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION DEG_TO_DIR : STRING[3]
+FUNCTION DEG_TO_DIR : BOOL
     VAR_INPUT
         DEG : INT; (**)
         N : INT; (**)
         L : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : STRING[3] := ; (*Return value of the function*)
+    END_VAR
     VAR
         ly : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DIR_TO_DEG : INT
+FUNCTION DIR_TO_DEG : BOOL
     VAR_INPUT
         DIR : STRING[3]; (**)
         L : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR
         ly : INT; (**)
@@ -59,36 +74,54 @@ FUNCTION_BLOCK ENERGY
         YWh : REAL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION F_TO_C : REAL
+FUNCTION F_TO_C : BOOL
     VAR_INPUT
         fahrenheit : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION F_TO_OM : REAL
+FUNCTION F_TO_OM : BOOL
     VAR_INPUT
         F : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION F_TO_PT : TIME
+FUNCTION F_TO_PT : BOOL
     VAR_INPUT
         F : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : TIME := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION GEO_TO_DEG : REAL
+FUNCTION GEO_TO_DEG : BOOL
     VAR_INPUT
         D : INT; (**)
         M : INT; (**)
         SEC : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION K_TO_C : REAL
+FUNCTION K_TO_C : BOOL
     VAR_INPUT
         Kelvin : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION KMH_TO_MS : REAL
+FUNCTION KMH_TO_MS : BOOL
     VAR_INPUT
         kmh : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK LENGTH
@@ -113,19 +146,28 @@ FUNCTION_BLOCK LENGTH
         Yfm : REAL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MS_TO_BFT : INT
+FUNCTION MS_TO_BFT : BOOL
     VAR_INPUT
         MS : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION MS_TO_KMH : REAL
+FUNCTION MS_TO_KMH : BOOL
     VAR_INPUT
         ms : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION OM_TO_F : REAL
+FUNCTION OM_TO_F : BOOL
     VAR_INPUT
         OM : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK PRESSURE
@@ -146,9 +188,12 @@ FUNCTION_BLOCK PRESSURE
         Ybar : REAL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION PT_TO_F : REAL
+FUNCTION PT_TO_F : BOOL
     VAR_INPUT
         PT : TIME; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK SPEED

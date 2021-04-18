@@ -173,6 +173,9 @@ FUNCTION MANUAL : BOOL
         ON : BOOL; (**)
         OFF : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION_BLOCK MANUAL_1
     VAR_INPUT

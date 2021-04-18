@@ -2,6 +2,9 @@ FUNCTION LIST_CLEAN : BOOL
     VAR_INPUT
         SEP : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR_IN_OUT
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
@@ -13,10 +16,13 @@ FUNCTION LIST_CLEAN : BOOL
         c : BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION LIST_GET : STRING[LIST_LENGTH]
+FUNCTION LIST_GET : BOOL
     VAR_INPUT
         SEP : BYTE; (**)
         POS : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[LIST_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR_IN_OUT
         LIST : STRING[LIST_LENGTH]; (**)
@@ -36,6 +42,9 @@ FUNCTION LIST_INSERT : BOOL
         POS : INT; (**)
         INS : STRING[LIST_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR_IN_OUT
         LIST : STRING[LIST_LENGTH]; (**)
     END_VAR
@@ -46,9 +55,12 @@ FUNCTION LIST_INSERT : BOOL
         sx : STRING[1]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION LIST_LEN : INT
+FUNCTION LIST_LEN : BOOL
     VAR_INPUT
         SEP : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR_IN_OUT
         LIST : STRING[LIST_LENGTH]; (**)
@@ -79,10 +91,13 @@ FUNCTION_BLOCK LIST_NEXT
         write : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION LIST_RETRIEVE : STRING[LIST_LENGTH]
+FUNCTION LIST_RETRIEVE : BOOL
     VAR_INPUT
         SEP : BYTE; (**)
         POS : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[LIST_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR_IN_OUT
         LIST : STRING[LIST_LENGTH]; (**)

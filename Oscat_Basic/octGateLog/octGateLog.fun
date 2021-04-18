@@ -1,65 +1,89 @@
-FUNCTION BCDC_TO_INT : INT
+FUNCTION BCDC_TO_INT : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_COUNT : INT
+FUNCTION BIT_COUNT : BOOL
     VAR_INPUT
         IN : DWORD; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_B : BYTE
+FUNCTION BIT_LOAD_B : BOOL
     VAR_INPUT
         IN : BYTE; (**)
         VAL : BOOL; (**)
         POS : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
     VAR CONSTANT
         dat : BYTE := 1; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_B2 : BYTE
+FUNCTION BIT_LOAD_B2 : BOOL
     VAR_INPUT
         I : BYTE; (**)
         D : BOOL; (**)
         P : INT; (**)
         N : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_DW : DWORD
+FUNCTION BIT_LOAD_DW : BOOL
     VAR_INPUT
         IN : DWORD; (**)
         VAL : BOOL; (**)
         POS : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR CONSTANT
         dat : DWORD := 1; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_DW2 : DWORD
+FUNCTION BIT_LOAD_DW2 : BOOL
     VAR_INPUT
         I : DWORD; (**)
         D : BOOL; (**)
         P : INT; (**)
         N : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_W : WORD
+FUNCTION BIT_LOAD_W : BOOL
     VAR_INPUT
         IN : WORD; (**)
         VAL : BOOL; (**)
         POS : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
+    END_VAR
     VAR CONSTANT
         dat : WORD := 1; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_W2 : WORD
+FUNCTION BIT_LOAD_W2 : BOOL
     VAR_INPUT
         I : WORD; (**)
         D : BOOL; (**)
         P : INT; (**)
         N : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION BIT_OF_DWORD : BOOL
@@ -67,26 +91,38 @@ FUNCTION BIT_OF_DWORD : BOOL
         in : DWORD; (**)
         N : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_TOGGLE_B : BYTE
+FUNCTION BIT_TOGGLE_B : BOOL
     VAR_INPUT
         IN : BYTE; (**)
         POS : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_TOGGLE_DW : DWORD
+FUNCTION BIT_TOGGLE_DW : BOOL
     VAR_INPUT
         IN : DWORD; (**)
         POS : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BIT_TOGGLE_W : WORD
+FUNCTION BIT_TOGGLE_W : BOOL
     VAR_INPUT
         IN : WORD; (**)
         POS : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BYTE_OF_BIT : BYTE
+FUNCTION BYTE_OF_BIT : BOOL
     VAR_INPUT
         B0 : BOOL; (**)
         B1 : BOOL; (**)
@@ -97,11 +133,17 @@ FUNCTION BYTE_OF_BIT : BYTE
         B6 : BOOL; (**)
         B7 : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION BYTE_OF_DWORD : BYTE
+FUNCTION BYTE_OF_DWORD : BOOL
     VAR_INPUT
         in : DWORD; (**)
         N : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK BYTE_TO_BITS
@@ -119,9 +161,12 @@ FUNCTION_BLOCK BYTE_TO_BITS
         B7 : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BYTE_TO_GRAY : BYTE
+FUNCTION BYTE_TO_GRAY : BOOL
     VAR_INPUT
         IN : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION CHECK_PARITY : BOOL
@@ -129,10 +174,16 @@ FUNCTION CHECK_PARITY : BOOL
         in : DWORD; (**)
         p : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CHK_REAL : BYTE
+FUNCTION CHK_REAL : BOOL
     VAR_INPUT
         X : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO DWORD; (**)
@@ -183,36 +234,51 @@ FUNCTION_BLOCK DEC_8
         X : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DW_TO_REAL : REAL
+FUNCTION DW_TO_REAL : BOOL
     VAR_INPUT
         X : DWORD; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION DWORD_OF_BYTE : DWORD
+FUNCTION DWORD_OF_BYTE : BOOL
     VAR_INPUT
         B3 : BYTE; (**)
         B2 : BYTE; (**)
         B1 : BYTE; (**)
         B0 : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION DWORD_OF_WORD : DWORD
+FUNCTION DWORD_OF_WORD : BOOL
     VAR_INPUT
         W1 : WORD; (**)
         W0 : WORD; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION GRAY_TO_BYTE : BYTE
+FUNCTION GRAY_TO_BYTE : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION INT_TO_BCDC : BYTE
+FUNCTION INT_TO_BCDC : BOOL
     VAR_INPUT
         IN : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION MUX_2 : BOOL
@@ -220,6 +286,9 @@ FUNCTION MUX_2 : BOOL
         D0 : BOOL; (**)
         D1 : BOOL; (**)
         A0 : BOOL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION MUX_4 : BOOL
@@ -231,71 +300,104 @@ FUNCTION MUX_4 : BOOL
         A0 : BOOL; (**)
         A1 : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION PARITY : BOOL
     VAR_INPUT
         in : DWORD; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION REAL_TO_DW : DWORD
+FUNCTION REAL_TO_DW : BOOL
     VAR_INPUT
         X : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         pt : REFERENCE TO DWORD; (**)
     END_VAR
 END_FUNCTION
-FUNCTION REFLECT : DWORD
+FUNCTION REFLECT : BOOL
     VAR_INPUT
         D : DWORD; (**)
         L : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION REVERSE : BYTE
+FUNCTION REVERSE : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SHL1 : DWORD
+FUNCTION SHL1 : BOOL
     VAR_INPUT
         IN : DWORD; (**)
         N : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR CONSTANT
         temp : DWORD := 16#FFFFFFFF; (**)
     END_VAR
 END_FUNCTION
-FUNCTION SHR1 : DWORD
+FUNCTION SHR1 : BOOL
     VAR_INPUT
         IN : DWORD; (**)
         N : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR CONSTANT
         temp : DWORD := 16#FFFFFFFF; (**)
     END_VAR
 END_FUNCTION
-FUNCTION SWAP_BYTE : WORD
+FUNCTION SWAP_BYTE : BOOL
     VAR_INPUT
         IN : WORD; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SWAP_BYTE2 : DWORD
+FUNCTION SWAP_BYTE2 : BOOL
     VAR_INPUT
         IN : DWORD; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION WORD_OF_BYTE : WORD
+FUNCTION WORD_OF_BYTE : BOOL
     VAR_INPUT
         B1 : BYTE; (**)
         B0 : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION WORD_OF_DWORD : WORD
+FUNCTION WORD_OF_DWORD : BOOL
     VAR_INPUT
         in : DWORD; (**)
         N : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION

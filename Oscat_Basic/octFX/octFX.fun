@@ -1,11 +1,14 @@
-FUNCTION F_LIN : REAL
+FUNCTION F_LIN : BOOL
     VAR_INPUT
         X : REAL; (**)
         A : REAL; (**)
         B : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION F_LIN2 : REAL
+FUNCTION F_LIN2 : BOOL
     VAR_INPUT
         X : REAL; (**)
         X1 : REAL; (**)
@@ -13,34 +16,49 @@ FUNCTION F_LIN2 : REAL
         X2 : REAL; (**)
         Y2 : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION F_POLY : REAL
+FUNCTION F_POLY : BOOL
     VAR_INPUT
         X : REAL; (**)
         C : ARRAY[0..7] OF REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION F_POWER : REAL
+FUNCTION F_POWER : BOOL
     VAR_INPUT
         a : REAL; (**)
         x : REAL; (**)
         n : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION F_QUAD : REAL
+FUNCTION F_QUAD : BOOL
     VAR_INPUT
         X : REAL; (**)
         A : REAL; (**)
         B : REAL; (**)
         C : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION FRMP_B : BYTE
+FUNCTION FRMP_B : BOOL
     VAR_INPUT
         START : BYTE; (**)
         DIR : BOOL; (**)
         TD : TIME; (**)
         TR : TIME; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK FT_AVG
@@ -90,21 +108,27 @@ FUNCTION_BLOCK FT_RMP
         init : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION LINEAR_INT : REAL
+FUNCTION LINEAR_INT : BOOL
     VAR_INPUT
         X : REAL; (**)
         XY : ARRAY[1..20, 0..1] OF REAL; (**)
         Pts : INT; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
     VAR
         i : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION POLYNOM_INT : REAL
+FUNCTION POLYNOM_INT : BOOL
     VAR_INPUT
         X : REAL; (**)
         XY : ARRAY[1..5, 0..1] OF REAL; (**)
         Pts : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         I : INT; (**)

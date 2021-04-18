@@ -81,6 +81,9 @@ FUNCTION FILE_PATH_SPLIT : BOOL
     VAR_INPUT
         FILENAME : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
     VAR_IN_OUT
         X : FILE_PATH_DATA; (**)
     END_VAR

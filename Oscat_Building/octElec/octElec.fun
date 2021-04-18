@@ -269,10 +269,13 @@ FUNCTION_BLOCK TIMER_2
         run_date : DATE; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TIMER_EVENT_DECODE : OSCAT_BASIC.TIMER_EVENT
+FUNCTION TIMER_EVENT_DECODE : BOOL
     VAR_INPUT
         EVENT : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
         LANG : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : OSCAT_BASIC.TIMER_EVENT := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)

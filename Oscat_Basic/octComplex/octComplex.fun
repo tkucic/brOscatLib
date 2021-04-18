@@ -1,54 +1,78 @@
-FUNCTION CABS : REAL
+FUNCTION CABS : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CACOS : COMPLEX
+FUNCTION CACOS : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CACOSH : COMPLEX
+FUNCTION CACOSH : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CADD : COMPLEX
+FUNCTION CADD : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CARG : REAL
+FUNCTION CARG : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CASIN : COMPLEX
+FUNCTION CASIN : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CASINH : COMPLEX
+FUNCTION CASINH : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         Y : COMPLEX; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CATAN : COMPLEX
+FUNCTION CATAN : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         r2 : REAL; (**)
@@ -56,9 +80,12 @@ FUNCTION CATAN : COMPLEX
         den : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CATANH : COMPLEX
+FUNCTION CATANH : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         i2 : REAL; (**)
@@ -66,102 +93,150 @@ FUNCTION CATANH : COMPLEX
         den : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CCON : COMPLEX
+FUNCTION CCON : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CCOS : COMPLEX
+FUNCTION CCOS : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CCOSH : COMPLEX
+FUNCTION CCOSH : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CDIV : COMPLEX
+FUNCTION CDIV : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
-    VAR
-        Temp : REAL; (**)
-    END_VAR
-END_FUNCTION
-FUNCTION CEXP : COMPLEX
-    VAR_INPUT
-        X : COMPLEX; (**)
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         Temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CINV : COMPLEX
+FUNCTION CEXP : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
+    VAR
+        Temp : REAL; (**)
+    END_VAR
+END_FUNCTION
+FUNCTION CINV : BOOL
+    VAR_INPUT
+        X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CLOG : COMPLEX
+FUNCTION CLOG : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CMUL : COMPLEX
+FUNCTION CMUL : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CPOL : COMPLEX
+FUNCTION CPOL : BOOL
     VAR_INPUT
         L : REAL; (**)
         A : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CPOW : COMPLEX
+FUNCTION CPOW : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CSET : COMPLEX
+FUNCTION CSET : BOOL
     VAR_INPUT
         RE : REAL; (**)
         IM : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CSIN : COMPLEX
+FUNCTION CSIN : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CSINH : COMPLEX
+FUNCTION CSINH : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CSQRT : COMPLEX
+FUNCTION CSQRT : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         temp : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CSUB : COMPLEX
+FUNCTION CSUB : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
         Y : COMPLEX; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CTAN : COMPLEX
+FUNCTION CTAN : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         temp : REAL; (**)
@@ -169,9 +244,12 @@ FUNCTION CTAN : COMPLEX
         xr2 : REAL; (**)
     END_VAR
 END_FUNCTION
-FUNCTION CTANH : COMPLEX
+FUNCTION CTANH : BOOL
     VAR_INPUT
         X : COMPLEX; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : COMPLEX := ; (*Return value of the function*)
     END_VAR
     VAR
         temp : REAL; (**)

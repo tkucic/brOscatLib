@@ -86,9 +86,12 @@ FUNCTION_BLOCK BASE64_ENCODE_STREAM
         BASE64 : STRING[64] := 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION HTML_DECODE : STRING[OSCAT_BASIC.STRING_LENGTH]
+FUNCTION HTML_DECODE : BOOL
     VAR_INPUT
         IN : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[OSCAT_BASIC.STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
@@ -97,10 +100,13 @@ FUNCTION HTML_DECODE : STRING[OSCAT_BASIC.STRING_LENGTH]
         code : STRING[1]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION HTML_ENCODE : STRING[OSCAT_BASIC.STRING_LENGTH]
+FUNCTION HTML_ENCODE : BOOL
     VAR_INPUT
         IN : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
         M : BOOL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[OSCAT_BASIC.STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pt_in : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
@@ -119,18 +125,27 @@ FUNCTION IP4_CHECK : BOOL
         LIP : DWORD; (**)
         SM : DWORD; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION IP4_DECODE : DWORD
+FUNCTION IP4_DECODE : BOOL
     VAR_INPUT
         str : STRING[15]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION IP4_TO_STRING : STRING[15]
+FUNCTION IP4_TO_STRING : BOOL
     VAR_INPUT
         IP4 : DWORD; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[15] := ; (*Return value of the function*)
     END_VAR
     VAR
         tmp : STRING[3]; (**)
@@ -140,13 +155,19 @@ FUNCTION IS_IP4 : BOOL
     VAR_INPUT
         str : STRING[255]; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
 FUNCTION IS_URLCHR : BOOL
     VAR_INPUT
         IN : BYTE; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BOOL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION MD5_AUX : DWORD
+FUNCTION MD5_AUX : BOOL
     VAR_INPUT
         N : INT; (**)
         A : DWORD; (**)
@@ -156,6 +177,9 @@ FUNCTION MD5_AUX : DWORD
         X : DWORD; (**)
         U : INT; (**)
         T : DWORD; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         w : DWORD; (**)
@@ -239,9 +263,12 @@ FUNCTION_BLOCK MD5_STREAM
         pad_1 : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MD5_TO_STRH : STRING[32]
+FUNCTION MD5_TO_STRH : BOOL
     VAR_INPUT
         MD5 : ARRAY[0..15] OF BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[32] := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -320,9 +347,12 @@ FUNCTION_BLOCK SHA1_STREAM
         z : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION SHA1_TO_STRH : STRING[40]
+FUNCTION SHA1_TO_STRH : BOOL
     VAR_INPUT
         SHA1 : ARRAY[0..19] OF BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[40] := ; (*Return value of the function*)
     END_VAR
     VAR
         i : INT; (**)
@@ -330,11 +360,14 @@ FUNCTION SHA1_TO_STRH : STRING[40]
         pt : REFERENCE TO BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION STRING_TO_URL : URL
+FUNCTION STRING_TO_URL : BOOL
     VAR_INPUT
         STR : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
         DEFAULT_PROTOCOL : STRING[10]; (**)
         DEFAULT_PATH : STRING[80]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : URL := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
@@ -342,9 +375,12 @@ FUNCTION STRING_TO_URL : URL
         x : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION URL_DECODE : STRING[OSCAT_BASIC.STRING_LENGTH]
+FUNCTION URL_DECODE : BOOL
     VAR_INPUT
         IN : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[OSCAT_BASIC.STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)
@@ -352,9 +388,12 @@ FUNCTION URL_DECODE : STRING[OSCAT_BASIC.STRING_LENGTH]
         new : STRING[1]; (**)
     END_VAR
 END_FUNCTION
-FUNCTION URL_ENCODE : STRING[OSCAT_BASIC.STRING_LENGTH]
+FUNCTION URL_ENCODE : BOOL
     VAR_INPUT
         IN : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[OSCAT_BASIC.STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR
         pt_in : REFERENCE TO ARRAY[1..255] OF BYTE; (**)
@@ -365,8 +404,11 @@ FUNCTION URL_ENCODE : STRING[OSCAT_BASIC.STRING_LENGTH]
         tb : BYTE; (**)
     END_VAR
 END_FUNCTION
-FUNCTION URL_TO_STRING : STRING[OSCAT_BASIC.STRING_LENGTH]
+FUNCTION URL_TO_STRING : BOOL
     VAR_INPUT
         IN : URL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[OSCAT_BASIC.STRING_LENGTH] := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION

@@ -138,20 +138,26 @@ FUNCTION_BLOCK ESR_MON_X8
         cnt : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION OSCAT_VERSION : DWORD
+FUNCTION OSCAT_VERSION : BOOL
     VAR_INPUT
         IN : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION STATUS_TO_ESR : ESR_DATA
+FUNCTION STATUS_TO_ESR : BOOL
     VAR_INPUT
         status : BYTE; (**)
         adress : STRING[10]; (**)
         DT_in : DT; (**)
         TS : TIME; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : ESR_DATA := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION CRC_GEN : DWORD
+FUNCTION CRC_GEN : BOOL
     VAR_INPUT
         PT : REFERENCE TO ARRAY[0..32000] OF BYTE; (**)
         SIZE : INT; (**)
@@ -161,6 +167,9 @@ FUNCTION CRC_GEN : DWORD
         REV_IN : BOOL; (**)
         REV_OUT : BOOL; (**)
         XOR_OUT : DWORD; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         pos : INT; (**)

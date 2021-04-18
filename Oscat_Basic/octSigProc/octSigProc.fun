@@ -1,10 +1,13 @@
-FUNCTION AIN : REAL
+FUNCTION AIN : BOOL
     VAR_INPUT
         in : DWORD; (**)
         Bits : BYTE; (**)
         sign : BYTE := 255; (**)
         low : REAL; (**)
         high : REAL := 10; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
     VAR
         temp1 : DWORD; (**)
@@ -44,13 +47,16 @@ FUNCTION_BLOCK AIN1
         tB : DWORD; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION AOUT : DWORD
+FUNCTION AOUT : BOOL
     VAR_INPUT
         in : REAL; (**)
         Bits : BYTE; (**)
         sign : BYTE := 255; (**)
         low : REAL; (**)
         high : REAL := 10; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
     VAR
         in2 : REAL; (**)
@@ -60,7 +66,7 @@ FUNCTION AOUT : DWORD
         ff : DWORD := 2#1; (**)
     END_VAR
 END_FUNCTION
-FUNCTION AOUT1 : DWORD
+FUNCTION AOUT1 : BOOL
     VAR_INPUT
         in : REAL; (**)
         Bit_0 : INT; (**)
@@ -69,6 +75,9 @@ FUNCTION AOUT1 : DWORD
         low : REAL; (**)
         high : REAL := 10; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
+    END_VAR
     VAR
         sx : BOOL; (**)
         in2 : REAL; (**)
@@ -77,11 +86,14 @@ FUNCTION AOUT1 : DWORD
         ff : DWORD := 2#1; (**)
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_RANGE : REAL
+FUNCTION BYTE_TO_RANGE : BOOL
     VAR_INPUT
         X : BYTE; (**)
         low : REAL; (**)
         high : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK DELAY
@@ -227,21 +239,27 @@ FUNCTION_BLOCK FILTER_WAV
         n : INT; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MIX : REAL
+FUNCTION MIX : BOOL
     VAR_INPUT
         A : REAL; (**)
         B : REAL; (**)
         M : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION MUX_R2 : REAL
+FUNCTION MUX_R2 : BOOL
     VAR_INPUT
         IN0 : REAL; (**)
         IN1 : REAL; (**)
         A : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION MUX_R4 : REAL
+FUNCTION MUX_R4 : BOOL
     VAR_INPUT
         IN0 : REAL; (**)
         IN1 : REAL; (**)
@@ -250,8 +268,11 @@ FUNCTION MUX_R4 : REAL
         A0 : BOOL; (**)
         A1 : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION OFFSET : REAL
+FUNCTION OFFSET : BOOL
     VAR_INPUT
         X : REAL; (**)
         O1 : BOOL; (**)
@@ -265,8 +286,11 @@ FUNCTION OFFSET : REAL
         Offset_4 : REAL; (**)
         default : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION OFFSET2 : REAL
+FUNCTION OFFSET2 : BOOL
     VAR_INPUT
         X : REAL; (**)
         O1 : BOOL; (**)
@@ -280,8 +304,11 @@ FUNCTION OFFSET2 : REAL
         Offset_4 : REAL; (**)
         default : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION OVERRIDE : REAL
+FUNCTION OVERRIDE : BOOL
     VAR_INPUT
         X1 : REAL; (**)
         X2 : REAL; (**)
@@ -290,22 +317,31 @@ FUNCTION OVERRIDE : REAL
         E2 : BOOL; (**)
         E3 : BOOL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION RANGE_TO_BYTE : BYTE
+FUNCTION RANGE_TO_BYTE : BOOL
     VAR_INPUT
         X : REAL; (**)
         low : REAL; (**)
         high : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : BYTE := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION RANGE_TO_WORD : WORD
+FUNCTION RANGE_TO_WORD : BOOL
     VAR_INPUT
         X : REAL; (**)
         low : REAL; (**)
         high : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : WORD := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE : REAL
+FUNCTION SCALE : BOOL
     VAR_INPUT
         X : REAL; (**)
         K : REAL; (**)
@@ -313,8 +349,11 @@ FUNCTION SCALE : REAL
         MX : REAL; (**)
         MN : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_B : REAL
+FUNCTION SCALE_B : BOOL
     VAR_INPUT
         X : BYTE; (**)
         I_LO : BYTE; (**)
@@ -322,8 +361,11 @@ FUNCTION SCALE_B : REAL
         O_LO : REAL; (**)
         O_HI : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_B2 : REAL
+FUNCTION SCALE_B2 : BOOL
     VAR_INPUT
         in1 : BYTE; (**)
         in2 : BYTE; (**)
@@ -334,8 +376,11 @@ FUNCTION SCALE_B2 : REAL
         in2_min : REAL; (**)
         in2_max : REAL := 1000; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_B4 : REAL
+FUNCTION SCALE_B4 : BOOL
     VAR_INPUT
         in1 : BYTE; (**)
         in2 : BYTE; (**)
@@ -352,8 +397,11 @@ FUNCTION SCALE_B4 : REAL
         in4_min : REAL; (**)
         in4_max : REAL := 1000; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_B8 : REAL
+FUNCTION SCALE_B8 : BOOL
     VAR_INPUT
         in1 : BYTE; (**)
         in2 : BYTE; (**)
@@ -382,8 +430,11 @@ FUNCTION SCALE_B8 : REAL
         in8_min : REAL; (**)
         in8_max : REAL := 1000; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_D : REAL
+FUNCTION SCALE_D : BOOL
     VAR_INPUT
         X : DWORD; (**)
         I_LO : DWORD; (**)
@@ -391,8 +442,11 @@ FUNCTION SCALE_D : REAL
         O_LO : REAL; (**)
         O_HI : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_R : REAL
+FUNCTION SCALE_R : BOOL
     VAR_INPUT
         X : REAL; (**)
         I_LO : REAL; (**)
@@ -400,8 +454,11 @@ FUNCTION SCALE_R : REAL
         O_LO : REAL; (**)
         O_HI : REAL; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_X2 : REAL
+FUNCTION SCALE_X2 : BOOL
     VAR_INPUT
         IN1 : BOOL; (**)
         IN2 : BOOL; (**)
@@ -412,8 +469,11 @@ FUNCTION SCALE_X2 : REAL
         IN2_MIN : REAL; (**)
         IN2_MAX : REAL := 1000; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_X4 : REAL
+FUNCTION SCALE_X4 : BOOL
     VAR_INPUT
         IN1 : BOOL; (**)
         IN2 : BOOL; (**)
@@ -430,8 +490,11 @@ FUNCTION SCALE_X4 : REAL
         IN4_MIN : REAL; (**)
         IN4_MAX : REAL := 1000; (**)
     END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
+    END_VAR
 END_FUNCTION
-FUNCTION SCALE_X8 : REAL
+FUNCTION SCALE_X8 : BOOL
     VAR_INPUT
         in1 : BOOL; (**)
         in2 : BOOL; (**)
@@ -459,6 +522,9 @@ FUNCTION SCALE_X8 : REAL
         in7_max : REAL := 1000; (**)
         in8_min : REAL; (**)
         in8_max : REAL := 1000; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK SEL2_OF_3
@@ -557,10 +623,13 @@ FUNCTION_BLOCK SH_T
         OUT : REAL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION STAIR : REAL
+FUNCTION STAIR : BOOL
     VAR_INPUT
         X : REAL; (**)
         D : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK STAIR2
@@ -600,10 +669,13 @@ FUNCTION_BLOCK TREND_DW
         last_X : DWORD; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION WORD_TO_RANGE : REAL
+FUNCTION WORD_TO_RANGE : BOOL
     VAR_INPUT
         X : WORD; (**)
         low : REAL; (**)
         high : REAL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : REAL := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION

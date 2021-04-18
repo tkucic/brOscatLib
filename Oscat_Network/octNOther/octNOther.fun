@@ -1,6 +1,9 @@
-FUNCTION ELEMENT_COUNT : INT
+FUNCTION ELEMENT_COUNT : BOOL
     VAR_INPUT
         SEP : BYTE; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : INT := ; (*Return value of the function*)
     END_VAR
     VAR_IN_OUT
         ELEMENT : STRING[ELEMENT_LENGTH]; (**)
@@ -11,10 +14,13 @@ FUNCTION ELEMENT_COUNT : INT
         pos : INT; (**)
     END_VAR
 END_FUNCTION
-FUNCTION ELEMENT_GET : STRING[ELEMENT_LENGTH]
+FUNCTION ELEMENT_GET : BOOL
     VAR_INPUT
         SEP : BYTE; (**)
         POS : INT; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : STRING[ELEMENT_LENGTH] := ; (*Return value of the function*)
     END_VAR
     VAR_IN_OUT
         ELEMENT : STRING[ELEMENT_LENGTH]; (**)
@@ -57,9 +63,12 @@ FUNCTION_BLOCK LOG_VIEWPORT
         update_pos : BOOL; (**)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION NETWORK_VERSION : DWORD
+FUNCTION NETWORK_VERSION : BOOL
     VAR_INPUT
         IN : BOOL; (**)
+    END_VAR
+    VAR_OUTPUT
+        retVal : DWORD := ; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK PRINT_SF
