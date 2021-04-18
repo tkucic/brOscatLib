@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - Array handling" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octArray.typ</File>
+    <File Description="Exported constants">octArray.var</File>
+    <File Description="Exported functions and function blocks">octArray.fun</File>
+    <File Description="Source code of function _ARRAY_ABS">_ARRAY_ABS.st</File>
+    <File Description="Source code of function _ARRAY_ADD">_ARRAY_ADD.st</File>
+    <File Description="Source code of function _ARRAY_INIT">_ARRAY_INIT.st</File>
+    <File Description="Source code of function _ARRAY_MEDIAN">_ARRAY_MEDIAN.st</File>
+    <File Description="Source code of function _ARRAY_MUL">_ARRAY_MUL.st</File>
+    <File Description="Source code of function _ARRAY_SHUFFLE">_ARRAY_SHUFFLE.st</File>
+    <File Description="Source code of function _ARRAY_SORT">_ARRAY_SORT.st</File>
+    <File Description="Source code of function ARRAY_AVG">ARRAY_AVG.st</File>
+    <File Description="Source code of function ARRAY_GAV">ARRAY_GAV.st</File>
+    <File Description="Source code of function ARRAY_HAV">ARRAY_HAV.st</File>
+    <File Description="Source code of function ARRAY_MAX">ARRAY_MAX.st</File>
+    <File Description="Source code of function ARRAY_MIN">ARRAY_MIN.st</File>
+    <File Description="Source code of function ARRAY_SDV">ARRAY_SDV.st</File>
+    <File Description="Source code of function ARRAY_SPR">ARRAY_SPR.st</File>
+    <File Description="Source code of function ARRAY_SUM">ARRAY_SUM.st</File>
+    <File Description="Source code of function ARRAY_TREND">ARRAY_TREND.st</File>
+    <File Description="Source code of function ARRAY_VAR">ARRAY_VAR.st</File>
+    <File Description="Source code of function IS_SORTED">IS_SORTED.st</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
+</Library>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Building - HLK" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octHLK.typ</File>
+    <File Description="Exported constants">octHLK.var</File>
+    <File Description="Exported functions and function blocks">octHLK.fun</File>
+    <File Description="Source code of function AIR_DENSITY">AIR_DENSITY.st</File>
+    <File Description="Source code of function AIR_ENTHALPY">AIR_ENTHALPY.st</File>
+    <File Description="Source code of functionBlock BOILER">BOILER.st</File>
+    <File Description="Source code of functionBlock BURNER">BURNER.st</File>
+    <File Description="Source code of function DEW_CON">DEW_CON.st</File>
+    <File Description="Source code of function DEW_RH">DEW_RH.st</File>
+    <File Description="Source code of function DEW_TEMP">DEW_TEMP.st</File>
+    <File Description="Source code of function HEAT_INDEX">HEAT_INDEX.st</File>
+    <File Description="Source code of functionBlock HEAT_METER">HEAT_METER.st</File>
+    <File Description="Source code of functionBlock HEAT_TEMP">HEAT_TEMP.st</File>
+    <File Description="Source code of functionBlock LEGIONELLA">LEGIONELLA.st</File>
+    <File Description="Source code of function SDD">SDD.st</File>
+    <File Description="Source code of function SDD_NH3">SDD_NH3.st</File>
+    <File Description="Source code of function SDT_NH3">SDT_NH3.st</File>
+    <File Description="Source code of functionBlock T_AVG24">T_AVG24.st</File>
+    <File Description="Source code of functionBlock TANK_LEVEL">TANK_LEVEL.st</File>
+    <File Description="Source code of function TANK_VOL1">TANK_VOL1.st</File>
+    <File Description="Source code of function TANK_VOL2">TANK_VOL2.st</File>
+    <File Description="Source code of functionBlock TEMP_EXT">TEMP_EXT.st</File>
+    <File Description="Source code of function WATER_CP">WATER_CP.st</File>
+    <File Description="Source code of function WATER_DENSITY">WATER_DENSITY.st</File>
+    <File Description="Source code of function WATER_ENTHALPY">WATER_ENTHALPY.st</File>
+    <File Description="Source code of function WCT">WCT.st</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
+</Library>

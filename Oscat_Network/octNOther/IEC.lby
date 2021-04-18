@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Network - Other" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octNOther.typ</File>
+    <File Description="Exported constants">octNOther.var</File>
+    <File Description="Exported functions and function blocks">octNOther.fun</File>
+    <File Description="Source code of function ELEMENT_COUNT">ELEMENT_COUNT.st</File>
+    <File Description="Source code of function ELEMENT_GET">ELEMENT_GET.st</File>
+    <File Description="Source code of functionBlock IP_FIFO">IP_FIFO.st</File>
+    <File Description="Source code of functionBlock LOG_MSG">LOG_MSG.st</File>
+    <File Description="Source code of functionBlock LOG_VIEWPORT">LOG_VIEWPORT.st</File>
+    <File Description="Source code of function NETWORK_VERSION">NETWORK_VERSION.st</File>
+    <File Description="Source code of functionBlock PRINT_SF">PRINT_SF.st</File>
+    <File Description="Source code of functionBlock UNI_CIRCULAR_BUFFER">UNI_CIRCULAR_BUFFER.st</File>
+    <File Description="Source code of functionBlock XML_READER">XML_READER.st</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
+</Library>

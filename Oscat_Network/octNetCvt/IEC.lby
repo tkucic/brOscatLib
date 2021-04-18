@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Network - Convert" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octNetCvt.typ</File>
+    <File Description="Exported constants">octNetCvt.var</File>
+    <File Description="Exported functions and function blocks">octNetCvt.fun</File>
+    <File Description="Source code of functionBlock BASE64_DECODE_STR">BASE64_DECODE_STR.st</File>
+    <File Description="Source code of functionBlock BASE64_DECODE_STREAM">BASE64_DECODE_STREAM.st</File>
+    <File Description="Source code of functionBlock BASE64_ENCODE_STR">BASE64_ENCODE_STR.st</File>
+    <File Description="Source code of functionBlock BASE64_ENCODE_STREAM">BASE64_ENCODE_STREAM.st</File>
+    <File Description="Source code of function HTML_DECODE">HTML_DECODE.st</File>
+    <File Description="Source code of function HTML_ENCODE">HTML_ENCODE.st</File>
+    <File Description="Source code of function IP4_CHECK">IP4_CHECK.st</File>
+    <File Description="Source code of function IP4_DECODE">IP4_DECODE.st</File>
+    <File Description="Source code of function IP4_TO_STRING">IP4_TO_STRING.st</File>
+    <File Description="Source code of function IS_IP4">IS_IP4.st</File>
+    <File Description="Source code of function IS_URLCHR">IS_URLCHR.st</File>
+    <File Description="Source code of function MD5_AUX">MD5_AUX.st</File>
+    <File Description="Source code of functionBlock MD5_CRAM_AUTH">MD5_CRAM_AUTH.st</File>
+    <File Description="Source code of functionBlock MD5_STR">MD5_STR.st</File>
+    <File Description="Source code of functionBlock MD5_STREAM">MD5_STREAM.st</File>
+    <File Description="Source code of function MD5_TO_STRH">MD5_TO_STRH.st</File>
+    <File Description="Source code of functionBlock RC4_CRYPT_STREAM">RC4_CRYPT_STREAM.st</File>
+    <File Description="Source code of functionBlock SHA1_STR">SHA1_STR.st</File>
+    <File Description="Source code of functionBlock SHA1_STREAM">SHA1_STREAM.st</File>
+    <File Description="Source code of function SHA1_TO_STRH">SHA1_TO_STRH.st</File>
+    <File Description="Source code of function STRING_TO_URL">STRING_TO_URL.st</File>
+    <File Description="Source code of function URL_DECODE">URL_DECODE.st</File>
+    <File Description="Source code of function URL_ENCODE">URL_ENCODE.st</File>
+    <File Description="Source code of function URL_TO_STRING">URL_TO_STRING.st</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
+</Library>

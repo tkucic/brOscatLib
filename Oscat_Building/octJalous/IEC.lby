@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Building - Jalousie" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octJalous.typ</File>
+    <File Description="Exported constants">octJalous.var</File>
+    <File Description="Exported functions and function blocks">octJalous.fun</File>
+    <File Description="Source code of functionBlock BLIND_ACTUATOR">BLIND_ACTUATOR.st</File>
+    <File Description="Source code of functionBlock BLIND_CONTROL">BLIND_CONTROL.st</File>
+    <File Description="Source code of functionBlock BLIND_CONTROL_S">BLIND_CONTROL_S.st</File>
+    <File Description="Source code of functionBlock BLIND_INPUT">BLIND_INPUT.st</File>
+    <File Description="Source code of functionBlock BLIND_NIGHT">BLIND_NIGHT.st</File>
+    <File Description="Source code of functionBlock BLIND_SCENE">BLIND_SCENE.st</File>
+    <File Description="Source code of functionBlock BLIND_SECURITY">BLIND_SECURITY.st</File>
+    <File Description="Source code of functionBlock BLIND_SET">BLIND_SET.st</File>
+    <File Description="Source code of functionBlock BLIND_SHADE">BLIND_SHADE.st</File>
+    <File Description="Source code of functionBlock BLIND_SHADE_S">BLIND_SHADE_S.st</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
+</Library>

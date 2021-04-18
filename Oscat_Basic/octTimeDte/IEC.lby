@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.6.4.67 SP?>
+<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - Time and Date handling" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported data types">octTimeDte.typ</File>
+    <File Description="Exported constants">octTimeDte.var</File>
+    <File Description="Exported functions and function blocks">octTimeDte.fun</File>
+    <File Description="Source code of functionBlock CALENDAR_CALC">CALENDAR_CALC.st</File>
+    <File Description="Source code of function DATE_ADD">DATE_ADD.st</File>
+    <File Description="Source code of function DAY_OF_DATE">DAY_OF_DATE.st</File>
+    <File Description="Source code of function DAY_OF_MONTH">DAY_OF_MONTH.st</File>
+    <File Description="Source code of function DAY_OF_WEEK">DAY_OF_WEEK.st</File>
+    <File Description="Source code of function DAY_OF_YEAR">DAY_OF_YEAR.st</File>
+    <File Description="Source code of function DAY_TO_TIME">DAY_TO_TIME.st</File>
+    <File Description="Source code of function DAYS_DELTA">DAYS_DELTA.st</File>
+    <File Description="Source code of function DAYS_IN_MONTH">DAYS_IN_MONTH.st</File>
+    <File Description="Source code of function DAYS_IN_YEAR">DAYS_IN_YEAR.st</File>
+    <File Description="Source code of functionBlock DCF77">DCF77.st</File>
+    <File Description="Source code of function DST">DST.st</File>
+    <File Description="Source code of function DT_TO_SDT">DT_TO_SDT.st</File>
+    <File Description="Source code of function DT2_TO_SDT">DT2_TO_SDT.st</File>
+    <File Description="Source code of function EASTER">EASTER.st</File>
+    <File Description="Source code of functionBlock EVENTS">EVENTS.st</File>
+    <File Description="Source code of functionBlock HOLIDAY">HOLIDAY.st</File>
+    <File Description="Source code of function HOUR">HOUR.st</File>
+    <File Description="Source code of function HOUR_OF_DT">HOUR_OF_DT.st</File>
+    <File Description="Source code of function HOUR_TO_TIME">HOUR_TO_TIME.st</File>
+    <File Description="Source code of function HOUR_TO_TOD">HOUR_TO_TOD.st</File>
+    <File Description="Source code of function JD2000">JD2000.st</File>
+    <File Description="Source code of function LEAP_DAY">LEAP_DAY.st</File>
+    <File Description="Source code of function LEAP_OF_DATE">LEAP_OF_DATE.st</File>
+    <File Description="Source code of function LEAP_YEAR">LEAP_YEAR.st</File>
+    <File Description="Source code of function LTIME_TO_UTC">LTIME_TO_UTC.st</File>
+    <File Description="Source code of function MINUTE">MINUTE.st</File>
+    <File Description="Source code of function MINUTE_OF_DT">MINUTE_OF_DT.st</File>
+    <File Description="Source code of function MINUTE_TO_TIME">MINUTE_TO_TIME.st</File>
+    <File Description="Source code of function MONTH_BEGIN">MONTH_BEGIN.st</File>
+    <File Description="Source code of function MONTH_END">MONTH_END.st</File>
+    <File Description="Source code of function MONTH_OF_DATE">MONTH_OF_DATE.st</File>
+    <File Description="Source code of function MULTIME">MULTIME.st</File>
+    <File Description="Source code of function PERIOD">PERIOD.st</File>
+    <File Description="Source code of function PERIOD2">PERIOD2.st</File>
+    <File Description="Source code of function REFRACTION">REFRACTION.st</File>
+    <File Description="Source code of functionBlock RTC_2">RTC_2.st</File>
+    <File Description="Source code of functionBlock RTC_MS">RTC_MS.st</File>
+    <File Description="Source code of function SDT_TO_DATE">SDT_TO_DATE.st</File>
+    <File Description="Source code of function SDT_TO_DT">SDT_TO_DT.st</File>
+    <File Description="Source code of function SDT_TO_TOD">SDT_TO_TOD.st</File>
+    <File Description="Source code of function SECOND">SECOND.st</File>
+    <File Description="Source code of function SECOND_OF_DT">SECOND_OF_DT.st</File>
+    <File Description="Source code of function SECOND_TO_TIME">SECOND_TO_TIME.st</File>
+    <File Description="Source code of function SET_DATE">SET_DATE.st</File>
+    <File Description="Source code of function SET_DT">SET_DT.st</File>
+    <File Description="Source code of function SET_TOD">SET_TOD.st</File>
+    <File Description="Source code of function SUN_MIDDAY">SUN_MIDDAY.st</File>
+    <File Description="Source code of functionBlock SUN_POS">SUN_POS.st</File>
+    <File Description="Source code of functionBlock SUN_TIME">SUN_TIME.st</File>
+    <File Description="Source code of function TIMECHECK">TIMECHECK.st</File>
+    <File Description="Source code of function UTC_TO_LTIME">UTC_TO_LTIME.st</File>
+    <File Description="Source code of function WORK_WEEK">WORK_WEEK.st</File>
+    <File Description="Source code of function YEAR_BEGIN">YEAR_BEGIN.st</File>
+    <File Description="Source code of function YEAR_END">YEAR_END.st</File>
+    <File Description="Source code of function YEAR_OF_DATE">YEAR_OF_DATE.st</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
+</Library>
