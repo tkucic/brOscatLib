@@ -2,7 +2,16 @@
 
 Here we list all the known quirks and differences between the source and the B&R Automation studio
 
+## Libraries
+
+- Version attribute can only be in format X.YY.Z
+- 
 ## Data types
+
+## Var files
+
+- All variables here are constants
+- Even though the data types of the constant have values they need to be initialized
 
 ## Function blocks
 
@@ -19,4 +28,3 @@ Here we list all the known quirks and differences between the source and the B&R
 - syntax for array and string sizes and also POUs like OSCAT_BASIC.STRING_LENGHT is converted to be just STRING_LENGHT as the library holding this constant needs to be added as dependency library
 - END_IF;,END_CASE;, END_FOR; and END_WHILE; statements do not need a semicolon at the end. This is fixed with the script
 - VAR_INPUT CONSTANT doesnt exist in automation studio. These need to be figured out what we do with them
-- E : REAL := 1.60217653E-19; scientific representation doesnt work in AS
