@@ -1,38 +1,38 @@
 TYPE
     WORLD_WEATHER_CUR :    STRUCT
-        OBSERVATION_TIME : STRING[8]; (**)
-        TEMP_C : INT; (**)
-        WEATHER_CODE : INT; (**)
-        WEATHER_DESC : STRING[60]; (**)
-        WEATHER_ICON : INT; (**)
-        WIND_SPEED_MILES : INT; (**)
-        WIND_SPEED_KMPH : INT; (**)
-        WIND_DIR_DEGREE : INT; (**)
-        WIND_DIR16POINT : STRING[3]; (**)
-        PRECIPMM : REAL; (**)
-        HUMIDITY : INT; (**)
-        VISIBILITY : INT; (**)
-        PRESSURE : INT; (**)
-        CLOUDOVER : INT; (**)
+        OBSERVATION_TIME : STRING[8];
+        TEMP_C : INT;
+        WEATHER_CODE : INT;
+        WEATHER_DESC : STRING[60];
+        WEATHER_ICON : INT;
+        WIND_SPEED_MILES : INT;
+        WIND_SPEED_KMPH : INT;
+        WIND_DIR_DEGREE : INT;
+        WIND_DIR16POINT : STRING[3];
+        PRECIPMM : REAL;
+        HUMIDITY : INT;
+        VISIBILITY : INT;
+        PRESSURE : INT;
+        CLOUDOVER : INT;
     END_STRUCT;
     WORLD_WEATHER_DATA :    STRUCT
-        CUR : WORLD_WEATHER_CUR; (**)
-        DAY : ARRAY[0..4] OF WORLD_WEATHER_DAY; (**)
+        CUR : WORLD_WEATHER_CUR;
+        DAY : ARRAY[0..4] OF WORLD_WEATHER_DAY;
     END_STRUCT;
     WORLD_WEATHER_DAY :    STRUCT
-        DATE_OF_DAY : STRING[10]; (**)
-        TEMP_MAX_C : INT; (**)
-        TEMP_MAX_F : INT; (**)
-        TEMP_MIN_C : INT; (**)
-        TEMP_MIN_F : INT; (**)
-        WIND_SPEED_MILES : INT; (**)
-        WIND_SPEED_KMPH : INT; (**)
-        WIND_DIR_DEGREE : INT; (**)
-        WIND_DIR16POINT : STRING[3]; (**)
-        WEATHER_CODE : INT; (**)
-        WEATHER_DESC : STRING[60]; (**)
-        WEATHER_ICON : INT; (**)
-        PRECIPMM : REAL; (**)
+        DATE_OF_DAY : STRING[10];
+        TEMP_MAX_C : INT;
+        TEMP_MAX_F : INT;
+        TEMP_MIN_C : INT;
+        TEMP_MIN_F : INT;
+        WIND_SPEED_MILES : INT;
+        WIND_SPEED_KMPH : INT;
+        WIND_DIR_DEGREE : INT;
+        WIND_DIR16POINT : STRING[3];
+        WEATHER_CODE : INT;
+        WEATHER_DESC : STRING[60];
+        WEATHER_ICON : INT;
+        PRECIPMM : REAL;
     END_STRUCT;
     YAHOO_WEATHER_DATA :    STRUCT
         LOCATION_CITY : STRING[40]; (* THE LOCATION OF THIS FORECAST: CITY: CITY NAME  *)

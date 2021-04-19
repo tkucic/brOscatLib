@@ -1,6 +1,6 @@
 TYPE
     FRACTION :    STRUCT
-        NUMERATOR : INT; (**)
-        DENOMINATOR : INT; (**)
+        NUMERATOR : INT;
+        DENOMINATOR : INT;
     END_STRUCT;
 END_TYPE

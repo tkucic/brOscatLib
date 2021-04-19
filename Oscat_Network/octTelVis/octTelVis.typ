@@ -9,12 +9,12 @@ TYPE
         in_ToolTip_Y : INT; (* Tooltip Text Y-Offset *)
         by_ToolTip_Attr : BYTE; (* Tooltip Text Attribute *)
         in_ToolTip_Size : INT; (* Tooltip Text länge *)
-        usa_TN_INPUT_CONTROL_DATA : ARRAY[1..20] OF us_TN_INPUT_CONTROL_DATA; (**)
+        usa_TN_INPUT_CONTROL_DATA : ARRAY[1..20] OF us_TN_INPUT_CONTROL_DATA;
     END_STRUCT;
     us_TN_INPUT_CONTROL_DATA :    STRUCT
-        by_Input_Exten_Code : BYTE; (**)
-        by_Input_ASCII_Code : BYTE; (**)
-        bo_Input_ASCII_IsNum : BOOL; (**)
+        by_Input_Exten_Code : BYTE;
+        by_Input_ASCII_Code : BYTE;
+        bo_Input_ASCII_IsNum : BOOL;
         in_Title_X_Offset : INT; (* Title Text X-Offset *)
         in_Title_Y_Offset : INT; (* Title Text Y-Offset *)
         by_Title_Attr : BYTE; (* Title Text Attribute *)
@@ -76,13 +76,13 @@ TYPE
         bo_Activ : BOOL; (*   Popup-Menu ist aktiv *)
     END_STRUCT;
     us_TN_SCREEN :    STRUCT
-        bya_CHAR : ARRAY[0..1919] OF BYTE; (**)
-        bya_COLOR : ARRAY[0..1919] OF BYTE; (**)
-        bya_BACKUP : ARRAY[0..1919] OF BYTE; (**)
-        bya_Line_Update : ARRAY[0..23] OF BOOL; (**)
-        by_Input_Exten_Code : BYTE; (**)
-        by_Input_ASCII_Code : BYTE; (**)
-        bo_Input_ASCII_IsNum : BOOL; (**)
+        bya_CHAR : ARRAY[0..1919] OF BYTE;
+        bya_COLOR : ARRAY[0..1919] OF BYTE;
+        bya_BACKUP : ARRAY[0..1919] OF BYTE;
+        bya_Line_Update : ARRAY[0..23] OF BOOL;
+        by_Input_Exten_Code : BYTE;
+        by_Input_ASCII_Code : BYTE;
+        bo_Input_ASCII_IsNum : BOOL;
         in_Page_Number : INT; (* aktive Seiten-Nr. *)
         in_Cursor_X : INT; (* Cursor X-Position *)
         in_Cursor_Y : INT; (* Cursor Y-Position *)

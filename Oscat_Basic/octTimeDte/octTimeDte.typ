@@ -27,19 +27,19 @@ TYPE
         WORK_WEEK : INT; (* current work week *)
     END_STRUCT;
     HOLIDAY_DATA :    STRUCT
-        NAME : STRING[30]; (**)
-        DAY : SINT; (**)
-        MONTH : SINT; (**)
-        USE : SINT; (**)
+        NAME : STRING[30];
+        DAY : SINT;
+        MONTH : SINT;
+        USE : SINT;
     END_STRUCT;
     SDT :    STRUCT
-        YEAR : INT; (**)
-        MONTH : INT; (**)
-        DAY : INT; (**)
-        WEEKDAY : INT; (**)
-        HOUR : INT; (**)
-        MINUTE : INT; (**)
-        SECOND : INT; (**)
-        MS : INT; (**)
+        YEAR : INT;
+        MONTH : INT;
+        DAY : INT;
+        WEEKDAY : INT;
+        HOUR : INT;
+        MINUTE : INT;
+        SECOND : INT;
+        MS : INT;
     END_STRUCT;
 END_TYPE

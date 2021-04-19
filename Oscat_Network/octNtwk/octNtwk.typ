@@ -1,17 +1,17 @@
 TYPE
     IP2GEO_DATA :    STRUCT
-        STATE : BOOL; (**)
-        IP4 : DWORD; (**)
-        COUNTRY_CODE : STRING[2]; (**)
-        COUNTRY_NAME : STRING[20]; (**)
-        REGION_CODE : STRING[2]; (**)
-        REGION_NAME : STRING[20]; (**)
-        CITY : STRING[20]; (**)
-        GEO_LATITUDE : REAL; (**)
-        GEO_LONGITUDE : REAL; (**)
-        TIME_ZONE_NAME : STRING[20]; (**)
-        GMT_OFFSET : INT; (**)
-        IS_DST : BOOL; (**)
+        STATE : BOOL;
+        IP4 : DWORD;
+        COUNTRY_CODE : STRING[2];
+        COUNTRY_NAME : STRING[20];
+        REGION_CODE : STRING[2];
+        REGION_NAME : STRING[20];
+        CITY : STRING[20];
+        GEO_LATITUDE : REAL;
+        GEO_LONGITUDE : REAL;
+        TIME_ZONE_NAME : STRING[20];
+        GMT_OFFSET : INT;
+        IS_DST : BOOL;
     END_STRUCT;
     IP_C :    STRUCT
         C_MODE : BYTE; (*W Mode: TCP/UCP AKTIV/PASSIV                               *)
@@ -38,46 +38,46 @@ TYPE
         NR : INT; (* Lesezeiger                   *)
     END_STRUCT;
     NETWORK_BUFFER :    STRUCT
-        SIZE : UINT; (**)
-        BUFFER : NW_BUF_LONG; (**)
+        SIZE : UINT;
+        BUFFER : NW_BUF_LONG;
     END_STRUCT;
     NETWORK_BUFFER_SHORT :    STRUCT
-        SIZE : UINT; (**)
-        BUFFER : NW_BUF_SHORT; (**)
+        SIZE : UINT;
+        BUFFER : NW_BUF_SHORT;
     END_STRUCT;
     URL :    STRUCT
-        PROTOCOL : STRING[10]; (**)
-        USER : STRING[32]; (**)
-        PASSWORD : STRING[32]; (**)
-        DOMAIN : STRING[80]; (**)
-        PORT : WORD; (**)
-        PATH : STRING[80]; (**)
-        QUERY : STRING[STRING_LENGTH]; (**)
-        ANCHOR : STRING[40]; (**)
-        HEADER : STRING[160]; (**)
+        PROTOCOL : STRING[10];
+        USER : STRING[32];
+        PASSWORD : STRING[32];
+        DOMAIN : STRING[80];
+        PORT : WORD;
+        PATH : STRING[80];
+        QUERY : STRING[STRING_LENGTH];
+        ANCHOR : STRING[40];
+        HEADER : STRING[160];
     END_STRUCT;
     VMAP_DATA :    STRUCT
-        FC : DWORD; (**)
-        V_ADR : INT; (**)
-        V_SIZE : INT; (**)
-        P_ADR : INT; (**)
-        TIME_OUT : TIME; (**)
+        FC : DWORD;
+        V_ADR : INT;
+        V_SIZE : INT;
+        P_ADR : INT;
+        TIME_OUT : TIME;
     END_STRUCT;
     XML_CONTROL :    STRUCT
-        COMMAND : WORD; (**)
-        WATCHDOG : TIME; (**)
-        START_POS : UINT; (**)
-        STOP_POS : UINT; (**)
-        COUNT : UINT; (**)
-        TYP : INT; (**)
-        LEVEL : UINT; (**)
-        PATH : STRING[STRING_LENGTH]; (**)
-        ELEMENT : STRING[STRING_LENGTH]; (**)
-        ATTRIBUTE : STRING[STRING_LENGTH]; (**)
-        VALUE : STRING[STRING_LENGTH]; (**)
-        BLOCK1_START : UINT; (**)
-        BLOCK1_STOP : UINT; (**)
-        BLOCK2_START : UINT; (**)
-        BLOCK2_STOP : UINT; (**)
+        COMMAND : WORD;
+        WATCHDOG : TIME;
+        START_POS : UINT;
+        STOP_POS : UINT;
+        COUNT : UINT;
+        TYP : INT;
+        LEVEL : UINT;
+        PATH : STRING[STRING_LENGTH];
+        ELEMENT : STRING[STRING_LENGTH];
+        ATTRIBUTE : STRING[STRING_LENGTH];
+        VALUE : STRING[STRING_LENGTH];
+        BLOCK1_START : UINT;
+        BLOCK1_STOP : UINT;
+        BLOCK2_START : UINT;
+        BLOCK2_STOP : UINT;
     END_STRUCT;
 END_TYPE
