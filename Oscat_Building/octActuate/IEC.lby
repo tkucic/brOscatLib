@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Building - Actuators" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.0.0" SubType="IEC" Description="Oscat Building - Actuators" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octActuate.typ</File>
     <File Description="Exported constants">octActuate.var</File>
@@ -13,8 +13,5 @@
     <File Description="Source code of functionBlock ACTUATOR_UD">ACTUATOR_UD.st</File>
     <File Description="Source code of functionBlock AUTORUN">AUTORUN.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

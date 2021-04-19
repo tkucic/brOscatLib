@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Network - NET_VAR" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.3.5.2" SubType="IEC" Description="Oscat Network - NET_VAR" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octNetVar.typ</File>
     <File Description="Exported constants">octNetVar.var</File>
@@ -13,8 +13,5 @@
     <File Description="Source code of functionBlock NET_VAR_STRING">NET_VAR_STRING.st</File>
     <File Description="Source code of functionBlock NET_VAR_X8">NET_VAR_X8.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

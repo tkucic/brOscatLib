@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - Other" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.3.4.0" SubType="IEC" Description="Oscat Basic - Other" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octOther.typ</File>
     <File Description="Exported constants">octOther.var</File>
@@ -15,8 +15,5 @@
     <File Description="Source code of functionBlock MATRIX">MATRIX.st</File>
     <File Description="Source code of functionBlock PIN_CODE">PIN_CODE.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

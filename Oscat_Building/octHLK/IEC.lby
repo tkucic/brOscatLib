@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Building - HLK" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.0.0" SubType="IEC" Description="Oscat Building - HLK" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octHLK.typ</File>
     <File Description="Exported constants">octHLK.var</File>
@@ -29,8 +29,5 @@
     <File Description="Source code of function WATER_ENTHALPY">WATER_ENTHALPY.st</File>
     <File Description="Source code of function WCT">WCT.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

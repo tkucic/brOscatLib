@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - Generators" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.3.4.0" SubType="IEC" Description="Oscat Basic - Generators" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octGen.typ</File>
     <File Description="Exported constants">octGen.var</File>
@@ -30,8 +30,5 @@
     <File Description="Source code of functionBlock TP_1D">TP_1D.st</File>
     <File Description="Source code of functionBlock TP_X">TP_X.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

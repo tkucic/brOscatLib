@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Network - Database" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.3.5.2" SubType="IEC" Description="Oscat Network - Database" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octDB.typ</File>
     <File Description="Exported constants">octDB.var</File>
@@ -8,8 +8,5 @@
     <File Description="Source code of functionBlock MYSQL_AUTH">MYSQL_AUTH.st</File>
     <File Description="Source code of functionBlock MYSQL_CONTROL">MYSQL_CONTROL.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

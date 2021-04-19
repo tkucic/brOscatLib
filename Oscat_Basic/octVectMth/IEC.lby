@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - Vector math" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.3.4.0" SubType="IEC" Description="Oscat Basic - Vector math" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octVectMth.typ</File>
     <File Description="Exported constants">octVectMth.var</File>
@@ -20,8 +20,5 @@
     <File Description="Source code of function V3_YANG">V3_YANG.st</File>
     <File Description="Source code of function V3_ZANG">V3_ZANG.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

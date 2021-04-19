@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Network - Convert" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.3.5.2" SubType="IEC" Description="Oscat Network - Convert" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octNetCvt.typ</File>
     <File Description="Exported constants">octNetCvt.var</File>
@@ -30,8 +30,5 @@
     <File Description="Source code of function URL_ENCODE">URL_ENCODE.st</File>
     <File Description="Source code of function URL_TO_STRING">URL_TO_STRING.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

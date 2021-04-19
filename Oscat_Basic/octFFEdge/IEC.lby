@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - FF Edge detection" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.3.4.0" SubType="IEC" Description="Oscat Basic - FF Edge detection" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octFFEdge.typ</File>
     <File Description="Exported constants">octFFEdge.var</File>
@@ -19,8 +19,5 @@
     <File Description="Source code of functionBlock SHR_8UDE">SHR_8UDE.st</File>
     <File Description="Source code of functionBlock TOGGLE">TOGGLE.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

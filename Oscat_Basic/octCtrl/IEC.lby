@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Basic - Control" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.3.4.0" SubType="IEC" Description="Oscat Basic - Control" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octCtrl.typ</File>
     <File Description="Exported constants">octCtrl.var</File>
@@ -40,8 +40,5 @@
     <File Description="Source code of functionBlock HYST_3">HYST_3.st</File>
     <File Description="Source code of functionBlock INTEGRATE">INTEGRATE.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>

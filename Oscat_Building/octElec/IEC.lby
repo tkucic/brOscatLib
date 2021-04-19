@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.31.0" SubType="IEC" Description="Oscat Building - Electrical" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.0.0" SubType="IEC" Description="Oscat Building - Electrical" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octElec.typ</File>
     <File Description="Exported constants">octElec.var</File>
@@ -22,8 +22,5 @@
     <File Description="Source code of functionBlock TIMER_EXT">TIMER_EXT.st</File>
     <File Description="Source code of functionBlock TIMER_P4">TIMER_P4.st</File>
   </Files>
-  <Dependencies>
-    <Dependency ObjectName="standard" />
-    <Dependency ObjectName="octCommon" />
-  </Dependencies>
+  <Dependencies />
 </Library>
