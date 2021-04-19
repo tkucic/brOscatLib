@@ -1,9 +1,9 @@
 VAR CONSTANT
     STRING_LENGTH : INT := 250;
     LIST_LENGTH : INT := 250;
-    MATH : CONSTANTS_MATH; (*Math constants*)
-    PHYS : CONSTANTS_PHYS; (*Physics constants*)
-    LANGUAGE : CONSTANTS_LANGUAGE; (*Language constants*)
-    SETUP : CONSTANTS_SETUP; (*Setup constants*)
-    LOCATION : CONSTANTS_LOCATION; (*Location constants*)
+    MATH : CONSTANTS_MATH := (PI:=3.1415926535897931,PI2:=6.2831853071795862,PI4:=12.566370614359172,PI05:=1.5707963267949,PI025:=0.785398163397448,PI_INV:=0.318309886183791,E:=2.7182818284590451,E_INV:=0.367879441171442,SQ2:=1.4142135623731,FACTS:=[1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600]); (*Math constants*)
+    PHYS : CONSTANTS_PHYS := (C:=299792458,E:=1.60217653E-19,G:=9.80665,T0:=-273.15,RU:=8.314472,PN:=101325); (*Physics constants*)
+    LANGUAGE : CONSTANTS_LANGUAGE := (DEFAULT:=1,LMAX:=3,WEEKDAYS:=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],WEEKDAYS2:=['Mo','Tu','We','Th','Fr','Sa','Su','Mo','Di','Mi','Do','Fr','Sa','So','Lu','Ma','Me','Je','Ve','Sa','Di'],MONTHS:=['January','February','March','April','May','June','July','August','September','October','November','December','Januar','Februar','MÃƒÂ¤rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember','Janvier','FÃƒÂ©vrier','mars','Avril','Mai','Juin','Juillet','AoÃƒÂ»t','Septembre','Octobre','Novembre','Decembre'],MONTHS3:=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez','Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sep','Oct','Nov','Dec'],DIRS:=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW']); (*Language constants*)
+    SETUP : CONSTANTS_SETUP := (EXTENDED_ASCII:=TRUE,CHARNAMES:=['1'],MTH_OFS:=[0,31,59,90,120,151,181,212,243,273,304,334],DECADES:=[1,10,100,1000,10000,100000,1000000,10000000,100000000]); (*Setup constants*)
+    LOCATION : CONSTANTS_LOCATION := (DEFAULT:=1,LMAX:=5,LANGUAGE:=[2(2),3,2(2)]); (*Location constants*)
 END_VAR
