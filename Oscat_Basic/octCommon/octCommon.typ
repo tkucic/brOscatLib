@@ -39,7 +39,7 @@ TYPE
     END_STRUCT;
     CONSTANTS_SETUP :    STRUCT
         EXTENDED_ASCII : BOOL := TRUE; (* setup Parameters *)
-        CHARNAMES : ARRAY[1..4] OF STRING[253] := []; (**)
+        CHARNAMES : ARRAY[1..4] OF STRING[253] := ['1']; (**)
         MTH_OFS : ARRAY[1..12] OF INT := [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]; (**)
         DECADES : ARRAY[0..8] OF REAL := [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000]; (**)
     END_STRUCT;

@@ -29,7 +29,7 @@ TYPE
         by_Attr_oF : BYTE; (* Text Attribute ohne Fokus *)
         in_selected : INT; (* Text Item wurde ausgewählt *)
         st_Input_Mask : STRING[255]; (* Text Eingabemaske *)
-        st_Input_Data : STRING[OSCAT_BASIC.STRING_LENGTH]; (* Text aktuelle Eingabedaten *)
+        st_Input_Data : STRING[STRING_LENGTH]; (* Text aktuelle Eingabedaten *)
         st_Input_String : STRING[255]; (* Text Kopie nach Return-Taste *)
         st_Input_ToolTip : STRING[255]; (* Text ToolTip (Eingabeinformation) *)
         in_Input_Option : INT; (* Text Ausgabe-Optionen *)
@@ -41,7 +41,7 @@ TYPE
         bo_Update_All : BOOL; (* Element komplett neuzeichnen *)
     END_STRUCT;
     us_TN_MENU :    STRUCT
-        st_Menu_Text : STRING[OSCAT_BASIC.STRING_LENGTH]; (* X Menue Texte *)
+        st_Menu_Text : STRING[STRING_LENGTH]; (* X Menue Texte *)
         in_Menu_E_Count : INT; (* Menue Elemente Anzahl *)
         in_Y : INT; (* Menue Zeilennummer  Y-Position *)
         in_X : INT; (* Menue Spaltennummer X-Position *)
@@ -60,7 +60,7 @@ TYPE
         bo_Update : BOOL; (* X Menu updaten *)
     END_STRUCT;
     us_TN_MENU_POPUP :    STRUCT
-        st_Menu_Text : STRING[OSCAT_BASIC.STRING_LENGTH]; (* X Menue Texte *)
+        st_Menu_Text : STRING[STRING_LENGTH]; (* X Menue Texte *)
         in_Menu_E_Count : INT; (* Menue Elemente Anzahl *)
         in_X : INT; (* X Menue X-Position *)
         in_Y : INT; (* X Menue Y-Position *)

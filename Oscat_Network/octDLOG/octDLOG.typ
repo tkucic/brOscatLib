@@ -60,7 +60,7 @@ TYPE
         D_MODE : INT; (**)
         D_SIZE : INT; (**)
         D_HEAD : WORD; (**)
-        D_STRING : STRING[OSCAT_BASIC.STRING_LENGTH]; (**)
+        D_STRING : STRING[STRING_LENGTH]; (**)
         D_REAL : REAL; (**)
         D_DWORD : DWORD; (**)
         BUF_SIZE : UINT; (**)
