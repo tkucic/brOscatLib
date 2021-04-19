@@ -1,681 +1,605 @@
-FUNCTION AIN : BOOL
+FUNCTION AIN : REAL
     VAR_INPUT
-        in : DWORD; (**)
-        Bits : BYTE; (**)
-        sign : BYTE := 255; (**)
-        low : REAL; (**)
-        high : REAL := 10; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in : DWORD;
+        Bits : BYTE;
+        sign : BYTE := 255;
+        low : REAL;
+        high : REAL := 10;
     END_VAR
     VAR
-        temp1 : DWORD; (**)
-        temp2 : DWORD; (**)
-        sx : BOOL; (**)
+        temp1 : DWORD;
+        temp2 : DWORD;
+        sx : BOOL;
     END_VAR
     VAR CONSTANT
-        ff : DWORD := 16#FFFFFFFF; (**)
+        ff : DWORD := 16#FFFFFFFF;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK AIN1
     VAR_INPUT
-        in : DWORD; (**)
-        sign_bit : INT := 255; (**)
-        error_bit : INT := 255; (**)
-        error_code_en : BOOL; (**)
-        error_code : DWORD; (**)
-        overflow_bit : INT := 255; (**)
-        overflow_code_en : BOOL; (**)
-        overflow_code : DWORD; (**)
-        Bit_0 : INT; (**)
-        Bit_N : INT := 31; (**)
-        out_min : REAL; (**)
-        out_max : REAL := 10; (**)
-        code_min : DWORD; (**)
-        code_max : DWORD := 16#FFFFFFFF; (**)
-        error_output : REAL; (**)
-        overflow_output : REAL := 10; (**)
+        in : DWORD;
+        sign_bit : INT := 255;
+        error_bit : INT := 255;
+        error_code_en : BOOL;
+        error_code : DWORD;
+        overflow_bit : INT := 255;
+        overflow_code_en : BOOL;
+        overflow_code : DWORD;
+        Bit_0 : INT;
+        Bit_N : INT := 31;
+        out_min : REAL;
+        out_max : REAL := 10;
+        code_min : DWORD;
+        code_max : DWORD := 16#FFFFFFFF;
+        error_output : REAL;
+        overflow_output : REAL := 10;
     END_VAR
     VAR_OUTPUT
-        out : REAL; (**)
-        sign : BOOL; (**)
-        error : BOOL; (**)
-        overflow : BOOL; (**)
+        out : REAL;
+        sign : BOOL;
+        error : BOOL;
+        overflow : BOOL;
     END_VAR
     VAR
-        tB : DWORD; (**)
+        tB : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION AOUT : BOOL
+FUNCTION AOUT : DWORD
     VAR_INPUT
-        in : REAL; (**)
-        Bits : BYTE; (**)
-        sign : BYTE := 255; (**)
-        low : REAL; (**)
-        high : REAL := 10; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DWORD := ; (*Return value of the function*)
+        in : REAL;
+        Bits : BYTE;
+        sign : BYTE := 255;
+        low : REAL;
+        high : REAL := 10;
     END_VAR
     VAR
-        in2 : REAL; (**)
-        sx : BOOL; (**)
+        in2 : REAL;
+        sx : BOOL;
     END_VAR
     VAR CONSTANT
-        ff : DWORD := 2#1; (**)
+        ff : DWORD := 2#1;
     END_VAR
 END_FUNCTION
-FUNCTION AOUT1 : BOOL
+FUNCTION AOUT1 : DWORD
     VAR_INPUT
-        in : REAL; (**)
-        Bit_0 : INT; (**)
-        Bit_N : INT := 31; (**)
-        sign : INT := 255; (**)
-        low : REAL; (**)
-        high : REAL := 10; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DWORD := ; (*Return value of the function*)
+        in : REAL;
+        Bit_0 : INT;
+        Bit_N : INT := 31;
+        sign : INT := 255;
+        low : REAL;
+        high : REAL := 10;
     END_VAR
     VAR
-        sx : BOOL; (**)
-        in2 : REAL; (**)
+        sx : BOOL;
+        in2 : REAL;
     END_VAR
     VAR CONSTANT
-        ff : DWORD := 2#1; (**)
+        ff : DWORD := 2#1;
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_RANGE : BOOL
+FUNCTION BYTE_TO_RANGE : REAL
     VAR_INPUT
-        X : BYTE; (**)
-        low : REAL; (**)
-        high : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : BYTE;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK DELAY
     VAR_INPUT
-        IN : REAL; (**)
-        N : INT; (**)
-        RST : BOOL; (**)
+        IN : REAL;
+        N : INT;
+        RST : BOOL;
     END_VAR
     VAR_OUTPUT
-        OUT : REAL; (**)
+        OUT : REAL;
     END_VAR
     VAR
-        buf : ARRAY[0..31] OF REAL; (**)
-        i : INT; (**)
-        init : BOOL; (**)
-        stop : INT; (**)
+        buf : ARRAY[0..31] OF REAL;
+        i : INT;
+        init : BOOL;
+        stop : INT;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK DELAY_4
     VAR_INPUT
-        in : REAL; (**)
+        in : REAL;
     END_VAR
     VAR_OUTPUT
-        out1 : REAL; (**)
-        out2 : REAL; (**)
-        out3 : REAL; (**)
-        out4 : REAL; (**)
+        out1 : REAL;
+        out2 : REAL;
+        out3 : REAL;
+        out4 : REAL;
     END_VAR
     VAR
-        temp : REAL; (**)
+        temp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FADE
     VAR_INPUT
-        IN1 : REAL; (**)
-        IN2 : REAL; (**)
-        F : BOOL; (**)
-        TF : TIME; (**)
-        rst : BOOL; (**)
+        IN1 : REAL;
+        IN2 : REAL;
+        F : BOOL;
+        TF : TIME;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT
-        Y : REAL; (**)
+        Y : REAL;
     END_VAR
     VAR
-        rmx : RMP_W; (**)
+        rmx : RMP_W;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FILTER_DW
     VAR_INPUT
-        X : DWORD; (**)
-        T : TIME; (**)
+        X : DWORD;
+        T : TIME;
     END_VAR
     VAR_OUTPUT
-        Y : DWORD; (**)
+        Y : DWORD;
     END_VAR
     VAR
-        last : DWORD; (**)
-        tx : DWORD; (**)
-        init : BOOL; (**)
-        Yi : REAL; (**)
+        last : DWORD;
+        tx : DWORD;
+        init : BOOL;
+        Yi : REAL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FILTER_I
     VAR_INPUT
-        X : INT; (**)
-        T : TIME; (**)
+        X : INT;
+        T : TIME;
     END_VAR
     VAR_OUTPUT
-        Y : INT; (**)
+        Y : INT;
     END_VAR
     VAR
-        Yi : DINT; (**)
-        last : DWORD; (**)
-        tx : DWORD; (**)
-        init : BOOL; (**)
+        Yi : DINT;
+        last : DWORD;
+        tx : DWORD;
+        init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FILTER_MAV_DW
-    VAR_TEMP
-        tmp : INT; (**)
-    END_VAR
     VAR_INPUT
-        X : DWORD; (**)
-        N : UINT; (**)
-        RST : BOOL; (**)
+        X : DWORD;
+        N : UINT;
+        RST : BOOL;
     END_VAR
     VAR_OUTPUT
-        Y : DWORD; (**)
+        Y : DWORD;
     END_VAR
     VAR
-        init : BOOL; (**)
-        buffer : ARRAY[0..31] OF DWORD; (**)
-        i : INT; (**)
+        init : BOOL;
+        buffer : ARRAY[0..31] OF DWORD;
+        i : INT;
+        tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FILTER_MAV_W
-    VAR_TEMP
-        tmp : INT; (**)
-    END_VAR
     VAR_INPUT
-        X : WORD; (**)
-        N : UINT; (**)
-        RST : BOOL; (**)
+        X : WORD;
+        N : UINT;
+        RST : BOOL;
     END_VAR
     VAR_OUTPUT
-        Y : WORD; (**)
+        Y : WORD;
     END_VAR
     VAR
-        init : BOOL; (**)
-        buffer : ARRAY[1..32] OF WORD; (**)
-        i : INT; (**)
-        sum : DWORD; (**)
+        init : BOOL;
+        buffer : ARRAY[1..32] OF WORD;
+        i : INT;
+        sum : DWORD;
+        tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FILTER_W
     VAR_INPUT
-        X : WORD; (**)
-        T : TIME; (**)
+        X : WORD;
+        T : TIME;
     END_VAR
     VAR_OUTPUT
-        Y : WORD; (**)
+        Y : WORD;
     END_VAR
     VAR
-        last : DWORD; (**)
-        tx : DWORD; (**)
-        init : BOOL; (**)
-        tmp : DWORD; (**)
+        last : DWORD;
+        tx : DWORD;
+        init : BOOL;
+        tmp : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FILTER_WAV
     VAR_INPUT
-        X : REAL; (**)
-        W : ARRAY[0..15] OF REAL; (**)
-        RST : BOOL; (**)
+        X : REAL;
+        W : ARRAY[0..15] OF REAL;
+        RST : BOOL;
     END_VAR
     VAR_OUTPUT
-        Y : REAL; (**)
+        Y : REAL;
     END_VAR
     VAR
-        init : BOOL; (**)
-        buffer : ARRAY[0..15] OF REAL; (**)
-        i : INT; (**)
-        n : INT; (**)
+        init : BOOL;
+        buffer : ARRAY[0..15] OF REAL;
+        i : INT;
+        n : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MIX : BOOL
+FUNCTION MIX : REAL
     VAR_INPUT
-        A : REAL; (**)
-        B : REAL; (**)
-        M : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        A : REAL;
+        B : REAL;
+        M : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MUX_R2 : BOOL
+FUNCTION MUX_R2 : REAL
     VAR_INPUT
-        IN0 : REAL; (**)
-        IN1 : REAL; (**)
-        A : BOOL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        IN0 : REAL;
+        IN1 : REAL;
+        A : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION MUX_R4 : BOOL
+FUNCTION MUX_R4 : REAL
     VAR_INPUT
-        IN0 : REAL; (**)
-        IN1 : REAL; (**)
-        IN2 : REAL; (**)
-        IN3 : REAL; (**)
-        A0 : BOOL; (**)
-        A1 : BOOL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        IN0 : REAL;
+        IN1 : REAL;
+        IN2 : REAL;
+        IN3 : REAL;
+        A0 : BOOL;
+        A1 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION OFFSET : BOOL
+FUNCTION OFFSET : REAL
     VAR_INPUT
-        X : REAL; (**)
-        O1 : BOOL; (**)
-        O2 : BOOL; (**)
-        O3 : BOOL; (**)
-        O4 : BOOL; (**)
-        D : BOOL; (**)
-        Offset_1 : REAL; (**)
-        Offset_2 : REAL; (**)
-        Offset_3 : REAL; (**)
-        Offset_4 : REAL; (**)
-        default : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        O1 : BOOL;
+        O2 : BOOL;
+        O3 : BOOL;
+        O4 : BOOL;
+        D : BOOL;
+        Offset_1 : REAL;
+        Offset_2 : REAL;
+        Offset_3 : REAL;
+        Offset_4 : REAL;
+        default : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION OFFSET2 : BOOL
+FUNCTION OFFSET2 : REAL
     VAR_INPUT
-        X : REAL; (**)
-        O1 : BOOL; (**)
-        O2 : BOOL; (**)
-        O3 : BOOL; (**)
-        O4 : BOOL; (**)
-        D : BOOL; (**)
-        Offset_1 : REAL; (**)
-        Offset_2 : REAL; (**)
-        Offset_3 : REAL; (**)
-        Offset_4 : REAL; (**)
-        default : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        O1 : BOOL;
+        O2 : BOOL;
+        O3 : BOOL;
+        O4 : BOOL;
+        D : BOOL;
+        Offset_1 : REAL;
+        Offset_2 : REAL;
+        Offset_3 : REAL;
+        Offset_4 : REAL;
+        default : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION OVERRIDE : BOOL
+FUNCTION OVERRIDE : REAL
     VAR_INPUT
-        X1 : REAL; (**)
-        X2 : REAL; (**)
-        X3 : REAL; (**)
-        E1 : BOOL; (**)
-        E2 : BOOL; (**)
-        E3 : BOOL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X1 : REAL;
+        X2 : REAL;
+        X3 : REAL;
+        E1 : BOOL;
+        E2 : BOOL;
+        E3 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION RANGE_TO_BYTE : BOOL
+FUNCTION RANGE_TO_BYTE : BYTE
     VAR_INPUT
-        X : REAL; (**)
-        low : REAL; (**)
-        high : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BYTE := ; (*Return value of the function*)
+        X : REAL;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RANGE_TO_WORD : BOOL
+FUNCTION RANGE_TO_WORD : WORD
     VAR_INPUT
-        X : REAL; (**)
-        low : REAL; (**)
-        high : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : WORD := ; (*Return value of the function*)
+        X : REAL;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE : BOOL
+FUNCTION SCALE : REAL
     VAR_INPUT
-        X : REAL; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        MX : REAL; (**)
-        MN : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        K : REAL;
+        O : REAL;
+        MX : REAL;
+        MN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B : BOOL
+FUNCTION SCALE_B : REAL
     VAR_INPUT
-        X : BYTE; (**)
-        I_LO : BYTE; (**)
-        I_HI : BYTE; (**)
-        O_LO : REAL; (**)
-        O_HI : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : BYTE;
+        I_LO : BYTE;
+        I_HI : BYTE;
+        O_LO : REAL;
+        O_HI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B2 : BOOL
+FUNCTION SCALE_B2 : REAL
     VAR_INPUT
-        in1 : BYTE; (**)
-        in2 : BYTE; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        in1_min : REAL; (**)
-        in1_max : REAL := 1000; (**)
-        in2_min : REAL; (**)
-        in2_max : REAL := 1000; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in1 : BYTE;
+        in2 : BYTE;
+        K : REAL;
+        O : REAL;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B4 : BOOL
+FUNCTION SCALE_B4 : REAL
     VAR_INPUT
-        in1 : BYTE; (**)
-        in2 : BYTE; (**)
-        in3 : BYTE; (**)
-        in4 : BYTE; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        in1_min : REAL; (**)
-        in1_max : REAL := 1000; (**)
-        in2_min : REAL; (**)
-        in2_max : REAL := 1000; (**)
-        in3_min : REAL; (**)
-        in3_max : REAL := 1000; (**)
-        in4_min : REAL; (**)
-        in4_max : REAL := 1000; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in1 : BYTE;
+        in2 : BYTE;
+        in3 : BYTE;
+        in4 : BYTE;
+        K : REAL;
+        O : REAL;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
+        in3_min : REAL;
+        in3_max : REAL := 1000;
+        in4_min : REAL;
+        in4_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B8 : BOOL
+FUNCTION SCALE_B8 : REAL
     VAR_INPUT
-        in1 : BYTE; (**)
-        in2 : BYTE; (**)
-        in3 : BYTE; (**)
-        in4 : BYTE; (**)
-        in5 : BYTE; (**)
-        in6 : BYTE; (**)
-        in7 : BYTE; (**)
-        in8 : BYTE; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        in1_min : REAL; (**)
-        in1_max : REAL := 1000; (**)
-        in2_min : REAL; (**)
-        in2_max : REAL := 1000; (**)
-        in3_min : REAL; (**)
-        in3_max : REAL := 1000; (**)
-        in4_min : REAL; (**)
-        in4_max : REAL := 1000; (**)
-        in5_min : REAL; (**)
-        in5_max : REAL := 1000; (**)
-        in6_min : REAL; (**)
-        in6_max : REAL := 1000; (**)
-        in7_min : REAL; (**)
-        in7_max : REAL := 1000; (**)
-        in8_min : REAL; (**)
-        in8_max : REAL := 1000; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in1 : BYTE;
+        in2 : BYTE;
+        in3 : BYTE;
+        in4 : BYTE;
+        in5 : BYTE;
+        in6 : BYTE;
+        in7 : BYTE;
+        in8 : BYTE;
+        K : REAL;
+        O : REAL;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
+        in3_min : REAL;
+        in3_max : REAL := 1000;
+        in4_min : REAL;
+        in4_max : REAL := 1000;
+        in5_min : REAL;
+        in5_max : REAL := 1000;
+        in6_min : REAL;
+        in6_max : REAL := 1000;
+        in7_min : REAL;
+        in7_max : REAL := 1000;
+        in8_min : REAL;
+        in8_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_D : BOOL
+FUNCTION SCALE_D : REAL
     VAR_INPUT
-        X : DWORD; (**)
-        I_LO : DWORD; (**)
-        I_HI : DWORD; (**)
-        O_LO : REAL; (**)
-        O_HI : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : DWORD;
+        I_LO : DWORD;
+        I_HI : DWORD;
+        O_LO : REAL;
+        O_HI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_R : BOOL
+FUNCTION SCALE_R : REAL
     VAR_INPUT
-        X : REAL; (**)
-        I_LO : REAL; (**)
-        I_HI : REAL; (**)
-        O_LO : REAL; (**)
-        O_HI : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        I_LO : REAL;
+        I_HI : REAL;
+        O_LO : REAL;
+        O_HI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_X2 : BOOL
+FUNCTION SCALE_X2 : REAL
     VAR_INPUT
-        IN1 : BOOL; (**)
-        IN2 : BOOL; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        IN1_MIN : REAL; (**)
-        IN1_MAX : REAL := 1000; (**)
-        IN2_MIN : REAL; (**)
-        IN2_MAX : REAL := 1000; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        IN1 : BOOL;
+        IN2 : BOOL;
+        K : REAL;
+        O : REAL;
+        IN1_MIN : REAL;
+        IN1_MAX : REAL := 1000;
+        IN2_MIN : REAL;
+        IN2_MAX : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_X4 : BOOL
+FUNCTION SCALE_X4 : REAL
     VAR_INPUT
-        IN1 : BOOL; (**)
-        IN2 : BOOL; (**)
-        IN3 : BOOL; (**)
-        IN4 : BOOL; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        IN1_MIN : REAL; (**)
-        IN1_MAX : REAL := 1000; (**)
-        IN2_MIN : REAL; (**)
-        IN2_MAX : REAL := 1000; (**)
-        IN3_MIN : REAL; (**)
-        IN3_MAX : REAL := 1000; (**)
-        IN4_MIN : REAL; (**)
-        IN4_MAX : REAL := 1000; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        IN1 : BOOL;
+        IN2 : BOOL;
+        IN3 : BOOL;
+        IN4 : BOOL;
+        K : REAL;
+        O : REAL;
+        IN1_MIN : REAL;
+        IN1_MAX : REAL := 1000;
+        IN2_MIN : REAL;
+        IN2_MAX : REAL := 1000;
+        IN3_MIN : REAL;
+        IN3_MAX : REAL := 1000;
+        IN4_MIN : REAL;
+        IN4_MAX : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_X8 : BOOL
+FUNCTION SCALE_X8 : REAL
     VAR_INPUT
-        in1 : BOOL; (**)
-        in2 : BOOL; (**)
-        in3 : BOOL; (**)
-        in4 : BOOL; (**)
-        in5 : BOOL; (**)
-        in6 : BOOL; (**)
-        in7 : BOOL; (**)
-        in8 : BOOL; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-        in1_min : REAL; (**)
-        in1_max : REAL := 1000; (**)
-        in2_min : REAL; (**)
-        in2_max : REAL := 1000; (**)
-        in3_min : REAL; (**)
-        in3_max : REAL := 1000; (**)
-        in4_min : REAL; (**)
-        in4_max : REAL := 1000; (**)
-        in5_min : REAL; (**)
-        in5_max : REAL := 1000; (**)
-        in6_min : REAL; (**)
-        in6_max : REAL := 1000; (**)
-        in7_min : REAL; (**)
-        in7_max : REAL := 1000; (**)
-        in8_min : REAL; (**)
-        in8_max : REAL := 1000; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in1 : BOOL;
+        in2 : BOOL;
+        in3 : BOOL;
+        in4 : BOOL;
+        in5 : BOOL;
+        in6 : BOOL;
+        in7 : BOOL;
+        in8 : BOOL;
+        K : REAL;
+        O : REAL;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
+        in3_min : REAL;
+        in3_max : REAL := 1000;
+        in4_min : REAL;
+        in4_max : REAL := 1000;
+        in5_min : REAL;
+        in5_max : REAL := 1000;
+        in6_min : REAL;
+        in6_max : REAL := 1000;
+        in7_min : REAL;
+        in7_max : REAL := 1000;
+        in8_min : REAL;
+        in8_max : REAL := 1000;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK SEL2_OF_3
     VAR_INPUT
-        IN1 : REAL; (**)
-        IN2 : REAL; (**)
-        IN3 : REAL; (**)
-        D : REAL; (**)
+        IN1 : REAL;
+        IN2 : REAL;
+        IN3 : REAL;
+        D : REAL;
     END_VAR
     VAR_OUTPUT
-        Y : REAL; (**)
-        W : INT; (**)
-        E : BOOL; (**)
+        Y : REAL;
+        W : INT;
+        E : BOOL;
     END_VAR
     VAR
-        D12 : BOOL; (**)
-        D23 : BOOL; (**)
-        D31 : BOOL; (**)
+        D12 : BOOL;
+        D23 : BOOL;
+        D31 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SEL2_OF_3B
     VAR_INPUT
-        IN1 : BOOL; (**)
-        IN2 : BOOL; (**)
-        IN3 : BOOL; (**)
-        TD : TIME; (**)
+        IN1 : BOOL;
+        IN2 : BOOL;
+        IN3 : BOOL;
+        TD : TIME;
     END_VAR
     VAR_OUTPUT
-        Q : BOOL; (**)
-        W : BOOL; (**)
+        Q : BOOL;
+        W : BOOL;
     END_VAR
     VAR
-        TDEL : TON; (**)
+        TDEL : TON;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SH
     VAR_INPUT
-        in : REAL; (**)
-        CLK : BOOL; (**)
+        in : REAL;
+        CLK : BOOL;
     END_VAR
     VAR_OUTPUT
-        out : REAL; (**)
-        trig : BOOL; (**)
+        out : REAL;
+        trig : BOOL;
     END_VAR
     VAR
-        edge : BOOL; (**)
+        edge_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SH_1
     VAR_INPUT
-        in : REAL; (**)
-        PT : TIME; (**)
+        in : REAL;
+        PT : TIME;
     END_VAR
     VAR_OUTPUT
-        out : REAL; (**)
-        Trig : BOOL; (**)
+        out : REAL;
+        Trig : BOOL;
     END_VAR
     VAR
-        last : TIME; (**)
-        tx : TIME; (**)
+        last : TIME;
+        tx : TIME;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SH_2
     VAR_INPUT
-        in : REAL; (**)
-        PT : TIME; (**)
-        N : INT := 16; (**)
-        disc : INT; (**)
+        in : REAL;
+        PT : TIME;
+        N : INT := 16;
+        disc : INT;
     END_VAR
     VAR_OUTPUT
-        out : REAL; (**)
-        trig : BOOL; (**)
-        avg : REAL; (**)
-        high : REAL; (**)
-        low : REAL; (**)
+        out : REAL;
+        trig : BOOL;
+        avg : REAL;
+        high : REAL;
+        low : REAL;
     END_VAR
     VAR
-        M : INT; (**)
-        buf : ARRAY[0..15] OF REAL; (**)
-        buf2 : ARRAY[0..15] OF REAL; (**)
-        last : TIME; (**)
-        i : INT; (**)
-        start : INT; (**)
-        temp : REAL; (**)
-        stop : INT; (**)
-        tx : TIME; (**)
-        d2 : INT; (**)
+        M : INT;
+        buf : ARRAY[0..15] OF REAL;
+        buf2 : ARRAY[0..15] OF REAL;
+        last : TIME;
+        i : INT;
+        start : INT;
+        temp : REAL;
+        stop : INT;
+        tx : TIME;
+        d2 : INT;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SH_T
     VAR_INPUT
-        IN : REAL; (**)
-        E : BOOL; (**)
+        IN : REAL;
+        E : BOOL;
     END_VAR
     VAR_OUTPUT
-        OUT : REAL; (**)
+        OUT : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION STAIR : BOOL
+FUNCTION STAIR : REAL
     VAR_INPUT
-        X : REAL; (**)
-        D : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        D : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK STAIR2
     VAR_INPUT
-        X : REAL; (**)
-        D : REAL; (**)
+        X : REAL;
+        D : REAL;
     END_VAR
     VAR_OUTPUT
-        Y : REAL; (**)
+        Y : REAL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK TREND
     VAR_INPUT
-        X : REAL; (**)
+        X : REAL;
     END_VAR
     VAR_OUTPUT
-        Q : BOOL; (**)
-        TU : BOOL; (**)
-        TD : BOOL; (**)
-        D : REAL; (**)
+        Q : BOOL;
+        TU : BOOL;
+        TD : BOOL;
+        D : REAL;
     END_VAR
     VAR
-        last_X : REAL; (**)
+        last_X : REAL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK TREND_DW
     VAR_INPUT
-        X : DWORD; (**)
+        X : DWORD;
     END_VAR
     VAR_OUTPUT
-        Q : BOOL; (**)
-        TU : BOOL; (**)
-        TD : BOOL; (**)
-        D : DWORD; (**)
+        Q : BOOL;
+        TU : BOOL;
+        TD : BOOL;
+        D : DWORD;
     END_VAR
     VAR
-        last_X : DWORD; (**)
+        last_X : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION WORD_TO_RANGE : BOOL
+FUNCTION WORD_TO_RANGE : REAL
     VAR_INPUT
-        X : WORD; (**)
-        low : REAL; (**)
-        high : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : WORD;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION

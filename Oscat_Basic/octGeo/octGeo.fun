@@ -1,73 +1,49 @@
-FUNCTION CIRCLE_A : BOOL
+FUNCTION CIRCLE_A : REAL
     VAR_INPUT
-        rx : REAL; (**)
-        ax : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        rx : REAL;
+        ax : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CIRCLE_C : BOOL
+FUNCTION CIRCLE_C : REAL
     VAR_INPUT
-        Rx : REAL; (**)
-        Ax : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        Rx : REAL;
+        Ax : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CIRCLE_SEG : BOOL
+FUNCTION CIRCLE_SEG : REAL
     VAR_INPUT
-        RX : REAL; (**)
-        HX : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        RX : REAL;
+        HX : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CONE_V : BOOL
+FUNCTION CONE_V : REAL
     VAR_INPUT
-        rx : REAL; (**)
-        hx : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        rx : REAL;
+        hx : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ELLIPSE_A : BOOL
+FUNCTION ELLIPSE_A : REAL
     VAR_INPUT
-        R1 : REAL; (**)
-        R2 : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        R1 : REAL;
+        R2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ELLIPSE_C : BOOL
+FUNCTION ELLIPSE_C : REAL
     VAR_INPUT
-        R1 : REAL; (**)
-        R2 : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        R1 : REAL;
+        R2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SPHERE_V : BOOL
+FUNCTION SPHERE_V : REAL
     VAR_INPUT
-        rx : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        rx : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TRIANGLE_A : BOOL
+FUNCTION TRIANGLE_A : REAL
     VAR_INPUT
-        S1 : REAL; (**)
-        A : REAL; (**)
-        S2 : REAL; (**)
-        S3 : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        S1 : REAL;
+        A : REAL;
+        S2 : REAL;
+        S3 : REAL;
     END_VAR
 END_FUNCTION

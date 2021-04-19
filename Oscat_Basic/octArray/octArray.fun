@@ -1,93 +1,72 @@
 FUNCTION _ARRAY_ABS : BOOL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
 FUNCTION _ARRAY_ADD : BOOL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
+        X : REAL;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
 FUNCTION _ARRAY_INIT : BOOL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-        init : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
+        init : REAL;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_MEDIAN : BOOL
+FUNCTION _ARRAY_MEDIAN : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
 FUNCTION _ARRAY_MUL : BOOL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
+        X : REAL;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
 FUNCTION _ARRAY_SHUFFLE : BOOL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        temp : REAL; (**)
-        pos : INT; (**)
-        i : INT; (**)
-        stop : INT; (**)
+        temp : REAL;
+        pos : INT;
+        i : INT;
+        stop : INT;
     END_VAR
 END_FUNCTION
 FUNCTION _ARRAY_SORT : BOOL
     VAR_INPUT
-        PT : REFERENCE TO ARRAY[1..32000] OF REAL; (**)
-        SIZE : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        PT : REFERENCE TO ARRAY[1..32000] OF REAL;
+        SIZE : UINT;
     END_VAR
     VAR
         stack_count : UINT; (* Laufvariable Stack*)
@@ -102,147 +81,114 @@ FUNCTION _ARRAY_SORT : BOOL
         tmp : REAL; (* Hilfsvariable zum Tauschen von Werten *)
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_AVG : BOOL
+FUNCTION ARRAY_AVG : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_GAV : BOOL
+FUNCTION ARRAY_GAV : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_HAV : BOOL
+FUNCTION ARRAY_HAV : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_MAX : BOOL
+FUNCTION ARRAY_MAX : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_MIN : BOOL
+FUNCTION ARRAY_MIN : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_SDV : BOOL
+FUNCTION ARRAY_SDV : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_SPR : BOOL
+FUNCTION ARRAY_SPR : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
-        array_max : REAL; (**)
-        array_min : REAL; (**)
+        i : UINT;
+        stop : UINT;
+        array_max : REAL;
+        array_min : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_SUM : BOOL
+FUNCTION ARRAY_SUM : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_TREND : BOOL
+FUNCTION ARRAY_TREND : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        i : UINT; (**)
-        stop : UINT; (**)
-        x : REAL; (**)
-        stop2 : UINT; (**)
+        i : UINT;
+        stop : UINT;
+        x : REAL;
+        stop2 : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_VAR : BOOL
+FUNCTION ARRAY_VAR : REAL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        avg : REAL; (**)
-        i : UINT; (**)
-        stop : UINT; (**)
+        avg : REAL;
+        i : UINT;
+        stop : UINT;
     END_VAR
 END_FUNCTION
 FUNCTION IS_SORTED : BOOL
     VAR_INPUT
-        pt : REFERENCE TO ARRAY[0..32000] OF REAL; (**)
-        size : UINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        pt : REFERENCE TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR
-        stop : INT; (**)
-        i : INT; (**)
+        stop : INT;
+        i : INT;
     END_VAR
 END_FUNCTION

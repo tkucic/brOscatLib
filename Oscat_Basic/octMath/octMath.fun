@@ -1,502 +1,346 @@
-FUNCTION ACOSH : BOOL
+FUNCTION ACOSH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ACOTH : BOOL
+FUNCTION ACOTH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION AGDF : BOOL
+FUNCTION AGDF : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ASINH : BOOL
+FUNCTION ASINH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ATAN2 : BOOL
+FUNCTION ATAN2 : REAL
     VAR_INPUT
-        Y : REAL; (**)
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        Y : REAL;
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ATANH : BOOL
+FUNCTION ATANH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION BETA : BOOL
+FUNCTION BETA : REAL
     VAR_INPUT
-        X : REAL; (**)
-        Y : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        Y : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION BINOM : BOOL
+FUNCTION BINOM : DINT
     VAR_INPUT
-        N : INT; (**)
-        K : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        N : INT;
+        K : INT;
     END_VAR
     VAR
-        i : INT; (**)
+        i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION CAUCHY : BOOL
+FUNCTION CAUCHY : REAL
     VAR_INPUT
-        X : REAL; (**)
-        T : REAL; (**)
-        U : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        T : REAL;
+        U : REAL;
     END_VAR
     VAR
-        tmp : REAL; (**)
+        tmp : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CAUCHYCD : BOOL
+FUNCTION CAUCHYCD : REAL
     VAR_INPUT
-        X : REAL; (**)
-        T : REAL; (**)
-        U : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        T : REAL;
+        U : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CEIL : BOOL
+FUNCTION CEIL : INT
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CEIL2 : BOOL
+FUNCTION CEIL2 : DINT
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION CMP : BOOL
     VAR_INPUT
-        X : REAL; (**)
-        Y : REAL; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        X : REAL;
+        Y : REAL;
+        N : INT;
     END_VAR
     VAR
-        tmp : REAL; (**)
+        tmp : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION COSH : BOOL
+FUNCTION COSH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
     VAR
-        t : REAL; (**)
+        t : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION COTH : BOOL
+FUNCTION COTH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION D_TRUNC : BOOL
+FUNCTION D_TRUNC : DINT
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DEC1 : BOOL
+FUNCTION DEC1 : INT
     VAR_INPUT
-        X : INT; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : INT;
+        N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DEG : BOOL
+FUNCTION DEG : REAL
     VAR_INPUT
-        rad : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        rad : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION DIFFER : BOOL
     VAR_INPUT
-        in1 : REAL; (**)
-        in2 : REAL; (**)
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        in1 : REAL;
+        in2 : REAL;
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ERF : BOOL
+FUNCTION ERF : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
     VAR
-        x2 : REAL; (**)
-        ax2 : REAL; (**)
+        x2 : REAL;
+        ax2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ERFC : BOOL
+FUNCTION ERFC : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION EVEN : BOOL
     VAR_INPUT
-        in : DINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        in : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION EXP10 : BOOL
+FUNCTION EXP10 : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION EXPN : BOOL
+FUNCTION EXPN : REAL
     VAR_INPUT
-        X : REAL; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        N : INT;
     END_VAR
     VAR
-        sign : BOOL; (**)
+        sign : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION FACT : BOOL
+FUNCTION FACT : DINT
     VAR_INPUT
-        X : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        X : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FIB : BOOL
+FUNCTION FIB : DINT
     VAR_INPUT
-        X : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        X : INT;
     END_VAR
     VAR
-        t1 : DINT; (**)
-        t2 : DINT; (**)
+        t1 : DINT;
+        t2 : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION FLOOR : BOOL
+FUNCTION FLOOR : INT
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION FLOOR2 : BOOL
+FUNCTION FLOOR2 : DINT
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION FRACT : BOOL
+FUNCTION FRACT : REAL
     VAR_INPUT
-        x : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        x : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GAMMA : BOOL
+FUNCTION GAMMA : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GAUSS : BOOL
+FUNCTION GAUSS : REAL
     VAR_INPUT
-        X : REAL; (**)
-        U : REAL; (**)
-        SI : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        U : REAL;
+        SI : REAL;
     END_VAR
     VAR
-        temp : REAL; (**)
-        si_inv : REAL; (**)
+        temp : REAL;
+        si_inv : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GAUSSCD : BOOL
+FUNCTION GAUSSCD : REAL
     VAR_INPUT
-        X : REAL; (**)
-        U : REAL; (**)
-        SI : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        U : REAL;
+        SI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GCD : BOOL
+FUNCTION GCD : INT
     VAR_INPUT
-        A : DINT; (**)
-        B : DINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        A : DINT;
+        B : DINT;
     END_VAR
     VAR
-        t : DINT; (**)
+        t : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION GDF : BOOL
+FUNCTION GDF : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GOLD : BOOL
+FUNCTION GOLD : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION HYPOT : BOOL
+FUNCTION HYPOT : REAL
     VAR_INPUT
-        X : REAL; (**)
-        Y : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        Y : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION INC : BOOL
+FUNCTION INC : INT
     VAR_INPUT
-        X : INT; (**)
-        D : INT; (**)
-        M : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : INT;
+        D : INT;
+        M : INT;
     END_VAR
 END_FUNCTION
-FUNCTION INC1 : BOOL
+FUNCTION INC1 : INT
     VAR_INPUT
-        X : INT; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : INT;
+        N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION INC2 : BOOL
+FUNCTION INC2 : INT
     VAR_INPUT
-        X : INT; (**)
-        D : INT; (**)
-        L : INT; (**)
-        U : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : INT;
+        D : INT;
+        L : INT;
+        U : INT;
     END_VAR
     VAR
-        tmp : INT; (**)
+        tmp : INT;
     END_VAR
 END_FUNCTION
-FUNCTION INV : BOOL
+FUNCTION INV : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION LAMBERT_W : BOOL
+FUNCTION LAMBERT_W : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
     VAR
-        w : REAL; (**)
-        i : INT; (**)
-        we : REAL; (**)
-        w1e : REAL; (**)
-        last : DWORD; (**)
-        ewx : REAL; (**)
+        w : REAL;
+        i : INT;
+        we : REAL;
+        w1e : REAL;
+        last : DWORD;
+        ewx : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION LANGEVIN : BOOL
+FUNCTION LANGEVIN : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MAX3 : BOOL
+FUNCTION MAX3 : REAL
     VAR_INPUT
-        in1 : REAL; (**)
-        in2 : REAL; (**)
-        in3 : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in1 : REAL;
+        in2 : REAL;
+        in3 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MID3 : BOOL
+FUNCTION MID3 : REAL
     VAR_INPUT
-        IN1 : REAL; (**)
-        IN2 : REAL; (**)
-        IN3 : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        IN1 : REAL;
+        IN2 : REAL;
+        IN3 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MIN3 : BOOL
+FUNCTION MIN3 : REAL
     VAR_INPUT
-        in1 : REAL; (**)
-        in2 : REAL; (**)
-        in3 : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in1 : REAL;
+        in2 : REAL;
+        in3 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MODR : BOOL
+FUNCTION MODR : REAL
     VAR_INPUT
-        IN : REAL; (**)
-        DIVI : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        IN : REAL;
+        DIVI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MUL_ADD : BOOL
+FUNCTION MUL_ADD : REAL
     VAR_INPUT
-        X : REAL; (**)
-        K : REAL; (**)
-        O : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        K : REAL;
+        O : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION NEGX : BOOL
+FUNCTION NEGX : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RAD : BOOL
+FUNCTION RAD : REAL
     VAR_INPUT
-        DEG : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        DEG : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RDM : BOOL
+FUNCTION RDM : REAL
     VAR_INPUT
-        last : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        last : REAL;
     END_VAR
     VAR
-        tn : DWORD; (**)
-        tc : INT; (**)
+        tn : DWORD;
+        tc : INT;
     END_VAR
 END_FUNCTION
-FUNCTION RDM2 : BOOL
+FUNCTION RDM2 : INT
     VAR_INPUT
-        last : INT; (**)
-        low : INT; (**)
-        high : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        last : INT;
+        low : INT;
+        high : INT;
     END_VAR
 END_FUNCTION
-FUNCTION RDMDW : BOOL
+FUNCTION RDMDW : DWORD
     VAR_INPUT
-        last : DWORD; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DWORD := ; (*Return value of the function*)
+        last : DWORD;
     END_VAR
     VAR
-        RX : REAL; (**)
-        M : REAL; (**)
+        RX : REAL;
+        M : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION REAL_TO_FRAC : BOOL
@@ -504,8 +348,8 @@ FUNCTION REAL_TO_FRAC : BOOL
         X : REAL; (* in einen Bruch umzuwandelnder Wert *)
         N : INT; (* maximale Größe des Nenners *)
     END_VAR
-    VAR_OUTPUT
-        retVal : FRACTION := ; (*Return value of the function*)
+    VAR_IN_OUT
+        retVal : FRACTION; (*Return value of the function*)
     END_VAR
     VAR
         temp : DINT; (* Merker für Berechnungen *)
@@ -518,120 +362,81 @@ FUNCTION REAL_TO_FRAC : BOOL
         Denominator_old : DINT := 1; (* Initialwert Zaehler der letzten Berechnung   *)
     END_VAR
 END_FUNCTION
-FUNCTION RND : BOOL
+FUNCTION RND : REAL
     VAR_INPUT
-        X : REAL; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        N : INT;
     END_VAR
     VAR
-        M : REAL; (**)
+        M : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ROUND : BOOL
+FUNCTION ROUND : REAL
     VAR_INPUT
-        in : REAL; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        in : REAL;
+        N : INT;
     END_VAR
     VAR
-        X : REAL; (**)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SGN : BOOL
+FUNCTION SGN : INT
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SIGMOID : BOOL
+FUNCTION SIGMOID : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION SIGN_I : BOOL
     VAR_INPUT
-        IN : DINT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        IN : DINT;
     END_VAR
 END_FUNCTION
 FUNCTION SIGN_R : BOOL
     VAR_INPUT
-        in : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        in : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SINC : BOOL
+FUNCTION SINC : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SINH : BOOL
+FUNCTION SINH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SQRTN : BOOL
+FUNCTION SQRTN : REAL
     VAR_INPUT
-        X : REAL; (**)
-        N : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
+        N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION TANC : BOOL
+FUNCTION TANC : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TANH : BOOL
+FUNCTION TANH : REAL
     VAR_INPUT
-        X : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        X : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION WINDOW : BOOL
     VAR_INPUT
-        low : REAL; (**)
-        in : REAL; (**)
-        high : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        low : REAL;
+        in : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION WINDOW2 : BOOL
     VAR_INPUT
-        LOW : REAL; (**)
-        IN : REAL; (**)
-        HIGH : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        LOW : REAL;
+        IN : REAL;
+        HIGH : REAL;
     END_VAR
 END_FUNCTION

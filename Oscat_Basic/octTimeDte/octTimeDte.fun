@@ -1,577 +1,439 @@
 FUNCTION_BLOCK CALENDAR_CALC
-    VAR_TEMP
-        dtemp : DINT; (**)
-        tmp : INT; (**)
-    END_VAR
     VAR_INPUT
-        SPE : BOOL; (**)
-        H : REAL := -0.83333333333; (**)
+        SPE : BOOL;
+        H : REAL := -0.83333333333;
     END_VAR
     VAR_IN_OUT
-        XCAL : CALENDAR; (**)
-        HOLIDAYS : ARRAY[0..29] OF HOLIDAY_DATA; (**)
+        XCAL : CALENDAR;
+        HOLIDAYS : ARRAY[0..29] OF HOLIDAY_DATA;
     END_VAR
     VAR
-        last : DT; (**)
-        last_day : DINT; (**)
-        holy : HOLIDAY; (**)
-        sun : SUN_TIME; (**)
-        last_hour : INT; (**)
-        utod : TOD; (**)
-        pos : SUN_POS; (**)
-        plast : DT; (**)
+        last : DT;
+        last_day : DINT;
+        holy : HOLIDAY;
+        sun : SUN_TIME;
+        last_hour : INT;
+        utod : TOD;
+        pos : SUN_POS;
+        plast : DT;
+        dtemp : DINT;
+        tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DATE_ADD : BOOL
+FUNCTION DATE_ADD : DATE
     VAR_INPUT
-        IDATE : DATE; (**)
-        D : INT; (**)
-        W : INT; (**)
-        M : INT; (**)
-        Y : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        IDATE : DATE;
+        D : INT;
+        W : INT;
+        M : INT;
+        Y : INT;
     END_VAR
     VAR
-        mo : INT; (**)
-        yr : INT; (**)
-        dm : INT; (**)
+        mo : INT;
+        yr : INT;
+        dm : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_DATE : BOOL
+FUNCTION DAY_OF_DATE : DINT
     VAR_INPUT
-        idate : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        idate : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_MONTH : BOOL
+FUNCTION DAY_OF_MONTH : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
     VAR
-        leap : INT; (**)
+        leap : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_WEEK : BOOL
+FUNCTION DAY_OF_WEEK : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_YEAR : BOOL
+FUNCTION DAY_OF_YEAR : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_TO_TIME : BOOL
+FUNCTION DAY_TO_TIME : TIME
     VAR_INPUT
-        IN : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TIME := ; (*Return value of the function*)
+        IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DAYS_DELTA : BOOL
+FUNCTION DAYS_DELTA : DINT
     VAR_INPUT
-        date_1 : DATE; (**)
-        date_2 : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DINT := ; (*Return value of the function*)
+        date_1 : DATE;
+        date_2 : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAYS_IN_MONTH : BOOL
+FUNCTION DAYS_IN_MONTH : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAYS_IN_YEAR : BOOL
+FUNCTION DAYS_IN_YEAR : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK DCF77
     VAR_INPUT
-        REC : BOOL; (**)
-        SET : BOOL; (**)
-        SDT : DT; (**)
-        DSI : BOOL; (**)
-        SYNC_TIMEOUT : TIME := TIME#2m0s0ms; (**)
-        TIME_OFFSET : INT := 1; (**)
-        DST_EN : BOOL := TRUE; (**)
+        REC : BOOL;
+        SET : BOOL;
+        SDT : DT;
+        DSI : BOOL;
+        SYNC_TIMEOUT : TIME := TIME#2m0s0ms;
+        TIME_OFFSET : INT := 1;
+        DST_EN : BOOL := TRUE;
     END_VAR
     VAR_OUTPUT
-        TP : BOOL; (**)
-        DS : BOOL; (**)
-        WDAY : INT; (**)
-        ERROR : BOOL := TRUE; (**)
-        RTC : DT; (**)
-        RTC1 : DT; (**)
-        MSEC : INT; (**)
-        SYNC : BOOL; (**)
+        TP : BOOL;
+        DS : BOOL;
+        WDAY : INT;
+        ERROR : BOOL := TRUE;
+        RTC : DT;
+        RTC1 : DT;
+        MSEC : INT;
+        SYNC : BOOL;
     END_VAR
     VAR
-        mez : DT; (**)
-        utc : DT; (**)
-        state : INT; (**)
-        edge : BOOL; (**)
-        tx : TIME; (**)
-        ty : TIME; (**)
-        last : TIME; (**)
-        bits : ARRAY[0..58] OF BOOL; (**)
-        cnt : INT; (**)
-        i : INT; (**)
-        old_time : DT; (**)
-        minute : INT; (**)
-        hour : INT; (**)
-        day : INT; (**)
-        month : INT; (**)
-        year : INT; (**)
-        last_sync : TIME; (**)
-        t1 : TIME; (**)
-        tz : TIME; (**)
-        init : BOOL; (**)
+        mez : DT;
+        utc : DT;
+        state : INT;
+        edge_ : BOOL;
+        tx : TIME;
+        ty : TIME;
+        last : TIME;
+        bits : ARRAY[0..58] OF BOOL;
+        cnt : INT;
+        i : INT;
+        old_time : DT;
+        minute : INT;
+        hour : INT;
+        day : INT;
+        month : INT;
+        year : INT;
+        last_sync : TIME;
+        t1 : TIME;
+        tz : TIME;
+        init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION DST : BOOL
     VAR_INPUT
-        UTC : DT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        UTC : DT;
     END_VAR
     VAR
-        yr : INT; (**)
-        yr4 : DWORD; (**)
-        ltc : DWORD; (**)
-        idate : DWORD; (**)
+        yr : INT;
+        yr4 : DWORD;
+        ltc : DWORD;
+        idate : DWORD;
     END_VAR
 END_FUNCTION
 FUNCTION DT_TO_SDT : BOOL
     VAR_INPUT
-        DTI : DT; (**)
+        DTI : DT;
     END_VAR
-    VAR_OUTPUT
-        retVal : SDT := ; (*Return value of the function*)
+    VAR_IN_OUT
+        retVal : SDT; (*Return value of the function*)
     END_VAR
     VAR
-        tmp : DATE; (**)
-        tdt : DWORD; (**)
+        tmp : DATE;
+        tdt : DWORD;
     END_VAR
 END_FUNCTION
 FUNCTION DT2_TO_SDT : BOOL
     VAR_INPUT
-        DI : DATE; (**)
-        TI : TOD; (**)
+        DI : DATE;
+        TI : TOD;
     END_VAR
-    VAR_OUTPUT
-        retVal : SDT := ; (*Return value of the function*)
+    VAR_IN_OUT
+        retVal : SDT; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION EASTER : BOOL
+FUNCTION EASTER : DATE
     VAR_INPUT
-        year : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        year : INT;
     END_VAR
     VAR
-        b : INT; (**)
-        c : INT; (**)
-        oday : INT; (**)
+        b : INT;
+        c : INT;
+        oday : INT;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK EVENTS
     VAR_INPUT
-        DATE_IN : DATE; (**)
-        ENA : BOOL; (**)
+        DATE_IN : DATE;
+        ENA : BOOL;
     END_VAR
     VAR_OUTPUT
-        Y : BOOL; (**)
-        NAME : STRING[30]; (**)
+        Y : BOOL;
+        NAME : STRING[30];
     END_VAR
     VAR_IN_OUT
-        ELIST : ARRAY[0..49] OF HOLIDAY_DATA; (**)
+        ELIST : ARRAY[0..49] OF HOLIDAY_DATA;
     END_VAR
     VAR
-        i : INT; (**)
-        last_active : DATE; (**)
-        size : INT := 49; (**)
-        day_in : DINT; (**)
-        cyr : INT; (**)
-        lday : DINT; (**)
-        check : HOLIDAY_DATA; (**)
-        y_int : BOOL; (**)
-        name_int : STRING[30]; (**)
+        i : INT;
+        last_active : DATE;
+        size : INT := 49;
+        day_in : DINT;
+        cyr : INT;
+        lday : DINT;
+        check : HOLIDAY_DATA;
+        y_int : BOOL;
+        name_int : STRING[30];
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK HOLIDAY
     VAR_INPUT
-        DATE_IN : DATE; (**)
-        LANGU : INT; (**)
-        FRIDAY : BOOL; (**)
-        SATURDAY : BOOL; (**)
-        SUNDAY : BOOL; (**)
+        DATE_IN : DATE;
+        LANGU : INT;
+        FRIDAY : BOOL;
+        SATURDAY : BOOL;
+        SUNDAY : BOOL;
     END_VAR
     VAR_OUTPUT
-        Y : BOOL; (**)
-        NAME : STRING[30]; (**)
+        Y : BOOL;
+        NAME : STRING[30];
     END_VAR
     VAR_IN_OUT
-        HOLIDAYS : ARRAY[0..29] OF HOLIDAY_DATA; (**)
+        HOLIDAYS : ARRAY[0..29] OF HOLIDAY_DATA;
     END_VAR
     VAR
-        last_active : DATE; (**)
-        ostern : DATE; (**)
-        i : INT; (**)
-        jahr : INT; (**)
-        x_date : DATE; (**)
-        lx : INT; (**)
-        wdx : INT; (**)
+        last_active : DATE;
+        ostern : DATE;
+        i : INT;
+        jahr : INT;
+        x_date : DATE;
+        lx : INT;
+        wdx : INT;
     END_VAR
     VAR CONSTANT
-        SIZE : INT := 29; (**)
+        SIZE : INT := 29;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION HOUR : BOOL
+FUNCTION HOUR : INT
     VAR_INPUT
-        itod : TOD; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        itod : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION HOUR_OF_DT : BOOL
+FUNCTION HOUR_OF_DT : INT
     VAR_INPUT
-        XDT : DT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        XDT : DT;
     END_VAR
 END_FUNCTION
-FUNCTION HOUR_TO_TIME : BOOL
+FUNCTION HOUR_TO_TIME : TIME
     VAR_INPUT
-        IN : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TIME := ; (*Return value of the function*)
+        IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION HOUR_TO_TOD : BOOL
+FUNCTION HOUR_TO_TOD : TOD
     VAR_INPUT
-        IN : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TOD := ; (*Return value of the function*)
+        IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION JD2000 : BOOL
+FUNCTION JD2000 : REAL
     VAR_INPUT
-        DTI : DT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        DTI : DT;
     END_VAR
 END_FUNCTION
 FUNCTION LEAP_DAY : BOOL
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
 FUNCTION LEAP_OF_DATE : BOOL
     VAR_INPUT
-        idate : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        idate : DATE;
     END_VAR
 END_FUNCTION
 FUNCTION LEAP_YEAR : BOOL
     VAR_INPUT
-        yr : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        yr : INT;
     END_VAR
 END_FUNCTION
-FUNCTION LTIME_TO_UTC : BOOL
+FUNCTION LTIME_TO_UTC : DT
     VAR_INPUT
-        LOCAL_TIME : DT; (**)
-        DST : BOOL; (**)
-        TIME_ZONE_OFFSET : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DT := ; (*Return value of the function*)
+        LOCAL_TIME : DT;
+        DST : BOOL;
+        TIME_ZONE_OFFSET : INT;
     END_VAR
 END_FUNCTION
-FUNCTION MINUTE : BOOL
+FUNCTION MINUTE : INT
     VAR_INPUT
-        itod : TOD; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        itod : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION MINUTE_OF_DT : BOOL
+FUNCTION MINUTE_OF_DT : INT
     VAR_INPUT
-        XDT : DT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        XDT : DT;
     END_VAR
 END_FUNCTION
-FUNCTION MINUTE_TO_TIME : BOOL
+FUNCTION MINUTE_TO_TIME : TIME
     VAR_INPUT
-        IN : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TIME := ; (*Return value of the function*)
+        IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_BEGIN : BOOL
+FUNCTION MONTH_BEGIN : DATE
     VAR_INPUT
-        idate : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        idate : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_END : BOOL
+FUNCTION MONTH_END : DATE
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_OF_DATE : BOOL
+FUNCTION MONTH_OF_DATE : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION MULTIME : BOOL
+FUNCTION MULTIME : TIME
     VAR_INPUT
-        t : TIME; (**)
-        M : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TIME := ; (*Return value of the function*)
+        t : TIME;
+        M : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION PERIOD : BOOL
     VAR_INPUT
-        d1 : DATE; (**)
-        dx : DATE; (**)
-        d2 : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        d1 : DATE;
+        dx : DATE;
+        d2 : DATE;
     END_VAR
     VAR
-        day1 : INT; (**)
-        day2 : INT; (**)
-        dayx : INT; (**)
+        day1 : INT;
+        day2 : INT;
+        dayx : INT;
     END_VAR
 END_FUNCTION
 FUNCTION PERIOD2 : BOOL
     VAR_INPUT
-        DP : ARRAY[0..3, 0..1] OF DATE; (**)
-        DX : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        DP : ARRAY[0..3, 0..1] OF DATE;
+        DX : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION REFRACTION : BOOL
+FUNCTION REFRACTION : REAL
     VAR_INPUT
-        ELEV : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        ELEV : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK RTC_2
     VAR_INPUT
-        SET : BOOL; (**)
-        SDT : DT; (**)
-        SMS : INT; (**)
-        DEN : BOOL; (**)
-        OFS : INT; (**)
+        SET : BOOL;
+        SDT : DT;
+        SMS : INT;
+        DEN : BOOL;
+        OFS : INT;
     END_VAR
     VAR_OUTPUT
-        UDT : DT; (**)
-        LOCAL_DT : DT; (**)
-        DSO : BOOL; (**)
-        XMS : INT; (**)
+        UDT : DT;
+        LOCAL_DT : DT;
+        DSO : BOOL;
+        XMS : INT;
     END_VAR
     VAR
-        RT : RTC_MS; (**)
+        RT : RTC_MS;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK RTC_MS
     VAR_INPUT
-        SET : BOOL; (**)
-        SDT : DT; (**)
-        SMS : INT; (**)
+        SET : BOOL;
+        SDT : DT;
+        SMS : INT;
     END_VAR
     VAR_OUTPUT
-        XDT : DT; (**)
-        XMS : INT; (**)
+        XDT : DT;
+        XMS : INT;
     END_VAR
     VAR
-        init : BOOL; (**)
-        last : DWORD; (**)
-        Tx : DWORD; (**)
+        init : BOOL;
+        last : DWORD;
+        Tx : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION SDT_TO_DATE : BOOL
+FUNCTION SDT_TO_DATE : DATE
     VAR_INPUT
-        DTI : SDT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        DTI : SDT;
     END_VAR
 END_FUNCTION
-FUNCTION SDT_TO_DT : BOOL
+FUNCTION SDT_TO_DT : DT
     VAR_INPUT
-        DTI : SDT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DT := ; (*Return value of the function*)
+        DTI : SDT;
     END_VAR
 END_FUNCTION
-FUNCTION SDT_TO_TOD : BOOL
+FUNCTION SDT_TO_TOD : TOD
     VAR_INPUT
-        DTI : SDT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TOD := ; (*Return value of the function*)
+        DTI : SDT;
     END_VAR
 END_FUNCTION
-FUNCTION SECOND : BOOL
+FUNCTION SECOND : REAL
     VAR_INPUT
-        itod : TOD; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : REAL := ; (*Return value of the function*)
+        itod : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION SECOND_OF_DT : BOOL
+FUNCTION SECOND_OF_DT : INT
     VAR_INPUT
-        XDT : DT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        XDT : DT;
     END_VAR
 END_FUNCTION
-FUNCTION SECOND_TO_TIME : BOOL
+FUNCTION SECOND_TO_TIME : TIME
     VAR_INPUT
-        IN : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TIME := ; (*Return value of the function*)
+        IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SET_DATE : BOOL
+FUNCTION SET_DATE : DATE
     VAR_INPUT
-        YEAR : INT; (**)
-        MONTH : INT; (**)
-        DAY : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        YEAR : INT;
+        MONTH : INT;
+        DAY : INT;
     END_VAR
     VAR
-        count : INT; (**)
-        ofs : ARRAY[1..12] OF INT := [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]; (**)
-        ENDIF : BOOL; (**)
+        count : INT;
+        ofs : ARRAY[1..12] OF INT := [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+        ENDIF : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION SET_DT : BOOL
+FUNCTION SET_DT : DT
     VAR_INPUT
-        year : INT; (**)
-        month : INT; (**)
-        day : INT; (**)
-        hour : INT; (**)
-        minute : INT; (**)
-        second : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DT := ; (*Return value of the function*)
+        year : INT;
+        month : INT;
+        day : INT;
+        hour : INT;
+        minute : INT;
+        second : INT;
     END_VAR
 END_FUNCTION
-FUNCTION SET_TOD : BOOL
+FUNCTION SET_TOD : TOD
     VAR_INPUT
-        hour : INT; (**)
-        minute : INT; (**)
-        second : REAL; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TOD := ; (*Return value of the function*)
+        hour : INT;
+        minute : INT;
+        second : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SUN_MIDDAY : BOOL
+FUNCTION SUN_MIDDAY : TOD
     VAR_INPUT
-        LON : REAL; (**)
-        UTC : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : TOD := ; (*Return value of the function*)
+        LON : REAL;
+        UTC : DATE;
     END_VAR
     VAR
-        T : REAL; (**)
-        OFFSET : REAL; (**)
+        T : REAL;
+        OFFSET : REAL;
     END_VAR
 END_FUNCTION
 FUNCTION_BLOCK SUN_POS
-    VAR_TEMP
-        g : REAL; (**)
-        a : REAL; (**)
-        d : REAL; (**)
-        t1 : REAL; (**)
-        n : REAL; (**)
-        e : REAL; (**)
-        c : REAL; (**)
-        tau : REAL; (**)
-        sin_d : REAL; (**)
-        rlat : REAL; (**)
-        sin_lat : REAL; (**)
-        cos_lat : REAL; (**)
-        cos_tau : REAL; (**)
-        cos_d : REAL; (**)
-    END_VAR
     VAR_INPUT
         latitude : REAL; (* latitude of geographical position  *)
         longitude : REAL; (* longitude of geographical position  *)
         utc : DT; (*	world time				*)
     END_VAR
     VAR_OUTPUT
-        B : REAL; (**)
-        H : REAL; (**)
-        HR : REAL; (**)
+        B : REAL;
+        H : REAL;
+        HR : REAL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SUN_TIME
@@ -590,70 +452,52 @@ FUNCTION_BLOCK SUN_TIME
     VAR
         dk : REAL; (* sun declination at midday *)
         delta : TIME; (* delta from midday for sunrise and sunset  *)
-        b : REAL; (**)
+        b : REAL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION TIMECHECK : BOOL
     VAR_INPUT
-        TD : TOD; (**)
-        START : TOD; (**)
-        STOP : TOD; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : BOOL := ; (*Return value of the function*)
+        TD : TOD;
+        START : TOD;
+        STOP : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION UTC_TO_LTIME : BOOL
+FUNCTION UTC_TO_LTIME : DT
     VAR_INPUT
-        UTC : DT; (**)
-        DST_ENABLE : BOOL; (**)
-        TIME_ZONE_OFFSET : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DT := ; (*Return value of the function*)
+        UTC : DT;
+        DST_ENABLE : BOOL;
+        TIME_ZONE_OFFSET : INT;
     END_VAR
     VAR
-        tmp : INT; (**)
+        tmp : INT;
     END_VAR
 END_FUNCTION
-FUNCTION WORK_WEEK : BOOL
+FUNCTION WORK_WEEK : INT
     VAR_INPUT
-        idate : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        idate : DATE;
     END_VAR
     VAR
-        d1 : DATE; (**)
-        w1 : INT; (**)
-        ds : DWORD; (**)
-        yr : INT; (**)
-        w31 : INT; (**)
-        w01 : INT; (**)
-        wm : INT; (**)
+        d1 : DATE;
+        w1 : INT;
+        ds : DWORD;
+        yr : INT;
+        w31 : INT;
+        w01 : INT;
+        wm : INT;
     END_VAR
 END_FUNCTION
-FUNCTION YEAR_BEGIN : BOOL
+FUNCTION YEAR_BEGIN : DATE
     VAR_INPUT
-        y : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        y : INT;
     END_VAR
 END_FUNCTION
-FUNCTION YEAR_END : BOOL
+FUNCTION YEAR_END : DATE
     VAR_INPUT
-        y : INT; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : DATE := ; (*Return value of the function*)
+        y : INT;
     END_VAR
 END_FUNCTION
-FUNCTION YEAR_OF_DATE : BOOL
+FUNCTION YEAR_OF_DATE : INT
     VAR_INPUT
-        IDATE : DATE; (**)
-    END_VAR
-    VAR_OUTPUT
-        retVal : INT := ; (*Return value of the function*)
+        IDATE : DATE;
     END_VAR
 END_FUNCTION

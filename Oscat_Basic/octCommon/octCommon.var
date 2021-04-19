@@ -1,2 +1,9 @@
 VAR CONSTANT
+    STRING_LENGTH : INT := 250;
+    LIST_LENGTH : INT := 250;
+    MATH : CONSTANTS_MATH; (*Math constants*)
+    PHYS : CONSTANTS_PHYS; (*Physics constants*)
+    LANGUAGE : CONSTANTS_LANGUAGE; (*Language constants*)
+    SETUP : CONSTANTS_SETUP; (*Setup constants*)
+    LOCATION : CONSTANTS_LOCATION; (*Location constants*)
 END_VAR

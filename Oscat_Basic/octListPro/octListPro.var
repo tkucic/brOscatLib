@@ -1,3 +1,2 @@
 VAR CONSTANT
-    LIST_LENGTH : INT := 250; (**)
 END_VAR
