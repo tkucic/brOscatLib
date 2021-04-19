@@ -2,6 +2,10 @@
 
 Here we list all the known quirks and differences between the source and the B&R Automation studio
 
+## Libraries
+
+- Version attribute can only be in format X.YY.Z
+- 
 ## Data types
 
 ## Function blocks
