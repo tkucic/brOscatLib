@@ -5,7 +5,7 @@ Here we list all the known quirks and differences between the source and the B&R
 ## Libraries
 
 - Version attribute can only be in format X.YY.Z
-- 
+
 ## Data types
 
 
@@ -31,4 +31,5 @@ Here we list all the known quirks and differences between the source and the B&R
 - END_IF;,END_CASE;, END_FOR; and END_WHILE; statements do not need a semicolon at the end. This is fixed with the script
 - VAR_INPUT CONSTANT doesnt exist in automation studio. These need to be figured out what we do with them
 - BYTE + BYTE is not possible
+- DWORD + DWORD is not possible
 - If ADR() is used, resulting data type must be UDINT
