@@ -33,3 +33,4 @@ Here we list all the known quirks and differences between the source and the B&R
 - BYTE + BYTE is not possible
 - DWORD + DWORD is not possible
 - If ADR() is used, resulting data type must be UDINT
+- A function or function block from an IEC library is attempting to access a component of a constant structure or an element of a constant array. Only constant variables with elementary data types can be accessed. MATH.PI doesnt work
