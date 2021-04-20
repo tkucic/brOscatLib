@@ -3,61 +3,61 @@ FUNCTION_BLOCK ESR_MON_X8
     tx := DWORD_TO_TIME(T_PLC_MS());
 
     ESR_Flag := FALSE;
-    esr_out[3].typ := 0;
-    esr_out[2].typ := 0;
-    esr_out[1].typ := 0;
-    esr_out[0].typ := 0;
+    ESR_Out[3].TYP := 0;
+    ESR_Out[2].TYP := 0;
+    ESR_Out[1].TYP := 0;
+    ESR_Out[0].TYP := 0;
     cnt := 0;
 
 
     (* check if inputs have chaged and fill buffer *)
-    IF s0 <> X0 AND ((s0 < 100) OR (S0 > 99 AND S0 < 200 AND mode >= 2) OR (S0 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s0, a0, DT_in, TX);
-    	X0 := S0;
+    IF s0 <> x0 AND ((s0 < 100) OR (s0 > 99 AND s0 < 200 AND Mode >= 2) OR (s0 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s0, a0, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x0 := s0;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF s1 <> X1 AND ((s1 < 100) OR (S1 > 99 AND S1 < 200 AND mode >= 2) OR (S1 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s1, a1, DT_in, TX);
-    	X1 := S1;
+    IF s1 <> x1 AND ((s1 < 100) OR (s1 > 99 AND s1 < 200 AND Mode >= 2) OR (s1 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s1, a1, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x1 := s1;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF s2 <> X2 AND ((s2 < 100) OR (S2 > 99 AND S2 < 200 AND mode >= 2) OR (S2 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s2, a2, DT_in, TX);
-    	X2 := S2;
+    IF s2 <> x2 AND ((s2 < 100) OR (s2 > 99 AND s2 < 200 AND Mode >= 2) OR (s2 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s2, a2, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x2 := s2;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF s3 <> X3 AND ((s3 < 100) OR (S3 > 99 AND S3 < 200 AND mode >= 2) OR (S3 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s3, a3, DT_in, TX);
-    	X3 := S3;
+    IF s3 <> x3 AND ((s3 < 100) OR (s3 > 99 AND s3 < 200 AND Mode >= 2) OR (s3 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s3, a3, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x3 := s3;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF cnt < 4 AND s4 <> X4 AND ((s4 < 100) OR (S4 > 99 AND S4 < 200 AND mode >= 2) OR (S4 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s4, a4, DT_in, TX);
-    	X4 := S4;
+    IF cnt < 4 AND s4 <> x4 AND ((s4 < 100) OR (s4 > 99 AND s4 < 200 AND Mode >= 2) OR (s4 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s4, a4, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x4 := s4;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF cnt < 4 AND s5 <> X5 AND ((s5 < 100) OR (S5 > 99 AND S5 < 200 AND mode >= 2) OR (S5 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s5, a5, DT_in, TX);
-    	X5 := S5;
+    IF cnt < 4 AND s5 <> x5 AND ((s5 < 100) OR (s5 > 99 AND s5 < 200 AND Mode >= 2) OR (s5 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s5, a5, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x5 := s5;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF cnt < 4 AND s6 <> X6 AND ((s6 < 100) OR (S6 > 99 AND S6 < 200 AND mode >= 2) OR (S6 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s6, a6, DT_in, TX);
-    	X6 := S6;
+    IF cnt < 4 AND s6 <> x6 AND ((s6 < 100) OR (s6 > 99 AND s6 < 200 AND Mode >= 2) OR (s6 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s6, a6, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x6 := s6;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
-    IF cnt < 4 AND s7 <> X7 AND ((s7 < 100) OR (S7 > 99 AND S7 < 200 AND mode >= 2) OR (S7 > 199 AND mode = 3)) THEN
-    	esr_out[cnt] := status_to_ESR(s7, a7, DT_in, TX);
-    	X7 := S7;
+    IF cnt < 4 AND s7 <> x7 AND ((s7 < 100) OR (s7 > 99 AND s7 < 200 AND Mode >= 2) OR (s7 > 199 AND Mode = 3)) THEN
+    	STATUS_TO_ESR(s7, a7, DT_in, tx, retVal:=ESR_Out[cnt]);
+    	x7 := s7;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_Flag := TRUE;
     END_IF
 
 
@@ -69,7 +69,7 @@ FUNCTION_BLOCK ESR_MON_X8
     	replaced time() with T_PLC_MS() for compatibility reasons
 
     hm	1. dec. 2009	rev 1.2
-    	changed esr_out to be I/O
+    	changed ESR_Out to be I/O
 
 
     *)

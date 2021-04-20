@@ -3,14 +3,14 @@ FUNCTION_BLOCK ESR_COLLECT
     	pos := -1;
     ELSE
     	FOR cnt := 0 TO max_in DO
-    	IF esr_0[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_0[cnt]; END_IF
-    	IF esr_1[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_1[cnt]; END_IF
-    	IF esr_2[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_2[cnt]; END_IF
-    	IF esr_3[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_3[cnt]; END_IF
-    	IF esr_4[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_4[cnt]; END_IF
-    	IF esr_5[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_5[cnt]; END_IF
-    	IF esr_6[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_6[cnt]; END_IF
-    	IF esr_7[cnt].typ > 0 THEN pos := INC1(pos, max_out); esr_out[pos] := esr_7[cnt]; END_IF
+        	IF ESR_0[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_0[cnt]; END_IF
+        	IF ESR_1[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_1[cnt]; END_IF
+        	IF ESR_2[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_2[cnt]; END_IF
+        	IF ESR_3[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_3[cnt]; END_IF
+        	IF ESR_4[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_4[cnt]; END_IF
+        	IF ESR_5[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_5[cnt]; END_IF
+        	IF ESR_6[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_6[cnt]; END_IF
+        	IF ESR_7[cnt].TYP > 0 THEN pos := INC1(pos, max_out); ESR_OUT[pos] := ESR_7[cnt]; END_IF
        END_FOR
     END_IF
 

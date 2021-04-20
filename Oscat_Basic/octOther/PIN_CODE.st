@@ -1,15 +1,15 @@
 FUNCTION_BLOCK PIN_CODE
-    tp := FALSE;
-    IF e THEN
-    	IF CB = CODE(pin, pos) THEN
-    		pos := pos + 1;
-    		IF pos > LEN(PIN) THEN
+    TP := FALSE;
+    IF E THEN
+    	IF CB = CODE(PIN, POS) THEN
+    		POS := POS + 1;
+    		IF POS > LEN(PIN) THEN
     			(* proper code is detected *)
     			TP := TRUE;
-    			pos := 1;
+    			POS := 1;
     		END_IF
     	ELSE
-    		pos := 1;
+    		POS := 1;
     	END_IF
     END_IF
 

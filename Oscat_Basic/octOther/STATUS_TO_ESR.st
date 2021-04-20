@@ -1,14 +1,15 @@
 FUNCTION STATUS_TO_ESR
     IF status < 100 THEN
-    	status_to_ESR.typ := 1;
+    	retVal.TYP := 1;
     ELSIF status < 200 THEN
-    	status_to_ESR.typ := 2;
+    	retVal.TYP := 2;
     ELSE
-    	status_to_ESR.typ := 3;
+    	retVal.TYP := 3;
     END_IF
-    status_to_ESR.adress:= adress;
-    status_to_ESR.DS := DT_in;
-    status_to_ESR.TS := TS;
-    status_to_ESR.data[0] := status;
+    retVal.ADRESS:= adress;
+    retVal.DS := DT_in;
+    retVal.TS := TS;
+    retVal.DATA[0] := status;
+    STATUS_TO_ESR := TRUE;
 
 END_FUNCTION

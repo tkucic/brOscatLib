@@ -3,26 +3,26 @@ FUNCTION CRC_GEN
     shift := 32 - PL;
     PN := SHL(PN, shift);
 
-    (* load first 4 bytes into register minimum message size is 4 bytes
+    (* load first 4 bytes into register minimum message SIZE is 4 bytes
     	for smaller messages fill with 0#s at the beginning*)
     FOR pos := 0 TO 3 DO
     	IF REV_IN THEN CRC_GEN := SHL(CRC_GEN, 8) OR REVERSE(PT^[pos]); ELSE CRC_GEN := SHL(CRC_GEN, 8) OR PT^[pos]; END_IF
     END_FOR
     pos := 4;
 
-    (* xor with init value *)
-    CRC_GEN := CRC_GEN XOR SHL(init, shift);
+    (* xor with INIT value *)
+    CRC_GEN := CRC_GEN XOR SHL(INIT, shift);
 
     (* calculate CRC for each byte *)
-    WHILE pos < size DO
-    	IF REV_IN THEN DX := REVERSE(PT^[pos]); ELSE DX := PT^[pos]; END_IF
+    WHILE pos < SIZE DO
+    	IF REV_IN THEN dx := REVERSE(PT^[pos]); ELSE dx := PT^[pos]; END_IF
     	pos := pos + 1;
     	(* crc calculation for one byte *)
     	FOR bits := 0 TO 7 DO
     		IF CRC_GEN.31 THEN
-    			CRC_GEN := (SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7)) XOR PN;
+    			CRC_GEN := (SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(dx.7)) XOR PN;
     		ELSE
-    			CRC_GEN := SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7);
+    			CRC_GEN := SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(dx.7);
     		END_IF
     		dx := SHL(dx, 1);
     	END_FOR
@@ -45,7 +45,7 @@ FUNCTION CRC_GEN
 
     (* suggested optimization by deninis klopke
     die betreffs genannte Funktion kann folgendermaßen optimiert werden:
-    In Zeilen 33 und 35 des Implementierungsteils kann jeweils der Teil „OR BOOL_TO_DWORD(DX.7)“ entfallen, da nach 8maligem Linksshift von „DX“ in Zeile 26 der Wert von DX = BYTE#0 ist. Eine weitere Veroderung mit diesem Wert hat keine Auswirkungen auf das Ergebnis mehr.
+    In Zeilen 33 und 35 des Implementierungsteils kann jeweils der Teil „OR BOOL_TO_DWORD(dx.7)“ entfallen, da nach 8maligem Linksshift von „dx“ in Zeile 26 der Wert von dx = BYTE#0 ist. Eine weitere Veroderung mit diesem Wert hat keine Auswirkungen auf das Ergebnis mehr.
     *)
 
     (* typical crc polynoms
@@ -87,14 +87,14 @@ FUNCTION CRC_GEN
     	deleted unused variable i
 
     hm	9. oct 2007 	rev 1.2
-    	added init code for crc and xor_out
+    	added INIT code for crc and xor_out
     	added refelct in and reflect_out (rev_in und Rev_out)
 
     hm	2. jan 2008	rev 1.3
     	small changes for performance improvements
 
     hm	16. mar. 2008	rev 1.4
-    	changed type of input size to uint
+    	changed type of input SIZE to uint
 
     hm	10. mar. 2009	rev 1.5
     	removed nested comments
