@@ -1,8 +1,8 @@
 FUNCTION R2_ADD
     temp := X.RX;
-    R2_ADD.RX := Y + X.R1 + X.RX;
-    R2_ADD.R1 := temp - R2_ADD.RX + Y + X.R1;
-
+    retVal.RX := Y + X.R1 + X.RX;
+    retVal.R1 := temp - retVal.RX + Y + X.R1;
+    R2_ADD := TRUE;
 
     (* revision history
     hm		20.3.2008	rev 1.0

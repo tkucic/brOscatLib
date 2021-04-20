@@ -1,7 +1,7 @@
 FUNCTION R2_SET
-    R2_SET.RX := X;
-    R2_SET.R1 := 0.0;
-
+    retVal.RX := X;
+    retVal.R1 := 0.0;
+    R2_SET := TRUE;
 
     (* revision history
     hm	2. jun. 2008	rev 1.0

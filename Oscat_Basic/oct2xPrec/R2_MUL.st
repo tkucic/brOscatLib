@@ -1,7 +1,7 @@
 FUNCTION R2_MUL
-    R2_MUL.RX := X.RX * Y;
-    R2_MUL.R1 := X.R1 * Y;
-
+    retVal.RX := X.RX * Y;
+    retVal.R1 := X.R1 * Y;
+    R2_MUL := TRUE;
 
     (* revision history
     hm		20.3.2008	rev 1.0

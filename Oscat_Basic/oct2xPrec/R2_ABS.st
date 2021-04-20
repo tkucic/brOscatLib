@@ -1,11 +1,12 @@
 FUNCTION R2_ABS
     IF X.RX >= 0.0 THEN
-    	R2_ABS.RX := X.RX;
-    	R2_ABS.R1 := X.R1;
+    	retVal.RX := X.RX;
+    	retVal.R1 := X.R1;
     ELSE
-    	R2_ABS.RX := -X.RX;
-    	R2_ABS.R1 := -X.R1;
+    	retVal.RX := -X.RX;
+    	retVal.R1 := -X.R1;
     END_IF
+    R2_ABS := TRUE;
 
 
     (* revision history

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.3.4" SubType="IEC" Description="Oscat Basic - Double precision" xmlns="http://br-automation.co.at/AS/Library">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="3.03.4" SubType="IEC" Description="Oscat Basic - Double precision" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">oct2xPrec.typ</File>
     <File Description="Exported constants">oct2xPrec.var</File>
@@ -11,5 +11,7 @@
     <File Description="Source code of function R2_MUL">R2_MUL.st</File>
     <File Description="Source code of function R2_SET">R2_SET.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="octCommon" />
+  </Dependencies>
 </Library>
