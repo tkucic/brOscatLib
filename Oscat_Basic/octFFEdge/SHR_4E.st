@@ -1,9 +1,9 @@
 FUNCTION_BLOCK SHR_4E
     (* trig.Q signals a rising edge on clk *)
-    trig(clk := clk);
+    trig(CLK := CLK);
 
-    IF set OR rst THEN
-    	Q0 := NOT rst;
+    IF SET OR RST THEN
+    	Q0 := NOT RST;
     	Q1 := Q0;
     	Q2 := Q0;
     	Q3 := Q0;

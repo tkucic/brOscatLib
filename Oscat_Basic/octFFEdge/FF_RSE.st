@@ -1,5 +1,5 @@
 FUNCTION_BLOCK FF_RSE
-    IF rst THEN
+    IF RST THEN
     	(* asynchronous reset *)
     	Q := FALSE;
     ELSIF CR AND NOT er THEN

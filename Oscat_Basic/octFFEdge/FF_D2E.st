@@ -1,12 +1,12 @@
 FUNCTION_BLOCK FF_D2E
-    IF rst THEN
+    IF RST THEN
     	Q0 := FALSE;
     	Q1 := FALSE;
-    ELSIF clk AND NOT edge THEN
+    ELSIF CLK AND NOT edge_ THEN
     	Q0 := D0;
     	Q1 := D1;
     END_IF
-    edge := CLK;
+    edge_ := CLK;
 
     (* revision history
     hm	25. dec 2007	rev 1.0

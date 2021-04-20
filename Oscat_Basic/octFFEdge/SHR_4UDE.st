@@ -1,14 +1,14 @@
 FUNCTION_BLOCK SHR_4UDE
     (* trig.Q signals a rising edge on clk *)
-    trig(clk := clk);
+    trig(CLK := CLK);
 
-    IF set OR rst THEN
+    IF SET OR RST THEN
     	Q0 := NOT RST;
     	Q1 := Q0;
     	Q2 := Q0;
     	Q3 := Q0;
     ELSIF trig.Q THEN
-    	IF dn THEN
+    	IF DN THEN
     		Q0 := Q1;
     		Q1 := Q2;
     		Q2 := Q3;

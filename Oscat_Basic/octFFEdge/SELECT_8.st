@@ -1,15 +1,15 @@
 FUNCTION_BLOCK SELECT_8
-    IF rst THEN
-    	state := 0;
-    ELSIF set THEN
-    	state := IN;
-    ELSIF up AND NOT last_up THEN
-    	state := inc(state,1,7);
-    ELSIF dn AND NOT last_dn THEN
-    	state := inc(state,-1,7);
+    IF RST THEN
+    	STATE := 0;
+    ELSIF SET THEN
+    	STATE := BYTE_TO_INT(IN);
+    ELSIF UP AND NOT last_up THEN
+    	STATE := INC(STATE,1,7);
+    ELSIF DN AND NOT last_dn THEN
+    	STATE := INC(STATE,-1,7);
     END_IF
-    last_UP := UP;
-    last_DN := DN;
+    last_up := UP;
+    last_dn := DN;
 
     Q0 := FALSE;
     Q1 := FALSE;
@@ -21,7 +21,7 @@ FUNCTION_BLOCK SELECT_8
     Q7 := FALSE;
 
     IF E THEN
-    	CASE state OF
+    	CASE STATE OF
     		0: Q0 := TRUE;
     		1: Q1 := TRUE;
     		2: Q2 := TRUE;

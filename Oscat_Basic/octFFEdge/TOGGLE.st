@@ -1,10 +1,10 @@
 FUNCTION_BLOCK TOGGLE
-    IF rst THEN
-    	q := 0;
-    ELSIF clk AND NOT edge THEN
+    IF RST THEN
+    	Q := 0;
+    ELSIF CLK AND NOT edge_ THEN
     	Q := NOT Q;
     END_IF
-    edge := clk;
+    edge_ := CLK;
 
     (* revision history
 
