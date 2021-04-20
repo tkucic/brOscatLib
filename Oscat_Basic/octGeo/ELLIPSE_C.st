@@ -1,5 +1,5 @@
 FUNCTION ELLIPSE_C
-    ELLIPSE_C := math.PI * (3.0 * (R1+R2) - SQRT((3.0 * r1 + R2) * (3.0 * r2 + r1)));
+    ELLIPSE_C := PI * (3.0 * (R1+R2) - SQRT((3.0 * R1 + R2) * (3.0 * R2 + R1)));
 
     (* revision histroy
     hm	16. oct 2007	rev 1.0

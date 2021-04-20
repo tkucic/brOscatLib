@@ -1,5 +1,5 @@
 FUNCTION ELLIPSE_A
-    ELLIPSE_A := math.PI * R1 * R2;
+    ELLIPSE_A := PI * R1 * R2;
 
     (* revision histroy
     hm	16. oct 2007	rev 1.0

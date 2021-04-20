@@ -1,5 +1,5 @@
 FUNCTION CONE_V
-    cone_V := 1.047197551 * RX * RX * hx;
+    CONE_V := 1.047197551 * rx * rx * hx;
 
     (* revision histroy
     hm	17. oct 2007	rev 1.0

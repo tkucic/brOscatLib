@@ -1,5 +1,5 @@
 FUNCTION SPHERE_V
-    sphere_V := 4.188790205 * Rx * RX * RX;
+    SPHERE_V := 4.188790205 * rx * rx * rx;
 
     (* revision histroy
     hm	16. oct 2007	rev 1.0

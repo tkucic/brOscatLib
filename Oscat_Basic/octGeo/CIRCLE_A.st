@@ -1,5 +1,5 @@
 FUNCTION CIRCLE_A
-    circle_A := Rx * RX * 8.726646E-3 * Ax;
+    CIRCLE_A := rx * rx * 8.726646E-3 * ax;
 
     (* revision histroy
     hm	16. oct 2007	rev 1.0

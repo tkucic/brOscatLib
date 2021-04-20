@@ -1,6 +1,6 @@
 FUNCTION TRIANGLE_A
     IF A = 0.0 THEN
-    	TRIANGLE_A := SQRT((s1+s2+S3) * (s1+s2-S3) * (S2+S3-S1) * (S3+S1-S2)) * 0.25;
+    	TRIANGLE_A := SQRT((S1+S2+S3) * (S1+S2-S3) * (S2+S3-S1) * (S3+S1-S2)) * 0.25;
     ELSE
     	TRIANGLE_A := S1 * S2 * SIN(RAD(A)) * 0.5;
     END_IF
