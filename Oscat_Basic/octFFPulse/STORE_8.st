@@ -1,13 +1,13 @@
 FUNCTION_BLOCK STORE_8
-    IF rst OR set THEN
-    	q0 := NOT rst;
-    	q1 := q0;
-    	q2 := q0;
-    	q3 := q0;
-    	q4 := q0;
-    	q5 := q0;
-    	q6 := q0;
-    	q7 := q0;
+    IF Rst OR Set THEN
+    	Q0 := NOT Rst;
+    	Q1 := Q0;
+    	Q2 := Q0;
+    	Q3 := Q0;
+    	Q4 := Q0;
+    	Q5 := Q0;
+    	Q6 := Q0;
+    	Q7 := Q0;
     ELSE
     	IF D0 THEN Q0 := TRUE; END_IF
     	IF D1 THEN Q1 := TRUE; END_IF
@@ -18,18 +18,18 @@ FUNCTION_BLOCK STORE_8
     	IF D6 THEN Q6 := TRUE; END_IF
     	IF D7 THEN Q7 := TRUE; END_IF
 
-    	IF clr AND NOT edge THEN
-    		IF q0 THEN q0 := FALSE;
-    		ELSIF q1 THEN q1 := FALSE;
-    		ELSIF q2 THEN q2 := FALSE;
-    		ELSIF q3 THEN q3 := FALSE;
-    		ELSIF q4 THEN q4 := FALSE;
-    		ELSIF q5 THEN q5 := FALSE;
-    		ELSIF q6 THEN q6 := FALSE;
-    		ELSE q7 := FALSE;
+    	IF Clr AND NOT edge_ THEN
+    		IF Q0 THEN Q0 := FALSE;
+    		ELSIF Q1 THEN Q1 := FALSE;
+    		ELSIF Q2 THEN Q2 := FALSE;
+    		ELSIF Q3 THEN Q3 := FALSE;
+    		ELSIF Q4 THEN Q4 := FALSE;
+    		ELSIF Q5 THEN Q5 := FALSE;
+    		ELSIF Q6 THEN Q6 := FALSE;
+    		ELSE Q7 := FALSE;
     		END_IF
     	END_IF
-    	edge := clr;
+    	edge_ := Clr;
     END_IF
 
 

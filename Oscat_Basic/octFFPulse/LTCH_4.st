@@ -1,7 +1,7 @@
 FUNCTION_BLOCK LTCH_4
     (* as long as L is true, the latch is transparent and and change of D is transferred to Q *)
     (* of course only when there is no asynchronous reset *)
-    IF rst THEN			(* if asynchronous reset then Q=0 *)
+    IF RST THEN			(* if asynchronous reset then Q=0 *)
     	Q0 := FALSE;
     	Q1 := FALSE;
     	Q2 := FALSE;
