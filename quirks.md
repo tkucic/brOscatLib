@@ -8,6 +8,8 @@ Here we list all the known quirks and differences between the source and the B&R
 - 
 ## Data types
 
+
+
 ## Var files
 
 - All variables here are constants
@@ -28,3 +30,5 @@ Here we list all the known quirks and differences between the source and the B&R
 - syntax for array and string sizes and also POUs like OSCAT_BASIC.STRING_LENGHT is converted to be just STRING_LENGHT as the library holding this constant needs to be added as dependency library
 - END_IF;,END_CASE;, END_FOR; and END_WHILE; statements do not need a semicolon at the end. This is fixed with the script
 - VAR_INPUT CONSTANT doesnt exist in automation studio. These need to be figured out what we do with them
+- BYTE + BYTE is not possible
+- If ADR() is used, resulting data type must be UDINT
