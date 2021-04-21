@@ -1,8 +1,8 @@
 FUNCTION SINH
-    IF ABS(x) < 2E-3 THEN
+    IF ABS(X) < 2E-3 THEN
     	SINH := X;
     ELSE
-    	SINH := (EXP(x) - EXP(-x)) * 0.5;
+    	SINH := (EXP(X) - EXP(-X)) * 0.5;
     END_IF
 
 

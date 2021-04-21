@@ -1,5 +1,5 @@
 FUNCTION DEG
-    DEG := MODR(57.29577951308232 * RAD, 360.0);
+    DEG := MODR(57.29577951308232 * rad, 360.0);
 
     (* revision history
     hm	4. aug 2006	rev 1.0

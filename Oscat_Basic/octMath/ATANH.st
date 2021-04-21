@@ -1,5 +1,5 @@
 FUNCTION ATANH
-    ATANH := LN((1.0 + x)/(1.0 - x)) * 0.5;
+    ATANH := LN((1.0 + X)/(1.0 - X)) * 0.5;
 
 
     (* revision history

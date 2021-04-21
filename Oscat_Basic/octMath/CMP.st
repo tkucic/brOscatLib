@@ -1,5 +1,5 @@
 FUNCTION CMP
-    tmp := ABS(x);
+    tmp := ABS(X);
     IF tmp > 0.0 THEN
     	tmp := EXP10(INT_TO_REAL(FLOOR(LOG(tmp))-N+1));
     ELSE

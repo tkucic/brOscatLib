@@ -1,5 +1,5 @@
 FUNCTION SIGN_I
-    SIGN_I := in.31;
+    SIGN_I := IN.31;
 
     (* revision history
     hm 3.3.2007	rev 1.1

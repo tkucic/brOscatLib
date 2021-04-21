@@ -1,6 +1,6 @@
 FUNCTION SQRTN
     IF N > 0 THEN
-    	SQRTN := EXP(LN(x) / INT_TO_REAL(n));
+    	SQRTN := EXP(LN(X) / INT_TO_REAL(N));
     ELSE
     	SQRTN := 0.0;
     END_IF

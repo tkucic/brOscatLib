@@ -1,5 +1,5 @@
 FUNCTION BETA
-    BETA := GAMMA(X) * GAMMA(Y) / GAMMA(x + y);
+    BETA := GAMMA(X) * GAMMA(Y) / GAMMA(X + Y);
 
 
     (* revision history

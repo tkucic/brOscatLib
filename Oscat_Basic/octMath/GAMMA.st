@@ -1,6 +1,6 @@
 FUNCTION GAMMA
-    IF x > 0.0 THEN
-    	GAMMA := SQRT(math.PI2 / X) * EXPT(math.E_INV * (x + 1.0 / (12.0 * x - 0.1 / X)), X);
+    IF X > 0.0 THEN
+    	GAMMA := SQRT(PI2 / X) * EXPT(E_INV * (X + 1.0 / (12.0 * X - 0.1 / X)), X);
     END_IF
 
 

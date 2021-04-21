@@ -1,5 +1,5 @@
 FUNCTION RAD
-    RAD := MODR(0.0174532925199433 * DEG, math.PI2);
+    RAD := MODR(0.0174532925199433 * DEG, PI2);
 
     (* revision history
     hm	4. aug 2006		rev 1.0

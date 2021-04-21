@@ -1,6 +1,6 @@
 FUNCTION CAUCHY
-    tmp := x - t;
-    CAUCHY := math.PI_INV * U / (U*U + tmp*tmp);
+    tmp := X - T;
+    CAUCHY := PI_INV * U / (U*U + tmp*tmp);
 
 
 

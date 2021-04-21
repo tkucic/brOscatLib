@@ -1,5 +1,5 @@
 FUNCTION ACOTH
-    ACOTH := LN((x+1.0)/(x-1.0))*0.5;
+    ACOTH := LN((X+1.0)/(X-1.0))*0.5;
 
     (* revision history
     hm		12 jan 2007	rev 1.0

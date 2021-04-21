@@ -1,7 +1,7 @@
 FUNCTION GAUSS
     temp := X - U;
-    si_inv := 1.0  / si;
-    GAUSS := EXP(Temp * Temp * si_inv * si_inv * - 0.5) * 0.39894228 * si_inv;
+    si_inv := 1.0  / SI;
+    GAUSS := EXP(temp * temp * si_inv * si_inv * - 0.5) * 0.39894228 * si_inv;
 
 
 

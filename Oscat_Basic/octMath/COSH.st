@@ -1,6 +1,6 @@
 FUNCTION COSH
-    T := EXP(X);
-    COSH := (1.0 / T + T) * 0.5;
+    t := EXP(X);
+    COSH := (1.0 / t + t) * 0.5;
 
     (* revision histroy
     hm	12.1.2007	rev 1.0

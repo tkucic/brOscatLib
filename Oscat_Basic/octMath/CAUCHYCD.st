@@ -1,5 +1,5 @@
 FUNCTION CAUCHYCD
-    CAUCHYCD := 0.5 + math.PI_INV * ATAN((X - T) / U);
+    CAUCHYCD := 0.5 + PI_INV * ATAN((X - T) / U);
 
 
 

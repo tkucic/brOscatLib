@@ -1,5 +1,5 @@
 FUNCTION ROUND
-    X := setup.DECADES[LIMIT(0,N,8)];
+    X := cDecades[LIMIT(0,N,8)];
     ROUND := DINT_TO_REAL(REAL_TO_DINT(in * X)) / X;
 
 

@@ -1,5 +1,5 @@
 FUNCTION MAX3
-    MAX3 := MAX(MAX(IN1,IN2),IN3);
+    MAX3 := MAX(MAX(in1,in2),in3);
 
 
     (* revision history

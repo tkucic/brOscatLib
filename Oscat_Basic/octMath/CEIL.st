@@ -1,5 +1,5 @@
 FUNCTION CEIL
-    CEIL := REAL_TO_INT(x);
+    CEIL := REAL_TO_INT(X);
     IF CEIL < X THEN
     	CEIL := CEIL + 1;
     END_IF

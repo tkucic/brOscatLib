@@ -1,5 +1,5 @@
 FUNCTION HYPOT
-    HYPOT := SQRT(x*x + y*y);
+    HYPOT := SQRT(X*X + Y*Y);
 
 
     (* revision history

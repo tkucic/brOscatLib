@@ -1,7 +1,7 @@
 FUNCTION ERF
     x2 := X*X;
     ax2 := 0.147 * x2 + 1.0;
-    ERF := SQRT(1.0 - EXP(-X2 * ((0.27323954473516 + aX2)/(ax2)))) * SGN(x);
+    ERF := SQRT(1.0 - EXP(-x2 * ((0.27323954473516 + ax2)/(ax2)))) * SGN(X);
 
 
 

@@ -1,7 +1,7 @@
 FUNCTION FIB
     IF X < 0 OR X > 46 THEN
     	FIB := -1;
-    ELSIF x < 2 THEN
+    ELSIF X < 2 THEN
     	FIB := X;
     	RETURN;
     ELSE
@@ -14,7 +14,7 @@ FUNCTION FIB
     		t2 := t1 + t2;
     	END_WHILE
     	IF X > 2 THEN t1 := t1 + t2; END_IF
-    	fib := t1 + t2;
+    	FIB := t1 + t2;
     END_IF
 
     (* alternative code for very big numbers

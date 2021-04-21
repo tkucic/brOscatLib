@@ -1,6 +1,6 @@
 FUNCTION FACT
     IF X >= 0 AND X <= 12 THEN
-    	FACT := math.FACTS[X];
+    	FACT := cFacts[X];
     ELSE
     	FACT := -1;
     END_IF
@@ -36,6 +36,6 @@ FUNCTION FACT
     	optimized code
 
     hm	26. mar. 2011	rev 1.5
-    	using array math.facts
+    	using array facts
     *)
 END_FUNCTION

@@ -1,5 +1,5 @@
 FUNCTION MIN3
-    MIN3 := MIN(MIN(IN1,IN2),IN3);
+    MIN3 := MIN(MIN(in1,in2),in3);
 
 
     (* revision history

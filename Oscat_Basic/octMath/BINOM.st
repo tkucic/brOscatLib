@@ -1,18 +1,18 @@
 FUNCTION BINOM
-    IF 2 * K > n THEN
-    	k := n - k;
+    IF 2 * K > N THEN
+    	K := N - K;
     END_IF
-    IF k > n THEN
+    IF K > N THEN
     	RETURN;
-    ELSIF k = 0 OR k = n THEN
+    ELSIF K = 0 OR K = N THEN
     	BINOM := 1;
-    ELSIF k = 1 THEN
-    	BINOM := n;
+    ELSIF K = 1 THEN
+    	BINOM := N;
     ELSE
-    	BINOM := n;
-    	n := n + 1;
-    	FOR i := 2 TO k DO
-    		BINOM := BINOM * (n - i) / i;
+    	BINOM := N;
+    	N := N + 1;
+    	FOR i := 2 TO K DO
+    		BINOM := BINOM * (N - i) / i;
     	END_FOR
     END_IF
 

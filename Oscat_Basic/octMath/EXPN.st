@@ -1,5 +1,5 @@
 FUNCTION EXPN
-    sign := n.15;
+    sign := N.15;
     N := ABS(N);
     IF N.0 THEN EXPN := X; ELSE EXPN := 1.0; END_IF
     N := SHR(N,1);

@@ -8,21 +8,21 @@ FUNCTION REAL_TO_FRAC
     	X_gerundet := REAL_TO_DINT(X);
 
     	(* Zaehler berechnen *)
-    	temp := numerator * X_gerundet + numerator_old;		(* Zaehler um Vorkammawert erweitern *)
-    	numerator_old := numerator;							(* Zaehler der letzten Berechnung speichern *)
-    	numerator := temp;									(* Zaehler dieser Berechnung speichern *)
+    	temp := Numerator * X_gerundet + Numerator_old;		(* Zaehler um Vorkammawert erweitern *)
+    	Numerator_old := Numerator;							(* Zaehler der letzten Berechnung speichern *)
+    	Numerator := temp;									(* Zaehler dieser Berechnung speichern *)
 
     	(* Nenner berechnen *)
-    	temp := denominator * X_gerundet + denominator_old;	(* Nenner um Vorkammawert erweitern *)
-    	denominator_old := denominator;						(* Nenner der letzten Berechnung speichern *)
-    	denominator := temp;								(* Nenner dieser Berechnung speichern *)
+    	temp := Denominator * X_gerundet + Denominator_old;	(* Nenner um Vorkammawert erweitern *)
+    	Denominator_old := Denominator;						(* Nenner der letzten Berechnung speichern *)
+    	Denominator := temp;								(* Nenner dieser Berechnung speichern *)
 
     	(* Restwert berechnen *)
     	X_ohne_Nachkomma := DINT_TO_REAL(X_gerundet);
     	IF X = X_ohne_Nachkomma THEN						(* Bruch geht ohne Rest auf *)
-    		IF ABS(denominator) <= N THEN						(* kein Rundungsfehler *)
-    			numerator_old := numerator;					(* Numerator_old wird von Funktion zurückgegeben *)
-    			denominator_old := denominator;			(* Denominator_old wird von Funktion zurückgegeben *)
+    		IF ABS(Denominator) <= N THEN						(* kein Rundungsfehler *)
+    			Numerator_old := Numerator;					(* Numerator_old wird von Funktion zurückgegeben *)
+    			Denominator_old := Denominator;			(* Denominator_old wird von Funktion zurückgegeben *)
     		END_IF
     		EXIT;											(* keine weitere Berechnung notwendig *)
     	ELSE
@@ -35,12 +35,12 @@ FUNCTION REAL_TO_FRAC
 
     (* correct sign if X was negative *)
     IF sign THEN
-    	REAL_TO_FRAC.NUMERATOR := -1 * ABS(DINT_TO_INT(numerator_old));
+    	retVal.NUMERATOR := -1 * ABS(DINT_TO_INT(Numerator_old));
     ELSE
-    	REAL_TO_FRAC.NUMERATOR :=  ABS(DINT_TO_INT(numerator_old));
+    	retVal.NUMERATOR :=  ABS(DINT_TO_INT(Numerator_old));
     END_IF
-    REAL_TO_FRAC.DENOMINATOR := ABS(DINT_TO_INT(denominator_old));
-
+    retVal.DENOMINATOR := ABS(DINT_TO_INT(Denominator_old));
+    REAL_TO_FRAC := TRUE;
 
     (* revision history
     hm		19. jan. 2011	rev 1.0

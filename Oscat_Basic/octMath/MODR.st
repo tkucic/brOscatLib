@@ -1,8 +1,8 @@
 FUNCTION MODR
-    IF divi = 0.0 THEN
+    IF DIVI = 0.0 THEN
     	MODR := 0.0;
     ELSE
-    	MODR := in - DINT_TO_REAL(FLOOR2(in / divi)) * divi;
+    	MODR := IN - DINT_TO_REAL(FLOOR2(IN / DIVI)) * DIVI;
     END_IF
 
     (* revision history
