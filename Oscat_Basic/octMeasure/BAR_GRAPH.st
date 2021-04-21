@@ -2,15 +2,15 @@ FUNCTION_BLOCK BAR_GRAPH
     IF NOT init THEN
     	init := TRUE;
     	IF log_scale THEN
-    		temp := EXP(LN(Trigger_high / Trigger_low) * 0.166666666666666666666);
-    		T1 := trigger_low * temp;
+    		temp := EXP(LN(trigger_High / trigger_Low) * 0.166666666666666666666);
+    		T1 := trigger_Low * temp;
     		T2 := T1 * temp;
     		T3 := T2 * temp;
     		T4 := T3 * temp;
     		T5 := T4 * temp;
     	ELSE
-    		temp := (trigger_high - trigger_low) * 0.142857142;
-    		T1 := trigger_low + temp;
+    		temp := (trigger_High - trigger_Low) * 0.142857142;
+    		T1 := trigger_Low + temp;
     		T2 := T1 + temp;
     		T3 := T2 + temp;
     		T4 := T3 + temp;
@@ -25,43 +25,43 @@ FUNCTION_BLOCK BAR_GRAPH
     Q4 := FALSE;
     Q5 := FALSE;
     Q6 := FALSE;
-    status := 110;
+    Status := 110;
 
     (* low, high and alarm can only be cleared with rst depending on alarm_low and alarm_high *)
-    IF NOT alarm_low THEN low := FALSE; END_IF
-    IF NOT alarm_high THEN high := FALSE; END_IF
+    IF NOT Alarm_low THEN LOW := FALSE; END_IF
+    IF NOT Alarm_high THEN HIGH := FALSE; END_IF
     IF rst THEN
-    	alarm := FALSE;
-    	low := FALSE;
-    	high := FALSE;
+    	Alarm := FALSE;
+    	LOW := FALSE;
+    	HIGH := FALSE;
     END_IF
 
     (* check and set outputs *)
-    IF X < trigger_low THEN
-    	Low := TRUE;
-    	status := 111;
-    	IF alarm_low THEN
-    		alarm := TRUE;
-    		status := 1;
+    IF X < trigger_Low THEN
+    	LOW := TRUE;
+    	Status := 111;
+    	IF Alarm_low THEN
+    		Alarm := TRUE;
+    		Status := 1;
     	END_IF
     ELSIF X < T1 THEN
     	Q1 := TRUE;
-    ELSIF x < t2 THEN
+    ELSIF X < T2 THEN
     	Q2 := TRUE;
-    ELSIF x < t3 THEN
+    ELSIF X < T3 THEN
     	Q3 := TRUE;
-    ELSIF x < T4 THEN
+    ELSIF X < T4 THEN
     	Q4 := TRUE;
-    ELSIF x < T5 THEN
-    	q5 := TRUE;
-    ELSIF x < trigger_high THEN
-    	q6 := TRUE;
+    ELSIF X < T5 THEN
+    	Q5 := TRUE;
+    ELSIF X < trigger_High THEN
+    	Q6 := TRUE;
     ELSE
-    	high := TRUE;
-    	status := 112;
-    	IF alarm_high THEN
-    		alarm := TRUE;
-    		status := 2;
+    	HIGH := TRUE;
+    	Status := 112;
+    	IF Alarm_high THEN
+    		Alarm := TRUE;
+    		Status := 2;
     	END_IF
     END_IF
 

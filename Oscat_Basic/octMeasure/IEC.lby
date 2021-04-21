@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.6.4.67 SP?>
-<Library Version="3.3.4" SubType="IEC" Description="Oscat Basic - Measurement" xmlns="http://br-automation.co.at/AS/Library">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="3.03.4" SubType="IEC" Description="Oscat Basic - Measurement" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">octMeasure.typ</File>
     <File Description="Exported constants">octMeasure.var</File>
@@ -23,5 +23,11 @@
     <File Description="Source code of functionBlock TC_S">TC_S.st</File>
     <File Description="Source code of functionBlock TC_US">TC_US.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="octCtrl" />
+    <Dependency ObjectName="octCommon" />
+    <Dependency ObjectName="octMath" />
+    <Dependency ObjectName="oct2xPrec" />
+    <Dependency ObjectName="octTimeDte" />
+  </Dependencies>
 </Library>

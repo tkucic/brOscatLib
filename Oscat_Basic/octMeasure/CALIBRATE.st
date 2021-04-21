@@ -1,12 +1,12 @@
 FUNCTION_BLOCK CALIBRATE
     (* check for calibration *)
     IF CO THEN
-    	OFFSET := Y_Offset - X;
+    	offset := Y_Offset - X;
     ELSIF CS THEN
-    	SCALE := Y_scale / (X + OFFSET);
+    	Scale := Y_Scale / (X + offset);
     END_IF
     (* calculate output *)
-    Y := (X + OFFSET) * SCALE;
+    Y := (X + offset) * Scale;
 
 
     (* revision history

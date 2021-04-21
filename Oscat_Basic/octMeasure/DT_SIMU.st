@@ -1,19 +1,19 @@
 FUNCTION_BLOCK DT_SIMU
     (* read system timer *)
     tx := T_PLC_MS();
-    tc := REAL_TO_DWORD(DWORD_TO_REAL(tx - last) * speed);
+    tc := REAL_TO_UDINT(UDINT_TO_REAL(tx - last) * SPEED);
 
     IF NOT init THEN
     	init := TRUE;
-    	DTS := Start;
+    	DTS := START;
     	tc := 0;
     	last := tx;
     ELSIF SPEED = 0.0 THEN
-    	DTS := DWORD_TO_DT(DT_TO_DWORD(DTS) + 1);
+    	DTS := UDINT_TO_DT(DT_TO_UDINT(DTS) + 1);
     ELSIF tc >= 1000 THEN
     	td := (tc / 1000) * 1000;
-    	DTS := DTS + DWORD_TO_TIME(td);
-    	last := last + REAL_TO_DWORD(DWORD_TO_REAL(td) / speed);
+    	DTS := DTS + UDINT_TO_TIME(td);
+    	last := last + REAL_TO_UDINT(UDINT_TO_REAL(td) / SPEED);
     END_IF
 
     (* revision history

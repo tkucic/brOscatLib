@@ -1,10 +1,10 @@
 FUNCTION_BLOCK ALARM_2
-    tmp := X - Hys * 0.5;
+    tmp := X - HYS * 0.5;
     IF tmp > LO_1 THEN Q1_LO := FALSE; END_IF
     IF tmp > LO_2 THEN Q2_LO := FALSE; END_IF
     IF tmp > HI_1 THEN Q1_HI := TRUE; END_IF
     IF tmp > HI_2 THEN Q2_HI := TRUE; END_IF
-    tmp := tmp + hys;
+    tmp := tmp + HYS;
     IF tmp < LO_1 THEN Q1_LO := TRUE; END_IF
     IF tmp < LO_2 THEN Q2_LO := TRUE; END_IF
     IF tmp < HI_1 THEN Q1_HI := FALSE; END_IF

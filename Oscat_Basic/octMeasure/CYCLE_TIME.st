@@ -1,6 +1,6 @@
 FUNCTION_BLOCK CYCLE_TIME
-    tx := DWORD_TO_TIME(T_PLC_MS()) - last_cycle;
-    IF rst THEN
+    tx := UDINT_TO_TIME(T_PLC_MS()) - last_cycle;
+    IF RST THEN
     	ct_min := t#10h;
     	ct_max := t#0ms;
     	cycles := 0;

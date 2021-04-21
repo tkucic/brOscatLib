@@ -1,32 +1,32 @@
 FUNCTION_BLOCK M_D
     (* check for rst input *)
-    IF rst OR et >= tmax THEN
-    	pt := t#0ms;
-    	et := t#0ms;
+    IF rst OR ET >= tmax THEN
+    	PT := t#0ms;
+    	ET := t#0ms;
     	startup := FALSE;
     	run := FALSE;
     END_IF
 
     (* avoid timers to start when input is true at startup *)
     IF NOT startup THEN
-    	edge := start;
+    	edge_ := start;
     	startup := TRUE;
     END_IF
 
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* detect rising edge on start *)
-    IF start AND NOT edge AND NOT stop THEN
-    	t0 := tx;
+    IF start AND NOT edge_ AND NOT stop THEN
+    	T0 := tx;
     	run := TRUE;
-    	pt := t#0s;
+    	PT := t#0s;
     ELSIF stop AND run THEN
-    	pt := et;
+    	PT := ET;
     	run := FALSE;
     END_IF
-    edge := start;
-    IF run THEN et := tx - t0; END_IF
+    edge_ := start;
+    IF run THEN ET := tx - T0; END_IF
 
     (* revision history
     hm		2.5.2007	rev 1.0

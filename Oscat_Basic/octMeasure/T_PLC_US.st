@@ -1,6 +1,6 @@
 FUNCTION T_PLC_US
     tx := TIME();
-    T_PLC_US := TIME_TO_DWORD(Tx)*1000;
+    T_PLC_US := TIME_TO_UDINT(tx)*1000;
     (* hier muss die korrektur für step7 stattfinden
     plctime muss den vollen wertebereich von time ausnutzen:
     wenn bei step7 time -24tage bis plus 24 tage ist dann muss der timer auch beim überlauf auf -24tage springen 
@@ -10,7 +10,7 @@ FUNCTION T_PLC_US
     oder etwa spring s7 bei überlauf auf -24 tage????? dann wäre keine korrektur nötig.
     *)
     IF debug THEN
-    	T_PLC_US := (SHL(T_PLC_US,N) OR SHL(DWORD#1,N)-1) + OFFSET;
+    	T_PLC_US := (SHL(T_PLC_US,N) OR SHL(UDINT#1,N)-1) + offset;
     END_IF
 
     (* revision history

@@ -17,13 +17,13 @@ FUNCTION_BLOCK ONTIME
     	(* add the current milliseconds *)
     	ms := (tx - last) + ms;
     	IF ms >= 1000 THEN
-    		seconds := seconds + 1;
+    		SECONDS := SECONDS + 1;
     		ms := ms - 1000;
     	END_IF
-    	cycles := cycles + BOOL_TO_UINT(NOT edge);
+    	CYCLES := CYCLES + BOOL_TO_UINT(NOT edge_);
     END_IF
     last := tx;
-    edge := in;
+    edge_ := IN;
 
 
     (* revision history

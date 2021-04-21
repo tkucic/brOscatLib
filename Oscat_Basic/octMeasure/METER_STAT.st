@@ -1,56 +1,56 @@
 FUNCTION_BLOCK METER_STAT
-    IF rst THEN
+    IF RST THEN
     	Last_Day := 0.0;
     	Current_Day := 0.0;
-    	Day_start := IN;
-    	Last_week := 0.0;
-    	Current_week := 0.0;
-    	Week_start := in;
-    	Last_month := 0.0;
-    	Current_month := 0.0;
-    	month_start := in;
-    	last_year := 0.0;
-    	current_year := 0.0;
-    	year_start := in;
+    	Day_Start := IN;
+    	Last_Week := 0.0;
+    	Current_Week := 0.0;
+    	Week_Start := IN;
+    	Last_Month := 0.0;
+    	Current_Month := 0.0;
+    	Month_Start := IN;
+    	Last_Year := 0.0;
+    	Current_Year := 0.0;
+    	Year_Start := IN;
     ELSE
     	Current_Day := IN - Day_Start;
-    	Current_Week := In - Week_Start;
+    	Current_Week := IN - Week_Start;
     	Current_Month := IN - Month_Start;
     	Current_Year := IN - Year_Start;
     END_IF
 
     IF YEAR_OF_DATE(DI) > YEAR_OF_DATE(last_run) THEN
     	(* a new year has started *)
-    	last_year := current_year;
-    	current_year := 0.0;
-    	year_start := in;
-    	last_month := current_month;
-    	current_month := 0.0;
-    	month_start := in;
-    	last_day := current_day;
-    	current_day := 0.0;
-    	day_start := in;
+    	Last_Year := Current_Year;
+    	Current_Year := 0.0;
+    	Year_Start := IN;
+    	Last_Month := Current_Month;
+    	Current_Month := 0.0;
+    	Month_Start := IN;
+    	Last_Day := Current_Day;
+    	Current_Day := 0.0;
+    	Day_Start := IN;
     ELSIF MONTH_OF_DATE(DI) > MONTH_OF_DATE(last_run) THEN
     	(* a new month has started, january is alrerady done by year change *)
-    	last_month := current_month;
-    	current_month := 0.0;
-    	month_start := in;
-    	last_day := current_day;
-    	current_day := 0.0;
-    	day_start := in;
-    ELSIF DAY_OF_YEAR(di) > DAY_OF_YEAR(last_run) THEN
+    	Last_Month := Current_Month;
+    	Current_Month := 0.0;
+    	Month_Start := IN;
+    	Last_Day := Current_Day;
+    	Current_Day := 0.0;
+    	Day_Start := IN;
+    ELSIF DAY_OF_YEAR(DI) > DAY_OF_YEAR(last_run) THEN
     	(* day has chaged, first day of year and first day of month has already been taken care of *)
-    	last_day := current_day;
-    	current_day := 0.0;
-    	day_start := in;
+    	Last_Day := Current_Day;
+    	Current_Day := 0.0;
+    	Day_Start := IN;
     END_IF
     IF DAY_OF_WEEK(DI) < DAY_OF_WEEK(last_run) THEN
     	(* a new week has started *)
-    	last_week := current_week;
-    	current_week := 0.0;
-    	week_start := in;
+    	Last_Week := Current_Week;
+    	Current_Week := 0.0;
+    	Week_Start := IN;
     END_IF
-    last_run := di;
+    last_run := DI;
 
     (* revision history
     hm	16. sep. 2007	rev 1.0

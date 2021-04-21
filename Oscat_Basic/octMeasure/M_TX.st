@@ -1,11 +1,11 @@
 FUNCTION_BLOCK M_TX
     (* check FOR rst input *)
-    IF rst OR (et >= tmax) THEN
+    IF rst OR (ET >= tmax) THEN
     	rise := FALSE;
     	fall := FALSE;
     	startup := FALSE;
-    	th := t#0ms;
-    	tl := t#0ms;
+    	TH := t#0ms;
+    	TL := t#0ms;
     	DC := 0.0;
     	F := 0.0;
     	ET := t#0s;
@@ -13,37 +13,37 @@ FUNCTION_BLOCK M_TX
 
     (* avoid timers to start when input is true at startup *)
     IF NOT startup THEN
-    	edge := in;
+    	edge_ := in;
     	startup := TRUE;
     END_IF
 
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* edge trigger rising and falling edge *)
-    IF in XOR edge THEN
-    	edge := in;
+    IF in XOR edge_ THEN
+    	edge_ := in;
     	(* rising edge starts measurement *)
     	IF in THEN
-    		start := Tx;
+    		start := tx;
     		rise := TRUE;
-    		IF fall THEN tl := start - stop; END_IF
-    		IF th > t#0ms AND tl > t#0ms THEN
-    			dc := TIME_TO_REAL(th) / TIME_TO_REAL(th+tl);
-    			f := 1000.0 / TIME_TO_REAL(th + tl);
+    		IF fall THEN TL := start - stop; END_IF
+    		IF TH > t#0ms AND TL > t#0ms THEN
+    			DC := TIME_TO_REAL(TH) / TIME_TO_REAL(TH+TL);
+    			F := 1000.0 / TIME_TO_REAL(TH + TL);
     		END_IF
     	(* falling edge starts second cycle measurement *)
     	ELSE
-    		stop := Tx;
+    		stop := tx;
     		fall := TRUE;
-    		IF rise THEN th := stop - start; END_IF
-    		IF th > t#0ms AND tl > t#0ms THEN
-    			dc := TIME_TO_REAL(th) /  TIME_TO_REAL(th+tl);
-    			f := 1000.0 / TIME_TO_REAL(th + tl);
+    		IF rise THEN TH := stop - start; END_IF
+    		IF TH > t#0ms AND TL > t#0ms THEN
+    			DC := TIME_TO_REAL(TH) /  TIME_TO_REAL(TH+TL);
+    			F := 1000.0 / TIME_TO_REAL(TH + TL);
     		END_IF
     	END_IF
     END_IF
-    IF rise THEN et := tx - start; END_IF
+    IF rise THEN ET := tx - start; END_IF
 
     (* revision history
     hm	4. aug. 2006	rev 1.0

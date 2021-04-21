@@ -1,17 +1,17 @@
 FUNCTION_BLOCK M_T
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     IF RST OR ET >= TMAX THEN
     	PT :=  t#0s;
     	ET := t#0s;
     ELSIF IN THEN
-    	IF NOT edge THEN start := tx; END_IF
+    	IF NOT edge_ THEN start := tx; END_IF
     	ET := tx - start;
     ELSE
     	PT := ET;
     END_IF
-    edge := IN;
+    edge_ := IN;
 
 
 
