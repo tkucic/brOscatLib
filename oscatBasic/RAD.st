@@ -1,6 +1,10 @@
 FUNCTION RAD
+<<<<<<< HEAD:oscatBasic/RAD.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61*)
     RAD := MODR(0.0174532925199433 * DEG, math.PI2);
+=======
+    RAD := MODR(0.0174532925199433 * DEG, PI2);
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/RAD.st
 
     (* revision history
     hm	4. aug 2006		rev 1.0

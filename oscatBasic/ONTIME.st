@@ -21,10 +21,17 @@ FUNCTION_BLOCK ONTIME
     		SECONDS := SECONDS + 1;
     		ms := ms - 1000;
     	END_IF
+<<<<<<< HEAD:oscatBasic/ONTIME.st
     	CYCLES := CYCLES + BOOL_TO_UINT(NOT EDGE_);
     END_IF
     last := tx;
     EDGE_ := IN;
+=======
+    	CYCLES := CYCLES + BOOL_TO_UINT(NOT edge_);
+    END_IF
+    last := tx;
+    edge_ := IN;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMeasure/ONTIME.st
 
 
     (* revision history

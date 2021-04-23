@@ -1,5 +1,8 @@
 FUNCTION SIGN_I
+<<<<<<< HEAD:oscatBasic/SIGN_I.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=66*)
+=======
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/SIGN_I.st
     SIGN_I := IN.31;
 
     (* revision history

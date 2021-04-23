@@ -7,7 +7,11 @@ FUNCTION_BLOCK TC_S
     	init := TRUE;
     	TC := 0.0;
     ELSE
+<<<<<<< HEAD:oscatBasic/TC_S.st
     	TC := DWORD_TO_REAL(tx - last)*1.0E-6;
+=======
+    	TC := UDINT_TO_REAL(tx - last)*1.0E-6;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMeasure/TC_S.st
     END_IF
     last := tx;
 

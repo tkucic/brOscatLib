@@ -1,7 +1,12 @@
 FUNCTION COSH
+<<<<<<< HEAD:oscatBasic/COSH.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=45*)
     T := EXP(X);
     COSH := (1.0 / T + T) * 0.5;
+=======
+    t := EXP(X);
+    COSH := (1.0 / t + t) * 0.5;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/COSH.st
 
     (* revision histroy
     hm	12.1.2007	rev 1.0

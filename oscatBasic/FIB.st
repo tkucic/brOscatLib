@@ -2,7 +2,7 @@ FUNCTION FIB
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50*)
     IF X < 0 OR X > 46 THEN
     	FIB := -1;
-    ELSIF x < 2 THEN
+    ELSIF X < 2 THEN
     	FIB := X;
     	RETURN;
     ELSE

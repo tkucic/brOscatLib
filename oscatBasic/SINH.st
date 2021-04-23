@@ -1,9 +1,13 @@
 FUNCTION SINH
+<<<<<<< HEAD:oscatBasic/SINH.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67*)
     IF ABS(x) < 2E-3 THEN
+=======
+    IF ABS(X) < 2E-3 THEN
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/SINH.st
     	SINH := X;
     ELSE
-    	SINH := (EXP(x) - EXP(-x)) * 0.5;
+    	SINH := (EXP(X) - EXP(-X)) * 0.5;
     END_IF
 
 

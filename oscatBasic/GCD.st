@@ -18,7 +18,7 @@ FUNCTION GCD
     		ELSIF NOT(B.0) THEN B := SHR(B,1);
     		ELSE
     			t:= SHR(ABS(A-B),1);
-    			IF A < B THEN B := t; ELSE A := T; END_IF
+    			IF A < B THEN B := t; ELSE A := t; END_IF
     		END_IF
     	END_WHILE
     	GCD := GCD * DINT_TO_INT(B);

@@ -30,7 +30,7 @@ FUNCTION_BLOCK FLOW_METER
     END_IF
 
     (* calculate the current flow *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
     IF tx - tl >= UPDATE_TIME AND UPDATE_TIME > t#0s THEN
     	F := (UDINT_TO_REAL(Y - y_last) + X - x_last) / TIME_TO_REAL(tx - tl) * 3.6E6;
     	y_last := Y;

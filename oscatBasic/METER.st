@@ -5,19 +5,29 @@ FUNCTION_BLOCK METER
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
+<<<<<<< HEAD:oscatBasic/METER.st
     	mr.RX := MX;
     	mr.R1 := 0.0;
+=======
+    	MR.RX := MX;
+    	MR.R1 := 0.0;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMeasure/METER.st
     ELSIF tx = last THEN
     	RETURN;
     ELSE
-    	tc := DWORD_TO_REAL(tx - last) * 0.001;
+    	tc := UDINT_TO_REAL(tx - last) * 0.001;
     END_IF
     last := tx;
 
     (* reset *)
     IF RST THEN
+<<<<<<< HEAD:oscatBasic/METER.st
     	mr.R1 := 0.0;
     	mr.RX := 0.0;
+=======
+    	MR.R1 := 0.0;
+    	MR.RX := 0.0;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMeasure/METER.st
     ELSE
     	(* current consumption measurement *)
     	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF
@@ -25,7 +35,7 @@ FUNCTION_BLOCK METER
     	(* add up the current values in a double real *)
     	MR := R2_ADD(MR,(SEL(I1,0.0,MX1) + SEL(I2, 0.0, MX2)) / D * TC);
     	(* set the current output value *)
-    	MX := mr.RX;
+    	MX := MR.RX;
     END_IF
 
 

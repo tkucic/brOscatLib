@@ -1,6 +1,10 @@
 FUNCTION EXPN
+<<<<<<< HEAD:oscatBasic/EXPN.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49*)
     sign := n.15;
+=======
+    sign := N.15;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/EXPN.st
     N := ABS(N);
     IF N.0 THEN EXPN := X; ELSE EXPN := 1.0; END_IF
     N := SHR(N,1);

@@ -11,8 +11,13 @@ FUNCTION RDM
     tn.25 := tn.6;
     tn.24 := tn.3;
     tn := ROL(tn,BIT_COUNT(tn)) OR 16#80000001;
+<<<<<<< HEAD:oscatBasic/RDM.st
     tn := tn MOD 71474513 + INT_TO_DWORD(tc + 77);
     RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (math.E - LIMIT(0.0,LAST,1.0)));
+=======
+    tn := UDINT_TO_DWORD(DWORD_TO_UDINT(tn) MOD 71474513 + INT_TO_UDINT(tc + 77));
+    RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (E - LIMIT(0.0,last,1.0)));
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/RDM.st
 
 
     (*

@@ -1,6 +1,10 @@
 FUNCTION MIN3
+<<<<<<< HEAD:oscatBasic/MIN3.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60*)
     MIN3 := MIN(MIN(IN1,IN2),IN3);
+=======
+    MIN3 := MIN(MIN(in1,in2),in3);
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/MIN3.st
 
 
     (* revision history

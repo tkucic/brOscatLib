@@ -1,18 +1,26 @@
 FUNCTION_BLOCK M_T
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     IF RST OR ET >= TMAX THEN
     	PT :=  t#0s;
     	ET := t#0s;
     ELSIF IN THEN
+<<<<<<< HEAD:oscatBasic/M_T.st
     	IF NOT EDGE_ THEN start := tx; END_IF
+=======
+    	IF NOT edge_ THEN start := tx; END_IF
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMeasure/M_T.st
     	ET := tx - start;
     ELSE
     	PT := ET;
     END_IF
+<<<<<<< HEAD:oscatBasic/M_T.st
     EDGE_ := IN;
+=======
+    edge_ := IN;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMeasure/M_T.st
 
 
 

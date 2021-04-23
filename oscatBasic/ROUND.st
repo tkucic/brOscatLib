@@ -1,7 +1,12 @@
 FUNCTION ROUND
+<<<<<<< HEAD:oscatBasic/ROUND.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65*)
     X := setup.DECADES[LIMIT(0,N,8)];
     ROUND := DINT_TO_REAL(REAL_TO_DINT(IN * X)) / X;
+=======
+    X := cDecades[LIMIT(0,N,8)];
+    ROUND := DINT_TO_REAL(REAL_TO_DINT(in * X)) / X;
+>>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/ROUND.st
 
 
 
