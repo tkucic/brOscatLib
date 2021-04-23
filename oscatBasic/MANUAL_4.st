@@ -8,7 +8,7 @@ FUNCTION_BLOCK MANUAL_4
     		Q3 := M3;
     		STATUS := 101;
     	END_IF
-    	IF STP AND NOT edge THEN
+    	IF STP AND NOT EDGE_ THEN
     		tog := TRUE;
     		CASE pos OF
     			0:	Q0 := TRUE;
@@ -45,7 +45,7 @@ FUNCTION_BLOCK MANUAL_4
     END_IF
 
     (* remember STATUS of STP *)
-    edge := STP;
+    EDGE_ := STP;
 
 
 

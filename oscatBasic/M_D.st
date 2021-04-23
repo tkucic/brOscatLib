@@ -10,15 +10,15 @@ FUNCTION_BLOCK M_D
 
     (* avoid timers to START when input is true at STARTup *)
     IF NOT STARTup THEN
-    	edge := START;
+    	EDGE_ := START;
     	STARTup := TRUE;
     END_IF
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* dETect rising edge on START *)
-    IF START AND NOT edge AND NOT STOP THEN
+    (* dETect rising EDGE_ on START *)
+    IF START AND NOT EDGE_ AND NOT STOP THEN
     	t0 := tx;
     	RUN := TRUE;
     	PT := t#0s;
@@ -26,7 +26,7 @@ FUNCTION_BLOCK M_D
     	PT := ET;
     	RUN := FALSE;
     END_IF
-    edge := START;
+    EDGE_ := START;
     IF RUN THEN ET := tx - t0; END_IF
 
     (* revision history

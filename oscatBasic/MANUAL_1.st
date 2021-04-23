@@ -3,23 +3,23 @@ FUNCTION_BLOCK MANUAL_1
     IF NOT MAN THEN
     	Q := IN;
     	STATUS := 100;
-    	edge := FALSE;
-    ELSIF NOT s_edge AND SET THEN
+    	EDGE_ := FALSE;
+    ELSIF NOT s_EDGE_ AND SET THEN
     	Q := TRUE;
-    	edge := TRUE;
+    	EDGE_ := TRUE;
     	STATUS := 101;
-    ELSIF NOT r_edge AND RST THEN
+    ELSIF NOT r_EDGE_ AND RST THEN
     	Q := FALSE;
-    	edge := TRUE;
+    	EDGE_ := TRUE;
     	STATUS := 102;
-    ELSIF NOT edge THEN
+    ELSIF NOT EDGE_ THEN
     	Q := M_I;
     	STATUS := 103;
     END_IF
 
     (* remember levels of MANual signals *)
-    s_edge := SET;
-    r_edge := RST;
+    s_EDGE_ := SET;
+    r_EDGE_ := RST;
 
 
 
@@ -28,7 +28,7 @@ FUNCTION_BLOCK MANUAL_1
     	origINal version
 
     hm	17. oct 2008	rev 1.1
-    	deleted unnecessary variable m_edge
+    	deleted unnecessary variable m_EDGE_
 
     hm	14. mar. 2009	rev 1.2
     	replaced double assignments

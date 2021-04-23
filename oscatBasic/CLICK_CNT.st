@@ -3,11 +3,11 @@ FUNCTION_BLOCK CLICK_CNT
     (* Q shall only be active for one cycle only *)
     Q := FALSE;
 
-    IF IN AND NOT edge AND NOT tx.q THEN
-    	(* a risINg edge on IN sets the counter to 0 *)
+    IF IN AND NOT EDGE_ AND NOT tx.q THEN
+    	(* a risINg EDGE_ on IN sets the counter to 0 *)
     	cnt := 0;
-    ELSIF tx.Q AND NOT IN AND edge THEN
-    	(* count fallINg edges when tp.q is true *)
+    ELSIF tx.Q AND NOT IN AND EDGE_ THEN
+    	(* count fallINg EDGE_s when tp.q is true *)
     	cnt := cnt + 1;
     ELSIF NOT tx.Q THEN
     	Q := cnt = N;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK CLICK_CNT
     END_IF
 
     (* remember the status of IN *)
-    edge := IN;
+    EDGE_ := IN;
     tx(IN := IN, pt := TC);
 
 

@@ -3,11 +3,11 @@ FUNCTION_BLOCK INC_DEC
     axb := CHA XOR CHB;
 
     (* create pulses for CHAnnel a *)
-    clka := CHA XOR edgea;
-    edgea := CHA;
+    clka := CHA XOR EDGE_a;
+    EDGE_a := CHA;
 
-    clkb := CHB XOR edgeb;
-    edgeb := CHB;
+    clkb := CHB XOR EDGE_b;
+    EDGE_b := CHB;
 
     (* create pulses for both CHAnnels *)
     clk := clka OR clkb;

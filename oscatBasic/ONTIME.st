@@ -21,10 +21,10 @@ FUNCTION_BLOCK ONTIME
     		SECONDS := SECONDS + 1;
     		ms := ms - 1000;
     	END_IF
-    	CYCLES := CYCLES + BOOL_TO_UINT(NOT edge);
+    	CYCLES := CYCLES + BOOL_TO_UINT(NOT EDGE_);
     END_IF
     last := tx;
-    edge := IN;
+    EDGE_ := IN;
 
 
     (* revision history

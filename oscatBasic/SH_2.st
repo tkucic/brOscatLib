@@ -11,7 +11,7 @@ FUNCTION_BLOCK SH_2
     	(* limit M to 0..16 *)
     	M := LIMIT(1,N,16);
 
-    	(* edge detected lets take the sample *)
+    	(* EDGE_ detected lets take the sample *)
     	FOR i := M - 1 TO 1 BY -1 DO buf2[i] := buf2[i-1]; END_FOR
     	buf2[0] := IN;
     	OUT := IN;

@@ -14,17 +14,17 @@ FUNCTION_BLOCK M_TX
 
     (* avoid timers to start when INput is true at startup *)
     IF NOT startup THEN
-    	edge := IN;
+    	EDGE_ := IN;
     	startup := TRUE;
     END_IF
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* edge trigger risINg and fallINg edge *)
-    IF IN XOR edge THEN
-    	edge := IN;
-    	(* risINg edge starts measurement *)
+    (* EDGE_ trigger risINg and fallINg EDGE_ *)
+    IF IN XOR EDGE_ THEN
+    	EDGE_ := IN;
+    	(* risINg EDGE_ starts measurement *)
     	IF IN THEN
     		start := Tx;
     		rise := TRUE;
@@ -33,7 +33,7 @@ FUNCTION_BLOCK M_TX
     			DC := TIME_TO_REAL(TH) / TIME_TO_REAL(TH+TL);
     			f := 1000.0 / TIME_TO_REAL(TH + TL);
     		END_IF
-    	(* fallINg edge starts second cycle measurement *)
+    	(* fallINg EDGE_ starts second cycle measurement *)
     	ELSE
     		stop := Tx;
     		fall := TRUE;

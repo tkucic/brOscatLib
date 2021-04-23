@@ -4,7 +4,7 @@ FUNCTION_BLOCK FT_Profile
     tx := DWORD_TO_TIME(T_PLC_MS());
 
     (* dETermine start condition *)
-    IF E AND NOT edge THEN
+    IF E AND NOT EDGE_ THEN
     	RUN := TRUE;
     	ET := t#0s;
     	t0 := tx;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK FT_Profile
     	temp := VALUE_0;
     	state := 1;
     END_IF
-    edge := E;
+    EDGE_ := E;
 
     (* generate startup profile *)
     IF RUN THEN

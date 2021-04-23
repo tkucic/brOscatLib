@@ -7,12 +7,12 @@ FUNCTION_BLOCK M_T
     	PT :=  t#0s;
     	ET := t#0s;
     ELSIF IN THEN
-    	IF NOT edge THEN start := tx; END_IF
+    	IF NOT EDGE_ THEN start := tx; END_IF
     	ET := tx - start;
     ELSE
     	PT := ET;
     END_IF
-    edge := IN;
+    EDGE_ := IN;
 
 
 
@@ -21,8 +21,8 @@ FUNCTION_BLOCK M_T
     	origINal version
 
     hm	2. may. 2007	rev 1.1
-    	added INit variable to avoid unreasonable measurement if fallINg edge occurs fiRST.
-    	added ET (elapsed time) output to count from 0 at risINg edge until a fallINg edge resETs ET to 0.
+    	added INit variable to avoid unreasonable measurement if fallINg EDGE_ occurs fiRST.
+    	added ET (elapsed time) output to count from 0 at risINg EDGE_ until a fallINg EDGE_ resETs ET to 0.
     	added resET INput.
 
     hm	16. sep. 2007	rev 1.2

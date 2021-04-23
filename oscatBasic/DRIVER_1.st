@@ -5,10 +5,10 @@ FUNCTION_BLOCK DRIVER_1
     	Q := FALSE;
     ELSIF SET THEN
     	Q := TRUE;
-    ELSIF IN AND NOT edge THEN
+    ELSIF IN AND NOT EDGE_ THEN
     	IF TOGGLE_MODE THEN q := NOT Q; ELSE q := TRUE; END_IF
     END_IF
-    edge := IN;
+    EDGE_ := IN;
     IF TIMEOUT > t#0s THEN off(IN := Q, PT := Timeout); END_IF
 
 

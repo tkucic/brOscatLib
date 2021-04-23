@@ -8,7 +8,7 @@ FUNCTION_BLOCK SEQUENCE_64
     	STATE := -1;
 
     (* START sequence *)
-    ELSIF START AND NOT edge THEN
+    ELSIF START AND NOT EDGE_ THEN
     	STATE := 0;
     	last := tx;
     	TRIG := TRUE;
@@ -22,7 +22,7 @@ FUNCTION_BLOCK SEQUENCE_64
     	END_IF
     END_IF
 
-    edge := START;
+    EDGE_ := START;
 
 
 

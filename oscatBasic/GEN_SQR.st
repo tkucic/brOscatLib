@@ -31,25 +31,25 @@ FUNCTION_BLOCK GEN_SQR
     	tx := tx - PT;
     END_IF
 
-    (* check if falling or rising edge first *)
+    (* check if falling or rising EDGE_ first *)
     IF MULTIME(PT, DL + DC) >= PT THEN
-    	(* generate falling edge *)
+    	(* generate falling EDGE_ *)
     	IF tx >= MULTIME(PT, DL + DC - 1) THEN
     		OUT := -AM * 0.5 + OS;
     		Q := FALSE;
     	END_IF
-    	(* generate rising edge *)
+    	(* generate rising EDGE_ *)
     	IF tx >= MULTIME(PT, DL) THEN
     		OUT := AM * 0.5 + OS;
     		Q := TRUE;
     	END_IF
     ELSE
-    	(* generate rising edge first *)
+    	(* generate rising EDGE_ first *)
     	IF tx >= MULTIME(PT, DL) THEN
     		OUT := AM * 0.5 + OS;
     		Q := TRUE;
     	END_IF
-    	(* generate falling edge *)
+    	(* generate falling EDGE_ *)
     	IF tx >= MULTIME(PT, DL + DC) THEN
     		OUT := -AM * 0.5 +OS;
     		Q := FALSE;

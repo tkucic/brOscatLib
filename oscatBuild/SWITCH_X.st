@@ -35,7 +35,7 @@ FUNCTION_BLOCK SWITCH_X
     	T5(IN := IN5);
     	T6(IN := IN6);
 
-    (* detect edge of IN1 and IN2 *)
+    (* detect EDGE_ of IN1 and IN2 *)
     IF t1.Q AND NOT E1 THEN X1 := TRUE; END_IF
     IF t2.Q AND NOT E2 THEN X2 := TRUE; END_IF
 

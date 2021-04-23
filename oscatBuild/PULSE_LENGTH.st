@@ -8,14 +8,14 @@ FUNCTION_BLOCK PULSE_LENGTH
     Middle := FALSE;
     LONG := FALSE;
 
-    (* detect risINg edge *)
-    IF IN AND NOT edge THEN
-    	edge := TRUE;
+    (* detect risINg EDGE_ *)
+    IF IN AND NOT EDGE_ THEN
+    	EDGE_ := TRUE;
     	tn := tx;
 
-    (* detect for fallINg edge *)
-    ELSIF NOT IN AND edge THEN
-    	edge := FALSE;
+    (* detect for fallINg EDGE_ *)
+    ELSIF NOT IN AND EDGE_ THEN
+    	EDGE_ := FALSE;
     	tn := tx - tn;
     	IF tn < t_SHORT THEN
     		SHORT := TRUE;

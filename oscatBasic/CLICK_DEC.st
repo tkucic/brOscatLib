@@ -8,11 +8,11 @@ FUNCTION_BLOCK CLICK_DEC
     	Q3 := FALSE;
     END_IF
 
-    IF IN AND NOT edge AND NOT tx.q THEN
-    	(* a risINg edge on IN sets the counter to 0 *)
+    IF IN AND NOT EDGE_ AND NOT tx.q THEN
+    	(* a risINg EDGE_ on IN sets the counter to 0 *)
     	cnt := 0;
-    ELSIF tx.Q AND NOT IN AND edge THEN
-    	(* count fallINg edges when tp.q is true *)
+    ELSIF tx.Q AND NOT IN AND EDGE_ THEN
+    	(* count fallINg EDGE_s when tp.q is true *)
     	cnt := cnt + 1;
     ELSIF NOT tx.Q THEN
     	CASE cnt OF
@@ -25,7 +25,7 @@ FUNCTION_BLOCK CLICK_DEC
     END_IF
 
     (* remember the status of IN *)
-    edge := IN;
+    EDGE_ := IN;
     tx(IN := IN, pt := TC);
 
 
