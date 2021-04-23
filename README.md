@@ -1,7 +1,7 @@
 # brOscatLib
 
 ![LOGO](logo.png)
-This repo is a port of the popular [Oscat lib](www.oscat.de) to the B&R Automation studio platform. The library contains all functions and function blocks that are in OscatBasic 3.34, Oscat building 1.00 and the Oscat network 1.35.2 library. At the moment, the libraries are a work in progress, the main programmatic porting has been going well and some 1000 errors still remain before it can be compiled in Automation Studio. Depending on the ammount of contributers the library will be ported to completion. Initial port was done from Codesys plc open xml export.
+This repo is a port of the popular [Oscat lib](http://www.oscat.de) to the B&R Automation studio platform. The library contains all functions and function blocks that are in OscatBasic 3.34, Oscat building 1.00 and the Oscat network 1.35.2 library. At the moment, the libraries are a work in progress, the main programmatic porting has been going well and some 1000 errors still remain before it can be compiled in Automation Studio. Depending on the ammount of contributers the library will be ported to completion. Initial port was done from Codesys plc open xml export.
 
 ## Table of Contents
 
