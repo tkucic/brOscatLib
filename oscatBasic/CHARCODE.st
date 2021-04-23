@@ -1,10 +1,10 @@
 FUNCTION CHARCODE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147*)
-    IF LEN(str) = 1 THEN
+    IF LEN(STR) = 1 THEN
     	CHARCODE := CODE(STR, 1);
-    ELSIF str <> '' THEN
-    	(* construct search string *)
-    	search := CONCAT('&', str);
+    ELSIF STR <> '' THEN
+    	(* conSTRuct search STRing *)
+    	search := CONCAT('&', STR);
     	search := CONCAT(search, ';');
     	WHILE pos = 0 AND (i < 4) DO
     		i := i + 1;

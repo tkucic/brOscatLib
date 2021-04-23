@@ -33,7 +33,7 @@ FUNCTION_BLOCK FIFO_16
     	improved performance
 
     ks	27. oct. 2008	rev 1.3
-    	optimized coding
+    	optimized coDINg
 
     hm	14. mar. 2009	rev 1.4
     	removed double assignments

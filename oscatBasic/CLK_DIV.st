@@ -1,6 +1,6 @@
 FUNCTION_BLOCK CLK_DIV
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=190*)
-    IF rst THEN
+    IF RST THEN
     	cnt:= 0;
     	Q0 := 0;
     	Q1 := 0;
@@ -10,7 +10,7 @@ FUNCTION_BLOCK CLK_DIV
     	Q5 := 0;
     	Q6 := 0;
     	Q7 := 0;
-    ELSIF clk THEN
+    ELSIF CLK THEN
     	cnt:= cnt +1;
     	Q0 := cnt.0;
     	Q1 := cnt.1;

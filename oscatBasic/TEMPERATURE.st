@@ -7,8 +7,8 @@ FUNCTION_BLOCK TEMPERATURE
     YRa := YK * 1.8;
 
 
-    (* revision history
-    hm	21. feb. 2008	rev 1.0
+    (* REvision history
+    hm	21. feb. 2008	REv 1.0
     	original version
 
     *)

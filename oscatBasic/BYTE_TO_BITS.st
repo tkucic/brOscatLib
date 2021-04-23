@@ -11,7 +11,7 @@ FUNCTION_BLOCK BYTE_TO_BITS
 
     (* revision history
     hm		4. aug 2006	rev 1.0
-    	original version
+    	origINal version
 
     hm		16. mar 2008	rev 1.1
     	renamed from byte_to_bit to byte_to_bits for compatibility reasons

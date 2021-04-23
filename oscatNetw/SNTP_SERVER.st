@@ -10,7 +10,7 @@ FUNCTION_BLOCK SNTP_SERVER
     		state := 10;
     		ip_state := BYTE#1; (* Anmelden *)
         		(*####################  DEBUG-MESSAGE  ###################################*)
-        		(*IF _debug_enable THEN
+        		(*IF _debug_ENABLE THEN
           			LOG_CL.NEW_MSG := 'SNTP_SERVER: S00 START';
           			LOG_MSG();
         		END_IF*)
@@ -30,7 +30,7 @@ FUNCTION_BLOCK SNTP_SERVER
     		R_BUF.SIZE := UINT#0; (* Empfangslänge rücksetzen *)
     		state := 20;
         		(*####################  DEBUG-MESSAGE  ###################################*)
-        		(*IF _debug_enable THEN
+        		(*IF _debug_ENABLE THEN
           			LOG_CL.NEW_MSG := 'SNTP_SERVER: S10 INIT';
           			LOG_MSG();
         		END_IF*)
@@ -40,7 +40,7 @@ FUNCTION_BLOCK SNTP_SERVER
     	IF R_BUF.SIZE > UINT#0 THEN
     		state := 20;
         		(*####################  DEBUG-MESSAGE  ###################################*)
-        		(*IF _debug_enable THEN
+        		(*IF _debug_ENABLE THEN
           			LOG_CL.NEW_MSG := 'SNTP_SERVER: S20 REQUEST - Size: ~1';
           			LOG_CL.PRINTF[1] := UINT_TO_STRING(R_BUF.SIZE);
           			LOG_MSG();
@@ -67,7 +67,7 @@ FUNCTION_BLOCK SNTP_SERVER
 
     		(* Sekundenanteile sind als 32 Bit Fractal dargestellt *)
     		(* nur mit veringerte Auflösung berechnen 1/65535 -> Highword verwenden *)
-    		(* Berechnung des Sekundenanteils: xms * 65535 / 1000 *)
+    		(* Berechnung des Sekundenanteils: XMS * 65535 / 1000 *)
     		timestamp_sek := DINT_TO_DWORD(DWORD_TO_DINT(SHL(INT_TO_DWORD(XMS),16))/DINT#1000);
 
     		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,3); (* Timestamp Byte 3 *)

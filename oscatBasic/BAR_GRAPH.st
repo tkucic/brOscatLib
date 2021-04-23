@@ -2,16 +2,16 @@ FUNCTION_BLOCK BAR_GRAPH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=333*)
     IF NOT init THEN
     	init := TRUE;
-    	IF log_scale THEN
-    		temp := EXP(LN(Trigger_high / Trigger_low) * 0.166666666666666666666);
-    		T1 := trigger_low * temp;
+    	IF LOG_SCALE THEN
+    		temp := EXP(LN(Trigger_HIGH / Trigger_LOW) * 0.166666666666666666666);
+    		T1 := TRIGGER_LOW * temp;
     		T2 := T1 * temp;
     		T3 := T2 * temp;
     		T4 := T3 * temp;
     		T5 := T4 * temp;
     	ELSE
-    		temp := (trigger_high - trigger_low) * 0.142857142;
-    		T1 := trigger_low + temp;
+    		temp := (TRIGGER_HIGH - TRIGGER_LOW) * 0.142857142;
+    		T1 := TRIGGER_LOW + temp;
     		T2 := T1 + temp;
     		T3 := T2 + temp;
     		T4 := T3 + temp;
@@ -26,24 +26,24 @@ FUNCTION_BLOCK BAR_GRAPH
     Q4 := FALSE;
     Q5 := FALSE;
     Q6 := FALSE;
-    status := 110;
+    STATUS := 110;
 
-    (* low, high and alarm can only be cleared with rst depending on alarm_low and alarm_high *)
-    IF NOT alarm_low THEN low := FALSE; END_IF
-    IF NOT alarm_high THEN high := FALSE; END_IF
-    IF rst THEN
-    	alarm := FALSE;
-    	low := FALSE;
-    	high := FALSE;
+    (* LOW, HIGH and ALARM can only be cleared with RST depending on ALARM_LOW and ALARM_HIGH *)
+    IF NOT ALARM_LOW THEN LOW := FALSE; END_IF
+    IF NOT ALARM_HIGH THEN HIGH := FALSE; END_IF
+    IF RST THEN
+    	ALARM := FALSE;
+    	LOW := FALSE;
+    	HIGH := FALSE;
     END_IF
 
     (* check and set outputs *)
-    IF X < trigger_low THEN
+    IF X < TRIGGER_LOW THEN
     	Low := TRUE;
-    	status := 111;
-    	IF alarm_low THEN
-    		alarm := TRUE;
-    		status := 1;
+    	STATUS := 111;
+    	IF ALARM_LOW THEN
+    		ALARM := TRUE;
+    		STATUS := 1;
     	END_IF
     ELSIF X < T1 THEN
     	Q1 := TRUE;
@@ -54,15 +54,15 @@ FUNCTION_BLOCK BAR_GRAPH
     ELSIF x < T4 THEN
     	Q4 := TRUE;
     ELSIF x < T5 THEN
-    	q5 := TRUE;
-    ELSIF x < trigger_high THEN
-    	q6 := TRUE;
+    	Q5 := TRUE;
+    ELSIF x < TRIGGER_HIGH THEN
+    	Q6 := TRUE;
     ELSE
-    	high := TRUE;
-    	status := 112;
-    	IF alarm_high THEN
-    		alarm := TRUE;
-    		status := 2;
+    	HIGH := TRUE;
+    	STATUS := 112;
+    	IF ALARM_HIGH THEN
+    		ALARM := TRUE;
+    		STATUS := 2;
     	END_IF
     END_IF
 

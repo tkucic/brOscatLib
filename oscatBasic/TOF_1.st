@@ -17,7 +17,7 @@ FUNCTION_BLOCK TOF_1
 
     (* revision history
     hm	17. jul. 2008	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

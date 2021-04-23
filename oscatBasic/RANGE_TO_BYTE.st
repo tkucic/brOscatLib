@@ -1,6 +1,6 @@
 FUNCTION RANGE_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288*)
-    RANGE_TO_BYTE := INT_TO_BYTE(DINT_TO_INT(TRUNC((LIMIT(low, X, high) - low) * 255.0 / (high - low))));
+    RANGE_TO_BYTE := INT_TO_BYTE(DINT_TO_INT(TRUNC((LIMIT(LOW, X, HIGH) - LOW) * 255.0 / (HIGH - LOW))));
 
 
     (* revision history

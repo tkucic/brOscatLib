@@ -1,7 +1,7 @@
 FUNCTION WORK_WEEK
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=142*)
-    (* berechne den 1.1 des jahres von idate. *)
-    yr := YEAR_OF_DATE(idate);
+    (* berechne den 1.1 des jahres von IDATE. *)
+    yr := YEAR_OF_DATE(IDATE);
     d1 := YEAR_BEGIN(yr);
     (* wochentag von d1 *)
     w1 := DAY_OF_WEEK(d1);
@@ -15,7 +15,7 @@ FUNCTION WORK_WEEK
     END_IF
 
     (* kalenderwoche des eingangsdatums *)
-    WORK_WEEK := DWORD_TO_INT((DATE_TO_DWORD(idate) - ds) / 604800);
+    WORK_WEEK := DWORD_TO_INT((DATE_TO_DWORD(IDATE) - ds) / 604800);
 
     (* korrektur wenn work_week = 0 *)
     IF work_week = 0 THEN

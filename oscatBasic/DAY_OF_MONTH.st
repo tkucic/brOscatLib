@@ -1,9 +1,9 @@
 FUNCTION DAY_OF_MONTH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116*)
     (* calculate the day in the year *)
-    DAY_OF_MONTH := DAY_OF_YEAR(idate);
+    DAY_OF_MONTH := DAY_OF_YEAR(IDATE);
     (* leap will be set to one for a leap year *)
-    leap := BOOL_TO_INT(LEAP_OF_DATE(idate));
+    leap := BOOL_TO_INT(LEAP_OF_DATE(IDATE));
     (* if leap year deduct one from the days of the year *)
     DAY_OF_MONTH := DAY_OF_MONTH - leap;
     (* search if we are in month december to march ? *)

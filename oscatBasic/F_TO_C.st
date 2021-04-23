@@ -1,6 +1,6 @@
 FUNCTION F_TO_C
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=361*)
-    F_TO_C := (fahrenheit - 32.0) * 0.5555555555555;
+    F_TO_C := (FAHRENHEIT - 32.0) * 0.5555555555555;
 
     (* revision history
     hm	4. aug 2006	rev 1.0

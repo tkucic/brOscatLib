@@ -9,7 +9,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
 
     CASE step OF
 
-    00:	IF ACTIVATE AND NOT activate_last OR reset THEN
+    00:	IF ACTIVATE AND NOT ACTIVATE_last OR reset THEN
 
             (*  TCP + MASTER = C_MODE 0 (TCP + ACTIVE + PORT + IP) *)
             (*  UDP + MASTER = C_MODE 1 (UDP + ACTIVE + PORT + IP) *)

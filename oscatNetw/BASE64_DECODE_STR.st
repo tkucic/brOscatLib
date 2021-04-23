@@ -1,7 +1,7 @@
 FUNCTION_BLOCK BASE64_DECODE_STR
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=72*)
     CASE mode OF
-    0:	IF RUN AND NOT run_last THEN
+    0:	IF RUN AND NOT RUN_last THEN
     		DONE := FALSE;
     		mode := 1;
     		end := LEN(STR1);
@@ -21,7 +21,7 @@ FUNCTION_BLOCK BASE64_DECODE_STR
     	pos := pos + size1;
     END_CASE
 
-    run_last := RUN;
+    RUN_last := RUN;
 
     (* revision history
 

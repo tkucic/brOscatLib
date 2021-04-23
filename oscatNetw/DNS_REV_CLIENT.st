@@ -4,9 +4,9 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     CASE state OF
     00: (* auf positive Flanke GET warten *)
-    	IF ACTIVATE AND NOT activate_last THEN
+    	IF ACTIVATE AND NOT ACTIVATE_last THEN
     		ERROR := DWORD#0;
-    		ip4_copy := ip4; (* IP4 sichern *)
+    		IP4_copy := IP4; (* IP4 sichern *)
     		ip_state := BYTE#1;
     		DOMAIN := '';
     		DONE := FALSE;
@@ -119,7 +119,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     END_CASE
 
-    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    ACTIVATE_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
@@ -144,10 +144,10 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     (*
     Errorcodes  Description	References 
-    000	No error. 		 	The request completed successfully.
-    001	Format error. 		The name server was unable to interpret the query. 
+    000	No ERROR. 		 	The request completed successfully.
+    001	Format ERROR. 		The name server was unable to interpret the query. 
     002	Server failure.  	The name server was unable to process this query due to a problem with the name server. 
-    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the domain name referenced in the query does not exist.
+    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the DOMAIN name referenced in the query does not exist.
     004	Not Implemented. 	The name server does not support the requested kind of query.
     005	Refused. 			The name server refuses to perform the specified operation for policy reasons.
       						 For example, a name server may not wish to provide the information to the particular requester, or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.

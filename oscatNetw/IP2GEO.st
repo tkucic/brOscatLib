@@ -12,9 +12,9 @@ FUNCTION_BLOCK IP2GEO
     	END_IF
 
     20: (* URL for DNS UND HTTP-GET *)
-    	(* Example: http://ipinfodb.com/ip_query.php?ip=10.10.10.10 *)
-    	(* Example: http://ipinfodb.com/ip_query.php?timezone=true&IP=*)
-    	URL_DATA:=STRING_TO_URL(STR:='http://ipinfodb.com/ip_query.php?timezone=true&IP=',DEFAULT_PROTOCOL:='',DEFAULT_PATH:='');
+    	(* Example: http://IPinfodb.com/IP_query.php?IP=10.10.10.10 *)
+    	(* Example: http://IPinfodb.com/IP_query.php?timezone=true&IP=*)
+    	URL_DATA:=STRING_TO_URL(STR:='http://IPinfodb.com/IP_query.php?timezone=true&IP=',DEFAULT_PROTOCOL:='',DEFAULT_PATH:='');
 
     	IF IP > DWORD#0 THEN
     		URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,IP4_TO_STRING(IP4:=IP));
@@ -137,6 +137,6 @@ FUNCTION_BLOCK IP2GEO
     	original version
 
     ks	07. oct. 2010	rev 1.1
-    	new url , ip2geo fields , REAL_CHECK
+    	new url , IP2GEO fields , REAL_CHECK
     *)
 END_FUNCTION_BLOCK

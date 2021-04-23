@@ -1,7 +1,7 @@
 FUNCTION EXEC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155*)
     (* extract both numbers and operator *)
-    EXEC := UPPERCASE(TRIM(str));
+    EXEC := UPPERCASE(TRIM(STR));
 
     pos := FINDB_NONUM(EXEC);
     IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(EXEC,pos-1)); END_IF
@@ -9,11 +9,11 @@ FUNCTION EXEC
     EXEC := LEFT(EXEC,pos);
     pos := FINDB_NUM(EXEC);
     operator := RIGHT(EXEC,LEN(EXEC) - pos);
-    IF operator = '' AND LEN(str) = 0 THEN
+    IF operator = '' AND LEN(STR) = 0 THEN
     	EXEC := '';
     	RETURN;
     ELSIF operator = '' THEN
-    	EXEC := str;
+    	EXEC := STR;
     	RETURN;
     END_IF
     IF operator = '^' THEN
@@ -56,7 +56,7 @@ FUNCTION EXEC
     	divide by 0 will return an error
 
     hm	5. mar. 2008	rev 1.2
-    	add a 0 to the string if a '.' is at the end of the string
+    	add a 0 to the STRing if a '.' is at the end of the STRing
 
     hm	20. mar. 2008	rev 1.3
     	make sure the function always returns a real value in the form of x.y

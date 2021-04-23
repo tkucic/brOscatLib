@@ -1,22 +1,22 @@
 FUNCTION REPLACE_CHARS
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=177*)
     REPLACE_CHARS := STR;
-    (* make sure rep and src are of same length and length is > 0 *)
-    a := LEN(src);
-    b := LEN(rep);
+    (* make sure REP and SRC are of same length and length is > 0 *)
+    a := LEN(SRC);
+    b := LEN(REP);
     IF a < b THEN
-    	rep := LEFT(rep, a);
+    	REP := LEFT(REP, a);
     ELSIF b < a THEN
-    	src := LEFT(src, b);
+    	SRC := LEFT(SRC, b);
     END_IF
 
-    (* search the string and replace if necessary *)
-    stp := LEN(str);
+    (* search the STRing and REPlace if necessary *)
+    stp := LEN(STR);
     FOR a := 1 TO stp DO
     	c := MID(REPLACE_CHARS, 1, a);
-    	b := FIND(src, c);
+    	b := FIND(SRC, c);
     	IF b > 0 THEN
-    		REPLACE_CHARS := REPLACE(REPLACE_CHARS, MID(rep, 1, b), 1, a);
+    		REPLACE_CHARS := REPLACE(REPLACE_CHARS, MID(REP, 1, b), 1, a);
     	END_IF
     END_FOR
 

@@ -1,7 +1,7 @@
 FUNCTION COUNT_CHAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150*)
-    PT := ADR(str);
-    l := LEN(str);
+    PT := ADR(STR);
+    l := LEN(STR);
     COUNT_CHAR := 0;
     FOR pos := 1 TO l DO
     	IF pt^ = CHR THEN COUNT_CHAR := COUNT_CHAR + 1; END_IF

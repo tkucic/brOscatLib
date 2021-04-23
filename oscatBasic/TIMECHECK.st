@@ -1,9 +1,9 @@
 FUNCTION TIMECHECK
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=141*)
-    IF stop < start THEN
-    	TIMECHECK := start <= TD OR TD < stop;
+    IF STOP < START THEN
+    	TIMECHECK := START <= TD OR TD < STOP;
     ELSE
-    	TIMECHECK := start <= TD AND TD < stop;
+    	TIMECHECK := START <= TD AND TD < STOP;
     END_IF
 
 

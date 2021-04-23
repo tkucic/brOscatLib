@@ -23,9 +23,9 @@ FUNCTION_BLOCK HYST
     END_IF
 
 
-    (* revision history
+    (* revisiON history
     hm		2.  jun 2008	rev 1.0
-    	original version
+    	origINal versiON
 
     *)
 END_FUNCTION_BLOCK

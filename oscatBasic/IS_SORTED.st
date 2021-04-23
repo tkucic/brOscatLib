@@ -1,8 +1,8 @@
 FUNCTION IS_SORTED
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=82*)
-    stop := UINT_TO_INT(SHR(size,2)-2);
+    stop := UINT_TO_INT(SHR(SIZE,2)-2);
     FOR i := 0 TO stop DO
-    	IF pt^[i] > pt^[i+1] THEN
+    	IF PT^[i] > PT^[i+1] THEN
     		IS_SORTED := FALSE;
     		RETURN;
     	END_IF

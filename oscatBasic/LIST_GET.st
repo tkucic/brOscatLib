@@ -5,7 +5,7 @@ FUNCTION LIST_GET
 
     REPEAT
     	c := pt^[i];
-    	IF cnt = pos THEN						(* copy element to output string *)
+    	IF cnt = POS THEN						(* copy element to output string *)
     		IF c = SEP  THEN EXIT; END_IF		(* next element stop copy and finish *)
     		po^[o] := c;
     		o := o + 1;
@@ -28,7 +28,7 @@ FUNCTION LIST_GET
     	changed string(255) to strring(LIST_LENGTH)
 
     hm	21. mar. 2011	rev 2.0
-    	all list elements start with SEP
+    	all LIST elements start with SEP
     *)	
 
 END_FUNCTION

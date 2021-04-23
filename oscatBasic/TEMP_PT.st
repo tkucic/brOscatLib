@@ -14,8 +14,8 @@ FUNCTION TEMP_PT
     	(* since the formula cannot be solved this is a successive approximation *)
     	TEMP_PT := -100.0;
     	WHILE step > accuracy DO
-    		(* test if result greater or less *)
-    		IF RES_PT(TEMP_PT, R0) < res THEN TEMP_PT := TEMP_PT + step; ELSE TEMP_PT := TEMP_PT - step; END_IF
+    		(* test if RESult greater or less *)
+    		IF RES_PT(TEMP_PT, R0) < RES THEN TEMP_PT := TEMP_PT + step; ELSE TEMP_PT := TEMP_PT - step; END_IF
     		pt^ := pt^ - 8388608;  (* this is a super fast divide by 2 method for non floating point CPUs *)
     		(* the alternative code: step := step * 0.5; *)
     	END_WHILE

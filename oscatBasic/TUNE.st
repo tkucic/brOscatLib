@@ -3,21 +3,21 @@ FUNCTION_BLOCK TUNE
     (* read system time *)
     tx := T_PLC_MS();
 
-    IF rst THEN
+    IF RST THEN
     	Y := RST_val;
     	state := 0;
-    ELSIF set THEN
+    ELSIF SET THEN
     	Y := SET_val;
     	state := 0;
     ELSIF state > 0 THEN
     	(* key has been pushed state machine operating *)
-    	(* first read the correct input *)
+    	(* fiRST read the correct input *)
     	IF state = 1 THEN
     		(* step up *)
-    		in := su;
+    		in := SU;
     	ELSE
     		(* step down *)
-    		in := sd;
+    		in := SD;
     	END_IF
     	(* check for single step operation *)
     	IF NOT in AND tx - start <= TIME_TO_DWORD(T1) THEN
@@ -25,32 +25,32 @@ FUNCTION_BLOCK TUNE
     		state := 0;
     	(* check if fast ramp needs to be generated *)
     	ELSIF in AND tx - start >= TIME_TO_DWORD(T2) THEN
-    		Y := Y_start2 + DWORD_TO_REAL(tx - start2) * s2 / speed;
+    		Y := Y_starT2 + DWORD_TO_REAL(tx - starT2) * S2 / speed;
     	(* check if slow ramp needs to be generated *)
     	ELSIF in AND tx - start >= TIME_TO_DWORD(T1) THEN
     		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(T1)) * S1 / speed;
-    		start2 := tx;
-    		Y_start2 := Y;
+    		starT2 := tx;
+    		Y_starT2 := Y;
     	ELSIF NOT in THEN
     		state := 0;
     	END_IF
-    ELSIF su THEN
+    ELSIF SU THEN
     	(* slow step up *)
     	state := 1;
     	start := tx;
-    	step := ss;
+    	step := SS;
     	speed := 1000.0;
     	Y_start := Y;
-    ELSIF sd THEN
+    ELSIF SD THEN
     	(* slow step down *)
     	state := 2;
     	start := tx;
-    	step := -ss;
+    	step := -SS;
     	speed := -1000.0;
     	Y_start := Y;
     END_IF
 
-    (* make sure output does not exceed limits *)
+    (* make SUre output does not exceed limits *)
     Y := LIMIT(LIMIT_L, Y, LIMIT_H);
 
     (* revision history

@@ -11,7 +11,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
 
     CASE step OF
 
-    00:	IF UCBD.BUF_COUNT > 0 AND ftp_busy = FALSE THEN
+    00:	IF UCBD.BUF_COUNT > 0 AND ftp_BUSY = FALSE THEN
     		UCBD.D_MODE := 12; (* Daten lesen und löschen *)
     		UCB(DATA:=UCBD);
     		filename := UCBD.D_STRING;
@@ -28,8 +28,8 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
 
     	END_IF
 
-    10:	IF ftp_busy = FALSE THEN
-    		IF ftp_done THEN
+    10:	IF ftp_BUSY = FALSE THEN
+    		IF ftp_DONE THEN
     			(*####################  DEBUG-MESSAGE  ###################################*)
     			(*IF _debug_enable THEN
     				LOG_CL.NEW_MSG := 'F_T_FTP: Auftrag OK /file: ~2';
@@ -92,8 +92,8 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     	TIMEOUT:= TIMEOUT,
     	DNS_IP4:= DNS_IP4,
     	PLC_IP4:= PLC_IP4,
-    	DONE=> ftp_done,
-    	BUSY=> ftp_busy
+    	DONE=> ftp_DONE,
+    	BUSY=> ftp_BUSY
     	);
 
     (* Fehlerauswertung *)

@@ -1,6 +1,6 @@
 FUNCTION_BLOCK GEN_PULSE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=257*)
-    IF enq THEN
+    IF ENQ THEN
     	tx := DWORD_TO_TIME(T_PLC_MS());
     	IF NOT init THEN init := TRUE; tn := tx; END_IF
     	IF tx - tn >= SEL(Q, PTL, PTH) THEN
@@ -19,7 +19,7 @@ FUNCTION_BLOCK GEN_PULSE
     	original version
 
     hm	23. nov. 2008	rev 1.1
-    	set default for enq to be true
+    	set default for ENQ to be true
 
     hm	18. jul. 2009	rev 1.2
     	improved performance
@@ -31,6 +31,6 @@ FUNCTION_BLOCK GEN_PULSE
     	corrected an error when timer overflows
 
     hm	8. apr. 2011	rev 1.5
-    	ptl and pth was exchanged
+    	PTL and PTH was exchanged
     *)
 END_FUNCTION_BLOCK

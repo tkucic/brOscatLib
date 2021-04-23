@@ -1,9 +1,9 @@
 FUNCTION ARRAY_MAX
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77*)
-    stop := (size -SIZEOF(pt)) / SIZEOF(pt);
-    array_max := pt^[0];
+    stop := (SIZE -SIZEOF(PT)) / SIZEOF(PT);
+    array_max := PT^[0];
     FOR i := 1 TO stop DO
-    	IF pt^[i] > array_max THEN array_max := pt^[i]; END_IF
+    	IF PT^[i] > array_max THEN array_max := PT^[i]; END_IF
     END_FOR
 
     (* revision history
@@ -11,6 +11,6 @@ FUNCTION ARRAY_MAX
     	original version
 
     hm	16. mar. 2008	rev 1.1
-    	changed input size to uint
+    	changed input SIZE to uint
     *)
 END_FUNCTION

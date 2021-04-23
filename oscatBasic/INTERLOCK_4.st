@@ -2,12 +2,12 @@ FUNCTION_BLOCK INTERLOCK_4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=462*)
     (* check if enable is active *)
     IF E THEN
-    (* reset all vars when there is a mode change on thy fly *)
-    	IF mode <> lmode THEN
-    		out := 0;
+    (* reset all vars when there is a MODE change on thy fly *)
+    	IF MODE <> lMODE THEN
+    		OUT := 0;
     		last := 0;
     		old := 0;
-    		lmode := mode;
+    		lMODE := MODE;
     	END_IF
     	(* load inputs into in *)
     	in.0 := I0;
@@ -17,45 +17,45 @@ FUNCTION_BLOCK INTERLOCK_4
     	(* only execute when there is any change *)
     	IF in <> last THEN
     		(* only execute when inputs have chages state *)
-    		CASE mode OF
-    			0:	(* output directly display inputs as bits in byte out *)
-    				out := in;
+    		CASE MODE OF
+    			0:	(* OUTput directly display inputs as bits in byte OUT *)
+    				OUT := in;
 
     			1:	(* the input with the highest number will be acepted *)
-    				IF in.3 THEN out := 8;
-    				ELSIF in.2 THEN out := 4;
-    				ELSIF in.1 THEN out := 2;
-    				ELSE out := in;
+    				IF in.3 THEN OUT := 8;
+    				ELSIF in.2 THEN OUT := 4;
+    				ELSIF in.1 THEN OUT := 2;
+    				ELSE OUT := in;
     				END_IF
 
     			2:	(* input last pressed will be displayed only *)
     				last := ((in XOR last) AND in);
-    				IF last.3 THEN out := 8;
-    				ELSIF last.2 THEN out := 4;
-    				ELSIF last.1 THEN out := 2;
-    				ELSE out := last;
+    				IF last.3 THEN OUT := 8;
+    				ELSIF last.2 THEN OUT := 4;
+    				ELSIF last.1 THEN OUT := 2;
+    				ELSE OUT := last;
     				END_IF
 
     			3:	(* any input active will disable all other inputs *)
-    				IF (out AND in) = 0 THEN
-    					IF in.3 THEN out := 8;
-    					ELSIF in.2 THEN out := 4;
-    					ELSIF in.1 THEN out := 2;
-    					ELSE out := in;
+    				IF (OUT AND in) = 0 THEN
+    					IF in.3 THEN OUT := 8;
+    					ELSIF in.2 THEN OUT := 4;
+    					ELSIF in.1 THEN OUT := 2;
+    					ELSE OUT := in;
     					END_IF
     				END_IF
 
     		END_CASE
     		last := in;
     	END_IF
-    	tp := out <> old;
-    	old := out;
+    	TP := OUT <> old;
+    	old := OUT;
     ELSE
-    	out := 0;
+    	OUT := 0;
     	last := 0;
     	old := 0;
-    	lmode := 0;
-    	tp := FALSE;
+    	lMODE := 0;
+    	TP := FALSE;
     END_IF
 
 

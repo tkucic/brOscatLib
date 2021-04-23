@@ -1,7 +1,7 @@
 FUNCTION_BLOCK FILTER_WAV
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=280*)
     (* startup initialisation *)
-    IF NOT init OR rst THEN
+    IF NOT init OR RST THEN
     	init := TRUE;
     	FOR i := 0 TO 15 DO
     		buffer[i] := X;

@@ -11,20 +11,20 @@ FUNCTION_BLOCK DLOG_REAL
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     03:	(* ADD DATA *)
-    	X.UCB.D_STRING := OSCAT_BASIC.REAL_TO_STRF(IN:=value_last,N:=N,D:=D);
+    	X.UCB.D_STRING := OSCAT_BASIC.REAL_TO_STRF(IN:=VALUE_last,N:=N,D:=D);
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
-    	delta_last := value_last;
+    	DELTA_last := VALUE_last;
     04:	(* ADD DATA REQ *)
     	IF DELTA <> 0.0 THEN
-    		IF VALUE <= (delta_last - DELTA) OR VALUE >= (delta_last + DELTA) THEN
+    		IF VALUE <= (DELTA_last - DELTA) OR VALUE >= (DELTA_last + DELTA) THEN
     			X.ADD_DATA_REQ := TRUE;
-    			delta_last := VALUE;
+    			DELTA_last := VALUE;
     		END_IF
     	END_IF
     END_CASE
-    value_last := VALUE;
+    VALUE_last := VALUE;
 
     (* revision history
     ks	01. jan. 2011	rev 1.0

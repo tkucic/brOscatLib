@@ -1,13 +1,13 @@
 FUNCTION_BLOCK SELECT_8
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=247*)
-    IF rst THEN
-    	state := 0;
-    ELSIF set THEN
-    	state := IN;
-    ELSIF up AND NOT last_up THEN
-    	state := inc(state,1,7);
-    ELSIF dn AND NOT last_dn THEN
-    	state := inc(state,-1,7);
+    IF RST THEN
+    	STATE := 0;
+    ELSIF SET THEN
+    	STATE := IN;
+    ELSIF UP AND NOT last_UP THEN
+    	STATE := INc(STATE,1,7);
+    ELSIF DN AND NOT last_DN THEN
+    	STATE := INc(STATE,-1,7);
     END_IF
     last_UP := UP;
     last_DN := DN;
@@ -22,7 +22,7 @@ FUNCTION_BLOCK SELECT_8
     Q7 := FALSE;
 
     IF E THEN
-    	CASE state OF
+    	CASE STATE OF
     		0: Q0 := TRUE;
     		1: Q1 := TRUE;
     		2: Q2 := TRUE;
@@ -36,9 +36,9 @@ FUNCTION_BLOCK SELECT_8
 
     (* revision history
     hm	16. jan 2008	rev 1.0
-    	original version
+    	origINal version
 
     hm	27. feb. 2009	rev 1.1
-    	renamed input en to e
+    	renamed INput en to e
     *)
 END_FUNCTION_BLOCK

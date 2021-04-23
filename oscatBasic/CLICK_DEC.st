@@ -1,18 +1,18 @@
 FUNCTION_BLOCK CLICK_DEC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=190*)
     (* Q shall only be active for one cycle only *)
-    IF in = FALSE THEN
+    IF IN = FALSE THEN
     	Q0 := FALSE;
     	Q1 := FALSE;
     	Q2:= FALSE;
     	Q3 := FALSE;
     END_IF
 
-    IF in AND NOT edge AND NOT tx.q THEN
-    	(* a rising edge on in sets the counter to 0 *)
+    IF IN AND NOT edge AND NOT tx.q THEN
+    	(* a risINg edge on IN sets the counter to 0 *)
     	cnt := 0;
     ELSIF tx.Q AND NOT IN AND edge THEN
-    	(* count falling edges when tp.q is true *)
+    	(* count fallINg edges when tp.q is true *)
     	cnt := cnt + 1;
     ELSIF NOT tx.Q THEN
     	CASE cnt OF
@@ -26,14 +26,14 @@ FUNCTION_BLOCK CLICK_DEC
 
     (* remember the status of IN *)
     edge := IN;
-    tx(in := IN, pt := TC);
+    tx(IN := IN, pt := TC);
 
 
 
     (* revision history
 
     hm 17. jul. 2008	rev 1.0
-    	original version released
+    	origINal version released
 
     hm	14. mar. 2009	rev 1.1
     	removed double assignments

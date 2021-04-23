@@ -4,23 +4,23 @@ FUNCTION LIST_RETRIEVE
     pt := ADR(LIST);
     po := ADR(LIST_RETRIEVE);
 
-    IF pos > 0 THEN
+    IF POS > 0 THEN
     	FOR i := 1 TO LIST_LENGTH DO
     		c := pt^[i];
     		IF c = 0 THEN
     			po^[o] := 0;
-    			IF cnt < pos THEN pt^[w + 1] := 0; ELSE pt^[w] := 0; END_IF
+    			IF cnt < POS THEN pt^[w + 1] := 0; ELSE pt^[w] := 0; END_IF
     			RETURN;
-    		ELSIF cnt = pos AND c <> SEP THEN				(* we have found the element *)
+    		ELSIF cnt = POS AND c <> SEP THEN				(* we have found the element *)
     			po^[o] := pt^[i];
     			o := o + 1;
-    		ELSIF cnt >= pos THEN
+    		ELSIF cnt >= POS THEN
     			pt^[w] := c;
     			w := w + 1;
     		ELSE
     			w := i;
     		END_IF
-    		IF c = sep THEN cnt := cnt + 1; END_IF
+    		IF c = SEP THEN cnt := cnt + 1; END_IF
     	END_FOR
     ELSE
     	LIST_RETRIEVE := '';

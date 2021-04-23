@@ -1,6 +1,6 @@
 FUNCTION SIGN_R
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67*)
-    SIGN_R := in < 0.0;
+    SIGN_R := IN < 0.0;
 
 
     (* revision history
@@ -14,7 +14,7 @@ FUNCTION SIGN_R
     	improved performace
 
     hm 10. mar. 2009	rev 1.4
-    	real constants updated to new systax using dot																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
+    	real constants updated to new systax usINg dot																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
 
     *)
 END_FUNCTION

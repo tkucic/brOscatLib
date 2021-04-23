@@ -1,10 +1,10 @@
 FUNCTION CODE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149*)
-    IF pos < 1 OR pos > LEN(str) THEN
+    IF POS < 1 OR POS > LEN(STR) THEN
     	CODE := 0;
     	RETURN;
     ELSE
-    	PT := ADR(STR) + INT_TO_DWORD(pos - 1);
+    	PT := ADR(STR) + INT_TO_DWORD(POS - 1);
     	CODE := pt^;
     END_IF
 

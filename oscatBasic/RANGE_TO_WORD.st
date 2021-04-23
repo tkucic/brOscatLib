@@ -1,6 +1,6 @@
 FUNCTION RANGE_TO_WORD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288*)
-    RANGE_TO_WORD := DINT_TO_WORD(TRUNC((LIMIT(low,X,high)-low) * 65535.0 / (high - low)));
+    RANGE_TO_WORD := DINT_TO_WORD(TRUNC((LIMIT(LOW,X,HIGH)-LOW) * 65535.0 / (HIGH - LOW)));
 
 
     (* revision history

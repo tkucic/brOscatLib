@@ -4,37 +4,37 @@ FUNCTION_BLOCK PULSE_LENGTH
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     (* reset outputs, they should only be active 1 cycle *)
-    short := FALSE;
+    SHORT := FALSE;
     Middle := FALSE;
-    long := FALSE;
+    LONG := FALSE;
 
-    (* detect rising edge *)
-    IF in AND NOT edge THEN
+    (* detect risINg edge *)
+    IF IN AND NOT edge THEN
     	edge := TRUE;
     	tn := tx;
 
-    (* detect for falling edge *)
-    ELSIF NOT in AND edge THEN
+    (* detect for fallINg edge *)
+    ELSIF NOT IN AND edge THEN
     	edge := FALSE;
     	tn := tx - tn;
-    	IF tn < t_short THEN
-    		short := TRUE;
-    	ELSIF tn > t_long THEN
-    		long := TRUE;
+    	IF tn < t_SHORT THEN
+    		SHORT := TRUE;
+    	ELSIF tn > t_LONG THEN
+    		LONG := TRUE;
     	ELSE
     		Middle := TRUE;
     	END_IF
 
-    (* generate long pulse as soon as T_long is reached *)
-    ELSIF in AND tx - tn > t_long THEN
-    	long := TRUE;
+    (* generate LONG pulse as soon as T_LONG is reached *)
+    ELSIF IN AND tx - tn > t_LONG THEN
+    	LONG := TRUE;
     END_IF
 
 
     (* revision history
 
     hm	15. feb 2006	rev 1.0
-    	original version
+    	origINal version
 
     hm	15 sep 2007		rev 1.1
     	replaced Time() with T_PLC_MS for compatibility and performance reasons

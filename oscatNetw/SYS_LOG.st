@@ -39,18 +39,18 @@ FUNCTION_BLOCK SYS_LOG
     			i := i + LEN(HOSTNAME);
     			S_BUF.BUFFER[i] := BYTE#32; (* leerzeichen einfuegen *)
     			i := i + 1;
-    			(* ' tag eintragen *)
+    			(* ' TAG eintragen *)
     			OSCAT_BASIC._STRING_TO_BUFFER(STR:=TAG,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     			i := i + LEN(TAG);
     			S_BUF.BUFFER[i] := BYTE#32; (* leerzeichen einfuegen *)
     			i := i + 1;
     		END_IF
 
-    		(* ' message eintragen *)
+    		(* ' MESSAGE eintragen *)
     		OSCAT_BASIC._STRING_TO_BUFFER(STR:=MESSAGE,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     		i := i + LEN(MESSAGE);
 
-    		IF (OPTION AND BYTE#0000_0100) > BYTE#00 THEN (* Option: Add a CR & LF to end of message *)
+    		IF (OPTION AND BYTE#0000_0100) > BYTE#00 THEN (* Option: Add a CR & LF to end of MESSAGE *)
     			S_BUF.BUFFER[i] := BYTE#13; (* Carriage Return einfuegen *)
     			i := i + 1;
     			S_BUF.BUFFER[i] := BYTE#10; (* Linefeed einfuegen *)

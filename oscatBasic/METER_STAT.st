@@ -1,18 +1,18 @@
 FUNCTION_BLOCK METER_STAT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=345*)
-    IF rst THEN
+    IF RST THEN
     	Last_Day := 0.0;
     	Current_Day := 0.0;
     	Day_start := IN;
     	Last_week := 0.0;
     	Current_week := 0.0;
-    	Week_start := in;
+    	Week_start := IN;
     	Last_month := 0.0;
     	Current_month := 0.0;
-    	month_start := in;
-    	last_year := 0.0;
-    	current_year := 0.0;
-    	year_start := in;
+    	month_start := IN;
+    	LAST_YEAR := 0.0;
+    	CURRENT_YEAR := 0.0;
+    	year_start := IN;
     ELSE
     	Current_Day := IN - Day_Start;
     	Current_Week := In - Week_Start;
@@ -22,40 +22,40 @@ FUNCTION_BLOCK METER_STAT
 
     IF YEAR_OF_DATE(DI) > YEAR_OF_DATE(last_run) THEN
     	(* a new year has started *)
-    	last_year := current_year;
-    	current_year := 0.0;
-    	year_start := in;
-    	last_month := current_month;
-    	current_month := 0.0;
-    	month_start := in;
-    	last_day := current_day;
-    	current_day := 0.0;
-    	day_start := in;
+    	LAST_YEAR := CURRENT_YEAR;
+    	CURRENT_YEAR := 0.0;
+    	year_start := IN;
+    	LAST_MONTH := CURRENT_MONTH;
+    	CURRENT_MONTH := 0.0;
+    	month_start := IN;
+    	LAST_DAY := CURRENT_DAY;
+    	CURRENT_DAY := 0.0;
+    	day_start := IN;
     ELSIF MONTH_OF_DATE(DI) > MONTH_OF_DATE(last_run) THEN
     	(* a new month has started, january is alrerady done by year change *)
-    	last_month := current_month;
-    	current_month := 0.0;
-    	month_start := in;
-    	last_day := current_day;
-    	current_day := 0.0;
-    	day_start := in;
-    ELSIF DAY_OF_YEAR(di) > DAY_OF_YEAR(last_run) THEN
-    	(* day has chaged, first day of year and first day of month has already been taken care of *)
-    	last_day := current_day;
-    	current_day := 0.0;
-    	day_start := in;
+    	LAST_MONTH := CURRENT_MONTH;
+    	CURRENT_MONTH := 0.0;
+    	month_start := IN;
+    	LAST_DAY := CURRENT_DAY;
+    	CURRENT_DAY := 0.0;
+    	day_start := IN;
+    ELSIF DAY_OF_YEAR(DI) > DAY_OF_YEAR(last_run) THEN
+    	(* day has chaged, fiRST day of year and fiRST day of month has already been taken care of *)
+    	LAST_DAY := CURRENT_DAY;
+    	CURRENT_DAY := 0.0;
+    	day_start := IN;
     END_IF
     IF DAY_OF_WEEK(DI) < DAY_OF_WEEK(last_run) THEN
     	(* a new week has started *)
-    	last_week := current_week;
-    	current_week := 0.0;
-    	week_start := in;
+    	LAST_WEEK := CURRENT_WEEK;
+    	CURRENT_WEEK := 0.0;
+    	week_start := IN;
     END_IF
-    last_run := di;
+    last_run := DI;
 
     (* revision history
     hm	16. sep. 2007	rev 1.0
-    	original version
+    	origINal version
 
     hm	7. oct. 2008	rev 1.1
     	changed function year_to_year_of_date

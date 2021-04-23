@@ -3,24 +3,24 @@ FUNCTION_BLOCK TUNE2
     (* read system time *)
     tx := T_PLC_MS();
 
-    IF rst THEN
+    IF RST THEN
     	Y := RST_val;
     	state := 0;
-    ELSIF set THEN
+    ELSIF SET THEN
     	Y := SET_val;
     	state := 0;
     ELSIF state > 0 THEN
     	(* key has been pushed state machine operating *)
-    	(* first read the correct input *)
+    	(* fiRST read the correct input *)
     	CASE state OF
     		1 :	(* slow up *)
-    			in := su;
+    			in := SU;
     		2 :	(* slow down *)
-    			in := sd;
+    			in := SD;
     		3 :	(* fast up *)
-    			in := fu;
+    			in := FU;
     		4 :	(* fast down *)
-    			in := fd;
+    			in := FD;
     	END_CASE
     	(* check for single step operation *)
     	IF NOT in AND tx - start <= TIME_TO_DWORD(TR) THEN
@@ -32,37 +32,37 @@ FUNCTION_BLOCK TUNE2
     	ELSIF NOT in THEN
     		state := 0;
     	END_IF
-    ELSIF su THEN
+    ELSIF SU THEN
     	(* slow step up *)
     	state := 1;
     	start := tx;
-    	step := ss;
-    	speed := s1 * 1.0E-3;
+    	step := SS;
+    	speed := S1 * 1.0E-3;
     	Y_start := Y;
-    ELSIF sd THEN
+    ELSIF SD THEN
     	(* slow step down *)
     	state := 2;
     	start := tx;
-    	step := -ss;
-    	speed := -s1 * 1.0E-3;
+    	step := -SS;
+    	speed := -S1 * 1.0E-3;
     	Y_start := Y;
-    ELSIF fu THEN
+    ELSIF FU THEN
     	(* fast step up *)
     	state := 3;
     	start := tx;
-    	step := fs;
-    	speed := s2 * 1.0E-3;
+    	step := FS;
+    	speed := S2 * 1.0E-3;
     	y_start := Y;
-    ELSIF fd THEN
+    ELSIF FD THEN
     	(* fast step down *)
     	state := 4;
     	start := tx;
-    	step := -fs;
-    	speed := -s2 * 1.0E-3;
+    	step := -FS;
+    	speed := -S2 * 1.0E-3;
     	y_start := Y;
     END_IF
 
-    (* make sure output does not exceed limits *)
+    (* make SUre output does not exceed limits *)
     Y := LIMIT(LIMIT_L, Y, LIMIT_H);
 
     (* revision history

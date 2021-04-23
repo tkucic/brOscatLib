@@ -1,6 +1,6 @@
 FUNCTION_BLOCK AUTORUN
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=19*)
-    (* run the integrator when T_off > T#0s *)
+    (* run the INtegrator when T_off > T#0s *)
     IF TOFF > T#0s THEN
     	timer(DIR:= OUT, TR := SEL(OUT, TOFF, TRUN), RMP := val);
     ELSE
@@ -8,7 +8,7 @@ FUNCTION_BLOCK AUTORUN
     END_IF
 
 
-    (* when timer = 0 or test then initiate autorun until timer reaches 255 *)
+    (* when timer = 0 or TEST then INitiate autorun until timer reaches 255 *)
     IF (NOT ARX AND ARE AND val = 0) OR TEST THEN
     	val := 0;
     	ARO := TRUE;
@@ -18,14 +18,14 @@ FUNCTION_BLOCK AUTORUN
     	ARX := FALSE;
     END_IF
 
-    (* output is true when autorun ARO is true or in = TRUE *)
-    out := IN OR ARO;
+    (* OUTput is true when autorun ARO is true or IN = TRUE *)
+    OUT := IN OR ARO;
 
 
 
     (* revision history
     hm 20. nov. 2008	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

@@ -1,7 +1,7 @@
 FUNCTION HEX_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164*)
-    pt := ADR(hex);
-    stop := LEN(hex);
+    pt := ADR(HEX);
+    stop := LEN(HEX);
     FOR I := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
     	x := pt^;

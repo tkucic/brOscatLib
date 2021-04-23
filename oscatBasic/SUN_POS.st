@@ -14,9 +14,9 @@ FUNCTION_BLOCK SUN_POS
     IF cos_d < 0.0 THEN a := a + math.PI; END_IF
     c := ASIN(SIN(e) * sin_d);
 
-    (* also here we must be very careful utc is from 1.1.1970 for step7 the formula must change *)
-    tau := RAD(MODR(6.697376 + (n - 0.25) * 0.0657098245037645 + DWORD_TO_REAL(TOD_TO_DWORD(DT_TO_TOD(utc))) * 0.0000002785383333, 24.0) * 15.0 + longitude) - a;
-    rlat := RAD(latitude);
+    (* also here we must be very careful UTC is from 1.1.1970 for step7 the formula must change *)
+    tau := RAD(MODR(6.697376 + (n - 0.25) * 0.0657098245037645 + DWORD_TO_REAL(TOD_TO_DWORD(DT_TO_TOD(UTC))) * 0.0000002785383333, 24.0) * 15.0 + LONGITUDE) - a;
+    rlat := RAD(LATITUDE);
     sin_lat := SIN(rlat);
     cos_lat := COS(rlat);
     cos_tau := COS(tau);

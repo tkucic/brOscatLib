@@ -18,7 +18,7 @@ FUNCTION_BLOCK TP_1
 
     (* revision history
     hm	28. jun. 2008
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

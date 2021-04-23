@@ -3,59 +3,59 @@ FUNCTION_BLOCK FT_Profile
     (* read system time *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* determine start condition *)
+    (* dETermine start condition *)
     IF E AND NOT edge THEN
     	RUN := TRUE;
     	ET := t#0s;
     	t0 := tx;
     	ta := tx;
-    	tb := multime(time_1, M);
-    	va := value_0;
-    	vb := value_1;
-    	temp := value_0;
+    	tb := multime(TIME_1, M);
+    	va := VALUE_0;
+    	vb := VALUE_1;
+    	temp := VALUE_0;
     	state := 1;
     END_IF
     edge := E;
 
     (* generate startup profile *)
-    IF run THEN
+    IF RUN THEN
     	CASE state OF
     		1:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(time_2 - time_1, M);
-    				va := value_1;
-    				vb := value_2;
-    				temp := value_1;
+    				tb := multime(TIME_2 - TIME_1, M);
+    				va := VALUE_1;
+    				vb := VALUE_2;
+    				temp := VALUE_1;
     				state := 2;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
     			END_IF
     		2:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(time_3 - time_2, M);
-    				va := value_2;
-    				vb := value_3;
-    				temp := value_2;
+    				tb := multime(TIME_3 - TIME_2, M);
+    				va := VALUE_2;
+    				vb := VALUE_3;
+    				temp := VALUE_2;
     				state := 3;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
     			END_IF
     		3:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(time_10 - time_3, M);
-    				va := value_3;
-    				vb := value_10;
-    				temp := value_3;
+    				tb := multime(TIME_10 - TIME_3, M);
+    				va := VALUE_3;
+    				vb := VALUE_10;
+    				temp := VALUE_3;
     				state := 4;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
     			END_IF
     		4 :	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(time_11 - time_10, M);
-    				va := value_10;
-    				vb := value_11;
-    				temp := value_10;
+    				tb := multime(TIME_11 - TIME_10, M);
+    				va := VALUE_10;
+    				vb := VALUE_11;
+    				temp := VALUE_10;
     				IF E THEN state := 5; ELSE state := 6; END_IF
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
@@ -68,27 +68,27 @@ FUNCTION_BLOCK FT_Profile
     			END_IF
     		6:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(time_12 - time_11, M);
-    				va := value_11;
-    				vb := value_12;
-    				temp := value_11;
+    				tb := multime(TIME_12 - TIME_11, M);
+    				va := VALUE_11;
+    				vb := VALUE_12;
+    				temp := VALUE_11;
     				state := 7;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
     			END_IF
     		7:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(time_13 - time_12, M);
-    				va := value_12;
-    				vb := value_13;
-    				temp := value_12;
+    				tb := multime(TIME_13 - TIME_12, M);
+    				va := VALUE_12;
+    				vb := VALUE_13;
+    				temp := VALUE_12;
     				state := 8;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
     			END_IF
     		8:	IF tx - ta >= tb THEN
-    				temp := value_13;
-    				run := FALSE;
+    				temp := VALUE_13;
+    				RUN := FALSE;
     			ELSE
     				temp := ((vb - va) * TIME_TO_REAL(tx - ta) / TIME_TO_REAL(tb) + va);
     			END_IF

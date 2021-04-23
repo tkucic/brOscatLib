@@ -1,6 +1,6 @@
 FUNCTION C_TO_F
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356*)
-    C_TO_F := celsius * 1.8 + 32.0;
+    C_TO_F := CELSIUS * 1.8 + 32.0;
 
 
     (* revision history

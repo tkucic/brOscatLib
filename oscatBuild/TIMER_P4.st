@@ -1,6 +1,6 @@
 FUNCTION_BLOCK TIMER_P4
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=65*)
-    (* for performance reasons we only execute the code at the beginning of a new second *)
+    (* for perforMANce reasons we only execute the code at the beginning of a new second *)
 
     IF RST THEN
     	(* reset all events to last active on 1.1.1970 *)
@@ -15,7 +15,7 @@ FUNCTION_BLOCK TIMER_P4
     	END_FOR
 
     (* normal operation *)
-    ELSIF dtime <> last_execute THEN
+    ELSIF DTIME <> last_execute THEN
     	(* save the actual second for next execution test *)
     	last_execute := DTIME;
 
@@ -27,7 +27,7 @@ FUNCTION_BLOCK TIMER_P4
 
     	(* search the array PROG for timer events *)
     	FOR pos := 0 TO ARRAY_MAX DO
-    		event := prog[pos];
+    		event := PROG[pos];
     		channel := event.CHANNEL - OFS;
     		IF (event.TYP > 0) AND (channel >= 0) AND (channel <= channel_max) THEN
     			ma[channel] := event.LAND;
@@ -35,144 +35,144 @@ FUNCTION_BLOCK TIMER_P4
     			CASE event.TYP OF
     				1:	(* daily event *)
     					start := day_start + TOD_TO_TIME(event.start);
-    					qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				2: 	(* event by selected weekdays *)
     					IF (SHR(BYTE#128, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(Dtime))) AND event.DAY) > 0 THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				3:	(* event every N days *)
     					IF current_day MOD event.DAY = 0 THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				10:	(* weekly event exactly once a week the weekday is specified in day, 1= mo *)
     					IF OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				20:	(* monthly event *)
     					IF OSCAT_BASIC.DAY_OF_MONTH(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				21:	(* event on last day of month *)
-    					IF DT_TO_DATE(DTIME) = OSCAT_BASIC.MONTH_END(DT_TO_DATE(dtime)) THEN
+    					IF DT_TO_DATE(DTIME) = OSCAT_BASIC.MONTH_END(DT_TO_DATE(DTIME)) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				30:	(* yearly event on a specific day specified in day *)
     					IF OSCAT_BASIC.DAY_OF_YEAR(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				31:	(* event on last day of year *)
-    					IF DT_TO_DATE(DTIME) = OSCAT_BASIC.YEAR_END(OSCAT_BASIC.YEAR_OF_DATE(DT_TO_DATE(dtime))) THEN
+    					IF DT_TO_DATE(DTIME) = OSCAT_BASIC.YEAR_END(OSCAT_BASIC.YEAR_OF_DATE(DT_TO_DATE(DTIME))) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				40:	(* event on leap days *)
-    					IF OSCAT_BASIC.LEAP_DAY(DT_TO_DATE(dtime)) THEN
+    					IF OSCAT_BASIC.LEAP_DAY(DT_TO_DATE(DTIME)) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				41: (* event on holidays *)
     					IF HOLY THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				42: (* event on holidays and weekends *)
-    					IF (Holy OR (OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(dtime)) = 6) OR (OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(dtime)) = 7)) THEN
+    					IF (Holy OR (OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 6) OR (OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 7)) THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				43:	(* event on workdays Mo-FR and no holiday *)
-    					IF OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(dtime)) < 6 THEN
+    					IF OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) < 6 THEN
     						start := day_start + TOD_TO_TIME(event.start);
-    						qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				50: (* event after reference time *)
-    					CASE prog[pos].DAY OF
-    						0:	tx := tref_0;
-    						1:	tx := tref_1;
+    					CASE PROG[pos].DAY OF
+    						0:	tx := TREF_0;
+    						1:	tx := TREF_1;
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
     					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.start);
-    					qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				51:	(* event before reference time *)
-    					CASE prog[pos].DAY OF
-    						0:	tx := tref_0;
-    						1:	tx := tref_1;
+    					CASE PROG[pos].DAY OF
+    						0:	tx := TREF_0;
+    						1:	tx := TREF_1;
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
     					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.start);
-    					qn[channel] := dtime >= start AND dtime <= start + event.DURATION;
+    					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				52 : (* set output at specific time + offset  *)
-    					CASE prog[pos].DAY OF
-    						0:	tx := tref_0;
-    						1:	tx := tref_1;
+    					CASE PROG[pos].DAY OF
+    						0:	tx := TREF_0;
+    						1:	tx := TREF_1;
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
     					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.start);
-    					IF dtime >= start AND day_start > event.LAST THEN
+    					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := TRUE;
-    						prog[pos].LAST := day_start;
+    						PROG[pos].LAST := day_start;
     					END_IF
 
     				53 : (* reset output at specific time + offset *)
-    					CASE prog[pos].DAY OF
-    						0:	tx := tref_0;
-    						1:	tx := tref_1;
+    					CASE PROG[pos].DAY OF
+    						0:	tx := TREF_0;
+    						1:	tx := TREF_1;
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
     					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.start);
-    					IF dtime >= start AND day_start > event.LAST THEN
+    					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := FALSE;
-    						prog[pos].LAST := day_start;
+    						PROG[pos].LAST := day_start;
     					END_IF
 
     				54 : (* set output at specific time - offset  *)
-    					CASE prog[pos].DAY OF
-    						0:	tx := tref_0;
-    						1:	tx := tref_1;
+    					CASE PROG[pos].DAY OF
+    						0:	tx := TREF_0;
+    						1:	tx := TREF_1;
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
     					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.start);
-    					IF dtime >= start AND day_start > event.LAST THEN
+    					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := TRUE;
-    						prog[pos].LAST := day_start;
+    						PROG[pos].LAST := day_start;
     					END_IF
 
     				55 : (* reset output at specific time - offset *)
-    					CASE prog[pos].DAY OF
-    						0:	tx := tref_0;
-    						1:	tx := tref_1;
+    					CASE PROG[pos].DAY OF
+    						0:	tx := TREF_0;
+    						1:	tx := TREF_1;
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
     					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.start);
-    					IF dtime >= start AND day_start > event.LAST THEN
+    					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := FALSE;
-    						prog[pos].LAST := day_start;
+    						PROG[pos].LAST := day_start;
     					END_IF
     			END_CASE
     		END_IF
@@ -187,18 +187,18 @@ FUNCTION_BLOCK TIMER_P4
     mask.3 := L3;
 
     (* set the outputs *)
-    Q0 := ENQ AND ((qn[0] OR qs[0]) AND ((ma[0] AND mask) = ma[0]) OR ((mo[0] AND mask) > 0) OR (man AND MI.0));
-    Q1 := ENQ AND ((qn[1] OR qs[1]) AND ((ma[1] AND mask) = ma[1]) OR ((mo[1] AND mask) > 1) OR (man AND MI.1));
-    Q2 := ENQ AND ((qn[2] OR qs[2]) AND ((ma[2] AND mask) = ma[2]) OR ((mo[2] AND mask) > 2) OR (man AND MI.2));
-    Q3 := ENQ AND ((qn[3] OR qs[3]) AND ((ma[3] AND mask) = ma[3]) OR ((mo[3] AND mask) > 3) OR (man AND MI.3));
+    Q0 := ENQ AND ((qn[0] OR qs[0]) AND ((ma[0] AND mask) = ma[0]) OR ((mo[0] AND mask) > 0) OR (MAN AND MI.0));
+    Q1 := ENQ AND ((qn[1] OR qs[1]) AND ((ma[1] AND mask) = ma[1]) OR ((mo[1] AND mask) > 1) OR (MAN AND MI.1));
+    Q2 := ENQ AND ((qn[2] OR qs[2]) AND ((ma[2] AND mask) = ma[2]) OR ((mo[2] AND mask) > 2) OR (MAN AND MI.2));
+    Q3 := ENQ AND ((qn[3] OR qs[3]) AND ((ma[3] AND mask) = ma[3]) OR ((mo[3] AND mask) > 3) OR (MAN AND MI.3));
 
-    (* set status *)
-    IF NOT enq THEN
-    	status := 100;
-    ELSIF man THEN
-    	status := 101;
+    (* set STATUS *)
+    IF NOT ENQ THEN
+    	STATUS := 100;
+    ELSIF MAN THEN
+    	STATUS := 101;
     ELSE
-    	status := 102;
+    	STATUS := 102;
     END_IF
 
 
@@ -210,7 +210,7 @@ FUNCTION_BLOCK TIMER_P4
     hm	9. oct. 2008	rev 1.1
     	changed function year to year_of_date
     	changed function weekday to day_of_week
-    	changed structure of program to be more efficient
+    	changed structure of PROGram to be more efficient
     	changed input DIS to ENQ
 
     hm	18. oct. 2008	rev 1.2
@@ -221,7 +221,7 @@ FUNCTION_BLOCK TIMER_P4
     	array was not correctly initialized
 
     hm	26. jan 2011	rev 1.4
-    	changed code to allow events over midnight
+    	changed code to allow events over MIdnight
     *)
 
 END_FUNCTION_BLOCK

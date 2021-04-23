@@ -4,7 +4,7 @@ FUNCTION ISC_NUM
 
     (* revision history
     hm		6. mar. 2008	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION

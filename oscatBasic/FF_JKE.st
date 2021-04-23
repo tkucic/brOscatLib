@@ -1,8 +1,8 @@
 FUNCTION_BLOCK FF_JKE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=241*)
-    IF rst OR set THEN
-    	Q := NOT rst;
-    ELSIF clk AND NOT edge THEN
+    IF RST OR SET THEN
+    	Q := NOT RST;
+    ELSIF CLK AND NOT edge THEN
     	IF J XOR K THEN Q := J;
     	ELSE Q := K XOR Q;
     	END_IF

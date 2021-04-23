@@ -7,98 +7,98 @@ FUNCTION_BLOCK ACTUATOR_UD
     	(* INITIALIZATION AT FIRST CALL *)
     	last := tx;
     	init := TRUE;
-    ELSIF off THEN
-    	(* emergency shut off detected *)
-    	Yup := FALSE;
-    	ydn := FALSE;
+    ELSIF OFF THEN
+    	(* emergency shut OFF detected *)
+    	YUP := FALSE;
+    	yDN := FALSE;
     	last := tx;
-    	status := 101;
+    	STATUS := 101;
 
     (* Watch FOR MIN TON TIME *)
-    ELSIF ((Yup OR Ydn) AND tx - last < Ton) THEN
+    ELSIF ((YUP OR YDN) AND tx - last < TON) THEN
     	RETURN;
-    ELSIF NOT yup AND NOT ydn AND tx - last < toff THEN
+    ELSIF NOT yUP AND NOT yDN AND tx - last < tOFF THEN
     	RETURN;
 
-    (* manual operation *)
-    ELSIF manual THEN
-    	status := 102;
-    	(* directional chage set both outs 0 first *)
-    	IF yup AND NOT up OR ydn AND NOT dn THEN
-    		ydn := FALSE;
-    		yup := FALSE;
+    (* MANUAL operatiON *)
+    ELSIF MANUAL THEN
+    	STATUS := 102;
+    	(* directiONal chage set both outs 0 first *)
+    	IF yUP AND NOT UP OR yDN AND NOT DN THEN
+    		yDN := FALSE;
+    		yUP := FALSE;
     		last := tx;
-    	(* manual up operation *)
+    	(* MANUAL UP operatiON *)
     	ELSIF UP AND NOT DN AND NOT OFF THEN
-    		Ydn := FALSE;
-    		Yup := TRUE;
+    		YDN := FALSE;
+    		YUP := TRUE;
     		last := tx;
-    		status := 103;
-    	(* manual down operation *)
+    		STATUS := 103;
+    	(* MANUAL down operatiON *)
     	ELSIF DN AND NOT UP AND NOT OFF THEN
-    		Yup := FALSE;
-    		Ydn := TRUE;
+    		YUP := FALSE;
+    		YDN := TRUE;
     		last := tx;
-    		status := 104;
-    	(* maual mode but no up or down *)
+    		STATUS := 104;
+    	(* maual mode but no UP or down *)
     	ELSE
     		IF YUP OR YDN THEN LAST := tx; END_IF
-    		Yup := FALSE;
-    		ydn := FALSE;
+    		YUP := FALSE;
+    		yDN := FALSE;
     	END_IF
 
-    (* automatic operation *)
+    (* automatic operatiON *)
     ELSE
-    	(* directional change set outputs low first *)
-    	IF yup AND NOT ud OR ydn AND UD THEN
-    		yup := FALSE;
-    		ydn := FALSE;
+    	(* directiONal change set outputs low first *)
+    	IF yUP AND NOT UD OR yDN AND UD THEN
+    		yUP := FALSE;
+    		yDN := FALSE;
     		last := tx;
-    	(* automatic up operation *)
-    	ELSIF Ud AND on AND NOT OFF THEN
-    		Ydn := FALSE;
-    		Yup := TRUE;
+    	(* automatic UP operatiON *)
+    	ELSIF Ud AND ON AND NOT OFF THEN
+    		YDN := FALSE;
+    		YUP := TRUE;
     		last := tx;
-    		status := 111;
+    		STATUS := 111;
 
-    	(* automatic down operation *)
-    	ELSIF NOT UD AND on AND NOT OFF THEN
-    		Yup := FALSE;
-    		Ydn := TRUE;
+    	(* automatic down operatiON *)
+    	ELSIF NOT UD AND ON AND NOT OFF THEN
+    		YUP := FALSE;
+    		YDN := TRUE;
     		last := tx;
-    		status := 112;
+    		STATUS := 112;
     	(* standby mode *)
     	ELSE
-    		IF Yup OR Ydn THEN last := tx; END_IF
-    		Yup := FALSE;
-    		Ydn := FALSE;
-    		status := 110;
+    		IF YUP OR YDN THEN last := tx; END_IF
+    		YUP := FALSE;
+    		YDN := FALSE;
+    		STATUS := 110;
     	END_IF
     END_IF
 
-    (* make sure Yup and Ydn are never on at the same time *)
-    IF Ydn AND Yup_in AND out_return THEN
-    	Ydn := FALSE;
-    	status := 1;
+    (* make sure YUP and YDN are never ON at the same time *)
+    IF YDN AND YUP_in AND OUT_RETURN THEN
+    	YDN := FALSE;
+    	STATUS := 1;
     END_IF
-    IF Yup AND Ydn_in AND out_return THEN
-    	Yup := FALSE;
-    	status := 2;
+    IF YUP AND YDN_in AND OUT_RETURN THEN
+    	YUP := FALSE;
+    	STATUS := 2;
     END_IF
 
 
 
-    (* revision history
+    (* revisiON history
     hm 22. jan 2007	rev 1.1
-    	added status output
-    	changed inputs ton, toff to config variables
-    	added config var out_return to enable yup_in and Ydn_in
-    	manual mod will override automatic mode 
+    	added STATUS output
+    	changed inputs tON, tOFF to cONfig variables
+    	added cONfig var OUT_RETURN to enable yUP_in and YDN_in
+    	MANUAL mod will override automatic mode 
 
     hm	15.9.2007	rev 1.2
-    	replaced Time() with T_PLC_MS for compatibility and performance reasons
+    	replaced Time() with T_PLC_MS for compatibility and performance reasONs
 
     hm	17. oct. 2008	rev 1.3
-    	deleted unnecessary initialization with 0
+    	deleted unnecessary initializatiON with 0
     *)
 END_FUNCTION_BLOCK

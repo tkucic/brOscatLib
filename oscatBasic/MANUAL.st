@@ -4,9 +4,9 @@ FUNCTION MANUAL
 
 
 
-    (* revision history
+    (* revisiON history
     hm	21. nov 2008	rev 1.0
-    	original version
+    	origINal versiON
 
 
     *)

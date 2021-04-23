@@ -1,22 +1,22 @@
 FUNCTION_BLOCK GEN_SQR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=262*)
-    (* check dc = 1 or 0 *)
-    IF dc = 0.0 THEN
-    	out := -am * 0.5 + os;
+    (* check DC = 1 or 0 *)
+    IF DC = 0.0 THEN
+    	OUT := -AM * 0.5 + OS;
     	Q := FALSE;
     	RETURN;
-    ELSIF dc = 1.0 THEN
-    	out := am * 0.5 + os;
+    ELSIF DC = 1.0 THEN
+    	OUT := AM * 0.5 + OS;
     	Q := TRUE;
     	RETURN;
     END_IF
 
     (* read system time and prepare input data *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
-    DL := MODR(dl,1.0);
-    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF
-    dc := MODR(dc,1.0);
-    IF dc < 0.0 THEN dc := 1.0 - dc; END_IF
+    DL := MODR(DL,1.0);
+    IF DL < 0.0 THEN DL := 1.0 - DL; END_IF
+    DC := MODR(DC,1.0);
+    IF DC < 0.0 THEN DC := 1.0 - DC; END_IF
 
     (* init section *)
     IF NOT init THEN
@@ -26,32 +26,32 @@ FUNCTION_BLOCK GEN_SQR
     END_IF
 
     (* add last if one cycle is finished *)
-    IF tx >= pt THEN
-    	last := last + pt;
-    	tx := tx - pt;
+    IF tx >= PT THEN
+    	last := last + PT;
+    	tx := tx - PT;
     END_IF
 
     (* check if falling or rising edge first *)
-    IF MULTIME(pt, dl + dc) >= pt THEN
+    IF MULTIME(PT, DL + DC) >= PT THEN
     	(* generate falling edge *)
-    	IF tx >= MULTIME(pt, dl + dc - 1) THEN
-    		out := -am * 0.5 + os;
+    	IF tx >= MULTIME(PT, DL + DC - 1) THEN
+    		OUT := -AM * 0.5 + OS;
     		Q := FALSE;
     	END_IF
     	(* generate rising edge *)
-    	IF tx >= MULTIME(pt, dl) THEN
-    		out := am * 0.5 + os;
+    	IF tx >= MULTIME(PT, DL) THEN
+    		OUT := AM * 0.5 + OS;
     		Q := TRUE;
     	END_IF
     ELSE
     	(* generate rising edge first *)
-    	IF tx >= MULTIME(pt, dl) THEN
-    		out := am * 0.5 + os;
+    	IF tx >= MULTIME(PT, DL) THEN
+    		OUT := AM * 0.5 + OS;
     		Q := TRUE;
     	END_IF
     	(* generate falling edge *)
-    	IF tx >= MULTIME(pt, dl + dc) THEN
-    		out := -am * 0.5 +os;
+    	IF tx >= MULTIME(PT, DL + DC) THEN
+    		OUT := -AM * 0.5 +OS;
     		Q := FALSE;
     	END_IF
     END_IF
@@ -59,7 +59,7 @@ FUNCTION_BLOCK GEN_SQR
     (* revision history
 
     hm	12. feb 2007	rev 1.1
-    	added default value for dc = 0.5
+    	added default value for DC = 0.5
 
     hm	17 sep 2007	rev 1.2
     	replaced time() with t_plc_ms for compatibilitx reasons
@@ -69,7 +69,7 @@ FUNCTION_BLOCK GEN_SQR
 
     hm	11. mar. 2009	rev 1.4
     	changed real constants to use dot syntax
-    	set default amplitude to 1.0
+    	set default AMplitude to 1.0
 
     *)
 

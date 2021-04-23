@@ -12,12 +12,12 @@ FUNCTION_BLOCK WORLD_WEATHER
     	END_IF
 
     20: (* URL for DNS UND HTTP-GET *)
-    	(* Example: http://api.worldweatheronline.com/free/v1/weather.ashx?q=48.21,16.37&format=csv&num_of_days=5&key=xxxxxxxxxxxxxxxxxxxxxx *)
+    	(* Example: http://api.worldweatheronline.com/free/v1/weather.ashx?q=48.21,16.37&format=csv&num_of_days=5&KEY=xxxxxxxxxxxxxxxxxxxxxx *)
     	url_str := CONCAT('http://api.worldweatheronline.com/free/v1/weather.ashx?q=',OSCAT_BASIC.REAL_TO_STRF(LATITUDE,6,D:='.'));
     	url_str := CONCAT(url_str,',');
     	url_str := CONCAT(url_str,OSCAT_BASIC.REAL_TO_STRF(LONGITUDE,6,D:='.'));
-    	url_str := CONCAT(url_str,'&format=csv&num_of_days=5&key=');
-    	url_str := CONCAT(url_str,key);
+    	url_str := CONCAT(url_str,'&format=csv&num_of_days=5&KEY=');
+    	url_str := CONCAT(url_str,KEY);
 
     	URL_DATA:=STRING_TO_URL(STR:=url_str, DEFAULT_PROTOCOL:='', DEFAULT_PATH:='' );
     	state := 40;
@@ -187,6 +187,6 @@ FUNCTION_BLOCK WORLD_WEATHER
     	workaround für chunked html data
 
     ks	11.may. 2013	rev 1.5
-    	New worldwaether url and api key required (new API-Services)
+    	New worldwaether url and api KEY required (new API-Services)
     *)
 END_FUNCTION_BLOCK

@@ -5,7 +5,7 @@ FUNCTION_BLOCK TP_1D
 
     IF RST THEN
     	Q := FALSE;
-    	rst := FALSE;
+    	RST := FALSE;
     	W := FALSE;
     ELSIF W THEN
     	IF tx - start >= PTD THEN
@@ -14,7 +14,7 @@ FUNCTION_BLOCK TP_1D
     ELSIF IN AND NOT ix THEN
     	Q := TRUE;
     	start := tx;
-    	in := FALSE;
+    	IN := FALSE;
     ELSIF tx - start >= PT1 THEN
     	Q := FALSE;
     	W := TRUE;
@@ -27,7 +27,7 @@ FUNCTION_BLOCK TP_1D
 
     (* revision history
     hm	28. jun. 2008
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

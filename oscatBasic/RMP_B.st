@@ -1,39 +1,39 @@
 FUNCTION_BLOCK RMP_B
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264*)
     (* generate ramp *)
-    rmp(dir := UP, E := E, TR := PT, rmp := out);
+    rmp(dir := UP, E := E, TR := PT, rmp := OUT);
 
-    (* set or reset operation *)
+    (* SET or reSET operation *)
     IF RST THEN
-    	out := 0;
+    	OUT := 0;
     ELSIF SET THEN
-    	out := 255;
+    	OUT := 255;
     END_IF
 
-    (* checks for outputs stable and reset or set busy flag *)
-    low := out = 0;
-    high := out = 255;
-    busy := NOT (low OR high) AND E;
+    (* checks for OUTputs stable and reSET or SET BUSY flag *)
+    LOW := OUT = 0;
+    HIGH := OUT = 255;
+    BUSY := NOT (LOW OR HIGH) AND E;
 
 
     (* revision history
 
     hm 5.10.2006	rev 1.1
-    	added busy output
+    	added BUSY OUTput
     hm 17.1.2007	rev 1.2
-    	renamed input ud to up for better usability
+    	renamed input ud to UP for better usability
     	deleted unused variable step
 
     hm	17.9.2007		rev 1.3
     	replaced time() with t_plc_ms() for compatibility reasons
 
     hm	28. sep 2007	rev 1.4
-    	added outputs on and off
-    	busy is now disabled while en is false
-    	new coding for higher accuracy and performance
+    	added OUTputs on and off
+    	BUSY is now disabled while en is false
+    	new coding for HIGHer accuracy and performance
 
     hm	5. oct 2007	rev 1.5
-    	added statements to allow for PT to be t#0s output jumps to max or min immediately
+    	added statements to alLOW for PT to be t#0s OUTput jumps to max or min immediately
 
     hm	25. dec 2007	rev 1.6
     	improved code for better performance

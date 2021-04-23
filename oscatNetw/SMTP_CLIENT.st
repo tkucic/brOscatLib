@@ -3,10 +3,10 @@ FUNCTION_BLOCK SMTP_CLIENT
     CASE step OF
 
     00:
-    	IF ACTIVATE AND NOT activate_last THEN
+    	IF ACTIVATE AND NOT ACTIVATE_last THEN
     		TIMEOUT := MAX(T#10s,TIMEOUT);
-    		timeout2 := TIMEOUT + T#1s;
-    		timeout3 := TIMEOUT / 2;
+    		TIMEOUT2 := TIMEOUT + T#1s;
+    		TIMEOUT3 := TIMEOUT / 2;
     		DONE := FALSE;
     		ip_c_red_disable := FALSE;
     		ERROR_C := DWORD#0;
@@ -464,7 +464,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	END_IF
 
     830:
-    	IF rcv_state = 221  OR TON_WAIT.ET > timeout3 THEN (* 221 = Service closing transmission channel *)
+    	IF rcv_state = 221  OR TON_WAIT.ET > TIMEOUT3 THEN (* 221 = Service closing transmission channel *)
     		step := 900;
     	END_IF
 
@@ -566,7 +566,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	END_IF
 
     1120:
-    	IF b64_start AND b64_done THEN
+    	IF b64_start AND b64_DONE THEN
     		b64_start := FALSE;
     		snd_text := b64_str2;
     		next_step := 1130;
@@ -580,7 +580,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	END_IF
 
     1140:
-    	IF b64_start AND b64_done THEN
+    	IF b64_start AND b64_DONE THEN
     		b64_start := FALSE;
     		snd_text := b64_str2;
     		next_step := 90;
@@ -744,11 +744,11 @@ FUNCTION_BLOCK SMTP_CLIENT
     DNS_CLIENT(IP_C:=IP_C, S_BUF:=S_BUF, R_BUF:=R_BUF, DOMAIN:=URL_DATA.DOMAIN, IP4_DNS:= DNS_IP4, ACTIVATE:=step=10); (* DNS-Client *)
     IPC(IP:= DWORD#0, PORT:= WORD#0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C, S_BUF:= S_BUF, R_BUF:= R_BUF); (* SMTP Steuerkanal *)
     FS(FSD:=FSD,PT:=F_BUF); (* FILE_SERVER *)
-    BASE64_ENCODE_STR(RUN:= b64_start, STR1:= b64_str1, STR2:= b64_str2, DONE=> b64_done); (* BASE64 kodierung *)
+    BASE64_ENCODE_STR(RUN:= b64_start, STR1:= b64_str1, STR2:= b64_str2, DONE=> b64_DONE); (* BASE64 kodierung *)
 
-    TON_WAIT(IN:=step = last_step AND step > 0,PT:=timeout2);
+    TON_WAIT(IN:=step = last_step AND step > 0,PT:=TIMEOUT2);
     last_step := step;
-    activate_last := ACTIVATE;
+    ACTIVATE_last := ACTIVATE;
     BUSY := step <> 0;
 
     (* revision history
@@ -759,7 +759,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     ks	11. may 2011	rev 1.2
     	ip_control - remote disconnect error ausblenden, und sonderbehandlung für pcworx
     ks	30. may 2011	rev 1.3
-    	fehler bei receive-timeout
+    	fehler bei receive-TIMEOUT
     ks	05. may. 2012	rev 1.4
     	FileServer AutoClose entfernt und Fehler im Alias Name korrigiert
     ks	06. apr. 2013	rev 1.5

@@ -3,7 +3,7 @@ FUNCTION_BLOCK LIST_NEXT
     pt := ADR(LIST);
     po := ADR(LEL);
 
-    IF rst THEN
+    IF RST THEN
     	pos := 1;
     END_IF
 

@@ -1,11 +1,11 @@
 FUNCTION_BLOCK TOGGLE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=254*)
-    IF rst THEN
+    IF RST THEN
     	q := 0;
-    ELSIF clk AND NOT edge THEN
+    ELSIF CLK AND NOT edge THEN
     	Q := NOT Q;
     END_IF
-    edge := clk;
+    edge := CLK;
 
     (* revision history
 

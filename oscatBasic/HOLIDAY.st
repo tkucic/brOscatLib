@@ -1,42 +1,42 @@
 FUNCTION_BLOCK HOLIDAY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=123*)
     (* for performance reasons only activate once a day *)
-    IF last_active = date_in THEN RETURN; END_IF
+    IF last_active = DATE_IN THEN RETURN; END_IF
     last_active := DATE_IN;
 
-    (* determine language *)
+    (* determine LANGUage *)
     IF LANGU = 0 THEN
-    	lx := language.DEFAULT;
+    	lx := LANGUage.DEFAULT;
     ELSE
-    	lx := MIN(language.LMAX, LANGU);
+    	lx := MIN(LANGUage.LMAX, LANGU);
     END_IF
 
     (* berechnung von ostern für das aktuelle jahr *)
-    jahr := YEAR_OF_DATE(date_in);
+    jahr := YEAR_OF_DATE(DATE_IN);
     ostern := EASTER(jahr);
     wdx := DAY_OF_WEEK(DATE_IN);
     Y := FALSE;
 
-    (* check for holidays *)
+    (* check for HOLIDAYS *)
     FOR i := 0 TO size DO
     	x_date := SET_DATE(jahr, HOLIDAYS[i].MONTH , HOLIDAYS[i].DAY);
     	IF HOLIDAYS[i].USE = 1 AND HOLIDAYS[i].MONTH > 0 THEN
     		(* check for fixed date holiday *)
-    		IF x_date = date_in THEN
+    		IF x_date = DATE_IN THEN
     			Y := TRUE;
     			NAME := HOLIDAYS[i].NAME;
     			RETURN;
     		END_IF
     	ELSIF HOLIDAYS[i].USE = 1 AND HOLIDAYS[i].MONTH = 0 THEN
     		(* check for holiday in reference to easter *)
-    		IF DATE_ADD(ostern, HOLIDAYS[i].DAY ,0,0,0) = date_in THEN
+    		IF DATE_ADD(ostern, HOLIDAYS[i].DAY ,0,0,0) = DATE_IN THEN
     			Y := TRUE;
     			NAME := HOLIDAYS[i].NAME;
     			RETURN;
     		END_IF
     	ELSIF HOLIDAYS[i].USE < 0 THEN
     		(* check for holiday on a weekday before date *)
-    		IF DAY_OF_WEEK(date_in) = ABS(HOLIDAYS[i].USE) AND date_in < x_date AND date_in >= DATE_ADD(x_date,-7,0,0,0) THEN
+    		IF DAY_OF_WEEK(DATE_IN) = ABS(HOLIDAYS[i].USE) AND DATE_IN < x_date AND DATE_IN >= DATE_ADD(x_date,-7,0,0,0) THEN
     			Y := TRUE;
     			NAME := HOLIDAYS[i].NAME;
     			RETURN;
@@ -100,7 +100,7 @@ FUNCTION_BLOCK HOLIDAY
     	using location constants
 
     hm	18. jan 2011	rev 2.0
-    	using user specified array for holidays
+    	using user specified array for HOLIDAYS
 
     *)
 

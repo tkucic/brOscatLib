@@ -1,6 +1,6 @@
 FUNCTION IS_IP4
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=78*)
-    IS_IP4 := OSCAT_BASIC.COUNT_CHAR(str, 46) = 3;
+    IS_IP4 := OSCAT_BASIC.COUNT_CHAR(STR, 46) = 3;
 
 
     (* revision history

@@ -5,7 +5,7 @@ FUNCTION_BLOCK METER
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
-    	mr.RX := mx;
+    	mr.RX := MX;
     	mr.R1 := 0.0;
     ELSIF tx = last THEN
     	RETURN;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK METER
     last := tx;
 
     (* reset *)
-    IF rst THEN
+    IF RST THEN
     	mr.R1 := 0.0;
     	mr.RX := 0.0;
     ELSE
@@ -23,7 +23,7 @@ FUNCTION_BLOCK METER
     	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF
     	IF I2 THEN MX2 := M2; ELSE MX2 := 0.0; END_IF
     	(* add up the current values in a double real *)
-    	MR := R2_ADD(MR,(SEL(I1,0.0,mx1) + SEL(I2, 0.0, mx2)) / D * TC);
+    	MR := R2_ADD(MR,(SEL(I1,0.0,MX1) + SEL(I2, 0.0, MX2)) / D * TC);
     	(* set the current output value *)
     	MX := mr.RX;
     END_IF
@@ -45,7 +45,7 @@ FUNCTION_BLOCK METER
     	do not use ft_int which adds unnecessary overhead
 
     hm	8. feb. 2009	rev 1.3
-    	changed mx to be I/O
+    	changed MX to be I/O
     	make sure calculation works for cycle times < 1 ms
 
     hm	8. mar. 2009	rev 1.4

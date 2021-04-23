@@ -1,6 +1,6 @@
 FUNCTION_BLOCK MANUAL_4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=465*)
-    IF man THEN
+    IF MAN THEN
     	IF NOT TOG THEN
     		Q0 := M0;
     		Q1 := M1;
@@ -44,7 +44,7 @@ FUNCTION_BLOCK MANUAL_4
     	pos := 0;
     END_IF
 
-    (* remember status of stp *)
+    (* remember STATUS of STP *)
     edge := STP;
 
 

@@ -1,11 +1,11 @@
 FUNCTION_BLOCK FF_D4E
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=239*)
-    IF rst THEN
+    IF RST THEN
     	Q0 := FALSE;
     	Q1 := FALSE;
     	Q2 := FALSE;
     	Q3 := FALSE;
-    ELSIF clk AND NOT edge THEN
+    ELSIF CLK AND NOT edge THEN
     	Q0 := D0;
     	Q1 := D1;
     	Q2 := D2;

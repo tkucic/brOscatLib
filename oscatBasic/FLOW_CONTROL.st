@@ -3,12 +3,12 @@ FUNCTION_BLOCK FLOW_CONTROL
     STATUS := 100;
     IF RST THEN
     	Q := FALSE;
-    	timer(rst := TRUE);
+    	timer(RST := TRUE);
     	timer.RST := FALSE;
     	STATUS := 103;
     ELSIF ENQ THEN
     	IF IN THEN
-    		status := 101;
+    		STATUS := 101;
     	END_IF
     	IF REQ THEN
     		(* timer will generate a timed pulse after TP goes high *)
@@ -29,7 +29,7 @@ FUNCTION_BLOCK FLOW_CONTROL
 
     (* revision history
     hm 	28. jun. 2008 	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

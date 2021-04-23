@@ -1,7 +1,7 @@
 FUNCTION IS_CTRL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=166*)
-    PT := ADR(str);
-    L := LEN(str);
+    PT := ADR(STR);
+    L := LEN(STR);
     FOR pos := 1 TO L DO
     	IF NOT (ISC_CTRL(pt^)) THEN
     		IS_CTRL := FALSE;

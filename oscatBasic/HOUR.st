@@ -1,6 +1,6 @@
 FUNCTION HOUR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=124*)
-    HOUR := DWORD_TO_INT(TOD_TO_DWORD(itod) / 3600000);
+    HOUR := DWORD_TO_INT(TOD_TO_DWORD(ITOD) / 3600000);
 
 
     (* change history
@@ -8,7 +8,7 @@ FUNCTION HOUR
     	original version
 
     hm 2.10.2006 	rev 1.1
-    	changed name of input to itod
+    	changed name of input to ITOD
 
     *)
 END_FUNCTION

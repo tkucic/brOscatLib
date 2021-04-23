@@ -1,33 +1,33 @@
 FUNCTION_BLOCK M_D
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=341*)
-    (* check for rst input *)
-    IF rst OR et >= tmax THEN
-    	pt := t#0ms;
-    	et := t#0ms;
-    	startup := FALSE;
-    	run := FALSE;
+    (* check for RST input *)
+    IF RST OR ET >= TMAX THEN
+    	PT := t#0ms;
+    	ET := t#0ms;
+    	STARTup := FALSE;
+    	RUN := FALSE;
     END_IF
 
-    (* avoid timers to start when input is true at startup *)
-    IF NOT startup THEN
-    	edge := start;
-    	startup := TRUE;
+    (* avoid timers to START when input is true at STARTup *)
+    IF NOT STARTup THEN
+    	edge := START;
+    	STARTup := TRUE;
     END_IF
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* detect rising edge on start *)
-    IF start AND NOT edge AND NOT stop THEN
+    (* dETect rising edge on START *)
+    IF START AND NOT edge AND NOT STOP THEN
     	t0 := tx;
-    	run := TRUE;
-    	pt := t#0s;
-    ELSIF stop AND run THEN
-    	pt := et;
-    	run := FALSE;
+    	RUN := TRUE;
+    	PT := t#0s;
+    ELSIF STOP AND RUN THEN
+    	PT := ET;
+    	RUN := FALSE;
     END_IF
-    edge := start;
-    IF run THEN et := tx - t0; END_IF
+    edge := START;
+    IF RUN THEN ET := tx - t0; END_IF
 
     (* revision history
     hm		2.5.2007	rev 1.0
@@ -37,7 +37,7 @@ FUNCTION_BLOCK M_D
     	changes time() to T_plc_ms() for compatibility reasons
 
     hm	27. feb 2009	rev 1.2
-    	deleted unnecessary init with 0
+    	delETed unnecessary init with 0
     *)
 
 END_FUNCTION_BLOCK

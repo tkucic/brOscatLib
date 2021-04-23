@@ -1,6 +1,6 @@
 FUNCTION REFRACTION
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=132*)
-    elev := LIMIT(-1.9, elev, 80.0);
+    ELEV := LIMIT(-1.9, ELEV, 80.0);
     REFRACTION := 0.0174532925199433 / TAN(0.0174532925199433 * (ELEV + 10.3 / (ELEV + 5.11)));
 
 

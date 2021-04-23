@@ -1,8 +1,8 @@
 FUNCTION FINDB
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=158*)
-    length := LEN(str2);
-    FOR pos := LEN(str1) - length + 1 TO 1 BY -1 DO
-    	IF MID(str1,length,pos) = str2 THEN
+    length := LEN(STR2);
+    FOR pos := LEN(STR1) - length + 1 TO 1 BY -1 DO
+    	IF MID(STR1,length,pos) = STR2 THEN
     		FindB := pos;
     		RETURN;
     	END_IF

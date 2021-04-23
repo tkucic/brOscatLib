@@ -1,6 +1,6 @@
 FUNCTION_BLOCK B_TRIG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=188*)
-    Q := clk XOR edge;
+    Q := CLK XOR edge;
     edge := CLK;
 
 

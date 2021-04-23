@@ -4,85 +4,85 @@ FUNCTION_BLOCK ESR_MON_B8
     tx := DWORD_TO_TIME(T_PLC_MS());
 
     ESR_Flag := FALSE;
-    esr_out[3].typ := 0;
-    esr_out[2].typ := 0;
-    esr_out[1].typ := 0;
-    esr_out[0].typ := 0;
+    ESR_OUT[3].typ := 0;
+    ESR_OUT[2].typ := 0;
+    ESR_OUT[1].typ := 0;
+    ESR_OUT[0].typ := 0;
     cnt := 0;
 
 
     (* check if inputs have chaged and fill buffer *)
-    IF s0 <> X0 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s0);
-    	esr_out[cnt].adress := a0;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S0 <> X0 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S0);
+    	ESR_OUT[cnt].adress := A0;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X0 := S0;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s1 <> X1 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s1);
-    	esr_out[cnt].adress := a1;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S1 <> X1 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S1);
+    	ESR_OUT[cnt].adress := A1;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X1 := S1;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s2 <> X2 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s2);
-    	esr_out[cnt].adress := a2;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S2 <> X2 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S2);
+    	ESR_OUT[cnt].adress := A2;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X2 := S2;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s3 <> X3 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s3);
-    	esr_out[cnt].adress := a3;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S3 <> X3 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S3);
+    	ESR_OUT[cnt].adress := A3;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X3 := S3;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s4 <> X4 AND cnt < 4 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s4);
-    	esr_out[cnt].adress := a4;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S4 <> X4 AND cnt < 4 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S4);
+    	ESR_OUT[cnt].adress := A4;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X4 := S4;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s5 <> X5  AND cnt < 4 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s5);
-    	esr_out[cnt].adress := a5;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S5 <> X5  AND cnt < 4 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S5);
+    	ESR_OUT[cnt].adress := A5;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X5 := S5;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s6 <> X6  AND cnt < 4 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s6);
-    	esr_out[cnt].adress := a6;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S6 <> X6  AND cnt < 4 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S6);
+    	ESR_OUT[cnt].adress := A6;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X6 := S6;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
-    IF s7 <> X7  AND cnt < 4 THEN
-    	esr_out[cnt].typ := 10 + BOOL_TO_BYTE(s7);
-    	esr_out[cnt].adress := a7;
-    	esr_out[cnt].DS := DT_in;
-    	esr_out[cnt].TS := TX;
+    IF S7 <> X7  AND cnt < 4 THEN
+    	ESR_OUT[cnt].typ := 10 + BOOL_TO_BYTE(S7);
+    	ESR_OUT[cnt].adress := A7;
+    	ESR_OUT[cnt].DS := DT_in;
+    	ESR_OUT[cnt].TS := TX;
     	X7 := S7;
     	cnt := cnt + 1;
-    	esr_flag := TRUE;
+    	ESR_FLAG := TRUE;
     END_IF
 
     (* revision history
@@ -96,7 +96,7 @@ FUNCTION_BLOCK ESR_MON_B8
     	optimized code
 
     hm	1.dec. 2009	rev 1.3
-    	changed esr_out to be I/O
+    	changed ESR_OUT to be I/O
 
     *)
 END_FUNCTION_BLOCK

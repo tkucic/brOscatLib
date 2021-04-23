@@ -12,28 +12,28 @@ FUNCTION_BLOCK TIMER_2
     IF tx - last_check < T#100ms THEN RETURN; END_IF
 
     (* calculate temp variables *)
-    dat := DT_TO_DATE(dt_in);
-    daytime := DT_TO_TOD(dt_in);
+    dat := DT_TO_DATE(DT_IN);
+    daytime := DT_TO_TOD(DT_IN);
     wday := OSCAT_BASIC.DAY_OF_WEEK(dat);
 
     (* calculate if any action is necessary today *)
-    CASE mode OF
+    CASE MODE OF
     	1..7:	(* mondays to fridays *)
-    		enabled := wday = BYTE_TO_INT(mode);
+    		enabled := wday = BYTE_TO_INT(MODE);
     	11:	(* every day *)
     		enabled := TRUE;
     	12..16:	(* every nth day *)
-    		enabled := (DATE_TO_DWORD(dat)/86400) MOD (mode - 10) = 0;
+    		enabled := (DATE_TO_DWORD(dat)/86400) MOD (MODE - 10) = 0;
     	20:	(* monday - friday *)
     		enabled := wday <= 5;
     	21:	(* saturday and sunday *)
     		enabled := wday > 5;
     	22: (* workdays only *)
-    		enabled := wday <= 5 AND NOT holiday;
-    	23:	(* holidays and weekends *)
-    		enabled := wday > 5 OR holiday;
-    	24:	(* holidays only *)
-    		enabled := holiday;
+    		enabled := wday <= 5 AND NOT HOLIDAY;
+    	23:	(* HOLIDAYs and weekends *)
+    		enabled := wday > 5 OR HOLIDAY;
+    	24:	(* HOLIDAYs only *)
+    		enabled := HOLIDAY;
     	25:	(* 1st day of the month *)
     		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat) = 1;
     	26:	(* last day of month *)
@@ -47,11 +47,11 @@ FUNCTION_BLOCK TIMER_2
     END_CASE
 
     (* set output if necessary *)
-    IF enabled AND NOT Q AND daytime >= start AND run_date <> dat THEN
+    IF enabled AND NOT Q AND daytime >= START AND run_date <> dat THEN
     	Q := TRUE;
     	activation := tx;
     	run_date := dat;
-    ELSIF Q AND tx - activation >= duration THEN
+    ELSIF Q AND tx - activation >= DURATION THEN
     	Q := FALSE;
     END_IF
     last_check := Tx;

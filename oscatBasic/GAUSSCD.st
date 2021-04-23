@@ -4,12 +4,12 @@ FUNCTION GAUSSCD
 
 
 
-    (* revision hisdtory
+    (* reviSIon hisdtory
     hm	6. apr. 2008	rev 1.0
-    	original version
+    	original verSIon
 
     hm	10. mar. 2009	rev 1.1
-    	real constants updated to new systax using dot
+    	real constants updated to new systax uSIng dot
 
     *)
 END_FUNCTION

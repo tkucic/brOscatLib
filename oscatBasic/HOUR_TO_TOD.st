@@ -5,12 +5,12 @@ FUNCTION HOUR_TO_TOD
 
     (* revision history
     hm	4. aug. 2006	rev 1.0
-    	original version
+    	origINal version
 
     hm	14. mar. 2008	rev 1.1
-    	rounded the input after the last digit
+    	rounded the INput after the last digit
 
     hm	24. feb. 2009	rev 1.2
-    	changed input to IN
+    	changed INput to IN
     *)
 END_FUNCTION

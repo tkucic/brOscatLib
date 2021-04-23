@@ -1,6 +1,6 @@
 FUNCTION DEW_TEMP
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=436*)
-    IF rh > 0.0 THEN
+    IF RH > 0.0 THEN
     (*	old code was rewritten for better performance
     	SDD := 6.1078*EXPT(10,(a*T)/(b+T));
     	DD := RH/100 * SDD;
@@ -19,7 +19,7 @@ FUNCTION DEW_TEMP
     	original version created
 
     hm		29.4.2007	rev 1.1
-    	checked for rh not to be 0 because log(0) is not defined
+    	checked for RH not to be 0 because log(0) is not defined
 
     hm		13.9.2007	rev 1.2
     	code rewritten for better performance

@@ -27,7 +27,7 @@ FUNCTION_BLOCK TELNET_PRINT
     20:	IF IP_C.ERROR > DWORD#0 THEN
     		IP_C.TIME_RESET := TRUE; (* Fehler rücksetzen *)
     	END_IF
-    	IF S_BUF.SIZE = UINT#0 THEN (* Datensenden nicht aktiv *)
+    	IF S_BUF.SIZE = UINT#0 THEN (* DatenSENDen nicht aktiv *)
     		IF NOT ENABLE THEN
     			ip_state := BYTE#4; (* Verbindung abbauen - Ressource freigeben *)
     			IP_C.C_ENABLE := FALSE; (* Verbindungsabbau *)
@@ -99,7 +99,7 @@ FUNCTION_BLOCK TELNET_PRINT
 
     			(* buffer voll , oder Daten sind vorhanden und kein weiterer Sendewunsch *)
     			IF (INT_TO_UINT(x + LEN(TEXT) + 21) > SIZEOF(S_BUF.BUFFER)) OR (x >= 0 AND NOT SEND) THEN
-    				S_BUF.SIZE := INT_TO_UINT(x + 1); (* Länge eintragen -> Datensenden starten *)
+    				S_BUF.SIZE := INT_TO_UINT(x + 1); (* Länge eintragen -> DatenSENDen starten *)
     				x := -1;
     			ELSIF SEND THEN
 
@@ -169,7 +169,7 @@ FUNCTION_BLOCK TELNET_PRINT
     					S_BUF.BUFFER[x] := BYTE#16#48; (* H *)
     				END_IF
 
-    				(* text ausgeben *)
+    				(* TEXT ausgeben *)
     				IF LEN(TEXT) > 0 THEN
     					OSCAT_BASIC._STRING_TO_BUFFER(str:=TEXT,pos:=x + 1,pt :=ADR(S_BUF.BUFFER), size:=SIZEOF(S_BUF.BUFFER));
     					x := x + LEN(TEXT);
@@ -185,7 +185,7 @@ FUNCTION_BLOCK TELNET_PRINT
     				DONE := TRUE; (* Fertig in Buffer eingetragen *)
 
     				IF b7_no_flush THEN (* Option: no buffer flush *)
-    					(* buffer sofort senden - aktuellen Schreibindex speichern -> Senden anstossen *)
+    					(* buffer sofort SENDen - aktuellen Schreibindex speichern -> Senden anstossen *)
     					S_BUF.SIZE := INT_TO_UINT(x + 1);
     					x := -1;
     				END_IF

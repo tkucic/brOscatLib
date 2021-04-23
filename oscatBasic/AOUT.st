@@ -1,19 +1,19 @@
 FUNCTION AOUT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=271*)
-    (* if sign bit is defined *)
-    IF sign < 32 THEN
-    	sx := sign_R(in);
-    	in2 := ABS(in);
+    (* if SIGN bit is defINed *)
+    IF SIGN < 32 THEN
+    	sx := SIGN_R(IN);
+    	IN2 := ABS(IN);
     ELSE
-    	in2 := in;
+    	IN2 := IN;
     END_IF
 
-    (* begrenze in auf die zulässigen werte *)
-    in2 := LIMIT(low, in2, high);
+    (* begrenze IN auf die zulässigen werte *)
+    IN2 := LIMIT(LOW, IN2, HIGH);
 
     (* Berechne den Ausgangswert *)
-    Aout := REAL_TO_DWORD((in2 - low) / (high - low) * DWORD_TO_REAL(SHL(ff,bits) -1));
-    IF sx THEN Aout := SHL(ff,sign) OR Aout; END_IF
+    Aout := REAL_TO_DWORD((IN2 - LOW) / (HIGH - LOW) * DWORD_TO_REAL(SHL(ff,BITS) -1));
+    IF sx THEN Aout := SHL(ff,SIGN) OR Aout; END_IF
 
     (*
     revision history
@@ -21,10 +21,10 @@ FUNCTION AOUT
     hm 18.1.2007		rev 1.1
     	renamed Modul to aout.
     	changed Output to 32 Bit max.
-    	corrected error with sign bit.
+    	corrected error with SIGN bit.
 
     hm	13.9.2007		rev 1.2
-    	changed code to avoid warning under codesys 2.8.1
+    	changed code to avoid warnINg under codesys 2.8.1
 
     hm	2. dec 2007		rev 1.3
     	changed code for better performance

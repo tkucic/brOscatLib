@@ -4,13 +4,13 @@ FUNCTION_BLOCK DNS_CLIENT
 
     CASE state OF
 
-    00:	IF ACTIVATE AND NOT activate_last THEN (* auf positive Flanke GET warten *)
+    00:	IF ACTIVATE AND NOT ACTIVATE_last THEN (* auf positive Flanke GET warten *)
     		DONE := FALSE;
     		ERROR := DWORD#0;
     		state := 5;
     	END_IF
 
-    05:	IP4 := IP4_DECODE(str:=DOMAIN); (* prüfe ob domain schon eine IP4-Adresse ist *)
+    05:	IP4 := IP4_DECODE(str:=DOMAIN); (* prüfe ob DOMAIN schon eine IP4-Adresse ist *)
     	IF IP4 > DWORD#00 THEN
     		DONE := TRUE;
     		state := 0;
@@ -24,7 +24,7 @@ FUNCTION_BLOCK DNS_CLIENT
     	ELSE
     		ip_state := BYTE#1;
     		ttl_last := DWORD#0;
-    		domain_copy := DOMAIN; (* DOMAIN String sichern *)
+    		DOMAIN_copy := DOMAIN; (* DOMAIN String sichern *)
     		state := 10;
             		(*####################  DEBUG-MESSAGE  ###################################*)
             		(*IF _debug_enable THEN
@@ -35,7 +35,7 @@ FUNCTION_BLOCK DNS_CLIENT
     	END_IF
 
     10:	IF ip_state = BYTE#3 THEN (* Bei IP_Control anmelden *)
-    		url_length := LEN(domain_copy);
+    		url_length := LEN(DOMAIN_copy);
     		char_count := 17 + url_length; (* sendebuffer initialisieren *)
     		FOR i := 0 TO char_count DO
     			S_BUF.BUFFER[i] := BYTE#00;
@@ -47,7 +47,7 @@ FUNCTION_BLOCK DNS_CLIENT
     		i := url_length + 12;	(* den servernamen von hinten nach vorne bearbeiten *)
     		char_count := 0;
     		WHILE i > 12 DO
-    			char := OSCAT_BASIC.CODE(STR:=domain_copy,POS:=i - 12);
+    			char := OSCAT_BASIC.CODE(STR:=DOMAIN_copy,POS:=i - 12);
     			IF char = BYTE#46 THEN (* prüfe auf haupt/sub domänen namens-teiler "." *)
     				S_BUF.BUFFER[i] := INT_TO_BYTE(char_count); (* anstelle des teilers "." wird die länge des erkannten haupt/sub domänennames eingetragen *)
     				char_count := 0;
@@ -157,7 +157,7 @@ FUNCTION_BLOCK DNS_CLIENT
 
     END_CASE
 
-    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    ACTIVATE_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id); (* IP_FIFO *)
 
     (* revision history
@@ -203,10 +203,10 @@ FUNCTION_BLOCK DNS_CLIENT
 
     (*
     Errorcodes  Description	References 
-    000	No error. 		 	The request completed successfully.
-    001	Format error. 		The name server was unable to interpret the query. 
+    000	No ERROR. 		 	The request completed successfully.
+    001	Format ERROR. 		The name server was unable to interpret the query. 
     002	Server failure.  	The name server was unable to process this query due to a problem with the name server. 
-    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the domain name referenced in the query does not exist.
+    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the DOMAIN name referenced in the query does not exist.
     004	Not Implemented. 	The name server does not support the requested kind of query.
     005	Refused. 			The name server refuses to perform the specified operation for policy reasons.
       						 For example, a name server may not wish to provide the information to the particular requester, or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.
@@ -226,16 +226,16 @@ FUNCTION_BLOCK DNS_CLIENT
     [Request In: 3]
     [Time: 0.027533000 seconds]
     Transaction ID: 0x5e1a
-    Flags: 0x8180 (Standard query response, No error)
+    Flags: 0x8180 (Standard query response, No ERROR)
     1... .... .... .... = Response: Message is a response
     .000 0... .... .... = Opcode: Standard query (0)
-    .... .0.. .... .... = Authoritative: Server is not an authority for domain
+    .... .0.. .... .... = Authoritative: Server is not an authority for DOMAIN
     .... ..0. .... .... = Truncated: Message is not truncated
     .... ...1 .... .... = Recursion desired: Do query recursively
     .... .... 1... .... = Recursion available: Server can do recursive queries
     .... .... .0.. .... = Z: reserved (0)
     .... .... ..0. .... = Answer authenticated: Answer/authority portion was not authenticated
-    .... .... .... 0000 = Reply code: No error (0)
+    .... .... .... 0000 = Reply code: No ERROR (0)
     Questions: 1
     Answer RRs: 3
     Authority RRs: 0

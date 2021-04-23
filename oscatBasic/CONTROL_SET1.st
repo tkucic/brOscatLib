@@ -1,6 +1,6 @@
 FUNCTION_BLOCK CONTROL_SET1
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=377*)
-    IF pi AND PID THEN
+    IF PI AND PID THEN
     	KP := 0.0;
     	TN := 0.0;
     	TV := 0.0;
@@ -16,7 +16,7 @@ FUNCTION_BLOCK CONTROL_SET1
     END_IF
 
     (* KI and KD are calculated *)
-    IF tn > 0.0 THEN KI := KP / TN; ELSE KI := 0.0; END_IF
+    IF TN > 0.0 THEN KI := KP / TN; ELSE KI := 0.0; END_IF
     KD := KP * TV;
 
     (* revision history

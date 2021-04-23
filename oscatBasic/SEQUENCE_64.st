@@ -7,7 +7,7 @@ FUNCTION_BLOCK SEQUENCE_64
     IF RST THEN
     	STATE := -1;
 
-    (* start sequence *)
+    (* START sequence *)
     ELSIF START AND NOT edge THEN
     	STATE := 0;
     	last := tx;

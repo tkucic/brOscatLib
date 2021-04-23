@@ -1,17 +1,17 @@
 FUNCTION_BLOCK SH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=299*)
-    IF clk AND NOT edge THEN
-    	out := in;
-    	trig := TRUE;
+    IF CLK AND NOT edge THEN
+    	OUT := IN;
+    	TRIG := TRUE;
     ELSE;
-    	trig := FALSE;
+    	TRIG := FALSE;
     END_IF
-    edge := clk;
+    edge := CLK;
 
     (* revision history
 
     hm 16.1.2007	rev 1.1
-    	added trig output
+    	added TRIG OUTput
 
     *)
 END_FUNCTION_BLOCK

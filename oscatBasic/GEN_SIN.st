@@ -2,8 +2,8 @@ FUNCTION_BLOCK GEN_SIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=261*)
     (* read system time and prepare input data *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
-    DL := MODR(dl,1.0);
-    IF dl < 0.0 THEN dl := 1.0 - dl; END_IF
+    DL := MODR(DL,1.0);
+    IF DL < 0.0 THEN DL := 1.0 - DL; END_IF
 
     (* init section *)
     IF NOT init THEN
@@ -13,16 +13,16 @@ FUNCTION_BLOCK GEN_SIN
     END_IF
 
     (* add last if one cycle is finished *)
-    IF tx >= pt THEN
-    	last := last + pt;
-    	tx := tx - pt;
+    IF tx >= PT THEN
+    	last := last + PT;
+    	tx := tx - PT;
     END_IF
 
     (* generate sine wave *)
-    IF pt > t#0s THEN temp := SIN(math.PI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(pt, dl))) / DWORD_TO_REAL(TIME_TO_DWORD(pt))); END_IF
-    out := am * 0.5 *  temp + os;
+    IF PT > t#0s THEN temp := SIN(math.PI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(PT, DL))) / DWORD_TO_REAL(TIME_TO_DWORD(PT))); END_IF
+    OUT := AM * 0.5 *  temp + OS;
 
-    (* boolean output Q *)
+    (* boolean OUTput Q *)
     q := NOT SIGN_R(temp);
 
     (* revision history
@@ -33,7 +33,7 @@ FUNCTION_BLOCK GEN_SIN
     	replaced time() with t_plc_ms for compatibilitx reasons
 
     hm	27. nov 2007	rev 1.2
-    	avoid divide by 0 when pt = 0
+    	avoid divide by 0 when PT = 0
 
     hm	6. jan 2008		rev 1.3
     	improved performance

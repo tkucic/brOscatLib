@@ -35,7 +35,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		n2 := MIN(HeaderSize - n1, buf_totalsize - DATA._Last);
     		FOR n := 1 TO n2 DO
     			tmp_dw := ROL(tmp_dw,8);
-    			data.BUF[DATA._Last] := DWORD_TO_BYTE(tmp_dw);
+    			DATA.BUF[DATA._Last] := DWORD_TO_BYTE(tmp_dw);
     			DATA._Last := DATA._Last + 1;
     		END_FOR
     		IF DATA._Last >= buf_totalsize THEN
@@ -50,7 +50,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     	REPEAT
     		n2 := MIN(cnt - n1, buf_totalsize - DATA._Last);
     		FOR n := 1 TO n2 DO
-    			data.BUF[DATA._Last] := pTmp^;
+    			DATA.BUF[DATA._Last] := pTmp^;
     			pTmp := pTmp + 1;
     			DATA._Last := DATA._Last + 1;
     		END_FOR
@@ -97,7 +97,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		REPEAT
     			n2 := MIN(HeaderSize - n1, buf_totalsize - DATA._GetEnd);
     			FOR n := 1 TO n2 DO
-    				tmp_dw := ROL(tmp_dw,8) OR BYTE_TO_DWORD(data.BUF[DATA._GetEnd]);
+    				tmp_dw := ROL(tmp_dw,8) OR BYTE_TO_DWORD(DATA.BUF[DATA._GetEnd]);
     				DATA._GetEnd := DATA._GetEnd + 1;
     			END_FOR
     			IF DATA._GetEnd >= buf_totalsize THEN
@@ -124,7 +124,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		REPEAT
     			n2 := MIN(cnt - n1, buf_totalsize - DATA._GetEnd);
     			FOR n := 1 TO n2 DO
-    				pTmp^ := data.BUF[DATA._GetEnd];
+    				pTmp^ := DATA.BUF[DATA._GetEnd];
     				pTmp := pTmp + 1;
     				DATA._GetEnd := DATA._GetEnd + 1;
     			END_FOR

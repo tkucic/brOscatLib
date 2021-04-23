@@ -2,44 +2,44 @@ FUNCTION_BLOCK ACTUATOR_PUMP
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16*)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    IF NOT init THEN
-    	init := TRUE;
+    IF NOT INit THEN
+    	INit := TRUE;
     	last_change := tx;
-    ELSIF rst THEN
-    	rst := FALSE;
-    	runtime := 0;
-    	cycles := 0;
-    ELSIF manual AND NOT pump AND NOT old_man THEN
+    ELSIF RST THEN
+    	RST := FALSE;
+    	RUNTIME := 0;
+    	CYCLES := 0;
+    ELSIF MANUAL AND NOT PUMP AND NOT old_man THEN
     	last_change := tx;
-    	pump := TRUE;
-    ELSIF NOT manual AND old_man AND pump AND NOT in THEN
+    	PUMP := TRUE;
+    ELSIF NOT MANUAL AND old_man AND PUMP AND NOT IN THEN
     	last_change := tx;
-    	pump := FALSE;
-    ELSIF in AND NOT pump AND tx - last_change >= min_offtime THEN
+    	PUMP := FALSE;
+    ELSIF IN AND NOT PUMP AND tx - last_change >= mIN_offtime THEN
     	last_change := tx;
-    	pump := TRUE;
-    ELSIF pump AND NOT in AND NOT manual AND tx - last_change >= min_ontime THEN
+    	PUMP := TRUE;
+    ELSIF PUMP AND NOT IN AND NOT MANUAL AND tx - last_change >= mIN_ontime THEN
     	last_change := tx;
-    	pump := FALSE;
-    ELSIF NOT pump AND (tx - last_change >= run_every) AND (run_every > T#0s) THEN
+    	PUMP := FALSE;
+    ELSIF NOT PUMP AND (tx - last_change >= RUN_EVERY) AND (RUN_EVERY > T#0s) THEN
     	last_change := tx;
-    	pump := TRUE;
+    	PUMP := TRUE;
     END_IF
 
-    meter(in := pump, seconds := runtime, cycles := cycles);
-    old_man := manual;
+    meter(IN := PUMP, seconds := RUNTIME, CYCLES := CYCLES);
+    old_man := MANUAL;
 
 
 
     (*
     hm	27.12.2006		rev 1.1
-    	fixed a failure while the pump would run for tmin after startup.
+    	fixed a failure while the PUMP would run for tmIN after startup.
 
     hm	15.9.2007		rev 1.2
     	replaced Time() with T_PLC_MS for compatibility and performance reasons
 
     hm	13. oct. 2008	rev 1.3
-    	auto activation can now be disabled when run_every = t#0s
+    	auto activation can now be disabled when RUN_EVERY = t#0s
 
     hm	21. oct. 2008	rev 1.4
     	changed to use ontime rev 2.0

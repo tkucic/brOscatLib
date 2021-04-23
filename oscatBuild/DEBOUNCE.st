@@ -2,7 +2,7 @@ FUNCTION_BLOCK DEBOUNCE
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=49*)
     
     IF NOT deb.Q AND IN THEN
-    	(* rising edge on input detetced a *)
+    	(* risINg edge on INput detetced a *)
     	Q := TRUE;
     ELSIF NOT PM THEN
     	Q := deb.Q;
@@ -17,7 +17,7 @@ FUNCTION_BLOCK DEBOUNCE
 
     (*
     hm 22. sep. 2008	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

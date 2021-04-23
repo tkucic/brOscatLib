@@ -12,29 +12,29 @@ FUNCTION_BLOCK DLOG_BOOL
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     03:	(* ADD DATA *)
     	IF X.STORE_TYPE = BYTE#05 THEN (* MySQL-Modus *)
-    		X.UCB.D_STRING := SEL(state_last,'0','1');
+    		X.UCB.D_STRING := SEL(STATE_last,'0','1');
     	ELSE
-    		X.UCB.D_STRING := SEL(state_last,OFF,ON);
+    		X.UCB.D_STRING := SEL(STATE_last,OFF,ON);
     	END_IF
     	X.UCB.D_HEAD := id;
 
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
-    	last_delta := STATE;
+    	last_DELTA := STATE;
     04:	(* ADD DATA REQ *)
-    	IF DELTA AND (STATE XOR last_delta) THEN
+    	IF DELTA AND (STATE XOR last_DELTA) THEN
     		X.ADD_DATA_REQ := TRUE;
-    		last_delta := STATE;
+    		last_DELTA := STATE;
     	END_IF
     END_CASE
-    state_last := STATE;
+    STATE_last := STATE;
 
-    (* revision history
+    (* revisiON history
     ks	17. may. 2011	rev 1.0
-    	original version
+    	original versiON
 
     ks	25. july.   2011	rev 1.1
-    	neue head information
+    	neue head informatiON
 
     ks	19. apr.   2012	rev 1.2
     	code neu überarbeitet

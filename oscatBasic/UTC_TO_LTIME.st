@@ -15,8 +15,8 @@ FUNCTION UTC_TO_LTIME
     	corrected an error where dst would be delayed by 0.1second
 
     hm 17.1.2007	rev 1.2
-    	added utc input instead of internal sysrtcgettime because this would only work on wago.
-    	dst_enable would not be checked before dst would be enabled.
+    	added UTC input instead of internal sysrtcgettime because this would only work on wago.
+    	DST_ENABLE would not be checked before dst would be enabled.
 
     hm 18.3.2007	rev 1.3
     	changed code, dst would not work during first cycle.
@@ -26,10 +26,10 @@ FUNCTION UTC_TO_LTIME
     	use of new dst function
 
     hm 12. nov 2007	rev 1.5
-    		changed Type of time_zone_offset from time to int to allow for time zones with negative offset
+    		changed Type of TIME_ZONE_OFFSET from time to int to allow for time zones with negative offset
 
     hm	8 dec 2007		rev 1.6
-    	corrected a problem with time_zone_offset
+    	corrected a problem with TIME_ZONE_OFFSET
 
     hm	14. oct. 2008	rev 1.7
     	renamed module from LTIME to UTC_TO_LTIME

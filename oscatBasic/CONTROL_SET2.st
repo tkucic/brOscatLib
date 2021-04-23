@@ -1,7 +1,7 @@
 FUNCTION_BLOCK CONTROL_SET2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=379*)
     IF TU > 0.0 AND KS > 0.0 THEN TX := TG / TU / KS; END_IF
-    IF pi AND PID THEN
+    IF PI AND PID THEN
     	KP := 0.0;
     	TN := 0.0;
     	TV := 0.0;

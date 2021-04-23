@@ -4,7 +4,7 @@ FUNCTION_BLOCK FILTER_MAV_DW
     N := MIN(N, 32);
 
     (* startup initialisation *)
-    IF NOT init OR rst OR N = 0 THEN
+    IF NOT init OR RST OR N = 0 THEN
     	init := TRUE;
     	tmp := UINT_TO_INT(N)-1;
     	FOR i := 0 TO tmp DO

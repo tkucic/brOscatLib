@@ -2,10 +2,10 @@ FUNCTION FSTRING_TO_WEEKDAY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164*)
     IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF
     (* tmp needs to be calculated first otherwise find can return wrong values *)
-    tmp := TRIM(wday);
+    tmp := TRIM(WDAY);
     tmp := CAPITALIZE(LOWERCASE(tmp));
     FOR i := 1 TO 7 DO
-    	IF language.WEEKDAYS2[ly, i] = tmp THEN
+    	IF LANGuage.WEEKDAYS2[ly, i] = tmp THEN
     		FSTRING_TO_WEEKDAY := i;
     		RETURN;
     	END_IF
@@ -23,7 +23,7 @@ FUNCTION FSTRING_TO_WEEKDAY
     	changed nested call of left(trim()) for compatibility reasons
 
     hm	25. oct. 2008	rev 1.2
-    	using language constants
+    	using LANGuage constants
     *)	
 
 END_FUNCTION

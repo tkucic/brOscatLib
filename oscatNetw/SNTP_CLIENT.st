@@ -6,8 +6,8 @@ FUNCTION_BLOCK SNTP_CLIENT
     CASE state OF
     00: (* auf positive Flanke SET warten *)
     	DONE_P := FALSE;
-    	IF ACTIVATE AND NOT activate_last THEN
-    		ip4_stored := IP4; (* aktuelle IP4 speichern *)
+    	IF ACTIVATE AND NOT ACTIVATE_last THEN
+    		IP4_stored := IP4; (* aktuelle IP4 speichern *)
     		state := 10;
     		ERROR := DWORD#0;
     		ip_state := BYTE#1; (* Anmelden *)
@@ -32,7 +32,7 @@ FUNCTION_BLOCK SNTP_CLIENT
 
     		(* IP Datenverkehr einrichten *)
     		IP_C.C_PORT := WORD#123; (* Portnummer eintragen *)
-    		IP_C.C_IP := ip4_stored; (* IP eintragen *)
+    		IP_C.C_IP := IP4_stored; (* IP eintragen *)
     		IP_C.C_MODE := BYTE#1; (* Mode: UDP+AKTIV+PORT+IP *)
     		IP_C.C_ENABLE := TRUE; (* Verbindungsaufbau freigeben *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -92,7 +92,7 @@ FUNCTION_BLOCK SNTP_CLIENT
 
     END_CASE
 
-    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    ACTIVATE_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);

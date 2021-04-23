@@ -1,8 +1,8 @@
 FUNCTION_BLOCK DLOG_STORE_MYSQL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46*)
     X.DTI := DTI; (* Datum / Zeit eintragen *)
-    X.CLOCK_TRIG := DTI <> dti_last;
-    dti_last := DTI;
+    X.CLOCK_TRIG := DTI <> DTI_last;
+    DTI_last := DTI;
     trig_auto := FALSE;
     IF X.CLOCK_TRIG THEN (* Impuls in jeder Sekunde *)
     	del_start := DT_TO_UDINT(DTI) - del_dt > AUTO_DELETE AND AUTO_DELETE > UDINT#0;
@@ -14,7 +14,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
 
     CASE step OF
 
-    00:	IF ENABLE AND enable_last = FALSE THEN
+    00:	IF ENABLE AND ENABLE_last = FALSE THEN
     		y.SQL_URL := URL;
     		y.TIMEOUT := TIMEOUT;
     		y.DNS_IP4 := DNS_IP4;
@@ -35,7 +35,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     	step := 10;
 
     10:	IF SQL_INFO.SQL_CONNECTED THEN
-    		sql_command := BYTE#3; (* CREATE DATABASE IF NOT EXISTS `db_name` *)
+    		sql_command := BYTE#3; (* CREATE DATABASE IF NOT EXISTS `DB_NAME` *)
     		snd_text :=  CONCAT('CREATE DATABASE IF NOT EXISTS `' ,DB_NAME);
     		snd_text :=  CONCAT(snd_text, '`');
     		next_step := 20;
@@ -45,7 +45,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     	snd_text := DB_NAME;
     	next_step := 30;
 
-    30:	(* CREATE TABLE IF NOT EXISTS tb_name (Timestamp TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, n1,n2) *)
+    30:	(* CREATE TABLE IF NOT EXISTS TB_NAME (Timestamp TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, n1,n2) *)
     	sql_command := BYTE#0;
     	idx := 5;
     	n := USINT#0;
@@ -77,7 +77,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		n := n + USINT#1;
 
     		(*####################  DEBUG-MESSAGE  ###################################*)
-    		(*IF _debug_enable THEN
+    		(*IF _debug_ENABLE THEN
     			LOG_CL.NEW_MSG := 'dlog_mysql: create >~1<';
     			LOG_CL.PRINTF[1] := snd_text;
     			LOG_MSG();
@@ -87,14 +87,14 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
 
     40:	IF del_start THEN
     		del_start := FALSE;
-    		sql_command := BYTE#3; (* DELETE FROM `tb_name` WHERE TIMESTAMPDIFF(SECOND, Timestamp, NOW()) > xxx *)
+    		sql_command := BYTE#3; (* DELETE FROM `TB_NAME` WHERE TIMESTAMPDIFF(SECOND, Timestamp, NOW()) > xxx *)
     		snd_text := CONCAT('DELETE FROM `', TB_NAME);
     		snd_text := CONCAT(snd_text, '` WHERE TIMESTAMPDIFF(SECOND, store_timestamp, NOW()) > ');
     		snd_text := CONCAT(snd_text, UDINT_TO_STRING(AUTO_DELETE));
     		next_step := 40;
     		del_dt := DT_TO_UDINT(DTI);
     		(*####################  DEBUG-MESSAGE  ###################################*)
-    		(*IF _debug_enable THEN
+    		(*IF _debug_ENABLE THEN
     			LOG_CL.NEW_MSG := 'dlog_mysql: # delete time:~1 >~2<';
     			LOG_CL.PRINTF[1] := UDINT_TO_STRING(AUTO_DELETE);
     			LOG_CL.PRINTF[2] := snd_text;
@@ -102,7 +102,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		END_IF*)
     		(*########################################################################*)
 
-             (* INSERT INTO `tb_name` VALUES (CURRENT_TIMESTAMP,  "n1","n2") *)
+             (* INSERT INTO `TB_NAME` VALUES (CURRENT_TIMESTAMP,  "n1","n2") *)
     	ELSIF X.UCB.BUF_COUNT >= USINT_TO_INT(X.ID_MAX) AND step > 0 THEN (* Neue Datenreihe(n) vorhanden *)
     		idx := 5;
     		n := USINT#0;
@@ -127,7 +127,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     			n := n + USINT#1;
 
     			(*####################  DEBUG-MESSAGE  ###################################*)
-    			(*IF _debug_enable THEN
+    			(*IF _debug_ENABLE THEN
     				LOG_CL.NEW_MSG := 'dlog_mysql: insert >~1<';
     				LOG_CL.PRINTF[1] := snd_text;
     				LOG_MSG();
@@ -137,12 +137,12 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     	END_IF
 
     	IF ENABLE THEN 	(* LOG-Trigger verarbeiten *)
-    		trig_tmp := (TRIG_M AND NOT trig_m_last) OR trig_auto OR X.ADD_DATA_REQ;
+    		TRIG_Tmp := (TRIG_M AND NOT TRIG_M_last) OR trig_auto OR X.ADD_DATA_REQ;
 
-    		IF trig_tmp THEN (* manueller, automatischer oder externer Trigger *)
+    		IF TRIG_Tmp THEN (* manueller, automatischer oder externer Trigger *)
     			X.ADD_COM := 03; (* ADD DATA *)
     			(* ---------------- Debug-Message -----------------------*)
-    			(*IF _debug_enable THEN
+    			(*IF _debug_ENABLE THEN
     				LOG_CL.NEW_MSG := 'dlog_mysql: Trigger: DATE [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
@@ -228,8 +228,8 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
 
     (* ########################## *)
 
-    trig_m_last := TRIG_M;
-    enable_last := ENABLE;
+    TRIG_M_last := TRIG_M;
+    ENABLE_last := ENABLE;
     run := step > 0;
 
     (* revision history

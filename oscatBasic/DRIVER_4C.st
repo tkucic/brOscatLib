@@ -6,7 +6,7 @@ FUNCTION_BLOCK DRIVER_4C
     	SN := SN + 1;
     	IF SN > 7 OR SX[SN] = 0 THEN SN := 0; END_IF
     END_IF
-    edge := in;
+    edge := IN;
     IF SN > 0 THEN
     	Q0 := SX[SN].0;
     	Q1 := SX[SN].1;
@@ -19,13 +19,13 @@ FUNCTION_BLOCK DRIVER_4C
     	Q3 := FALSE;
     END_IF
 
-    (* maximaum timeout *)
-    IF timeout > t#0s THEN off(in := SN > 0, PT := Timeout); END_IF
+    (* maximaum TIMEOUT *)
+    IF TIMEOUT > t#0s THEN off(IN := SN > 0, PT := Timeout); END_IF
 
 
     (* revision history
     hm	23. mar. 2009	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION_BLOCK

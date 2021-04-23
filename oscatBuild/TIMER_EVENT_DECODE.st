@@ -1,28 +1,28 @@
 FUNCTION TIMER_EVENT_DECODE
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=62*)
-    (* a timer event is specified as follows:
+    (* a timer EVENT is specified as follows:
     	$typ;ch;day;start;duration;land;lor#
     $ 		= start of definition
     typ 	= type of definition	(number)
     channel	= channel number		(number)
     day 	= day number			(number)
     start	= start time			(time of day)
-    duration= duration of event		(time)
+    duration= duration of EVENT		(time)
     land	= mask for output AND	(8bit value)
     lor		= mask for ourput OR	(8bit value)
     #		= end of definition
     *)
 
     (* check for start and ending character *)
-    IF (OSCAT_BASIC.LEFT(event,1) <> '<') AND (OSCAT_BASIC.RIGHT(event,1) <> '>') THEN RETURN; END_IF
-    stop := OSCAT_BASIC.LEN(event);
-    pt := ADR(event);
+    IF (OSCAT_BASIC.LEFT(EVENT,1) <> '<') AND (OSCAT_BASIC.RIGHT(EVENT,1) <> '>') THEN RETURN; END_IF
+    stop := OSCAT_BASIC.LEN(EVENT);
+    pt := ADR(EVENT);
     start := 2;
 
     (* parse the string for next ; *)
     FOR pos := 2 TO stop DO
     	IF pt^[pos] = 59 OR pt^[pos] = 62 THEN
-    		tmp := OSCAT_BASIC.MID(event, pos - start, start);
+    		tmp := OSCAT_BASIC.MID(EVENT, pos - start, start);
     		CASE step OF
     			0:	(* read type *)
     				TIMER_EVENT_DECODE.typ := OSCAT_BASIC.FSTRING_TO_BYTE(tmp);
@@ -64,7 +64,7 @@ FUNCTION TIMER_EVENT_DECODE
     	original version
 
     hm	25. oct. 2008	rev 1.1
-    	adding input lang for language selection
+    	adding input LANG for LANGuage selection
     *)
 
 END_FUNCTION

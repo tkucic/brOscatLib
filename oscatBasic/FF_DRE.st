@@ -1,8 +1,8 @@
 FUNCTION_BLOCK FF_DRE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=240*)
-    IF rst OR set THEN
-    	Q := NOT rst;
-    ELSIF clk AND NOT edge THEN
+    IF RST OR SET THEN
+    	Q := NOT RST;
+    ELSIF CLK AND NOT edge THEN
     	Q := D;
     END_IF
     edge := CLK;

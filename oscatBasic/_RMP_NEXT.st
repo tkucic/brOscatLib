@@ -1,21 +1,21 @@
 FUNCTION_BLOCK _RMP_NEXT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255*)
-    dirx(X := in);
+    DIRx(X := IN);
 
-    t_lock(in := FALSE, pt := TL);
+    t_lock(IN := FALSE, pt := TL);
 
-    IF dirx.TU AND (OUT < IN) THEN
-    	IF NOT xdir AND xen THEN t_lock(in := TRUE); END_IF
+    IF DIRx.TU AND (OUT < IN) THEN
+    	IF NOT xDIR AND xen THEN t_lock(IN := TRUE); END_IF
     	xen := TRUE;
-    	xdir := TRUE;
-    ELSIF dirx.TD AND (OUT > IN) THEN
-    	IF xdir AND xen THEN t_lock(in := TRUE); END_IF
+    	xDIR := TRUE;
+    ELSIF DIRx.TD AND (OUT > IN) THEN
+    	IF xDIR AND xen THEN t_lock(IN := TRUE); END_IF
     	xen := TRUE;
-    	xdir := FALSE;
+    	xDIR := FALSE;
     ELSIF xen THEN
-    	IF (xdir AND (out >= in)) OR (NOT xdir AND (out <= in)) THEN
+    	IF (xDIR AND (OUT >= IN)) OR (NOT xDIR AND (OUT <= IN)) THEN
     		xen := FALSE;
-    		IF tl > t#0s THEN t_lock(IN := TRUE); END_IF
+    		IF TL > t#0s THEN t_lock(IN := TRUE); END_IF
     	END_IF
     END_IF
 
@@ -28,12 +28,12 @@ FUNCTION_BLOCK _RMP_NEXT
     	DN := FALSE;
     END_IF
 
-    rmx(rmp := OUT, E := E AND (UP OR DN) , dir := DIR, tr := SEL(dir, TF, TR));
+    rmx(rmp := OUT, E := E AND (UP OR DN) , DIR := DIR, TR := SEL(DIR, TF, TR));
 
 
     (* revison history
     hm	23. nov. 2008	rev 1.0
-    	original version
+    	origINal version
 
     hm	24. jan. 2009	rev 1.1
     	deleted unused vars tmp1, tmp2
@@ -43,7 +43,7 @@ FUNCTION_BLOCK _RMP_NEXT
     	added TL
 
     hm	9. mar. 2009	rev 1.3
-    	input E was ignored
+    	INput E was ignored
     	removed double assignments
 
     hm	18. jul. 2009	rev 1.4

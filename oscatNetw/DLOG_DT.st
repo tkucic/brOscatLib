@@ -15,12 +15,12 @@ FUNCTION_BLOCK DLOG_DT
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
-    	delta_last := X.DTI;
+    	DELTA_last := X.DTI;
     04:	(* ADD DATA REQ *)
     	IF DELTA <> UDINT#0 THEN
-    		IF DT_TO_UDINT(X.DTI) >= (DT_TO_UDINT(delta_last) + DELTA) THEN
+    		IF DT_TO_UDINT(X.DTI) >= (DT_TO_UDINT(DELTA_last) + DELTA) THEN
     			X.ADD_DATA_REQ := TRUE;
-    			delta_last := X.DTI;
+    			DELTA_last := X.DTI;
     		END_IF
     	END_IF
     END_CASE
@@ -30,7 +30,7 @@ FUNCTION_BLOCK DLOG_DT
     	original version
 
     ks	17. may. 2011	rev 1.1
-    	COLUMN STRING(40), delta
+    	COLUMN STRING(40), DELTA
 
     ks	25. july.   2011	rev 1.2
     	neue head information

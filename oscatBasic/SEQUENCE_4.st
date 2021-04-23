@@ -3,97 +3,97 @@ FUNCTION_BLOCK SEQUENCE_4
     (* read sps timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* initialize on startup *)
+    (* initialize on STARTup *)
     IF NOT init THEN
     	last := tx;
     	init := TRUE;
-    	status := 110;
+    	STATUS := 110;
     END_IF
 
     (* asynchronous reset *)
-    IF rst THEN
-    	step := -1;
+    IF RST THEN
+    	STEP := -1;
     	Q0 := 0;
     	Q1 := 0;
     	Q2 := 0;
     	Q3 := 0;
-    	status := 110;
-    	run := 0;
+    	STATUS := 110;
+    	RUN := 0;
 
-    (* edge on start input restarts the sequencer *)
-    ELSIF start AND NOT edge THEN
-    	step := 0;
+    (* edge on START input reSTARTs the sequencer *)
+    ELSIF START AND NOT edge THEN
+    	STEP := 0;
     	last := tx;
-    	status := 111;
+    	STATUS := 111;
     	Q0 := 0;
     	Q1 := 0;
     	Q2 := 0;
     	Q3 := 0;
-    	run := 1;
+    	RUN := 1;
     END_IF
-    edge := start;
+    edge := START;
 
-    (* check if stop on status is necessary *)
-    IF status > 0 AND status < 100 AND stop_on_error THEN RETURN; END_IF
+    (* check if stop on STATUS is necessary *)
+    IF STATUS > 0 AND STATUS < 100 AND STOP_ON_ERROR THEN RETURN; END_IF
 
-    (* sequence is running *)
-    IF run AND step = 0 THEN
-    	IF NOT q0 AND in0 AND tx - last <= wait0 THEN
+    (* sequence is RUNning *)
+    IF RUN AND STEP = 0 THEN
+    	IF NOT Q0 AND IN0 AND tx - last <= WAIT0 THEN
     		Q0 := TRUE;
     		last := tx;
-    	ELSIF NOT q0 AND tx - last > wait0 THEN
-    		status := 1;
-    		run := FALSE;
-    	ELSIF q0 AND tx - last >= delay0 THEN
-    		step := 1;
+    	ELSIF NOT Q0 AND tx - last > WAIT0 THEN
+    		STATUS := 1;
+    		RUN := FALSE;
+    	ELSIF Q0 AND tx - last >= DELAY0 THEN
+    		STEP := 1;
     		last := tx;
     	END_IF
     END_IF
-    IF run AND step = 1 THEN
-    	IF NOT q1 AND in1 AND tx - last <= wait1 THEN
+    IF RUN AND STEP = 1 THEN
+    	IF NOT Q1 AND IN1 AND tx - last <= WAIT1 THEN
     		Q0 := FALSE;
     		Q1 := TRUE;
     		last := tx;
-    	ELSIF NOT q1 AND Tx - last > wait1 THEN
-    		status := 2;
-    		q0 := FALSE;
-    		run := FALSE;
-    	ELSIF q1 AND tx - last >= delay1 THEN
-    		step := 2;
+    	ELSIF NOT Q1 AND Tx - last > WAIT1 THEN
+    		STATUS := 2;
+    		Q0 := FALSE;
+    		RUN := FALSE;
+    	ELSIF Q1 AND tx - last >= DELAY1 THEN
+    		STEP := 2;
     		last := tx;
     	END_IF
     END_IF
-    IF run AND step = 2 THEN
-    	IF NOT q2 AND in2 AND tx - last <= wait2 THEN
+    IF RUN AND STEP = 2 THEN
+    	IF NOT Q2 AND IN2 AND tx - last <= WAIT2 THEN
     		Q1 := FALSE;
     		Q2 := TRUE;
     		last := tx;
-    	ELSIF NOT q2 AND Tx - last > wait2 THEN
-    		status := 3;
-    		q1 := FALSE;
-    		run := FALSE;
-    	ELSIF q2 AND tx - last >= delay2 THEN
-    		step := 3;
+    	ELSIF NOT Q2 AND Tx - last > WAIT2 THEN
+    		STATUS := 3;
+    		Q1 := FALSE;
+    		RUN := FALSE;
+    	ELSIF Q2 AND tx - last >= DELAY2 THEN
+    		STEP := 3;
     		last := tx;
     	END_IF
     END_IF
-    IF run AND step = 3 THEN
-    	IF NOT q3 AND in3 AND tx - last <= wait3 THEN
+    IF RUN AND STEP = 3 THEN
+    	IF NOT Q3 AND IN3 AND tx - last <= WAIT3 THEN
     		Q2 := FALSE;
     		Q3 := TRUE;
     		last := tx;
-    	ELSIF NOT q3 AND Tx - last > wait3 THEN
-    		status := 4;
-    		q2 := FALSE;
-    		run := FALSE;
-    	ELSIF q3 AND tx - last >= delay3 THEN
-    		step := -1;
-    		q3 := FALSE;
-    		run := FALSE;
-    		status := 110;
+    	ELSIF NOT Q3 AND Tx - last > WAIT3 THEN
+    		STATUS := 4;
+    		Q2 := FALSE;
+    		RUN := FALSE;
+    	ELSIF Q3 AND tx - last >= DELAY3 THEN
+    		STEP := -1;
+    		Q3 := FALSE;
+    		RUN := FALSE;
+    		STATUS := 110;
     	END_IF
     END_IF
-    QX := q0 OR q1 OR q2 OR q3;
+    QX := Q0 OR Q1 OR Q2 OR Q3;
 
     (*
     hm 1.10.06		rev 1.1
@@ -102,19 +102,19 @@ FUNCTION_BLOCK SEQUENCE_4
 
     hm 1.12.06		rev 1.2
     	corrected failure in sequence logic.
-    	added init at startup to prevent from initial error after start.
+    	added init at STARTup to prevent from initial error after START.
 
     hm 17.1.2007		rev 1.3
-    	changed output fault to status for better compatibility with other modules (ESR).
+    	changed output fault to STATUS for better compatibility with other modules (ESR).
     	added stop on error functionality and setup variable
-    	default for inputs in0..3 is true.
-    	renamed variable state to step
+    	default for inputs IN0..3 is true.
+    	renamed variable state to STEP
 
     hm	17.sep 2007	rev 1.4
     	replaced time() with T_PLC_MS() for compatibility reasons
 
     hm	13. mar. 2009	rev 1.5
-    	renamed output any to qx for compatibility resons
+    	renamed output any to QX for compatibility resons
 
     *)
 END_FUNCTION_BLOCK

@@ -1,6 +1,6 @@
 FUNCTION SIGN_I
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=66*)
-    SIGN_I := in.31;
+    SIGN_I := IN.31;
 
     (* revision history
     hm 3.3.2007	rev 1.1
@@ -10,7 +10,7 @@ FUNCTION SIGN_I
     	changed code to improve performance
 
     hm	27. oct. 2008	rev 1.3
-    	changed type of input to dint
+    	changed type of INput to dINt
 
     *)
 END_FUNCTION

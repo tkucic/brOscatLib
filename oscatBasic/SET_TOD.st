@@ -17,7 +17,7 @@ FUNCTION SET_TOD
     	changed dword to DINT in calcualtion to avoid warnings with some compilers
 
     hm		14. mar 2008	rev 1.4
-    	changed code to avoid rounding problem at last digit of millisecond
+    	changed code to avoid rounding problem at last digit of milliSECOND
 
     hm		16. mar. 2008	rev 1.5
     	added type conversions to avoid warning under codesys 3.0

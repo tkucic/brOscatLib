@@ -1,9 +1,9 @@
 FUNCTION MODR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60*)
-    IF divi = 0.0 THEN
+    IF DIVI = 0.0 THEN
     	MODR := 0.0;
     ELSE
-    	MODR := in - DINT_TO_REAL(FLOOR2(in / divi)) * divi;
+    	MODR := IN - DINT_TO_REAL(FLOOR2(IN / DIVI)) * DIVI;
     END_IF
 
     (* revision history
@@ -17,13 +17,13 @@ FUNCTION MODR
     	use D_trunc for compatibility reasons
 
     hm	4. apr. 2008	rev 1.3
-    	added type conversion to avoid warnings under codesys 3.0
+    	added type conversion to avoid warnINgs under codesys 3.0
 
     hm	31. oct. 2008	rev 1.4
-    	changed algorithm to the more common version using floor instead of TRUNC
+    	changed algorithm to the more common version usINg floor INstead of TRUNC
 
     hm	10. mar. 2009	rev 1.5
-    	real constants updated to new systax using dot
+    	real constants updated to new systax usINg dot
 
     *)
 END_FUNCTION

@@ -2,7 +2,7 @@ FUNCTION_BLOCK DNS_DYN
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=92*)
     CASE state OF
 
-    00:	IF ENABLE AND ((UPDATE AND NOT update_last) OR w.Q) THEN
+    00:	IF ENABLE AND ((UPDATE AND NOT UPDATE_last) OR w.Q) THEN
     		state := 20;
     		DONE := FALSE;
     		BUSY := TRUE;
@@ -10,9 +10,9 @@ FUNCTION_BLOCK DNS_DYN
     		ERROR_T := BYTE#0;
 
     		IF MODE = 0 THEN (* dyndns.org *)
-    			s2 := CONCAT('http://members.dyndns.org/nic/update?hostname=',HOSTNAME);
+    			s2 := CONCAT('http://members.dyndns.org/nic/UPDATE?HOSTNAME=',HOSTNAME);
     		ELSE (* selfhost.de *)
-    			s2 := 'http://carol.selfhost.de/nic/update?hostname=1';
+    			s2 := 'http://carol.selfhost.de/nic/UPDATE?HOSTNAME=1';
     		END_IF
     		IF IP4 > 0 THEN (* parametrierte IP verwenden *)
     			s1 := CONCAT('&myip=',IP4_TO_STRING(IP4));
@@ -32,7 +32,7 @@ FUNCTION_BLOCK DNS_DYN
     		state := 0;
     	END_IF
 
-    40: IF base64_done THEN (* BASE64 Encode beendet ? *)
+    40: IF base64_DONE THEN (* BASE64 Encode beendet ? *)
     		s1 := CONCAT('Authorization: Basic ',s2);
     		s1 := CONCAT(s1,'$0D$0AUser-Agent: x$0D$0A');
     		URL_DATA.HEADER := s1;
@@ -70,10 +70,10 @@ FUNCTION_BLOCK DNS_DYN
 
     DNS_CLIENT(IP_C:=IP_C,	S_BUF:=S_BUF, R_BUF:=R_BUF,DOMAIN:=URL_DATA.DOMAIN, IP4_DNS:=0, ACTIVATE:=state=20); (* DNS_CLIENT *)
     HTTP_GET( IP_C:=IP_C, S_BUF:=S_BUF, R_BUF:=R_BUF, IP4:=DNS_CLIENT.IP4, GET:=state=60, MODE:=2, UNLOCK_BUF:=state<>60,URL_DATA:=URL_DATA); (* HTTP_GET *)
-    BASE64_ENCODE_STR( RUN:=state=40, STR1:=s1, STR2:=s2, DONE=>base64_done); (* BASE64 Encode *)
+    BASE64_ENCODE_STR( RUN:=state=40, STR1:=s1, STR2:=s2, DONE=>base64_DONE); (* BASE64 Encode *)
 
     IF T_UPDATE > T#0ms THEN w(IN:=state=0, PT:=T_UPDATE); END_IF
-    update_last := UPDATE;
+    UPDATE_last := UPDATE;
 
     (* revision history
     ks	01. jan. 2010	rev 1.0

@@ -1,6 +1,6 @@
 FUNCTION MONTH_OF_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130*)
-    MONTH_OF_DATE := DAY_OF_YEAR(idate);
+    MONTH_OF_DATE := DAY_OF_YEAR(IDATE);
     IF MONTH_OF_DATE < 32 THEN
     	MONTH_OF_DATE := 1;
     ELSIF LEAP_OF_DATE(IDATE) THEN

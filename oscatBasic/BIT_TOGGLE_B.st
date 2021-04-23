@@ -7,7 +7,7 @@ FUNCTION BIT_TOGGLE_B
 
     (* revision history
     hm	18. oct. 2008	rev 1.0
-    	original version
+    	origINal version
 
 
     *)

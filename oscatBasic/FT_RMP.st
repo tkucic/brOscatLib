@@ -3,34 +3,34 @@ FUNCTION_BLOCK FT_RMP
     (* read system time *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
 
-    IF NOT init THEN
-    	init := TRUE;
+    IF NOT INit THEN
+    	INit := TRUE;
     	last := tx;
     	tx := t#0s;
-    	out := in;
+    	OUT := IN;
     END_IF
-    IF NOT rmp THEN
-    	out := in;
-    	busy := FALSE;
-    ELSIF out > in THEN
+    IF NOT RMP THEN
+    	OUT := IN;
+    	BUSY := FALSE;
+    ELSIF OUT > IN THEN
     	(* ramp down *)
-    	out := out - TIME_TO_REAL(tx) * 0.001 * KF;
-    	out := MAX(in, out);
-    ELSIF out < in THEN
+    	OUT := OUT - TIME_TO_REAL(tx) * 0.001 * KF;
+    	OUT := MAX(IN, OUT);
+    ELSIF OUT < IN THEN
     	(* ramp up *)
-    	out := out + TIME_TO_REAL(tx) * 0.001 * KR;
-    	out := MIN(in, out);
+    	OUT := OUT + TIME_TO_REAL(tx) * 0.001 * KR;
+    	OUT := MIN(IN, OUT);
     END_IF
 
-    (* set busy and dir flags *)
-    IF out < in THEN
-    	busy := TRUE;
-    	ud := TRUE;
-    ELSIF out > in THEN
-    	busy := TRUE;
-    	ud := FALSE;
+    (* set BUSY and dir flags *)
+    IF OUT < IN THEN
+    	BUSY := TRUE;
+    	UD := TRUE;
+    ELSIF OUT > IN THEN
+    	BUSY := TRUE;
+    	UD := FALSE;
     ELSE
-    	busy := FALSE;
+    	BUSY := FALSE;
     END_IF
     last := last + tx;
 
@@ -38,10 +38,10 @@ FUNCTION_BLOCK FT_RMP
     (* revision history:
 
     hm 8.10.2006			rev 1.1
-    	added ud output
+    	added UD OUTput
 
     hm 12. feb 2007		rev 1.2
-    	added init variable and corrected a possible startup problem
+    	added INit variable and corrected a possible startup problem
 
     hm	17. sep 2007	rev 1.3
     	replaced time() with t_plc_ms() for compatibility reasons

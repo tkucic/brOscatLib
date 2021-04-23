@@ -1,13 +1,13 @@
 FUNCTION_BLOCK MANUAL_2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464*)
-    IF ena THEN
+    IF ENA THEN
     	IF NOT ON AND NOT OFF THEN
     		Q := IN;
     		STATUS := 100;
-    	ELSIF on AND NOT off THEN
+    	ELSIF ON AND NOT OFF THEN
     		Q := TRUE;
     		STATUS := 101;
-    	ELSIF NOT on AND off THEN
+    	ELSIF NOT ON AND OFF THEN
     		q := FALSE;
     		STATUS := 102;
     	ELSE
@@ -21,9 +21,9 @@ FUNCTION_BLOCK MANUAL_2
 
 
 
-    (* revision history
+    (* revisiON history
     hm	22. sep. 2008		rev 1.0
-    	original version
+    	origINal versiON
 
     *)
 END_FUNCTION_BLOCK

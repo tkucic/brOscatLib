@@ -1,7 +1,7 @@
 FUNCTION_BLOCK TANK_LEVEL
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=41*)
-    (* preprocess the level information *)
-    tl(in := level, T_ON := level_delay_time, T_OFF := level_delay_time);
+    (* preprocess the LEVEL information *)
+    tl(in := LEVEL, T_ON := LEVEL_delay_time, T_OFF := LEVEL_delay_time);
     open := tl.Q;
 
     (* start logic *)
@@ -9,26 +9,26 @@ FUNCTION_BLOCK TANK_LEVEL
     	(* check for ACLR if ALARM is present *)
     	IF ACLR THEN
     		ALARM := FALSE;
-    		STATUS := 101; (* aclr pressed *)
+    		STATUS := 101; (* ACLR pressed *)
     		cx(in := FALSE);
     	END_IF
     	RETURN;
     ELSIF LEAK THEN
-    	(* leakeage detected *)
+    	(* LEAKeage detected *)
     	cx(in := FALSE);
     	ALARM := TRUE;
-    	STATUS := 1;	(* leakeage error *)
+    	STATUS := 1;	(* LEAKeage error *)
     ELSIF open THEN
-    	(* valve needs to be opened because level is too low *)
+    	(* VALVE needs to be opened because LEVEL is too low *)
     	cx(in := TRUE);
-    	STATUS := 102; (* valve open by low level *)
+    	STATUS := 102; (* VALVE open by low LEVEL *)
     ELSE
-    	(* valve needs to be closed *)
+    	(* VALVE needs to be closed *)
     	cx(in := FALSE);
-    	STATUS := 100; (* valve idle *)
+    	STATUS := 100; (* VALVE idle *)
     END_IF
 
-    (* check if valve is open too long and generate alarm if necessary *)
+    (* check if VALVE is open too long and generate ALARM if necessary *)
     tn(in := cx.out AND (MAX_VALVE_TIME > T#0s), PT := MAX_VALVE_TIME);
     IF tn.Q THEN
     	ALARM := TRUE;

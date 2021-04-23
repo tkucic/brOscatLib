@@ -12,13 +12,13 @@ FUNCTION RDM
     tn.24 := tn.3;
     tn := ROL(tn,BIT_COUNT(tn)) OR 16#80000001;
     tn := tn MOD 71474513 + INT_TO_DWORD(tc + 77);
-    RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (math.E - LIMIT(0.0,last,1.0)));
+    RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (math.E - LIMIT(0.0,LAST,1.0)));
 
 
     (*
     pt := ADR(temp);
     pt^ := (T_PLC_MS() AND 16#007FFFFF) OR 16#3D000000;
-    RDM := fract(modR(temp*e+pi1, PI1-last) + modR(temp*PI1+e + last,e-last));
+    RDM := fract(modR(temp*e+pi1, PI1-LAST) + modR(temp*PI1+e + LAST,e-LAST));
     *)
 
     (* revision history
@@ -38,7 +38,7 @@ FUNCTION RDM
     	changed algorithm to avoind non iec functions and guarantee more randomness
 
     hm	10. mar. 2008		rev 1.5
-    	make sure last will be between 0 and 1 to avoid invalid results
+    	make sure LAST will be between 0 and 1 to avoid invalid results
 
     hm	16. mar. 2008		rev 1.6
     	added conversion for tc to avoid warnings under codesys 3.0

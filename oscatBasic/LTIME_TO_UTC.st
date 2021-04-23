@@ -11,16 +11,16 @@ FUNCTION LTIME_TO_UTC
     	replaced literal constant with variable because of error in möller ecp4 compiler
 
     hm	12.nov 2007	rev 1.2
-    	changed Type of time_zone_offset from time to int to allow for time zones with negative offset
+    	changed Type of TIME_ZONE_OFFSET from time to int to allow for time zones with negative offset
 
     hm	8. dec 2007	rev 1.3
-    	corrected a problem with time_zone_offset
+    	corrected a problem with TIME_ZONE_OFFSET
 
     hm	14. oct. 2008	rev 1.4
-    	changed time_zone_offset from int to real to allow for half hour offset
+    	changed TIME_ZONE_OFFSET from int to real to allow for half hour offset
 
     hm	20. oct. 2006	rev 1.5
-    	changed time_zone_offset from Real to INT, now in Minutes
+    	changed TIME_ZONE_OFFSET from Real to INT, now in Minutes
 
     hm	27. feb. 2009	rev 1.6
     	added type conversions to avoid warnings under codesys 3.0

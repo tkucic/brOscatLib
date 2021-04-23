@@ -3,13 +3,13 @@ FUNCTION_BLOCK FT_PT1
     (* read system time *)
     tx := T_PLC_US();
 
-    (* startup initialisation *)
-    IF NOT init OR T = t#0s THEN
-    	init := TRUE;
-    	out := K * in;
+    (* startup INitialisation *)
+    IF NOT INit OR T = t#0s THEN
+    	INit := TRUE;
+    	OUT := K * IN;
     ELSE
-    	out := out + (in * K - out) * DWORD_TO_REAL(Tx - last) / TIME_TO_REAL(T) * 1.0E-3;
-    	IF ABS(out) < 1.0E-20 THEN out := 0.0; END_IF
+    	OUT := OUT + (IN * K - OUT) * DWORD_TO_REAL(Tx - last) / TIME_TO_REAL(T) * 1.0E-3;
+    	IF ABS(OUT) < 1.0E-20 THEN OUT := 0.0; END_IF
     END_IF
     last := tx;
 
@@ -17,38 +17,38 @@ FUNCTION_BLOCK FT_PT1
     (*
     hm 1.1.2007	rev 1.1
     	corrected error while startup value was not correct
-    	for very small time values real output would run out of range.
+    	for very small time values real OUTput would run OUT of range.
 
     hm 3.1.2007	rev 1.2
-    	corrected an error for falling edge failures.
-    	added output faktor K.
+    	corrected an error for fallINg edge failures.
+    	added OUTput faktor K.
 
     hm 27. 2. 2007	rev 1.3
-    	output will be input during init for definitive startup condition.
+    	OUTput will be INput durINg INit for defINitive startup condition.
 
     hm	15.9.2007	rev 1.4
     	changed time() to T_PLC_US() for compatibilitxy resons
-    	increased internal accuracy to Microseconds instead of Milliseconds
+    	INcreased INternal accuracy to Microseconds INstead of Milliseconds
 
     hm	23. oct 2007	rev 1.5
-    	added out := in to the init statements
+    	added OUT := IN to the INit statements
 
     hm	30. nov 2007	rev 1.6
-    	changed out to be K * in during initialization
+    	changed OUT to be K * IN durINg INitialization
 
     hm	5. jan 2008	rev 1.7
     	improved code for better performance
 
     hm	16. mar. 2008	rev 1.8
-    	added type conversion to avoid warning under codesys 3.0
+    	added type conversion to avoid warnINg under codesys 3.0
 
     hm	14. jun. 2008	rev 1.9
     	improved code
 
     hm	11. mar. 2009	rev 1.10
-    	real constants updated to new systax using dot
+    	real constants updated to new systax usINg dot
 
     hm	18. jan. 2011	rev 1.11
-    	avoid underrun of out
+    	avoid underrun of OUT
     *)
 END_FUNCTION_BLOCK

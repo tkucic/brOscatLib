@@ -7,7 +7,7 @@ FUNCTION_BLOCK TC_MS
     	init := TRUE;
     	TC := 0;
     ELSE
-    	tc := tx - last;
+    	TC := tx - last;
     END_IF
     last := tx;
 

@@ -41,33 +41,33 @@ FUNCTION_BLOCK SWITCH_X
 
     IF t1.Q THEN
     	IF t3.q THEN
-    		q31 := TRUE;
+    		Q31 := TRUE;
     		X1 := FALSE;
     	ELSIF t4.q THEN
-    		q41 := TRUE;
+    		Q41 := TRUE;
     		X1 := FALSE;
     	ELSIF t5.q THEN
-    		q51 := TRUE;
+    		Q51 := TRUE;
     		X1 := FALSE;
     	ELSIF t6.q THEN
-    		q61 := TRUE;
+    		Q61 := TRUE;
     		X1 := FALSE;
     	END_IF
     ELSIF t2.Q THEN
     	IF t3.q THEN
-    		q32 := TRUE;
+    		Q32 := TRUE;
     		X2 := FALSE;
     	ELSIF t4.q THEN
-    		q42 := TRUE;
+    		Q42 := TRUE;
     		X2 := FALSE;
     	ELSIF t5.q THEN
-    		q52 := TRUE;
+    		Q52 := TRUE;
     		X2 := FALSE;
     	ELSIF t6.q THEN
-    		q62 := TRUE;
+    		Q62 := TRUE;
     		X2 := FALSE;
     	END_IF
-    (* in1 was active alone *)
+    (* IN1 was active alone *)
     ELSIF NOT T1.Q AND E1 AND X1 THEN
     	Q1 := TRUE;
     	X1 := FALSE;
@@ -84,7 +84,7 @@ FUNCTION_BLOCK SWITCH_X
     	Q6 := TRUE;
     END_IF
 
-    (* save state of in1 and in2 *)
+    (* save state of IN1 and IN2 *)
     E1 := T1.Q;
     E2 := T2.Q;
 

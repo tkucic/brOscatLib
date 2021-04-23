@@ -4,7 +4,7 @@ FUNCTION_BLOCK HTTP_GET
     00:	DONE := FALSE;
     	IF GET AND NOT GET_LAST THEN (* auf positive Flanke SET warten *)
     		state := 10;
-    		ip4_stored := IP4; (* aktuelle IP4 speichern *)
+    		IP4_stored := IP4; (* aktuelle IP4 speichern *)
     		total_size := 0;
     		HEADER_START := UINT#0;
     		HEADER_STOP := UINT#0;
@@ -37,7 +37,7 @@ FUNCTION_BLOCK HTTP_GET
     	        	(*########################################################################*)
     	END_IF
 
-    5:	IF b64_start AND b64_done THEN (* warten auf base64 konvertierung *)
+    5:	IF b64_start AND b64_DONE THEN (* warten auf base64 konvertierung *)
     		b64_start := FALSE;
     		state := 10;
     	END_IF
@@ -97,7 +97,7 @@ FUNCTION_BLOCK HTTP_GET
     			IP_C.C_PORT := SEL(URL_DATA.PORT = WORD#0,URL_DATA.PORT,WORD#80);  (* Portnummer eintragen *)
     		END_IF
 
-    		IP_C.C_IP := ip4_stored; (* IP eintragen *)
+    		IP_C.C_IP := IP4_stored; (* IP eintragen *)
     		IP_C.C_MODE := BYTE#0; (* Mode: TCP+AKTIV+PORT+IP *)
     		IP_C.C_ENABLE := TRUE; (* Verbindungsaufbau freigeben *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -224,7 +224,7 @@ FUNCTION_BLOCK HTTP_GET
 
     	IF IP_C.ERROR <> DWORD#0 THEN
     		(* bei unbekannter Content-size ist nicht bekannt ob bzw wieviele Telegramme noch folgen werden *)
-    		(* darum wird nach receive-timeout oder Remote disconnect error der fehler wieder ausgefiltert (logischer fehler) *)
+    		(* darum wird nach receive-timeout oder Remote disconnect ERROR der fehler wieder ausgefiltert (logischer fehler) *)
     		IF rcv_timeout AND DONE THEN
     			IP_C.ERROR := IP_C.ERROR AND DWORD#16#FFFF_00FF; (* Fehler wieder rücksetzen *)
     		ELSIF con_rdce AND DONE THEN
@@ -255,17 +255,17 @@ FUNCTION_BLOCK HTTP_GET
     	END_IF
     END_CASE
 
-    get_last := GET; (* letzten Status sichern zur Flankenerkennung *)
+    GET_last := GET; (* letzten Status sichern zur Flankenerkennung *)
 
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id); (* IP_FIFO *)
 
     BASE64_ENCODE_STR(RUN:=b64_start,STR1:=b64_str1,STR2:=b64_str2); (* BASE64 kodierung *)
-    b64_done:=BASE64_ENCODE_STR.DONE;
+    b64_DONE:=BASE64_ENCODE_STR.DONE;
 
     (*####################  DEBUG-MESSAGE  ###################################*)
     (*IF _debug_enable THEN
     	IF state <> _debug_state_last THEN
-    		LOG_CL.NEW_MSG := 'http_get: /last ~1 /New ~2';
+    		LOG_CL.NEW_MSG := 'http_GET: /last ~1 /New ~2';
     		LOG_CL.PRINTF[1] := INT_TO_STRING(_debug_state_last);
     		LOG_CL.PRINTF[2] := INT_TO_STRING(state);
     		LOG_MSG();

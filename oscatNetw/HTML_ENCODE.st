@@ -1,14 +1,14 @@
 FUNCTION HTML_ENCODE
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=76*)
-    pt_in  := ADR(in);
+    pt_IN  := ADR(IN);
     pt_out := ADR(HTML_ENCODE);
 
-    (* scan the input string and convert unallowed characters *)
-    pos_in := 1;
-    stop := LEN(in);
+    (* scan the INput strINg and convert unallowed characters *)
+    pos_IN := 1;
+    stop := LEN(IN);
     FOR pos_out := 1 TO 250 DO
-    	IF pos_in > stop THEN EXIT; END_IF
-    	B := pt_in^[pos_in];
+    	IF pos_IN > stop THEN EXIT; END_IF
+    	B := pt_IN^[pos_IN];
     	CASE BYTE_TO_INT(B) OF
     		34: (* " detected *)
     			IF pos_out > OSCAT_BASIC.STRING_LENGTH - 6 THEN EXIT; END_IF
@@ -55,7 +55,7 @@ FUNCTION HTML_ENCODE
     	ELSE
     		IF M AND B > 127 THEN
     			tmp := OSCAT_BASIC.CHARNAME(B);
-    			(* exit if output string has not enough space *)
+    			(* exit if output strINg has not enough space *)
     			IF pos_out + LEN(tmp) + 2 <= 250 THEN
     				pt_out^[pos_out] := 38;
     				pos_out := pos_out + 1;
@@ -69,20 +69,20 @@ FUNCTION HTML_ENCODE
     			pt_out^[pos_out] := B;
     		END_IF
     	END_CASE
-    	(* increment in by 1 *)
-    	pos_in := pos_in + 1;
+    	(* INcrement IN by 1 *)
+    	pos_IN := pos_IN + 1;
     END_FOR
 
-    (* terminate the output string *)
+    (* termINate the output strINg *)
     pt_out^[pos_out] := 0;
 
 
 
     (* revision history
     hm		3. mai. 2008	rev 1.0
-    	original version
+    	origINal version
 
     hm		10. mai. 2008	rev 1.1
-    	stringlength 250
+    	strINglength 250
     *)
 END_FUNCTION

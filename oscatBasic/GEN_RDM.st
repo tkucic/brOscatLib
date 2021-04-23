@@ -11,12 +11,12 @@ FUNCTION_BLOCK GEN_RDM
     END_IF
 
     (* add last if one cycle is finished *)
-    IF tx >= pt THEN
-    	last := last + pt;
-    	tx := tx - pt;
+    IF tx >= PT THEN
+    	last := last + PT;
+    	tx := tx - PT;
 
-    	(* generate output signal *)
-    	out := am * (RDM(0) - 0.5) + os;
+    	(* generate OUTput signal *)
+    	OUT := AM * (RDM(0) - 0.5) + OS;
     	q := TRUE;
     ELSE
     	q := FALSE;

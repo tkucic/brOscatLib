@@ -1,15 +1,15 @@
 FUNCTION_BLOCK BLIND_CONTROL_S
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=78*)
     
-    (* status definition
-    	121 = manual up				manual up operation UP = true and DN = false
-    	122 = manual down			manual down operation DN = true and UP = false
-    	123 = auto positioning		automatic mode DN = UP = TRUE
+    (* STATUS definition
+    	121 = manual UP				manual UP operation UP = tRUe and DN = false
+    	122 = manual down			manual down operation DN = tRUe and UP = false
+    	123 = auto POSitioning		automatic mode DN = UP = TRUE
     	124 = revert					revert from top or bottom
     	125 = nothing					default input for S_IN
     	127 = Lockout time			lockout between directional change
-    	128 = calibrate				calibrate after power up
-    	129 = extend					extend runtime at top or bottom for continuous calibration
+    	128 = calibrate				calibrate after power UP
+    	129 = extend					extend RUntime at top or bottom for continuous calibration
     *)
 
     (* read system time *)
@@ -30,17 +30,17 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	STATUS := S_IN;
     END_IF
 
-    (* simulate pos output *)
+    (* siMUlate POS output *)
     rmp(E := UP OR DN, TR := T_UP, TF := T_DN, TL := T_LOCKOUT, OUT := POS);
 
     (* state machine *)
     CASE STATUS OF
-    	0:		(* power up init *)
+    	0:		(* power UP init *)
     		last := tx;
     		PI_last := PI XOR BYTE#255;
     		STATUS := 128;		(* calibrate *)
 
-    	121: 	(* manual up *)
+    	121: 	(* manual UP *)
     		MU := TRUE;
     		MD := FALSE;
     		IF POS >= (BYTE#255 - EXT_TRIG) THEN
@@ -60,11 +60,11 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     			STATUS := 129;	(* extend *)
     		END_IF
 
-    	123:	(* auto positioning *)
+    	123:	(* auto POSitioning *)
     		MD := rmp.DN;
     		MU := rmp.UP;
     		IF NOT (rmp.DN OR rmp.UP) THEN
-    			(* automatic position is reached *)
+    			(* automatic POSition is reached *)
     			IF POS <= EXT_TRIG THEN
     				(* extend at bottom *)
     				MD := TRUE;
@@ -118,11 +118,11 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	IF PI <> PI_last THEN
     		PI_last := PI;
     		rmp.IN := PI;
-    		STATUS := 123;	(* auto positioning *)
+    		STATUS := 123;	(* auto POSitioning *)
     	ELSIF POS = 0 AND RU THEN
     		rmp.IN := R_POS_BOT;
     		STATUS := 124;	(* revert *)
-    	ELSIF pos = 255 AND RD THEN
+    	ELSIF POS = 255 AND RD THEN
     		rmp.IN := R_POS_TOP;
     		STATUS := 124;	(* revert *)
     	ELSE
@@ -138,7 +138,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	original release
 
     hf	27. jul 2009	rev 1.1
-    	major code changes and updates
+    	major code changes and UPdates
 
     hf	23. Jan 2010	rev 1.2
     	fixed a bug during calibration

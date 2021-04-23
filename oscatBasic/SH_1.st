@@ -5,16 +5,16 @@ FUNCTION_BLOCK SH_1
 
     IF tx - last >= PT THEN
     	last := tx;
-    	out := in;
-    	trig := TRUE;
+    	OUT := IN;
+    	TRIG := TRUE;
     ELSE
-    	trig := FALSE;
+    	TRIG := FALSE;
     END_IF
 
     (* revision history
 
     HM	6.1.2007	rev 1.1
-    	added trig output
+    	added TRIG OUTput
 
     HM	17.9.2007	rev 1.2
     	replaced time() with T_PLC_MS() for compatibility reasons

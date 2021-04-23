@@ -62,7 +62,7 @@ FUNCTION_BLOCK CSV_PARSER_BUF
     			IF v_add > 0  AND pv < pve THEN (* Zeichen zu Value-String hinzufügen *)
     				pv^ := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
-    				pv^ := 0; (* String-Terminierung eintragen *)
+    				pv^ := 0; (* String-TerminieRUNg eintragen *)
     			END_IF
 
     			i := i + 1; (* Datenzeiger erhöhen *)
@@ -93,7 +93,7 @@ FUNCTION_BLOCK CSV_PARSER_BUF
 
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
-    		LOG_CL.NEW_MSG := 'CPF: intern Result ~1 , state ~2, step ~3 , offset ~4, run ~5';
+    		LOG_CL.NEW_MSG := 'CPF: intern Result ~1 , state ~2, step ~3 , OFFSET ~4, RUN ~5';
     		LOG_CL.PRINTF[1] := BYTE_TO_STRING(RESULT);
     		LOG_CL.PRINTF[2] := BYTE_TO_STRING(state);
     		LOG_CL.PRINTF[3] := INT_TO_STRING(step);

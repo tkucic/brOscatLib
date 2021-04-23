@@ -1,6 +1,6 @@
 FUNCTION_BLOCK FF_RSE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242*)
-    IF rst THEN
+    IF RST THEN
     	(* asynchronous reset *)
     	Q := FALSE;
     ELSIF CR AND NOT er THEN

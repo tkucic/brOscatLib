@@ -11,12 +11,12 @@ FUNCTION_BLOCK DLOG_STRING
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     03:	(* ADD DATA *)
-    	X.UCB.D_STRING := str_last;
+    	X.UCB.D_STRING := STR_last;
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     END_CASE
-    str_last := STR;
+    STR_last := STR;
 
     (* revision history
     ks	01. jan. 2011	rev 1.0

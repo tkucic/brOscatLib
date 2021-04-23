@@ -1,26 +1,26 @@
 FUNCTION_BLOCK INC_DEC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=459*)
-    axb := cha XOR chb;
+    axb := CHA XOR CHB;
 
-    (* create pulses for channel a *)
-    clka := cha XOR edgea;
-    edgea := cha;
+    (* create pulses for CHAnnel a *)
+    clka := CHA XOR edgea;
+    edgea := CHA;
 
-    clkb := chb XOR edgeb;
-    edgeb := chb;
+    clkb := CHB XOR edgeb;
+    edgeb := CHB;
 
-    (* create pulses for both channels *)
+    (* create pulses for both CHAnnels *)
     clk := clka OR clkb;
 
-    (* set the direction output *)
-    IF axb AND clka THEN dir := TRUE; END_IF
-    IF axb AND clkb THEN dir := FALSE; END_IF
+    (* set the DIRection output *)
+    IF axb AND clka THEN DIR := TRUE; END_IF
+    IF axb AND clkb THEN DIR := FALSE; END_IF
 
     (* increment or decrement the counter *)
-    IF clk AND dir THEN cnt := cnt + 1; END_IF
-    IF clk AND NOT dir THEN cnt := cnt -1; END_IF
+    IF clk AND DIR THEN CNT := CNT + 1; END_IF
+    IF clk AND NOT DIR THEN CNT := CNT -1; END_IF
 
-    (* reset the counter if rst active *)
-    IF rst THEN cnt := 0; END_IF
+    (* reset the counter if RST active *)
+    IF RST THEN CNT := 0; END_IF
 
 END_FUNCTION_BLOCK

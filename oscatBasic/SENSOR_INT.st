@@ -1,7 +1,7 @@
 FUNCTION SENSOR_INT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=324*)
-    IF current <> 0.0 THEN
-    	RG := voltage / current;
+    IF CURRENT <> 0.0 THEN
+    	RG := VOLTAGE / CURRENT;
     	SENSOR_INT := RP * ( RG - RS) / ( RP + RS - RG);
     END_IF
 

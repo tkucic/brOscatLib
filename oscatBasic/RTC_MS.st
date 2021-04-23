@@ -1,10 +1,10 @@
 FUNCTION_BLOCK RTC_MS
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=134*)
     tx := T_PLC_MS();
-    IF set OR NOT init THEN
-    	(* clock needs to be set when set is true or after power up *)
+    IF SET OR NOT init THEN
+    	(* clock needs to be SET when SET is true or after power up *)
     	init := TRUE;
-    	xdt := SDT;
+    	XDT := SDT;
     	XMS := SMS;
     ELSE
     	XMS := XMS + DWORD_TO_INT(tx - last);

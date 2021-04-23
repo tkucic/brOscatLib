@@ -5,7 +5,7 @@ FUNCTION WINDOW2
 
     (* revision history
     hm	31.10.2007	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION

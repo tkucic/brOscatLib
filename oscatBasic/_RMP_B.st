@@ -3,15 +3,15 @@ FUNCTION_BLOCK _RMP_B
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    IF E AND init AND (dir = last_dir) AND (RMP <> SEL(DIR, 0, 255)) AND TR = tn THEN
+    IF E AND init AND (DIR = last_DIR) AND (RMP <> SEL(DIR, 0, 255)) AND TR = tn THEN
     	RMP := FRMP_B(start, DIR, tx - tl, TR);
     ELSE
     	init := TRUE;
     	tl := tx;
-    	tn := tr;
+    	tn := TR;
     	start := RMP;
     END_IF
-    last_dir := dir;
+    last_DIR := DIR;
 
 
 

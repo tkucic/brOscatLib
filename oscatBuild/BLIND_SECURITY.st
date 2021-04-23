@@ -3,29 +3,29 @@ FUNCTION_BLOCK BLIND_SECURITY
     IF Fire THEN
     	QU := TRUE;
     	QD := FALSE;
-    	status := 111;
+    	STATUS := 111;
     ELSIF Wind THEN
-    	QU := Wind_up;
-    	QD := NOT wind_up;
-    	status := 112;
-    ELSIF alarm THEN
-    	QU := Alarm_up;
-    	QD := NOT Alarm_up;
-    	status := 113;
+    	QU := Wind_UP;
+    	QD := NOT WIND_UP;
+    	STATUS := 112;
+    ELSIF ALARM THEN
+    	QU := Alarm_UP;
+    	QD := NOT Alarm_UP;
+    	STATUS := 113;
     ELSIF Door THEN
     	QU := TRUE;
     	QD := FALSE;
-    	status := 114;
-    ELSIF Rain AND NOT (up XOR dn) THEN
-    	QU := rain_up;
-    	QD := NOT rain_up;
-    	status := 115;
+    	STATUS := 114;
+    ELSIF RAIn AND NOT (UP XOR DN) THEN
+    	QU := rAIn_UP;
+    	QD := NOT rAIn_UP;
+    	STATUS := 115;
     ELSE
     	QU := UP;
     	QD := DN;
-    	status := S_IN;
-    	po := pi;
-    	ao := ai;
+    	STATUS := S_IN;
+    	PO := PI;
+    	AO := AI;
     END_IF
 
 
@@ -34,13 +34,13 @@ FUNCTION_BLOCK BLIND_SECURITY
     	original release
 
     hm	6. oct 2007		rev 1.1
-    	added pos and angle inputs and outputs
-    	manual will override rain position
-    	alarm position can now be configured
+    	added POs and angle inputs and outputs
+    	manual will override rAIn POsition
+    	ALARM POsition can now be configured
 
     hm		12. feb. 2008	rev 1.2
-    	added config variables rain_up and wind_up
-    	position for rain and wind is now configurable
+    	added config variables rAIn_UP and WIND_UP
+    	POsition for rAIn and WIND is now configurable
     *)
 
 

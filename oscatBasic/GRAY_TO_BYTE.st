@@ -6,7 +6,7 @@ FUNCTION GRAY_TO_BYTE
 
     (* revision history
     hm	9. nov. 2009	rev 1.0
-    	original version
+    	origINal version
 
     *)
 END_FUNCTION

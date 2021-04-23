@@ -9,7 +9,7 @@ FUNCTION_BLOCK MB_SERVER
     	END_IF
     END_FOR
     last_cycle := tx;
-    ip_error := IP_C.ERROR > DWORD#0;
+    ip_ERROR := IP_C.ERROR > DWORD#0;
 
     CASE state OF
     00: (* Warten auf Freigabe *)
@@ -31,7 +31,7 @@ FUNCTION_BLOCK MB_SERVER
     		state := 20;
     	END_IF
 
-    20:	IF NOT ip_error THEN
+    20:	IF NOT ip_ERROR THEN
     		IF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE > UINT#6 THEN	(* Datensenden nicht aktiv und Daten wurden empfangen *)
     			IF  R_BUF.SIZE = WORD_TO_UINT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[4],R_BUF.BUFFER[5])) + UINT#6 THEN (* gültige Datenlänge *)
     				ERROR := DWORD#00; (* Error löschen *)
@@ -190,7 +190,7 @@ FUNCTION_BLOCK MB_SERVER
     		ERROR := IP_C.ERROR;
     	END_IF
 
-    	t(IN:= ip_error, PT:=T#2s);
+    	t(IN:= ip_ERROR, PT:=T#2s);
     	IF t.Q THEN
     		IP_C.TIME_RESET := TRUE; (* Error Reset *)
     	END_IF

@@ -7,21 +7,21 @@ FUNCTION_BLOCK IRTRANS_SND_8
 
     IF S_BUF.SIZE = 0 THEN
     	IF IN_0 THEN
-    		skey := KEY_CODE_0; k := 1;
+    		sKEY := KEY_CODE_0; k := 1;
     	ELSIF IN_1 THEN
-    		skey := KEY_CODE_1; k := 2;
+    		sKEY := KEY_CODE_1; k := 2;
     	ELSIF IN_2 THEN
-    		skey := KEY_CODE_2; k := 3;
+    		sKEY := KEY_CODE_2; k := 3;
     	ELSIF IN_3 THEN
-    		skey := KEY_CODE_3; k := 4;
+    		sKEY := KEY_CODE_3; k := 4;
     	ELSIF IN_4 THEN
-    		skey := KEY_CODE_4; k := 5;
+    		sKEY := KEY_CODE_4; k := 5;
     	ELSIF IN_5 THEN
-    		skey := KEY_CODE_5; k := 6;
+    		sKEY := KEY_CODE_5; k := 6;
     	ELSIF IN_6 THEN
-    		skey := KEY_CODE_6; k := 7;
+    		sKEY := KEY_CODE_6; k := 7;
     	ELSIF IN_7 THEN
-    		skey := KEY_CODE_7; k := 8;
+    		sKEY := KEY_CODE_7; k := 8;
     	ELSE
     		lk := 0;
     		KEY := 0;
@@ -29,9 +29,9 @@ FUNCTION_BLOCK IRTRANS_SND_8
     	END_IF
 
     	IF lk <> k OR T.Q THEN (* anderer Key oder repeat wartezeit abgelaufen *)
-    		str := CONCAT('snd ',dev_code);
+    		str := CONCAT('snd ',DEV_CODE);
     		str := CONCAT(str,',');
-    		str := CONCAT(str,skey);
+    		str := CONCAT(str,sKEY);
     		size := LEN(str);
     		OSCAT_BASIC._STRING_TO_BUFFER(STR:=str, POS:=0, PT:=ADR(S_BUF.BUFFER), SIZE:=size);
     		S_BUF.SIZE := size; (* Sendelänge eintragen *)

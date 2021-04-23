@@ -1,9 +1,9 @@
 FUNCTION ARRAY_HAV
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77*)
-    stop := SHR(size,2)-1;
+    stop := SHR(SIZE,2)-1;
     FOR i := 0 TO stop DO
-    	IF pt^[i] <> 0.0 THEN
-    		ARRAY_HAV := ARRAY_HAV + 1.0 / pt^[i];
+    	IF PT^[i] <> 0.0 THEN
+    		ARRAY_HAV := ARRAY_HAV + 1.0 / PT^[i];
     	ELSE
     		ARRAY_HAV := 0.0;
     		RETURN;

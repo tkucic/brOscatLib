@@ -2,11 +2,11 @@ FUNCTION_BLOCK FTP_CLIENT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=94*)
     CASE step OF
 
-    00:	IF ACTIVATE AND NOT activate_last THEN
+    00:	IF ACTIVATE AND NOT ACTIVATE_last THEN
     		ftp_file_size := UDINT#0;
     		TIMEOUT := MAX(T#10s,TIMEOUT);
-    		timeout2 := TIMEOUT + T#1s;
-    		timeout3 := TIMEOUT / 2;
+    		TIMEOUT2 := TIMEOUT + T#1s;
+    		TIMEOUT3 := TIMEOUT / 2;
     		DONE := FALSE;
     		ip_c1_red_disable := FALSE;
     		ip_c2_red_disable := FALSE;
@@ -187,7 +187,7 @@ FUNCTION_BLOCK FTP_CLIENT
     		next_step := 320;
     	END_IF
 
-    320:IF rcv_state = 221 OR TON_WAIT.ET > timeout3  THEN (* 221 Service closing control connection *)
+    320:IF rcv_state = 221 OR TON_WAIT.ET > TIMEOUT3  THEN (* 221 Service closing control connection *)
     		IP_C1.C_ENABLE := FALSE; (* FTP Steuerkanal schliessen *)
     		IF FILE_DELETE THEN (* Datei nach transfer löschen *)
     			FSD.MODE := BYTE#4; (* File Remove *)
@@ -236,7 +236,7 @@ FUNCTION_BLOCK FTP_CLIENT
 
     (* ================================================== *)
 
-    700:IF rcv_state = 226 OR  TON_WAIT.ET > timeout3 THEN (* 226 Closing control connection. Requested file action successful  *)
+    700:IF rcv_state = 226 OR  TON_WAIT.ET > TIMEOUT3 THEN (* 226 Closing control connection. Requested file action successful  *)
     		IF FTP_DOWNLOAD AND FILE_DELETE THEN (* FTP Download und File löschen ? *)
     			snd_text := CONCAT('DELE ', ftp_path); (* DELE /PFAD/FILENAME *)
     			next_step := 720;
@@ -254,7 +254,7 @@ FUNCTION_BLOCK FTP_CLIENT
     	next_step := 760;
     	step := 999; (* Warten auf next_step *)
 
-    760:IF rcv_state = 221 OR TON_WAIT.ET > timeout3 THEN (* 221 Service closing control connection  *)
+    760:IF rcv_state = 221 OR TON_WAIT.ET > TIMEOUT3 THEN (* 221 Service closing control connection  *)
     		IP_C1.C_ENABLE := FALSE; (* FTP Steuerkanal schliessen *)
     		IF NOT FTP_DOWNLOAD AND FILE_DELETE THEN (* FTP Upload und Datei nach transfer löschen *)
     			FSD.MODE := BYTE#4; (* File Remove *)
@@ -399,9 +399,9 @@ FUNCTION_BLOCK FTP_CLIENT
     IPC1(IP:= DWORD#0, PORT:= WORD#0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C1, S_BUF:= S_BUF1, R_BUF:= R_BUF1); (* FTP Steuerkanal *)
     IPC2(IP:= DWORD#0, PORT:= WORD#0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C2, S_BUF:= S_BUF2, R_BUF:= R_BUF2); (* FTP Datenkanal *)
 
-    TON_WAIT(IN:=step = last_step AND step > 0,PT:=timeout2);
+    TON_WAIT(IN:=step = last_step AND step > 0,PT:=TIMEOUT2);
     last_step := step;
-    activate_last := ACTIVATE;
+    ACTIVATE_last := ACTIVATE;
     BUSY := step <> 0;
 
     IF FTP_DOWNLOAD THEN (* FILE_SERVER *)

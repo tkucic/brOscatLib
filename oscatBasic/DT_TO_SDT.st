@@ -1,7 +1,7 @@
 FUNCTION DT_TO_SDT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122*)
-    tmp := DT_TO_DATE(dti);
-    tdt := DT_TO_DWORD(dti) - DATE_TO_DWORD(tmp);
+    tmp := DT_TO_DATE(DTI);
+    tdt := DT_TO_DWORD(DTI) - DATE_TO_DWORD(tmp);
     DT_TO_SDT.YEAR := YEAR_OF_DATE(tmp);
     DT_TO_SDT.MONTH := MONTH_OF_DATE(tmp);
     DT_TO_SDT.DAY := DAY_OF_MONTH(tmp);

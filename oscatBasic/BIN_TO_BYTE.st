@@ -1,7 +1,7 @@
 FUNCTION BIN_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145*)
-    pt := ADR(bin);
-    stop := LEN(bin);
+    pt := ADR(BIN);
+    stop := LEN(BIN);
     FOR I := 1 TO stop DO
     	x := pt^;
     	(* calculate the value of the digit *)

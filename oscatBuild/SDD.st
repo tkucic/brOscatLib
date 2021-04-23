@@ -1,6 +1,6 @@
 FUNCTION SDD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=445*)
-    IF ice THEN
+    IF ICE THEN
     	SDD := 611.153 * EXP(22.4433 * T / (272.186 + T));
     ELSE
     	SDD := 611.213 * EXP(17.5043 * T / (241.2 + T));

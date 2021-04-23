@@ -5,11 +5,11 @@ FUNCTION_BLOCK RTC_2
     UDT := rt.xdt;
     XMS := rt.XMS;
 
-    (* check for daylight savings time and set dso output *)
-    DSO := DST(udt) AND DEN;
+    (* check for daylight savings time and SET DSO output *)
+    DSO := DST(UDT) AND DEN;
 
-    (* calculate time offset and set ldt output *)
-    LOCAL_DT := DWORD_TO_DT(DT_TO_DWORD(UDT) + INT_TO_DWORD(ofs + BOOL_TO_INT(DSO)*60) * 60);
+    (* calculate time offSET and SET ldt output *)
+    LOCAL_DT := DWORD_TO_DT(DT_TO_DWORD(UDT) + INT_TO_DWORD(OFS + BOOL_TO_INT(DSO)*60) * 60);
 
 
     (* revision history
@@ -23,7 +23,7 @@ FUNCTION_BLOCK RTC_2
     	improved performance
 
     hm		20. jan. 2011	rev 1.3
-    	changed offset to be in minutes
+    	changed offSET to be in minutes
 
     hm		27. apr. 2011	rev 1.4
     	fixed error with local time calculation

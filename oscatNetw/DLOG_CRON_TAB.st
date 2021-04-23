@@ -1,7 +1,7 @@
 FUNCTION_BLOCK DLOG_CRON_TAB
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46*)
     IF ACTIVATE THEN
-    	IF NOT activate_old THEN
+    	IF NOT ACTIVATE_old THEN
     		CD.CE[0].VALUE_MIN := 0;	(* Sekunden *)
     		CD.CE[0].VALUE_MAX := 59;
     		CD.CE[1].VALUE_MIN := 0;	(* Minuten *)
@@ -83,7 +83,7 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     				END_IF
     			END_FOR
     		END_FOR
-    	ELSIF DTI <> dti_last THEN
+    	ELSIF DTI <> DTI_last THEN
     		CD.CE[0].VALUE := OSCAT_BASIC.SECOND_OF_DT(DTI); (* Sekunden *)
     		CD.CE[1].VALUE := OSCAT_BASIC.MINUTE_OF_DT(DTI); (* Minuten *)
     		CD.CE[2].VALUE := OSCAT_BASIC.HOUR_OF_DT(DTI); (* Stunden *)
@@ -91,11 +91,11 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     		CD.CE[3].VALUE := OSCAT_BASIC.DAY_OF_MONTH(datei); (* Tag *)
     		CD.CE[4].VALUE := OSCAT_BASIC.DAY_OF_WEEK(datei); (* Wochentag *)
     		CD.CE[5].VALUE := OSCAT_BASIC.MONTH_OF_DATE(datei); (*  Monat *)
-    		dti_last := DTI;
+    		DTI_last := DTI;
 
     		idx2 := CD.CE[0].VALUE;	(* sekunden *)
     		Q := CD.CE[0].ELEMENTS[idx2] = TRUE;
-    		idx2 := CD.CE[1].VALUE;	(* minuten *)
+    		idx2 := CD.CE[1].VALUE;	(* MINUTEn *)
     		Q := Q AND CD.CE[1].ELEMENTS[idx2] = TRUE;
     		idx2 := CD.CE[2].VALUE;	(* stunden *)
     		Q := Q AND CD.CE[2].ELEMENTS[idx2] = TRUE;
@@ -118,7 +118,7 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     	END_IF
 
     END_IF
-    activate_old := ACTIVATE;
+    ACTIVATE_old := ACTIVATE;
 
     (* revision history
     ks	27. oct. 2011	rev 1.0

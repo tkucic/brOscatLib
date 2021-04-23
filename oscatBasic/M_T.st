@@ -18,18 +18,18 @@ FUNCTION_BLOCK M_T
 
     (* revision history
     hm	4. aug. 2006	rev 1.0
-    	original version
+    	origINal version
 
     hm	2. may. 2007	rev 1.1
-    	added init variable to avoid unreasonable measurement if falling edge occurs first.
-    	added et (elapsed time) output to count from 0 at rising edge until a falling edge resets et to 0.
-    	added reset input.
+    	added INit variable to avoid unreasonable measurement if fallINg edge occurs fiRST.
+    	added ET (elapsed time) output to count from 0 at risINg edge until a fallINg edge resETs ET to 0.
+    	added resET INput.
 
     hm	16. sep. 2007	rev 1.2
     	changes time() to T_plc_ms() for compatibility reasons
 
     hm	17. dec. 2008	rev 1.3
-    	code optimized
+    	code oPTimized
 
     hm	10. mar. 2009	rev 1.4
     	removed nested comments

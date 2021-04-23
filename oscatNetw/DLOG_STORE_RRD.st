@@ -1,8 +1,8 @@
 FUNCTION_BLOCK DLOG_STORE_RRD
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=54*)
     X.DTI := DTI; (* Datum / Zeit eintragen *)
-    X.CLOCK_TRIG := DTI <> dti_last;
-    dti_last := DTI;
+    X.CLOCK_TRIG := DTI <> DTI_last;
+    DTI_last := DTI;
     trig_auto := FALSE;
     IF X.CLOCK_TRIG THEN (* Impuls in jeder Sekunde *)
     	IF TRIG_T >= T#1000ms THEN (* automatischer Trigger *)
@@ -25,12 +25,12 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     		UCB(DATA:=X.UCB); (* Buffer löschen *)
 
     		URL_DATA:=STRING_TO_URL(STR:=URL,DEFAULT_PROTOCOL:='',DEFAULT_PATH:=''); (* URL zerlegen *)
-    		sep_char := OSCAT_BASIC.CHR_TO_STRING(SEP);
-    		url_query := URL_DATA.QUERY;
+    		SEP_char := OSCAT_BASIC.CHR_TO_STRING(SEP);
+    		URL_query := URL_DATA.QUERY;
     		step_1 := 30;
 
     		(* ---------------- Debug-Message -----------------------*)
-    		(*IF _debug_enable THEN
+    		(*IF _debug_ENABLE THEN
     			LOG_CL.NEW_MSG := 'FILE_RRD1 - Start: DATE [~2]';
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
@@ -40,14 +40,14 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     	END_IF
 
     30:	(* LOG-Trigger verarbeiten *)
-    	trig_tmp := (TRIG_M AND NOT trig_m_last) OR trig_auto OR X.ADD_DATA_REQ;
+    	TRIG_Tmp := (TRIG_M AND NOT TRIG_M_last) OR trig_auto OR X.ADD_DATA_REQ;
 
     	IF ENABLE = FALSE THEN (* ENABLE = 0 -> Log Stop *)
     		X.ADD_COM := 00;
     		step_1 := 00;
 
     		(* ---------------- Debug-Message -----------------------*)
-    		(*IF _debug_enable THEN
+    		(*IF _debug_ENABLE THEN
     			LOG_CL.NEW_MSG := 'FILE_RRD1 - Stop: DATE [~2]';
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
@@ -55,11 +55,11 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     		(* -----------------------------------------------------------------*)
 
     	ELSIF ENABLE THEN
-    		IF trig_tmp OR trig_stored THEN (* manueller, automatischer oder externer Trigger *)
+    		IF TRIG_Tmp OR trig_stored THEN (* manueller, automatischer oder externer Trigger *)
     			trig_stored := FALSE;
     			X.ADD_COM := 03; (* ADD DATA *)
     			(* ---------------- Debug-Message -----------------------*)
-    			(*IF _debug_enable THEN
+    			(*IF _debug_ENABLE THEN
     				LOG_CL.NEW_MSG := 'FILE_RRD1 - Trig: DATE [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
@@ -87,13 +87,13 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     	END_IF
 
     	IF X.UCB.BUF_COUNT >= USINT_TO_INT(X.ID_MAX) THEN (* genug Einträge vorhanden *)
-    		URL_DATA.QUERY := url_query; (* original Query wiederherstellen *)
+    		URL_DATA.QUERY := URL_query; (* original Query wiederherstellen *)
     		n := 1;
     		WHILE n <= USINT_TO_INT(X.ID_MAX) DO
     			X.UCB.D_MODE := 12; (* Element lesen und löschen *)
     			UCB(DATA:=X.UCB);
     			IF n < USINT_TO_INT(X.ID_MAX) THEN (* Trennzeichen hinzufügen *)
-    				X.UCB.D_STRING := CONCAT(X.UCB.D_STRING,sep_char);
+    				X.UCB.D_STRING := CONCAT(X.UCB.D_STRING,SEP_char);
     			END_IF
     			IF LEN(X.UCB.D_STRING) + LEN(URL_DATA.QUERY) <= OSCAT_BASIC.STRING_LENGTH THEN
     				URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,X.UCB.D_STRING); (* Query mit LOG-Daten ergänzen *)
@@ -143,7 +143,7 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     DNS_CLIENT(IP_C:=IP_C, S_BUF:=S_BUF, R_BUF:=R_BUF, DOMAIN:=URL_DATA.DOMAIN, IP4_DNS:= DNS_IP4, ACTIVATE:=step_2=40); (* DNS-Client *)
     IPC(IP:= 0, PORT:= 0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C, S_BUF:= S_BUF, R_BUF:= R_BUF); (* IP_CONTROL *)
 
-    trig_m_last := TRIG_M;
+    TRIG_M_last := TRIG_M;
 
     (* revision history
     ks	01. jan. 2011	rev 1.0

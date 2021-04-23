@@ -1,10 +1,10 @@
 FUNCTION WORD_OF_DWORD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=235*)
-    WORD_OF_DWORD := DWORD_TO_WORD(SHR(in,SHL(n,4)));
+    WORD_OF_DWORD := DWORD_TO_WORD(SHR(IN,SHL(n,4)));
 
     (* revision history
     hm	17. jan 2007	rev 1.0
-    	original version
+    	origINal version
 
     hm	2. jan 2008		rev 1.1
     	improved performance

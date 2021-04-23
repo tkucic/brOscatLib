@@ -5,10 +5,10 @@ FUNCTION_BLOCK IRTRANS_DECODE
     (* do nothing if the buffer is empty *)
     IF size > 0 AND IP_C.MAILBOX[1] <> z THEN
     	i := 0;
-    	error := TRUE;
+    	ERROR := TRUE;
     	stop := size - 2;
-    	(* read characters before first comma and store in device *)
-    	pt := ADR(dev);
+    	(* read characters before first comma and store in DEVice *)
+    	pt := ADR(DEV);
     	buffer := ADR(R_BUF.BUFFER);
     	WHILE i < stop DO
     		IF buffer^[i] = 44 THEN EXIT; END_IF
@@ -16,28 +16,28 @@ FUNCTION_BLOCK IRTRANS_DECODE
     		pt := pt + 1;
     		i := i + 1;
     	END_WHILE
-    	(* terminate the device string *)
+    	(* terminate the DEVice string *)
     	pt^ := 0;
-    	(* read after first comma and store in key *)
+    	(* read after first comma and store in KEY *)
     	i := i + 1;
-    	pt := ADR(key);
+    	pt := ADR(KEY);
     	WHILE i < stop DO
     		pt^ := buffer^[i];
     		pt := pt + 1;
     		i := i + 1;
     	END_WHILE
-    	(* terminate the key string *)
+    	(* terminate the KEY string *)
     	pt^:= 0;
     	(* check if last two characters are $R$N 13, 10 *)
     	IF buffer^[i] <> 13 AND buffer^[i+1] <> 10 THEN	RETURN;	END_IF
-    	(* check if device and key are present *)
-    	IF LEN(dev) = 0 OR LEN(key) = 0 THEN RETURN; END_IF
+    	(* check if DEVice and KEY are present *)
+    	IF LEN(DEV) = 0 OR LEN(KEY) = 0 THEN RETURN; END_IF
     	(* a valid transmission has been received *)
-    	cmd := TRUE;
-    	error := FALSE;
+    	CMD := TRUE;
+    	ERROR := FALSE;
     ELSE
-    	error := FALSE;
-    	cmd := FALSE;
+    	ERROR := FALSE;
+    	CMD := FALSE;
     END_IF
 
     z := IP_C.MAILBOX[1];

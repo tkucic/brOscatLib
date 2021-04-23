@@ -2,9 +2,9 @@ FUNCTION_BLOCK MD5_STR
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=80*)
     CASE mode OF
     0:	(* Wait für Start *)
-    	IF RUN AND NOT run_last THEN
+    	IF RUN AND NOT RUN_last THEN
     		DONE := FALSE;
-    		mode := 1; (* Initialisierung *)
+    		mode := 1; (* InitialisieRUNg *)
     		size := LEN(STR);
     	END_IF
 
@@ -22,7 +22,7 @@ FUNCTION_BLOCK MD5_STR
     	MD5_STREAM(SIZE:=size, MODE:=mode, BUF:=buf, MD5:=MD5, POS=>pos);
     END_IF
 
-    run_last := RUN;
+    RUN_last := RUN;
 
     (* revision history
 

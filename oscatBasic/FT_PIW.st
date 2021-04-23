@@ -1,12 +1,12 @@
 FUNCTION_BLOCK FT_PIW
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=411*)
-    (* run integrator *)
-    integ(IN := IN, K := KI, RUN := NOT LIM, RST := RST);
+    (* run INtegrator *)
+    INteg(IN := IN, K := KI, RUN := NOT LIM, RST := RST);
 
     (* set output value *)
-    Y := KP * IN + integ.Out;
+    Y := KP * IN + INteg.Out;
 
-    (* check for limits and set integrator for anti wind up *)
+    (* check for LIMits and set INtegrator for anti wINd up *)
     IF Y < LIM_L THEN
     	Y := LIM_L;
     	LIM := TRUE;
@@ -21,7 +21,7 @@ FUNCTION_BLOCK FT_PIW
 
     (* revision history
     hm 	3. jun. 2008 	rev 1.0
-    	original version
+    	origINal version
 
 
     *)

@@ -32,7 +32,7 @@ FUNCTION HTML_DECODE
 
     (* revision history
     hm	3. mai. 2008	rev 1.0
-    	original version
+    	origINal version
 
     hm	16. jun. 2008	rev 1.1
     	changed nested call of replace for better compatibility
@@ -41,7 +41,7 @@ FUNCTION HTML_DECODE
     	changed function CHR to CHR_TO_STRING
 
     hm	10. may. 2010	rev 1.3
-    	stringlength 250
+    	strINglength 250
 
     *)
 END_FUNCTION
