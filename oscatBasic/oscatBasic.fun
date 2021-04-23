@@ -5996,7 +5996,7 @@ FUNCTION TRIME : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         STR : STRING[STRING_LENGTH];
     END_VAR
     VAR_IN_OUT
-        RETVAL : STRING[string_length]; (*Return value of the function*)
+        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
 FUNCTION UPPERCASE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182 *)
