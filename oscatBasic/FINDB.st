@@ -17,7 +17,7 @@ FUNCTION FINDB
     	changed code for better performance
 
     hm	29. feb 2008	rev 1.2
-    	added findb := 0 for compatibility reasons
+    	added FINDB := 0 for compatibility reasons
 
     hm	29. mar. 2008	rev 1.3
     	changed STRING to STRING(STRING_LENGTH)

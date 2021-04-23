@@ -6,7 +6,7 @@ FUNCTION AIR_DENSITY
 
     SDD := SDD(T,FALSE);
     RF := RL / (1- RH*SDD/P*RX);
-    Air_density := P / (RF * (T-TK));
+    AIR_DENSITY := P / (RF * (T-TK));
 
     *)
 

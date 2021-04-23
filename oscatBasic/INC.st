@@ -7,7 +7,7 @@ FUNCTION INC
     	original version
 
     hm	15. jan 2008	rev 1.1
-    	allow for neagtive increment
+    	allow for neagtive INCrement
 
     *)
 END_FUNCTION

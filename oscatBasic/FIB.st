@@ -6,7 +6,7 @@ FUNCTION FIB
     	FIB := X;
     	RETURN;
     ELSE
-    	(* the fibonacci number is the sum of the two suceeding fibonaci numbers *)
+    	(* the FIBonacci number is the sum of the two suceeding FIBonaci numbers *)
     	(* we store the numbers alternatively in t1 and t2 depending on pt *)
     	t2 := 1;
     	WHILE X > 3 DO
@@ -15,15 +15,15 @@ FUNCTION FIB
     		t2 := t1 + t2;
     	END_WHILE
     	IF X > 2 THEN t1 := t1 + t2; END_IF
-    	fib := t1 + t2;
+    	FIB := t1 + t2;
     END_IF
 
     (* alternative code for very big numbers
 
     IF X < 31 THEN
-    	fib := 0.4472136 * (expn(1.618034,X) - expn(-0.618034,X));
+    	FIB := 0.4472136 * (expn(1.618034,X) - expn(-0.618034,X));
     ELSE
-    	fib := 0.4472133 * expn(1.618034,X);
+    	FIB := 0.4472133 * expn(1.618034,X);
     END_IF
 
     *)

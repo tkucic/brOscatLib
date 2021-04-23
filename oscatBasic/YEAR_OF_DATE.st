@@ -18,7 +18,7 @@ FUNCTION YEAR_OF_DATE
     	deleted unused step7 code
 
     hm	7. oct. 2008	rev 1.4
-    	renamed function (year) to year_of_date
+    	renamed function (year) to YEAR_OF_DATE
 
     *)
 END_FUNCTION

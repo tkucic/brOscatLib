@@ -2,7 +2,7 @@ FUNCTION ARRAY_SDV
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=79*)
     (* standard deviation is simply the square root of the variance *)
 
-    array_sdv := SQRT(array_var(PT, SIZE));
+    ARRAY_SDV := SQRT(array_var(PT, SIZE));
 
     (* revision history
     hm 	1.4.2007		rev 1.0

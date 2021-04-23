@@ -8,7 +8,7 @@ FUNCTION ARRAY_SPR
     	ELSIF PT^[i] < array_min THEN array_min := PT^[i];
     	END_IF
     END_FOR
-    array_spr := array_max - array_min;
+    ARRAY_SPR := array_max - array_min;
 
 
     (* revision history

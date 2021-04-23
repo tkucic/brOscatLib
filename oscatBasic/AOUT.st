@@ -12,14 +12,14 @@ FUNCTION AOUT
     IN2 := LIMIT(LOW, IN2, HIGH);
 
     (* Berechne den Ausgangswert *)
-    Aout := REAL_TO_DWORD((IN2 - LOW) / (HIGH - LOW) * DWORD_TO_REAL(SHL(ff,BITS) -1));
-    IF sx THEN Aout := SHL(ff,SIGN) OR Aout; END_IF
+    AOUT := REAL_TO_DWORD((IN2 - LOW) / (HIGH - LOW) * DWORD_TO_REAL(SHL(ff,BITS) -1));
+    IF sx THEN AOUT := SHL(ff,SIGN) OR AOUT; END_IF
 
     (*
     revision history
 
     hm 18.1.2007		rev 1.1
-    	renamed Modul to aout.
+    	renamed Modul to AOUT.
     	changed Output to 32 Bit max.
     	corrected error with SIGN bit.
 

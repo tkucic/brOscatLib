@@ -4,10 +4,10 @@ FUNCTION LEAP_YEAR
 
     (* this code was used prior to rev 1.1
 
-    IF YR MOD 400 = 0 THEN leap_year := TRUE;
-    ELSIF YR MOD 100 = 0 THEN leap_year := FALSE;
-    ELSIF YR MOD 4 =0 THEN leap_year := TRUE;
-    ELSE leap_year := FALSE;
+    IF YR MOD 400 = 0 THEN LEAP_YEAR := TRUE;
+    ELSIF YR MOD 100 = 0 THEN LEAP_YEAR := FALSE;
+    ELSIF YR MOD 4 =0 THEN LEAP_YEAR := TRUE;
+    ELSE LEAP_YEAR := FALSE;
     END_IF
 
     *)

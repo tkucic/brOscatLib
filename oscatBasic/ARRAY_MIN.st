@@ -1,9 +1,9 @@
 FUNCTION ARRAY_MIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78*)
     stop := (SIZE - SIZEOF(PT)) / SIZEOF(PT);
-    array_min := PT^[0];
+    ARRAY_MIN := PT^[0];
     FOR i := 1 TO stop DO
-    	IF PT^[i] < array_min THEN array_min := PT^[i]; END_IF
+    	IF PT^[i] < ARRAY_MIN THEN ARRAY_MIN := PT^[i]; END_IF
     END_FOR
 
 

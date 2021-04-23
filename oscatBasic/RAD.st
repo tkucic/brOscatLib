@@ -7,7 +7,7 @@ FUNCTION RAD
     	original version
 
     hm 	16. oct 2007	rev 1.1
-    	added modr statement which prohibits rad to become bigger than 2PI
+    	added modr statement which prohibits RAD to become bigger than 2PI
 
     hm	18. oct 2008	rev 1.2
     	using math constants

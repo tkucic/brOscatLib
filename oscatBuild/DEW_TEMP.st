@@ -5,7 +5,7 @@ FUNCTION DEW_TEMP
     	SDD := 6.1078*EXPT(10,(a*T)/(b+T));
     	DD := RH/100 * SDD;
     	V := LOG(DD/6.1078);
-    	dew_temp := b*V/(a-v);
+    	DEW_TEMP := b*V/(a-v);
     *)
     	V := LOG(RH * 0.01 * OSCAT_BASIC.EXP10((a*T) / (b+T)));
     	DEW_TEMP := b*V / (a-V);

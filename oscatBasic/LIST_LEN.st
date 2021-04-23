@@ -17,7 +17,7 @@ FUNCTION LIST_LEN
     	original release
 
     hm	16. oct. 2008	rev 1.1
-    	fixed a problem where LIST_len would only work up to LIST_LENGTH
+    	fixed a problem where LIST_LEN would only work up to LIST_LENGTH
 
     hm	19. jan. 2001	rev 1.2
     	changed string(255) to string(LIST_LENGTH)

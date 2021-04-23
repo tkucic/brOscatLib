@@ -1,7 +1,7 @@
 FUNCTION CHARNAME
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147*)
     IF C <> 0 THEN
-    	(* construct search string from code followed by $ sign, also clear charname string*)
+    	(* construct search string from code followed by $ sign, also clear CHARNAME string*)
     	CHARNAME := CHR_TO_STRING(C);
     	CHARNAME := CONCAT(CHARNAME,'&');
     	CHARNAME := CONCAT(';', CHARNAME);

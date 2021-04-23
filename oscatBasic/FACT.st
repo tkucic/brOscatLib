@@ -31,12 +31,12 @@ FUNCTION FACT
     	start value for i has changed to 2 for better performance
 
     hm	10. mar 2008	rev 1.3
-    	changed output of fact to dint to allow bigger values
+    	changed output of FACT to dint to allow bigger values
 
     hm	27. oct. 2008	rev 1.4
     	optimized code
 
     hm	26. mar. 2011	rev 1.5
-    	using array math.facts
+    	using array math.FACTs
     *)
 END_FUNCTION

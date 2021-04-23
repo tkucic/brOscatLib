@@ -1,9 +1,9 @@
 FUNCTION ARRAY_SUM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=80*)
     stop := (SIZE -SIZEOF(PT)) / SIZEOF(PT);
-    array_sum := PT^[0];
+    ARRAY_SUM := PT^[0];
     FOR i := 1 TO stop DO
-    	array_sum := array_sum + PT^[i];
+    	ARRAY_SUM := ARRAY_SUM + PT^[i];
     END_FOR
 
     (* revision history

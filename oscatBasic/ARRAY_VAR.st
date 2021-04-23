@@ -11,9 +11,9 @@ FUNCTION ARRAY_VAR
 
     (* in a second run we calculate the variance of the array *)
 
-    array_var := (PT^[0] - avg) * (PT^[0] - avg);
+    ARRAY_VAR := (PT^[0] - avg) * (PT^[0] - avg);
     FOR i := 1 TO stop DO
-    	array_var := array_var + (PT^[i] - avg) * (PT^[i] - avg);
+    	ARRAY_VAR := ARRAY_VAR + (PT^[i] - avg) * (PT^[i] - avg);
     END_FOR
     ARRAY_VAR := ARRAY_VAR / UINT_TO_REAL(stop);
 

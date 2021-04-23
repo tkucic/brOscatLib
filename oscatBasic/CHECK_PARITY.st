@@ -11,7 +11,7 @@ FUNCTION CHECK_PARITY
     	IF IN.0 THEN cnt := cnt + 1; END_IF
     	IN := SHR(IN,1);
     END_WHILE
-    check_parity := even(cnt) XOR P;
+    CHECK_PARITY := even(cnt) XOR P;
     *)
 
 

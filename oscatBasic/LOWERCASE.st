@@ -1,7 +1,7 @@
 FUNCTION LOWERCASE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=172*)
     PT := ADR(LOWERCASE);
-    lowercase := STR;
+    LOWERCASE := STR;
     l := LEN(STR);
     FOR pos := 1 TO l DO
     	pt^ := TO_LOWER(pt^);

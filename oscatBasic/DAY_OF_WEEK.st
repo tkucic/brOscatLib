@@ -14,7 +14,7 @@ FUNCTION DAY_OF_WEEK
     	deleted unused step7 code
 
     hm	7. oct. 2008	rev 1.4
-    	changed name of function from weekday to day_of_week
+    	changed name of function from weekday to DAY_OF_WEEK
 
     *)
 

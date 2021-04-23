@@ -11,7 +11,7 @@ FUNCTION MODR
     hm	4. aug.2006		rev 1.0
 
     hm	28. jan.2007	rev 1.1
-    	modr(x,0) will deliver the result 0
+    	MODR(x,0) will deliver the result 0
 
     hm	21. mar 2008	rev 1.2
     	use D_trunc for compatibility reasons

@@ -21,10 +21,10 @@ FUNCTION _ARRAY_MEDIAN
     	END_FOR
     END_FOR
     IF even(stop) THEN
-    	_array_median := PT^[stop/2];
+    	_ARRAY_MEDIAN := PT^[stop/2];
     ELSE
     	i := stop/2;
-    	_array_median := (PT^[i] + PT^[i+1])/2;
+    	_ARRAY_MEDIAN := (PT^[i] + PT^[i+1])/2;
     END_IF
     *)
     (* revision history

@@ -10,7 +10,7 @@ FUNCTION PARITY
     	IF IN.0 THEN cnt := cnt +1; END_IF
     	IN := SHR(IN,1);
     END_WHILE
-    IF (cnt MOD 2) = 1 THEN parity := TRUE; ELSE parity := FALSE; END_IF
+    IF (cnt MOD 2) = 1 THEN PARITY := TRUE; ELSE PARITY := FALSE; END_IF
     *)
 
     (* revision history

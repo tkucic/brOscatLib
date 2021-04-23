@@ -17,9 +17,9 @@ FUNCTION WORK_WEEK
     (* kalenderwoche des eingangsdatums *)
     WORK_WEEK := DWORD_TO_INT((DATE_TO_DWORD(IDATE) - ds) / 604800);
 
-    (* korrektur wenn work_week = 0 *)
-    IF work_week = 0 THEN
-    	(* work_week needs to be 53 when 1.jan of the year before is thursday or dec 31. is thursday. *)
+    (* korrektur wenn WORK_WEEK = 0 *)
+    IF WORK_WEEK = 0 THEN
+    	(* WORK_WEEK needs to be 53 when 1.jan of the year before is thursday or dec 31. is thursday. *)
     	(* first and last weekday of a year is equal and one more day for a leap_year. *)
     	IF w1 > 1 THEN w31 := w1 - 1; ELSE W31 := 7; END_IF
     	IF LEAP_YEAR(yr - 1) AND w31 > 1 THEN w01 := W31 - 1; ELSE w1 := 7; END_IF

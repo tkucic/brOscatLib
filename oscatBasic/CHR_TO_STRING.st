@@ -16,6 +16,6 @@ FUNCTION CHR_TO_STRING
     	changed STRING to STRING(1)
 
     hm	17. dec. 2008	rev 1.3
-    	changed name of function from chr to chr_to_string
+    	changed name of function from chr to CHR_TO_STRING
     *)
 END_FUNCTION

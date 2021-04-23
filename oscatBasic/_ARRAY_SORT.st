@@ -123,7 +123,7 @@ FUNCTION _ARRAY_SORT
     		END_IF
     	END_FOR
     END_FOR
-    _array_sort := TRUE;
+    _ARRAY_SORT := TRUE;
 
     *)
 

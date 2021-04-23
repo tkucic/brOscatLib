@@ -5,7 +5,7 @@ FUNCTION DEW_CON
     	DD := RH/100 * SDD;
     	V := LOG(DD/6.1078);
     	TD := b*V/(a-v);
-    	dew_con := 0.1 * mw / RU * DD / (T - TK);
+    	DEW_CON := 0.1 * mw / RU * DD / (T - TK);
     *)
     IF RH > 0.0 AND T > -50.0 THEN
     	DEW_CON := 2.166824303E-2 * RH * SDD(T,FALSE)  / (T - OSCAT_BASIC.phys.T0);

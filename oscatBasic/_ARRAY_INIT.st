@@ -5,7 +5,7 @@ FUNCTION _ARRAY_INIT
     	PT^[i] := INIT;
     END_FOR
 
-    _array_INIT := TRUE;
+    _ARRAY_INIT := TRUE;
 
     (* revision History
 

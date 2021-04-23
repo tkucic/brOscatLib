@@ -48,7 +48,7 @@ FUNCTION EASTER
     n := X / 31;
     o := x MOD 31 + 1;
 
-    easter := set_Date(YEAR,n,o);
+    EASTER := set_Date(YEAR,n,o);
     *)
     (*
     Im Magazin "Nature" vom 20. April 1876 veröffentlichte ein anonymer Autor eine Tabelle mit Regeln zur Berechnung des (Gregorianischen) Ostersonntages des Jahres J. In Formeln ausgedrückt erhält man das Folgende:

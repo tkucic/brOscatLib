@@ -45,7 +45,7 @@ FUNCTION DAY_OF_MONTH
     	(* since now we must be in february or january we need to add leap again *)
     	DAY_OF_MONTH := DAY_OF_MONTH + leap;
     	IF DAY_OF_MONTH > setup.MTH_OFS[2] THEN DAY_OF_MONTH := DAY_OF_MONTH - setup.mth_ofs[2]; END_IF
-    	(* since nothing was true before, day_of_month must already be good *)
+    	(* since nothing was true before, DAY_OF_MONTH must already be good *)
     END_IF
 
 

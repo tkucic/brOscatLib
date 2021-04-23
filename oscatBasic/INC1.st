@@ -16,6 +16,6 @@ FUNCTION INC1
     	added statement to return value for compatibility reasons
 
     hm	23. feb. 2009	rev 1.2
-     	when inc1 is called with X >= N inc will continue with 0
+     	when INC1 is called with X >= N inc will continue with 0
     *)
 END_FUNCTION
