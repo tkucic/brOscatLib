@@ -1,6 +1,6 @@
 FUNCTION_BLOCK GEN_RDT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=259*)
-    tonRDMTimer ( IN:= Enable , PT:= tRDMTime );
+    tonRDMTimer ( IN:= ENABLE , PT:= tRDMTime );
     tof_xQ ( IN:= tonRDMTimer.Q , PT:= TP_Q );
     XQ := tof_XQ.Q;
     IF tonRDMTimer.Q THEN

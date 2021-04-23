@@ -78,7 +78,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	IF rcv_state = 250 THEN
     		(* 250 = Requested mail action okay, complete
     			1. bei manchen Providern wird bei SSL kein AUTH verfahren ausgeben.
-    			2. Da die 250 xxx Meldungen vom manchen SMTP-Servern mit mehr als einem Telegramme versendet
+    			2. Da die 250 xxx Meldungen vom manchen SMTP-SERVERn mit mehr als einem Telegramme versendet
     		       werden muss alternativ über Zeitüberwachung eine SSL Sonderbehandlung durchgeführt werden *)
     		IF ssl_mode >= BYTE#1 AND TON_WAIT.ET > T#1s THEN
     			rcv_text := '250-AUTH LOGIN'; (* AUTH vortäuschen *)
@@ -237,7 +237,7 @@ FUNCTION_BLOCK SMTP_CLIENT
 
     210:
     	IF snd_step = 0 THEN
-    		snd_text := CONCAT('Subject: ',SUBJECT);
+    		snd_text := CONCAT('SUBJECT: ',SUBJECT);
     		step := 220;
     	END_IF
 
@@ -761,7 +761,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     ks	30. may 2011	rev 1.3
     	fehler bei receive-TIMEOUT
     ks	05. may. 2012	rev 1.4
-    	FileServer AutoClose entfernt und Fehler im Alias Name korrigiert
+    	FileSERVER AutoClose entfernt und Fehler im Alias Name korrigiert
     ks	06. apr. 2013	rev 1.5
     	Fehler bei Authorisierungsabfrage bei 1&1 Provider behoben
     ks	22. feb. 2016	rev 1.6

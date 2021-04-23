@@ -6,7 +6,7 @@ FUNCTION_BLOCK DT_SIMU
 
     IF NOT init THEN
     	init := TRUE;
-    	DTS := Start;
+    	DTS := START;
     	tc := 0;
     	last := tx;
     ELSIF SPEED = 0.0 THEN

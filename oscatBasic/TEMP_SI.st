@@ -1,6 +1,6 @@
 FUNCTION TEMP_SI
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=331*)
-    TEMP_SI := (-7.64E-3 + SQRT(Res / RS * 6.64E-5 - 0.803E-5)) * 30120.48193 + TS;
+    TEMP_SI := (-7.64E-3 + SQRT(RES / RS * 6.64E-5 - 0.803E-5)) * 30120.48193 + TS;
 
 
 

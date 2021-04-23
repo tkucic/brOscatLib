@@ -4,18 +4,18 @@ FUNCTION_BLOCK METER_STAT
     	Last_Day := 0.0;
     	Current_Day := 0.0;
     	Day_start := IN;
-    	Last_week := 0.0;
-    	Current_week := 0.0;
+    	LAST_WEEK := 0.0;
+    	CURRENT_WEEK := 0.0;
     	Week_start := IN;
-    	Last_month := 0.0;
-    	Current_month := 0.0;
+    	LAST_MONTH := 0.0;
+    	CURRENT_MONTH := 0.0;
     	month_start := IN;
     	LAST_YEAR := 0.0;
     	CURRENT_YEAR := 0.0;
     	year_start := IN;
     ELSE
     	Current_Day := IN - Day_Start;
-    	Current_Week := In - Week_Start;
+    	Current_Week := IN - Week_Start;
     	Current_Month := IN - Month_Start;
     	Current_Year := IN - Year_Start;
     END_IF

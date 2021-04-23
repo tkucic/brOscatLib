@@ -18,11 +18,11 @@ FUNCTION_BLOCK SWITCH_I
     	state := 2;
     	(* react on risINg or fallINg EDGE_ dependINg on r_EDGE_ *)
     	IF r_EDGE_ XOR IN THEN Q := NOT Q; END_IF
-    (* wait for T_reconfig and adjust r_EDGE_ *)
+    (* wait for T_RECONFIG and adjust r_EDGE_ *)
     ELSIF state = 2 AND Tx - T_RECONFIG >= T_on THEN
     	r_EDGE_ := IN;
     END_IF
-    IF Q AND T_on_max > t#0ms AND Tx >= T_on + T_on_max THEN
+    IF Q AND T_ON_MAX > t#0ms AND Tx >= T_on + T_ON_MAX THEN
     	Q := FALSE;
     END_IF
     EDGE_ := IN;

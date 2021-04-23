@@ -1,6 +1,6 @@
 FUNCTION_BLOCK LENGTH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=367*)
-    Ym :=	m
+    YM :=	m
     		+ p * 0.000376065
     		+ IN * 0.0254
     		+ FT * 0.3048
@@ -8,13 +8,13 @@ FUNCTION_BLOCK LENGTH
     		+ MILE * 1609.344
     		+ SM * 1852.0
     		+ FM * 1.829;
-    Yp := Ym * 2659.11478068951;
-    YIN := Ym * 39.37007874016;
-    YFT := Ym * 3.28083989501;
-    YYD := Ym * 1.09361329834;
-    YMILE := Ym * 0.00062137119;
-    YSM := Ym * 0.00053995680;
-    YFM := Ym * 0.54674685621;
+    YP := YM * 2659.11478068951;
+    YIN := YM * 39.37007874016;
+    YFT := YM * 3.28083989501;
+    YYD := YM * 1.09361329834;
+    YMILE := YM * 0.00062137119;
+    YSM := YM * 0.00053995680;
+    YFM := YM * 0.54674685621;
 
     (*
     Länge Meter m SI-BasiseINheit
@@ -27,7 +27,7 @@ FUNCTION_BLOCK LENGTH
     foot FT 1 FT = 0,3048 m = 30,48 cm
     yard YD 1 YD = 0,9144 m
     MILE MILE 1 MILE = 1609,344 m
-    Internat. Seemeile SM 1 SM = 1852 m
+    INternat. Seemeile SM 1 SM = 1852 m
     Fathom FM 1 FM = 1,829 m • IN der Seeschifffahrt
     *)
 

@@ -17,7 +17,7 @@ FUNCTION_BLOCK RTC_2
     	original version
 
     hm		20. feb. 2008	rev 1.1
-    	added Millisecond Set input
+    	added Millisecond SET input
 
     hm		12. jun. 2008	rev 1.2
     	improved performance

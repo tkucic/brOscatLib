@@ -45,10 +45,10 @@ FUNCTION_BLOCK PARSET
     	END_IF
     ELSIF start AND tx - last < TIME_TO_DWORD(TC) THEN
     	(* ramp the outputs to the new value *)
-    	P1 := X[set,1] - S1 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
-    	P2 := X[set,2] - S2 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
-    	P3 := X[set,3] - S3 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
-    	P4 := X[set,4] - S4 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
+    	P1 := X[set,1] - S1 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
+    	P2 := X[set,2] - S2 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
+    	P3 := X[set,3] - S3 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
+    	P4 := X[set,4] - S4 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
     ELSE
     	(* make sure outputs maTCh the correct set values *)
     	start := FALSE;

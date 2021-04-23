@@ -4,7 +4,7 @@ FUNCTION_BLOCK TN_FRAMEWORK
     IF (NOT IP_C.C_ENABLE) THEN
 
     	(* IP Datenverkehr einrichten *)
-    	IP_C.C_PORT := SEL(PORT=BYTE#0,PORT,WORD#23); (* Portnummer eintragen *)
+    	IP_C.C_PORT := SEL(PORT=BYTE#0,PORT,WORD#23); (* PORTnummer eintragen *)
     	IP_C.C_IP := DWORD#00; (* IP eintragen *)
     	IP_C.C_MODE := BYTE#4; (* Mode: TCP+PASSIV+PORT *)
     	IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)

@@ -75,7 +75,7 @@ FUNCTION_BLOCK CSV_PARSER_FILE
     				END_IF
     			END_IF
 
-    			IF v_add > 0  AND pv < pve THEN (* Zeichen zu Value-String hinzufügen *)
+    			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-String hinzufügen *)
     				pv^ := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
     				pv^ := 0; (* String-TerminieRUNg eintragen *)
@@ -89,12 +89,12 @@ FUNCTION_BLOCK CSV_PARSER_FILE
     	CASE state OF
     	01:	(* Element gefunden *)
     		RESULT := 1; (* Element gefunden *)
-    		OFFSET := i; (* Offset uebernehmen *)
+    		OFFSET := i; (* OFFSET uebernehmen *)
     		RUN := 0;
     		state := 0;
     	02:	(* Element gefunden *)
     		RESULT := 2; (* Element und Zeilenende erkannt *)
-    		OFFSET := i; (* Offset uebernehmen *)
+    		OFFSET := i; (* OFFSET uebernehmen *)
     		RUN := 0;
     		state := 0;
 
@@ -102,14 +102,14 @@ FUNCTION_BLOCK CSV_PARSER_FILE
 
     	10:	(* Indexüberschreitung - Bufferende *)
     		RESULT := 10; (* nichts gefunden - Datenende erreicht *)
-    		OFFSET := i; (* Offset uebernehmen *)
+    		OFFSET := i; (* OFFSET uebernehmen *)
     		RUN := 0;
     		state := 0;
     	END_CASE
 
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
-    		LOG_CL.NEW_MSG := 'CPF: intern Result ~1 , state ~2, step ~3 , OFFSET ~4, RUN ~5';
+    		LOG_CL.NEW_MSG := 'CPF: intern RESULT ~1 , state ~2, step ~3 , OFFSET ~4, RUN ~5';
     		LOG_CL.PRINTF[1] := BYTE_TO_STRING(RESULT);
     		LOG_CL.PRINTF[2] := BYTE_TO_STRING(state);
     		LOG_CL.PRINTF[3] := INT_TO_STRING(step);

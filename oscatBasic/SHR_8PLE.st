@@ -6,22 +6,22 @@ FUNCTION_BLOCK SHR_8PLE
     	(* hier ist der code für das flankenevent *)
     	IF UP THEN						(*shift UP *)
     		register := SHL(register,1);
-    		register.0 := Din;
-    		Dout := register.7;
+    		register.0 := DIN;
+    		DOUT := register.7;
     	ELSE								(* shift down *);
     		register := SHR(register,1);
-    		register.7 := Din;
-    		Dout := register.0;
+    		register.7 := DIN;
+    		DOUT := register.0;
     	END_IF
-    	IF LOAD THEN							(* the byte on Din will be LOADed if LOAD = true *)
+    	IF LOAD THEN							(* the byte on DIN will be LOADed if LOAD = true *)
     		register := DLOAD;
-    		IF UP THEN Dout := register.7; ELSE Dout := register.0; END_IF
+    		IF UP THEN DOUT := register.7; ELSE DOUT := register.0; END_IF
     	END_IF
     END_IF
     IF NOT CLK THEN EDGE_ := TRUE; END_IF	(* sobald CLK wieder low wird warten auf nächste flanke *)
     IF RST THEN									(* wenn reset aktiv dann ausgang rücksetzen *)
     	register := 0;
-    	Dout := FALSE;
+    	DOUT := FALSE;
     END_IF
 
 END_FUNCTION_BLOCK

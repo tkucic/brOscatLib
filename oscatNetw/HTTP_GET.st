@@ -92,13 +92,13 @@ FUNCTION_BLOCK HTTP_GET
     		(* IP Datenverkehr einrichten *)
     		IF FIND(';HTTPS;https;Https;', CONCAT(URL_DATA.PROTOCOL,';')) > 1 THEN
     			IP_C.C_PORT := SEL(URL_DATA.PORT = WORD#0,URL_DATA.PORT,WORD#443); (* Portnummer eintragen *)
-    			IP_C.MAILBOX[16] := BYTE#1; (* SSL Mode freigeben *)
+    			IP_C.MAILBOX[16] := BYTE#1; (* SSL MODE freigeben *)
     		ELSE
     			IP_C.C_PORT := SEL(URL_DATA.PORT = WORD#0,URL_DATA.PORT,WORD#80);  (* Portnummer eintragen *)
     		END_IF
 
     		IP_C.C_IP := IP4_stored; (* IP eintragen *)
-    		IP_C.C_MODE := BYTE#0; (* Mode: TCP+AKTIV+PORT+IP *)
+    		IP_C.C_MODE := BYTE#0; (* MODE: TCP+AKTIV+PORT+IP *)
     		IP_C.C_ENABLE := TRUE; (* Verbindungsaufbau freigeben *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
     		IP_C.R_OBSERVE := TRUE; (* Datenempfang ueberwachen *)
@@ -250,7 +250,7 @@ FUNCTION_BLOCK HTTP_GET
     40:	IF (UNLOCK_BUF OR NOT DONE) THEN (* Warten auf Release und Verbindung beendet -> IP_ID vom Stack nehmen *)
     		IP_STATE := BYTE#4; (* Abmelden *)
     		DONE := FALSE;
-    		IP_C.MAILBOX[16] := BYTE#0; (* SSL Mode beenden *)
+    		IP_C.MAILBOX[16] := BYTE#0; (* SSL MODE beenden *)
     		state := 0;
     	END_IF
     END_CASE

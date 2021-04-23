@@ -9,7 +9,7 @@ FUNCTION_BLOCK DRIVER_1
     	IF TOGGLE_MODE THEN q := NOT Q; ELSE q := TRUE; END_IF
     END_IF
     EDGE_ := IN;
-    IF TIMEOUT > t#0s THEN off(IN := Q, PT := Timeout); END_IF
+    IF TIMEOUT > t#0s THEN off(IN := Q, PT := TIMEOUT); END_IF
 
 
     (* revision history

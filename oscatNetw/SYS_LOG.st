@@ -20,16 +20,16 @@ FUNCTION_BLOCK SYS_LOG
     	IF IP_STATE = BYTE#3 THEN
     		(* Sendedaten aufbereiten *)
     		i := 0;
-    		IF (OPTION AND BYTE#0000_0001) = BYTE#00 THEN (* Option: no priority Code *)
+    		IF (OPTION AND BYTE#0000_0001) = BYTE#00 THEN (* OPTION: no priority Code *)
     			(* Priority:  '<xx>' als dezimalwert *)
-    			(* BYTE: xxxx x...  = Facility *)
+    			(* BYTE: xxxx x...  = FACILITY *)
     			(*       .... .xxx  = Level *)
     			s1 := REPLACE('<P>',BYTE_TO_STRING(SHL(FACILITY,3) OR (SEVERITY AND BYTE#0000_0111)),1,2);
     		ELSE
     			s1 := '';
     		END_IF
 
-    		IF (OPTION AND BYTE#0000_0010) = BYTE#00 THEN (* Option: No Use Syslog RFC Header *)
+    		IF (OPTION AND BYTE#0000_0010) = BYTE#00 THEN (* OPTION: No Use Syslog RFC Header *)
     			(* 'month day hh:mm:ss ' *)
     			s1 := CONCAT(s1,OSCAT_BASIC.DT_TO_STRF(DTI:=LOC_DT,MS:=0,FMT:='#E #W #N:#R:#T ',LANG:=1));
     			OSCAT_BASIC._STRING_TO_BUFFER(STR:=s1,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
@@ -50,7 +50,7 @@ FUNCTION_BLOCK SYS_LOG
     		OSCAT_BASIC._STRING_TO_BUFFER(STR:=MESSAGE,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     		i := i + LEN(MESSAGE);
 
-    		IF (OPTION AND BYTE#0000_0100) > BYTE#00 THEN (* Option: Add a CR & LF to end of MESSAGE *)
+    		IF (OPTION AND BYTE#0000_0100) > BYTE#00 THEN (* OPTION: Add a CR & LF to end of MESSAGE *)
     			S_BUF.BUFFER[i] := BYTE#13; (* Carriage Return einfuegen *)
     			i := i + 1;
     			S_BUF.BUFFER[i] := BYTE#10; (* Linefeed einfuegen *)
@@ -60,20 +60,20 @@ FUNCTION_BLOCK SYS_LOG
     		state := 30;
 
     		(* IP Datenverkehr einrichten *)
-    		IF (OPTION AND BYTE#2#0000_1000) > BYTE#00 THEN (* Option: TCP Mode *)
+    		IF (OPTION AND BYTE#2#0000_1000) > BYTE#00 THEN (* OPTION: TCP Mode *)
     			IP_C.C_MODE := BYTE#0; (* Mode: TCP/AKTIV *)
     		ELSE
     			IP_C.C_MODE := BYTE#1; (* Mode: UDP/AKTIV *)
     		END_IF
 
-    		IF PORT = WORD#0 THEN (* keine Portnummer vorgegeben ? *)
+    		IF PORT = WORD#0 THEN (* keine PORTnummer vorgegeben ? *)
     			IF IP_C.C_MODE = BYTE#0 THEN (* Modus bestimmen  TCP oder UDP ? *)
-    				IP_C.C_PORT := WORD#1468; (* Standard Portnummer für Syslog over TCP *)
+    				IP_C.C_PORT := WORD#1468; (* Standard PORTnummer für Syslog over TCP *)
     			ELSE
-    				IP_C.C_PORT := WORD#514; (* Standard Portnummer für Syslog over UDP *)
+    				IP_C.C_PORT := WORD#514; (* Standard PORTnummer für Syslog over UDP *)
     			END_IF
     		ELSE
-    			IP_C.C_PORT := PORT; (* uebergebene Portnummer eintragen *)
+    			IP_C.C_PORT := PORT; (* uebergebene PORTnummer eintragen *)
     		END_IF
 
     		IP_C.C_IP := SERVER_IP4; (* IP eintragen *)

@@ -6,7 +6,7 @@ FUNCTION_BLOCK HEAT_METER
     	C := 0.0;
     	Y := 0.0;
     ELSIF e THEN
-    	X := (WATER_DENSITY(SEL(RETURN_METER, TF, TR), FALSE) * (WATER_ENTHALPY(TF) - WATER_ENTHALPY(TR)) * (1.0 - CONTENT) + CP * Density * CONTENT * (TF-TR));
+    	X := (WATER_DENSITY(SEL(RETURN_METER, TF, TR), FALSE) * (WATER_ENTHALPY(TF) - WATER_ENTHALPY(TR)) * (1.0 - CONTENT) + CP * DENSITY * CONTENT * (TF-TR));
     END_IF
 
     (* integrate or add consumption *)

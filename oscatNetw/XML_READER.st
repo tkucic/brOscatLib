@@ -476,7 +476,7 @@ FUNCTION_BLOCK XML_READER
     	original version
 
     ks	20. oct. 2009	rev 1.1
-    	NetworkBUFfer und Buffer-funktionen auf Basis 0
+    	NetworkBUFfer und BUFfer-funktionen auf Basis 0
 
     ks	10. mai. 2010	rev 1.2
     	stringlänge maximal 250 zeichen

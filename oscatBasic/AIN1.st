@@ -8,7 +8,7 @@ FUNCTION_BLOCK AIN1
     END_IF
 
     (* strip off the data INput *)
-    tb := SHR(SHL(IN, 31 - bit_N), 31 - bit_N + Bit_0);
+    tb := SHR(SHL(IN, 31 - bit_N), 31 - bit_N + BIT_0);
 
     (* extract OVERFLOW bit *)
     OVERFLOW := ((SHR(IN,OVERFLOW_BIT) AND 16#0000_0001) = 1) OR (OVERFLOW_CODE_EN AND OVERFLOW_CODE = IN) OR (tb < code_mIN OR tb > CODE_MAX);

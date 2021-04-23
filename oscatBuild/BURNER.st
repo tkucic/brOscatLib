@@ -157,7 +157,7 @@ FUNCTION_BLOCK BURNER
     (* zeit fuer naechsten aufruf merken *)
     last := tx;
 
-    (* set FAIL output IF ERROR and Status  if normal operation *)
+    (* set FAIL output IF ERROR and STATUS  if normal operation *)
 
     IF STATUS > 0 AND STATUS < 100 THEN
     	FAIL := TRUE;

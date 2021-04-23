@@ -5,18 +5,18 @@ FUNCTION_BLOCK STACK_16
     	pt := 0;
     	EMPTY := TRUE;
     	FULL := FALSE;
-    	Dout := 0;
+    	DOUT := 0;
     ELSIF E THEN
     	IF NOT EMPTY AND RD THEN
     		(* read one element *)
     		pt := pt - 1;
-    		Dout := stack[pt];
+    		DOUT := stack[pt];
     		EMPTY := pt = 0;
     		FULL := FALSE;
     	END_IF
     	IF NOT FULL AND WD THEN
     		(* write one element *)
-    		stack[pt] := Din;
+    		stack[pt] := DIN;
     		pt := pt + 1;
     		FULL := pt > n;
     		EMPTY := FALSE;

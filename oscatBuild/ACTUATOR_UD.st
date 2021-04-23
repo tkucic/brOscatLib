@@ -55,7 +55,7 @@ FUNCTION_BLOCK ACTUATOR_UD
     		yDN := FALSE;
     		last := tx;
     	(* automatic UP operatiON *)
-    	ELSIF Ud AND ON AND NOT OFF THEN
+    	ELSIF UD AND ON AND NOT OFF THEN
     		YDN := FALSE;
     		YUP := TRUE;
     		last := tx;

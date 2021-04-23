@@ -72,7 +72,7 @@ FUNCTION_BLOCK DIMM_I
     	replaced Time() with T_PLC_MS for compatibility and performance reasons
 
     hm	30. sep. 2008	rev 1.4
-    	added Input VAL to supply VALue for SET INput
+    	added INput VAL to supply VALue for SET INput
     	added SETup parameter INit_VAL
 
     hm	22. oct. 2008	rev 2.0

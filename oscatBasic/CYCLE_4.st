@@ -34,7 +34,7 @@ FUNCTION_BLOCK CYCLE_4
     				END_IF
     			3 : (* wait for T2 over 2nd cycle *)
     				IF tx - last >= T3 THEN
-    					IF S0 THEN State := 0; END_IF (* if S0 is false, the sequence stops at STATE 3 *)
+    					IF S0 THEN STATE := 0; END_IF (* if S0 is false, the sequence stops at STATE 3 *)
     					last := tx;
     				END_IF
     		END_CASE

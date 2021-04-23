@@ -19,7 +19,7 @@ FUNCTION_BLOCK BLIND_SHADE_S
        QU := UP;
        QD := DN;
        STATUS := 151;
-       (* Calculate Position, must be shade_POs or less *)
+       (* Calculate POsition, must be shade_POs or less *)
        PO := MIN(PI, shade_POs);
     ELSE
        QU := UP;

@@ -38,7 +38,7 @@ FUNCTION_BLOCK SH_2
     	LOW := buf[start];
     	HIGH := buf[stop];
     ELSE
-    	Trig := FALSE;
+    	TRIG := FALSE;
     END_IF
 
     (* revision history

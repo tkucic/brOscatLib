@@ -31,7 +31,7 @@ FUNCTION_BLOCK TIMER_EXT
     	qx := FALSE;
     ELSIF wdx = 7 AND NOT ENAble_sunday THEN
     	qx := FALSE;
-    ELSIF T_day_start > TOD#00:00 AND tdx - T_DAY_START <= tc THEN
+    ELSIF T_DAY_START > TOD#00:00 AND tdx - T_DAY_START <= tc THEN
     	(* turn ON at specified daytime *)
     	qx := TRUE;
     	STATUS := 111;

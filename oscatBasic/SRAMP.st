@@ -4,8 +4,8 @@ FUNCTION_BLOCK SRAMP
     cycle_time();
 
     (* assure range of inputs *)
-    A_up := MAX(0.0, A_UP);
-    A_dn := MIN(0.0, A_dn);
+    A_UP := MAX(0.0, A_UP);
+    A_DN := MIN(0.0, A_DN);
     VU_max := MAX(0.0, VU_max);
     VD_max := MIN(0.0, VD_MAX);
 

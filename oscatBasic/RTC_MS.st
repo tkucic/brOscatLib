@@ -22,6 +22,6 @@ FUNCTION_BLOCK RTC_MS
     	original version
 
     hm		20. feb. 2008	rev 1.1
-    	added Millisecond Set input
+    	added Millisecond SET input
     *)
 END_FUNCTION_BLOCK

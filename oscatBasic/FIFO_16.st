@@ -4,16 +4,16 @@ FUNCTION_BLOCK FIFO_16
     	pw := pr;
     	FULL := FALSE;
     	EMPTY := TRUE;
-    	Dout := 0;
+    	DOUT := 0;
     ELSIF E THEN
     	IF NOT EMPTY AND RD THEN
-    		Dout := fifo[pr];
+    		DOUT := fifo[pr];
     		pr := INC1(pr,n);
     		EMPTY := pr = pw;
     		FULL := FALSE;
     	END_IF
     	IF NOT FULL AND WD THEN
-    		fifo[pw] := Din;
+    		fifo[pw] := DIN;
     		pw := INC1(pw,n);
     		FULL := pw = pr;
     		EMPTY := FALSE;

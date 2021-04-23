@@ -4,7 +4,7 @@ FUNCTION_BLOCK ASTRO
     		+ m * 6.6845871535E-012
     		+ PC * 206265.0
     		+ LJ * 63240.0;
-    Ym := YAE * 149.597870E9;
+    YM := YAE * 149.597870E9;
     YPC := YAE * 4.8481322570E-006;
     YLJ := YAE * 1.5812776724E-005;
 
@@ -13,7 +13,7 @@ FUNCTION_BLOCK ASTRO
     Länge Meter m SI-Basiseinheit
     Astronomische Einheit* AE 1 AE = 149,597 870 · E9 m
     Parsec PC 1 PC = 206265 AE = 30,857 · E15 m
-    Lichtjahr Lj 1 Lj = 9,460 530 · E15 m = 63240 AE = 0,306 59 PC
+    Lichtjahr LJ 1 LJ = 9,460 530 · E15 m = 63240 AE = 0,306 59 PC
     Ångström Å 1 Å = E–l0 m
     typograph. Punkt p 1 p = 0,376 065 mm • im Druckereigewerbe
     inch** in 1 in = 2,54 · E–2 m = 25,4 mm***

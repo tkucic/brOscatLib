@@ -18,7 +18,7 @@ FUNCTION_BLOCK IRTRANS_SERVER
 
     t(IN:= IP_C.ERROR > 0, PT:=T#5s);
     IF t.Q THEN
-    	IP_C.TIME_RESET := TRUE; (* Error Reset *)
+    	IP_C.TIME_RESET := TRUE; (* ERROR Reset *)
     END_IF
 
     (* revision history

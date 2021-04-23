@@ -9,7 +9,7 @@ FUNCTION_BLOCK SHA1_STREAM
     	hash[3] := DWORD#16#10325476;
     	hash[4] := DWORD#16#C3D2E1F0;
 
-    	(* Buffer initialisieren *)
+    	(* BUFfer initialisieren *)
     	FOR n := 16 TO 79 DO
        		w[n] := DWORD#0;
     	END_FOR

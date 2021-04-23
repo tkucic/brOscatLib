@@ -5,14 +5,14 @@ FUNCTION_BLOCK CONTROL_SET1
     	TN := 0.0;
     	TV := 0.0;
     ELSIF PID THEN
-    	KP := PID_K * Kt;
-    	TN := PID_TN * Tt;
-    	TV := PID_TV * Tt;
+    	KP := PID_K * KT;
+    	TN := PID_TN * TT;
+    	TV := PID_TV * TT;
     ELSIF PI THEN
-    	KP := PI_K * Kt;
-    	TN := PI_TN * Tt;
+    	KP := PI_K * KT;
+    	TN := PI_TN * TT;
     ELSE
-    	KP := P_K * Kt;
+    	KP := P_K * KT;
     END_IF
 
     (* KI and KD are calculated *)

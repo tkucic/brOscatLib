@@ -55,7 +55,7 @@ FUNCTION_BLOCK T_AVG24
 
     hm	8. feb. 2009	rev 1.1
     	changes sign of OFS
-    	added ouTPuTS T24_min and T24_max
+    	added ouTPuTS T24_MIN and T24_MAX
 
     hm	13. mar. 2009	rev 1.2
     	improved code

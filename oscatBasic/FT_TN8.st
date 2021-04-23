@@ -8,7 +8,7 @@ FUNCTION_BLOCK FT_TN8
     	last := tx;
     ELSIF tx - last >= T / length THEN
     	IF cnt = length - 1 THEN cnt := 0; ELSE cnt := cnt + 1; END_IF
-    	Out := X[cnt];
+    	OUT := X[cnt];
     	x[cnt] := IN;
     	last := tx;
     	TRIG := TRUE;

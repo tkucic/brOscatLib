@@ -4,10 +4,10 @@ FUNCTION_BLOCK LEGIONELLA
     IF NOT init THEN
     	init := TRUE;
     	X1.DAY := SHR(BYTE#128,DAY);
-    	X1.start := T_start;
-    	X3.low := Temp_offset + TEMP_SET;
-    	X3.high := Temp_hys + X3.low;
-    	X2.wait0 := T_max_HEAT;
+    	X1.start := T_START;
+    	X3.low := TEMP_OFFSET + TEMP_SET;
+    	X3.high := TEMP_HYS + X3.low;
+    	X2.wait0 := T_MAX_HEAT;
     	X2.delay0 := TP_0;
     	X2.delay1 := TP_1;
     	X2.delay2 := TP_2;
@@ -16,13 +16,13 @@ FUNCTION_BLOCK LEGIONELLA
     	X2.delay5 := TP_5;
     	X2.delay6 := TP_6;
     	X2.delay7 := TP_7;
-    	X2.wait1 := T_max_ret;
-    	X2.wait2 := T_max_ret;
-    	X2.wait3 := T_max_ret;
-    	X2.wait4 := T_max_ret;
-    	X2.wait5 := T_max_ret;
-    	X2.wait6 := T_max_ret;
-    	X2.wait7 := T_max_ret;
+    	X2.wait1 := T_MAX_RET;
+    	X2.wait2 := T_MAX_RET;
+    	X2.wait3 := T_MAX_RET;
+    	X2.wait4 := T_MAX_RET;
+    	X2.wait5 := T_MAX_RET;
+    	X2.wait6 := T_MAX_RET;
+    	X2.wait7 := T_MAX_RET;
     	X2();
     END_IF
 
@@ -42,7 +42,7 @@ FUNCTION_BLOCK LEGIONELLA
     	X2(start := X1.Q OR MANUAL);
     	RUN := x2.RUN;
     	PUMP := x2.qx;
-    	Heat := NOT X3.Q AND x2.RUN;
+    	HEAT := NOT X3.Q AND x2.RUN;
     	VALVE0 := X2.Q0;
     	VALVE1 := X2.Q1;
     	VALVE2 := X2.Q2;

@@ -34,7 +34,7 @@ FUNCTION_BLOCK MB_SERVER
     20:	IF NOT ip_ERROR THEN
     		IF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE > UINT#6 THEN	(* Datensenden nicht aktiv und Daten wurden empfangen *)
     			IF  R_BUF.SIZE = WORD_TO_UINT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[4],R_BUF.BUFFER[5])) + UINT#6 THEN (* gültige Datenlänge *)
-    				ERROR := DWORD#00; (* Error löschen *)
+    				ERROR := DWORD#00; (* ERROR löschen *)
 
     				(* Header kopieren *)
     				FOR i := 0 TO 13 DO
@@ -126,7 +126,7 @@ FUNCTION_BLOCK MB_SERVER
     						FOR i := adr1 TO Count DO
     							idx1 := idx1 + 2;
     	 						idx2 := idx1 + 1;
-    							Data[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
+    							DATA[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
     						END_FOR
     						S_BUF.SIZE := UINT#12;
     					(*--------------------------------------------------*)
@@ -151,7 +151,7 @@ FUNCTION_BLOCK MB_SERVER
     							FOR i := adr2 TO count DO
     								idx1 := idx1 + 2;
     	 							idx2 := idx1 + 1; (* zweiter index für pcworx notwendig ! *)
-    								Data[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
+    								DATA[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
     							END_FOR
     	
     							(*--- Read-Register -----------------------------------*)
@@ -192,7 +192,7 @@ FUNCTION_BLOCK MB_SERVER
 
     	t(IN:= ip_ERROR, PT:=T#2s);
     	IF t.Q THEN
-    		IP_C.TIME_RESET := TRUE; (* Error Reset *)
+    		IP_C.TIME_RESET := TRUE; (* ERROR Reset *)
     	END_IF
 
     	R_BUF.SIZE := UINT#0; (* Empfangsdaten zerstören *)

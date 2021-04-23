@@ -58,7 +58,7 @@ FUNCTION_BLOCK SNTP_SERVER
 
     		(* Sendedaten aufbereiten *)
     		S_BUF.BUFFER[0] := BYTE#2#11100; (* Flags: NO WARNING, NTP VERSION 3 , SERVER *)
-    		S_BUF.BUFFER[1] := STRATUM; (* Peer Clock Stratum: *)
+    		S_BUF.BUFFER[1] := STRATUM; (* Peer Clock STRATUM: *)
     		S_BUF.BUFFER[2] := BYTE#10; (* Peer Polling Intervall 2 hoch 10 = 1024 sek. *)
     		S_BUF.BUFFER[3] := BYTE#16#FB; (* Peer Clock Precision: -5 = -31,25ms *)
 
@@ -140,7 +140,7 @@ FUNCTION_BLOCK SNTP_SERVER
                                       1                   2                   3
                   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
                  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    Byte: 01-04  |LI | VN  |Mode |    Stratum    |     Poll      |   Precision   |
+    Byte: 01-04  |LI | VN  |Mode |    STRATUM    |     Poll      |   Precision   |
                  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     Byte: 05-08  |                          Root  Delay (32 Bit)                 |
                  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

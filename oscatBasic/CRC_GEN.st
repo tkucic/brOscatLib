@@ -89,7 +89,7 @@ FUNCTION CRC_GEN
 
     hm	9. oct 2007 	rev 1.2
     	added INIT code for crc and XOR_OUT
-    	added refelct in and reflect_out (REV_IN und Rev_out)
+    	added refelct in and reflect_out (REV_IN und REV_OUT)
 
     hm	2. jan 2008	rev 1.3
     	small changes for performance improvements

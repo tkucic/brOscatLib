@@ -1,14 +1,14 @@
 FUNCTION_BLOCK BLIND_CONTROL
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=75*)
     IF bTimeTest THEN
-    	PI:=iPos;
-    	AI:=iAngel;
+    	PI:=iPOS;
+    	AI:=iANGel;
     	UP:=TRUE;
     	DN:=TRUE;
     END_IF
 
-    (* Check Position*)
-    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_lockout := T_Lockout);
+    (* Check POSition*)
+    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_LOCKOUT := T_Lockout);
 
     IF UP AND DN THEN
     	(* automatic modus detected *)
@@ -24,12 +24,12 @@ FUNCTION_BLOCK BLIND_CONTROL
     		delta := 0;
     		STATUS := 122;
     	(* regulate ANGle *)
-    	ELSIF BYTE_TO_INT(act.ANG) < BYTE_TO_INT(AI) - delta AND T_ANGle > T#100ms THEN
+    	ELSIF BYTE_TO_INT(act.ANG) < BYTE_TO_INT(AI) - delta AND T_ANGLE > T#100ms THEN
     		act.UP := TRUE;
     		act.DN := FALSE;
     		delta := SENS/2;
     		STATUS := 123;
-    	ELSIF BYTE_TO_INT(act.ANG) > BYTE_TO_INT(AI) + delta AND T_ANGle > T#100ms THEN
+    	ELSIF BYTE_TO_INT(act.ANG) > BYTE_TO_INT(AI) + delta AND T_ANGLE > T#100ms THEN
     		act.UP := FALSE;
     		act.DN := TRUE;
     		delta := SENS/2;
@@ -48,7 +48,7 @@ FUNCTION_BLOCK BLIND_CONTROL
     END_IF
 
     (* blind control calls blind_actuator *)
-    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_lockout := T_Lockout);
+    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_LOCKOUT := T_Lockout);
     POS := act.POS;
     ANG := act.ANG;
     MU := act.QU;
@@ -74,7 +74,7 @@ FUNCTION_BLOCK BLIND_CONTROL
     	chANGed STATUS handling
 
     ae	08. mar. 2010	rev 1.5
-    	at aPosition bevor control
+    	at aPOSition bevor control
     	at tolerance "delta := SENS/2;"
 
     *)

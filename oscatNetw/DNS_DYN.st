@@ -45,10 +45,10 @@ FUNCTION_BLOCK DNS_DYN
     		DONE := TRUE;
 
     		(* !! Codes !!
-    		Successful Updates: 		good , nchg
-    		Update Syntax Errors:		badsys , badagent
+    		Successful UPDATEs: 		good , nchg
+    		UPDATE Syntax Errors:		badsys , badagent
     		Account-Related Errors:		badauth , !donator
-    		Hostname-Related Errors:	notfqdn , nohost , !yours , numhost , abuse
+    		HOSTNAME-Related Errors:	notfqdn , nohost , !yours , numhost , abuse
     		Server Error Conditions:	dnserr , 911
     		*)
     		s2 := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=HTTP_GET.BODY_START + 3,STOP:=HTTP_GET.BODY_STOP - 7);

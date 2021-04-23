@@ -59,7 +59,7 @@ FUNCTION_BLOCK ACTUATOR_3P
     		END_IF
 
     	103:	(* diagnostics up*)
-    		(* run up for T_ext *)
+    		(* run up for T_EXT *)
     		IF tx - start < T_EXT THEN
     			ERROR := FALSE;
     			ramp.TR := T_RUN;
@@ -77,7 +77,7 @@ FUNCTION_BLOCK ACTUATOR_3P
     		END_IF
 
     	104:	(* diagnostics dn*)
-    		IF tx - start < T_ext THEN
+    		IF tx - start < T_EXT THEN
     			OUT1 := FALSE;
     			OUT2 := TRUE;
     			ramp.IN := 0;

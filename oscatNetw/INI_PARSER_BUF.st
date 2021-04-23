@@ -53,9 +53,9 @@ FUNCTION_BLOCK INI_PARSER_BUF
     					step := 200; (* Modus für Section aktivieren *)
     				ELSIF c = 59 OR c = 35 THEN (* mit ";" und '#' vergleichen *)
     					step := 100; (* Modus für Kommentar aktivieren *)
-    				ELSIF c > 32 THEN (* Key erkannt *)
+    				ELSIF c > 32 THEN (* KEY erkannt *)
     					k_add := c; (* Zeichen ablegen *)
-    					step := 300; (* Key auswertung starten *)
+    					step := 300; (* KEY auswertung starten *)
     				END_IF
     			100: (* Kommentar erkannt -> Zeilenende suchen *)
     				IF c < 32 THEN (* prüfe auf Steuerzeichen *)
@@ -77,8 +77,8 @@ FUNCTION_BLOCK INI_PARSER_BUF
     				ELSE
     					k_add := c; (* Zeichen ablegen *)
     				END_IF
-    			300: (* Beginn: Key erkannt -> Name auswerten *)
-    				IF c < 32 THEN (* Steuerzeichen - fehlerhafte Key-Zeile -> weitersuchen *)
+    			300: (* Beginn: KEY erkannt -> Name auswerten *)
+    				IF c < 32 THEN (* Steuerzeichen - fehlerhafte KEY-Zeile -> weitersuchen *)
     					pk := ADR(KEY);
     					pk^ := 0; (* KEY = '' *)
     					step := 0;
@@ -87,37 +87,37 @@ FUNCTION_BLOCK INI_PARSER_BUF
     				ELSE
     					k_add := c; (* Zeichen ablegen *)
     				END_IF
-    			330: (* KeyValue beginn suchen *)
+    			330: (* KEYVALUE beginn suchen *)
     				IF c < 32 THEN (* Steuerzeichen  *)
-    					state := 2; (* Key ohne Value gefunden *)
+    					state := 2; (* KEY ohne VALUE gefunden *)
     				ELSIF eof THEN
-    					state := 2; (* Key ohne Value gefunden *)
+    					state := 2; (* KEY ohne VALUE gefunden *)
     					v_add := c; (* Zeichen ablegen *)
     				ELSE
     					v_add := c; (* Zeichen ablegen *)
     					step := 350;
     				END_IF
-    			350: (* KeyValue Ende suchen *)
+    			350: (* KEYVALUE Ende suchen *)
     				IF c < 32 THEN (* Steuerzeichen *)
-    					state := 2; (* Key gefunden *)
+    					state := 2; (* KEY gefunden *)
     				ELSIF eof THEN
     					v_add := c; (* Zeichen ablegen *)
-    					state := 2; (* Key gefunden *)
+    					state := 2; (* KEY gefunden *)
     				ELSE
     					v_add := c; (* Zeichen ablegen *)
     				END_IF
     			END_CASE
 
-    			IF v_add > 0  AND pv < pve THEN (* Zeichen zu Value-String hinzufügen *)
+    			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-STRing hinzufügen *)
     				pv^ := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
-    				pv^ := 0; (* String-TerminieRUNg eintragen *)
+    				pv^ := 0; (* STRing-TerminieRUNg eintragen *)
     			END_IF
 
-    			IF k_add > 0 AND pk < pke THEN (* Zeichen zu Key-String hinzufügen *)
+    			IF k_add > 0 AND pk < pke THEN (* Zeichen zu KEY-STRing hinzufügen *)
     				pk^ := k_add; (* Zeichen eintragen *)
     				pk := pk + 1;
-    				pk^ := 0; (* String-TerminieRUNg eintragen *)
+    				pk^ := 0; (* STRing-TerminieRUNg eintragen *)
     			END_IF
 
     			i := i + 1; (* Datenzeiger erhöhen *)
@@ -130,42 +130,42 @@ FUNCTION_BLOCK INI_PARSER_BUF
     		IF RUN = 1 OR RUN = 3 THEN (* Section vorgewählt oder alles rückmelden *)
     			IF KEY = STR OR LEN(STR) = 0 THEN (* mit gesuchter Section vergleichen oder keine Section vorgegeben *)
     				RESULT := 1; (* Section gefunden *)
-    				OFFSET := i; (* Offset uebernehmen *)
+    				OFFSET := i; (* OFFSET uebernehmen *)
     				RUN := 0;
     				state := 0;
     			END_IF
     		ELSE
     			pk := ADR(KEY);
     			pk^ := 0; (* KEY = '' *)
-    			RESULT := 11; (* Key nicht gefunden , Section-Ende - Offset nicht verändern *)
+    			RESULT := 11; (* KEY nicht gefunden , Section-Ende - OFFSET nicht verändern *)
     			RUN := 0;
     			state := 0;
     		END_IF
-    	02:	(* Key gefunden *)
-    		IF RUN = 2 OR RUN = 3 THEN (* Key vorgewählt oder alles rückmelden *)
-    			IF KEY = STR OR LEN(STR) = 0 THEN (* mit gesuchten Key vergleichen *)
-    				RESULT := 2; (* Key gefunden *)
-    				OFFSET := i; (* Offset uebernehmen *)
+    	02:	(* KEY gefunden *)
+    		IF RUN = 2 OR RUN = 3 THEN (* KEY vorgewählt oder alles rückmelden *)
+    			IF KEY = STR OR LEN(STR) = 0 THEN (* mit gesuchten KEY vergleichen *)
+    				RESULT := 2; (* KEY gefunden *)
+    				OFFSET := i; (* OFFSET uebernehmen *)
     				RUN := 0;
     				state := 0;
     			END_IF
     		END_IF
     	03:	(* Kommenar gefunden *)
-    		OFFSET := i; (* Offset uebernehmen *)
+    		OFFSET := i; (* OFFSET uebernehmen *)
     		state := 0;
 
     	05:	RESULT := 5; (* in Arbeit *)
 
     	10:	(* Indexüberschreitung - Bufferende *)
     		RESULT := 10; (* nichts gefunden - Datenende erreicht *)
-    		OFFSET := i; (* Offset uebernehmen *)
+    		OFFSET := i; (* OFFSET uebernehmen *)
     		RUN := 0;
     		state := 0;
     	END_CASE
 
     	(*####################  DEBUG-MESSAGE  ###################################*)
     	(*IF _debug_enable THEN
-    		LOG_CL.NEW_MSG := 'IPF: intern Result ~1 , state ~2, step ~3 , OFFSET ~4, RUN ~5';
+    		LOG_CL.NEW_MSG := 'IPF: intern RESULT ~1 , state ~2, step ~3 , OFFSET ~4, RUN ~5';
     		LOG_CL.PRINTF[1] := BYTE_TO_STRING(RESULT);
     		LOG_CL.PRINTF[2] := BYTE_TO_STRING(state);
     		LOG_CL.PRINTF[3] := INT_TO_STRING(step);

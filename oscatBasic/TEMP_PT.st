@@ -2,8 +2,8 @@ FUNCTION TEMP_PT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=326*)
     X := A * R0;
     Y := B * R0;
-    IF Res >= R0 THEN
-    	t1 := X * X - 4.0 * Y * (R0 - Res);
+    IF RES >= R0 THEN
+    	t1 := X * X - 4.0 * Y * (R0 - RES);
     	IF t1 < 0.0 THEN
     		TEMP_PT := 10000.0;
     	ELSE

@@ -5,7 +5,7 @@ FUNCTION_BLOCK PULSE_LENGTH
 
     (* reset outputs, they should only be active 1 cycle *)
     SHORT := FALSE;
-    Middle := FALSE;
+    MIDDLE := FALSE;
     LONG := FALSE;
 
     (* detect risINg EDGE_ *)
@@ -22,7 +22,7 @@ FUNCTION_BLOCK PULSE_LENGTH
     	ELSIF tn > t_LONG THEN
     		LONG := TRUE;
     	ELSE
-    		Middle := TRUE;
+    		MIDDLE := TRUE;
     	END_IF
 
     (* generate LONG pulse as soon as T_LONG is reached *)

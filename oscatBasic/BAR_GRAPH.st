@@ -3,7 +3,7 @@ FUNCTION_BLOCK BAR_GRAPH
     IF NOT init THEN
     	init := TRUE;
     	IF LOG_SCALE THEN
-    		temp := EXP(LN(Trigger_HIGH / Trigger_LOW) * 0.166666666666666666666);
+    		temp := EXP(LN(TRIGGER_HIGH / TRIGGER_LOW) * 0.166666666666666666666);
     		T1 := TRIGGER_LOW * temp;
     		T2 := T1 * temp;
     		T3 := T2 * temp;
@@ -39,7 +39,7 @@ FUNCTION_BLOCK BAR_GRAPH
 
     (* check and set outputs *)
     IF X < TRIGGER_LOW THEN
-    	Low := TRUE;
+    	LOW := TRUE;
     	STATUS := 111;
     	IF ALARM_LOW THEN
     		ALARM := TRUE;

@@ -4,7 +4,7 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     	IF NOT ACTIVATE_old THEN
     		CD.CE[0].VALUE_MIN := 0;	(* Sekunden *)
     		CD.CE[0].VALUE_MAX := 59;
-    		CD.CE[1].VALUE_MIN := 0;	(* Minuten *)
+    		CD.CE[1].VALUE_MIN := 0;	(* MINUTEn *)
     		CD.CE[1].VALUE_MAX := 59;
     		CD.CE[2].VALUE_MIN := 0;	(* Stunden *)
     		CD.CE[2].VALUE_MAX := 59;
@@ -85,7 +85,7 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     		END_FOR
     	ELSIF DTI <> DTI_last THEN
     		CD.CE[0].VALUE := OSCAT_BASIC.SECOND_OF_DT(DTI); (* Sekunden *)
-    		CD.CE[1].VALUE := OSCAT_BASIC.MINUTE_OF_DT(DTI); (* Minuten *)
+    		CD.CE[1].VALUE := OSCAT_BASIC.MINUTE_OF_DT(DTI); (* MINUTEn *)
     		CD.CE[2].VALUE := OSCAT_BASIC.HOUR_OF_DT(DTI); (* Stunden *)
     		datei := DT_TO_DATE(DTI);
     		CD.CE[3].VALUE := OSCAT_BASIC.DAY_OF_MONTH(datei); (* Tag *)

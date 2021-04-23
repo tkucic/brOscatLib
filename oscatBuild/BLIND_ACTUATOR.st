@@ -1,10 +1,10 @@
 FUNCTION_BLOCK BLIND_ACTUATOR
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=74*)
     (* make sure only one motor is active at a given time *)
-    lock(i1 := UP, I2 := DN, TL := T_lockout);
+    lock(i1 := UP, I2 := DN, TL := T_LOCKOUT);
 
     (* ramp UP or down to simulate the ANGle POSition of the blind slats *)
-    ANGle(e := lock.Q1 OR lock.Q2, UP := lock.Q1, PT := T_Angle);
+    ANGle(e := lock.Q1 OR lock.Q2, UP := lock.Q1, PT := T_ANGle);
     POSition(e := lock.Q1 AND ANGle.high OR lock.Q2 AND ANGle.low, UP := lock.Q1, PT := T_UD);
 
     (* set the outputs *)
@@ -41,7 +41,7 @@ FUNCTION_BLOCK BLIND_ACTUATOR
     	chANGes STATUS to be 12X
 
     ae	08. mar. 2010 rev 1.4	
-    	at aPosition
+    	at aPOSition
 
     *)
 END_FUNCTION_BLOCK

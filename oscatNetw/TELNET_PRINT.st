@@ -15,7 +15,7 @@ FUNCTION_BLOCK TELNET_PRINT
     	IF ip_state = BYTE#3 THEN
 
     		(* IP Datenverkehr einrichten *)
-    		IP_C.C_PORT := PORT; (* Portnummer eintragen *)
+    		IP_C.C_PORT := PORT; (* PORTnummer eintragen *)
     		IP_C.C_IP := DWORD#00; (* IP eintragen *)
     		IP_C.C_MODE := BYTE#4; (* Mode: TCP+PASSIV+PORT *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -97,7 +97,7 @@ FUNCTION_BLOCK TELNET_PRINT
     				END_IF
     			END_IF
 
-    			(* buffer voll , oder Daten sind vorhanden und kein weiterer Sendewunsch *)
+    			(* buffer voll , oder Daten sind vorhanden und kein weiterer SENDewunsch *)
     			IF (INT_TO_UINT(x + LEN(TEXT) + 21) > SIZEOF(S_BUF.BUFFER)) OR (x >= 0 AND NOT SEND) THEN
     				S_BUF.SIZE := INT_TO_UINT(x + 1); (* Länge eintragen -> DatenSENDen starten *)
     				x := -1;
@@ -175,7 +175,7 @@ FUNCTION_BLOCK TELNET_PRINT
     					x := x + LEN(TEXT);
     				END_IF
 
-    				IF b3_cr_lr THEN (* Option: CR,LF ausgeben *)
+    				IF b3_cr_lr THEN (* OPTION: CR,LF ausgeben *)
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#0D;
     					x := x + 1;
@@ -184,8 +184,8 @@ FUNCTION_BLOCK TELNET_PRINT
 
     				DONE := TRUE; (* Fertig in Buffer eingetragen *)
 
-    				IF b7_no_flush THEN (* Option: no buffer flush *)
-    					(* buffer sofort SENDen - aktuellen Schreibindex speichern -> Senden anstossen *)
+    				IF b7_no_flush THEN (* OPTION: no buffer flush *)
+    					(* buffer sofort SENDen - aktuellen Schreibindex speichern -> SENDen anstossen *)
     					S_BUF.SIZE := INT_TO_UINT(x + 1);
     					x := -1;
     				END_IF
@@ -211,7 +211,7 @@ FUNCTION_BLOCK TELNET_PRINT
     	automatischer re-connect
 
     ks	03. dec. 2011	rev 1.4
-    	initialisierung verbessert, Port Nummer als Parmeter
+    	initialisierung verbessert, PORT Nummer als Parmeter
 
     *)
 END_FUNCTION_BLOCK

@@ -267,7 +267,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     	YAHOO_WEATHER_DATA
 
     ks	24. sep. 2010	rev 1.2
-    	new URL-Location-parameter and REAL_CHECK (TwinCat BUG) 
+    	new URL-LOCATION-parameter and REAL_CHECK (TwinCat BUG) 
 
     ks	04. may. 2011	rev 1.3
     	neue elemente:  CUR_CONDITIONS_ICON, FORCAST_TODAY_ICON, FORCAST_TOMORROW_ICON

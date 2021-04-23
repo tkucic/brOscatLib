@@ -12,7 +12,7 @@ FUNCTION AOUT1
     IN2 := LIMIT(LOW, IN2, HIGH);
 
     (* Berechne den Ausgangswert *)
-    AOUT1 := SHL(REAL_TO_DWORD((IN2 - LOW) / (HIGH - LOW) * DWORD_TO_REAL(SHL(ff,BIT_N - Bit_0 + 1) -1)),Bit_0);
+    AOUT1 := SHL(REAL_TO_DWORD((IN2 - LOW) / (HIGH - LOW) * DWORD_TO_REAL(SHL(ff,BIT_N - BIT_0 + 1) -1)),BIT_0);
     IF sx THEN AOUT1 := SHL(ff,SIGN) OR AOUT1; END_IF
 
 

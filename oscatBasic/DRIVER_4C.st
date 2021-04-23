@@ -20,7 +20,7 @@ FUNCTION_BLOCK DRIVER_4C
     END_IF
 
     (* maximaum TIMEOUT *)
-    IF TIMEOUT > t#0s THEN off(IN := SN > 0, PT := Timeout); END_IF
+    IF TIMEOUT > t#0s THEN off(IN := SN > 0, PT := TIMEOUT); END_IF
 
 
     (* revision history

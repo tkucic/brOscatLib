@@ -2,7 +2,7 @@ FUNCTION_BLOCK MB_CLIENT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112*)
     CASE state OF
 
-    00: (* Warten auf Delay-Time *)
+    00: (* Warten auf DELAY-Time *)
     	TON_1(IN:=ENABLE,PT:=DELAY);
 
     	IF TON_1.Q OR DELAY = T#0s THEN
@@ -245,7 +245,7 @@ FUNCTION_BLOCK MB_CLIENT
     			IF S_BUF.BUFFER[i] <> R_BUF.BUFFER[i] THEN EXIT; END_IF
     		END_FOR
 
-    		IF R_BUF.SIZE >= UINT#9 AND R_BUF.BUFFER[7] > BYTE#128 THEN  (* Bit 7 = Error Message *)
+    		IF R_BUF.SIZE >= UINT#9 AND R_BUF.BUFFER[7] > BYTE#128 THEN  (* Bit 7 = ERROR Message *)
     			ERROR := BYTE_TO_DWORD(R_BUF.BUFFER[8]);
     			IP_STATE := BYTE#4; (* Abmelden *)
     			state := 00;

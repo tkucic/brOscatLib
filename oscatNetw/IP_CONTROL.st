@@ -446,7 +446,7 @@ FUNCTION_BLOCK IP_CONTROL
     ks	18. oct. 2008	rev 1.0
     	original version
     ks	05. jan. 2009	rev 1.1
-    	zusätzlichen Parameter "Port" hinzugefügt, und Code bei Verbindungsaufbau angepasst
+    	zusätzlichen Parameter "PORT" hinzugefügt, und Code bei Verbindungsaufbau angepasst
     ks	28. feb. 2009	rev 1.2
     	connect code angepasst und verkürzung der zyklen bei Send
     ks	20. oct. 2009	rev 1.3

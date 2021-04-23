@@ -153,7 +153,7 @@ FUNCTION_BLOCK SEQUENCE_8
     	ELSIF Q7 AND tx - last >= DELAY7 THEN
     		STEP := -1;
     		Q7 := FALSE;
-    		Run := FALSE;
+    		RUN := FALSE;
     		STATUS := 110;
     	END_IF
     END_IF

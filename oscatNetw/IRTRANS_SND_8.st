@@ -25,10 +25,10 @@ FUNCTION_BLOCK IRTRANS_SND_8
     	ELSE
     		lk := 0;
     		KEY := 0;
-    		RETURN; (* beenden wenn kein Key aktiv *)
+    		RETURN; (* beenden wenn kein KEY aktiv *)
     	END_IF
 
-    	IF lk <> k OR T.Q THEN (* anderer Key oder repeat wartezeit abgelaufen *)
+    	IF lk <> k OR T.Q THEN (* anderer KEY oder repeat wartezeit abgelaufen *)
     		str := CONCAT('snd ',DEV_CODE);
     		str := CONCAT(str,',');
     		str := CONCAT(str,sKEY);
@@ -36,7 +36,7 @@ FUNCTION_BLOCK IRTRANS_SND_8
     		OSCAT_BASIC._STRING_TO_BUFFER(STR:=str, POS:=0, PT:=ADR(S_BUF.BUFFER), SIZE:=size);
     		S_BUF.SIZE := size; (* Sendelänge eintragen *)
     		KEY := k;
-    		lk := k; (* letzten Key speichern *)
+    		lk := k; (* letzten KEY speichern *)
     		t(IN:=FALSE); (* Reset Time *)
     	END_IF
     END_IF

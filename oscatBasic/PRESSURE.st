@@ -14,16 +14,16 @@ FUNCTION_BLOCK PRESSURE
 
 
     (*
-    Druck, Pascal Pa 1 Pa = 1 N/m2 = 1 kg/(s2 E m) . 0,75 E 10.2 mmHg
-    mechanische 1 MPa = 1 N/mm2 . fur Festigkeitsangaben
-    SPAnnung Bar BAR 1 BAR = 105 Pa = 103 mBAR = 105 kg/(s2 E m)
-    Millimeter- mmHg 1 mmHg = 133,322 Pa = 1,333 22 mBAR
+    Druck, PAscal PA 1 PA = 1 N/m2 = 1 kg/(s2 E m) . 0,75 E 10.2 mmHg
+    mechanische 1 MPA = 1 N/mm2 . fur Festigkeitsangaben
+    SPAnnung BAR BAR 1 BAR = 105 PA = 103 mBAR = 105 kg/(s2 E m)
+    Millimeter- mmHg 1 mmHg = 133,322 PA = 1,333 22 mBAR
     Quecksilbersaule . nur in Heilkunde zulassig
-    physik. Atmosphare ATM 1 ATM = 1,013 25 BAR
-    techn. Atmosphare at 1 at = 1 kp/cm2 = 0,980665 BAR
-    Torr Torr 1 Torr = (101325/760) Pa = 1,333224 mBAR
-    Meter-Wassersaule mWS 1 mWS = 9806,65 Pa = 98,0665 mBAR
-    psi lbf/in2 1 lbf/in2 = 68,947 57 mBAR = 6894,757 Pa
+    physik. ATMosphare ATM 1 ATM = 1,013 25 BAR
+    techn. ATMosphare at 1 at = 1 kp/cm2 = 0,980665 BAR
+    TORR TORR 1 TORR = (101325/760) PA = 1,333224 mBAR
+    Meter-Wassersaule mWS 1 mWS = 9806,65 PA = 98,0665 mBAR
+    psi lbf/in2 1 lbf/in2 = 68,947 57 mBAR = 6894,757 PA
 
     *)
 

@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DNS_REV_CLIENT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=90*)
-    (* Domain Name System (query) *)
+    (* DOMAIN Name System (query) *)
 
     CASE state OF
     00: (* auf positive Flanke GET warten *)
@@ -57,7 +57,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     		S_BUF.BUFFER[i] := INT_TO_BYTE(char_count); (* längenangabe des ganz linken (ersten) domänennamens eintragen *)
     		i := dl + 15; (* position hinter dem servernamen *)
-    		S_BUF.BUFFER[i] := BYTE#12; (* Type: PTR (Domain name pointer) lowbyte *)
+    		S_BUF.BUFFER[i] := BYTE#12; (* Type: PTR (DOMAIN name pointer) lowbyte *)
     		i := i + 2;
     		S_BUF.BUFFER[i] := BYTE#01; (* Class: IN lowbyte *)
     		i := i + 1;
@@ -143,15 +143,15 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     (*-----------------------------------------------------------------------------------------------------------------*)
 
     (*
-    Errorcodes  Description	References 
+    ERRORcodes  Description	References 
     000	No ERROR. 		 	The request completed successfully.
     001	Format ERROR. 		The name server was unable to interpret the query. 
     002	Server failure.  	The name server was unable to process this query due to a problem with the name server. 
-    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the DOMAIN name referenced in the query does not exist.
+    003	Name ERROR. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the DOMAIN name referenced in the query does not exist.
     004	Not Implemented. 	The name server does not support the requested kind of query.
     005	Refused. 			The name server refuses to perform the specified operation for policy reasons.
       						 For example, a name server may not wish to provide the information to the particular requester, or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.
-    006	YXDomain.			Name Exists when it should not. 
+    006	YXDOMAIN.			Name Exists when it should not. 
     007	YXRRSet. RR			Set Exists when it should not. 
     008	NXRRSet. RR			Set that should exist does not. 
     009	NotAuth.			Server Not Authoritative for zone. 

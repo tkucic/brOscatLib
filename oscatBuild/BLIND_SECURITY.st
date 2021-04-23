@@ -1,18 +1,18 @@
 FUNCTION_BLOCK BLIND_SECURITY
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=89*)
-    IF Fire THEN
+    IF FIRE THEN
     	QU := TRUE;
     	QD := FALSE;
     	STATUS := 111;
-    ELSIF Wind THEN
-    	QU := Wind_UP;
+    ELSIF WIND THEN
+    	QU := WIND_UP;
     	QD := NOT WIND_UP;
     	STATUS := 112;
     ELSIF ALARM THEN
-    	QU := Alarm_UP;
-    	QD := NOT Alarm_UP;
+    	QU := ALARM_UP;
+    	QD := NOT ALARM_UP;
     	STATUS := 113;
-    ELSIF Door THEN
+    ELSIF DOOR THEN
     	QU := TRUE;
     	QD := FALSE;
     	STATUS := 114;

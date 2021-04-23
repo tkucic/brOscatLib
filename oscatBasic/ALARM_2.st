@@ -1,6 +1,6 @@
 FUNCTION_BLOCK ALARM_2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=333*)
-    tmp := X - Hys * 0.5;
+    tmp := X - HYS * 0.5;
     IF tmp > LO_1 THEN Q1_LO := FALSE; END_IF
     IF tmp > LO_2 THEN Q2_LO := FALSE; END_IF
     IF tmp > HI_1 THEN Q1_HI := TRUE; END_IF

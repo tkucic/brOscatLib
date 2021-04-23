@@ -18,7 +18,7 @@ FUNCTION_BLOCK INTERLOCK_4
     	IF in <> last THEN
     		(* only execute when inputs have chages state *)
     		CASE MODE OF
-    			0:	(* OUTput directly display inputs as bits in byte OUT *)
+    			0:	(* OUTPut directly display inputs as bits in byte OUT *)
     				OUT := in;
 
     			1:	(* the input with the highest number will be acepted *)
