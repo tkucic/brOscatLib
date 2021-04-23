@@ -299,7 +299,7 @@ FUNCTION_BLOCK PULSE_LENGTH (*  *)(* http://www.oscat.de/images/OSCATBuilding/os
     VAR
         tx : TIME;
         tn : TIME;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK PULSE_T (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=56 *)
@@ -316,7 +316,7 @@ FUNCTION_BLOCK PULSE_T (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_b
         init : BOOL;
         last : TIME;
         tx : TIME;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SW_RECONFIG (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=57 *)
@@ -348,7 +348,7 @@ FUNCTION_BLOCK SWITCH_I (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_
     END_VAR
     VAR
         state : BYTE;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         r_edge : BOOL;
         T_on : TIME;
         tx : TIME;
@@ -570,7 +570,7 @@ FUNCTION_BLOCK BOILER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         STATUS : BYTE;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         boost_mode : BOOL;
         flag_0 : BOOL;
         flag_1 : BOOL;
@@ -682,7 +682,7 @@ FUNCTION_BLOCK HEAT_METER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
         tx : DWORD;
         last : DWORD;
         int1 : FT_INT2;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         x : REAL;
         init : BOOL;
         y_last : REAL;

@@ -120,7 +120,7 @@ FUNCTION_BLOCK DRIVER_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_bas
     END_VAR
     VAR
         off : TON;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK DRIVER_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=454 *)
@@ -163,7 +163,7 @@ FUNCTION_BLOCK DRIVER_4C (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
     END_VAR
     VAR
         off : TON;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FLOW_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=456 *)
@@ -212,7 +212,7 @@ FUNCTION_BLOCK FT_Profile (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
     END_VAR
     VAR
         tx : TIME;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         state : BYTE;
         ta : TIME;
         tb : TIME;
@@ -298,7 +298,7 @@ FUNCTION_BLOCK MANUAL_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_bas
     VAR
         S_edge : BOOL;
         r_edge : BOOL;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK MANUAL_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464 *)
@@ -335,7 +335,7 @@ FUNCTION_BLOCK MANUAL_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_bas
         STATUS : BYTE;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         pos : INT;
         tog : BOOL;
     END_VAR
@@ -1400,7 +1400,7 @@ FUNCTION_BLOCK M_D (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333
         RUN : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         T0 : TIME;
         tx : TIME;
         startup : BOOL;
@@ -1417,7 +1417,7 @@ FUNCTION_BLOCK M_T (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333
         ET : TIME;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         start : TIME;
         tx : TIME;
     END_VAR
@@ -1436,7 +1436,7 @@ FUNCTION_BLOCK M_TX (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic33
         ET : TIME;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         start : TIME;
         stop : TIME;
         tx : TIME;
@@ -1503,7 +1503,7 @@ FUNCTION_BLOCK ONTIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
     VAR
         tx : DWORD;
         last : DWORD;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         init : BOOL;
         ms : DWORD;
     END_VAR
@@ -2438,7 +2438,7 @@ FUNCTION_BLOCK SH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_
         TRIG : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SH_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=300 *)
@@ -2690,7 +2690,7 @@ FUNCTION_BLOCK FF_D2E (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         Q1 : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FF_D4E (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=239 *)
@@ -2709,7 +2709,7 @@ FUNCTION_BLOCK FF_D4E (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         Q3 : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FF_DRE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=240 *)
@@ -2723,7 +2723,7 @@ FUNCTION_BLOCK FF_DRE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         Q : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FF_JKE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=241 *)
@@ -2738,7 +2738,7 @@ FUNCTION_BLOCK FF_JKE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         Q : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK FF_RSE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242 *)
@@ -2829,7 +2829,7 @@ FUNCTION_BLOCK SHR_8PLE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_bas
         DOUT : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL := 1;
+        EDGE_ : BOOL := 1;
         register : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
@@ -2865,7 +2865,7 @@ FUNCTION_BLOCK TOGGLE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         Q : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK LTCH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242 *)
@@ -2919,7 +2919,7 @@ FUNCTION_BLOCK STORE_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         Q7 : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION BCDC_TO_INT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
@@ -3244,7 +3244,7 @@ FUNCTION_BLOCK B_TRIG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         Q : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK CLICK_CNT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=189 *)
@@ -3258,7 +3258,7 @@ FUNCTION_BLOCK CLICK_CNT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
     END_VAR
     VAR
         tx : TP;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         cnt : INT := -1;
     END_VAR
 END_FUNCTION_BLOCK
@@ -3275,7 +3275,7 @@ FUNCTION_BLOCK CLICK_DEC (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
     END_VAR
     VAR
         tx : TP;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         cnt : INT := -1;
     END_VAR
 END_FUNCTION_BLOCK
@@ -3306,7 +3306,7 @@ FUNCTION_BLOCK CLK_N (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic3
         Q : BOOL;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         stime : DWORD;
         clk : BOOL;
     END_VAR
@@ -3495,7 +3495,7 @@ FUNCTION_BLOCK SEQUENCE_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
     END_VAR
     VAR
         last : TIME;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         tx : TIME;
         init : BOOL;
     END_VAR
@@ -3513,7 +3513,7 @@ FUNCTION_BLOCK SEQUENCE_64 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
     END_VAR
     VAR
         tx : TIME;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         last : TIME;
     END_VAR
 END_FUNCTION_BLOCK
@@ -3563,7 +3563,7 @@ FUNCTION_BLOCK SEQUENCE_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
     END_VAR
     VAR
         last : TIME;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         tx : TIME;
         init : BOOL;
     END_VAR
@@ -3666,7 +3666,7 @@ FUNCTION_BLOCK TP_X (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic33
         ET : TIME;
     END_VAR
     VAR
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         start : TIME;
         tx : TIME;
     END_VAR
@@ -5797,7 +5797,7 @@ FUNCTION_BLOCK MESSAGE_4R (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
     END_VAR
     VAR
         timer : TON;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK MESSAGE_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173 *)
@@ -6129,7 +6129,7 @@ FUNCTION_BLOCK DCF77 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic3
         mez : DT;
         utc : DT;
         state : INT;
-        edge_ : BOOL;
+        EDGE_ : BOOL;
         tx : TIME;
         ty : TIME;
         last : TIME;
