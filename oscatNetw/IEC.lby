@@ -2,9 +2,9 @@
 <?AutomationStudio Version=4.6.4.67 SP?>
 <Library Version="1.35.2" SubType="IEC" Description="Oscat Network library" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
-    <File Description="Exported data types"> oscatNetw.typ</File>
-    <File Description="Exported constants"> oscatNetw.var</File>
-    <File Description="Exported functions and function blocks"> oscatNetw.fun</File>
+    <File Description="Exported data types">oscatNetw.typ</File>
+    <File Description="Exported constants">oscatNetw.var</File>
+    <File Description="Exported functions and function blocks">oscatNetw.fun</File>
     <File Description="Source code of functionBlock DLOG_BOOL">DLOG_BOOL.st</File>
     <File Description="Source code of functionBlock DLOG_CRON_TAB">DLOG_CRON_TAB.st</File>
     <File Description="Source code of functionBlock DLOG_DINT">DLOG_DINT.st</File>
