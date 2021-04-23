@@ -1,5 +1,5 @@
 FUNCTION URL_TO_STRING
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87*)
     (*
 
     http://hans:geheim@www.example.org:80/demo/example.cgi?land=de&stadt=aa#abschnitt1

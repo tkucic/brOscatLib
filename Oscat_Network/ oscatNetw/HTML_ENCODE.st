@@ -1,5 +1,5 @@
 FUNCTION HTML_ENCODE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=76*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=76*)
     pt_in  := ADR(in);
     pt_out := ADR(HTML_ENCODE);
 

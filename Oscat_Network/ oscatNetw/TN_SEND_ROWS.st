@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_SEND_ROWS
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=183*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=183*)
     (* Verbindung vorhanden und kein Datensenden aktiv *)
     IF (IP_C.C_STATE < BYTE#127 OR S_BUF.SIZE > UINT#0) THEN
     	RETURN; (* nein -> Baustein beenden *)

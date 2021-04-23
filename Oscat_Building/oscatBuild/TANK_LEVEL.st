@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TANK_LEVEL
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=41*)
     (* preprocess the level information *)
     tl(in := level, T_ON := level_delay_time, T_OFF := level_delay_time);
     open := tl.Q;

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BASE64_ENCODE_STREAM
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=74*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=74*)
     IF SIZE1 <= 0 THEN
     	SIZE2 := 0;
     	RETURN;

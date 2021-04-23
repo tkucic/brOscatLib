@@ -1,5 +1,5 @@
 FUNCTION NETWORK_VERSION
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=35*)
     IF in THEN
     	NETWORK_VERSION := DATE_TO_DWORD(D#2016-07-01);
     ELSE

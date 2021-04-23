@@ -1,5 +1,5 @@
 FUNCTION_BLOCK DIMM_2
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=50*)
     (* debouncing for inputs i1 and i2 *)
     t1(IN := I1, PT := T_DEBOUNCE);
     t2(IN := I2, PT := T_DEBOUNCE);

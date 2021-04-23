@@ -1,5 +1,5 @@
 FUNCTION_BLOCK ACTUATOR_COIL
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=16*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16*)
     (* read system time *)
     now := OSCAT_BASIC.T_PLC_MS();
 

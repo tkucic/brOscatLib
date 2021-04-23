@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TIMER_EXT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=63*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=63*)
     (* lösche die millisekunden bei sunrise und sunset *)
     SUN_RISE := DWORD_TO_TOD(TOD_TO_DWORD(SUN_RISE) / 1000 * 1000);
     SUN_SET := DWORD_TO_TOD(TOD_TO_DWORD(SUN_SET) / 1000 * 1000);

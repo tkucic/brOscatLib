@@ -1,5 +1,5 @@
 FUNCTION_BLOCK DLOG_STORE_RRD
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=54*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=54*)
     X.DTI := DTI; (* Datum / Zeit eintragen *)
     X.CLOCK_TRIG := DTI <> dti_last;
     dti_last := DTI;

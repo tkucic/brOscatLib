@@ -1,5 +1,5 @@
 FUNCTION_BLOCK NET_VAR_CONTROL
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=199*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=199*)
     IF X.ERROR_ID > BYTE#0 THEN (* Schwere Fehler bei Variablenzuordnung vorhanden  !! *)
     	X.STATE := BYTE#0;
     	ERROR := BYTE_TO_DWORD(X.ERROR_ID);

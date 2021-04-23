@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TELNET_LOG
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=135*)
     IF NOT init THEN
     	init := TRUE;
     	IF OPTION > 0 THEN

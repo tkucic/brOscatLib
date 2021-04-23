@@ -1,5 +1,5 @@
 FUNCTION_BLOCK SHA1_STREAM
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=84*)
     CASE MODE OF
 
     1:	(* Initialisierung der Hash-Werte *)

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_SECURITY
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=89*)
     IF Fire THEN
     	QU := TRUE;
     	QD := FALSE;

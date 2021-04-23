@@ -1,5 +1,5 @@
 FUNCTION_BLOCK GET_WAN_IP
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=96*)
     CASE state OF
 
     00:

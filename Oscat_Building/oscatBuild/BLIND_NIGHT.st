@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_NIGHT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=84*)
     IF NOT (up AND dn) AND night THEN
     	(* manual operation at night will cancel operation for one night *)
     	night := FALSE;

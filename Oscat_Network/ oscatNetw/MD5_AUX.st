@@ -1,5 +1,5 @@
 FUNCTION MD5_AUX
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=79*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=79*)
     CASE N OF
     	1: w := (B AND C) OR (NOT(B) AND D);
     	2: w := (B AND D) OR (C AND NOT D);

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK CLICK
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=47*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=47*)
     (* reconfiguration and debounce circuitry *)
     s_in(in := in, TD := T_debounce, TR := T_reconfig);
 

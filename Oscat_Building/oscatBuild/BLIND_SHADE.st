@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_SHADE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=93*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=93*)
     (* the input sun is sent through tof which will delay the shade for the time shade_delay *)
     sun_delay(IN := sun, PT := shade_delay);
 

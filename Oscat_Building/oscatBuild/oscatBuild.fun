@@ -1,4 +1,4 @@
-FUNCTION_BLOCK ACTUATOR_2P (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=12 *)
+FUNCTION_BLOCK ACTUATOR_2P (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=12 *)
     VAR_INPUT
         IN : BYTE;
         TEST : BOOL;
@@ -16,7 +16,7 @@ FUNCTION_BLOCK ACTUATOR_2P (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         pwgen : GEN_PULSE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ACTUATOR_3P (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=13 *)
+FUNCTION_BLOCK ACTUATOR_3P (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=13 *)
     VAR_INPUT
         IN : BYTE;
         TEST : BOOL;
@@ -47,7 +47,7 @@ FUNCTION_BLOCK ACTUATOR_3P (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         start : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ACTUATOR_A (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=15 *)
+FUNCTION_BLOCK ACTUATOR_A (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=15 *)
     VAR_INPUT
         I1 : BYTE;
         IS : BOOL;
@@ -67,7 +67,7 @@ FUNCTION_BLOCK ACTUATOR_A (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
         dx_edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ACTUATOR_COIL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=16 *)
+FUNCTION_BLOCK ACTUATOR_COIL (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16 *)
     VAR_INPUT
         IN : BOOL;
         SELF_ACT_CYCLE : TIME := TIME#14400m0s0ms;
@@ -84,7 +84,7 @@ FUNCTION_BLOCK ACTUATOR_COIL (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         now : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ACTUATOR_PUMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=16 *)
+FUNCTION_BLOCK ACTUATOR_PUMP (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16 *)
     VAR_INPUT
         IN : BOOL;
         MANUAL : BOOL;
@@ -108,7 +108,7 @@ FUNCTION_BLOCK ACTUATOR_PUMP (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ACTUATOR_UD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=17 *)
+FUNCTION_BLOCK ACTUATOR_UD (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=17 *)
     VAR_INPUT
         UD : BOOL;
         ON : BOOL;
@@ -133,7 +133,7 @@ FUNCTION_BLOCK ACTUATOR_UD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK AUTORUN (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=19 *)
+FUNCTION_BLOCK AUTORUN (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=19 *)
     VAR_INPUT
         IN : BOOL;
         TEST : BOOL;
@@ -151,7 +151,7 @@ FUNCTION_BLOCK AUTORUN (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         val : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLICK (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=47 *)
+FUNCTION_BLOCK CLICK (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=47 *)
     VAR_INPUT
         IN : BOOL;
     END_VAR
@@ -169,7 +169,7 @@ FUNCTION_BLOCK CLICK (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic3
         last : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLICK_MODE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
+FUNCTION_BLOCK CLICK_MODE (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=49 *)
     VAR_INPUT
         IN : BOOL;
     END_VAR
@@ -185,7 +185,7 @@ FUNCTION_BLOCK CLICK_MODE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
         last : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DEBOUNCE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
+FUNCTION_BLOCK DEBOUNCE (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=49 *)
     VAR_INPUT
         IN : BOOL;
         TD : TIME;
@@ -198,7 +198,7 @@ FUNCTION_BLOCK DEBOUNCE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_bas
         deb : TOF;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DIMM_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50 *)
+FUNCTION_BLOCK DIMM_2 (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=50 *)
     VAR_INPUT
         SET : BOOL;
         VAL : BYTE := 255;
@@ -237,7 +237,7 @@ FUNCTION_BLOCK DIMM_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         dim : _RMP_B;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DIMM_I (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52 *)
+FUNCTION_BLOCK DIMM_I (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=52 *)
     VAR_INPUT
         SET : BOOL;
         VAL : BYTE := 255;
@@ -269,7 +269,7 @@ FUNCTION_BLOCK DIMM_I (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         dir : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK F_LAMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=54 *)
+FUNCTION_BLOCK F_LAMP (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=54 *)
     VAR_INPUT
         SWITCH : BOOL;
         DIMM : BYTE := 255;
@@ -287,7 +287,7 @@ FUNCTION_BLOCK F_LAMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic
         runtime : ONTIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PULSE_LENGTH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56 *)
+FUNCTION_BLOCK PULSE_LENGTH (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=56 *)
     VAR_INPUT
         IN : BOOL;
     END_VAR
@@ -302,7 +302,7 @@ FUNCTION_BLOCK PULSE_LENGTH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat
         edge_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PULSE_T (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56 *)
+FUNCTION_BLOCK PULSE_T (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=56 *)
     VAR_INPUT
         IN : BOOL;
         T1 : TIME;
@@ -319,7 +319,7 @@ FUNCTION_BLOCK PULSE_T (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         edge_ : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SW_RECONFIG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=57 *)
+FUNCTION_BLOCK SW_RECONFIG (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=57 *)
     VAR_INPUT
         IN : BOOL;
         TD : TIME;
@@ -334,7 +334,7 @@ FUNCTION_BLOCK SW_RECONFIG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         INV : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SWITCH_I (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=58 *)
+FUNCTION_BLOCK SWITCH_I (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=58 *)
     VAR_INPUT
         SET : BOOL;
         IN : BOOL;
@@ -354,7 +354,7 @@ FUNCTION_BLOCK SWITCH_I (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_bas
         tx : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SWITCH_X (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=59 *)
+FUNCTION_BLOCK SWITCH_X (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=59 *)
     VAR_INPUT
         IN1 : BOOL;
         IN2 : BOOL;
@@ -407,7 +407,7 @@ FUNCTION_BLOCK TIMER_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         STOP : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TIMER_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60 *)
+FUNCTION_BLOCK TIMER_2 (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=60 *)
     VAR_INPUT
         DT_IN : DT;
         START : TOD;
@@ -422,7 +422,7 @@ FUNCTION_BLOCK TIMER_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         run_date : DATE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TIMER_EVENT_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62 *)
+FUNCTION TIMER_EVENT_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=62 *)
     VAR_INPUT
         EVENT : STRING[STRING_LENGTH];
         LANG : INT;
@@ -439,7 +439,7 @@ FUNCTION TIMER_EVENT_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasi
         tmp : STRING[60];
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK TIMER_EXT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=63 *)
+FUNCTION_BLOCK TIMER_EXT (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=63 *)
     VAR_INPUT
         ENA : BOOL := TRUE;
         ON : BOOL;
@@ -477,7 +477,7 @@ FUNCTION_BLOCK TIMER_EXT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TIMER_P4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65 *)
+FUNCTION_BLOCK TIMER_P4 (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=65 *)
     VAR_INPUT
         DTIME : DT;
         TREF_0 : TOD;
@@ -802,7 +802,7 @@ FUNCTION_BLOCK T_AVG24 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         i : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TANK_LEVEL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41 *)
+FUNCTION_BLOCK TANK_LEVEL (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=41 *)
     VAR_INPUT
         LEVEL : BOOL;
         LEAK : BOOL;
@@ -919,7 +919,7 @@ FUNCTION WCT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic33
         V : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK BLIND_ACTUATOR (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=74 *)
+FUNCTION_BLOCK BLIND_ACTUATOR (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=74 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -941,7 +941,7 @@ FUNCTION_BLOCK BLIND_ACTUATOR (*  *)(* http://www.oscat.de/images/OSCATBasic/osc
         lock : INTERLOCK;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=75 *)
+FUNCTION_BLOCK BLIND_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=75 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -968,7 +968,7 @@ FUNCTION_BLOCK BLIND_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         iAngel : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_CONTROL_S (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78 *)
+FUNCTION_BLOCK BLIND_CONTROL_S (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=78 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -997,7 +997,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S (*  *)(* http://www.oscat.de/images/OSCATBasic/os
         PI_last : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_INPUT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=80 *)
+FUNCTION_BLOCK BLIND_INPUT (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=80 *)
     VAR_INPUT
         POS : BYTE;
         ANG : BYTE;
@@ -1041,7 +1041,7 @@ FUNCTION_BLOCK BLIND_INPUT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         last : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_NIGHT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
+FUNCTION_BLOCK BLIND_NIGHT (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=84 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -1071,7 +1071,7 @@ FUNCTION_BLOCK BLIND_NIGHT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         last_day : DATE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_SCENE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
+FUNCTION_BLOCK BLIND_SCENE (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=87 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -1094,7 +1094,7 @@ FUNCTION_BLOCK BLIND_SCENE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         x : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_SECURITY (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
+FUNCTION_BLOCK BLIND_SECURITY (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=89 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -1118,7 +1118,7 @@ FUNCTION_BLOCK BLIND_SECURITY (*  *)(* http://www.oscat.de/images/OSCATBasic/osc
         AO : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_SET (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
+FUNCTION_BLOCK BLIND_SET (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=91 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -1146,7 +1146,7 @@ FUNCTION_BLOCK BLIND_SET (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
         last : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_SHADE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=93 *)
+FUNCTION_BLOCK BLIND_SHADE (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=93 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -1171,7 +1171,7 @@ FUNCTION_BLOCK BLIND_SHADE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         sun_delay : TOF;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BLIND_SHADE_S (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96 *)
+FUNCTION_BLOCK BLIND_SHADE_S (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=96 *)
     VAR_INPUT
         UP : BOOL;
         DN : BOOL;
@@ -1197,7 +1197,7 @@ FUNCTION_BLOCK BLIND_SHADE_S (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         sun_delay : TOF;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BUILDING_VERSION : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=11 *)
+FUNCTION BUILDING_VERSION : DWORD (*  *)(* http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=11 *)
     VAR_INPUT
         IN : BOOL;
     END_VAR

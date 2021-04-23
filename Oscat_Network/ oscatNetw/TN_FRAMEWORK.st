@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_FRAMEWORK
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=173*)
     (* Initialisierung / Freigeben der Verbindung *)
     IF (NOT IP_C.C_ENABLE) THEN
 

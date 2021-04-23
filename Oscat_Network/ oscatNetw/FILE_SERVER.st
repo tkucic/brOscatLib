@@ -1,5 +1,5 @@
 FUNCTION_BLOCK FILE_SERVER
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=154*)
     CASE step OF
     0:
     	IF FSD.MODE = LIMIT(1,FSD.MODE,5) THEN

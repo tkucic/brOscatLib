@@ -1,5 +1,5 @@
 FUNCTION_BLOCK DLOG_DINT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=49*)
     CASE x.ADD_COM OF
 
     01:	(* ADD INFO *)

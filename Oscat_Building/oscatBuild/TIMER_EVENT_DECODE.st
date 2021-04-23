@@ -1,5 +1,5 @@
 FUNCTION TIMER_EVENT_DECODE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=62*)
     (* a timer event is specified as follows:
     	$typ;ch;day;start;duration;land;lor#
     $ 		= start of definition

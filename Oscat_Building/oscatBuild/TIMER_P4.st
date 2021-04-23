@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TIMER_P4
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=65*)
     (* for performance reasons we only execute the code at the beginning of a new second *)
 
     IF RST THEN

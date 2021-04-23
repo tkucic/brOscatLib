@@ -1,5 +1,5 @@
 FUNCTION_BLOCK ACTUATOR_2P
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=12*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=12*)
     (* run the autorun timer *)
     timer(trun := SELF_ACT_PULSE * (2 * SELF_ACT_CYCLES), toff := SELF_ACT_TIME, Test := TEST, ARE := ARE, arx := ARX);
     ARO := timer.ARO;

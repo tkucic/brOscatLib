@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_RECEIVE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=182*)
     (* Datenempfang auswertung *)
     Xus_TN_SCREEN.by_Input_ASCII_Code := BYTE#00;
     Xus_TN_SCREEN.by_Input_Exten_Code := BYTE#00;

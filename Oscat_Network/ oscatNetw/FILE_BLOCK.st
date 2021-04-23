@@ -1,5 +1,5 @@
 FUNCTION_BLOCK FILE_BLOCK
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=152*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=152*)
     CASE step OF
     0:	IF MODE > 0 THEN
     		ERROR := 0;

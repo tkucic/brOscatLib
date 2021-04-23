@@ -1,5 +1,5 @@
 FUNCTION_BLOCK WORLD_WEATHER_ICON_OSCAT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=215*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=215*)
     IF ACTIVATE AND act_last = FALSE THEN
     	x := LIMIT(0,WW.CUR.WEATHER_ICON,41);
     	WW.CUR.WEATHER_ICON := dat[x];

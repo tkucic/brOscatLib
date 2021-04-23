@@ -1,5 +1,5 @@
 FUNCTION_BLOCK CLICK_MODE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=49*)
     (* when input goes high start the timer to decode pulses *)
     timer(in := IN, PT := T_LONG);
     single := FALSE;

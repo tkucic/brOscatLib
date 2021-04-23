@@ -1,5 +1,5 @@
 FUNCTION_BLOCK DIMM_I
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=52*)
     (* the input is first sent through auto reconfiguration and debouncing *)
     config(IN := IN, TD := T_DEBOUNCE, TR := T_RECONFIG);
     decode(in := config.Q, T_LONG := T_DIMM_START);

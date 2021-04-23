@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_SC_WRITE_EOS
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=195*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=195*)
     TN_SC_WRITE(Iin_Y := Xus_TN_SCREEN.in_EOS_Offset / 80, (* aktuelle Zeile ausrechnen *)
     			Iin_X := Xus_TN_SCREEN.in_EOS_Offset MOD 80, (* aktuelle Spalte ausrechnen *)
     			Iby_ATTR := Iby_ATTR,

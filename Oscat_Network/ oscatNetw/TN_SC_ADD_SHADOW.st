@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_SC_ADD_SHADOW
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=184*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=184*)
     IF TN_SC_XY2_ERROR(Iin_X1,Iin_Y1,Iin_X2,Iin_Y2) THEN RETURN; END_IF
 
     IF Iin_Y1 < 0 OR Iin_X1 < 0 OR Iin_Y2 < 0 OR Iin_X2 < 0 THEN RETURN; END_IF (* min werte prüfen *)

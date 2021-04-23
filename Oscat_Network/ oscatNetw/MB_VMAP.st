@@ -1,5 +1,5 @@
 FUNCTION_BLOCK MB_VMAP
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=118*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=118*)
     IF init = FALSE THEN
     	init := TRUE;
     	IF VMAP[1].FC = DWORD#0 THEN

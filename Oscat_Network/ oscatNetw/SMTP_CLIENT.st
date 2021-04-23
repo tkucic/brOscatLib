@@ -1,5 +1,5 @@
 FUNCTION_BLOCK SMTP_CLIENT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=123*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=123*)
     CASE step OF
 
     00:

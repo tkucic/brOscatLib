@@ -1,5 +1,5 @@
 FUNCTION_BLOCK READ_HTTP
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=122*)
     stop := UINT_TO_INT(SIZE) - 1;
 
     IF LEN(SRC) = 0 THEN

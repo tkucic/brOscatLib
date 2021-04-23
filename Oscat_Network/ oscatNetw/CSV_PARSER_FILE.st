@@ -1,5 +1,5 @@
 FUNCTION_BLOCK CSV_PARSER_FILE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=149*)
     IF RUN > 0 THEN
 
     	IF state = 0 THEN (* Auswertung neu beginnen *)

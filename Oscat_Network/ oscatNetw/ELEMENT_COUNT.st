@@ -1,5 +1,5 @@
 FUNCTION ELEMENT_COUNT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=34*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=34*)
     IF ELEMENT = '' THEN
     	ELEMENT_COUNT := 0;
     ELSE

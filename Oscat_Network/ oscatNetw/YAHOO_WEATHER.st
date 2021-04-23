@@ -1,5 +1,5 @@
 FUNCTION_BLOCK YAHOO_WEATHER
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=207*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=207*)
     (* read system time *)
     tx := OSCAT_BASIC.T_PLC_MS();
 

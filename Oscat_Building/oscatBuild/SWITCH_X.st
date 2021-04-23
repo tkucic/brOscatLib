@@ -1,5 +1,5 @@
 FUNCTION_BLOCK SWITCH_X
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=59*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=59*)
     (* initialize on startup *)
     IF NOT init THEN
     	init := TRUE;

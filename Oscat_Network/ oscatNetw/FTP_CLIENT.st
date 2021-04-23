@@ -1,5 +1,5 @@
 FUNCTION_BLOCK FTP_CLIENT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=94*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=94*)
     CASE step OF
 
     00:	IF ACTIVATE AND NOT activate_last THEN

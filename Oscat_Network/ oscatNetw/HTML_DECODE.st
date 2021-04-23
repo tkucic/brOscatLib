@@ -1,5 +1,5 @@
 FUNCTION HTML_DECODE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=75*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=75*)
     HTML_DECODE := IN;
 
     (* docode characters encoded by character position *)

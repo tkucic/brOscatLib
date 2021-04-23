@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TELNET_PRINT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=137*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=137*)
     READY := IP_C.C_STATE > BYTE#127;
     DONE := FALSE;
 

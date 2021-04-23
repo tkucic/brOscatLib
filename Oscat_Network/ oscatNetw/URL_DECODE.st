@@ -1,5 +1,5 @@
 FUNCTION URL_DECODE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87*)
     URL_DECODE := IN;
     pos := FIND(URL_DECODE,'%');
     WHILE pos > 0 DO

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK DNS_DYN
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=92*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=92*)
     CASE state OF
 
     00:	IF ENABLE AND ((UPDATE AND NOT update_last) OR w.Q) THEN

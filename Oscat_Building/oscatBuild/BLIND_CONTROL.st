@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_CONTROL
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=75*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=75*)
     IF bTimeTest THEN
     	PI:=iPos;
     	AI:=iAngel;

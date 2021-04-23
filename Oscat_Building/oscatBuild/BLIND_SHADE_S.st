@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_SHADE_S
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=96*)
     (* status definition
        151 = shadow               move shutter down for shadowing
        152 = alert                  move shutter up by setting QU:=TRUE when door is open.

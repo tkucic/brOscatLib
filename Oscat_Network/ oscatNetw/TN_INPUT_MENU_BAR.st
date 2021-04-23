@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_INPUT_MENU_BAR
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=176*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=176*)
     (* sicherstellen das rechteck immer innerhalb screen positioniert wird *)
 
     IF (Xus_TN_MENU.in_State = INT#00) AND (Xus_TN_MENU.bo_Create = TRUE) THEN

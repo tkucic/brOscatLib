@@ -1,5 +1,5 @@
 FUNCTION_BLOCK IRTRANS_RCV_8
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=39*)
     decode := cmd AND dev_code = dev;
 
     Q0 := key = key_code_0 AND decode;

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK ACTUATOR_A
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=15*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=15*)
     (* run the system timer, if self_act_time = t#0s then state is set to 0 *)
     timer(T0 := RUNTIME, T1 := RUNTIME, T3 := SELF_ACT_TIME, sl := DX AND NOT dx_edge, sx := 0, S0 := SELF_ACT_TIME > t#0s);
     dx_edge := dx;

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_SC_VIEWPORT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=191*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=191*)
     (* LOG-Messages ausgeben *)
 
     IF Xus_LOG_VIEWPORT.UPDATE AND FB_TON.Q THEN (* Update gewünscht und Verzögerungszeit abgelaufen *)

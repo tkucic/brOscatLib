@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_INPUT_CONTROL
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=174*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=174*)
     (* Bearbeitung freigegeben ? *)
     IF (Xus_TN_INPUT_CONTROL.bo_Enable = FALSE) OR (Xus_TN_SCREEN.bo_Menue_Bar_Dialog = TRUE) THEN
     	RETURN;

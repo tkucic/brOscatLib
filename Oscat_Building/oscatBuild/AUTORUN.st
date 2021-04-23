@@ -1,5 +1,5 @@
 FUNCTION_BLOCK AUTORUN
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=19*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=19*)
     (* run the integrator when T_off > T#0s *)
     IF TOFF > T#0s THEN
     	timer(DIR:= OUT, TR := SEL(OUT, TOFF, TRUN), RMP := val);

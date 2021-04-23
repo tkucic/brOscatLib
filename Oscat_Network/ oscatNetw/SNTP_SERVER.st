@@ -1,5 +1,5 @@
 FUNCTION_BLOCK SNTP_SERVER
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=128*)
     (* Domain Name System (query) *)
     tx := OSCAT_BASIC.T_PLC_MS(); (* read system time *)
 

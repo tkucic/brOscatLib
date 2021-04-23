@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_INPUT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=80*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=80*)
     (* read system timer *)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 

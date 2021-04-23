@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_SCENE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=87*)
     (* delete all bits except the lower 4 of scene *)
     x := scene AND 16#0F;
 

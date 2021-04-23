@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TIMER_2
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=60*)
     (* read system time *)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 

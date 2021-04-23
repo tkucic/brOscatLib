@@ -1,5 +1,5 @@
 FUNCTION_BLOCK LOG_MSG
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=111*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=111*)
     IF DWORD_TO_BYTE(SHL(LOG_CL.NEW_MSG_OPTION,16)) > LOG_CL.LEVEL THEN RETURN; END_IF (* Logging freigegeben ?*)
 
     FB_PRINT_SF(PRINTF_DATA := LOG_CL.PRINTF,STR := LOG_CL.NEW_MSG);

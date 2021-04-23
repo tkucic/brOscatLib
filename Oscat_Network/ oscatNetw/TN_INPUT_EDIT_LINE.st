@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_INPUT_EDIT_LINE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=174*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=174*)
     (* Cursorsteuerung rücksetzen *)
     in_CursorOffset := INT#0;
 

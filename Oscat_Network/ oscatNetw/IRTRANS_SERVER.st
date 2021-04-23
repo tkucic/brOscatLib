@@ -1,5 +1,5 @@
 FUNCTION_BLOCK IRTRANS_SERVER
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=40*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=40*)
     IF NOT IP_C.C_ENABLE THEN
     	(* IP Datenverkehr einrichten *)
     	IP_C.C_PORT := WORD#0; (* Portnummer eintragen *)

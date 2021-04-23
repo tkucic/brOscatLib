@@ -1,5 +1,5 @@
 FUNCTION_BLOCK IRTRANS_RCV_1
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=37*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=37*)
     Q := cmd AND dev_code = dev AND key_code = key;
 
     (* revision history

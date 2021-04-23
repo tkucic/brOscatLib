@@ -1,5 +1,5 @@
 FUNCTION BUILDING_VERSION
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=11*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=11*)
     IF in THEN
     	BUILDING_VERSION := DATE_TO_DWORD(D#2011-02-3);
     ELSE

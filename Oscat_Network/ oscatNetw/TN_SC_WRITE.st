@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_SC_WRITE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=192*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=192*)
     in_String_Length := LEN(Ist_STRING);
     IF TN_SC_XY_ERROR(Iin_X + in_String_Length - 1,Iin_Y) THEN RETURN; END_IF
     Xus_TN_SCREEN.bya_Line_Update[Iin_Y] := TRUE; (* Zeile zum Updaten freigeben *)

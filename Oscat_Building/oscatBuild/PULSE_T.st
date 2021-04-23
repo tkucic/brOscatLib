@@ -1,5 +1,5 @@
 FUNCTION_BLOCK PULSE_T
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=56*)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
     IF NOT init THEN
     	init := TRUE;

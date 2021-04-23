@@ -1,5 +1,5 @@
 FUNCTION MD5_TO_STRH
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=82*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=82*)
     pt := ADR(MD5_TO_STRH); (* read output adress to pointer *)
 
     FOR i := 0 TO 15 DO; (* write the 8 hex characters backwards *)

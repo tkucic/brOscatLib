@@ -1,5 +1,5 @@
 FUNCTION_BLOCK IRTRANS_SND_4
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=43*)
     d := IP_C.C_STATE > 127 AND (IP_C.MAILBOX[1] > 0 OR IP_C.C_MODE <> 5);
     IF NOT d THEN RETURN; END_IF
 

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK IP_CONTROL2
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=107*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=107*)
     (* ---------------------- Debug-Message ----------------------------*)
     (*IF _debug_enable THEN
     	IF IP_C.FIFO.ID > BYTE#0 THEN

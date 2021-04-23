@@ -1,5 +1,5 @@
 FUNCTION_BLOCK DLOG_FILE_TO_FTP
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=63*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=63*)
     (* neue Filenamen speichern *)
     IF X.NEW_FILE_RTRIG AND ftrig_old = FALSE THEN
     	UCBD.D_HEAD := 1;

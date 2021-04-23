@@ -1,5 +1,5 @@
 FUNCTION_BLOCK MD5_STR
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=80*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=80*)
     CASE mode OF
     0:	(* Wait für Start *)
     	IF RUN AND NOT run_last THEN

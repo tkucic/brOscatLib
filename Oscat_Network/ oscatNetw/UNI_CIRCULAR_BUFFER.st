@@ -1,5 +1,5 @@
 FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=69*)
     CASE DATA.D_MODE OF
 
     01:	x := WORD_TO_BYTE(DATA.D_HEAD); (* nur rechtes byte auswerten *)

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK HTTP_GET
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=98*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=98*)
     CASE state OF
     00:	DONE := FALSE;
     	IF GET AND NOT GET_LAST THEN (* auf positive Flanke SET warten *)

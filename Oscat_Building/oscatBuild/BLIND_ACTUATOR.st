@@ -1,5 +1,5 @@
 FUNCTION_BLOCK BLIND_ACTUATOR
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=74*)
+    (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=74*)
     (* make sure only one motor is active at a given time *)
     lock(i1 := UP, I2 := DN, TL := T_lockout);
 

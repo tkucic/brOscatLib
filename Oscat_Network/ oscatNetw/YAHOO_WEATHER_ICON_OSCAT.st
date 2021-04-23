@@ -1,5 +1,5 @@
 FUNCTION_BLOCK YAHOO_WEATHER_ICON_OSCAT
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=211*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=211*)
     IF ACTIVATE AND act_last = FALSE THEN
     	x := MIN(YW.CUR_CONDITIONS_CODE,48);
     	YW.CUR_CONDITIONS_ICON := dat[x];

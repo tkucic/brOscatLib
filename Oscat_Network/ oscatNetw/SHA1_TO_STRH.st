@@ -1,5 +1,5 @@
 FUNCTION SHA1_TO_STRH
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=85*)
     pt := ADR(SHA1_TO_STRH); (* read output adress to pointer *)
 
     FOR i := 0 TO 19 DO; (* write the 10 hex characters backwards *)

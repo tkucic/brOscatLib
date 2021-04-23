@@ -1,5 +1,5 @@
 FUNCTION_BLOCK NET_VAR_DWORD8
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=202*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=202*)
     IF NOT init THEN
     	init := TRUE;
     	X.ID_MAX := X.ID_MAX + USINT#1;

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK SPIDER_ACCESS
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=129*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=129*)
     CASE state OF
 
     00:

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK PRINT_SF
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=121*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=121*)
     IF LEN(STR) > 0 THEN
     	run := TRUE;
 

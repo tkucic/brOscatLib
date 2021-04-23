@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_INPUT_MENU_POPUP
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=178*)
     (* sicherstellen das rechteck immer innerhalb screen positioniert wird *)
 
     IF (Xus_TN_MENU_POPUP.bo_Activ = FALSE) AND (Xus_TN_MENU_POPUP.bo_Create = TRUE) THEN

@@ -1,5 +1,5 @@
 FUNCTION_BLOCK TN_SC_AREA_RESTORE
-    (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=184*)
+    (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=184*)
     IF Xus_TN_SCREEN.bya_BACKUP[0] > BYTE#00 THEN
 
     	(* Parameter auslesen *)
