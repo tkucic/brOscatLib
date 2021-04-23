@@ -1,5 +1,0 @@
-FUNCTION F_LIN
-    F_lin := A * X + B;
-
-
-END_FUNCTION

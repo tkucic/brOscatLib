@@ -1,5 +1,0 @@
-FUNCTION MS_TO_KMH
-    MS_TO_KMH := ms * 3.6;
-
-
-END_FUNCTION

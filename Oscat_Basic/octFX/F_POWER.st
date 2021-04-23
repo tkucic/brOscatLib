@@ -1,4 +1,0 @@
-FUNCTION F_POWER
-    F_POWER := a * EXPT(X, N);
-
-END_FUNCTION
