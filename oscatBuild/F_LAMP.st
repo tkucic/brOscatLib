@@ -20,7 +20,7 @@ FUNCTION_BLOCK F_LAMP
     END_IF
 
 
-    IF ONTIME >= T_maintenance * 3600 AND T_Maintenance > 0 THEN
+    IF ONTIME >= T_MAINTENANCE * 3600 AND T_MAINTENANCE > 0 THEN
     	STATUS := 120;
     END_IF
 

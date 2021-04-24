@@ -54,7 +54,7 @@ FUNCTION_BLOCK TIMER_2
     ELSIF Q AND tx - activation >= DURATION THEN
     	Q := FALSE;
     END_IF
-    last_check := Tx;
+    last_check := tx;
 
 
     (* revision history

@@ -8,9 +8,9 @@ FUNCTION_BLOCK ACTUATOR_2P
     IF ARO THEN
     	pwgen(PTL := SELF_ACT_PULSE, PTH := SELF_ACT_PULSE);
     	OUT := pwgen.Q;
-    ELSIF IN < sens THEN
+    ELSIF IN < SENS THEN
     	OUT := FALSE;
-    ELSIF IN > BYTE#255 - sens THEN
+    ELSIF IN > BYTE#255 - SENS THEN
     	OUT := TRUE;
     ELSE
     	pwgen.PTH := (CYCLE_TIME * OSCAT_BASIC.BAND_B(IN,SENS)) / 255;

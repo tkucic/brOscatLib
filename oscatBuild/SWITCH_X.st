@@ -3,7 +3,7 @@ FUNCTION_BLOCK SWITCH_X
     (* initialize on startup *)
     IF NOT init THEN
     	init := TRUE;
-    	IF t_debounce < t#50ms THEN tx := t#50ms; ELSE tx := t_debounce; END_IF
+    	IF T_DEBOUNCE < t#50ms THEN tx := t#50ms; ELSE tx := T_DEBOUNCE; END_IF
     	T1(PT := tx);
     	T2(PT := tx);
     	T3(PT := tx);

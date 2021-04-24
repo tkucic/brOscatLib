@@ -17,16 +17,16 @@ FUNCTION_BLOCK PULSE_LENGTH
     ELSIF NOT IN AND edge_ THEN
     	edge_ := FALSE;
     	tn := tx - tn;
-    	IF tn < t_short THEN
+    	IF tn < T_SHORT THEN
     		SHORT := TRUE;
-    	ELSIF tn > t_long THEN
+    	ELSIF tn > T_LONG THEN
     		LONG := TRUE;
     	ELSE
     		MIDDLE := TRUE;
     	END_IF
 
-    (* generate LONG pulse as soon as T_long is reached *)
-    ELSIF IN AND tx - tn > t_long THEN
+    (* generate LONG pulse as soon as T_LONG is reached *)
+    ELSIF IN AND tx - tn > T_LONG THEN
     	LONG := TRUE;
     END_IF
 

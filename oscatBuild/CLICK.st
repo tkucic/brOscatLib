@@ -1,7 +1,7 @@
 FUNCTION_BLOCK CLICK
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=47*)
     (* reconfiguration and debounce circuitry *)
-    s_in(IN := IN, TD := T_debounce, TR := T_reconfig);
+    s_in(IN := IN, TD := T_DEBOUNCE, TR := T_RECONFIG);
 
     (* read system time *)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
@@ -15,7 +15,7 @@ FUNCTION_BLOCK CLICK
 
     (* set outputs *)
     IF state > 0 THEN
-    	IF (Q AND tx - last > t_short) OR (NOT Q AND tx - last > t_pause) THEN
+    	IF (Q AND tx - last > T_SHORT) OR (NOT Q AND tx - last > T_PAUSE) THEN
     		CASE state OF
     			1:	SINGLE := TRUE;
     				STATUS := 111;
@@ -45,7 +45,7 @@ FUNCTION_BLOCK CLICK
     	created original version
 
     18.5.2007	rev 1.1 hm
-    	corrected an error while execution would stop after t_reconfig elapsed.
+    	corrected an error while execution would stop after T_RECONFIG elapsed.
 
     15.9.2007	rev 1.2 hm
     	replaced Time() with T_PLC_MS for compatibility and performance reasons
