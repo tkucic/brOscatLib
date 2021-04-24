@@ -7,7 +7,7 @@ FUNCTION_BLOCK CLICK_CNT
     	(* a rising EDGE_ on IN sets the counter to 0 *)
     	cnt := 0;
     ELSIF tx.Q AND NOT IN AND EDGE_ THEN
-    	(* count falling EDGE_s when tp.Q is true *)
+    	(* count falling edges when tp.Q is true *)
     	cnt := cnt + 1;
     ELSIF NOT tx.Q THEN
     	Q := cnt = N;
