@@ -63,5 +63,8 @@
     <File Description="Source code of functionBlock BLIND_SHADE_S">BLIND_SHADE_S.st</File>
     <File Description="Source code of function BUILDING_VERSION">BUILDING_VERSION.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="oscatBasic" />
+  </Dependencies>
 </Library>

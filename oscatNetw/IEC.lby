@@ -132,5 +132,8 @@
     <File Description="Source code of functionBlock UNI_CIRCULAR_BUFFER">UNI_CIRCULAR_BUFFER.st</File>
     <File Description="Source code of functionBlock XML_READER">XML_READER.st</File>
   </Files>
-  <Dependencies />
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="oscatBasic" />
+  </Dependencies>
 </Library>
