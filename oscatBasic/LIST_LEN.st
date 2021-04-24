@@ -8,7 +8,7 @@ FUNCTION LIST_LEN
     	pos := pos + 1;
     UNTIL
     	c = 0 OR pos > LIST_LENGTH
-    END_REPEAT;
+    END_REPEAT
 
 
 

@@ -303,7 +303,7 @@ FUNCTION_BLOCK FTP_CLIENT
     		REPEAT (* zeilenterminierung erkennen und echtes TEXT-Ende bestimmen *)
     			idx1 := idx1 - 1;
     		UNTIL idx1 = 0 OR R_BUF1.BUFFER[idx1] >= BYTE#32 (* TRUE = EXIT *)
-    		END_REPEAT;
+    		END_REPEAT
     		idx1 := idx1 + 1; (* index auf SIZE umrechnen *)
     		rcv_text := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF1.BUFFER),SIZE:=idx1,START:=0,STOP:=OSCAT_BASIC.STRING_LENGTH-1);
     		IF LEN(rcv_text) >= 3 THEN (* Statuscode prüfen und auswerten *)

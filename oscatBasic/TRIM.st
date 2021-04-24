@@ -4,7 +4,7 @@ FUNCTION TRIM
     REPEAT
     	pos := FIND(TRIM,' ');
     	IF pos > 0 THEN TRIM := REPLACE(TRIM,'',1,pos); END_IF
-    UNTIL pos = 0	END_REPEAT;
+    UNTIL pos = 0	END_REPEAT
 
 
     (* revision histroy

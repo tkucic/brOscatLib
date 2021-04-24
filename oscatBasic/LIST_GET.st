@@ -15,7 +15,7 @@ FUNCTION LIST_GET
     	i := i + 1;
     UNTIL
     	(i = LIST_LENGTH) OR (c = 0)
-    END_REPEAT;
+    END_REPEAT
     po^[o] := 0;						(* close the output string *)
 
 

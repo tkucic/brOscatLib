@@ -43,7 +43,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		END_IF
     		n1 := n1 + n2;
     	UNTIL n1 >= HeaderSize
-    	END_REPEAT;
+    	END_REPEAT
 
     	(* Daten in Buffer eintragen *)
     	n1 := 0;
@@ -59,7 +59,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		END_IF
     		n1 := n1 + n2;
     	UNTIL n1 >= cnt
-    	END_REPEAT;
+    	END_REPEAT
 
     	DATA.BUF_SIZE := DATA.BUF_SIZE + cnt + HeaderSize;
     	DATA.BUF_COUNT := DATA.BUF_COUNT + 1;
@@ -105,7 +105,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     			END_IF
     			n1 := n1 + n2;
     		UNTIL n1 >= HeaderSize
-    		END_REPEAT;
+    		END_REPEAT
     	
     		DATA._GetStart := DATA._GetEnd;
     		cnt := DWORD_TO_UINT(tmp_dw AND 16#0000_FFFF);
@@ -133,7 +133,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     			END_IF
     			n1 := n1 + n2;
     		UNTIL n1 >= cnt
-    		END_REPEAT;
+    		END_REPEAT
     		IF x = 1 THEN
     			pTmp^ := 0; (* String terminieren *)
     		END_IF

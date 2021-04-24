@@ -16,8 +16,8 @@ FUNCTION _ARRAY_SORT
     		REPEAT
 
     			(* steigende Reihenfolge *)
-    			REPEAT	i := i+1;	UNTIL (PT^[i] >= pivot) OR NOT (i < rechts)	END_REPEAT;
-    			REPEAT	j := j-1;	UNTIL (PT^[j] <= pivot) OR NOT (j > links)	END_REPEAT;
+    			REPEAT	i := i+1;	UNTIL (PT^[i] >= pivot) OR NOT (i < rechts)	END_REPEAT
+    			REPEAT	j := j-1;	UNTIL (PT^[j] <= pivot) OR NOT (j > links)	END_REPEAT
 
 
     			(*sinkende Reihenfolge *)
@@ -32,7 +32,7 @@ FUNCTION _ARRAY_SORT
     				PT^[i] := tmp;
     			END_IF
 
-    		UNTIL ende_innen END_REPEAT;
+    		UNTIL ende_innen END_REPEAT
 
     		(* Push stack *)
     		stack[stack_count] := rechts;		(* rechten Teil später sortieren *)

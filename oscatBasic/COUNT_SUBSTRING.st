@@ -9,7 +9,7 @@ FUNCTION COUNT_SUBSTRING
           COUNT_SUBSTRING := COUNT_SUBSTRING + 1;
        END_IF
     UNTIL pos = 0
-    END_REPEAT;
+    END_REPEAT
 
 
     (* revision history

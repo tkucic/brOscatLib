@@ -49,7 +49,7 @@ FUNCTION_BLOCK TELNET_LOG
     	watchdog(IN:=TRUE);
 
     UNTIL (watchdog.Q OR NOT done )
-    END_REPEAT;
+    END_REPEAT
 
     (* revision history
     ks	14. aug. 2009	rev 1.0

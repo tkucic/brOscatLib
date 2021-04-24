@@ -4,7 +4,7 @@ FUNCTION TRIM1
     REPEAT
     	pos := FIND(TRIM1,'  ');
     	IF pos > 0 THEN TRIM1 := REPLACE(TRIM1,' ',2,pos); END_IF
-    UNTIL pos = 0	END_REPEAT;
+    UNTIL pos = 0	END_REPEAT
     (* beginning and ending blanks need to be stripped off *)
     IF LEFT(TRIM1,1) = ' ' THEN TRIM1 := DELETE(TRIM1,1,1); END_IF
     IF RIGHT(TRIM1,1) = ' ' THEN TRIM1 := DELETE(TRIM1,1,LEN(TRIM1)); END_IF

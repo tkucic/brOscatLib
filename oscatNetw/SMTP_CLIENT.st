@@ -639,7 +639,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		REPEAT (* zeilenterminierung erkennen und echtes TEXT-Ende bestimmen *)
     			idx1 := idx1 - 1;
     		UNTIL idx1 = 0 OR R_BUF.BUFFER[idx1] >= BYTE#32 (* TRUE = EXIT *)
-    		END_REPEAT;
+    		END_REPEAT
     		FOR i1 := 0 TO idx1 DO (* bei multiline alle CRLF durch >^< ersetzen *)
     			IF R_BUF.BUFFER[i1] < BYTE#32 THEN
     				R_BUF.BUFFER[i1] := BYTE#94; (* >^< *)
