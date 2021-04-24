@@ -8,7 +8,7 @@ FUNCTION BIT_COUNT
 
 
     (* revision history
-    5.7.2007	rev 1.0		origINal version
+    5.7.2007	rev 1.0		original version
 
     10.9.2007	rev 1.1		hm
     	changed algorithm for better performace

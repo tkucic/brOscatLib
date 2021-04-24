@@ -24,7 +24,7 @@ FUNCTION_BLOCK CLK_PRG
     	replaced time() with t_plc_ms() for compatibility reasons
 
     hm	25. oct. 2008	rev 1.3
-    	oPTimized code
+    	optimized code
 
     *)
 END_FUNCTION_BLOCK

@@ -1,6 +1,6 @@
 FUNCTION SCALE_B4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=291*)
-    SCALE_B4 := 	(((IN1_max - IN1_min)* IN1 + (IN2_max - IN2_min)* IN2 + (IN3_max - IN3_min)* IN3 + (IN4_max - IN4_min)* IN4)* 0.003921569 + IN1_min + IN2_min + IN3_min + IN4_min) * K + O;
+    SCALE_B4 := 	(((IN1_MAX - IN1_MIN)* IN1 + (IN2_MAX - IN2_MIN)* IN2 + (IN3_MAX - IN3_MIN)* IN3 + (IN4_MAX - IN4_MIN)* IN4)* 0.003921569 + IN1_MIN + IN2_MIN + IN3_MIN + IN4_MIN) * K + O;
 
 
     (* revision History

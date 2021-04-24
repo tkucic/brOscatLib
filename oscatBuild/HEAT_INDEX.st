@@ -15,7 +15,7 @@ FUNCTION HEAT_INDEX
     (* revision history
 
     hm 27.2.2007		rev 1.1
-    	deleted unused variables RH3 and T3
+    	deleted unused variables rh3 and T3
 
     hm	2.12.2007		rev 1.2
     	changed code for better performance

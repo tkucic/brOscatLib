@@ -3,8 +3,8 @@ FUNCTION_BLOCK EVENTS
     (* for performance reasons only activate once a day *)
     IF last_active <> DATE_IN THEN
     	last_active := DATE_IN;
-    	Y_int := FALSE;
-    	NAME_int := '';
+    	y_int := FALSE;
+    	name_int := '';
     	day_in := DAY_OF_DATE(DATE_IN);
     	cyr := YEAR_OF_DATE(DATE_IN);
 
@@ -14,7 +14,7 @@ FUNCTION_BLOCK EVENTS
     		lday := DAY_OF_DATE(SET_DATE(cyr,check.month, check.day));
     		IF day_in >= lday AND day_in <= lday + check.use - 1 THEN
     			y_int := TRUE;
-    			NAME_int := check.NAME;
+    			name_int := check.NAME;
     			EXIT;
     		END_IF
     	END_FOR
@@ -22,7 +22,7 @@ FUNCTION_BLOCK EVENTS
 
     IF ENA THEN
     	Y := y_int;
-    	NAME := NAME_int;
+    	NAME := name_int;
     ELSE
     	Y := FALSE;
     	NAME := '';

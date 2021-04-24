@@ -7,7 +7,7 @@ FUNCTION FSTRING_TO_DT
     		(* skip ignore characters *)
     		FMT := DELETE(FMT,1,1);
     		SDT := DELETE(SDT,1,1);
-    	ELSIF C = fchar THEN
+    	ELSIF c = fchar THEN
     		(* format chracter found skip format char and read identifier *)
     		(* store format identifier in c and skip to next char in FMT *)
     		c := MID(FMT,1,2);

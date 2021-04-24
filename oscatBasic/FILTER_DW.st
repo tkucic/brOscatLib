@@ -4,7 +4,7 @@ FUNCTION_BLOCK FILTER_DW
     tx := T_PLC_MS();
 
     (* startup initialisation *)
-    IF NOT init OR T = t#0s THEN
+    IF NOT init OR T = T#0s THEN
     	init := TRUE;
     	Yi := DWORD_TO_REAL(X);
     ELSE

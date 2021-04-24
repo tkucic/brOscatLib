@@ -2,7 +2,7 @@ FUNCTION_BLOCK CTRL_OUT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=381*)
     Y := SEL(MANUAL, CI, MAN_IN) + OFFSET;
 
-    (* LIMit the output *)
+    (* Limit the output *)
     IF Y > LIM_L AND Y < LIM_H THEN
     	LIM := FALSE;
     ELSE

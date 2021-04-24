@@ -10,7 +10,7 @@ FUNCTION_BLOCK IRTRANS_RCV_1
     	performance improvement
 
     hm	19. oct. 2008	rev 1.2
-    	changed input DEVice_code to DEV_CODE and DEVice to DEV for compatibility reasons
+    	changed input device_code to DEV_CODE and device to DEV for compatibility reasons
 
     hm	06. dec. 2008	rev 1.3
     	IRTRANS_1 renamed to IRTRANS_RCV_1

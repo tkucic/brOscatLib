@@ -2,7 +2,7 @@ FUNCTION_BLOCK ENERGY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=361*)
     YJ := J + WH * 3600.0 + C * 4.1868;
     YC := YJ * 0.238845896627496;
-    YWH := YJ * 2.7777777778E-004;
+    YWh := YJ * 2.7777777778E-004;
 
     (*
     Arbeit, Energie, Joule* J 1 J = 1 N · m = 1 W · s = (1/3,6) E–6 kW · h = 1 kg · m2/s2

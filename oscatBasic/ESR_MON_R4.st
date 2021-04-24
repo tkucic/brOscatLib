@@ -2,10 +2,10 @@ FUNCTION_BLOCK ESR_MON_R4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35*)
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
-    P0 := ADR(R0);
-    P1 := ADR(R1);
-    P2 := ADR(R2);
-    P3 := ADR(R3);
+    p0 := ADR(R0);
+    p1 := ADR(R1);
+    p2 := ADR(R2);
+    p3 := ADR(R3);
 
     ESR_Flag := FALSE;
     ESR_OUT[3].typ := 0;
@@ -15,55 +15,55 @@ FUNCTION_BLOCK ESR_MON_R4
     cnt := 0;
 
     (* check if inputs have chaged and fill buffer *)
-    IF DIFFER(R0,  X0, S0) THEN
+    IF DIFFER(R0,  x0, S0) THEN
     	ESR_OUT[cnt].typ := 20;
     	ESR_OUT[cnt].adress := A0;
     	ESR_OUT[cnt].DS := DT_in;
     	ESR_OUT[cnt].TS := TX;
-    	ESR_OUT[cnt].data[0] := Byte_of_Dword(P0^,0);
-    	ESR_OUT[cnt].data[1] := Byte_of_Dword(P0^,1);
-    	ESR_OUT[cnt].data[2] := Byte_of_Dword(P0^,2);
-    	ESR_OUT[cnt].data[3] := Byte_of_Dword(P0^,3);
-    	X0 := R0;
+    	ESR_OUT[cnt].data[0] := Byte_of_Dword(p0^,0);
+    	ESR_OUT[cnt].data[1] := Byte_of_Dword(p0^,1);
+    	ESR_OUT[cnt].data[2] := Byte_of_Dword(p0^,2);
+    	ESR_OUT[cnt].data[3] := Byte_of_Dword(p0^,3);
+    	x0 := R0;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
-    IF differ(R1,  X1, S1) THEN
+    IF differ(R1,  x1, S1) THEN
     	ESR_OUT[cnt].typ := 20;
     	ESR_OUT[cnt].adress := A1;
     	ESR_OUT[cnt].DS := DT_in;
     	ESR_OUT[cnt].TS := TX;
-    	ESR_OUT[cnt].data[0] := Byte_of_Dword(P1^,0);
-    	ESR_OUT[cnt].data[1] := Byte_of_Dword(P1^,1);
-    	ESR_OUT[cnt].data[2] := Byte_of_Dword(P1^,2);
-    	ESR_OUT[cnt].data[3] := Byte_of_Dword(P1^,3);
-    	X1 := R1;
+    	ESR_OUT[cnt].data[0] := Byte_of_Dword(p1^,0);
+    	ESR_OUT[cnt].data[1] := Byte_of_Dword(p1^,1);
+    	ESR_OUT[cnt].data[2] := Byte_of_Dword(p1^,2);
+    	ESR_OUT[cnt].data[3] := Byte_of_Dword(p1^,3);
+    	x1 := R1;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
-    IF differ(R2,  X2, S2) THEN
+    IF differ(R2,  x2, S2) THEN
     	ESR_OUT[cnt].typ := 20;
     	ESR_OUT[cnt].adress := A2;
     	ESR_OUT[cnt].DS := DT_in;
     	ESR_OUT[cnt].TS := TX;
-    	ESR_OUT[cnt].data[0] := Byte_of_Dword(P2^,0);
-    	ESR_OUT[cnt].data[1] := Byte_of_Dword(P2^,1);
-    	ESR_OUT[cnt].data[2] := Byte_of_Dword(P2^,2);
-    	ESR_OUT[cnt].data[3] := Byte_of_Dword(P2^,3);
-    	X2 := R2;
+    	ESR_OUT[cnt].data[0] := Byte_of_Dword(p2^,0);
+    	ESR_OUT[cnt].data[1] := Byte_of_Dword(p2^,1);
+    	ESR_OUT[cnt].data[2] := Byte_of_Dword(p2^,2);
+    	ESR_OUT[cnt].data[3] := Byte_of_Dword(p2^,3);
+    	x2 := R2;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
-    IF DIFFER(R3,  X3, S3) THEN
+    IF DIFFER(R3,  x3, S3) THEN
     	ESR_OUT[cnt].typ := 20;
     	ESR_OUT[cnt].adress := A3;
     	ESR_OUT[cnt].DS := DT_in;
     	ESR_OUT[cnt].TS := TX;
-    	ESR_OUT[cnt].data[0] := Byte_of_Dword(P3^,0);
-    	ESR_OUT[cnt].data[1] := Byte_of_Dword(P3^,1);
-    	ESR_OUT[cnt].data[2] := Byte_of_Dword(P3^,2);
-    	ESR_OUT[cnt].data[3] := Byte_of_Dword(P3^,3);
-    	X3 := R3;
+    	ESR_OUT[cnt].data[0] := Byte_of_Dword(p3^,0);
+    	ESR_OUT[cnt].data[1] := Byte_of_Dword(p3^,1);
+    	ESR_OUT[cnt].data[2] := Byte_of_Dword(p3^,2);
+    	ESR_OUT[cnt].data[3] := Byte_of_Dword(p3^,3);
+    	x3 := R3;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF

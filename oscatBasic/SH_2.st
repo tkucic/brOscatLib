@@ -17,7 +17,7 @@ FUNCTION_BLOCK SH_2
     	OUT := IN;
     	buf := buf2;
 
-    	(* sort the ARRAY LOWest value AT 0 *)
+    	(* sort the ARRAY lowest value AT 0 *)
     	FOR start := 0 TO M - 2 DO
     		FOR i := start+1 TO M - 1 DO
     			IF buf[start] > buf[i] THEN
@@ -43,12 +43,12 @@ FUNCTION_BLOCK SH_2
 
     (* revision history
     hm 20. jan. 2007	rev 1.1
-    	added INput N to specify the amOUT of samples for average and HIGH LOW calculations
-    	added TRIG OUTput
+    	added input N to specify the amout of samples for average and HIGH LOW calculations
+    	added TRIG output
 
     hm 10. sep. 2007 	rev 1.2
-    	an error would be generated if N was set to 0, now n is forced to1 if set to 0.
-    	INdex was OUT of array.
+    	an error would be generated if N was set to 0, now N is forced to1 if set to 0.
+    	index was OUT of array.
 
     hm	17. sep. 2007	rev 1.3
     	replaced time() with t_plc_ms() for compatibility reasons
@@ -57,7 +57,7 @@ FUNCTION_BLOCK SH_2
     	improved performance
 
     hm	14. jun. 2008	rev 1.5
-    	set default for INput N = 16
+    	set default for input N = 16
 
     hm	10. mar. 2009	rev 1.6
     	added type conversion for compatibility reasons

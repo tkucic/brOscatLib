@@ -4,10 +4,10 @@ FUNCTION_BLOCK SELECT_8
     	STATE := 0;
     ELSIF SET THEN
     	STATE := IN;
-    ELSIF UP AND NOT last_UP THEN
-    	STATE := INc(STATE,1,7);
-    ELSIF DN AND NOT last_DN THEN
-    	STATE := INc(STATE,-1,7);
+    ELSIF UP AND NOT last_up THEN
+    	STATE := inc(STATE,1,7);
+    ELSIF DN AND NOT last_dn THEN
+    	STATE := inc(STATE,-1,7);
     END_IF
     last_UP := UP;
     last_DN := DN;
@@ -36,9 +36,9 @@ FUNCTION_BLOCK SELECT_8
 
     (* revision history
     hm	16. jan 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	27. feb. 2009	rev 1.1
-    	renamed INput en to e
+    	renamed input en to E
     *)
 END_FUNCTION_BLOCK

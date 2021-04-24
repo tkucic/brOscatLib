@@ -5,7 +5,7 @@ FUNCTION FSTRING_TO_WEEKDAY
     tmp := TRIM(WDAY);
     tmp := CAPITALIZE(LOWERCASE(tmp));
     FOR i := 1 TO 7 DO
-    	IF LANGuage.WEEKDAYS2[ly, i] = tmp THEN
+    	IF language.WEEKDAYS2[ly, i] = tmp THEN
     		FSTRING_TO_WEEKDAY := i;
     		RETURN;
     	END_IF
@@ -23,7 +23,7 @@ FUNCTION FSTRING_TO_WEEKDAY
     	changed nested call of left(trim()) for compatibility reasons
 
     hm	25. oct. 2008	rev 1.2
-    	using LANGuage constants
+    	using language constants
     *)	
 
 END_FUNCTION

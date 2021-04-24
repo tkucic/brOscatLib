@@ -4,20 +4,20 @@ FUNCTION BIT_OF_DWORD
 
 
     (* old code used before rev 1.1
-    temp := SHR(IN,n);
+    temp := SHR(IN,N);
     Bit_of_Dword := temp.0;
     *)
 
 
     (* revision history
     hm	4. aug. 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm	29. feb 2008	rev 1.1
     	improved performance
 
     hm	6. jun. 2008	rev 1.2
-    	changes type of INput N from byte to INt
+    	changes type of input N from byte to int
     *)
 
 END_FUNCTION

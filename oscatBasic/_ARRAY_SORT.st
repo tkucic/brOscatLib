@@ -3,11 +3,11 @@ FUNCTION _ARRAY_SORT
     (* Startwerte zur Arraygröße *)
     links := 1;					(* Anfangselement des Arrays *)
     rechts := SHR(SIZE,2);		(* Endelement des Arrays *)
-    stack_count := 1;			(* Laufvariable Stack *)
+    stack_count := 1;			(* Laufvariable stack *)
 
     WHILE NOT ende_aussen DO						(* äußere Schleife *)
     	IF links < rechts THEN
-    		pivot := PT^[SHR(rechts+links,1)];			(* Wert des mittleren Elements als Pivot-Wert *)
+    		pivot := PT^[SHR(rechts+links,1)];			(* Wert des mittleren Elements als pivot-Wert *)
     		i := links -1;
     		j := rechts +1;
 
@@ -36,11 +36,11 @@ FUNCTION _ARRAY_SORT
 
     		(* Push stack *)
     		stack[stack_count] := rechts;		(* rechten Teil später sortieren *)
-    		IF Stack_count < 32 THEN
+    		IF stack_count < 32 THEN
     			stack_count := stack_count +1;
     		ELSE
     			ende_aussen := TRUE;
-    			_ARRAY_SORT := FALSE;					(* Fehler: Stack zu klein *)
+    			_ARRAY_SORT := FALSE;					(* Fehler: stack zu klein *)
     		END_IF
 
     		(* linken Teil sortiern *)
@@ -69,7 +69,7 @@ FUNCTION _ARRAY_SORT
     (* algorithm used before rev 2.0
 
     SIZE := SHR(SIZE,2);
-    SIZE2 := UINT_TO_INT(SHR(SIZE,1));
+    size2 := UINT_TO_INT(SHR(SIZE,1));
     FOR i := SIZE2  TO 1 BY -1 DO
     	j:=i;
         WHILE j <= SIZE2 DO
@@ -89,14 +89,14 @@ FUNCTION _ARRAY_SORT
     *)
 
     (* heapsort
-    FOR heapSIZE := UINT_TO_INT(SIZE) TO 1 BY -1 DO
+    FOR heapsize := UINT_TO_INT(SIZE) TO 1 BY -1 DO
     	popmax := PT^[1];
-    	PT^[1] := PT^[heapSIZE];
+    	PT^[1] := PT^[heapsize];
        	i := 1;
-    	hs2 := SHR(heapSIZE,1);
+    	hs2 := SHR(heapsize,1);
     	WHILE i <= hs2 DO
            	stop := i * 2 + 1;  
-            	IF stop > heapSIZE THEN stop := stop - 1;
+            	IF stop > heapsize THEN stop := stop - 1;
             	ELSIF PT^[stop-1] > PT^[stop] THEN stop := stop - 1;
     	 	END_IF
             	IF PT^[i] < PT^[stop] THEN
@@ -106,7 +106,7 @@ FUNCTION _ARRAY_SORT
             	END_IF
             	i := stop;
         	END_WHILE
-    	PT^[heapSIZE] := popmax;
+    	PT^[heapsize] := popmax;
     END_FOR
 
     _ARRAY_SORT2 := TRUE;

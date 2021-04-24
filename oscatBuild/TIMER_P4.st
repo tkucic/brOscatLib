@@ -1,6 +1,6 @@
 FUNCTION_BLOCK TIMER_P4
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=65*)
-    (* for perforMANce reasons we only execute the code at the beginning of a new second *)
+    (* for performance reasons we only execute the code at the beginning of a new second *)
 
     IF RST THEN
     	(* reset all events to last active on 1.1.1970 *)
@@ -97,7 +97,7 @@ FUNCTION_BLOCK TIMER_P4
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
-    				43:	(* event on workdays Mo-FR and no holiday *)
+    				43:	(* event on workdays mo-FR and no holiday *)
     					IF OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) < 6 THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
@@ -210,7 +210,7 @@ FUNCTION_BLOCK TIMER_P4
     hm	9. oct. 2008	rev 1.1
     	changed function year to year_of_date
     	changed function weekday to day_of_week
-    	changed structure of PROGram to be more efficient
+    	changed structure of program to be more efficient
     	changed input DIS to ENQ
 
     hm	18. oct. 2008	rev 1.2
@@ -221,7 +221,7 @@ FUNCTION_BLOCK TIMER_P4
     	array was not correctly initialized
 
     hm	26. jan 2011	rev 1.4
-    	changed code to allow events over MIdnight
+    	changed code to allow events over midnight
     *)
 
 END_FUNCTION_BLOCK

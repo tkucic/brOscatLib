@@ -11,7 +11,7 @@ FUNCTION LANGEVIN
     	original version
 
     hm	11. mar 2008	rev 1.1
-    	changed formula to avoid problems when x = 0
+    	changed formula to avoid problems when X = 0
 
     hm	10. mar. 2009	rev 1.2
     	real constants updated to new systax using dot

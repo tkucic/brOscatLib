@@ -4,12 +4,12 @@ FUNCTION_BLOCK SWITCH_X
     IF NOT init THEN
     	init := TRUE;
     	IF t_debounce < t#50ms THEN tx := t#50ms; ELSE tx := t_debounce; END_IF
-    	T1(PT := Tx);
-    	T2(PT := Tx);
-    	T3(PT := Tx);
-    	T4(PT := Tx);
-    	T5(PT := Tx);
-    	T6(PT := Tx);
+    	T1(PT := tx);
+    	T2(PT := tx);
+    	T3(PT := tx);
+    	T4(PT := tx);
+    	T5(PT := tx);
+    	T6(PT := tx);
     ELSE
     	Q1 := FALSE;
     	Q2 := FALSE;
@@ -36,44 +36,44 @@ FUNCTION_BLOCK SWITCH_X
     	T6(IN := IN6);
 
     (* detect EDGE_ of IN1 and IN2 *)
-    IF t1.Q AND NOT E1 THEN X1 := TRUE; END_IF
-    IF t2.Q AND NOT E2 THEN X2 := TRUE; END_IF
+    IF T1.Q AND NOT E1 THEN x1 := TRUE; END_IF
+    IF T2.Q AND NOT E2 THEN x2 := TRUE; END_IF
 
-    IF t1.Q THEN
-    	IF t3.q THEN
+    IF T1.Q THEN
+    	IF T3.q THEN
     		Q31 := TRUE;
-    		X1 := FALSE;
-    	ELSIF t4.q THEN
+    		x1 := FALSE;
+    	ELSIF T4.q THEN
     		Q41 := TRUE;
-    		X1 := FALSE;
-    	ELSIF t5.q THEN
+    		x1 := FALSE;
+    	ELSIF T5.q THEN
     		Q51 := TRUE;
-    		X1 := FALSE;
-    	ELSIF t6.q THEN
+    		x1 := FALSE;
+    	ELSIF T6.q THEN
     		Q61 := TRUE;
-    		X1 := FALSE;
+    		x1 := FALSE;
     	END_IF
-    ELSIF t2.Q THEN
-    	IF t3.q THEN
+    ELSIF T2.Q THEN
+    	IF T3.q THEN
     		Q32 := TRUE;
-    		X2 := FALSE;
-    	ELSIF t4.q THEN
+    		x2 := FALSE;
+    	ELSIF T4.q THEN
     		Q42 := TRUE;
-    		X2 := FALSE;
-    	ELSIF t5.q THEN
+    		x2 := FALSE;
+    	ELSIF T5.q THEN
     		Q52 := TRUE;
-    		X2 := FALSE;
-    	ELSIF t6.q THEN
+    		x2 := FALSE;
+    	ELSIF T6.q THEN
     		Q62 := TRUE;
-    		X2 := FALSE;
+    		x2 := FALSE;
     	END_IF
     (* IN1 was active alone *)
-    ELSIF NOT T1.Q AND E1 AND X1 THEN
+    ELSIF NOT T1.Q AND E1 AND x1 THEN
     	Q1 := TRUE;
-    	X1 := FALSE;
-    ELSIF NOT T2.Q AND E2 AND X2 THEN
+    	x1 := FALSE;
+    ELSIF NOT T2.Q AND E2 AND x2 THEN
     	Q2 := TRUE;
-    	X2 := FALSE;
+    	x2 := FALSE;
     ELSIF T3.Q THEN
     	Q3 := TRUE;
     ELSIF T4.Q THEN

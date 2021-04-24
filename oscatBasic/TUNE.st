@@ -11,7 +11,7 @@ FUNCTION_BLOCK TUNE
     	state := 0;
     ELSIF state > 0 THEN
     	(* key has been pushed state machine operating *)
-    	(* fiRST read the correct input *)
+    	(* first read the correct input *)
     	IF state = 1 THEN
     		(* step up *)
     		in := SU;
@@ -25,12 +25,12 @@ FUNCTION_BLOCK TUNE
     		state := 0;
     	(* check if fast ramp needs to be generated *)
     	ELSIF in AND tx - start >= TIME_TO_DWORD(T2) THEN
-    		Y := Y_starT2 + DWORD_TO_REAL(tx - starT2) * S2 / speed;
+    		Y := Y_start2 + DWORD_TO_REAL(tx - start2) * S2 / SPEED;
     	(* check if slow ramp needs to be generated *)
     	ELSIF in AND tx - start >= TIME_TO_DWORD(T1) THEN
-    		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(T1)) * S1 / speed;
-    		starT2 := tx;
-    		Y_starT2 := Y;
+    		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(T1)) * S1 / SPEED;
+    		start2 := tx;
+    		Y_start2 := Y;
     	ELSIF NOT in THEN
     		state := 0;
     	END_IF
@@ -39,18 +39,18 @@ FUNCTION_BLOCK TUNE
     	state := 1;
     	start := tx;
     	step := SS;
-    	speed := 1000.0;
+    	SPEED := 1000.0;
     	Y_start := Y;
     ELSIF SD THEN
     	(* slow step down *)
     	state := 2;
     	start := tx;
     	step := -SS;
-    	speed := -1000.0;
+    	SPEED := -1000.0;
     	Y_start := Y;
     END_IF
 
-    (* make SUre output does not exceed limits *)
+    (* make sure output does not exceed limits *)
     Y := LIMIT(LIMIT_L, Y, LIMIT_H);
 
     (* revision history

@@ -10,7 +10,7 @@ FUNCTION REPLACE_CHARS
     	SRC := LEFT(SRC, b);
     END_IF
 
-    (* search the STRing and REPlace if necessary *)
+    (* search the string and replace if necessary *)
     stp := LEN(STR);
     FOR a := 1 TO stp DO
     	c := MID(REPLACE_CHARS, 1, a);

@@ -1,9 +1,9 @@
 FUNCTION_BLOCK FT_PIWL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=412*)
-    (* INitialize at power_up *)
-    IF NOT INit OR RST THEN
-    	INit := TRUE;
-    	IN_last := IN;
+    (* initialize at power_up *)
+    IF NOT init OR RST THEN
+    	init := TRUE;
+    	in_last := IN;
     	t_last := T_PLC_US();
     	i := 0.0;
     	tc := 0.0;
@@ -16,14 +16,14 @@ FUNCTION_BLOCK FT_PIWL
     	(* calculate proportional part *)
     	p := KP * IN;
 
-    	(* run INtegrator *)
-    	i := (IN + IN_last) * 5.0E-7 * KI * tc + i;
-    	IN_last := IN;
+    	(* run integrator *)
+    	i := (IN + in_last) * 5.0E-7 * KI * tc + i;
+    	in_last := IN;
 
     	(* calculate output Y *)
     	Y := p + i;
 
-    	(* check output for LIMits *)
+    	(* check output for limits *)
     	IF Y >= LIM_H THEN
     		Y := LIM_H;
     		IF KI <> 0.0 THEN
@@ -50,16 +50,16 @@ FUNCTION_BLOCK FT_PIWL
 
     (* revision history
     hm 13. jun. 2008 	rev 1.0
-    	origINal version
+    	original version
 
     hm	27. oct. 2008	rev 1.1
-    	INtegrator will not be adjusted when KI = 0
+    	integrator will not be adjusted when KI = 0
 
     hm	25. jan 2009	rev 1.2
     	module will also work with negative K
 
     hm	11. mar. 2009	rev 1.3
-    	real constants updated to new systax usINg dot
+    	real constants updated to new systax using dot
 
     *)
 END_FUNCTION_BLOCK

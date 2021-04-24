@@ -6,8 +6,8 @@ FUNCTION_BLOCK SNTP_CLIENT
     CASE state OF
     00: (* auf positive Flanke SET warten *)
     	DONE_P := FALSE;
-    	IF ACTIVATE AND NOT ACTIVATE_last THEN
-    		IP4_stored := IP4; (* aktuelle IP4 speichern *)
+    	IF ACTIVATE AND NOT activate_last THEN
+    		ip4_stored := IP4; (* aktuelle IP4 speichern *)
     		state := 10;
     		ERROR := DWORD#0;
     		ip_state := BYTE#1; (* Anmelden *)
@@ -32,7 +32,7 @@ FUNCTION_BLOCK SNTP_CLIENT
 
     		(* IP Datenverkehr einrichten *)
     		IP_C.C_PORT := WORD#123; (* Portnummer eintragen *)
-    		IP_C.C_IP := IP4_stored; (* IP eintragen *)
+    		IP_C.C_IP := ip4_stored; (* IP eintragen *)
     		IP_C.C_MODE := BYTE#1; (* Mode: UDP+AKTIV+PORT+IP *)
     		IP_C.C_ENABLE := TRUE; (* Verbindungsaufbau freigeben *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -92,7 +92,7 @@ FUNCTION_BLOCK SNTP_CLIENT
 
     END_CASE
 
-    ACTIVATE_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
@@ -192,7 +192,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Ottawa, Ontario, Kanada: National Research Council of Canada
     time.chu.nrc.ca
     Servicebereich: Kanada 
-    • Raleigh, North Carolina: North Carolina State University
+    • Raleigh, North Carolina: North Carolina state University
     152.1.58.124: terrapin.csc.ncsu.edu
     Servicebereich: Südosten der USA 
     • Cambridge, Massachusetts: MIT Information Systems
@@ -228,7 +228,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Newark, Delaware: Conectiv Communications
     138.39.7.20: ntp1.delmarva.com
     Servicebereich: Cable & Wireless Network (früher MCInet) 
-    • University Park, Pennsylvania: Penn State University
+    • University Park, Pennsylvania: Penn state University
     128.118.46.3: otc1.psu.edu
     Servicebereich: NSFNET, PREPNET und JvNCnet  
 
@@ -362,7 +362,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Coos Bay, Oregon: Koala Computers
     207.48.109.6: tick.koalas.com
     Servicebereich: Nordwesten der USA  
-    • University Park, Pennsylvania: Penn State University
+    • University Park, Pennsylvania: Penn state University
     128.118.25.3: clock.psu.edu
     Servicebereich: Internet2, vBNS, CERFnet(AT&T IP Services), PSC/NCNE und CASC 
     • Pittsburgh, Pennsylvania: Pittsburgh Supercomputing Center
@@ -392,7 +392,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Arlington, Virginia: Center for Seismic Studies
     140.162.1.3: ntp.cmr.gov
     Servicebereich: NSFNET und SURA-Bereich  
-    • Richland, Washington: Washington State University 
+    • Richland, Washington: Washington state University 
     192.31.216.30: clock.tricity.wsu.edu
     Servicebereich: NSFNET und NorthWestNet  
     • Washington, USA: Mill Creek

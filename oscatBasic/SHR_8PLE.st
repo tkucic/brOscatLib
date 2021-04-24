@@ -13,7 +13,7 @@ FUNCTION_BLOCK SHR_8PLE
     		register.7 := DIN;
     		DOUT := register.0;
     	END_IF
-    	IF LOAD THEN							(* the byte on DIN will be LOADed if LOAD = true *)
+    	IF LOAD THEN							(* the byte on DIN will be loaded if LOAD = true *)
     		register := DLOAD;
     		IF UP THEN DOUT := register.7; ELSE DOUT := register.0; END_IF
     	END_IF

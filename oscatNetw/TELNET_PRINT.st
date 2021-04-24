@@ -15,7 +15,7 @@ FUNCTION_BLOCK TELNET_PRINT
     	IF ip_state = BYTE#3 THEN
 
     		(* IP Datenverkehr einrichten *)
-    		IP_C.C_PORT := PORT; (* PORTnummer eintragen *)
+    		IP_C.C_PORT := PORT; (* Portnummer eintragen *)
     		IP_C.C_IP := DWORD#00; (* IP eintragen *)
     		IP_C.C_MODE := BYTE#4; (* Mode: TCP+PASSIV+PORT *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -27,7 +27,7 @@ FUNCTION_BLOCK TELNET_PRINT
     20:	IF IP_C.ERROR > DWORD#0 THEN
     		IP_C.TIME_RESET := TRUE; (* Fehler rücksetzen *)
     	END_IF
-    	IF S_BUF.SIZE = UINT#0 THEN (* DatenSENDen nicht aktiv *)
+    	IF S_BUF.SIZE = UINT#0 THEN (* Datensenden nicht aktiv *)
     		IF NOT ENABLE THEN
     			ip_state := BYTE#4; (* Verbindung abbauen - Ressource freigeben *)
     			IP_C.C_ENABLE := FALSE; (* Verbindungsabbau *)
@@ -37,7 +37,7 @@ FUNCTION_BLOCK TELNET_PRINT
     			init := FALSE;
     		ELSIF READY THEN (* Verbindung vorhanden *)
     			IF IP_C.C_STATE = BYTE#254 AND NOT INIT THEN (* positive Flanke Connect on *)
-    				(* Var Init ist notwendig, damit der Baustein im selben zyklus mehrmals ausgerufen werden kann *)
+    				(* Var init ist notwendig, damit der Baustein im selben zyklus mehrmals ausgerufen werden kann *)
     				init := TRUE;
     				b0_screen_clear := (OPTION AND BYTE#2#0000_0001) > BYTE#0;
     				b1_autowrap := (OPTION AND BYTE#2#0000_0010) > BYTE#0;
@@ -97,15 +97,15 @@ FUNCTION_BLOCK TELNET_PRINT
     				END_IF
     			END_IF
 
-    			(* buffer voll , oder Daten sind vorhanden und kein weiterer SENDewunsch *)
+    			(* buffer voll , oder Daten sind vorhanden und kein weiterer Sendewunsch *)
     			IF (INT_TO_UINT(x + LEN(TEXT) + 21) > SIZEOF(S_BUF.BUFFER)) OR (x >= 0 AND NOT SEND) THEN
-    				S_BUF.SIZE := INT_TO_UINT(x + 1); (* Länge eintragen -> DatenSENDen starten *)
+    				S_BUF.SIZE := INT_TO_UINT(x + 1); (* Länge eintragen -> Datensenden starten *)
     				x := -1;
     			ELSIF SEND THEN
 
     				(* aktuelle Farbe bestimmen  *)
     				IF b2_color AND FRONT_COLOR <> last_FC THEN
-    					(* Farbeinstellung: ANSI-Sequenz ESC[X;Y;Zm ausgeben *)
+    					(* Farbeinstellung: ANSI-Sequenz ESC[x;Y;Zm ausgeben *)
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#1B; (* ESC *)
     					x := x + 1;
@@ -185,7 +185,7 @@ FUNCTION_BLOCK TELNET_PRINT
     				DONE := TRUE; (* Fertig in Buffer eingetragen *)
 
     				IF b7_no_flush THEN (* OPTION: no buffer flush *)
-    					(* buffer sofort SENDen - aktuellen Schreibindex speichern -> SENDen anstossen *)
+    					(* buffer sofort senden - aktuellen Schreibindex speichern -> Senden anstossen *)
     					S_BUF.SIZE := INT_TO_UINT(x + 1);
     					x := -1;
     				END_IF

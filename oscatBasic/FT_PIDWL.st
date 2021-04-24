@@ -5,7 +5,7 @@ FUNCTION_BLOCK FT_PIDWL
     	piwl(RST := TRUE);
     	piwl.RST := FALSE;
     ELSE
-    	(* run PIWL controller fiRST *)
+    	(* run PIWL controller first *)
     	(* we need to check if TN = 0 and do alternative calls *)
     	IF TN = 0.0 THEN
     		piwl(IN := IN * KP, KP := 1.0, KI := 0.0, LIM_L := LIM_L, LIM_H := LIM_H);
@@ -17,7 +17,7 @@ FUNCTION_BLOCK FT_PIDWL
     	diff(IN := IN, K := KP * TV);
     	Y := piwl.Y + diff.out;
 
-    	(* LIMit the output *)
+    	(* limit the output *)
     	IF Y < LIM_L THEN
     		LIM := TRUE;
     		Y := LIM_L;
@@ -33,13 +33,13 @@ FUNCTION_BLOCK FT_PIDWL
 
     (* revision history
     hm 13. jun. 2008 	rev 1.0
-    	origINal version
+    	original version
 
     hm	25. jan 2008	rev 1.1
     	multiply differential part with KP
 
     hm	11. mar. 2009	rev 1.2
-    	real constants updated to new systax usINg dot
+    	real constants updated to new systax using dot
 
     hm	13. nov. 2009	rev 1.3
     	fixed code for negative KP

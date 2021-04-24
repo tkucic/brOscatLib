@@ -15,23 +15,23 @@ FUNCTION_BLOCK SRAMP
     	Y := 0.0;
     	V := 0.0;
     ELSIF X = Y THEN
-    	v := 0.0;
+    	V := 0.0;
     ELSIF X > Y THEN
     	(* output is too low >> ramp up and brake at the end *)
     	(* accelerate the speed and limit to VU_MAX *)
-    	v := MIN(v + A_UP * cycle_time.TC, VU_MAX);
+    	V := MIN(V + A_UP * cycle_time.TC, VU_MAX);
     	(* calculate the max speed to be able to brake and select the lowest *)
-    	v := MIN(SQRT((Y-X) * 2.0 * A_DN), v);
+    	V := MIN(SQRT((Y-X) * 2.0 * A_DN), V);
     	(* calculate the output and obey limits *)
-    	y := LIMIT(LIMIT_LOW, y + MIN(v * cycle_time.TC, X-Y), LIMIT_HIGH);
+    	Y := LIMIT(LIMIT_LOW, Y + MIN(V * cycle_time.TC, X-Y), LIMIT_HIGH);
     ELSIF X < Y THEN
     	(* output is too high >> ramp dn and brake at the end *)
     	(* accelerate the speed and limit to VD_MAX *)
-    	v := MAX(v + A_DN * cycle_time.TC, VD_MAX);
+    	V := MAX(V + A_DN * cycle_time.TC, VD_MAX);
     	(* calculate the max speed to be able to brake and select the lowest *)
-    	v := MAX(-SQRT((Y-X) * 2.0 * A_UP), v);
+    	V := MAX(-SQRT((Y-X) * 2.0 * A_UP), V);
     	(* calculate the output and obey limits *)
-    	y := LIMIT(LIMIT_LOW, y + MAX(v * cycle_time.TC, X-Y), LIMIT_HIGH);
+    	Y := LIMIT(LIMIT_LOW, Y + MAX(V * cycle_time.TC, X-Y), LIMIT_HIGH);
     END_IF
 
 

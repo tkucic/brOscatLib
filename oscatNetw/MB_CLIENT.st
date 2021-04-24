@@ -33,7 +33,7 @@ FUNCTION_BLOCK MB_CLIENT
     				S_BUF.BUFFER[10] := WORD_TO_BYTE(SHR(w_tmp,8));
     				S_BUF.BUFFER[11] := WORD_TO_BYTE(w_tmp);
     				S_BUF.SIZE := UINT#12;
-    				Response :=	WORD_TO_INT(SHR(INT_TO_WORD(R_POINTS + 7),3));
+    				response :=	WORD_TO_INT(SHR(INT_TO_WORD(R_POINTS + 7),3));
     				comp := 7;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -48,7 +48,7 @@ FUNCTION_BLOCK MB_CLIENT
     				S_BUF.BUFFER[10] := WORD_TO_BYTE(SHR(w_tmp,8));
     				S_BUF.BUFFER[11] := WORD_TO_BYTE(w_tmp);
     				S_BUF.SIZE := UINT#12;
-    				Response :=	WORD_TO_INT(SHL(w_tmp,1));
+    				response :=	WORD_TO_INT(SHL(w_tmp,1));
     				comp := 7;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -62,7 +62,7 @@ FUNCTION_BLOCK MB_CLIENT
     				S_BUF.BUFFER[10] := SEL((DATA[W_DATA_ADR] AND SHL(WORD#1,W_DATA_BITPOS))>WORD#00,BYTE#16#00,BYTE#16#FF);
     				S_BUF.BUFFER[11] := BYTE#00;
     				S_BUF.SIZE := UINT#12;
-    				Response := 3;
+    				response := 3;
     				comp := 11;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -77,7 +77,7 @@ FUNCTION_BLOCK MB_CLIENT
     				S_BUF.BUFFER[10] := WORD_TO_BYTE(SHR(w_tmp,8));
     				S_BUF.BUFFER[11] := WORD_TO_BYTE(w_tmp);
     				S_BUF.SIZE := UINT#12;
-    				Response := 3;
+    				response := 3;
     				comp := 11;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -113,7 +113,7 @@ FUNCTION_BLOCK MB_CLIENT
     					END_IF
     				END_FOR
     				S_BUF.SIZE := INT_TO_UINT(idx1 + 1);
-    				Response := 3;
+    				response := 3;
     				comp := 11;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -140,13 +140,13 @@ FUNCTION_BLOCK MB_CLIENT
     				END_FOR
 
     				S_BUF.SIZE := INT_TO_UINT(idx2 + 1);
-    				Response := 3;
+    				response := 3;
     				comp := 11;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
     			END_IF
     		(******************************************************************)
-    		22:	(* 0x16 Mask Write Register *)
+    		22:	(* 0x16 mask Write Register *)
     			IF W_DATA_ADR + 2 <= DATA_SIZE THEN
     				w_tmp := INT_TO_WORD(W_ADDR);
     				S_BUF.BUFFER[08] := WORD_TO_BYTE(SHR(w_tmp,8));
@@ -161,7 +161,7 @@ FUNCTION_BLOCK MB_CLIENT
     				S_BUF.BUFFER[13] := WORD_TO_BYTE(w_tmp);
 
     				S_BUF.SIZE := UINT#14;
-    				Response := 5;
+    				response := 5;
     				comp := 13;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -197,7 +197,7 @@ FUNCTION_BLOCK MB_CLIENT
     				S_BUF.BUFFER[11] := WORD_TO_BYTE(w_tmp);
 
     				S_BUF.SIZE := INT_TO_UINT(idx2 + 1);
-    				Response := WORD_TO_INT(SHL(w_tmp,1));
+    				response := WORD_TO_INT(SHL(w_tmp,1));
     				comp := 7;
     			ELSE
     				ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)
@@ -237,7 +237,7 @@ FUNCTION_BLOCK MB_CLIENT
     		state := 00;
     	ELSIF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE > UINT#0 THEN
     		(* erwartete länge in sendebuffer nachträglich eintragen um vergleich zu ermöglichen *)
-    		w_tmp := INT_TO_WORD(Response + 3);
+    		w_tmp := INT_TO_WORD(response + 3);
     		S_BUF.BUFFER[4] := WORD_TO_BYTE(SHR(w_tmp,8));
     		S_BUF.BUFFER[5] := WORD_TO_BYTE(w_tmp);
 
@@ -249,7 +249,7 @@ FUNCTION_BLOCK MB_CLIENT
     			ERROR := BYTE_TO_DWORD(R_BUF.BUFFER[8]);
     			IP_STATE := BYTE#4; (* Abmelden *)
     			state := 00;
-    		ELSIF R_BUF.SIZE = INT_TO_UINT(Response + 9) AND i > comp THEN
+    		ELSIF R_BUF.SIZE = INT_TO_UINT(response + 9) AND i > comp THEN
     			mask := SHL(DWORD#1,FC);
     			(* READ_COILS, READ_INPUT_DISCRETES *)
     			IF (mask AND DWORD#2#00000000_00000000_00000000_00000110) > DWORD#0 THEN (* FC 1,2 *)

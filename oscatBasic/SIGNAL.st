@@ -3,15 +3,15 @@ FUNCTION_BLOCK SIGNAL
     IF IN THEN
     	(* an alarm is present read system time first *)
     	tx := T_PLC_MS();
-    	(* calculate the step counter which is the lowest 3 biTS of (time / TS) *)
+    	(* calculate the step counter which is the lowest 3 bits of (time / TS) *)
     	IF TS > t#0s THEN
     		step := DWORD_TO_BYTE(tx / TIME_TO_DWORD(TS) AND 16#0000_0007);
     	ELSE
     		step := DWORD_TO_BYTE(SHR(tx,7) AND 16#0000_0007);
     	END_IF
-    	(* convert the value 0-7 IN step INto one bit only (bit 0-7) *)
+    	(* convert the value 0-7 IN step into one bit only (bit 0-7) *)
     	step := SHL(one,step);
-    	(* generate the output SIGnal *)
+    	(* generate the output signal *)
     	Q := (step AND SIG) > 0;
     ELSE
     	Q := FALSE;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK SIGNAL
 
     (* revision history
     hm	13.12.2007		rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

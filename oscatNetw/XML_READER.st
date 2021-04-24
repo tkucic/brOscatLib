@@ -74,7 +74,7 @@ FUNCTION_BLOCK XML_READER
     		CTRL.TYP := 99;
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'EX: #T:~1 #C:~2 #P:~6 #L:~7';
+          			LOG_CL.NEW_MSG := 'EX: #T:~1 #c:~2 #P:~6 #L:~7';
           			LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
           			LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
           			LOG_CL.PRINTF[6] := CTRL.PATH;
@@ -96,10 +96,10 @@ FUNCTION_BLOCK XML_READER
     		WHILE (index <= stop) DO
     			IF BUF[INDEX]=BYTE#60 THEN (* '<' TagBegin *)
     				index := index + 1;
-    				C := BUF[index];
-    				IF C = BYTE#47 THEN (* '/' TagTerm *)
+    				c := BUF[index];
+    				IF c = BYTE#47 THEN (* '/' TagTerm *)
     					mode := 300; (* End Element Section *)
-    				ELSIF C = BYTE#33 THEN (* '!' for Special Section *)
+    				ELSIF c = BYTE#33 THEN (* '!' for Special Section *)
     					index := index + 1;
     					mode := 500;
     				ELSE
@@ -141,7 +141,7 @@ FUNCTION_BLOCK XML_READER
     					IF BUF[index2] = BYTE#47 THEN (* TagTerm '/' *)
     						e1 := index2 - 1;
     						CTRL.TYP := 1;
-    						EMPTY_TAG := TRUE; (* EMPTY TAG Mode *)
+    						EMPTY_TAG := TRUE; (* EMPTY TAG mode *)
     						mode := 200; (* TEXT Element *)
     						EXIT;
     					END_IF
@@ -205,7 +205,7 @@ FUNCTION_BLOCK XML_READER
     			IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(COMMAND),CTRL.TYP) THEN
             				(*####################  DEBUG-MESSAGE  ###################################*)
             				(*IF _debug_enable THEN
-              				LOG_CL.NEW_MSG := 'EL: #T:~1 #C:~2 #E:~3 #P:~6 #L:~7';
+              				LOG_CL.NEW_MSG := 'EL: #T:~1 #c:~2 #E:~3 #P:~6 #L:~7';
               				LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
               				LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
               				LOG_CL.PRINTF[3] := CTRL.ELEMENT;
@@ -227,7 +227,7 @@ FUNCTION_BLOCK XML_READER
     				index := index + 1;
     			END_WHILE
 
-    			E1 := index - 1;
+    			e1 := index - 1;
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
     			CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,STOP:=CTRL.BLOCK1_STOP);
@@ -241,7 +241,7 @@ FUNCTION_BLOCK XML_READER
     		IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
           			(*####################  DEBUG-MESSAGE  ###################################*)
           			(*IF _debug_enable THEN
-            				LOG_CL.NEW_MSG := 'TE: #T:~1 #C:~2 #E:~3 #V:~4 #P:~6 #L:~7';
+            				LOG_CL.NEW_MSG := 'TE: #T:~1 #c:~2 #E:~3 #V:~4 #P:~6 #L:~7';
             				LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
             				LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
             				LOG_CL.PRINTF[3] := CTRL.ELEMENT;
@@ -278,7 +278,7 @@ FUNCTION_BLOCK XML_READER
     				IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(COMMAND),CTRL.TYP) THEN
              	 				(*####################  DEBUG-MESSAGE  ###################################*)
               				(*IF _debug_enable THEN
-                					LOG_CL.NEW_MSG := 'CE: #T:~1 #C:~2 #E:~3 #P:~6 #L:~7';
+                					LOG_CL.NEW_MSG := 'CE: #T:~1 #c:~2 #E:~3 #P:~6 #L:~7';
                 					LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
                 					LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
                 					LOG_CL.PRINTF[3] := CTRL.ELEMENT;
@@ -371,7 +371,7 @@ FUNCTION_BLOCK XML_READER
     				IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
               				(*####################  DEBUG-MESSAGE  ###################################*)
               				(*IF _debug_enable THEN
-                					LOG_CL.NEW_MSG := 'AT: #T:~1 #C:~2 #E:~3 #A:~4 #V:~5 #P:~6 #L:~7';
+                					LOG_CL.NEW_MSG := 'AT: #T:~1 #c:~2 #E:~3 #A:~4 #V:~5 #P:~6 #L:~7';
                 					LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
                 					LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
                 					LOG_CL.PRINTF[3] := CTRL.ELEMENT;
@@ -453,7 +453,7 @@ FUNCTION_BLOCK XML_READER
     		IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
           			(*####################  DEBUG-MESSAGE  ###################################*)
           			(*IF _debug_enable THEN
-            				LOG_CL.NEW_MSG := 'DTD: #T:~1 #C:~2 #S:~3 #E:~4 #V:~5 #P:~6 #L:~7';
+            				LOG_CL.NEW_MSG := 'DTD: #T:~1 #c:~2 #S:~3 #E:~4 #V:~5 #P:~6 #L:~7';
             				LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
             				LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
             				LOG_CL.PRINTF[3] := UINT_TO_STRING(CTRL.BLOCK1_START);
@@ -476,7 +476,7 @@ FUNCTION_BLOCK XML_READER
     	original version
 
     ks	20. oct. 2009	rev 1.1
-    	NetworkBUFfer und BUFfer-funktionen auf Basis 0
+    	Networkbuffer und Buffer-funktionen auf Basis 0
 
     ks	10. mai. 2010	rev 1.2
     	stringlänge maximal 250 zeichen

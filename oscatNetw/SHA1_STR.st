@@ -2,9 +2,9 @@ FUNCTION_BLOCK SHA1_STR
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=83*)
     CASE mode OF
     0:	(* Wait für Start *)
-    	IF RUN AND NOT RUN_last THEN
+    	IF RUN AND NOT run_last THEN
     		DONE := FALSE;
-    		mode := 1; (* InitialisieRUNg *)
+    		mode := 1; (* Initialisierung *)
     		size := LEN(STR);
     	END_IF
 
@@ -22,7 +22,7 @@ FUNCTION_BLOCK SHA1_STR
     	SHA1_STREAM(SIZE:=size, MODE:=mode, BUF:=buf, SHA1:=SHA1, POS=>pos);
     END_IF
 
-    RUN_last := RUN;
+    run_last := RUN;
 
     (* revision history
 

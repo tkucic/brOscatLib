@@ -4,13 +4,13 @@ FUNCTION_BLOCK FT_INT2
     	val := R2_SET(0.0);
     	OUT := 0.0;
     ELSE
-    	INteg(X := IN, E := RUN, K := K, Y := ix);
+    	integ(X := IN, E := RUN, K := K, Y := ix);
     	val := R2_ADD(val, ix);
     	ix := 0.0;
     	OUT := val.RX;
     END_IF
 
-    (* check OUTput for LIMits *)
+    (* check output for limits *)
     IF OUT > OUT_MIN AND OUT < OUT_MAX THEN
     	LIM := FALSE;
     ELSE
@@ -23,13 +23,13 @@ FUNCTION_BLOCK FT_INT2
 
     (*	revision history
     hm	2. jun. 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	5. nov. 2008	rev 1.1
-    	rewritten code usINg INtegrate
+    	rewritten code using integrate
 
     hm	11. mar. 2009	rev 1.2
-    	real constants updated to new systax usINg dot
+    	real constants updated to new systax using dot
 
     *)
 

@@ -7,11 +7,11 @@ FUNCTION MIRROR
     	po^ := pi^[i];
     	po := po + 1;
     END_FOR
-    (* close output STRing *)
+    (* close output string *)
     po^:= 0;
 
 
-    (* revision hiSTRoy
+    (* revision histroy
     hm	4. feb. 2008	rev 1.0
     	original release
 

@@ -5,13 +5,13 @@ FUNCTION RES_SI
 
     (* revision history
     hm	4. aug 2006	rev 1.0
-    	original veRSion
+    	original version
 
     hm	2. dec 2007	rev 1.1
     	changed code for better performance
 
     hm	11. mar. 2009	rev 1.2
-    	changed real constanTS to use dot syntax
+    	changed real constants to use dot syntax
 
     *)
 END_FUNCTION

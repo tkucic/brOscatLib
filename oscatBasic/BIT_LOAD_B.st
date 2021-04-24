@@ -9,10 +9,10 @@ FUNCTION BIT_LOAD_B
 
     (* revision history
     hm	29. feb 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	16. mar 2008	rev 1.1
-    	change INput bit to VAL for compatibility reasons
+    	change input bit to VAL for compatibility reasons
     *)
 
 END_FUNCTION

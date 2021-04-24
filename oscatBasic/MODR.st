@@ -17,13 +17,13 @@ FUNCTION MODR
     	use D_trunc for compatibility reasons
 
     hm	4. apr. 2008	rev 1.3
-    	added type conversion to avoid warnINgs under codesys 3.0
+    	added type conversion to avoid warnings under codesys 3.0
 
     hm	31. oct. 2008	rev 1.4
-    	changed algorithm to the more common version usINg floor INstead of TRUNC
+    	changed algorithm to the more common version using floor instead of TRUNC
 
     hm	10. mar. 2009	rev 1.5
-    	real constants updated to new systax usINg dot
+    	real constants updated to new systax using dot
 
     *)
 END_FUNCTION

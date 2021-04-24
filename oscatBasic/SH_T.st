@@ -6,10 +6,10 @@ FUNCTION_BLOCK SH_T
 
     (* revision history
     hm	1. sep. 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm	18. oct. 2008	rev 1.1
-    	changed INput en to e for compatibility reasons
+    	changed input en to E for compatibility reasons
 
     *)
 END_FUNCTION_BLOCK

@@ -3,16 +3,16 @@ FUNCTION_BLOCK METER_STAT
     IF RST THEN
     	Last_Day := 0.0;
     	Current_Day := 0.0;
-    	Day_start := IN;
+    	Day_Start := IN;
     	LAST_WEEK := 0.0;
     	CURRENT_WEEK := 0.0;
-    	Week_start := IN;
+    	Week_Start := IN;
     	LAST_MONTH := 0.0;
     	CURRENT_MONTH := 0.0;
-    	month_start := IN;
+    	Month_Start := IN;
     	LAST_YEAR := 0.0;
     	CURRENT_YEAR := 0.0;
-    	year_start := IN;
+    	Year_Start := IN;
     ELSE
     	Current_Day := IN - Day_Start;
     	Current_Week := IN - Week_Start;
@@ -24,38 +24,38 @@ FUNCTION_BLOCK METER_STAT
     	(* a new year has started *)
     	LAST_YEAR := CURRENT_YEAR;
     	CURRENT_YEAR := 0.0;
-    	year_start := IN;
+    	Year_Start := IN;
     	LAST_MONTH := CURRENT_MONTH;
     	CURRENT_MONTH := 0.0;
-    	month_start := IN;
+    	Month_Start := IN;
     	LAST_DAY := CURRENT_DAY;
     	CURRENT_DAY := 0.0;
-    	day_start := IN;
+    	Day_Start := IN;
     ELSIF MONTH_OF_DATE(DI) > MONTH_OF_DATE(last_run) THEN
     	(* a new month has started, january is alrerady done by year change *)
     	LAST_MONTH := CURRENT_MONTH;
     	CURRENT_MONTH := 0.0;
-    	month_start := IN;
+    	Month_Start := IN;
     	LAST_DAY := CURRENT_DAY;
     	CURRENT_DAY := 0.0;
-    	day_start := IN;
+    	Day_Start := IN;
     ELSIF DAY_OF_YEAR(DI) > DAY_OF_YEAR(last_run) THEN
-    	(* day has chaged, fiRST day of year and fiRST day of month has already been taken care of *)
+    	(* day has chaged, first day of year and first day of month has already been taken care of *)
     	LAST_DAY := CURRENT_DAY;
     	CURRENT_DAY := 0.0;
-    	day_start := IN;
+    	Day_Start := IN;
     END_IF
     IF DAY_OF_WEEK(DI) < DAY_OF_WEEK(last_run) THEN
     	(* a new week has started *)
     	LAST_WEEK := CURRENT_WEEK;
     	CURRENT_WEEK := 0.0;
-    	week_start := IN;
+    	Week_Start := IN;
     END_IF
     last_run := DI;
 
     (* revision history
     hm	16. sep. 2007	rev 1.0
-    	origINal version
+    	original version
 
     hm	7. oct. 2008	rev 1.1
     	changed function year_to_year_of_date

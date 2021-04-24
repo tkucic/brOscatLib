@@ -1,15 +1,15 @@
 FUNCTION_BLOCK BLIND_SHADE
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=93*)
     (* the input SUN is sent through tof which will delay the shade for the time shade_delay *)
-    SUN_delay(IN := SUN, PT := shade_delay);
+    sun_delay(IN := SUN, PT := shade_delay);
 
-    IF UP AND DN AND ENABLE AND SUN_delay.Q AND CX.SUN_HOR > direction - angle_offset AND CX.SUN_HOR < direction + angle_offset AND
-    	DT_TO_TOD(CX.UTC) > CX.SUN_RISE + SUNrise_offset AND DT_TO_TOD(CX.UTC) < CX.SUN_SET - SUNset_preset THEN
+    IF UP AND DN AND ENABLE AND sun_delay.Q AND CX.SUN_HOR > direction - angle_offset AND CX.SUN_HOR < direction + angle_offset AND
+    	DT_TO_TOD(CX.UTC) > CX.SUN_RISE + sunrise_offset AND DT_TO_TOD(CX.UTC) < CX.SUN_SET - sunset_preset THEN
     	STATUS := 151;
     	QU := UP;
     	QD := DN;
-    	(* POsition is predefined *)
-    	PO := shade_POs;
+    	(* position is predefined *)
+    	PO := shade_pos;
     	(* shading is active now calculate the slat angle *)
     	(* calculate the max angle for the blind *)
     	angle := OSCAT_BASIC.DEG(ATAN(slat_spacing / slat_width));
@@ -39,7 +39,7 @@ FUNCTION_BLOCK BLIND_SHADE
     	added shade_delay to avoid constant UP and down if SUN is out parcially
 
     hm	8. feb 2009	rev 1.3
-    	added shading POsition shade_POs to be configured
+    	added shading position shade_pos to be configured
     	changed inputs to utilize calendar data structure
 
     hm	13. mar. 2009	rev 1.4

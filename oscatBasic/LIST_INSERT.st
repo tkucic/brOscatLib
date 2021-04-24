@@ -7,7 +7,7 @@ FUNCTION LIST_INSERT
     	LIST_INSERT := FALSE;
     ELSE
     	LIST_INSERT := TRUE;
-    	(* search for POSition *)
+    	(* search for position *)
     	WHILE read < LIST_LENGTH DO
     		IF cnt >= POS THEN
     			sx := CHR_TO_STRING(SEP);

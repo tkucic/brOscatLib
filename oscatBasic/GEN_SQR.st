@@ -69,7 +69,7 @@ FUNCTION_BLOCK GEN_SQR
 
     hm	11. mar. 2009	rev 1.4
     	changed real constants to use dot syntax
-    	set default AMplitude to 1.0
+    	set default amplitude to 1.0
 
     *)
 

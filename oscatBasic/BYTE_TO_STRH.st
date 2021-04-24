@@ -1,22 +1,22 @@
 FUNCTION BYTE_TO_STRH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146*)
-    (* read poINter to output strINg *)
+    (* read pointer to output string *)
     PT := ADR(BYTE_TO_STRH);
     (* calculate high order hex value *)
     temp := SHR(IN,4);
     (* convert value to hex character *)
     IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
-    (* write friat character to output strINg *)
+    (* write friat character to output string *)
     PT^ := temp;
     (* calculate low order hex value *)
     temp := IN AND 2#00001111;
     IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
-    (* INcrement poINter and wirte low order character *)
-    pt := pt + 1;
-    pt^ := temp;
-    (* set poINter at the end of the output strINg and close the strINg with 0 *)
-    pt := pt + 1;
-    pt^:= 0;
+    (* increment pointer and wirte low order character *)
+    PT := PT + 1;
+    PT^ := temp;
+    (* set pointer at the end of the output string and close the string with 0 *)
+    PT := PT + 1;
+    PT^:= 0;
 
 
     (* code before rev 1.2
@@ -33,10 +33,10 @@ FUNCTION BYTE_TO_STRH
     (* revision history
 
     hm	9.6.2007		rev 1.0		
-    	origINal version 
+    	original version 
 
     hm	11.9.2007		rev 1.1		
-    	changed codINg for compatibility with twINcat, under twINcat concat cannot have a function as argument.	
+    	changed coding for compatibility with twincat, under twincat concat cannot have a function as argument.	
 
     hm	15 dec 2007		REV 1.2
     	changed code for higher performance

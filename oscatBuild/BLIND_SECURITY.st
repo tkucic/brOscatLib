@@ -16,9 +16,9 @@ FUNCTION_BLOCK BLIND_SECURITY
     	QU := TRUE;
     	QD := FALSE;
     	STATUS := 114;
-    ELSIF RAIn AND NOT (UP XOR DN) THEN
-    	QU := rAIn_UP;
-    	QD := NOT rAIn_UP;
+    ELSIF RAIN AND NOT (UP XOR DN) THEN
+    	QU := RAIN_UP;
+    	QD := NOT RAIN_UP;
     	STATUS := 115;
     ELSE
     	QU := UP;
@@ -34,13 +34,13 @@ FUNCTION_BLOCK BLIND_SECURITY
     	original release
 
     hm	6. oct 2007		rev 1.1
-    	added POs and angle inputs and outputs
-    	manual will override rAIn POsition
-    	ALARM POsition can now be configured
+    	added pos and angle inputs and outputs
+    	manual will override RAIN position
+    	ALARM position can now be configured
 
     hm		12. feb. 2008	rev 1.2
-    	added config variables rAIn_UP and WIND_UP
-    	POsition for rAIn and WIND is now configurable
+    	added config variables RAIN_UP and WIND_UP
+    	position for RAIN and WIND is now configurable
     *)
 
 

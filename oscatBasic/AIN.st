@@ -20,12 +20,12 @@ FUNCTION AIN
     	fixed an error with SIGN bit.
 
     hm	13.9.2007	rev 1.3
-    	changed code to avoid warnINg under codesys 2.8.1
+    	changed code to avoid warning under codesys 2.8.1
 
     hm	2. dec 2007	rev 1.4
     	changed code for better performance
 
     hm	16. mar 2008	rev 1.5
-    	added type conversions to avoid warnINgs under codesys 30
+    	added type conversions to avoid warnings under codesys 30
     *)
 END_FUNCTION

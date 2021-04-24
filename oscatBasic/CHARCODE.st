@@ -3,7 +3,7 @@ FUNCTION CHARCODE
     IF LEN(STR) = 1 THEN
     	CHARCODE := CODE(STR, 1);
     ELSIF STR <> '' THEN
-    	(* conSTRuct search STRing *)
+    	(* construct search string *)
     	search := CONCAT('&', STR);
     	search := CONCAT(search, ';');
     	WHILE pos = 0 AND (i < 4) DO

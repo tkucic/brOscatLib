@@ -1,6 +1,6 @@
 FUNCTION WATER_ENTHALPY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=453*)
-    WATER_ENTHALPY := OSCAT_BASIC.LINEAR_INT(T, Data, Pts);
+    WATER_ENTHALPY := OSCAT_BASIC.LINEAR_INT(T, data, Pts);
 
 
 

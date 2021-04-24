@@ -1,12 +1,7 @@
 FUNCTION GAMMA
-<<<<<<< HEAD:oscatBasic/GAMMA.st
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52*)
-    IF x > 0.0 THEN
-    	GAMMA := SQRT(math.PI2 / X) * EXPT(math.E_INV * (x + 1.0 / (12.0 * x - 0.1 / X)), X);
-=======
     IF X > 0.0 THEN
-    	GAMMA := SQRT(PI2 / X) * EXPT(E_INV * (X + 1.0 / (12.0 * X - 0.1 / X)), X);
->>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/GAMMA.st
+    	GAMMA := SQRT(math.PI2 / X) * EXPT(math.E_INV * (X + 1.0 / (12.0 * X - 0.1 / X)), X);
     END_IF
 
 

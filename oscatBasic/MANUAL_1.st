@@ -17,7 +17,7 @@ FUNCTION_BLOCK MANUAL_1
     	STATUS := 103;
     END_IF
 
-    (* remember levels of MANual signals *)
+    (* remember levels of manual signals *)
     s_EDGE_ := SET;
     r_EDGE_ := RST;
 
@@ -25,7 +25,7 @@ FUNCTION_BLOCK MANUAL_1
 
     (* revision history
     hm	17. jun 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	17. oct 2008	rev 1.1
     	deleted unnecessary variable m_EDGE_

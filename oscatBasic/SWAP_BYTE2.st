@@ -4,7 +4,7 @@ FUNCTION SWAP_BYTE2
 
     (* revision history
     hm		4. feb 2008	rev 1.0
-    	origINal version
+    	original version
 
     *)
 

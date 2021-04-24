@@ -16,7 +16,7 @@ FUNCTION_BLOCK HYST_3
 
     (* revision history
     hm	22. jan 2007	rev 1.0
-    	origINal version
+    	original version
 
     hm	27. dec 2007	rev 1.1
     	changed code for better performance

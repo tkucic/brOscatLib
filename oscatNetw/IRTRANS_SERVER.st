@@ -16,7 +16,7 @@ FUNCTION_BLOCK IRTRANS_SERVER
     S_ENABLE := R_ENABLE AND (IP_C.MAILBOX[1] > 0 OR IP_C.C_MODE <> 5);
     ERROR := IP_C.ERROR;
 
-    t(IN:= IP_C.ERROR > 0, PT:=T#5s);
+    t(IN:= IP_C.ERROR > 0, PT:=t#5s);
     IF t.Q THEN
     	IP_C.TIME_RESET := TRUE; (* ERROR Reset *)
     END_IF

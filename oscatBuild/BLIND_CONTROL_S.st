@@ -2,14 +2,14 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=78*)
     
     (* STATUS definition
-    	121 = manual UP				manual UP operation UP = tRUe and DN = false
-    	122 = manual down			manual down operation DN = tRUe and UP = false
-    	123 = auto POSitioning		automatic mode DN = UP = TRUE
+    	121 = manual UP				manual UP operation UP = true and DN = false
+    	122 = manual down			manual down operation DN = true and UP = false
+    	123 = auto positioning		automatic mode DN = UP = TRUE
     	124 = revert					revert from top or bottom
     	125 = nothing					default input for S_IN
     	127 = Lockout time			lockout between directional change
     	128 = calibrate				calibrate after power UP
-    	129 = extend					extend RUntime at top or bottom for continuous calibration
+    	129 = extend					extend runtime at top or bottom for continuous calibration
     *)
 
     (* read system time *)
@@ -30,7 +30,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	STATUS := S_IN;
     END_IF
 
-    (* siMUlate POS output *)
+    (* simulate POS output *)
     rmp(E := UP OR DN, TR := T_UP, TF := T_DN, TL := T_LOCKOUT, OUT := POS);
 
     (* state machine *)
@@ -60,11 +60,11 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     			STATUS := 129;	(* extend *)
     		END_IF
 
-    	123:	(* auto POSitioning *)
+    	123:	(* auto positioning *)
     		MD := rmp.DN;
     		MU := rmp.UP;
     		IF NOT (rmp.DN OR rmp.UP) THEN
-    			(* automatic POSition is reached *)
+    			(* automatic position is reached *)
     			IF POS <= EXT_TRIG THEN
     				(* extend at bottom *)
     				MD := TRUE;
@@ -118,7 +118,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	IF PI <> PI_last THEN
     		PI_last := PI;
     		rmp.IN := PI;
-    		STATUS := 123;	(* auto POSitioning *)
+    		STATUS := 123;	(* auto positioning *)
     	ELSIF POS = 0 AND RU THEN
     		rmp.IN := R_POS_BOT;
     		STATUS := 124;	(* revert *)
@@ -138,7 +138,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	original release
 
     hf	27. jul 2009	rev 1.1
-    	major code changes and UPdates
+    	major code changes and updates
 
     hf	23. Jan 2010	rev 1.2
     	fixed a bug during calibration

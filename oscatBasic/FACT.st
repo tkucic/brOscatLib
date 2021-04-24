@@ -1,7 +1,7 @@
 FUNCTION FACT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49*)
     IF X >= 0 AND X <= 12 THEN
-    	FACT := cFacts[X];
+    	FACT := math.FACTS[X];
     ELSE
     	FACT := -1;
     END_IF
@@ -37,10 +37,6 @@ FUNCTION FACT
     	optimized code
 
     hm	26. mar. 2011	rev 1.5
-<<<<<<< HEAD:oscatBasic/FACT.st
-    	using array math.FACTs
-=======
-    	using array facts
->>>>>>> 800137518c97e6c8be9a9f286ec9de596d141e5a:Oscat_Basic/octMath/FACT.st
+    	using array math.facts
     *)
 END_FUNCTION

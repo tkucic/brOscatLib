@@ -1,6 +1,6 @@
 FUNCTION CABS
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=83*)
-    CABS := HYPOT(x.re, x.im);
+    CABS := HYPOT(X.re, X.im);
 
 
     (* revision history

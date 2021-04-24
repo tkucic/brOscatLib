@@ -3,11 +3,11 @@ FUNCTION_BLOCK INTERLOCK_4
     (* check if enable is active *)
     IF E THEN
     (* reset all vars when there is a MODE change on thy fly *)
-    	IF MODE <> lMODE THEN
+    	IF MODE <> lmode THEN
     		OUT := 0;
     		last := 0;
     		old := 0;
-    		lMODE := MODE;
+    		lmode := MODE;
     	END_IF
     	(* load inputs into in *)
     	in.0 := I0;
@@ -18,7 +18,7 @@ FUNCTION_BLOCK INTERLOCK_4
     	IF in <> last THEN
     		(* only execute when inputs have chages state *)
     		CASE MODE OF
-    			0:	(* OUTPut directly display inputs as bits in byte OUT *)
+    			0:	(* output directly display inputs as bits in byte OUT *)
     				OUT := in;
 
     			1:	(* the input with the highest number will be acepted *)
@@ -54,7 +54,7 @@ FUNCTION_BLOCK INTERLOCK_4
     	OUT := 0;
     	last := 0;
     	old := 0;
-    	lMODE := 0;
+    	lmode := 0;
     	TP := FALSE;
     END_IF
 

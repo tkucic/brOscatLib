@@ -1,8 +1,8 @@
 FUNCTION CEXP
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88*)
-    temp := EXP(X.re);
-    CEXP.re := temp * COS(X.im);
-    CEXP.im := temp * SIN(X.im);
+    Temp := EXP(X.re);
+    CEXP.re := Temp * COS(X.im);
+    CEXP.im := Temp * SIN(X.im);
 
 
     (* revision history

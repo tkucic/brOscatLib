@@ -4,7 +4,7 @@ FUNCTION_BLOCK MYSQL_AUTH
     CASE step OF
 
     0:	CASE sha_mode OF
-    	0:	sha_mode := 1; (* InitialisieRUNg *)
+    	0:	sha_mode := 1; (* Initialisierung *)
     		size := INT_TO_UDINT(LEN(PASSWORD));
     		i2 := UDINT_TO_INT(size) - 1;
     		FOR i := 0 TO 63 DO
@@ -15,22 +15,22 @@ FUNCTION_BLOCK MYSQL_AUTH
     			END_IF
     		END_FOR
 
-    	3:	SCRAMBLE1 := SCRAMBLE;
-    		sha_mode := 1; (* InitialisieRUNg *)
+    	3:	scramble1 := SCRAMBLE;
+    		sha_mode := 1; (* Initialisierung *)
     		size := UDINT#20;
     		FOR i := 0 TO 19 DO
-    			buf[i] := SCRAMBLE1[i];
+    			buf[i] := scramble1[i];
     		END_FOR
     		step := 10;
     	END_CASE
 
     10:	IF sha_mode = 3 THEN
-    		sha_mode := 1; (* InitialisieRUNg *)
-    		SCRAMBLE2 := SCRAMBLE;
+    		sha_mode := 1; (* Initialisierung *)
+    		scramble2 := SCRAMBLE;
     		size := UDINT#40;
     		FOR i := 0 TO 19 DO
     			buf[i] := MESSAGE[i];
-    			buf[i+20] := SCRAMBLE2[i];
+    			buf[i+20] := scramble2[i];
     		END_FOR
     		step :=20;
     	END_IF
@@ -38,7 +38,7 @@ FUNCTION_BLOCK MYSQL_AUTH
     20:	IF sha_mode = 3 THEN
     		sha_mode := 0; (* Stop *)
     		FOR i:= 0 TO 19 DO
-    			SCRAMBLE[i] := SCRAMBLE[i] XOR SCRAMBLE1[i];
+    			SCRAMBLE[i] := SCRAMBLE[i] XOR scramble1[i];
     		END_FOR
     		step :=0;
     		RUN := FALSE;

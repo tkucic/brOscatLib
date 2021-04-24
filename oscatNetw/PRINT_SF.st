@@ -19,7 +19,7 @@ FUNCTION_BLOCK PRINT_SF
     			IF LEN(PRINTF_DATA[10]) + LEN(STR) > LOG_SIZE THEN
     				PRINTF_DATA[10] := '..';
     			END_IF
-    			(* pcworx: aus und eingangsSTRing muss verschieden sein *)
+    			(* pcworx: aus und eingangsstring muss verschieden sein *)
     			PRINTF_DATA[11] := STR;
     			STR := REPLACE(PRINTF_DATA[11],PRINTF_DATA[10],2,pos);
     		END_IF

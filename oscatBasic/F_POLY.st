@@ -1,6 +1,6 @@
 FUNCTION F_POLY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97*)
-    F_POLY := ((((((( c[7] * x + c[6] ) * x + c[5] ) * x + c[4] ) * x + c[3] ) * x + c[2] ) * x + c[1] ) * x + c[0] ) ;
+    F_POLY := ((((((( C[7] * X + C[6] ) * X + C[5] ) * X + C[4] ) * X + C[3] ) * X + C[2] ) * X + C[1] ) * X + C[0] ) ;
 
 
     (* revision history

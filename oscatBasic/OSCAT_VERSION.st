@@ -8,10 +8,10 @@ FUNCTION OSCAT_VERSION
 
     (* revision history
     hm	6. oct 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm	16. dec 2007	rev 1.1
-    	added possibility to return date and version dependINg on IN.
+    	added possibility to return date and version depending on IN.
 
     *)
 END_FUNCTION

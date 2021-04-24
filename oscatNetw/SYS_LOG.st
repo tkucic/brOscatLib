@@ -66,14 +66,14 @@ FUNCTION_BLOCK SYS_LOG
     			IP_C.C_MODE := BYTE#1; (* Mode: UDP/AKTIV *)
     		END_IF
 
-    		IF PORT = WORD#0 THEN (* keine PORTnummer vorgegeben ? *)
+    		IF PORT = WORD#0 THEN (* keine Portnummer vorgegeben ? *)
     			IF IP_C.C_MODE = BYTE#0 THEN (* Modus bestimmen  TCP oder UDP ? *)
-    				IP_C.C_PORT := WORD#1468; (* Standard PORTnummer für Syslog over TCP *)
+    				IP_C.C_PORT := WORD#1468; (* Standard Portnummer für Syslog over TCP *)
     			ELSE
-    				IP_C.C_PORT := WORD#514; (* Standard PORTnummer für Syslog over UDP *)
+    				IP_C.C_PORT := WORD#514; (* Standard Portnummer für Syslog over UDP *)
     			END_IF
     		ELSE
-    			IP_C.C_PORT := PORT; (* uebergebene PORTnummer eintragen *)
+    			IP_C.C_PORT := PORT; (* uebergebene Portnummer eintragen *)
     		END_IF
 
     		IP_C.C_IP := SERVER_IP4; (* IP eintragen *)

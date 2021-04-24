@@ -30,9 +30,9 @@ FUNCTION_BLOCK TIMER_2
     		enabled := wday > 5;
     	22: (* workdays only *)
     		enabled := wday <= 5 AND NOT HOLIDAY;
-    	23:	(* HOLIDAYs and weekends *)
+    	23:	(* holidays and weekends *)
     		enabled := wday > 5 OR HOLIDAY;
-    	24:	(* HOLIDAYs only *)
+    	24:	(* holidays only *)
     		enabled := HOLIDAY;
     	25:	(* 1st day of the month *)
     		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat) = 1;

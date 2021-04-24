@@ -10,7 +10,7 @@ FUNCTION_BLOCK SNTP_SERVER
     		state := 10;
     		ip_state := BYTE#1; (* Anmelden *)
         		(*####################  DEBUG-MESSAGE  ###################################*)
-        		(*IF _debug_ENABLE THEN
+        		(*IF _debug_enable THEN
           			LOG_CL.NEW_MSG := 'SNTP_SERVER: S00 START';
           			LOG_MSG();
         		END_IF*)
@@ -30,7 +30,7 @@ FUNCTION_BLOCK SNTP_SERVER
     		R_BUF.SIZE := UINT#0; (* Empfangslänge rücksetzen *)
     		state := 20;
         		(*####################  DEBUG-MESSAGE  ###################################*)
-        		(*IF _debug_ENABLE THEN
+        		(*IF _debug_enable THEN
           			LOG_CL.NEW_MSG := 'SNTP_SERVER: S10 INIT';
           			LOG_MSG();
         		END_IF*)
@@ -40,7 +40,7 @@ FUNCTION_BLOCK SNTP_SERVER
     	IF R_BUF.SIZE > UINT#0 THEN
     		state := 20;
         		(*####################  DEBUG-MESSAGE  ###################################*)
-        		(*IF _debug_ENABLE THEN
+        		(*IF _debug_enable THEN
           			LOG_CL.NEW_MSG := 'SNTP_SERVER: S20 REQUEST - Size: ~1';
           			LOG_CL.PRINTF[1] := UINT_TO_STRING(R_BUF.SIZE);
           			LOG_MSG();
@@ -116,7 +116,7 @@ FUNCTION_BLOCK SNTP_SERVER
 
     END_CASE
 
-    t(IN:= IP_C.ERROR > DWORD#0, PT:=T#5s);
+    t(IN:= IP_C.ERROR > DWORD#0, PT:=t#5s);
     IF t.Q THEN
       IP_C.TIME_RESET := TRUE; (* Error Reset *)
     END_IF

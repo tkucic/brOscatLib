@@ -1,6 +1,6 @@
 FUNCTION V3_YANG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=113*)
-    la := V3_ABS(a);
+    la := V3_ABS(A);
     IF la > 0.0 THEN
     	V3_YANG := ACOS(A.Y / la);
     END_IF

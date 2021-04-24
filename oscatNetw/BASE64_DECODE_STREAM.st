@@ -9,7 +9,7 @@ FUNCTION_BLOCK BASE64_DECODE_STREAM
     	o := BUF1[i1];
     	IF o = 61  (* = *) THEN	EXIT;
     	ELSIF o > 96 (* a-z *) THEN off := 71;
-    	ELSIF o > 64 (* A-Z *) THEN off := 65;
+    	ELSIF o > 64 (* a-Z *) THEN off := 65;
     	ELSIF o > 47 (* 0-9 *) THEN off := -4;
     	ELSIF o = 43 (* + *) THEN off := -19;
     	ELSIF o = 47 (* / *) THEN off := -16;

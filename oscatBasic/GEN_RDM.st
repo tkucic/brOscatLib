@@ -15,11 +15,11 @@ FUNCTION_BLOCK GEN_RDM
     	last := last + PT;
     	tx := tx - PT;
 
-    	(* generate OUTput signal *)
+    	(* generate output signal *)
     	OUT := AM * (RDM(0) - 0.5) + OS;
-    	q := TRUE;
+    	Q := TRUE;
     ELSE
-    	q := FALSE;
+    	Q := FALSE;
     END_IF
 
     (* revision history

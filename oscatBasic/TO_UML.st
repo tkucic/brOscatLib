@@ -23,10 +23,10 @@ FUNCTION TO_UML
 
     (* revision history
     hm	29. mar. 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	17. dec. 2008	rev 1.1
-    	changes name of function chr to chr_to_strINg
+    	changes name of function chr to chr_to_string
 
     *)
 END_FUNCTION

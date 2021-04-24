@@ -3,7 +3,7 @@ FUNCTION_BLOCK GET_WAN_IP
     CASE state OF
 
     00:
-    	IF ACTIVATE AND NOT ACTIVATE_last THEN
+    	IF ACTIVATE AND NOT activate_last THEN
     		state := 20;
     		DONE := FALSE;
     		ERROR_C := DWORD#0;
@@ -61,8 +61,8 @@ FUNCTION_BLOCK GET_WAN_IP
 
     	IF WAN_IP4 <> DWORD#0 THEN
     		DONE := TRUE;
-    		NEW_IP4 := WAN_IP4 <> WAN_IP4_last;
-    		WAN_IP4_last := WAN_IP4;
+    		NEW_IP4 := WAN_IP4 <> wan_ip4_last;
+    		wan_ip4_last := WAN_IP4;
     	ELSE
     		ERROR_C := DWORD#01; (* keine gültige IP gefunden *)
     		ERROR_T := BYTE#03;
@@ -115,7 +115,7 @@ FUNCTION_BLOCK GET_WAN_IP
     *)
     (* -------------------------------------*)
 
-    ACTIVATE_last := ACTIVATE;
+    activate_last := ACTIVATE;
 
     (* revision history
     ks	28. dec 2009	rev 1.1

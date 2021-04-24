@@ -34,7 +34,7 @@ FUNCTION_BLOCK DIMM_2
     	dim.DIR := FALSE;
     END_IF
 
-    (* SET the double click OUTput *)
+    (* SET the double click output *)
     IF NOT DBL1_TOG THEN D1 := FALSE; END_IF
     IF dc1.DOUBLE THEN
     	IF DBL1_SET THEN
@@ -55,15 +55,15 @@ FUNCTION_BLOCK DIMM_2
     END_IF
 
 
-    (* while dimming is active ramp the OUTput OUT up or down *)
+    (* while dimming is active ramp the output OUT up or down *)
     dim(dir := dc2.LONG, e := dc1.LONG OR dc2.LONG , TR := T_DIMM, rmp := OUT);
 
-    (* turn off OUTput if a VALue of 0 is reached *)
+    (* turn off output if a value of 0 is reached *)
     IF OUT = 0 THEN Q := FALSE; END_IF
 
     (* limit the maximum runtime *)
     IF t_ON_MAX > t#0s THEN
-    	t3(in := q, pt := T_ON_MAX);
+    	t3(in := Q, pt := T_ON_MAX);
     	Q := Q XOR t3.Q;
     END_IF
 

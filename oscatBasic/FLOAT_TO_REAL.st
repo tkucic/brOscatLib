@@ -20,18 +20,18 @@ FUNCTION FLOAT_TO_REAL
     	IF X = 44 OR X = 46 OR X = 69 OR X = 101 THEN
     		EXIT;
     	(* calculate the value of the digit *)
-    	ELSIF X > 47 AND x < 58 THEN
+    	ELSIF X > 47 AND X < 58 THEN
     		tmp := tmp * 10 + X - 48;
     	END_IF
     END_FOR
 
     (* process the portion after the comma if comma or dot is reached exit if exponent starts *)
-    IF x = 44 OR X = 46 THEN
+    IF X = 44 OR X = 46 THEN
     	FOR i := i + 1 TO stop DO
     		X := pt^[i];
     		IF X = 69 OR X = 101 THEN
     			EXIT;
-    		ELSIF x > 47 AND x < 58 THEN
+    		ELSIF X > 47 AND X < 58 THEN
     			tmp := tmp * 10 + X - 48;
     			d := d - 1;
     		END_IF

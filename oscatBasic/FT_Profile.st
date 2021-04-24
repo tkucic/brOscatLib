@@ -3,7 +3,7 @@ FUNCTION_BLOCK FT_Profile
     (* read system time *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* dETermine start condition *)
+    (* determine start condition *)
     IF E AND NOT EDGE_ THEN
     	RUN := TRUE;
     	ET := t#0s;

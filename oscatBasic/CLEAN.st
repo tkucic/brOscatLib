@@ -1,6 +1,6 @@
 FUNCTION CLEAN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149*)
-    (* copy INput strINg *)
+    (* copy input string *)
     CLEAN := IN;
     stop := LEN(IN);
     WHILE pos <= stop DO
@@ -10,7 +10,7 @@ FUNCTION CLEAN
     	ELSE
     		(* wrong chracter needs to be deleted *)
     		CLEAN := DELETE(CLEAN, 1, pos);
-    		stop := stop - 1;	(* the strINg is one character shorter now *)
+    		stop := stop - 1;	(* the string is one character shorter now *)
     	END_IF
     END_WHILE
 
@@ -19,7 +19,7 @@ FUNCTION CLEAN
     (* revision history
 
     hm		18. jun. 2008	rev 1.0		
-    	origINal version 
+    	original version 
 
 
     *)

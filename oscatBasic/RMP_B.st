@@ -3,14 +3,14 @@ FUNCTION_BLOCK RMP_B
     (* generate ramp *)
     rmp(dir := UP, E := E, TR := PT, rmp := OUT);
 
-    (* SET or reSET operation *)
+    (* SET or reset operation *)
     IF RST THEN
     	OUT := 0;
     ELSIF SET THEN
     	OUT := 255;
     END_IF
 
-    (* checks for OUTputs stable and reSET or SET BUSY flag *)
+    (* checks for outputs stable and reset or SET BUSY flag *)
     LOW := OUT = 0;
     HIGH := OUT = 255;
     BUSY := NOT (LOW OR HIGH) AND E;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK RMP_B
     (* revision history
 
     hm 5.10.2006	rev 1.1
-    	added BUSY OUTput
+    	added BUSY output
     hm 17.1.2007	rev 1.2
     	renamed input ud to UP for better usability
     	deleted unused variable step
@@ -28,12 +28,12 @@ FUNCTION_BLOCK RMP_B
     	replaced time() with t_plc_ms() for compatibility reasons
 
     hm	28. sep 2007	rev 1.4
-    	added OUTputs on and off
+    	added outputs on and off
     	BUSY is now disabled while en is false
-    	new coding for HIGHer accuracy and performance
+    	new coding for higher accuracy and performance
 
     hm	5. oct 2007	rev 1.5
-    	added statements to alLOW for PT to be t#0s OUTput jumps to max or min immediately
+    	added statements to allow for PT to be t#0s output jumps to max or min immediately
 
     hm	25. dec 2007	rev 1.6
     	improved code for better performance
@@ -43,7 +43,7 @@ FUNCTION_BLOCK RMP_B
 
     hm	18. oct. 2008	rev 1.8
     	added type conversion to avoid warnings
-    	changed input en to e for compatibility reasons
+    	changed input en to E for compatibility reasons
 
     hm	23. oct. 2008	REV 	2.0
     	new code using _RMP_B

@@ -14,7 +14,7 @@ FUNCTION_BLOCK SH_1
     (* revision history
 
     HM	6.1.2007	rev 1.1
-    	added TRIG OUTput
+    	added TRIG output
 
     HM	17.9.2007	rev 1.2
     	replaced time() with T_PLC_MS() for compatibility reasons

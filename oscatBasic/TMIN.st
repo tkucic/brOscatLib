@@ -6,7 +6,7 @@ FUNCTION_BLOCK TMIN
 
     (* revision history
     hm	21. jul. 2008	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

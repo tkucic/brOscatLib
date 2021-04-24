@@ -2,8 +2,8 @@ FUNCTION BIN_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145*)
     pt := ADR(BIN);
     stop := LEN(BIN);
-    FOR I := 1 TO stop DO
-    	x := pt^;
+    FOR i := 1 TO stop DO
+    	X := pt^;
     	(* calculate the value of the digit *)
     	IF X = 48 THEN
     		BIN_TO_BYTE := SHL(BIN_TO_BYTE,1);

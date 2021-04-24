@@ -10,7 +10,7 @@ FUNCTION REVERSE
 
     (* revision history
     hm		9.oct 2007		rev 1.0
-    	origINal version
+    	original version
 
     hm		18. feb 2008	rev 1.1
     	improved performance

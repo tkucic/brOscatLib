@@ -1,6 +1,6 @@
 FUNCTION WATER_CP
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=452*)
-    WATER_CP := OSCAT_BASIC.LINEAR_INT(T, Data, Pts);
+    WATER_CP := OSCAT_BASIC.LINEAR_INT(T, data, Pts);
 
 
     (*

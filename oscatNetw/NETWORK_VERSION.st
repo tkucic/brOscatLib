@@ -8,7 +8,7 @@ FUNCTION NETWORK_VERSION
 
     (* revision history
     ks	2. feb 2011	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION

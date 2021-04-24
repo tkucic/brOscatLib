@@ -22,8 +22,8 @@ FUNCTION_BLOCK GEN_SIN
     IF PT > t#0s THEN temp := SIN(math.PI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(PT, DL))) / DWORD_TO_REAL(TIME_TO_DWORD(PT))); END_IF
     OUT := AM * 0.5 *  temp + OS;
 
-    (* boolean OUTput Q *)
-    q := NOT SIGN_R(temp);
+    (* boolean output Q *)
+    Q := NOT SIGN_R(temp);
 
     (* revision history
     hm	22. jan 2007	rev 1.0

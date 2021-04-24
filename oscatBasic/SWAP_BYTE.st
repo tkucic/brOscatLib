@@ -5,7 +5,7 @@ FUNCTION SWAP_BYTE
 
     (* revision history
     hm		4. feb 2008	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION

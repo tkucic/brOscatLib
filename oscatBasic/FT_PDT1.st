@@ -4,16 +4,16 @@ FUNCTION_BLOCK FT_PDT1
     diff(IN := IN, K := TV);
 
     (* Run PT1 filter *)
-    tp(IN := diff.out, T := REAL_TO_TIME(T1));
+    TP(IN := diff.out, T := REAL_TO_TIME(T1));
 
-    (* combINe both values *)
-    Y := KP * (tp.out + IN);
+    (* combine both values *)
+    Y := KP * (TP.out + IN);
 
 
 
     (* revision history
     hm 	3. jun. 2008 	rev 1.0
-    	origINal version
+    	original version
 
 
     *)

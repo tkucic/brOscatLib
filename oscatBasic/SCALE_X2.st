@@ -1,6 +1,6 @@
 FUNCTION SCALE_X2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=295*)
-    SCALE_X2 := (SEL(IN1, IN1_MIN, IN1_MAX)+ SEL(IN2, IN2_MIN, IN2_MAX)) * k + o;
+    SCALE_X2 := (SEL(IN1, IN1_MIN, IN1_MAX)+ SEL(IN2, IN2_MIN, IN2_MAX)) * K + O;
 
 
     (* revision history

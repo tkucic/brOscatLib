@@ -23,12 +23,12 @@ FUNCTION_BLOCK MB_VMAP
     	vopt := VMAP[i].FC; 
     	IF (vopt AND mask) <> DWORD#0 THEN
     		vadr := VMAP[i].V_ADR;
-    		vSIZE := VMAP[i].V_SIZE;
+    		vsize := VMAP[i].V_SIZE;
     		padr := VMAP[i].P_ADR;
 
     		IF (mask AND DWORD#2#00000000_00000000_10000000_00100110) <> DWORD#0 THEN (* FC 1,2,5,15 für Bit-Access *)
     			i_tmp := WORD_TO_INT(SHR(INT_TO_WORD(V_ADR + V_CNT -1),4))+1;
-    			IF i_tmp <= SIZE AND i_tmp <= vSIZE THEN
+    			IF i_tmp <= SIZE AND i_tmp <= vsize THEN
     				w_tmp := INT_TO_WORD(V_ADR);
     				P_ADR := WORD_TO_INT(SHR(w_tmp,4)) + padr; 
     				P_BIT := WORD_TO_INT(w_tmp AND WORD#16#000F);
@@ -36,7 +36,7 @@ FUNCTION_BLOCK MB_VMAP
     				EXIT;
     			END_IF
     		ELSIF (mask AND DWORD#2#00000000_11000001_00000000_01011000) <> DWORD#0 THEN (* FC 3,4,6,16,22,23 für Register-Access *)
-    			IF V_ADR >= vadr AND V_ADR + V_CNT <= vadr + vSIZE THEN (* gültiger virtueller bereich *)
+    			IF V_ADR >= vadr AND V_ADR + V_CNT <= vadr + vsize THEN (* gültiger virtueller bereich *)
     				P_ADR := V_ADR - vadr + padr; (* reale Adresse berechnen *)
     				IF P_ADR + V_CNT <= SIZE THEN (* bereichsueberschreitung ? *)
     					ERROR := BYTE#0;

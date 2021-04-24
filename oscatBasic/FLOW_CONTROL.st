@@ -29,7 +29,7 @@ FUNCTION_BLOCK FLOW_CONTROL
 
     (* revision history
     hm 	28. jun. 2008 	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

@@ -23,7 +23,7 @@ FUNCTION_BLOCK DCF77
     		(* bit 1 detected *)
     		bits[state] := 1;
     	ELSE
-    		(* ERROR condition RECeived signal is not valid *)
+    		(* ERROR condition received signal is not valid *)
     		ERROR := TRUE;
     		state := 0;
     	END_IF
@@ -31,7 +31,7 @@ FUNCTION_BLOCK DCF77
     	IF REC AND state = 58 THEN
     		ERROR := FALSE;
 
-    		(* decode the bits and check for possible ERRORs *)
+    		(* decode the bits and check for possible errors *)
     		IF bits[0] OR NOT (bits[17] XOR bits[18]) OR NOT bits[20] THEN ERROR := TRUE; END_IF
     		(* decode minute *)
     		MINUTE := 0;
@@ -98,7 +98,7 @@ FUNCTION_BLOCK DCF77
 
     		(* time must be valid for two cycles to clear ERROR flag *)
     		IF NOT ERROR THEN
-    			(* SET ouTPuts *)
+    			(* SET outputs *)
     			old_time := mez;
     			IF YEAR >= 70 THEN YEAR := YEAR + 1900; ELSE YEAR := YEAR + 2000; END_IF
     			mez := SET_DT(YEAR,MONTH,day,HOUR,MINUTE,0);
@@ -109,14 +109,14 @@ FUNCTION_BLOCK DCF77
     				UTC := DWORD_TO_DT(DT_TO_DWORD(mez) - 3600);
     			END_IF
 
-    			(* SET trigger signal only if the RECeiver has RECeived 2 successive minutes *)
+    			(* SET trigger signal only if the receiver has received 2 successive minutes *)
     			IF mez <> old_time + t#1m THEN ERROR := TRUE ; END_IF
     		END_IF
     	END_IF
     END_IF
 
     (* this portion implements a free running clock which is triggered by the dcf77 signal *)
-    tz := DWORD_TO_TIME(INT_TO_DWORD(ABS(time_offSET))* 3600000);
+    tz := DWORD_TO_TIME(INT_TO_DWORD(ABS(TIME_OFFSET))* 3600000);
 
     (* input SDT is copied to utc at first power up *)
     IF NOT init OR SET THEN
@@ -129,18 +129,18 @@ FUNCTION_BLOCK DCF77
     IF TP THEN
     	RTC := utc;
     	IF DS AND DST_EN THEN
-    		IF time_offSET < 0 THEN	RTC1 := RTC - tz + t#1h; ELSE RTC1 := RTC + tz + t#1h; END_IF
+    		IF TIME_OFFSET < 0 THEN	RTC1 := RTC - tz + t#1h; ELSE RTC1 := RTC + tz + t#1h; END_IF
     	ELSE
-    		IF time_offSET < 0 THEN RTC1 := RTC - tz; ELSE RTC1 := RTC + tz; END_IF
+    		IF TIME_OFFSET < 0 THEN RTC1 := RTC - tz; ELSE RTC1 := RTC + tz; END_IF
     	END_IF
     	SYNC := TRUE;
-    	last_SYNC := last;
+    	last_sync := last;
     	ty := last;
-    ELSIF RTC > DWORD_TO_DT(0) AND T1 - ty >= t#1s THEN
+    ELSIF RTC > DWORD_TO_DT(0) AND t1 - ty >= t#1s THEN
     	RTC := RTC + t#1s;
     	RTC1 := RTC1 + t#1s;
     	ty := ty + t#1s;
-    	SYNC := ty - last_SYNC < SYNC_TIMEOUT AND last_SYNC > DWORD_TO_TIME(0);
+    	SYNC := ty - last_sync < SYNC_TIMEOUT AND last_sync > DWORD_TO_TIME(0);
     	WDAY := DAY_OF_WEEK(DT_TO_DATE(RTC1));
     	DS := DST_EN AND DST(utc);
     END_IF
@@ -160,20 +160,20 @@ FUNCTION_BLOCK DCF77
     19			Bitwert = 1 falls innerhalb den nächsten 59 Minuten eine Schaltsekunde angeordnet ist. Beim Einfügen einer Schaltsekunde wird anstelle der 59. die 60. Sekundenmarke weggelassen und in der 58. erfolgt ausnahmsweise ein Trägerabfall.
     20			Startbit für Zeitinformation (immer 1)
     21 - 27		1, 2, 4, 8, 10, 20, 40 Minuten (bitweise Addition)
-    28			Prüfbit (gerade Parität) für die Bits 21-27
+    28			Prüfbit (gerade Parität) für die bits 21-27
     29 - 34		1, 2, 4, 8, 10, 20 Stunden (bitweise Addition)
-    35			Prüfbit (gerade Parität) für die Bits 29-34
+    35			Prüfbit (gerade Parität) für die bits 29-34
     36 - 41		Tagesnummer im aktuellen Monat: 1, 2, 4, 8, 10, 20 (bitweise Addition)
     42 - 44		Tagesnummer in der aktuellen Woche: 1, 2, 4 (bitweise Addition)
     45 - 49		Monatsnummer: 1, 2, 4, 8, 10 (bitweise Addition)
     50 - 57		Jahr (zweistellig): 1, 2, 4, 8, 10, 20, 40, 80 (bitweise Addition)
-    58			Prüfbit (gerade Parität) füR die Bits 36-57
+    58			Prüfbit (gerade Parität) füR die bits 36-57
 
     *)
     (* revision history
 
     hm 2.feb 2007		rev 1.1
-    	change WDAY and DSt ouTPuts when there is no dcf RECeption
+    	change WDAY and dst outputs when there is no dcf reception
 
     hm	26.feb 2007		rev 1.2
     	changed statements where t#1h would be substracted from DT.
@@ -183,23 +183,23 @@ FUNCTION_BLOCK DCF77
     	replaced time() with T_PLC_MS() for compatibility reasons
 
     hm	24. oct 2007		rev 1.4
-    	changed DSt calculation because function DSt was upgraded no ERROR in DCF77 only a change in DST
+    	changed dst calculation because function dst was upgraded no ERROR in DCF77 only a change in DST
 
     hm	12. nov 2007		rev 1.5
-    	changed time_offSET from time to integer to allow for negative offSET time zones
+    	changed TIME_OFFSET from time to integer to allow for negative offset time zones
 
     hm	8. dec 2007		rev 1.6
-    	corRECted an ERROR in time_zone calculation
+    	corrected an ERROR in time_zone calculation
 
     hm 23. jan 2008		rev 1.7
     	added SDT input which is used to initialize RTC and RTC1 during first cycle.
 
     hm 16. mar 2008		rev 1.8
-    	changed ouTPut weekday to WDAY and DSt to DS for compatibility reasons
+    	changed output weekday to WDAY and dst to DS for compatibility reasons
 
     hm	19. apr. 2008	rev 1.9
     	added input DSI to allow to SET daylight savings time when SDT is TRUE.
-    	added aSYNChronous SET input
+    	added asynchronous SET input
 
     hm	7. oct. 2008	rev 1.10
     	changed function weekday to day_of_week

@@ -6,7 +6,7 @@ FUNCTION FIB
     	FIB := X;
     	RETURN;
     ELSE
-    	(* the FIBonacci number is the sum of the two suceeding FIBonaci numbers *)
+    	(* the fibonacci number is the sum of the two suceeding fibonaci numbers *)
     	(* we store the numbers alternatively in t1 and t2 depending on pt *)
     	t2 := 1;
     	WHILE X > 3 DO

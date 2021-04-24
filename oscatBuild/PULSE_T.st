@@ -1,18 +1,18 @@
 FUNCTION_BLOCK PULSE_T
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=56*)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
-    IF NOT INit THEN
-    	INit := TRUE;
+    IF NOT init THEN
+    	init := TRUE;
     	last := tx;
     ELSIF RST THEN
     	(* asynchronous reset *)
     	Q := FALSE;
     ELSIF IN AND NOT EDGE_ AND NOT Q THEN
-    	(* a risINg EDGE_ on IN will reversre the output status, if new pulse is startet the start time is stored IN last *)
+    	(* a rising EDGE_ on IN will reversre the output status, if new pulse is startet the start time is stored IN last *)
     	last := tx;
     	Q := TRUE;
     ELSIF NOT IN AND EDGE_ AND ((tx - last) > T1) THEN
-    	(* a fallINg EDGE_ on IN will clear the output if IN was high for more then T1 *)
+    	(* a falling EDGE_ on IN will clear the output if IN was high for more then T1 *)
     	Q := FALSE;
     ELSIF (tx - last) >= T2 THEN
     	(* timeout for long pulse if second click did not occur or IN stays high *)
@@ -23,7 +23,7 @@ FUNCTION_BLOCK PULSE_T
 
     (* revision histroy
     hm	15. jul. 2008	rev 1.0
-    	origINal release
+    	original release
 
 
     *)	

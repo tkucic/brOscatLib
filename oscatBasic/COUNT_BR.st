@@ -4,17 +4,17 @@ FUNCTION_BLOCK COUNT_BR
     	CNT := 0;
     ELSIF SET THEN
     	CNT := LIMIT(0,IN,MX);
-    ELSIF UP AND NOT last_UP THEN
+    ELSIF UP AND NOT last_up THEN
     	CNT := INT_TO_BYTE(INC(CNT,STEP,MX));
-    ELSIF DN AND NOT last_DN THEN
-    	CNT := INT_TO_BYTE(INc(CNT,-STEP,MX));
+    ELSIF DN AND NOT last_dn THEN
+    	CNT := INT_TO_BYTE(inc(CNT,-STEP,MX));
     END_IF
-    last_UP := UP;
-    last_DN := DN;
+    last_up := UP;
+    last_dn := DN;
 
     (* revision history
     hm	16. jan 2008	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

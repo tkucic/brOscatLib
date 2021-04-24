@@ -14,7 +14,7 @@ FUNCTION FSTRING_TO_WEEK
     	original release
 
     hm	25. oct. 2008	rev 1.1
-    	using LANGuage defauls and input LANG
+    	using language defauls and input LANG
     *)	
 
 END_FUNCTION

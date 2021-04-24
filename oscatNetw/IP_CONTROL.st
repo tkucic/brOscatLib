@@ -19,13 +19,13 @@ FUNCTION_BLOCK IP_CONTROL
     	IP_C.C_IP := IP; (* uebergebene IP durch paramtrierte IP ersetzen *)
     END_IF
 
-    new_connection := c_IP <> IP_C.C_IP OR c_mode <> IP_C.C_MODE OR c_PORT <> IP_C.C_PORT; (* neue Verbindungs erwünscht ? *)
+    new_connection := c_ip <> IP_C.C_IP OR c_mode <> IP_C.C_MODE OR c_port <> IP_C.C_PORT; (* neue Verbindungs erwünscht ? *)
     c_enable := IP_C.C_ENABLE AND NOT new_connection;
 
-    IF IP_C.C_ENABLE AND IP_C.ERROR = 0 AND state = STOP THEN (* Freigabe,kein Fehler,kein Socket offen *)
-    	c_IP   := IP_C.C_IP;
+    IF IP_C.C_ENABLE AND IP_C.ERROR = 0 AND state = STOP THEN (* Freigabe,kein Fehler,kein socket offen *)
+    	c_ip   := IP_C.C_IP;
     	c_mode := IP_C.C_MODE;
-    	c_PORT := IP_C.C_PORT;
+    	c_port := IP_C.C_PORT;
     	plc_841 := SYSLIBSOCKETS_OPTION.1; (* Bit 1 = WAGO 750-841 *)
     	plc_881 := SYSLIBSOCKETS_OPTION.2; (* Bit 1 = WAGO 750-881 *)
     	udp_mode := C_MODE.0; (* Mode 1,3,5 = udp *)
@@ -48,8 +48,8 @@ FUNCTION_BLOCK IP_CONTROL
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'IP_CON: MODE ~1 / IP ~2 / PORT ~3 /ID ~6';
     		LOG_CL.PRINTF[1] := BYTE_TO_STRING(C_MODE);
-    		LOG_CL.PRINTF[2] := IP4_TO_STRING(c_IP);
-    		LOG_CL.PRINTF[3] := WORD_TO_STRING(c_PORT);
+    		LOG_CL.PRINTF[2] := IP4_TO_STRING(c_ip);
+    		LOG_CL.PRINTF[3] := WORD_TO_STRING(c_port);
     		LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     		LOG_MSG();
     	END_IF*)
@@ -93,8 +93,8 @@ FUNCTION_BLOCK IP_CONTROL
     		SysSockSetOption(socket, SOCKET_SOL, SOCKET_SO_BROADCAST, ADR(dint_true), SIZEOF(dint_true)); (* allow broadcast *)
     		SysSockIoctl(socket, SOCKET_FIONBIO, ADR(dint_true)); (* put socket in non-blocking mode *)
     		sockaddr.sin_family := SOCKET_AF_INET;
-    		sockaddr.sin_PORT := SysSockHtons(c_PORT);
-    		sockaddr.sin_addr := SEL(c_mode = 1, SOCKET_INADDR_ANY, SysSockNtohl(c_IP));
+    		sockaddr.sin_port := SysSockHtons(c_port);
+    		sockaddr.sin_addr := SEL(c_mode = 1, SOCKET_INADDR_ANY, SysSockNtohl(c_ip));
 
     		IF c_mode >= 2 THEN (* SERVER Mode *)
     			IF SysSockBind(socket, ADR(sockaddr), SIZEOF(sockaddr)) THEN
@@ -123,8 +123,8 @@ FUNCTION_BLOCK IP_CONTROL
     		END_IF
     		SysSockIoctl(socket, SOCKET_FIONBIO, ADR(dint_true)); (* NonBlocking mode *)
     		sockaddr.sin_family := SOCKET_AF_INET;
-    		sockaddr.sin_PORT := SysSockNtohs(c_PORT);
-    		sockaddr.sin_addr := SysSockNtohl(c_IP);
+    		sockaddr.sin_port := SysSockNtohs(c_port);
+    		sockaddr.sin_addr := SysSockNtohl(c_ip);
     		c_select := FALSE;
     		state := TC_CONNECT;
     	END_IF
@@ -158,14 +158,14 @@ FUNCTION_BLOCK IP_CONTROL
     (* ---------------------------------------------- *)
 
     TS_INIT: (* TCP-SERVER (PASSIV) *)
-    	server_socket := SysSockCreate(SOCKET_AF_INET, SOCKET_STREAM, SOCKET_IPPROTO_IP); (* Create Socket *)
+    	server_socket := SysSockCreate(SOCKET_AF_INET, SOCKET_STREAM, SOCKET_IPPROTO_IP); (* Create socket *)
     	IF server_socket = SOCKET_INVALID THEN
     		c_status := 1; (* SysSockCreate failed *)
     		state:= C_CLOSE;
     	ELSE (* Address bindings *)
     		SysSockSetOption( server_socket, SOCKET_SOL, SOCKET_SO_REUSEADDR, ADR(dint_true), SIZEOF(dint_true) );
     		sockaddr.sin_family:= SOCKET_AF_INET;
-    		sockaddr.sin_PORT := SysSockHtons(c_PORT);
+    		sockaddr.sin_port := SysSockHtons(c_port);
     		sockaddr.sin_addr := SOCKET_INADDR_ANY;
     		IF NOT SysSockBind(server_socket, ADR(sockaddr), SIZEOF(sockaddr)) THEN
     			c_status := 2; (* SysSockBind failed *)
@@ -186,7 +186,7 @@ FUNCTION_BLOCK IP_CONTROL
     	socket := SysSockAccept(server_socket, ADR(sockaddr), ADR(sockaddr_size));
 
     	IF socket <> SOCKET_INVALID THEN (* neuer Verbindungswunsch vorhanden *)
-    		IF c_mode = BYTE#2 AND sockaddr.sin_addr <> SysSockNtohl(c_IP) THEN (* Mode 2 = TCP + PASSIVE + PORT + IP  auf richtige Partner-IP prüfen *)
+    		IF c_mode = BYTE#2 AND sockaddr.sin_addr <> SysSockNtohl(c_ip) THEN (* Mode 2 = TCP + PASSIVE + PORT + IP  auf richtige Partner-IP prüfen *)
     			state:= C_CLOSE;
     		ELSE
     			IF plc_841 OR plc_881 THEN
@@ -285,11 +285,11 @@ FUNCTION_BLOCK IP_CONTROL
     	IF udp_mode THEN
     		bytes_received := SysSockRecvFrom(socket, ADR(R_BUF.BUFFER), r_count, 0, ADR(sockaddr), SIZEOF(sockaddr));
 
-    		IF c_mode = BYTE#3 AND sockaddr.sin_addr <> SysSockNtohl(c_IP) THEN (* Mode 3 = UDP + PASSIVE + PORT + IP  auf richtige Partner-IP prüfen *)
+    		IF c_mode = BYTE#3 AND sockaddr.sin_addr <> SysSockNtohl(c_ip) THEN (* Mode 3 = UDP + PASSIVE + PORT + IP  auf richtige Partner-IP prüfen *)
     			bytes_received := 0;
     			R_BUF.SIZE := UINT#0;
-    			sockaddr.sin_PORT := SysSockNtohs(c_PORT);
-    			sockaddr.sin_addr := SysSockNtohl(c_IP);
+    			sockaddr.sin_port := SysSockNtohs(c_port);
+    			sockaddr.sin_addr := SysSockNtohl(c_ip);
     		END_IF
 
     	ELSE

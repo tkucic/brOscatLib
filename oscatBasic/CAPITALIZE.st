@@ -3,14 +3,14 @@ FUNCTION CAPITALIZE
     PT := ADR(CAPITALIZE);
     CAPITALIZE := STR;
     L := LEN(STR);
-    FOR pos := 1 TO l DO
-    	IF first THEN pt^ := TO_UPPER(pt^);	END_IF
-    	(* remember in first if the next char needs to CAPITALIZEd *)
-    	first := pt^= 32;
-    	PT := pt + 1;
+    FOR pos := 1 TO L DO
+    	IF first THEN PT^ := TO_UPPER(PT^);	END_IF
+    	(* remember in first if the next char needs to capitalized *)
+    	first := PT^= 32;
+    	PT := PT + 1;
     END_FOR
 
-    (* revision hiSTRoy
+    (* revision histroy
     hm		4. mar 2008	rev 1.0
     	original release
 

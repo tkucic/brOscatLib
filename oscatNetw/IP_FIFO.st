@@ -42,7 +42,7 @@ FUNCTION_BLOCK IP_FIFO
     	tmp := BYTE_TO_INT(ID);
     	IF FIFO.Y[tmp] < FIFO.MAX_ID THEN
     		FIFO.Y[tmp] := USINT_TO_BYTE(BYTE_TO_USINT(FIFO.Y[tmp]) + USINT#1); (* IP_ID Zähler +1 *)
-    		tmp := FIFO.NW; (* geht bei mir leIDer nicht anders *)
+    		tmp := FIFO.NW; (* geht bei mir leider nicht anders *)
     		FIFO.X[tmp] := ID;
     		IF FIFO.NW = FIFO.TOP THEN FIFO.NW := 1; ELSE FIFO.NW := FIFO.NW + 1; END_IF
     		FIFO.FULL := FIFO.NW = FIFO.NR;
@@ -60,16 +60,16 @@ FUNCTION_BLOCK IP_FIFO
     END_IF
 
     IF STATE = BYTE#2 AND NOT FIFO.EMPTY THEN (* check current stack element *)
-    	tmp := FIFO.NR; (* geht bei mir leIDer nicht anders *)
+    	tmp := FIFO.NR; (* geht bei mir leider nicht anders *)
     	IF ID = FIFO.X[tmp] THEN
     	STATE := BYTE#3; (* weiterschalten auf "Zugriffsfreigabe" *)
     	END_IF
     END_IF
 
     IF STATE = BYTE#4 AND NOT FIFO.EMPTY THEN (* remove from stack *)
-    	tmp := FIFO.NR; (* geht bei mir leIDer nicht anders *)
+    	tmp := FIFO.NR; (* geht bei mir leider nicht anders *)
     	IF ID = FIFO.X[tmp] THEN
-    		tmp := BYTE_TO_INT(ID); (* geht bei mir leIDer nicht anders *)
+    		tmp := BYTE_TO_INT(ID); (* geht bei mir leider nicht anders *)
     		FIFO.Y[tmp] := USINT_TO_BYTE(BYTE_TO_USINT(FIFO.Y[tmp]) - USINT#1); (* ID Zähler -1 *)
     		IF FIFO.NR = FIFO.TOP THEN FIFO.NR := 1; ELSE FIFO.NR := FIFO.NR + 1; END_IF
     		FIFO.EMPTY := FIFO.NR = FIFO.NW;

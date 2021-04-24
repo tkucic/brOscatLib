@@ -3,8 +3,8 @@ FUNCTION_BLOCK FT_RMP
     (* read system time *)
     tx := DWORD_TO_TIME(T_PLC_MS()) - last;
 
-    IF NOT INit THEN
-    	INit := TRUE;
+    IF NOT init THEN
+    	init := TRUE;
     	last := tx;
     	tx := t#0s;
     	OUT := IN;
@@ -38,10 +38,10 @@ FUNCTION_BLOCK FT_RMP
     (* revision history:
 
     hm 8.10.2006			rev 1.1
-    	added UD OUTput
+    	added UD output
 
     hm 12. feb 2007		rev 1.2
-    	added INit variable and corrected a possible startup problem
+    	added init variable and corrected a possible startup problem
 
     hm	17. sep 2007	rev 1.3
     	replaced time() with t_plc_ms() for compatibility reasons

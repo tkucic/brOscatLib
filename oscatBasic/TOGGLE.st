@@ -1,7 +1,7 @@
 FUNCTION_BLOCK TOGGLE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=254*)
     IF RST THEN
-    	q := 0;
+    	Q := 0;
     ELSIF CLK AND NOT EDGE_ THEN
     	Q := NOT Q;
     END_IF

@@ -5,7 +5,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
 
     CASE state OF
 
-    00:	IF ACTIVATE AND NOT ACTIVATE_last THEN
+    00:	IF ACTIVATE AND NOT activate_last THEN
     		state := 40;
     		DONE := FALSE;
     		BUSY := TRUE;
@@ -26,11 +26,11 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		state   := 100;
     	END_IF
 
-    50:   	(* Teil 1: http://query.yahooapis.com/v1/public/yql?q=select%20UNITS,wind,atmosphere,astronomy,LOCATION%20from%20weather.forecast%20where%20woeid=551801%20AND%20u=%27c%27
+    50:   	(* Teil 1: http://query.yahooapis.com/v1/public/yql?q=select%20units,wind,atmosphere,astronomy,LOCATION%20from%20weather.forecast%20where%20woeid=551801%20AND%20u=%27c%27
                  Teil 2: http://query.yahooapis.com/v1/public/yql?q=select%20item%20from%20weather.forecast%20where%20woeid=551801%20AND%20u=%27c%27 *)
 
     	IF cycle = 0 THEN
-      		URL_DATA.QUERY := 'q=select%20UNITS,wind,atmosphere,astronomy,LOCATION%20from%20weather.forecast%20where%20woeid='; (* Teil 1 - infos *)
+      		URL_DATA.QUERY := 'q=select%20units,wind,atmosphere,astronomy,LOCATION%20from%20weather.forecast%20where%20woeid='; (* Teil 1 - infos *)
       	ELSE
       		URL_DATA.QUERY := 'q=select%20item%20from%20weather.forecast%20where%20woeid='; (* Teil 2 - Tagesdaten *)
       	END_IF
@@ -86,7 +86,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		(*########################################################################*)
 
     		(* Antwortdaten stehen noch nicht bereit -> Warten und Abfrage wiederholen *)
-    		IF ctrl.COUNT = 7 AND (ctrl.VALUE = '0')  THEN
+    		IF CTRL.COUNT = 7 AND (CTRL.VALUE = '0')  THEN
 
     			repeat_count := repeat_count + USINT#1;
 
@@ -118,9 +118,9 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		IF cycle = 0 THEN
     	      		(* ------------ Teil 1 --------------*)
     	      		CASE UINT_TO_INT(CTRL.COUNT) OF
-    	        		014: YW.LOCATION_city := CTRL.VALUE;
-    	        		015: YW.LOCATION_country := CTRL.VALUE;
-    	        		016: YW.LOCATION_region := CTRL.VALUE;
+    	        		014: YW.location_city := CTRL.VALUE;
+    	        		015: YW.location_country := CTRL.VALUE;
+    	        		016: YW.location_region := CTRL.VALUE;
     	        		020: YW.wind_chill := value_int;
     	        		021: YW.wind_direction := value_int;
     	        		022: YW.wind_speed := value_real;
@@ -245,7 +245,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     *)
     (* -------------------------------------*)
 
-    ACTIVATE_last := ACTIVATE;
+    activate_last := ACTIVATE;
 
     (*####################  DEBUG-MESSAGE  ###################################*)
     (*IF _debug_enable THEN

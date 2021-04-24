@@ -10,13 +10,13 @@ FUNCTION_BLOCK RC4_CRYPT_STREAM
     	END_IF
 
     	FOR a := 0 TO b DO
-    		sKEY[a] := OSCAT_BASIC.CODE(KEY, a + 1);
+    		skey[a] := OSCAT_BASIC.CODE(KEY, a + 1);
     		sbox[a] := INT_TO_BYTE(a);
     	END_FOR
 
     	c := 0;
     	FOR a := b + 1 TO 255 DO
-    		sKEY[a] := sKEY[c];
+    		skey[a] := skey[c];
     		sbox[a] := INT_TO_BYTE(a);
     		c := c + 1;
     		IF c > b THEN c := 0; END_IF
@@ -24,7 +24,7 @@ FUNCTION_BLOCK RC4_CRYPT_STREAM
 
     	d := 0;
     	FOR a := 0 TO 255 DO
-    		d := d + sbox[a] + sKEY[a];
+    		d := d + sbox[a] + skey[a];
     		v := sbox[a];
     		sbox[a] := sbox[d];
     		sbox[d] := v;

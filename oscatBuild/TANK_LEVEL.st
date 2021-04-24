@@ -1,7 +1,7 @@
 FUNCTION_BLOCK TANK_LEVEL
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=41*)
     (* preprocess the LEVEL information *)
-    tl(in := LEVEL, T_ON := LEVEL_delay_time, T_OFF := LEVEL_delay_time);
+    tl(in := LEVEL, T_ON := LEVEL_DELAY_TIME, T_OFF := LEVEL_DELAY_TIME);
     open := tl.Q;
 
     (* start logic *)
@@ -14,10 +14,10 @@ FUNCTION_BLOCK TANK_LEVEL
     	END_IF
     	RETURN;
     ELSIF LEAK THEN
-    	(* LEAKeage detected *)
+    	(* leakeage detected *)
     	cx(in := FALSE);
     	ALARM := TRUE;
-    	STATUS := 1;	(* LEAKeage error *)
+    	STATUS := 1;	(* leakeage error *)
     ELSIF open THEN
     	(* VALVE needs to be opened because LEVEL is too low *)
     	cx(in := TRUE);

@@ -12,7 +12,7 @@ FUNCTION BUFFER_COMP
     				IF PT2^[j] <> PT1^[j+i] THEN EXIT; END_IF
     				j := j + 1;
     			END_WHILE
-    			(* when J > SIZE2 a match was found return the position i in buffer1 *)
+    			(* when j > SIZE2 a match was found return the position i in buffer1 *)
     			IF j = SIZE2 THEN
     				BUFFER_COMP := i;
     				RETURN;

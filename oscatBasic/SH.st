@@ -11,7 +11,7 @@ FUNCTION_BLOCK SH
     (* revision history
 
     hm 16.1.2007	rev 1.1
-    	added TRIG OUTput
+    	added TRIG output
 
     *)
 END_FUNCTION_BLOCK

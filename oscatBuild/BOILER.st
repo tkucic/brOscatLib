@@ -25,11 +25,11 @@ FUNCTION_BLOCK BOILER
     	ERROR := FALSE;
 
     	(* determine if HEAT needs to be turned on *)
-    	IF BOOST AND NOT EDGE_ AND T_UPPER < T_UPPER_max THEN
+    	IF BOOST AND NOT EDGE_ AND T_UPPER < T_UPPER_MAX THEN
     		STATUS := 101;
     		HEAT := TRUE;
-    		BOOST_mode := TRUE;
-    	ELSIF ENABLE AND T_UPPER < T_UPPER_min THEN
+    		boost_mode := TRUE;
+    	ELSIF ENABLE AND T_UPPER < T_UPPER_MIN THEN
     		STATUS := 102;
     		HEAT := TRUE;
     	ELSIF REQ_1 AND T_UPPER < T_REQUEST_1 THEN
@@ -42,12 +42,12 @@ FUNCTION_BLOCK BOILER
 
     	(* determine the shut off temperature *)
     	IF HEAT THEN
-    		IF (ENABLE OR BOOST_mode) THEN
+    		IF (ENABLE OR boost_mode) THEN
     			flag_0 := TRUE;
-    			IF T_LOWER_ENABLE AND T_LOWER > T_LOWER_max THEN
-    				flag_0 := BOOST_mode := FALSE;
-    			ELSIF NOT T_LOWER_ENABLE AND T_UPPER > T_UPPER_max THEN
-    				flag_0 := BOOST_mode := FALSE;
+    			IF T_LOWER_ENABLE AND T_LOWER > T_LOWER_MAX THEN
+    				flag_0 := boost_mode := FALSE;
+    			ELSIF NOT T_LOWER_ENABLE AND T_UPPER > T_UPPER_MAX THEN
+    				flag_0 := boost_mode := FALSE;
     			END_IF
     		ELSE
     			flag_0 := FALSE;

@@ -4,12 +4,12 @@ FUNCTION_BLOCK MB_SERVER
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     FOR i := 1 TO 10 DO
-    	IF VMAP[i].TIME_OUT > T#0s THEN
+    	IF VMAP[i].TIME_OUT > t#0s THEN
     		VMAP[i].TIME_OUT := VMAP[i].TIME_OUT + tx - last_cycle;
     	END_IF
     END_FOR
     last_cycle := tx;
-    ip_ERROR := IP_C.ERROR > DWORD#0;
+    ip_error := IP_C.ERROR > DWORD#0;
 
     CASE state OF
     00: (* Warten auf Freigabe *)
@@ -31,7 +31,7 @@ FUNCTION_BLOCK MB_SERVER
     		state := 20;
     	END_IF
 
-    20:	IF NOT ip_ERROR THEN
+    20:	IF NOT ip_error THEN
     		IF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE > UINT#6 THEN	(* Datensenden nicht aktiv und Daten wurden empfangen *)
     			IF  R_BUF.SIZE = WORD_TO_UINT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[4],R_BUF.BUFFER[5])) + UINT#6 THEN (* gültige Datenlänge *)
     				ERROR := DWORD#00; (* ERROR löschen *)
@@ -76,7 +76,7 @@ FUNCTION_BLOCK MB_SERVER
     	
     							mask := SHL(mask,1);
     						END_FOR
-    						S_BUF.BUFFER[Count] := coils;
+    						S_BUF.BUFFER[count] := coils;
     	
     						S_BUF.BUFFER[8] := INT_TO_BYTE(count - 8); (* Bytecount *)
     						S_BUF.SIZE := INT_TO_UINT(count + 1);
@@ -103,7 +103,7 @@ FUNCTION_BLOCK MB_SERVER
     						DATA[adr1] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]);
     						S_BUF.SIZE := UINT#12;
     					(*--------------------------------------------------*)
-    					15 : (* Force Multible Coils *)
+    					15 : (* Force Multible coils *)
     						mask := BYTE#1;
     						idx1 := 13;
     						FOR i := 1 TO points DO
@@ -123,14 +123,14 @@ FUNCTION_BLOCK MB_SERVER
     					16 : (* Preset Multiple Registers	*)
     						idx1 := 11;
     						count := adr1 + points - 1;
-    						FOR i := adr1 TO Count DO
+    						FOR i := adr1 TO count DO
     							idx1 := idx1 + 2;
     	 						idx2 := idx1 + 1;
     							DATA[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
     						END_FOR
     						S_BUF.SIZE := UINT#12;
     					(*--------------------------------------------------*)
-    					22 : (* Mask Write Register *)
+    					22 : (* mask Write Register *)
     						w_tmp := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]); (* and mask *)
     						DATA[adr1] := (DATA[adr1] AND w_tmp) OR (OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[12],R_BUF.BUFFER[13]) AND (NOT w_tmp));
     						S_BUF.SIZE := UINT#14;
@@ -190,7 +190,7 @@ FUNCTION_BLOCK MB_SERVER
     		ERROR := IP_C.ERROR;
     	END_IF
 
-    	t(IN:= ip_ERROR, PT:=T#2s);
+    	t(IN:= ip_error, PT:=t#2s);
     	IF t.Q THEN
     		IP_C.TIME_RESET := TRUE; (* ERROR Reset *)
     	END_IF

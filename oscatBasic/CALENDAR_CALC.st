@@ -68,11 +68,11 @@ FUNCTION_BLOCK CALENDAR_CALC
     	sun_rise, sun_set and sun_midday are now calculated in local time
 
     hm	18. jan. 2011	rev 1.4
-    	added input HOLIDAYS to SPEcify local HOLIDAYS
+    	added input HOLIDAYS to specify local HOLIDAYS
     	changed call for function sun_time
 
     hm	2. feb. 2011	rev 1.5
-    	added input H to SPEcify twilight
+    	added input H to specify twilight
 
     hm	6. apr. 2011	rev 1.6
     	night was calculated wrong

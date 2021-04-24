@@ -40,7 +40,7 @@ FUNCTION EASTER
     f := (b + 8) / 25;
     g := (b - f + 1) / 3;
     h := (19 * a + b - d -g + 15) MOD 30;
-    i := C / 4;
+    i := c / 4;
     k := c MOD 4;
     l := (32 + 2*e + 2*i - h - k) MOD 7;
     m := (a + 11 * h + 22 * l) / 451;

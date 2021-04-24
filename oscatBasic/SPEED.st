@@ -11,7 +11,7 @@ FUNCTION_BLOCK SPEED
     (*
     Geschwindigkeit Meter durch Sekunde m/s 1 m/s = 3,6 km/h
     km durch (pro) Stunde, nicht „Stundenkilometer“ verwenden
-    KNoten KN 1 KN = 1 sm/h = 0,5144 m/s
+    Knoten KN 1 KN = 1 sm/h = 0,5144 m/s
 
     *)
 

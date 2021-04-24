@@ -26,7 +26,7 @@ FUNCTION SET_DATE
     	original version
 
     hm	19 sep. 2007	rev 1.1
-    	use function leap_YEAR to calculate leap YEAR, more exceptions are handled
+    	use function leap_year to calculate leap YEAR, more exceptions are handled
 
     hm	1. okt	2007	rev 1.2
     	added compatibility to step7

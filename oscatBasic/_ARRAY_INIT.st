@@ -11,7 +11,7 @@ FUNCTION _ARRAY_INIT
 
     hm 6.1.2007		rev 1.1
     	change type of function to bool
-    	added  array_INIT := true to set output true.
+    	added  array_init := true to set output true.
 
     hm	14.11.2007	rev 1.2
     	changed stop calculation to be more efficient

@@ -6,7 +6,7 @@ FUNCTION_BLOCK BLIND_SCENE
     IF ENABLE AND sx[x,2] > 0 AND UP AND DN THEN
     	PO := sx[x,0];
     	AO := sx[x,1];
-    	STATUS := 160 + x;  (* STATUS number is 160 to 175 for the 16 SCENEs *)
+    	STATUS := 160 + x;  (* STATUS number is 160 to 175 for the 16 scenes *)
     	QU := TRUE;
     	QD := TRUE;
     ELSE

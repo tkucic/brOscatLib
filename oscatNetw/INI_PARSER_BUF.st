@@ -87,7 +87,7 @@ FUNCTION_BLOCK INI_PARSER_BUF
     				ELSE
     					k_add := c; (* Zeichen ablegen *)
     				END_IF
-    			330: (* KEYVALUE beginn suchen *)
+    			330: (* KeyValue beginn suchen *)
     				IF c < 32 THEN (* Steuerzeichen  *)
     					state := 2; (* KEY ohne VALUE gefunden *)
     				ELSIF eof THEN
@@ -97,7 +97,7 @@ FUNCTION_BLOCK INI_PARSER_BUF
     					v_add := c; (* Zeichen ablegen *)
     					step := 350;
     				END_IF
-    			350: (* KEYVALUE Ende suchen *)
+    			350: (* KeyValue Ende suchen *)
     				IF c < 32 THEN (* Steuerzeichen *)
     					state := 2; (* KEY gefunden *)
     				ELSIF eof THEN
@@ -108,16 +108,16 @@ FUNCTION_BLOCK INI_PARSER_BUF
     				END_IF
     			END_CASE
 
-    			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-STRing hinzufügen *)
+    			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-String hinzufügen *)
     				pv^ := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
-    				pv^ := 0; (* STRing-TerminieRUNg eintragen *)
+    				pv^ := 0; (* String-Terminierung eintragen *)
     			END_IF
 
-    			IF k_add > 0 AND pk < pke THEN (* Zeichen zu KEY-STRing hinzufügen *)
+    			IF k_add > 0 AND pk < pke THEN (* Zeichen zu KEY-String hinzufügen *)
     				pk^ := k_add; (* Zeichen eintragen *)
     				pk := pk + 1;
-    				pk^ := 0; (* STRing-TerminieRUNg eintragen *)
+    				pk^ := 0; (* String-Terminierung eintragen *)
     			END_IF
 
     			i := i + 1; (* Datenzeiger erhöhen *)
@@ -180,7 +180,7 @@ FUNCTION_BLOCK INI_PARSER_BUF
     (*####################  DEBUG-MESSAGE  ###################################*)
     (*IF _debug_enable THEN
     	IF step_last <> step THEN
-    		LOG_CL.NEW_MSG := 'IPB: Step: ~1';
+    		LOG_CL.NEW_MSG := 'IPB: step: ~1';
     		LOG_CL.PRINTF[1]  := INT_TO_STRING(step);
     		LOG_MSG();
     	END_IF

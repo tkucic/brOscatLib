@@ -10,6 +10,6 @@ FUNCTION EVEN
     	changed code for improved performance
 
     hm	21. mar. 2008	rev 1.2
-    	changed type of INput IN from INT to DINT
+    	changed type of input IN from INT to DINT
     *)
 END_FUNCTION

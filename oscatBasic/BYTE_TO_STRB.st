@@ -1,6 +1,6 @@
 FUNCTION BYTE_TO_STRB
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145*)
-    (* poINter für die ausgabe ermitteln *)
+    (* pointer für die ausgabe ermitteln *)
     pt := ADR(BYTE_TO_STRB);
     (* die 8 ausgabecharacter ermitteln und schreiben *)
     FOR i := 1 TO 8 DO
@@ -9,7 +9,7 @@ FUNCTION BYTE_TO_STRB
     	pt := pt + 1;
     END_FOR
 
-    (* der ausgabestrINg muss noch mit 0 abgeschlossen werden *)
+    (* der ausgabestring muss noch mit 0 abgeschlossen werden *)
     pt^ := 0;
 
     (* code before rev 1.1
@@ -24,10 +24,10 @@ FUNCTION BYTE_TO_STRB
     (* revision history
 
     hm		9.6.2007	rev 1.0		
-    	origINal version 
+    	original version 
 
     hm	15. dec 2007	rev 1.1
-    	INprooved code for higher performance
+    	inprooved code for higher performance
 
     hm	29. mar. 2008	rev 1.2
     	changed STRING to STRING(8)

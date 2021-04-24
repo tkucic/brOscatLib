@@ -36,12 +36,12 @@ FUNCTION REAL_TO_FRAC
 
     (* correct sign if X was negative *)
     IF sign THEN
-    	retVal.NUMERATOR := -1 * ABS(DINT_TO_INT(Numerator_old));
+    	REAL_TO_FRAC.NUMERATOR := -1 * ABS(DINT_TO_INT(Numerator_old));
     ELSE
-    	retVal.NUMERATOR :=  ABS(DINT_TO_INT(Numerator_old));
+    	REAL_TO_FRAC.NUMERATOR :=  ABS(DINT_TO_INT(Numerator_old));
     END_IF
-    retVal.DENOMINATOR := ABS(DINT_TO_INT(Denominator_old));
-    REAL_TO_FRAC := TRUE;
+    REAL_TO_FRAC.DENOMINATOR := ABS(DINT_TO_INT(Denominator_old));
+
 
     (* revision history
     hm		19. jan. 2011	rev 1.0

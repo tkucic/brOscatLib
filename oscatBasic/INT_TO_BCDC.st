@@ -4,7 +4,7 @@ FUNCTION INT_TO_BCDC
 
     (* revision history
     hm	13.12.2007
-    	origINal version
+    	original version
 
     hm	30.6.2008	rev 1.1
     	changed name INT_TO_BCD to INT_TO_BCDC to avoid collision with util.lib

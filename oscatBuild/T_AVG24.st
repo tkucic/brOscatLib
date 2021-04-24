@@ -1,6 +1,6 @@
 FUNCTION_BLOCK T_AVG24
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=446*)
-    (* fiRST filter the sensor readings *)
+    (* first filter the sensor readings *)
     ft1(X := TS, T := T_FILTER);
 
     IF RST OR NOT init THEN
@@ -11,7 +11,7 @@ FUNCTION_BLOCK T_AVG24
     	END_FOR
     	pos := 0;
     	sum := INT_TO_DINT(samples[0]) * 48;
-    	(* calculate the ouTPut value *)
+    	(* calculate the output value *)
     	TA := (INT_TO_REAL(ft1.Y) * 0.1 + OFS) * SCALE;
     	T24 := (DINT_TO_REAL(sum) * 0.00208333333333 + OFS) * SCALE;
     	TP := TRUE;
@@ -28,7 +28,7 @@ FUNCTION_BLOCK T_AVG24
     	sum := sum + INT_TO_DINT(samples[pos]);
     	(* increment the counter for the next sample *)
     	pos := OSCAT_BASIC.INC1(pos, 48);
-    	(* calculate the ouTPut value *)
+    	(* calculate the output value *)
     	TA := (INT_TO_REAL(ft1.Y) * 0.1 + OFS) * SCALE;
     	T24 := (DINT_TO_REAL(sum) * 0.00208333333333 + OFS) * SCALE;
     	(* calculate the min and max over the last 24 hours *)
@@ -55,7 +55,7 @@ FUNCTION_BLOCK T_AVG24
 
     hm	8. feb. 2009	rev 1.1
     	changes sign of OFS
-    	added ouTPuTS T24_MIN and T24_MAX
+    	added outputs T24_MIN and T24_MAX
 
     hm	13. mar. 2009	rev 1.2
     	improved code

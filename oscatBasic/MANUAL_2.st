@@ -8,7 +8,7 @@ FUNCTION_BLOCK MANUAL_2
     		Q := TRUE;
     		STATUS := 101;
     	ELSIF NOT ON AND OFF THEN
-    		q := FALSE;
+    		Q := FALSE;
     		STATUS := 102;
     	ELSE
     		Q := MAN;
@@ -21,9 +21,9 @@ FUNCTION_BLOCK MANUAL_2
 
 
 
-    (* revisiON history
+    (* revision history
     hm	22. sep. 2008		rev 1.0
-    	origINal versiON
+    	original version
 
     *)
 END_FUNCTION_BLOCK

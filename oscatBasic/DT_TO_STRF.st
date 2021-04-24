@@ -1,6 +1,6 @@
 FUNCTION DT_TO_STRF
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=152*)
-    IF LANG < 1 THEN ly := LANGuage.DEFAULT; ELSE ly := MIN(LANGuage.LMAX, LANG); END_IF
+    IF LANG < 1 THEN ly := language.DEFAULT; ELSE ly := MIN(language.LMAX, LANG); END_IF
 
     (* decode date and time information *)
     dx := DT_TO_DATE(DTI);
@@ -26,7 +26,7 @@ FUNCTION DT_TO_STRF
     			IF LEN(fs) < 2 THEN fs := CONCAT('0', fs); END_IF
     		69 : (* letter E returns the month with 3 characters *)
     			fs := MONTH_TO_STRING(MONTH_OF_DATE(dx), ly, 3);
-    		70 : (* letter F returns the month with all characters *)
+    		70 : (* letter f returns the month with all characters *)
     			fs := MONTH_TO_STRING(MONTH_OF_DATE(dx), ly, 0);
     		71 : (* letter G returns the day with up to 2 digits *)
     			fs := INT_TO_STRING(DAY_OF_MONTH(dx));
@@ -71,10 +71,10 @@ FUNCTION DT_TO_STRF
     			fs := INT_TO_STRING(MS);
     			fs := CONCAT('00',fs);
     			fs := RIGHT(fs, 3);
-    		87 : (* letter W returns the day of the month with exactly 2 digits first digit is filled with blank if necessary *)
+    		87 : (* letter W returns the day of the month with exactly 2 digits first digit is filled with BLANK if necessary *)
     			fs := INT_TO_STRING(DAY_OF_MONTH(dx));
     			IF LEN(fs) < 2 THEN fs := CONCAT(BLANK, fs); END_IF
-    		88 : (* letter X returns the month with exactly 2 digits first digit is filled with blank if necessary *)
+    		88 : (* letter X returns the month with exactly 2 digits first digit is filled with BLANK if necessary *)
     			fs := INT_TO_STRING(MONTH_OF_DATE(dx));
     			IF LEN(fs) < 2 THEN fs := CONCAT(BLANK, fs); END_IF
     		END_CASE
@@ -88,7 +88,7 @@ FUNCTION DT_TO_STRF
     	original version
 
     hm	19. oct. 2008	rev 1.1
-    	changed LANGuage setup constants
+    	changed language setup constants
     *)
 
 END_FUNCTION

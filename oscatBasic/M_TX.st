@@ -1,6 +1,6 @@
 FUNCTION_BLOCK M_TX
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342*)
-    (* check FOR RST INput *)
+    (* check FOR RST input *)
     IF RST OR (ET >= TMAX) THEN
     	rise := FALSE;
     	fall := FALSE;
@@ -12,7 +12,7 @@ FUNCTION_BLOCK M_TX
     	ET := t#0s;
     END_IF
 
-    (* avoid timers to start when INput is true at startup *)
+    (* avoid timers to start when input is true at startup *)
     IF NOT startup THEN
     	EDGE_ := IN;
     	startup := TRUE;
@@ -21,26 +21,26 @@ FUNCTION_BLOCK M_TX
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* EDGE_ trigger risINg and fallINg EDGE_ *)
+    (* EDGE_ trigger rising and falling EDGE_ *)
     IF IN XOR EDGE_ THEN
     	EDGE_ := IN;
-    	(* risINg EDGE_ starts measurement *)
+    	(* rising EDGE_ starts measurement *)
     	IF IN THEN
-    		start := Tx;
+    		start := tx;
     		rise := TRUE;
     		IF fall THEN TL := start - stop; END_IF
     		IF TH > t#0ms AND TL > t#0ms THEN
     			DC := TIME_TO_REAL(TH) / TIME_TO_REAL(TH+TL);
-    			f := 1000.0 / TIME_TO_REAL(TH + TL);
+    			F := 1000.0 / TIME_TO_REAL(TH + TL);
     		END_IF
-    	(* fallINg EDGE_ starts second cycle measurement *)
+    	(* falling EDGE_ starts second cycle measurement *)
     	ELSE
-    		stop := Tx;
+    		stop := tx;
     		fall := TRUE;
     		IF rise THEN TH := stop - start; END_IF
     		IF TH > t#0ms AND TL > t#0ms THEN
     			DC := TIME_TO_REAL(TH) /  TIME_TO_REAL(TH+TL);
-    			f := 1000.0 / TIME_TO_REAL(TH + TL);
+    			F := 1000.0 / TIME_TO_REAL(TH + TL);
     		END_IF
     	END_IF
     END_IF
@@ -48,19 +48,19 @@ FUNCTION_BLOCK M_TX
 
     (* revision history
     hm	4. aug. 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm	2. mai. 2007	rev 1.1
-    	made sure THat no undefINed values would be measured at startup conditions
+    	made sure that no undefined values would be measured at startup conditions
     	added output ET
-    	added RST INput
-    	added TMAX INput
+    	added RST input
+    	added TMAX input
 
     hm	16. sep. 2007	rev 1.2
     	changes time() to T_plc_ms() for compatibility reasons
 
     hm	27. feb. 2009	rev 1.3
-    	delETed unnecessary INit wiTH 0
+    	deleted unnecessary init with 0
 
     hm	11. mar. 2009	rev 1.4
     	changed real constants to use dot syntax

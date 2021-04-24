@@ -3,8 +3,8 @@ FUNCTION FIND_CTRL
     pt := ADR(STR);
     stop := LEN(STR);
     FOR i := MAX(POS,1) TO stop DO;
-    	x := PT^[I];
-    	IF x < 32 OR X = 127 THEN
+    	x := PT^[i];
+    	IF x < 32 OR x = 127 THEN
     		FIND_CTRL := i;
     		RETURN;
     	END_IF

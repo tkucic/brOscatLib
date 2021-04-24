@@ -1,8 +1,8 @@
 FUNCTION SCALE_B8
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=292*)
-    SCALE_B8 := 	(((IN1_max - IN1_min)* IN1 + (IN2_max - IN2_min)* IN2 + (IN3_max - IN3_min)* IN3 + (IN4_max - IN4_min)* IN4 +
-    				(IN5_max - IN5_min)* IN5 + (IN6_max - IN6_min)* IN6 + (IN7_max - IN7_min)* IN7 + (IN8_max - IN8_min)* IN8) * 0.003921569
-    				 + IN1_min + IN2_min + IN3_min + IN4_min + IN5_min + IN6_min + IN7_min + IN8_min) * K + O;
+    SCALE_B8 := 	(((IN1_MAX - IN1_MIN)* IN1 + (IN2_MAX - IN2_MIN)* IN2 + (IN3_MAX - IN3_MIN)* IN3 + (IN4_MAX - IN4_MIN)* IN4 +
+    				(IN5_MAX - IN5_MIN)* IN5 + (IN6_MAX - IN6_MIN)* IN6 + (IN7_MAX - IN7_MIN)* IN7 + (IN8_MAX - IN8_MIN)* IN8) * 0.003921569
+    				 + IN1_MIN + IN2_MIN + IN3_MIN + IN4_MIN + IN5_MIN + IN6_MIN + IN7_MIN + IN8_MIN) * K + O;
 
 
     (* revision History

@@ -7,7 +7,7 @@ FUNCTION TRIM
     UNTIL pos = 0	END_REPEAT;
 
 
-    (* revision hiSTRoy
+    (* revision histroy
     hm	6.10.2006		rev 1.0
     	original release
 

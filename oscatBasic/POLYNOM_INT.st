@@ -8,18 +8,18 @@ FUNCTION POLYNOM_INT
     	the remaining code without this setup code can be used within a function to calculate specific functions
     	the content of the arrays is then used as constant values within the function *)
 
-    FOR i := 1 TO PTS DO
-    	stop := i + 1;
-       	FOR j := PTS TO stop BY -1 DO
-       		XY[j,1] := (XY[j,1] - XY[j-1,1]) / (XY[j,0] - XY[j-i,0]);
+    FOR I := 1 TO PTS DO
+    	stop := I + 1;
+       	FOR J := PTS TO stop BY -1 DO
+       		XY[J,1] := (XY[J,1] - XY[J-1,1]) / (XY[J,0] - XY[J-I,0]);
     	END_FOR
     END_FOR
 
 
     (* this part is the actual calculation *)
     POLYNOM_INT := 0.0;
-    FOR i := PTS TO 1 BY -1 DO
-           POLYNOM_INT := POLYNOM_INT * (X - XY[i,0]) + XY[i,1];
+    FOR I := PTS TO 1 BY -1 DO
+           POLYNOM_INT := POLYNOM_INT * (X - XY[I,0]) + XY[I,1];
     END_FOR
 
 

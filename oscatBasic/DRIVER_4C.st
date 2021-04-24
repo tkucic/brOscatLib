@@ -25,7 +25,7 @@ FUNCTION_BLOCK DRIVER_4C
 
     (* revision history
     hm	23. mar. 2009	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

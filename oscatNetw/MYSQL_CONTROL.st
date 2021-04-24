@@ -262,7 +262,7 @@ FUNCTION_BLOCK MYSQL_CONTROL
     ks	20. apr. 2012	rev 1.0
     	original version
     ks	14. oct. 2013	rev 1.1
-    	DNS_CLIENT Fehler durch zugriffskonflikt zwischen dns_client und mySQL auf S_BUF
+    	DNS_CLIENT Fehler durch zugriffskonflikt zwischen DNS_CLIENT und mySQL auf S_BUF
 
     *)
 END_FUNCTION_BLOCK

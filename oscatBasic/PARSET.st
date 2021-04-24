@@ -50,7 +50,7 @@ FUNCTION_BLOCK PARSET
     	P3 := X[set,3] - S3 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
     	P4 := X[set,4] - S4 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
     ELSE
-    	(* make sure outputs maTCh the correct set values *)
+    	(* make sure outputs match the correct set values *)
     	start := FALSE;
     	P1 := X[set,1];
     	P2 := X[set,2];

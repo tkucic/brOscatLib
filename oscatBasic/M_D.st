@@ -4,22 +4,22 @@ FUNCTION_BLOCK M_D
     IF RST OR ET >= TMAX THEN
     	PT := t#0ms;
     	ET := t#0ms;
-    	STARTup := FALSE;
+    	startup := FALSE;
     	RUN := FALSE;
     END_IF
 
-    (* avoid timers to START when input is true at STARTup *)
-    IF NOT STARTup THEN
+    (* avoid timers to START when input is true at startup *)
+    IF NOT startup THEN
     	EDGE_ := START;
-    	STARTup := TRUE;
+    	startup := TRUE;
     END_IF
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* dETect rising EDGE_ on START *)
+    (* detect rising EDGE_ on START *)
     IF START AND NOT EDGE_ AND NOT STOP THEN
-    	t0 := tx;
+    	T0 := tx;
     	RUN := TRUE;
     	PT := t#0s;
     ELSIF STOP AND RUN THEN
@@ -27,7 +27,7 @@ FUNCTION_BLOCK M_D
     	RUN := FALSE;
     END_IF
     EDGE_ := START;
-    IF RUN THEN ET := tx - t0; END_IF
+    IF RUN THEN ET := tx - T0; END_IF
 
     (* revision history
     hm		2.5.2007	rev 1.0
@@ -37,7 +37,7 @@ FUNCTION_BLOCK M_D
     	changes time() to T_plc_ms() for compatibility reasons
 
     hm	27. feb 2009	rev 1.2
-    	delETed unnecessary init with 0
+    	deleted unnecessary init with 0
     *)
 
 END_FUNCTION_BLOCK

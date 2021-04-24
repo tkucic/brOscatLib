@@ -3,14 +3,14 @@ FUNCTION_BLOCK FT_PD
     (* run differentiator *)
     diff(IN := IN, K := TV);
 
-    (* combINe both values *)
+    (* combine both values *)
     Y := KP * (diff.out + IN);
 
 
 
     (* revision history
     hm 	3. jun. 2008 	rev 1.0
-    	origINal version
+    	original version
 
 
     *)

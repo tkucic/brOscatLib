@@ -15,7 +15,7 @@ FUNCTION_BLOCK FILE_SERVER_RUNTIME
     IF MODE = BYTE#0 THEN
 
     	(* neuen befehl erkannt *)
-    	IF last_COMMAND = BYTE#0 AND COMMAND <> BYTE#0 THEN
+    	IF last_command = BYTE#0 AND COMMAND <> BYTE#0 THEN
 
     		(* read system time *)
     		start_tx := OSCAT_BASIC.T_PLC_MS();
@@ -93,7 +93,7 @@ FUNCTION_BLOCK FILE_SERVER_RUNTIME
 
     END_IF
 
-    last_COMMAND := COMMAND;
+    last_command := COMMAND;
 
     (* revision history
 

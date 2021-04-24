@@ -3,10 +3,10 @@ FUNCTION_BLOCK SMTP_CLIENT
     CASE step OF
 
     00:
-    	IF ACTIVATE AND NOT ACTIVATE_last THEN
+    	IF ACTIVATE AND NOT activate_last THEN
     		TIMEOUT := MAX(T#10s,TIMEOUT);
-    		TIMEOUT2 := TIMEOUT + T#1s;
-    		TIMEOUT3 := TIMEOUT / 2;
+    		timeout2 := TIMEOUT + T#1s;
+    		timeout3 := TIMEOUT / 2;
     		DONE := FALSE;
     		ip_c_red_disable := FALSE;
     		ERROR_C := DWORD#0;
@@ -78,7 +78,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	IF rcv_state = 250 THEN
     		(* 250 = Requested mail action okay, complete
     			1. bei manchen Providern wird bei SSL kein AUTH verfahren ausgeben.
-    			2. Da die 250 xxx Meldungen vom manchen SMTP-SERVERn mit mehr als einem Telegramme versendet
+    			2. Da die 250 xxx Meldungen vom manchen SMTP-Servern mit mehr als einem Telegramme versendet
     		       werden muss alternativ über Zeitüberwachung eine SSL Sonderbehandlung durchgeführt werden *)
     		IF ssl_mode >= BYTE#1 AND TON_WAIT.ET > T#1s THEN
     			rcv_text := '250-AUTH LOGIN'; (* AUTH vortäuschen *)
@@ -464,7 +464,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	END_IF
 
     830:
-    	IF rcv_state = 221  OR TON_WAIT.ET > TIMEOUT3 THEN (* 221 = Service closing transmission channel *)
+    	IF rcv_state = 221  OR TON_WAIT.ET > timeout3 THEN (* 221 = Service closing transmission channel *)
     		step := 900;
     	END_IF
 
@@ -566,7 +566,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	END_IF
 
     1120:
-    	IF b64_start AND b64_DONE THEN
+    	IF b64_start AND b64_done THEN
     		b64_start := FALSE;
     		snd_text := b64_str2;
     		next_step := 1130;
@@ -580,7 +580,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     	END_IF
 
     1140:
-    	IF b64_start AND b64_DONE THEN
+    	IF b64_start AND b64_done THEN
     		b64_start := FALSE;
     		snd_text := b64_str2;
     		next_step := 90;
@@ -744,11 +744,11 @@ FUNCTION_BLOCK SMTP_CLIENT
     DNS_CLIENT(IP_C:=IP_C, S_BUF:=S_BUF, R_BUF:=R_BUF, DOMAIN:=URL_DATA.DOMAIN, IP4_DNS:= DNS_IP4, ACTIVATE:=step=10); (* DNS-Client *)
     IPC(IP:= DWORD#0, PORT:= WORD#0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C, S_BUF:= S_BUF, R_BUF:= R_BUF); (* SMTP Steuerkanal *)
     FS(FSD:=FSD,PT:=F_BUF); (* FILE_SERVER *)
-    BASE64_ENCODE_STR(RUN:= b64_start, STR1:= b64_str1, STR2:= b64_str2, DONE=> b64_DONE); (* BASE64 kodierung *)
+    BASE64_ENCODE_STR(RUN:= b64_start, STR1:= b64_str1, STR2:= b64_str2, DONE=> b64_done); (* BASE64 kodierung *)
 
-    TON_WAIT(IN:=step = last_step AND step > 0,PT:=TIMEOUT2);
+    TON_WAIT(IN:=step = last_step AND step > 0,PT:=timeout2);
     last_step := step;
-    ACTIVATE_last := ACTIVATE;
+    activate_last := ACTIVATE;
     BUSY := step <> 0;
 
     (* revision history
@@ -761,7 +761,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     ks	30. may 2011	rev 1.3
     	fehler bei receive-TIMEOUT
     ks	05. may. 2012	rev 1.4
-    	FileSERVER AutoClose entfernt und Fehler im Alias Name korrigiert
+    	FileServer AutoClose entfernt und Fehler im Alias Name korrigiert
     ks	06. apr. 2013	rev 1.5
     	Fehler bei Authorisierungsabfrage bei 1&1 Provider behoben
     ks	22. feb. 2016	rev 1.6

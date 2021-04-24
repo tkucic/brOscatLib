@@ -19,9 +19,9 @@ FUNCTION LAMBERT_W
     	ewx := EXP(w);
     	we := w * ewx - X;
     	w1e := (w+1.0) * ewx;
-    	last := REAL_TO_DWORD(w) AND 16#FFFF_FFFC;
+    	last := REAL_TO_DW(w) AND 16#FFFF_FFFC;
     	w := w - (we / (w1e - (w+2.0) * we / (2.0 * w + 2.0)));
-    	IF (REAL_TO_DWORD(w) AND 16#FFFF_FFFC) = last THEN EXIT; END_IF
+    	IF (REAL_TO_DW(w) AND 16#FFFF_FFFC) = last THEN EXIT; END_IF
     END_FOR
     LAMBERT_W := w;
 

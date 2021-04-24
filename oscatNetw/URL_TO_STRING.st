@@ -24,7 +24,7 @@ FUNCTION URL_TO_STRING
     	URL_TO_STRING := CONCAT(URL_TO_STRING, '@');
     END_IF
 
-    (* attach domaIN *)
+    (* attach domain *)
     URL_TO_STRING := CONCAT(URL_TO_STRING, IN.DOMAIN);
 
     (* attach Port *)
@@ -50,9 +50,9 @@ FUNCTION URL_TO_STRING
 
     (* revision history
     hm	18. apr 2008	rev 1.0
-    	origINal version
+    	original version
 
     ks	10. mai. 2008	rev 1.1
-    	strINglength 250
+    	stringlength 250
     *)
 END_FUNCTION

@@ -11,7 +11,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
 
     CASE step OF
 
-    00:	IF UCBD.BUF_COUNT > 0 AND smtp_BUSY = FALSE THEN
+    00:	IF UCBD.BUF_COUNT > 0 AND smtp_busy = FALSE THEN
     		UCBD.D_MODE := 12; (* Daten lesen und löschen *)
     		UCB(DATA:=UCBD);
     		files := UCBD.D_STRING;
@@ -31,8 +31,8 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
 
     	END_IF
 
-    10:	IF smtp_BUSY = FALSE THEN
-    		IF smtp_DONE THEN
+    10:	IF smtp_busy = FALSE THEN
+    		IF smtp_done THEN
     			(*####################  DEBUG-MESSAGE  ###################################*)
     			(*IF _debug_enable THEN
     				LOG_CL.NEW_MSG := 'F_T_SMTP: Auftrag OK /file: ~2';
@@ -97,8 +97,8 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     	SUBJECT:= SUBJECT,
     	BODY:= BODY,
     	FILES:= FILES,
-    	DONE=> smtp_DONE,
-    	BUSY=> smtp_BUSY
+    	DONE=> smtp_done,
+    	BUSY=> smtp_busy
     	);
 
     (* Fehlerauswertung *)

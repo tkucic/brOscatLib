@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DIMM_I
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=52*)
-    (* the INput is fiRST sent through auto reconfiguration and debouncINg *)
+    (* the input is first sent through auto reconfiguration and debouncing *)
     config(IN := IN, TD := T_DEBOUNCE, TR := T_RECONFIG);
     decode(IN := config.Q, T_LONG := T_DIMM_START);
 
@@ -11,14 +11,14 @@ FUNCTION_BLOCK DIMM_I
     ELSIF SET THEN
     	OUT := VAL;
     	Q := TRUE;
-    	(* SET direction to up when VALue < 127 otherwise SET dir down dir is reversed because next action will reverse agaIN *)
+    	(* SET direction to up when value < 127 otherwise SET dir down dir is reversed because next action will reverse again *)
     	dir := OUT > 127;
     ELSIF decode.SINGLE THEN
-    	(* a sINgle click reverses OUTput Q *)
+    	(* a single click reverses output Q *)
     	Q := NOT Q;
-    	(* when dimmer is turned on we need to limit OUT to mIN and max limits *)
+    	(* when dimmer is turned on we need to limit OUT to min and max limits *)
     	IF Q THEN	OUT := LIMIT(MAX(MIN_ON,1), OUT, MAX_ON);	END_IF
-    	(* SET the appropriate direction of dimmer dir is reversed because next action will reverse agaIN *)
+    	(* SET the appropriate direction of dimmer dir is reversed because next action will reverse again *)
     	dir := OUT > 127;
     ELSIF decode.TP_LONG THEN
     	IF NOT Q THEN
@@ -36,11 +36,11 @@ FUNCTION_BLOCK DIMM_I
     	END_IF
     END_IF
 
-    (* SET the double click OUTput *)
+    (* SET the double click output *)
     IF NOT DBL_TOGGLE THEN DBL := FALSE; END_IF
     IF decode.DOUBLE THEN DBL := NOT DBL; END_IF
 
-    (* while dimmINg is active ramp the OUTput OUT up or down *)
+    (* while dimming is active ramp the output OUT up or down *)
     dim(DIR := dir, e := decode.LONG AND Q, TR := T_DIMM, rmp := OUT);
 
     (* reverse direction when limits are reached *)
@@ -52,7 +52,7 @@ FUNCTION_BLOCK DIMM_I
 
     (* limit the maximum runtime *)
     IF t_ON_MAX > t#0s THEN
-    	t3(IN := q, pt := T_ON_MAX);
+    	t3(IN := Q, pt := T_ON_MAX);
     	Q := Q XOR t3.Q;
     END_IF
 
@@ -65,27 +65,27 @@ FUNCTION_BLOCK DIMM_I
     	deleted unused structure ramp
 
     hm 2.feb 2007		rev 1.2
-    	changed structure to read time() at the begINnINg for better time consistency if a higher priorized tak INterrupts dimm_i
-    	added statements IN case structure for state 1 to allow for short 1 cycle INput pulses
+    	changed structure to read time() at the beginning for better time consistency if a higher priorized tak interrupts dimm_i
+    	added statements IN case structure for state 1 to allow for short 1 cycle input pulses
 
     hm 	15.9.2007		rev 1.3
     	replaced Time() with T_PLC_MS for compatibility and performance reasons
 
     hm	30. sep. 2008	rev 1.4
-    	added INput VAL to supply VALue for SET INput
-    	added SETup parameter INit_VAL
+    	added Input VAL to supply value for SET input
+    	added setup parameter init_val
 
     hm	22. oct. 2008	rev 2.0
     	new code and features
 
     hm	14. nov. 2008	rev 2.1
-    	added sofT_DIMM feature
+    	added SOFT_DIMM feature
 
     hm	16. nov. 2008	rev 2.2
-    	added reSET OUT feature
+    	added reset OUT feature
 
     hm	26. jan. 2009	rev 2.3
-    	dimmINg will also reverse at OUT = 0
+    	dimming will also reverse at OUT = 0
     	RST will override SET
     *)
 END_FUNCTION_BLOCK

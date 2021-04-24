@@ -16,7 +16,7 @@ FUNCTION PARITY
     (* revision history
 
     rev 1.0 hm 1 sep 2006
-    	origINal version
+    	original version
 
     rev 1.1 hm 10.9.2007
     	changed algorithm to improve performance

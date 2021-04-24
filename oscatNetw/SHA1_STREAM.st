@@ -2,14 +2,14 @@ FUNCTION_BLOCK SHA1_STREAM
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=84*)
     CASE MODE OF
 
-    1:	(* Initialisierung der Hash-Werte *)
+    1:	(* Initialisierung der hash-Werte *)
     	hash[0] := DWORD#16#67452301;
     	hash[1] := DWORD#16#EFCDAB89;
     	hash[2] := DWORD#16#98BADCFE;
     	hash[3] := DWORD#16#10325476;
     	hash[4] := DWORD#16#C3D2E1F0;
 
-    	(* BUFfer initialisieren *)
+    	(* Buffer initialisieren *)
     	FOR n := 16 TO 79 DO
        		w[n] := DWORD#0;
     	END_FOR
@@ -18,8 +18,8 @@ FUNCTION_BLOCK SHA1_STREAM
 
     	pad_1 := FALSE;
     	POS := 0;
-    	End := SIZE;
-    	SIZE := MIN(64,End);
+    	end := SIZE;
+    	SIZE := MIN(64,end);
     	MODE := 2;
 
     2:	FOR n := UDINT_TO_INT(SIZE) TO 63 DO (* Fuell-Bytes anhängen *)
@@ -32,7 +32,7 @@ FUNCTION_BLOCK SHA1_STREAM
     	END_IF
 
     	POS := POS + SIZE;
-    	SIZE := MIN(64,End - POS);
+    	SIZE := MIN(64,end - POS);
 
     	n := 0;	(* Byte-Array in DWORD-Array umkopieren *)
     	FOR n1 := 0 TO 15 DO
@@ -41,7 +41,7 @@ FUNCTION_BLOCK SHA1_STREAM
     	END_FOR
 
     	IF block = 0 THEN (* am Ende des letzten Blocks die Datenlänge eintragen *)
-    		w[15] := SHL(UDINT_TO_DWORD(End),3); (* Anzahl Datenbits eintragen *)
+    		w[15] := SHL(UDINT_TO_DWORD(end),3); (* Anzahl Datenbits eintragen *)
     		MODE := 3;
     	ELSE
     		block := block - 1;
@@ -80,7 +80,7 @@ FUNCTION_BLOCK SHA1_STREAM
     		a := x;
     	END_FOR
 
-    	(* aktuelle Hash-Werte zum letzten Wert addieren *)
+    	(* aktuelle hash-Werte zum letzten Wert addieren *)
     	hash[0] := hash[0] + a;
     	hash[1] := hash[1] + b;
     	hash[2] := hash[2] + c;

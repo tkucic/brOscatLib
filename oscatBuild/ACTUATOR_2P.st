@@ -23,8 +23,8 @@ FUNCTION_BLOCK ACTUATOR_2P
 
     (* revision history
     hm	7.10.2006 		rev 1.1
-    	changed error pos could not reach 1 or 0 under certaIN conditions due to error IN code.
-    	changed on and off IN force and force_IN for better usability.
+    	changed error pos could not reach 1 or 0 under certain conditions due to error IN code.
+    	changed on and off IN force and force_in for better usability.
 
     hm	17.1.2007		rev 1.2
     	deleted unused variable time_overflow
@@ -42,9 +42,9 @@ FUNCTION_BLOCK ACTUATOR_2P
     	code optimized
 
     hm	23. nov. 2008	rev 2.0
-    	new code usINg library modules
+    	new code using library modules
 
     hm	24. jan. 2009	rev 2.1
-    	deleted unused var INb
+    	deleted unused var inb
     *)
 END_FUNCTION_BLOCK

@@ -1,6 +1,6 @@
 FUNCTION_BLOCK GEN_BIT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=196*)
-    (* check if number of RUNs is finished or REP = 0 which means continuous *)
+    (* check if number of runs is finished or REP = 0 which means continuous *)
 
     IF CLK AND NOT RST THEN
     	RUN := (REP = 0) OR (rx <= REP);

@@ -2,10 +2,10 @@ FUNCTION_BLOCK _RMP_W
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=256*)
     tx := T_PLC_MS();
     IF E AND init THEN
-    	(* we need to set tl = tx when DIRection changes *)
-    	IF DIR XOR last_DIR THEN
+    	(* we need to set tl = tx when direction changes *)
+    	IF DIR XOR last_dir THEN
     	 tl := tx;
-    	 last_DIR := DIR;
+    	 last_dir := DIR;
     	END_IF
     	(* check_elapsed time and calculate only if necessary *)
     	IF TR > t#0s THEN

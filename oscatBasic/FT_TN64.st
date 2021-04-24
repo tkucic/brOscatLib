@@ -4,21 +4,21 @@ FUNCTION_BLOCK FT_TN64
     tx := DWORD_TO_TIME(T_PLC_MS());
 
     TRIG := FALSE;
-    IF NOT INit THEN
-    	x[cnt] := IN;
-    	INit := TRUE;
+    IF NOT init THEN
+    	X[cnt] := IN;
+    	init := TRUE;
     	last := tx;
     ELSIF tx - last >= T / length THEN
     	IF cnt = length - 1 THEN cnt := 0; ELSE cnt := cnt + 1; END_IF
     	OUT := X[cnt];
-    	x[cnt] := IN;
+    	X[cnt] := IN;
     	last := tx;
     	TRIG := TRUE;
     END_IF
 
     (* revision history
     hm		1. jan 2007		rev 1.0
-    	origINal version
+    	original version
 
     hm		16. sep 2007	rev 1.1
     	changes time() to T_plc_ms() for compatibility reasons

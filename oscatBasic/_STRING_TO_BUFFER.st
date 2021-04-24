@@ -20,12 +20,12 @@ FUNCTION _STRING_TO_BUFFER
 
     hm	13. may. 2008	rev 1.2
     	changed type of pointer to array[1..32767]
-    	changed SIZE of STRing to STRING_LENGTH
+    	changed SIZE of string to STRING_LENGTH
 
     hm	12. nov. 2009	rev 1.3
     	limit end to SIZE - 1
 
     hm	2. jan 2012	rev 1.4
-    	return the POSition after the input STRing when finished
+    	return the position after the input string when finished
     *)
 END_FUNCTION

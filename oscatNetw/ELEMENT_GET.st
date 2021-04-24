@@ -4,7 +4,7 @@ FUNCTION ELEMENT_GET
     pt := ADR(ELEMENT);
     po := ADR(ELEMENT_GET);
 
-    (* search for the n-th occurence of a SEParation character and store POSition in i *)
+    (* search for the n-th occurence of a separation character and store position in i *)
     WHILE (cnt < POS) AND (i < ELEMENT_LENGTH) AND (pt^[i] > 0) DO
     	IF pt^[i] = SEP THEN cnt := cnt + 1; END_IF
     	i := i + 1;

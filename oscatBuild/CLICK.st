@@ -1,23 +1,23 @@
 FUNCTION_BLOCK CLICK
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=47*)
     (* reconfiguration and debounce circuitry *)
-    s_IN(IN := IN, TD := T_debounce, TR := T_reconfig);
+    s_in(IN := IN, TD := T_debounce, TR := T_reconfig);
 
     (* read system time *)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     (* count the mumber of clicks *)
-    IF s_IN.Q XOR Q THEN
+    IF s_in.Q XOR Q THEN
     	last := tx;
-    	IF s_IN.Q THEN state := state + 1; END_IF
+    	IF s_in.Q THEN state := state + 1; END_IF
     END_IF
-    Q := s_IN.Q;
+    Q := s_in.Q;
 
     (* set outputs *)
     IF state > 0 THEN
     	IF (Q AND tx - last > t_short) OR (NOT Q AND tx - last > t_pause) THEN
     		CASE state OF
-    			1:	sINgle := TRUE;
+    			1:	SINGLE := TRUE;
     				STATUS := 111;
     			2:	DOUBLE := TRUE;
     				STATUS := 112;
@@ -26,8 +26,8 @@ FUNCTION_BLOCK CLICK
     		END_CASE
     		state := 0;
     	END_IF
-    ELSIF NOT q THEN
-    	sINgle := FALSE;
+    ELSIF NOT Q THEN
+    	SINGLE := FALSE;
     	DOUBLE := FALSE;
     	TRIPLE := FALSE;
     	STATUS := 110;
@@ -42,7 +42,7 @@ FUNCTION_BLOCK CLICK
     (* revision history
 
     15 Feb 2007	rev 1.0	hm
-    	created origINal version
+    	created original version
 
     18.5.2007	rev 1.1 hm
     	corrected an error while execution would stop after t_reconfig elapsed.
@@ -51,7 +51,7 @@ FUNCTION_BLOCK CLICK
     	replaced Time() with T_PLC_MS for compatibility and performance reasons
 
     28. dec. 2008	rev 2.0
-    	rewritten usINg modular approach
+    	rewritten using modular approach
 
     *)
 END_FUNCTION_BLOCK

@@ -4,7 +4,7 @@ FUNCTION_BLOCK TN_FRAMEWORK
     IF (NOT IP_C.C_ENABLE) THEN
 
     	(* IP Datenverkehr einrichten *)
-    	IP_C.C_PORT := SEL(PORT=BYTE#0,PORT,WORD#23); (* PORTnummer eintragen *)
+    	IP_C.C_PORT := SEL(PORT=BYTE#0,PORT,WORD#23); (* Portnummer eintragen *)
     	IP_C.C_IP := DWORD#00; (* IP eintragen *)
     	IP_C.C_MODE := BYTE#4; (* Mode: TCP+PASSIV+PORT *)
     	IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -13,7 +13,7 @@ FUNCTION_BLOCK TN_FRAMEWORK
 
     END_IF
 
-    t(IN:= IP_C.ERROR > DWORD#0, PT:=T#5s);
+    t(IN:= IP_C.ERROR > DWORD#0, PT:=t#5s);
     IF t.Q THEN
     	IP_C.TIME_RESET := TRUE; (* Error Reset *)
     END_IF
@@ -42,7 +42,7 @@ FUNCTION_BLOCK TN_FRAMEWORK
     	R_BUF :=R_BUF,
     	IP :=DWORD#00,
     	PORT :=WORD#00,
-    	TIME_OUT :=T#2s);
+    	TIME_OUT :=t#2s);
 
     (* Telnet-Data-Receive *)
     FB_TN_RECEIVE(

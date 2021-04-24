@@ -3,8 +3,8 @@ FUNCTION CSET
     CSET.RE := RE;
     CSET.IM := IM;
 
-    (* REvision history
-    hm	21. feb 2008	REv 1.0
+    (* revision history
+    hm	21. feb 2008	rev 1.0
     	original version
 
     *)

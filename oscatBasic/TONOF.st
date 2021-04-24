@@ -10,13 +10,13 @@ FUNCTION_BLOCK TONOF
 
     (* revision history
     hm	10. dec 2007	rev 1.0
-    	origINal version
+    	original version
 
     hm	17. sep. 2007	rev 1.1
     	improved performance
 
     hm	21. jul. 2009	rev 1.2
-    	fixed a timINg probelm
+    	fixed a timing probelm
 
 
     *)

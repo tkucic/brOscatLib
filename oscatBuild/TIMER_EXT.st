@@ -4,7 +4,7 @@ FUNCTION_BLOCK TIMER_EXT
     SUN_RISE := DWORD_TO_TOD(TOD_TO_DWORD(SUN_RISE) / 1000 * 1000);
     SUN_SET := DWORD_TO_TOD(TOD_TO_DWORD(SUN_SET) / 1000 * 1000);
 
-    (* measure cycle time tc and make sure this circuitry is not called more then ONce in 200ms*)
+    (* measure cycle time tc and make sure this circuitry is not called more then once in 200ms*)
     tx := OSCAT_BASIC.T_PLC_MS();
     IF NOT init THEN
     	init := TRUE;
@@ -17,19 +17,19 @@ FUNCTION_BLOCK TIMER_EXT
     (* debounce *)
     deb(in := SWITCH, TD := T_DEBOUNCE, PM := TRUE);
 
-    (* read time of day and strip OFF all millisecONds *)
+    (* read time of day and strip OFF all milliseconds *)
     tdx := DT_TO_TOD(DT_IN);
     wdx := OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DT_IN));
 
-    (* automatic output cONtrol *)
+    (* automatic output control *)
     IF deb.Q THEN
     	qx := NOT qx;
     	STATUS := 110;
-    ELSIF HOLIDAY AND NOT ENAble_HOLIDAY THEN
+    ELSIF HOLIDAY AND NOT ENABLE_HOLIDAY THEN
     	qx := FALSE;
-    ELSIF wdx = 6 AND NOT ENAble_saturday THEN
+    ELSIF wdx = 6 AND NOT ENABLE_SATURDAY THEN
     	qx := FALSE;
-    ELSIF wdx = 7 AND NOT ENAble_sunday THEN
+    ELSIF wdx = 7 AND NOT ENABLE_SUNDAY THEN
     	qx := FALSE;
     ELSIF T_DAY_START > TOD#00:00 AND tdx - T_DAY_START <= tc THEN
     	(* turn ON at specified daytime *)
@@ -58,7 +58,7 @@ FUNCTION_BLOCK TIMER_EXT
     END_IF
 
 
-    (* mnaual and output cONtrol *)
+    (* mnaual and output control *)
     mx(in := qx, ENA := ENA, ON := ON, OFF := OFF, MAN := MAN);
     Q := mx.Q;
 
@@ -69,7 +69,7 @@ FUNCTION_BLOCK TIMER_EXT
 
     (*
     hm 	7. oct. 2008	rev 1.0
-    	original versiON
+    	original version
 
     hm	6. nov. 2008	rev 1.1
     	added default = true for ENA input

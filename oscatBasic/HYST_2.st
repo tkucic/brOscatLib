@@ -3,19 +3,19 @@ FUNCTION_BLOCK HYST_2
     tmp := VAL - HYS * 0.5;
     IF IN < tmp THEN
     	Q := FALSE;
-    	wIN := FALSE;
+    	WIN := FALSE;
     ELSIF IN > tmp + HYS THEN
     	Q := TRUE;
-    	wIN := FALSE;
+    	WIN := FALSE;
     ELSE
-    	wIN := TRUE;
+    	WIN := TRUE;
     END_IF
 
 
 
     (* revision history
     hm		4. aug 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm		5. jan 2008	rev 1.1
     	improved code for better performance

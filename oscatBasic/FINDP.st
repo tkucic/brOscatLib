@@ -12,7 +12,7 @@ FUNCTION FINDP
     END_FOR
     FINDP := 0;
 
-    (* revision hiSTRoy
+    (* revision histroy
     hm	4. feb. 2008	rev 1.0
     	original release
 

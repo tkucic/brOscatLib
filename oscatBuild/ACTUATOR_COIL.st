@@ -3,13 +3,13 @@ FUNCTION_BLOCK ACTUATOR_COIL
     (* read system time *)
     now := OSCAT_BASIC.T_PLC_MS();
 
-    (* INitialize for first cycle *)
-    IF NOT INit THEN
+    (* initialize for first cycle *)
+    IF NOT init THEN
     	last := now;
-    	INit := TRUE;
+    	init := TRUE;
     ELSIF IN THEN
     	OUT := TRUE;
-    	STATUS := 101; (* activated by INput *)
+    	STATUS := 101; (* activated by input *)
     	LAST := now;
     ELSE
     	OUT := FALSE;
@@ -33,7 +33,7 @@ FUNCTION_BLOCK ACTUATOR_COIL
     revision history:
 
     hm		1. jun. 2008 	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

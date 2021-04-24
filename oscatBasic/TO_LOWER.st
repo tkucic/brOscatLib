@@ -11,7 +11,7 @@ FUNCTION TO_LOWER
 
     (* revision history
     hm	6. mar. 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	19. oct. 2008	rev 1.1
     	changed setup constants

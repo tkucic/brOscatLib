@@ -21,8 +21,8 @@ FUNCTION WORK_WEEK
     IF WORK_WEEK = 0 THEN
     	(* WORK_WEEK needs to be 53 when 1.jan of the year before is thursday or dec 31. is thursday. *)
     	(* first and last weekday of a year is equal and one more day for a leap_year. *)
-    	IF w1 > 1 THEN w31 := w1 - 1; ELSE W31 := 7; END_IF
-    	IF LEAP_YEAR(yr - 1) AND w31 > 1 THEN w01 := W31 - 1; ELSE w1 := 7; END_IF
+    	IF w1 > 1 THEN w31 := w1 - 1; ELSE w31 := 7; END_IF
+    	IF LEAP_YEAR(yr - 1) AND w31 > 1 THEN w01 := w31 - 1; ELSE w1 := 7; END_IF
     	(* if first or last day of a year is a thursday, the year has 53 weeks *)
     	WORK_WEEK := 52 + BOOL_TO_INT(w31 = 4 OR w01 = 4);
     ELSE

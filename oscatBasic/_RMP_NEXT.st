@@ -1,19 +1,19 @@
 FUNCTION_BLOCK _RMP_NEXT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255*)
-    DIRx(X := IN);
+    dirx(X := IN);
 
     t_lock(IN := FALSE, pt := TL);
 
-    IF DIRx.TU AND (OUT < IN) THEN
-    	IF NOT xDIR AND xen THEN t_lock(IN := TRUE); END_IF
+    IF dirx.TU AND (OUT < IN) THEN
+    	IF NOT xdir AND xen THEN t_lock(IN := TRUE); END_IF
     	xen := TRUE;
-    	xDIR := TRUE;
-    ELSIF DIRx.TD AND (OUT > IN) THEN
-    	IF xDIR AND xen THEN t_lock(IN := TRUE); END_IF
+    	xdir := TRUE;
+    ELSIF dirx.TD AND (OUT > IN) THEN
+    	IF xdir AND xen THEN t_lock(IN := TRUE); END_IF
     	xen := TRUE;
-    	xDIR := FALSE;
+    	xdir := FALSE;
     ELSIF xen THEN
-    	IF (xDIR AND (OUT >= IN)) OR (NOT xDIR AND (OUT <= IN)) THEN
+    	IF (xdir AND (OUT >= IN)) OR (NOT xdir AND (OUT <= IN)) THEN
     		xen := FALSE;
     		IF TL > t#0s THEN t_lock(IN := TRUE); END_IF
     	END_IF
@@ -33,7 +33,7 @@ FUNCTION_BLOCK _RMP_NEXT
 
     (* revison history
     hm	23. nov. 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	24. jan. 2009	rev 1.1
     	deleted unused vars tmp1, tmp2
@@ -43,7 +43,7 @@ FUNCTION_BLOCK _RMP_NEXT
     	added TL
 
     hm	9. mar. 2009	rev 1.3
-    	INput E was ignored
+    	input E was ignored
     	removed double assignments
 
     hm	18. jul. 2009	rev 1.4

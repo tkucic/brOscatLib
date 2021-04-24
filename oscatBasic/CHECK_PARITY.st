@@ -1,6 +1,6 @@
 FUNCTION CHECK_PARITY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217*)
-    CHECK_PARITY := NOT p;
+    CHECK_PARITY := NOT P;
     WHILE IN > 0 DO
     	CHECK_PARITY := CHECK_PARITY XOR IN.0 XOR IN.1 XOR IN.2 XOR IN.3;
     	IN := SHR(IN,4);

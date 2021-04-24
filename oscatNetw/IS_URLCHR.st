@@ -5,7 +5,7 @@ FUNCTION IS_URLCHR
 
     (* revision history
     hm		27. apr. 2008	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION

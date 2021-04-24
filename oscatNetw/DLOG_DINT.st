@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DLOG_DINT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=49*)
-    CASE x.ADD_COM OF
+    CASE X.ADD_COM OF
 
     01:	(* ADD INFO *)
     	X.ID_MAX := X.ID_MAX + USINT#1;
@@ -11,20 +11,20 @@ FUNCTION_BLOCK DLOG_DINT
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     03:	(* ADD DATA *)
-    	X.UCB.D_STRING := DINT_TO_STRING(VALUE_last);
+    	X.UCB.D_STRING := DINT_TO_STRING(value_last);
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
-    	DELTA_last := VALUE_last;
+    	delta_last := value_last;
     04:	(* ADD DATA REQ *)
     	IF DELTA <> DINT#0 THEN
-    		IF VALUE <= (DELTA_last - DELTA) OR VALUE >= (DELTA_last + DELTA) THEN
+    		IF VALUE <= (delta_last - DELTA) OR VALUE >= (delta_last + DELTA) THEN
     			X.ADD_DATA_REQ := TRUE;
-    			DELTA_last := VALUE;
+    			delta_last := VALUE;
     		END_IF
     	END_IF
     END_CASE
-    VALUE_last := VALUE;
+    value_last := VALUE;
 
     (* revision history
     ks	01. jan. 2011	rev 1.0

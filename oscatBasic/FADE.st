@@ -27,7 +27,7 @@ FUNCTION_BLOCK FADE
     	changed calls for rmp_w because rmp_w has chaged
 
     hm	17. dec. 2008	rev 1.2
-    	function of input f was inverted
+    	function of input F was inverted
 
     hm	24. jan. 2009	rev 1.3
     	delted unused var FF

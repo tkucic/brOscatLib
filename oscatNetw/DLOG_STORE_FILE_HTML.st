@@ -1,8 +1,8 @@
 FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46*)
     X.DTI := DTI; (* Datum / Zeit eintragen *)
-    X.CLOCK_TRIG := DTI <> DTI_last;
-    DTI_last := DTI;
+    X.CLOCK_TRIG := DTI <> dti_last;
+    dti_last := DTI;
     trig_auto := FALSE;
     IF X.CLOCK_TRIG THEN (* Impuls in jeder Sekunde *)
     	fn := OSCAT_BASIC.DT_TO_STRF(DTI, 0, FILENAME, 0); (* automatische Dateinamen generierung *)
@@ -14,7 +14,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     CASE step_1 OF
 
     00:	IF ENABLE THEN
-    		aw_ENABLE := AUTO_CLOSE >= T#5s;
+    		aw_enable := AUTO_CLOSE >= T#5s;
     		wd_time := SEL(X.LOAD_TIME_MAX > T#0s, T#5ms,X.LOAD_TIME_MAX);
     		fn_last := fn; (* aktuellen Dateinnamen speichern *)
     		IF X.ID_MAX = USINT#0 THEN (* nur einmal nach Satellitenbausteinen scannen *)
@@ -24,7 +24,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     		step_1 := 10;
 
     		(* ---------------- Debug-Message -----------------------*)
-    		(*IF _debug_ENABLE THEN
+    		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'FILE_HTML1 - Start: File [~1], [~2]';
     			LOG_CL.PRINTF[1] := fn_last;
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
@@ -48,10 +48,10 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     	step_1 := 30;
 
     30:	(* LOG-Trigger verarbeiten *)
-    	TRIG_Tmp := (TRIG_M AND NOT TRIG_M_last) OR trig_auto OR X.ADD_DATA_REQ;
+    	trig_tmp := (TRIG_M AND NOT trig_m_last) OR trig_auto OR X.ADD_DATA_REQ;
 
     	IF ENABLE = FALSE OR fn <> fn_last THEN (* ENABLE = 0 oder neuen Dateinamen -> Log Stop *)
-    		trig_stored := TRIG_Tmp; (* aktuellen Triggerpuls speichern *)
+    		trig_stored := trig_tmp; (* aktuellen Triggerpuls speichern *)
     		X.UCB.D_HEAD := WORD#16#EE00;
     		X.UCB.D_MODE := 1;
     		UCB(DATA:=X.UCB); (* Element schreiben *)
@@ -59,7 +59,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     		step_1 := 00;
 
     		(* ---------------- Debug-Message -----------------------*)
-    		(*IF _debug_ENABLE THEN
+    		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'FILE_HTML1 - Stop: [~2]';
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
@@ -67,13 +67,13 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     		(* -----------------------------------------------------------------*)
 
     	ELSIF ENABLE THEN
-    		IF TRIG_Tmp OR trig_stored THEN (* manueller, automatischer oder externer Trigger *)
+    		IF trig_tmp OR trig_stored THEN (* manueller, automatischer oder externer Trigger *)
     			trig_stored := FALSE;
     			X.ADD_COM := 03; (* ADD DATA *)
     			SAVE_DATA.TRIG_CNT := SAVE_DATA.TRIG_CNT + UDINT#1;
     			SAVE_DATA.TRIG_CNT_TOTAL  := SAVE_DATA.TRIG_CNT_TOTAL + UDINT#1;
     			(* ---------------- Debug-Message -----------------------*)
-    			(*IF _debug_ENABLE THEN
+    			(*IF _debug_enable THEN
     				LOG_CL.NEW_MSG := 'FILE_HTML1 - Trig: [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
@@ -91,12 +91,12 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
 
     CASE step_2 OF
 
-    00:	aw_ton(IN:= idx > 0 AND aw_ENABLE , PT:= AUTO_CLOSE); (* AutoWrite Timer *)
+    00:	aw_ton(IN:= idx > 0 AND aw_enable , PT:= AUTO_CLOSE); (* AutoWrite Timer *)
     	IF aw_ton.Q THEN (* Zeitgesteuertes Datenschreiben *)
     		aw_aktiv := TRUE;
     		step_2 := 10; (* Daten schreiben *)
     		(* ---------------- Debug-Message -----------------------*)
-    		(*IF _debug_ENABLE THEN
+    		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'FILE_HTML2 - AutoWrite: [~2]';
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
@@ -146,7 +146,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     					UCB(DATA:=X.UCB); (* Element entfernen *)
 
     					(* ---------------- Debug-Message -----------------------*)
-    					(*IF _debug_ENABLE THEN
+    					(*IF _debug_enable THEN
     						LOG_CL.NEW_MSG := 'FILE_HTML2 - Create: Mode [~1] , [~2]';
     						LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     						LOG_CL.PRINTF[1] := BYTE_TO_STRING(FSD.MODE);
@@ -173,7 +173,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     			ELSIF idx + LEN(X.UCB.D_STRING) + 120 < SIZEOF(PT.BUFFER) THEN (* Platz für Element vorhanden ? *)
 
     				(* ---------------- Debug-Message -----------------------*)
-    				(*IF _debug_ENABLE THEN
+    				(*IF _debug_enable THEN
     					LOG_CL.NEW_MSG := 'FILE_CSV2 - BUF: TXT [~1],Pos [~2], [~3]';
     					LOG_CL.PRINTF[1] := X.UCB.D_STRING;
     					LOG_CL.PRINTF[2] := INT_TO_STRING(idx);
@@ -233,7 +233,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     		PT.SIZE := INT_TO_UINT(idx); (* Datenlänge eintragen *)
     		idx := 0;
     		(* ---------------- Debug-Message -----------------------*)
-    		(*IF _debug_ENABLE THEN
+    		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'FILE_HTML2 - WriteData: Mode [~3] Size [~1] , [~2]';
     			LOG_CL.PRINTF[1] := UINT_TO_STRING(PT.SIZE);
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
@@ -251,7 +251,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     			aw_aktiv := FALSE;
     			FSD.MODE := BYTE#5; (* Datei schliessen *)
     			(* ---------------- Debug-Message -----------------------*)
-    			(*IF _debug_ENABLE THEN
+    			(*IF _debug_enable THEN
     				LOG_CL.NEW_MSG := 'FILE_HTML2 - Close: [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
@@ -289,7 +289,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML
     	ERROR_T := BYTE#0;
     END_IF
 
-    TRIG_M_last := TRIG_M;
+    trig_m_last := TRIG_M;
 
     (* revision history
     ks	25. july. 2011	rev 1.0

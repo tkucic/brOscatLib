@@ -27,13 +27,13 @@ FUNCTION BUFFER_SEARCH
 
     hm	13. may. 2008	rev 1.2
     	changed type of pointer to array[1..32767]
-    	changed SIZE of STRing to STRING_LENGTH
+    	changed SIZE of string to STRING_LENGTH
 
     hm	12. nov. 2009	rev 1.3
     	limit end to array SIZE
 
     hm	25. jan. 2011	rev 1.4
-    	IGN = True will now IGNore case
+    	IGN = True will now ignore case
     	return -1 if nothing found
     *)
 END_FUNCTION

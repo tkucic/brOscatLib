@@ -54,7 +54,7 @@ FUNCTION_BLOCK GEN_PW2
     	original version
 
     hm	14. mar. 2009	rev 1.1
-    	removed double assignmenTS
+    	removed double assignments
 
     *)
 END_FUNCTION_BLOCK

@@ -12,12 +12,12 @@ FUNCTION URL_DECODE
 
     (* revision history
     hm	27. apr. 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	17. dec. 2008	rev 1.1
-    	changes name of function chr to chr_to_strINg
+    	changes name of function chr to chr_to_string
 
     ks	10. mai. 2008	rev 1.2
-    	strINglength 250
+    	stringlength 250
     *)
 END_FUNCTION

@@ -5,9 +5,9 @@ FUNCTION_BLOCK FT_DERIV
     tc := DWORD_TO_REAL(tx - last);
     last := tx;
 
-    (* INit on first startup *)
-    IF NOT INit THEN
-    	INit := TRUE;
+    (* init on first startup *)
+    IF NOT init THEN
+    	init := TRUE;
     	old := IN;
     ELSIF RUN AND tc > 0.0 THEN
     	OUT := (IN - old) / tc * 1000000.0 * K;
@@ -20,20 +20,20 @@ FUNCTION_BLOCK FT_DERIV
 
     (*
     hm 3.1.2007			rev 1.1
-    	added INit code for startup
+    	added init code for startup
     	set the default for K to 1
 
     hm	15. sep 2007	rev 1.2
     	replaced Time() with T_PLC_US for compatibility and performance reasons
-    	INcreased accuracy and work IN microseconds INternally
+    	increased accuracy and work IN microseconds internally
 
     hm 29 oct 2007	rev 1.3
-    	prohibit calculation when tx - last = 0 to avoid division by 0 and INcrease accuracy on fast systems
+    	prohibit calculation when tx - last = 0 to avoid division by 0 and increase accuracy on fast systems
 
     hm	6. nov. 2008	rev 1.4
     	improved performance
 
     hm	11. mar. 2009	rev 1.5
-    	INproved code
+    	inproved code
     *)
 END_FUNCTION_BLOCK

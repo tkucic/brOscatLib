@@ -26,7 +26,7 @@ FUNCTION_BLOCK RMP_SOFT
     	replaced time() with t_plc_ms() for compatibility reasons
 
     hm	26. oct. 2008	2.0
-    	new code usINg _rmp_b
+    	new code using _rmp_b
     *)
 
 END_FUNCTION_BLOCK

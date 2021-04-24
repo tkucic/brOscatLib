@@ -9,7 +9,7 @@ FUNCTION REPLACE_ALL
     	pos := FINDP(REPLACE_ALL, SRC, pos + lp);
     END_WHILE
 
-    (* revision hiSTRoy
+    (* revision histroy
     hm	4. feb. 2008	rev 1.0
     	original release
 

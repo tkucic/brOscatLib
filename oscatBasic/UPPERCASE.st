@@ -8,7 +8,7 @@ FUNCTION UPPERCASE
     	pt := pt + 1;
     END_FOR
 
-    (* revision hiSTRoy
+    (* revision histroy
     hm	6. oct. 2006	rev 1.0
     	original release
 

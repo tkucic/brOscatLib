@@ -5,7 +5,7 @@ FUNCTION_BLOCK TELNET_LOG
     	IF OPTION > 0 THEN
     		TELNET_PRINT.OPTION := OPTION;
     	END_IF
-    	IF PORT > 0 THEN (* bei PORTvorgabe wird der standardPORT überschrieben *)
+    	IF PORT > 0 THEN (* bei portvorgabe wird der standardport überschrieben *)
     		TELNET_PRINT.PORT := PORT;
     	END_IF
       	WATCHDOG.PT := T#1ms;

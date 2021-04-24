@@ -3,7 +3,7 @@ FUNCTION_BLOCK BURNER
     (* read system time *)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    (* check RST INput and overtemp *)
+    (* check RST input and overtemp *)
     IF RST OR OVER_TEMP OR state = 0 THEN
     	IF STATUS > 0 AND tx - last_change >= LOCKOUT_TIME AND RST THEN
     		STATUS := 110;
@@ -27,11 +27,11 @@ FUNCTION_BLOCK BURNER
     END_IF
 
     (* check for timer RST and RST timer if true *)
-    IF RST_timer THEN
+    IF RST_TIMER THEN
     	RUNTIME1 := 0;
     	RUNTIME2 := 0;
     	CYCLES := 0;
-    	CYCLES2 := 0;
+    	cycles2 := 0;
     END_IF
 
     (* quit here if an error is present *)
@@ -40,7 +40,7 @@ FUNCTION_BLOCK BURNER
     (* start sequence *)
     CASE state OF
 
-    1:	(* IN signal starts oil pre heatINg *)
+    1:	(* IN signal starts oil pre heating *)
     	IF IN AND FLAME THEN
     		state := 7;
     		PRE_HEAT := FALSE;
@@ -52,8 +52,8 @@ FUNCTION_BLOCK BURNER
     		last_change := tx;
     	END_IF
 
-    2:	(* after PRE_HEATINg time start MOTOR *)
-    	IF (tx- last_change >= PRE_HEAT_TIME AND OIL_TEMP) OR (OIL_TEMP AND NOT OIL_TEMP_last) THEN
+    2:	(* after pre_heating time start MOTOR *)
+    	IF (tx- last_change >= PRE_HEAT_TIME AND OIL_TEMP) OR (OIL_TEMP AND NOT oil_temp_last) THEN
     		MOTOR := TRUE;
     		state := 3;
     		last_change := tx;
@@ -71,7 +71,7 @@ FUNCTION_BLOCK BURNER
     		last_change := tx;
     	END_IF
 
-    3:	(* abwarten bis zündung eINgeschaltet werden kann *)
+    3:	(* abwarten bis zündung eingeschaltet werden kann *)
     	IF tx - last_change >= PRE_VENT_TIME - PRE_IGNITE_TIME THEN
     		IGNITE := TRUE;
     		state := 4;
@@ -109,9 +109,9 @@ FUNCTION_BLOCK BURNER
     		END_IF
     	END_IF
 
-    6:	(* brenner läuft, flammueberwachung und nach ablauf der nachIGNITEszeit IGNITE abschalten *)
+    6:	(* brenner läuft, flammueberwachung und nach ablauf der nachigniteszeit IGNITE abschalten *)
     	IF NOT FLAME AND NOT MULTIPLE_IGNITION THEN
-    		(* notabschaltung da flammwaechster keINe flamme meldet *)
+    		(* notabschaltung da flammwaechster keine flamme meldet *)
     		state := 7;
     		MOTOR := FALSE;
     		COIL1 := FALSE;
@@ -130,7 +130,7 @@ FUNCTION_BLOCK BURNER
     			(* POST_IGNITE_TIME abgelaufen, IGNITE abschalten *)
     			IGNITE := FALSE;
     		END_IF
-    		IF tx - last_change >= STAGE2_delay AND STAGE2 THEN
+    		IF tx - last_change >= STAGE2_DELAY AND STAGE2 THEN
     			COIL2 := TRUE;
     		ELSE
     			COIL2 := FALSE;
@@ -138,7 +138,7 @@ FUNCTION_BLOCK BURNER
     	END_IF
     END_CASE
 
-    (* abschaltung wenn keIN eINgangssignal *)
+    (* abschaltung wenn kein eingangssignal *)
     IF NOT IN THEN
     	state := 1;
     	MOTOR := FALSE;
@@ -151,7 +151,7 @@ FUNCTION_BLOCK BURNER
 
     (* runtimezähler *)
     timer1(IN := FLAME AND IN AND MOTOR AND COIL1 AND NOT COIL2, seconds := RUNTIME1, CYCLES := CYCLES);
-    timer2(IN := FLAME AND IN AND MOTOR AND COIL1 AND COIL2, seconds := RUNTIME2, CYCLES := CYCLES2);
+    timer2(IN := FLAME AND IN AND MOTOR AND COIL1 AND COIL2, seconds := RUNTIME2, CYCLES := cycles2);
     KWH := UDINT_TO_REAL(RUNTIME1) * KW1 / 3600.0 + UDINT_TO_REAL(RUNTIME2) * KW2 / 3600.0;
 
     (* zeit fuer naechsten aufruf merken *)
@@ -178,21 +178,21 @@ FUNCTION_BLOCK BURNER
 
     (*
     31.12.2006	hm		rev 1.1
-    	added PRE_HEAT timINg and output
+    	added PRE_HEAT timing and output
     	FLAME monitor before ignition will generate error on STATUS output
     	added output for KWh
 
     31.12.2006	hm		rev 1.2
-    	added OIL_TEMP_INput
+    	added oil_temp_input
 
     31.12.2006	hm		rev 1.3
-    	changed STATUS output to be byte INstead of bool
+    	changed STATUS output to be byte instead of bool
 
     22.1.2007		hm		rev 1.4
     	renamed FAIL output to STATUS
     	added output CYCLES
     	corrected an error while PRE_HEAT would be on when an error was present
-    	added COIL2 output and STAGE2 INput
+    	added COIL2 output and STAGE2 input
 
     15.9.2007		hm		rev 1.5
     	replaced Time() with T_PLC_MS for compatibility and performance reasons

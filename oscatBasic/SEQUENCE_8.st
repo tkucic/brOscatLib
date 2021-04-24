@@ -3,7 +3,7 @@ FUNCTION_BLOCK SEQUENCE_8
     (* read sps timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* initialize on STARTup *)
+    (* initialize on startup *)
     IF NOT init THEN
     	last := tx;
     	init := TRUE;
@@ -24,7 +24,7 @@ FUNCTION_BLOCK SEQUENCE_8
     	STATUS := 110;
     	RUN := 0;
 
-    (* EDGE_ on START input reSTARTs the sequencer *)
+    (* EDGE_ on START input restarts the sequencer *)
     ELSIF START AND NOT EDGE_ THEN
     	STEP := 0;
     	last := tx;
@@ -44,7 +44,7 @@ FUNCTION_BLOCK SEQUENCE_8
     (* check if stop on error is necessary *)
     IF STATUS > 0 AND STATUS < 100 AND STOP_ON_ERROR THEN RETURN; END_IF
 
-    (* sequence is RUNning *)
+    (* sequence is running *)
     IF RUN AND STEP = 0 THEN
     	IF NOT Q0 AND IN0 AND tx - last <= WAIT0 THEN
     		Q0 := TRUE;
@@ -62,7 +62,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q0 := FALSE;
     		Q1 := TRUE;
     		last := tx;
-    	ELSIF NOT Q1 AND Tx - last > WAIT1 THEN
+    	ELSIF NOT Q1 AND tx - last > WAIT1 THEN
     		STATUS := 2;
     		Q0 := FALSE;
     		RUN := FALSE;
@@ -76,7 +76,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q1 := FALSE;
     		Q2 := TRUE;
     		last := tx;
-    	ELSIF NOT Q2 AND Tx - last > WAIT2 THEN
+    	ELSIF NOT Q2 AND tx - last > WAIT2 THEN
     		STATUS := 3;
     		Q1 := FALSE;
     		RUN := FALSE;
@@ -90,7 +90,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q2 := FALSE;
     		Q3 := TRUE;
     		last := tx;
-    	ELSIF NOT Q3 AND Tx - last > WAIT3 THEN
+    	ELSIF NOT Q3 AND tx - last > WAIT3 THEN
     		STATUS := 4;
     		Q2 := FALSE;
     		RUN := FALSE;
@@ -104,7 +104,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q3 := FALSE;
     		Q4 := TRUE;
     		last := tx;
-    	ELSIF NOT Q4 AND Tx - last > WAIT4 THEN
+    	ELSIF NOT Q4 AND tx - last > WAIT4 THEN
     		STATUS := 5;
     		Q3 := FALSE;
     		RUN := FALSE;
@@ -118,7 +118,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q4 := FALSE;
     		Q5 := TRUE;
     		last := tx;
-    	ELSIF NOT Q5 AND Tx - last > WAIT5 THEN
+    	ELSIF NOT Q5 AND tx - last > WAIT5 THEN
     		STATUS := 6;
     		Q4 := FALSE;
     		RUN := FALSE;
@@ -132,7 +132,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q5 := FALSE;
     		Q6 := TRUE;
     		last := tx;
-    	ELSIF NOT Q6 AND Tx - last > WAIT6 THEN
+    	ELSIF NOT Q6 AND tx - last > WAIT6 THEN
     		STATUS := 7;
     		Q5 := FALSE;
     		RUN := FALSE;
@@ -146,7 +146,7 @@ FUNCTION_BLOCK SEQUENCE_8
     		Q6 := FALSE;
     		Q7 := TRUE;
     		last := tx;
-    	ELSIF NOT Q7 AND Tx - last > WAIT7 THEN
+    	ELSIF NOT Q7 AND tx - last > WAIT7 THEN
     		STATUS := 8;
     		Q6 := FALSE;
     		RUN := FALSE;
@@ -166,7 +166,7 @@ FUNCTION_BLOCK SEQUENCE_8
 
     hm 1.12.06		rev 1.2
     	corrected failure in sequence logic.
-    	added init at STARTup to prevent from initial STATUSs after START.
+    	added init at startup to prevent from initial statuss after START.
 
     hm 17.1.2007		rev 1.3
     	changed output fault to STATUS for better compatibility with other modules (ESR)

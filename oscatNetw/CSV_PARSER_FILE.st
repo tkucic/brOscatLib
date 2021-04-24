@@ -78,7 +78,7 @@ FUNCTION_BLOCK CSV_PARSER_FILE
     			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-String hinzufügen *)
     				pv^ := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
-    				pv^ := 0; (* String-TerminieRUNg eintragen *)
+    				pv^ := 0; (* String-Terminierung eintragen *)
     			END_IF
 
     			i := i + 1; (* Datenzeiger erhöhen *)
@@ -124,7 +124,7 @@ FUNCTION_BLOCK CSV_PARSER_FILE
     (* ---------------- Debug-Message -----------------------*)
     (*IF _debug_enable THEN
     	IF step_last <> step THEN
-    		LOG_CL.NEW_MSG := 'CPF: Step: ~1';
+    		LOG_CL.NEW_MSG := 'CPF: step: ~1';
     		LOG_CL.PRINTF[1]  := INT_TO_STRING(step);
     		LOG_MSG();
     	END_IF

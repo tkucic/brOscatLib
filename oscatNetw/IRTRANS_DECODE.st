@@ -7,7 +7,7 @@ FUNCTION_BLOCK IRTRANS_DECODE
     	i := 0;
     	ERROR := TRUE;
     	stop := size - 2;
-    	(* read characters before first comma and store in DEVice *)
+    	(* read characters before first comma and store in device *)
     	pt := ADR(DEV);
     	buffer := ADR(R_BUF.BUFFER);
     	WHILE i < stop DO
@@ -16,7 +16,7 @@ FUNCTION_BLOCK IRTRANS_DECODE
     		pt := pt + 1;
     		i := i + 1;
     	END_WHILE
-    	(* terminate the DEVice string *)
+    	(* terminate the device string *)
     	pt^ := 0;
     	(* read after first comma and store in KEY *)
     	i := i + 1;
@@ -30,7 +30,7 @@ FUNCTION_BLOCK IRTRANS_DECODE
     	pt^:= 0;
     	(* check if last two characters are $R$N 13, 10 *)
     	IF buffer^[i] <> 13 AND buffer^[i+1] <> 10 THEN	RETURN;	END_IF
-    	(* check if DEVice and KEY are present *)
+    	(* check if device and KEY are present *)
     	IF LEN(DEV) = 0 OR LEN(KEY) = 0 THEN RETURN; END_IF
     	(* a valid transmission has been received *)
     	CMD := TRUE;
@@ -46,7 +46,7 @@ FUNCTION_BLOCK IRTRANS_DECODE
     ks	18. oct. 2008	rev 1.0
     	original version
     ks	20. oct. 2009	rev 1.1
-    	Networkbuffer und Buffer-funktionen auf Basis 0
+    	Networkbuffer und buffer-funktionen auf Basis 0
     ks	06. dec. 2009	rev 1.2
     	Codeanpassung für IRTRANS_SERVER
     *)

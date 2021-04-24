@@ -2,8 +2,8 @@ FUNCTION_BLOCK ACTUATOR_PUMP
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16*)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    IF NOT INit THEN
-    	INit := TRUE;
+    IF NOT init THEN
+    	init := TRUE;
     	last_change := tx;
     ELSIF RST THEN
     	RST := FALSE;
@@ -15,10 +15,10 @@ FUNCTION_BLOCK ACTUATOR_PUMP
     ELSIF NOT MANUAL AND old_man AND PUMP AND NOT IN THEN
     	last_change := tx;
     	PUMP := FALSE;
-    ELSIF IN AND NOT PUMP AND tx - last_change >= mIN_offtime THEN
+    ELSIF IN AND NOT PUMP AND tx - last_change >= MIN_OFFTIME THEN
     	last_change := tx;
     	PUMP := TRUE;
-    ELSIF PUMP AND NOT IN AND NOT MANUAL AND tx - last_change >= mIN_ontime THEN
+    ELSIF PUMP AND NOT IN AND NOT MANUAL AND tx - last_change >= MIN_ONTIME THEN
     	last_change := tx;
     	PUMP := FALSE;
     ELSIF NOT PUMP AND (tx - last_change >= RUN_EVERY) AND (RUN_EVERY > T#0s) THEN
@@ -33,7 +33,7 @@ FUNCTION_BLOCK ACTUATOR_PUMP
 
     (*
     hm	27.12.2006		rev 1.1
-    	fixed a failure while the PUMP would run for tmIN after startup.
+    	fixed a failure while the PUMP would run for tmin after startup.
 
     hm	15.9.2007		rev 1.2
     	replaced Time() with T_PLC_MS for compatibility and performance reasons

@@ -44,9 +44,9 @@ FUNCTION CRC_GEN
     (* reverse the crc_out put if necessary *)
     IF REV_OUT THEN CRC_GEN := REFLECT(CRC_GEN, PL); END_IF
 
-    (* suggested oPTimization by deninis klopke
-    die betreffs genannte Funktion kann folgendermaßen oPTimiert werden:
-    In Zeilen 33 und 35 des ImPLementierungsteils kann jeweils der Teil „OR BOOL_TO_DWORD(DX.7)“ entfallen, da nach 8maligem Linksshift von „DX“ in Zeile 26 der Wert von DX = BYTE#0 ist. Eine weitere Veroderung mit diesem Wert hat keine Auswirkungen auf das Ergebnis mehr.
+    (* suggested optimization by deninis klopke
+    die betreffs genannte Funktion kann folgendermaßen optimiert werden:
+    In Zeilen 33 und 35 des Implementierungsteils kann jeweils der Teil „OR BOOL_TO_DWORD(DX.7)“ entfallen, da nach 8maligem Linksshift von „DX“ in Zeile 26 der Wert von DX = BYTE#0 ist. Eine weitere Veroderung mit diesem Wert hat keine Auswirkungen auf das Ergebnis mehr.
     *)
 
     (* typical crc polynoms

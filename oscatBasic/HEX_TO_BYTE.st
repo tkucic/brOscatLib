@@ -2,11 +2,11 @@ FUNCTION HEX_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164*)
     pt := ADR(HEX);
     stop := LEN(HEX);
-    FOR I := 1 TO stop DO
+    FOR i := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
-    	x := pt^;
+    	X := pt^;
     	(* calculate the value of the digit *)
-    	IF X > 47 AND x < 58 THEN
+    	IF X > 47 AND X < 58 THEN
     		HEX_TO_BYTE := SHL(HEX_TO_BYTE,4) + X - 48;
     	ELSIF X > 64 AND X < 71 THEN
     		HEX_TO_BYTE := SHL(HEX_TO_BYTE,4) + X - 55;

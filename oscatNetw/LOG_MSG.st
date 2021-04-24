@@ -20,9 +20,9 @@ FUNCTION_BLOCK LOG_MSG
 
     		LOG_CL.UPDATE_COUNT := LOG_CL.UPDATE_COUNT + UINT#1; (* UpdateCount erhöhen *)
     		LOG_CL.IDX := LOG_CL.IDX + INT#1; (* nächste freie Position *)
-    		idx := LOG_CL.IDX; (* lade aktuelle Log-Puffer Positition *)
-    		LOG_CL.MSG[idx] := LOG_CL.NEW_MSG; (* neuen Log-String in puffer ablegen  *)
-    		LOG_CL.MSG_OPTION[idx] := LOG_CL.NEW_MSG_OPTION; (* neue Log-String Option in puffer ablegen  *)
+    		idX := LOG_CL.IDX; (* lade aktuelle Log-Puffer Positition *)
+    		LOG_CL.MSG[idX] := LOG_CL.NEW_MSG; (* neuen Log-String in puffer ablegen  *)
+    		LOG_CL.MSG_OPTION[idX] := LOG_CL.NEW_MSG_OPTION; (* neue Log-String Option in puffer ablegen  *)
     		LOG_CL.NEW_MSG := ''; (* letzten Log-String löschen *)
     	END_IF
     END_IF

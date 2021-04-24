@@ -24,10 +24,10 @@ FUNCTION_BLOCK SUN_POS
     B := ATAN(SIN(tau) / t1);
     IF t1< 0.0 THEN B := B + math.PI2; ELSE B := B + math.PI; END_IF
     B := DEG(MODR(B, math.PI2));
-    h := DEG(ASIN(COS(C) * cos_tau * cos_lat +SIN(c) * sin_lat));
-    IF h > 180.0 THEN h := h - 360.0; END_IF
+    H := DEG(ASIN(COS(c) * cos_tau * cos_lat +SIN(c) * sin_lat));
+    IF H > 180.0 THEN H := H - 360.0; END_IF
     (* consider refraction *)
-    HR := h + REFRACTION(h);
+    HR := H + REFRACTION(H);
 
 
     (* revision history
@@ -59,6 +59,6 @@ FUNCTION_BLOCK SUN_POS
     hm	7. mar. 2009	rev 2.1
     	refraction is added after angle normalization
     	deleted 10 second lockout
-    	added output for astronomical heigth h
+    	added output for astronomical heigth H
     *)
 END_FUNCTION_BLOCK

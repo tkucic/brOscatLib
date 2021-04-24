@@ -16,7 +16,7 @@ FUNCTION_BLOCK FILE_SERVER
 
     		IF FSD.MODE = 4 THEN (* File_Remove *)
     			IF handle > 0 THEN
-    				File_change := TRUE;
+    				file_change := TRUE;
     				step := 32000; (* File_Close ausführen *)
     			ELSE
     				step := 90; (* File_Remove ausführen *)
@@ -33,7 +33,7 @@ FUNCTION_BLOCK FILE_SERVER
     				step := 200; (* ohne open prozedure weitermachen *)
     			ELSE
     				step := 32000;
-    				File_change := TRUE;
+    				file_change := TRUE;
     			END_IF
     		END_IF
     	END_IF
@@ -140,7 +140,7 @@ FUNCTION_BLOCK FILE_SERVER
     410: (* File Read *)
     	IF command = 0 THEN
     		PT.SIZE := UDINT_TO_UINT(length_read);
-    		IF NOT Error THEN
+    		IF NOT error THEN
     			file_position := file_position + length_read; (* aktueller File_Position korrigieren *)
     			FSD.OFFSET := file_position;
     		END_IF
@@ -163,7 +163,7 @@ FUNCTION_BLOCK FILE_SERVER
 
     510:
     	IF command = 0 THEN
-    		IF NOT Error THEN
+    		IF NOT error THEN
     			file_position := file_position + length_written; (* aktueller File_Position korrigieren *)
     			FSD.OFFSET := file_position;
     			IF file_position > FSD.FILE_SIZE THEN (* Datei ist groesser geworden *)
@@ -207,8 +207,8 @@ FUNCTION_BLOCK FILE_SERVER
     		handle := 0;
 
     		(* File_Name wurde fliegend geändert ? *)
-    		IF File_change THEN
-    			File_change := FALSE;
+    		IF file_change THEN
+    			file_change := FALSE;
     			step := 0;
     		ELSE
     			step := 30000;
@@ -380,7 +380,7 @@ FUNCTION_BLOCK FILE_SERVER
     (* ---------------- Debug-Message -----------------------*)
     (*IF _debug_enable THEN
     	IF step_last <> step THEN
-    		LOG_CL.NEW_MSG := 'Step: ~1';
+    		LOG_CL.NEW_MSG := 'step: ~1';
     		LOG_CL.PRINTF[1] := INT_TO_STRING(step);
     		FB_LOG_MESSAGE();
     	END_IF

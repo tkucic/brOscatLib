@@ -8,25 +8,25 @@ FUNCTION_BLOCK PULSE_LENGTH
     MIDDLE := FALSE;
     LONG := FALSE;
 
-    (* detect risINg EDGE_ *)
+    (* detect rising EDGE_ *)
     IF IN AND NOT EDGE_ THEN
     	EDGE_ := TRUE;
     	tn := tx;
 
-    (* detect for fallINg EDGE_ *)
+    (* detect for falling EDGE_ *)
     ELSIF NOT IN AND EDGE_ THEN
     	EDGE_ := FALSE;
     	tn := tx - tn;
-    	IF tn < t_SHORT THEN
+    	IF tn < t_short THEN
     		SHORT := TRUE;
-    	ELSIF tn > t_LONG THEN
+    	ELSIF tn > t_long THEN
     		LONG := TRUE;
     	ELSE
     		MIDDLE := TRUE;
     	END_IF
 
-    (* generate LONG pulse as soon as T_LONG is reached *)
-    ELSIF IN AND tx - tn > t_LONG THEN
+    (* generate LONG pulse as soon as T_long is reached *)
+    ELSIF IN AND tx - tn > t_long THEN
     	LONG := TRUE;
     END_IF
 
@@ -34,7 +34,7 @@ FUNCTION_BLOCK PULSE_LENGTH
     (* revision history
 
     hm	15. feb 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm	15 sep 2007		rev 1.1
     	replaced Time() with T_PLC_MS for compatibility and performance reasons

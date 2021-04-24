@@ -5,7 +5,7 @@ FUNCTION_BLOCK TIMER_1
     	IF STOP > T#24h THEN STOP := STOP - T#24h; END_IF
     	Q := OSCAT_BASIC.TIMECHECK(DT_TO_TOD(DTI), START, TIME_TO_TOD(STOP)) AND (SHR(BYTE#128, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTI))) AND DAY) > BYTE#0;
     ELSE
-    	Q := FALSE; (* clear output when e is not true *)
+    	Q := FALSE; (* clear output when E is not true *)
     END_IF
 
 
@@ -33,10 +33,10 @@ FUNCTION_BLOCK TIMER_1
     	no pulse is generated at power up
 
     hm	7. oct. 2008	rev 1.7
-    	changed function weekDAY to DAY_of_week
+    	changed function weekday to day_of_week
 
     hm	23. oct. 2008	rev 2.0
-    	new code, added input E, now DAYs can be selected by bits in byte DAY
+    	new code, added input E, now days can be selected by bits in byte DAY
 
     hm	6. nov. 2008	rev 2.1
     	added default for input EN and input DAY

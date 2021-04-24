@@ -4,11 +4,11 @@ FUNCTION_BLOCK HOLIDAY
     IF last_active = DATE_IN THEN RETURN; END_IF
     last_active := DATE_IN;
 
-    (* determine LANGUage *)
+    (* determine language *)
     IF LANGU = 0 THEN
-    	lx := LANGUage.DEFAULT;
+    	lx := language.DEFAULT;
     ELSE
-    	lx := MIN(LANGUage.LMAX, LANGU);
+    	lx := MIN(language.LMAX, LANGU);
     END_IF
 
     (* berechnung von ostern für das aktuelle jahr *)
@@ -18,7 +18,7 @@ FUNCTION_BLOCK HOLIDAY
     Y := FALSE;
 
     (* check for HOLIDAYS *)
-    FOR i := 0 TO size DO
+    FOR i := 0 TO SIZE DO
     	x_date := SET_DATE(jahr, HOLIDAYS[i].MONTH , HOLIDAYS[i].DAY);
     	IF HOLIDAYS[i].USE = 1 AND HOLIDAYS[i].MONTH > 0 THEN
     		(* check for fixed date holiday *)

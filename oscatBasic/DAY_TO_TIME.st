@@ -5,9 +5,9 @@ FUNCTION DAY_TO_TIME
 
     (* revision history
     hm	4. aug. 2006	rev 1.0
-    	origINal release
+    	original release
 
     hm	24. feb. 2009	rev 1.1
-    	renamed INput to IN
+    	renamed input to IN
     *)
 END_FUNCTION

@@ -4,7 +4,7 @@ FUNCTION_BLOCK HTTP_GET
     00:	DONE := FALSE;
     	IF GET AND NOT GET_LAST THEN (* auf positive Flanke SET warten *)
     		state := 10;
-    		IP4_stored := IP4; (* aktuelle IP4 speichern *)
+    		ip4_stored := IP4; (* aktuelle IP4 speichern *)
     		total_size := 0;
     		HEADER_START := UINT#0;
     		HEADER_STOP := UINT#0;
@@ -37,7 +37,7 @@ FUNCTION_BLOCK HTTP_GET
     	        	(*########################################################################*)
     	END_IF
 
-    5:	IF b64_start AND b64_DONE THEN (* warten auf base64 konvertierung *)
+    5:	IF b64_start AND b64_done THEN (* warten auf base64 konvertierung *)
     		b64_start := FALSE;
     		state := 10;
     	END_IF
@@ -97,7 +97,7 @@ FUNCTION_BLOCK HTTP_GET
     			IP_C.C_PORT := SEL(URL_DATA.PORT = WORD#0,URL_DATA.PORT,WORD#80);  (* Portnummer eintragen *)
     		END_IF
 
-    		IP_C.C_IP := IP4_stored; (* IP eintragen *)
+    		IP_C.C_IP := ip4_stored; (* IP eintragen *)
     		IP_C.C_MODE := BYTE#0; (* MODE: TCP+AKTIV+PORT+IP *)
     		IP_C.C_ENABLE := TRUE; (* Verbindungsaufbau freigeben *)
     		IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -255,17 +255,17 @@ FUNCTION_BLOCK HTTP_GET
     	END_IF
     END_CASE
 
-    GET_last := GET; (* letzten Status sichern zur Flankenerkennung *)
+    get_last := GET; (* letzten Status sichern zur Flankenerkennung *)
 
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id); (* IP_FIFO *)
 
     BASE64_ENCODE_STR(RUN:=b64_start,STR1:=b64_str1,STR2:=b64_str2); (* BASE64 kodierung *)
-    b64_DONE:=BASE64_ENCODE_STR.DONE;
+    b64_done:=BASE64_ENCODE_STR.DONE;
 
     (*####################  DEBUG-MESSAGE  ###################################*)
     (*IF _debug_enable THEN
     	IF state <> _debug_state_last THEN
-    		LOG_CL.NEW_MSG := 'http_GET: /last ~1 /New ~2';
+    		LOG_CL.NEW_MSG := 'http_get: /last ~1 /New ~2';
     		LOG_CL.PRINTF[1] := INT_TO_STRING(_debug_state_last);
     		LOG_CL.PRINTF[2] := INT_TO_STRING(state);
     		LOG_MSG();
@@ -289,7 +289,7 @@ FUNCTION_BLOCK HTTP_GET
     	verbesserte fehlererkennung und fehlerkorrektur bei buffer_to_string
 
     ks	31. mar. 2016	rev 1.4
-    	Authentication und SSL (HTTPS) hinzugefügt, DONE später zurücksetzen
+    	authentication und SSL (HTTPS) hinzugefügt, DONE später zurücksetzen
 
     *)
 END_FUNCTION_BLOCK

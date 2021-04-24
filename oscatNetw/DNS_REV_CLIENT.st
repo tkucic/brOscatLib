@@ -4,9 +4,9 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     CASE state OF
     00: (* auf positive Flanke GET warten *)
-    	IF ACTIVATE AND NOT ACTIVATE_last THEN
+    	IF ACTIVATE AND NOT activate_last THEN
     		ERROR := DWORD#0;
-    		IP4_copy := IP4; (* IP4 sichern *)
+    		ip4_copy := IP4; (* IP4 sichern *)
     		ip_state := BYTE#1;
     		DOMAIN := '';
     		DONE := FALSE;
@@ -119,7 +119,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     END_CASE
 
-    ACTIVATE_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
     IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
@@ -143,7 +143,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     (*-----------------------------------------------------------------------------------------------------------------*)
 
     (*
-    ERRORcodes  Description	References 
+    Errorcodes  Description	References 
     000	No ERROR. 		 	The request completed successfully.
     001	Format ERROR. 		The name server was unable to interpret the query. 
     002	Server failure.  	The name server was unable to process this query due to a problem with the name server. 
@@ -151,7 +151,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     004	Not Implemented. 	The name server does not support the requested kind of query.
     005	Refused. 			The name server refuses to perform the specified operation for policy reasons.
       						 For example, a name server may not wish to provide the information to the particular requester, or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.
-    006	YXDOMAIN.			Name Exists when it should not. 
+    006	YXDomain.			Name Exists when it should not. 
     007	YXRRSet. RR			Set Exists when it should not. 
     008	NXRRSet. RR			Set that should exist does not. 
     009	NotAuth.			Server Not Authoritative for zone. 

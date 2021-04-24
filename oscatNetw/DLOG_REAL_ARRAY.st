@@ -2,7 +2,7 @@ FUNCTION_BLOCK DLOG_REAL_ARRAY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46*)
     FOR idx := 1 TO R_COUNT DO
 
-    	CASE x.ADD_COM OF
+    	CASE X.ADD_COM OF
 
     	01:	(* ADD INFO *)
     		X.ID_MAX := X.ID_MAX + USINT#1;

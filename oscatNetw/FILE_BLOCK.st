@@ -6,16 +6,16 @@ FUNCTION_BLOCK FILE_BLOCK
     		IF FSD.FILE_OPEN AND (FSD.FILE_SIZE = 0 OR POS >= FSD.FILE_SIZE) THEN
     			ERROR := 255;
     			MODE := 0;
-    		ELSIF POS < DATA_start OR POS > DATA_stop OR NOT FSD.FILE_OPEN THEN (* Daten lesen notwendig *)
+    		ELSIF POS < data_start OR POS > data_stop OR NOT FSD.FILE_OPEN THEN (* Daten lesen notwendig *)
     			FSD.FILENAME := FILENAME;
     			FSD.MODE := 1; (* open + read *)
     			FSD.OFFSET := POS;
     			PT.SIZE := 65535; (* maximale anzahl lesen *);
-    			DATA_start := 0;
-    			DATA_stop := 0;
+    			data_start := 0;
+    			data_stop := 0;
     			step := 10;
     		ELSE (* Daten sind im Buffer vorhanden *)
-    			i := UDINT_TO_INT(POS - DATA_start); (* index berechnen *)
+    			i := UDINT_TO_INT(POS - data_start); (* index berechnen *)
     			DATA := PT.BUFFER[i];
     			MODE := 0;
     			(* ---------------------- Debug-Message ----------------------------*)
@@ -35,8 +35,8 @@ FUNCTION_BLOCK FILE_BLOCK
     			ERROR := FSD.ERROR; (* Fehler ausgeben *)
     			MODE := 0;
     		ELSE
-    			DATA_start := POS;
-    			DATA_stop := POS + UINT_TO_UDINT(PT.SIZE) - 1;
+    			data_start := POS;
+    			data_stop := POS + UINT_TO_UDINT(PT.SIZE) - 1;
     		END_IF
     		step := 0;
     	END_IF

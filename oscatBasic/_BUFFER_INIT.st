@@ -11,14 +11,14 @@ FUNCTION _BUFFER_INIT
     	temp := temp + 1;
     END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
-    PTw := PT;
+    ptw := PT;
     temp := SHL(BYTE_TO_DWORD(INIT),24) OR SHL(BYTE_TO_DWORD(INIT),16) OR SHL(BYTE_TO_DWORD(INIT),8) OR BYTE_TO_DWORD(INIT);
-    WHILE PTw < end32 DO
-    	PTw^ := temp;
-    	PTw := PTw + 4;
+    WHILE ptw < end32 DO
+    	ptw^ := temp;
+    	ptw := ptw + 4;
     END_WHILE
     (* copy the remaining bytes in byte mode *)
-    PT := PTw;
+    PT := ptw;
     WHILE PT < end DO
     	PT^ := INIT;
     	PT := PT + 1;

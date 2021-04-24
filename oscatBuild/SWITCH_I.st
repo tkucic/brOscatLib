@@ -3,26 +3,26 @@ FUNCTION_BLOCK SWITCH_I
     (* read system time *)
     tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    (* asynchronous SET and reSET fiRST *)
+    (* asynchronous SET and reset first *)
     IF SET AND NOT RST THEN
     	Q := TRUE;
     	T_on := tx;
     ELSIF RST THEN
     	Q := FALSE;
-    (* check FOR INput EDGE_ AND start debounce timer *)
+    (* check FOR input EDGE_ AND start debounce timer *)
     ELSIF (IN XOR EDGE_) AND NOT (state = 1) THEN
     	state := 1;
-    	T_on := Tx;
+    	T_on := tx;
     (* EDGE_ was detected and debounce time elapsed *)
-    ELSIF (state = 1) AND (Tx - T_DEBOUNCE >= T_on) THEN
+    ELSIF (state = 1) AND (tx - T_DEBOUNCE >= T_on) THEN
     	state := 2;
-    	(* react on risINg or fallINg EDGE_ dependINg on r_EDGE_ *)
+    	(* react on rising or falling EDGE_ depending on r_EDGE_ *)
     	IF r_EDGE_ XOR IN THEN Q := NOT Q; END_IF
     (* wait for T_RECONFIG and adjust r_EDGE_ *)
-    ELSIF state = 2 AND Tx - T_RECONFIG >= T_on THEN
+    ELSIF state = 2 AND tx - T_RECONFIG >= T_on THEN
     	r_EDGE_ := IN;
     END_IF
-    IF Q AND T_ON_MAX > t#0ms AND Tx >= T_on + T_ON_MAX THEN
+    IF Q AND T_ON_MAX > t#0ms AND tx >= T_on + T_ON_MAX THEN
     	Q := FALSE;
     END_IF
     EDGE_ := IN;
@@ -30,7 +30,7 @@ FUNCTION_BLOCK SWITCH_I
     (* revision history
 
     hm	4 aug 2006	rev 1.0
-    	origINal version
+    	original version
 
     hm	15.9.2007	rev 1.1
     	replaced Time() with T_PLC_MS for compatibility and performance reasons

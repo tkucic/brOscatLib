@@ -5,7 +5,7 @@ FUNCTION DEW_TEMP
     	SDD := 6.1078*EXPT(10,(a*T)/(b+T));
     	DD := RH/100 * SDD;
     	V := LOG(DD/6.1078);
-    	DEW_TEMP := b*V/(a-v);
+    	DEW_TEMP := b*V/(a-V);
     *)
     	V := LOG(RH * 0.01 * OSCAT_BASIC.EXP10((a*T) / (b+T)));
     	DEW_TEMP := b*V / (a-V);
@@ -61,7 +61,7 @@ FUNCTION DEW_TEMP
        1. SDD(T) = 6.1078 * 10^((a*T)/(b+T))
        2. DD(r,T) = r/100 * SDD(T)
        3. r(T,TD) = 100 * SDD(TD) / SDD(T)
-       4. TD(r,T) = b*v/(a-v) mit v(r,T) = log10(DD(r,T)/6.1078)
+       4. TD(r,T) = b*V/(a-V) mit V(r,T) = log10(DD(r,T)/6.1078)
        5. AF(r,TK) = 10^5 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 10^5 * mw/R* * SDD(TD)/TK 
 
     *)

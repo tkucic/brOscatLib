@@ -7,11 +7,11 @@ FUNCTION_BLOCK AIN1
     	RETURN;
     END_IF
 
-    (* strip off the data INput *)
-    tb := SHR(SHL(IN, 31 - bit_N), 31 - bit_N + BIT_0);
+    (* strip off the data input *)
+    tB := SHR(SHL(IN, 31 - bit_N), 31 - bit_N + BIT_0);
 
     (* extract OVERFLOW bit *)
-    OVERFLOW := ((SHR(IN,OVERFLOW_BIT) AND 16#0000_0001) = 1) OR (OVERFLOW_CODE_EN AND OVERFLOW_CODE = IN) OR (tb < code_mIN OR tb > CODE_MAX);
+    OVERFLOW := ((SHR(IN,OVERFLOW_BIT) AND 16#0000_0001) = 1) OR (OVERFLOW_CODE_EN AND OVERFLOW_CODE = IN) OR (tB < CODE_MIN OR tB > CODE_MAX);
     IF OVERFLOW THEN
     	OUT := OVERFLOW_OUTPUT;
     	RETURN;
@@ -21,25 +21,25 @@ FUNCTION_BLOCK AIN1
     SIGN := (SHR(IN,SIGN_BIT) AND 16#0000_0001) = 1;
 
     (* convert IN to OUT *)
-    OUT := (DWORD_TO_REAL(tb - code_mIN) * (OUT_MAX - OUT_mIN) / DWORD_TO_REAL(CODE_MAX - code_mIN) + OUT_mIN);
+    OUT := (DWORD_TO_REAL(tB - CODE_MIN) * (OUT_MAX - OUT_MIN) / DWORD_TO_REAL(CODE_MAX - CODE_MIN) + OUT_MIN);
     IF SIGN THEN OUT := OUT * -1.0; END_IF
 
 
 
     (* revision history
     hm	23. feb 2008	rev 1.0
-    	origINal version
+    	original version
 
     hm	16. mar 2008	rev 1.1
     	added type conversions to avoid warnngs under codesys 30
 
     hm	22. apr. 2008	rev 1.2
-    	corrected ERROR IN formula when code_mIN was set
+    	corrected ERROR IN formula when CODE_MIN was set
     	corrected ERROR when SIGN bit was used
     	optimized code for better performance
 
     hm	10. mar. 2009	rev 1.3
-    	real constants updated to new systax usINg dot
+    	real constants updated to new systax using dot
 
     *)
 END_FUNCTION_BLOCK

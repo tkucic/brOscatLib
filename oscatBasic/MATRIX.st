@@ -13,7 +13,7 @@ FUNCTION_BLOCK MATRIX
     FOR i := 0 TO 3 DO
     	IF X[i] <> L[i] THEN
     		(* scan line information has changed CODE need to be found and generated *)
-    		temp := x[i] XOR L[i];
+    		temp := X[i] XOR L[i];
     		IF temp.0 THEN
     			CODE := 1;
     			CODE.7 := X[i].0;
@@ -36,11 +36,11 @@ FUNCTION_BLOCK MATRIX
     			L[i].4 := X[i].4;
     		END_IF
     		TP := TRUE;
-    		CODE.4 := Line.0;
-    		CODE.5 := Line.1;
-    		CODE.6 := Line.2;
+    		CODE.4 := line.0;
+    		CODE.5 := line.1;
+    		CODE.6 := line.2;
 
-    		(* check if RELEASE CODEs need to be killed *)
+    		(* check if RELEASE codes need to be killed *)
     		IF NOT RELEASE AND CODE < 127 THEN
     			CODE := 0;
     			TP := FALSE;
@@ -66,7 +66,7 @@ FUNCTION_BLOCK MATRIX
 
 
     hm		11.9.2007	rev 1.1		
-    	deleted unused variables k and old_CODE
+    	deleted unused variables k and old_code
 
     hm		23.12.2007	rev 1.2
     	added exit statement in for loop instead of i:=5

@@ -9,10 +9,10 @@ FUNCTION_BLOCK CLICK_DEC
     END_IF
 
     IF IN AND NOT EDGE_ AND NOT tx.q THEN
-    	(* a risINg EDGE_ on IN sets the counter to 0 *)
+    	(* a rising EDGE_ on IN sets the counter to 0 *)
     	cnt := 0;
     ELSIF tx.Q AND NOT IN AND EDGE_ THEN
-    	(* count fallINg EDGE_s when tp.q is true *)
+    	(* count falling EDGE_s when tp.q is true *)
     	cnt := cnt + 1;
     ELSIF NOT tx.Q THEN
     	CASE cnt OF
@@ -33,7 +33,7 @@ FUNCTION_BLOCK CLICK_DEC
     (* revision history
 
     hm 17. jul. 2008	rev 1.0
-    	origINal version released
+    	original version released
 
     hm	14. mar. 2009	rev 1.1
     	removed double assignments

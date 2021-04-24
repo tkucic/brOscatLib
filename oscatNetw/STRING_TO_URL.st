@@ -11,7 +11,7 @@ FUNCTION STRING_TO_URL
 
     *)
 
-    (* check if STRing is empty and return empty url *)
+    (* check if string is empty and return empty url *)
     IF STR = '' THEN RETURN; END_IF
 
     (* extract the protocol *)
@@ -87,7 +87,7 @@ FUNCTION STRING_TO_URL
     	original version
 
     ks		20. dec. 2010	rev 1.1
-    	STRinglength 250 , var x
+    	stringlength 250 , var x
 
     ks		27. oct. 2012	rev 1.2
     	var_temp zu var geändert

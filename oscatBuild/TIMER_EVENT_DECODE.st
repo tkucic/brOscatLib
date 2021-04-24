@@ -64,7 +64,7 @@ FUNCTION TIMER_EVENT_DECODE
     	original version
 
     hm	25. oct. 2008	rev 1.1
-    	adding input LANG for LANGuage selection
+    	adding input LANG for language selection
     *)
 
 END_FUNCTION

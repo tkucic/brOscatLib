@@ -8,7 +8,7 @@ FUNCTION_BLOCK NET_VAR_X8
 
     IF X.STATE > BYTE#0 AND X.ERROR_ID = BYTE#0 THEN
     	index := X.index; (* PCWORX Workaround *)
-    	IF INT_TO_UINT(index + 34) > X.BUF_SIZE THEN  (* ID (1) + TYPE (1) + 8 x DWORD (4) *)
+    	IF INT_TO_UINT(index + 34) > X.BUF_SIZE THEN  (* ID (1) + TYPE (1) + 8 X DWORD (4) *)
     		X.ERROR_ID := ID;
     	ELSE
     		IF X.STATE = BYTE#1 THEN (* Daten schreiben *)

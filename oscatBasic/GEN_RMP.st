@@ -23,7 +23,7 @@ FUNCTION_BLOCK GEN_RMP
     IF PT > t#0s THEN temp := FRACT(TIME_TO_REAL(tx + MULTIME(PT, DL)) / TIME_TO_REAL(PT)); END_IF
     OUT := AM * temp + OS;
 
-    (* boolean OUTput Q *)
+    (* boolean output Q *)
     Q := temp < ltemp;
 
     (* revision history
@@ -37,7 +37,7 @@ FUNCTION_BLOCK GEN_RMP
     	avoid divide by 0 when PT = 0
 
     ks	26. oct. 2008	rev 1.3
-    	code oPTimization
+    	code optimization
 
     hm	10. mar. 2009	rev 1.4
     	changed real constants to use dot syntax

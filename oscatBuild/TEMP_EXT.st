@@ -2,10 +2,10 @@ FUNCTION_BLOCK TEMP_EXT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=449*)
     IF NOT init THEN
     	init := TRUE;
-    	HEAT_start := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(HEAT_PERIOD_START),OSCAT_BASIC.DAY_OF_MONTH(HEAT_PERIOD_START));
-    	HEAT_stop := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(HEAT_PERIOD_STOP),OSCAT_BASIC.DAY_OF_MONTH(HEAT_PERIOD_STOP));
-    	COOL_start := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(COOL_PERIOD_START),OSCAT_BASIC.DAY_OF_MONTH(COOL_PERIOD_START));
-    	COOL_stop := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(COOL_PERIOD_STOP),OSCAT_BASIC.DAY_OF_MONTH(COOL_PERIOD_STOP));
+    	heat_start := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(HEAT_PERIOD_START),OSCAT_BASIC.DAY_OF_MONTH(HEAT_PERIOD_START));
+    	heat_stop := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(HEAT_PERIOD_STOP),OSCAT_BASIC.DAY_OF_MONTH(HEAT_PERIOD_STOP));
+    	cool_start := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(COOL_PERIOD_START),OSCAT_BASIC.DAY_OF_MONTH(COOL_PERIOD_START));
+    	cool_stop := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(COOL_PERIOD_STOP),OSCAT_BASIC.DAY_OF_MONTH(COOL_PERIOD_STOP));
     END_IF
 
     (* read system time *)
@@ -21,9 +21,9 @@ FUNCTION_BLOCK TEMP_EXT
     (* read the correct external temperature depending on the T_EXT_CONFIG setting *)
     T_EXT := OSCAT_BASIC.MULTI_IN(T_EXT1, T_EXT2, T_EXT3, T_EXT_DEFAULT, T_EXT_MIN, T_EXT_MAX, T_EXT_CONFIG);
 
-    (* dtermine HEATing *)
-    IF (HEAT_start <= HEAT_stop AND xdate >= HEAT_start AND xdate <= HEAT_stop) OR (HEAT_start > HEAT_stop AND (xdate >= HEAT_start OR xdate <= HEAT_stop)) THEN
-    	(* HEATing period id true check for temperature *)
+    (* dtermine heating *)
+    IF (heat_start <= heat_stop AND xdate >= heat_start AND xdate <= heat_stop) OR (heat_start > heat_stop AND (xdate >= heat_start OR xdate <= heat_stop)) THEN
+    	(* heating period id true check for temperature *)
     	IF day AND T_EXT <= HEAT_START_TEMP_DAY THEN
     		HEAT := TRUE;
     	ELSIF NOT day AND T_EXT <= HEAT_START_TEMP_NIGHT THEN
@@ -35,9 +35,9 @@ FUNCTION_BLOCK TEMP_EXT
     	HEAT := FALSE;
     END_IF
 
-    (* dtermine COOLing *)
-    IF (COOL_start <= COOL_stop AND xdate >= COOL_start AND xdate <= COOL_stop) OR (COOL_start > COOL_stop AND (xdate >= COOL_start OR xdate <= COOL_stop)) THEN
-    	(* COOLing period is true check for temperature *)
+    (* dtermine cooling *)
+    IF (cool_start <= cool_stop AND xdate >= cool_start AND xdate <= cool_stop) OR (cool_start > cool_stop AND (xdate >= cool_start OR xdate <= cool_stop)) THEN
+    	(* cooling period is true check for temperature *)
     	IF day AND T_EXT >= COOL_START_TEMP_DAY THEN
     		COOL := TRUE;
     	ELSIF NOT day AND T_EXT >= COOL_START_TEMP_NIGHT THEN

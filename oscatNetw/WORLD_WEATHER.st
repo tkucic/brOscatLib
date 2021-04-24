@@ -38,7 +38,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     		idx := 0;
     		day := 0;
     		cnt := 0;
-    		OFFSET := HTTP_GET.BODY_START; (* Start Offset vorgeben *)
+    		OFFSET := HTTP_GET.BODY_START; (* Start offset vorgeben *)
     		size := HTTP_GET.BODY_STOP; (* End Position *)
     		run := 1; (* Element suchen *)
     		state := 80;

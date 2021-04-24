@@ -11,13 +11,13 @@ FUNCTION _BUFFER_CLEAR
     	temp := temp + 1;
     END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
-    PTw := PT;
-    WHILE PTw < end32 DO (* *)
-    	PTw^ := 0;
-    	PTw := PTw + 4;
+    ptw := PT;
+    WHILE ptw < end32 DO (* *)
+    	ptw^ := 0;
+    	ptw := ptw + 4;
     END_WHILE
     (* copy the remaining bytes in byte mode *)
-    PT := PTw;
+    PT := ptw;
     WHILE PT < end DO
     	PT^ := 0;
     	PT := PT + 1;

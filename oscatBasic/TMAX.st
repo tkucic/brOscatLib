@@ -7,7 +7,7 @@ FUNCTION_BLOCK TMAX
 
     IF NOT IN THEN
     	Q := FALSE;
-    ELSIF IN AND NOT last_IN THEN
+    ELSIF IN AND NOT last_in THEN
     	Q := TRUE;
     	start := tx;
     ELSIF (tx - start >= PT) AND Q THEN
@@ -15,13 +15,13 @@ FUNCTION_BLOCK TMAX
     	Z := TRUE;
     END_IF
 
-    last_IN := IN;
+    last_in := IN;
 
 
 
     (* revision history
     hm	20. jul. 2008	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION_BLOCK

@@ -17,7 +17,7 @@ FUNCTION FIND_NUM
     	original version
 
     hm	29. feb 2008	rev 1.1
-    	added input POS to start search at POSition
+    	added input POS to start search at position
 
     hm	29. mar. 2008	rev 1.2
     	changed STRING to STRING(STRING_LENGTH)

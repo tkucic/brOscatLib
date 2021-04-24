@@ -4,7 +4,7 @@ FUNCTION BYTE_TO_GRAY
 
     (* revision history
     hm	9. nov. 2009	rev 1.0
-    	origINal version
+    	original version
 
     *)
 END_FUNCTION
