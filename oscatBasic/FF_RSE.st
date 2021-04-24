@@ -4,10 +4,10 @@ FUNCTION_BLOCK FF_RSE
     	(* asynchronous reset *)
     	Q := FALSE;
     ELSIF CR AND NOT er THEN
-    	(* rising EDGE_ on CR *)
+    	(* rising edge on CR *)
     	Q := FALSE;
     ELSIF CS AND NOT es THEN
-    	(* rising EDGE_ on CS *)
+    	(* rising edge on CS *)
     	Q := TRUE;
     END_IF
 

@@ -1,9 +1,9 @@
 FUNCTION_BLOCK MESSAGE_4R
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173*)
-    (* check for rising EDGE_ on EN *)
+    (* check for rising edge_ on EN *)
     TR := FALSE;
     IF ENQ THEN
-    	IF (NOT EDGE_ AND CLK) OR timer.q THEN
+    	IF (NOT edge_ AND CLK) OR timer.q THEN
     			MN := INC1(MN, MM);
     			TR := TRUE;
     			timer(in := FALSE);
@@ -14,7 +14,7 @@ FUNCTION_BLOCK MESSAGE_4R
     				3 : MX := M3;
     			END_CASE
     	END_IF
-    	EDGE_ := CLK;
+    	edge_ := CLK;
     	timer( in := CLK, pt := T1);
     ELSE
     	MX := '';

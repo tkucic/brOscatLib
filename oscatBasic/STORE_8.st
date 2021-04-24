@@ -19,7 +19,7 @@ FUNCTION_BLOCK STORE_8
     	IF D6 THEN Q6 := TRUE; END_IF
     	IF D7 THEN Q7 := TRUE; END_IF
 
-    	IF CLR AND NOT EDGE_ THEN
+    	IF CLR AND NOT edge_ THEN
     		IF Q0 THEN Q0 := FALSE;
     		ELSIF Q1 THEN Q1 := FALSE;
     		ELSIF Q2 THEN Q2 := FALSE;
@@ -30,7 +30,7 @@ FUNCTION_BLOCK STORE_8
     		ELSE Q7 := FALSE;
     		END_IF
     	END_IF
-    	EDGE_ := CLR;
+    	edge_ := CLR;
     END_IF
 
 

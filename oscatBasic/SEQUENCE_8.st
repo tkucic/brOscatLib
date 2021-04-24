@@ -24,8 +24,8 @@ FUNCTION_BLOCK SEQUENCE_8
     	STATUS := 110;
     	RUN := 0;
 
-    (* EDGE_ on START input restarts the sequencer *)
-    ELSIF START AND NOT EDGE_ THEN
+    (* edge_ on START input restarts the sequencer *)
+    ELSIF START AND NOT edge_ THEN
     	STEP := 0;
     	last := tx;
     	STATUS := 111;
@@ -39,7 +39,7 @@ FUNCTION_BLOCK SEQUENCE_8
     	Q7 := 0;
     	RUN := 1;
     END_IF
-    EDGE_ := START;
+    edge_ := START;
 
     (* check if stop on error is necessary *)
     IF STATUS > 0 AND STATUS < 100 AND STOP_ON_ERROR THEN RETURN; END_IF

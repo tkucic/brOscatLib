@@ -3,16 +3,16 @@ FUNCTION_BLOCK MANUAL_1
     IF NOT MAN THEN
     	Q := IN;
     	STATUS := 100;
-    	EDGE_ := FALSE;
+    	edge_ := FALSE;
     ELSIF NOT S_edge AND SET THEN
     	Q := TRUE;
-    	EDGE_ := TRUE;
+    	edge_ := TRUE;
     	STATUS := 101;
     ELSIF NOT r_edge AND RST THEN
     	Q := FALSE;
-    	EDGE_ := TRUE;
+    	edge_ := TRUE;
     	STATUS := 102;
-    ELSIF NOT EDGE_ THEN
+    ELSIF NOT edge_ THEN
     	Q := M_I;
     	STATUS := 103;
     END_IF

@@ -20,7 +20,7 @@ FUNCTION_BLOCK FT_PT1
     	for very small time values real output would run OUT of range.
 
     hm 3.1.2007	rev 1.2
-    	corrected an error for falling EDGE_ failures.
+    	corrected an error for falling edge failures.
     	added output faktor K.
 
     hm 27. 2. 2007	rev 1.3

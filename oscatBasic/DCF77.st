@@ -7,8 +7,8 @@ FUNCTION_BLOCK DCF77
     t1 := DWORD_TO_TIME(T_PLC_MS());
     tx := t1 - last;
 
-    IF REC XOR EDGE_ THEN
-    	EDGE_ := REC;
+    IF REC XOR edge_ THEN
+    	edge_ := REC;
     	IF NOT REC AND tx > t#1700ms AND tx < t#2000ms THEN
     		(* start condition reached *)
     		state := 0;

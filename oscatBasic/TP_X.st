@@ -3,8 +3,8 @@ FUNCTION_BLOCK TP_X
     (* read system_time *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* rising EDGE_ trigger *)
-    IF IN AND NOT EDGE_ THEN
+    (* rising edge_ trigger *)
+    IF IN AND NOT edge_ THEN
     	start := tx;
     	Q := PT > t#0ms;
     ELSIF Q THEN
@@ -14,7 +14,7 @@ FUNCTION_BLOCK TP_X
     		ET := t#0ms;
     	END_IF
     END_IF
-    EDGE_ := IN;
+    edge_ := IN;
 
     (* revision history
     hm	4. aug 2006		rev 1.0

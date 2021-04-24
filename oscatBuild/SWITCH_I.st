@@ -9,14 +9,14 @@ FUNCTION_BLOCK SWITCH_I
     	T_on := tx;
     ELSIF RST THEN
     	Q := FALSE;
-    (* check FOR input EDGE_ AND start debounce timer *)
-    ELSIF (IN XOR EDGE_) AND NOT (state = 1) THEN
+    (* check FOR input edge_ AND start debounce timer *)
+    ELSIF (IN XOR edge_) AND NOT (state = 1) THEN
     	state := 1;
     	T_on := tx;
-    (* EDGE_ was detected and debounce time elapsed *)
+    (* edge_ was detected and debounce time elapsed *)
     ELSIF (state = 1) AND (tx - T_DEBOUNCE >= T_on) THEN
     	state := 2;
-    	(* react on rising or falling EDGE_ depending on r_edge *)
+    	(* react on rising or falling edge_ depending on r_edge *)
     	IF r_edge XOR IN THEN Q := NOT Q; END_IF
     (* wait for T_RECONFIG and adjust r_edge *)
     ELSIF state = 2 AND tx - T_RECONFIG >= T_on THEN
@@ -25,7 +25,7 @@ FUNCTION_BLOCK SWITCH_I
     IF Q AND T_ON_MAX > t#0ms AND tx >= T_on + T_ON_MAX THEN
     	Q := FALSE;
     END_IF
-    EDGE_ := IN;
+    edge_ := IN;
 
     (* revision history
 

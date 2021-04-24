@@ -25,7 +25,7 @@ FUNCTION_BLOCK BOILER
     	ERROR := FALSE;
 
     	(* determine if HEAT needs to be turned on *)
-    	IF BOOST AND NOT EDGE_ AND T_UPPER < T_UPPER_MAX THEN
+    	IF BOOST AND NOT edge_ AND T_UPPER < T_UPPER_MAX THEN
     		STATUS := 101;
     		HEAT := TRUE;
     		boost_mode := TRUE;
@@ -64,7 +64,7 @@ FUNCTION_BLOCK BOILER
     	HEAT := FALSE;
     	ERROR := FALSE;
     END_IF
-    EDGE_ := BOOST;
+    edge_ := BOOST;
 
 
     (* revision history

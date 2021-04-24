@@ -12,13 +12,13 @@ FUNCTION_BLOCK HEAT_METER
     (* integrate or add consumption *)
     int1(run := NOT PULSE_MODE AND E, in := x * LPH * 2.77777777777E-4);
     IF PULSE_MODE THEN
-    	IF NOT EDGE_ AND E THEN Y := Y + x * LPH; END_IF
+    	IF NOT edge_ AND E THEN Y := Y + x * LPH; END_IF
     ELSE
     	Y := int1.Out;
     END_IF
 
     (* store the value of E *)
-    EDGE_ := E;
+    edge_ := E;
 
     (* read system_time *)
     tx := OSCAT_BASIC.T_PLC_MS();

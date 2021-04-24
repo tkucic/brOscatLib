@@ -2,11 +2,11 @@ FUNCTION_BLOCK DRIVER_4C
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=455*)
     IF RST OR off.Q THEN
     	SN := 0;
-    ELSIF IN AND NOT EDGE_ THEN
+    ELSIF IN AND NOT edge_ THEN
     	SN := SN + 1;
     	IF SN > 7 OR SX[SN] = 0 THEN SN := 0; END_IF
     END_IF
-    EDGE_ := IN;
+    edge_ := IN;
     IF SN > 0 THEN
     	Q0 := SX[SN].0;
     	Q1 := SX[SN].1;
