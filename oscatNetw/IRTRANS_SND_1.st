@@ -5,7 +5,7 @@ FUNCTION_BLOCK IRTRANS_SND_1
 
     t(IN:= lk = k , PT:=T_REPEAT);
 
-    IF S_BUF.SIZE = 0 THEN
+    IF S_BUF.size = 0 THEN
     	IF IN THEN
     		skey := KEY_CODE; k := 1;
     	ELSE
@@ -19,8 +19,8 @@ FUNCTION_BLOCK IRTRANS_SND_1
     		str := CONCAT(str,',');
     		str := CONCAT(str,skey);
     		size := LEN(str);
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=str, POS:=0, PT:=ADR(S_BUF.BUFFER), SIZE:=size);
-    		S_BUF.SIZE := size; (* Sendelänge eintragen *)
+    		OSCAT_BASIC._STRING_TO_BUFFER(str:=str, POS:=0, PT:=ADR(S_BUF.BUFFER), size:=size);
+    		S_BUF.size := size; (* Sendelänge eintragen *)
     		KEY := k;
     		lk := k; (* letzten KEY speichern *)
     		t(IN:=FALSE); (* Reset Time *)

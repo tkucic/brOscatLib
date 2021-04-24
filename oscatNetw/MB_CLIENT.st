@@ -3,16 +3,16 @@ FUNCTION_BLOCK MB_CLIENT
     CASE state OF
 
     00: (* Warten auf DELAY-Time *)
-    	TON_1(IN:=ENABLE,PT:=DELAY);
+    	ton_1(IN:=ENABLE,PT:=DELAY);
 
-    	IF TON_1.Q OR DELAY = T#0s THEN
-    		TON_1(IN:=FALSE);
+    	IF ton_1.Q OR DELAY = T#0s THEN
+    		ton_1(IN:=FALSE);
     		state := 20;
-    		IP_STATE := BYTE#1; (* Anmelden *)
+    		ip_state := BYTE#1; (* Anmelden *)
     	END_IF
 
     20: (* Bei IP_Control anmelden *)
-    	IF IP_STATE = BYTE#3 THEN
+    	IF ip_state = BYTE#3 THEN
     		(* IP Datenverkehr einrichten *)
     		IP_C.C_PORT := WORD#0; (* Port von IP_CONTROL verwenden *)
     		IP_C.C_IP := DWORD#0; (* IP von IP_CONTROL verwenden *)
@@ -210,11 +210,11 @@ FUNCTION_BLOCK MB_CLIENT
 
     		(* Daten senden *)
     		IF ERROR = DWORD#00 THEN
-    			Transaction_ID := Transaction_ID + 1;
+    			transaction_id := transaction_id + 1;
     			w_tmp := UINT_TO_WORD(S_BUF.SIZE - UINT#6);
     			(* ---- H E A D E R --------------------------------------------------------------- *)
-    			S_BUF.BUFFER[0] := IP_ID; (* TRANSACTION-ID HI-Byte *)
-    			S_BUF.BUFFER[1] := INT_TO_BYTE(Transaction_ID); (* TRANSACTION-ID LO-Byte *)
+    			S_BUF.BUFFER[0] := ip_id; (* TRANSACTION-ID HI-Byte *)
+    			S_BUF.BUFFER[1] := INT_TO_BYTE(transaction_id); (* TRANSACTION-ID LO-Byte *)
     			S_BUF.BUFFER[2] := BYTE#00; (* PROTOKOLL-ID HI-Byte *)
     			S_BUF.BUFFER[3] := BYTE#00; (* PROTOKOLL-ID LO-Byte *)
     			S_BUF.BUFFER[4] := WORD_TO_BYTE(SHR(w_tmp,8)); (* Laenge HI-Byte *)
@@ -225,7 +225,7 @@ FUNCTION_BLOCK MB_CLIENT
     			R_BUF.SIZE := UINT#0; (* Empfangsbuffer löschen *)
     			state := 30; (* wait for response *)
     		ELSE
-    			IP_STATE := BYTE#4; (* Abmelden *)
+    			ip_state := BYTE#4; (* Abmelden *)
     			state := 00;
     		END_IF
     	END_IF
@@ -233,7 +233,7 @@ FUNCTION_BLOCK MB_CLIENT
     30: (* response *)
     	IF IP_C.ERROR <> DWORD#00 THEN
     		ERROR := IP_C.ERROR;
-    		IP_STATE := BYTE#4; (* Abmelden *)
+    		ip_state := BYTE#4; (* Abmelden *)
     		state := 00;
     	ELSIF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE > UINT#0 THEN
     		(* erwartete länge in sendebuffer nachträglich eintragen um vergleich zu ermöglichen *)
@@ -247,7 +247,7 @@ FUNCTION_BLOCK MB_CLIENT
 
     		IF R_BUF.SIZE >= UINT#9 AND R_BUF.BUFFER[7] > BYTE#128 THEN  (* Bit 7 = ERROR Message *)
     			ERROR := BYTE_TO_DWORD(R_BUF.BUFFER[8]);
-    			IP_STATE := BYTE#4; (* Abmelden *)
+    			ip_state := BYTE#4; (* Abmelden *)
     			state := 00;
     		ELSIF R_BUF.SIZE = INT_TO_UINT(response + 9) AND i > comp THEN
     			mask := SHL(DWORD#1,FC);
@@ -294,7 +294,7 @@ FUNCTION_BLOCK MB_CLIENT
     			ERROR := DWORD#3; (* ILLEGAL DATA VALUE *)
     		END_IF
 
-    		IP_STATE := BYTE#4; (* Abmelden *)
+    		ip_state := BYTE#4; (* Abmelden *)
     		state := 00;
     		R_BUF.SIZE := UINT#0;
 
@@ -302,9 +302,9 @@ FUNCTION_BLOCK MB_CLIENT
 
     END_CASE
 
-    (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=IP_STATE,ID:=IP_ID);
-    BUSY := IP_STATE = BYTE#3;
+    (* ip_fifo *)
+    ip_fifo(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
+    BUSY := ip_state = BYTE#3;
 
     (* revision history
     ks	05. jan. 2009	rev 1.0

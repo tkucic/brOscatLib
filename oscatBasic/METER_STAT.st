@@ -1,8 +1,8 @@
 FUNCTION_BLOCK METER_STAT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=345*)
     IF RST THEN
-    	Last_Day := 0.0;
-    	Current_Day := 0.0;
+    	LAST_DAY := 0.0;
+    	CURRENT_DAY := 0.0;
     	Day_Start := IN;
     	LAST_WEEK := 0.0;
     	CURRENT_WEEK := 0.0;
@@ -14,10 +14,10 @@ FUNCTION_BLOCK METER_STAT
     	CURRENT_YEAR := 0.0;
     	Year_Start := IN;
     ELSE
-    	Current_Day := IN - Day_Start;
-    	Current_Week := IN - Week_Start;
-    	Current_Month := IN - Month_Start;
-    	Current_Year := IN - Year_Start;
+    	CURRENT_DAY := IN - Day_Start;
+    	CURRENT_WEEK := IN - Week_Start;
+    	CURRENT_MONTH := IN - Month_Start;
+    	CURRENT_YEAR := IN - Year_Start;
     END_IF
 
     IF YEAR_OF_DATE(DI) > YEAR_OF_DATE(last_run) THEN

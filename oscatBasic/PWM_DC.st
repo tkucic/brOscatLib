@@ -2,7 +2,7 @@ FUNCTION_BLOCK PWM_DC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=263*)
     IF F > 0.0 THEN
     	tmp := 1000.0 / F;
-    	CLK(PT := REAL_TO_TIME(tmp));
+    	clk(PT := REAL_TO_TIME(tmp));
     	pulse(in := clk.Q, pt := REAL_TO_TIME(tmp * DC));
     	Q := pulse.Q;
     END_IF

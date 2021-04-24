@@ -2,14 +2,14 @@ FUNCTION_BLOCK SYS_LOG
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=131*)
     CASE state OF
     00: (* auf positive Flanke SET warten *)
-    	IF ACTIVATE AND NOT ACTIVATE_LAST THEN
+    	IF ACTIVATE AND NOT activate_last THEN
     		state := 10;
     		ERROR := DWORD#0;
-    		IP_STATE := BYTE#1; (* Anmelden *)
+    		ip_state := BYTE#1; (* Anmelden *)
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'SYS_LOG: S00 START /IP_ID ~4';
-          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+          			LOG_CL.NEW_MSG := 'SYS_LOG: S00 START /ip_id ~4';
+          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
           			LOG_MSG();
         		END_IF*)
         		(*########################################################################*)
@@ -17,7 +17,7 @@ FUNCTION_BLOCK SYS_LOG
     	DONE_P := FALSE;
 
     10: (* Bei IP_Control anmelden und auf freigabe warten *)
-    	IF IP_STATE = BYTE#3 THEN
+    	IF ip_state = BYTE#3 THEN
     		(* Sendedaten aufbereiten *)
     		i := 0;
     		IF (OPTION AND BYTE#0000_0001) = BYTE#00 THEN (* OPTION: no priority Code *)
@@ -84,8 +84,8 @@ FUNCTION_BLOCK SYS_LOG
     		R_BUF.SIZE := UINT#0; (* Empfangslänge rücksetzen *)
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'SYS_LOG: S20 SEND /IP_ID ~4';
-          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+          			LOG_CL.NEW_MSG := 'SYS_LOG: S20 SEND /ip_id ~4';
+          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
           			LOG_MSG();
         		END_IF*)
         		(*########################################################################*)
@@ -97,9 +97,9 @@ FUNCTION_BLOCK SYS_LOG
     		state := 0;
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'SYS_LOG: S30 ERROR ~1 IP_ID ~4';
+          			LOG_CL.NEW_MSG := 'SYS_LOG: S30 ERROR ~1 ip_id ~4';
           			LOG_CL.PRINTF[1]  := DWORD_TO_STRING(ERROR);
-          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
           			LOG_MSG();
         		END_IF*)
         		(*########################################################################*)
@@ -108,23 +108,23 @@ FUNCTION_BLOCK SYS_LOG
     		state := 0;
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'SYS_LOG: S30 OK /IP_ID ~4';
-          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+          			LOG_CL.NEW_MSG := 'SYS_LOG: S30 OK /ip_id ~4';
+          			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
           			LOG_MSG();
         		END_IF*)
         		(*########################################################################*)
     	END_IF
 
     	IF state = 0 THEN (* Verbindung freigeben *)
-    		IP_STATE := BYTE#4;
+    		ip_state := BYTE#4;
     	END_IF
 
     END_CASE
 
-    ACTIVATE_LAST := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=IP_ID);
+    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
 
     (* revision history
     ks	18. oct. 2008	rev 1.0

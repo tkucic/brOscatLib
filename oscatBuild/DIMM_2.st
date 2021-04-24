@@ -62,7 +62,7 @@ FUNCTION_BLOCK DIMM_2
     IF OUT = 0 THEN Q := FALSE; END_IF
 
     (* limit the maximum runtime *)
-    IF t_ON_MAX > t#0s THEN
+    IF T_ON_MAX > t#0s THEN
     	t3(in := Q, pt := T_ON_MAX);
     	Q := Q XOR t3.Q;
     END_IF

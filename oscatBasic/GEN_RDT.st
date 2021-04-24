@@ -4,9 +4,9 @@ FUNCTION_BLOCK GEN_RDT
     tof_xQ ( IN:= tonRDMTimer.Q , PT:= TP_Q );
     XQ := tof_xQ.Q;
     IF tonRDMTimer.Q THEN
-    		 xQ := TRUE ;
+    		 XQ := TRUE ;
     		 rRDMTime := RDM ( last:= rRDMTime ) ;
-    		 tRDMTime := REAL_TO_TIME ( rRDMTime * DINT_TO_REAL(TIME_TO_DINT( Max_Time_ms - Min_Time_ms ) + TIME_TO_DINT(Min_Time_ms ))) ;
+    		 tRDMTime := REAL_TO_TIME ( rRDMTime * DINT_TO_REAL(TIME_TO_DINT( MAX_TIME_MS - MIN_TIME_MS ) + TIME_TO_DINT(MIN_TIME_MS ))) ;
     		 tonRDMTimer ( IN:= FALSE );
     END_IF
 

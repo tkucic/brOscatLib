@@ -68,7 +68,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
 
     	(*####################  DEBUG-MESSAGE  ###################################*)
     	(*IF _debug_enable THEN
-    		LOG_CL.NEW_MSG := 'RP: ADD /HEAD ~1 / SIZE ~2 / CNT ~3 / >~4<';
+    		LOG_CL.NEW_MSG := 'RP: ADD /HEAD ~1 / SIZE ~2 / cnt ~3 / >~4<';
     		LOG_CL.PRINTF[1] := DWORD_TO_STRH(DATA.D_HEAD);
     		LOG_CL.PRINTF[2] := UINT_TO_STRING(cnt);
     		LOG_CL.PRINTF[3] := UINT_TO_STRING(DATA.BUF_COUNT);
@@ -141,7 +141,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     	
     		(*####################  DEBUG-MESSAGE  ###################################*)
     		(*IF _debug_enable THEN
-    			LOG_CL.NEW_MSG := 'RP: READ /HEAD ~1 / SIZE ~2 / CNT ~3 / >~4<';
+    			LOG_CL.NEW_MSG := 'RP: READ /HEAD ~1 / SIZE ~2 / cnt ~3 / >~4<';
     			LOG_CL.PRINTF[1] := DWORD_TO_STRH(DATA.D_HEAD);
     			LOG_CL.PRINTF[2] := UINT_TO_STRING(cnt);
     			LOG_CL.PRINTF[3] := UINT_TO_STRING(DATA.BUF_COUNT);
@@ -167,7 +167,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
 
     		(*####################  DEBUG-MESSAGE  ###################################*)
     		(*IF _debug_enable THEN
-    			LOG_CL.NEW_MSG := 'RP: DEL /HEAD ~1 / SIZE ~2 / CNT ~3 / >~4<';
+    			LOG_CL.NEW_MSG := 'RP: DEL /HEAD ~1 / SIZE ~2 / cnt ~3 / >~4<';
     			LOG_CL.PRINTF[1] := DWORD_TO_STRH(DATA.D_HEAD);
     			LOG_CL.PRINTF[2] := UINT_TO_STRING(cnt);
     			LOG_CL.PRINTF[3] := UINT_TO_STRING(DATA.BUF_COUNT);

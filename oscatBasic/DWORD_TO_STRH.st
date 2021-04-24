@@ -14,7 +14,7 @@ FUNCTION DWORD_TO_STRH
     	(* convert value to hex character *)
     	IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
     	(* write character to output string *)
-    	PT^ := temp;
+    	pt^ := temp;
     	(* shift IN for nect hex character *)
     	IN := SHR(IN,4);
     END_FOR

@@ -2,12 +2,12 @@ FUNCTION_BLOCK CALIBRATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=337*)
     (* check for calibration *)
     IF CO THEN
-    	OFFSET := Y_Offset - X;
+    	offset := Y_OFFSET - X;
     ELSIF CS THEN
-    	SCALE := Y_SCALE / (X + OFFSET);
+    	Scale := Y_SCALE / (X + offset);
     END_IF
     (* calculate output *)
-    Y := (X + OFFSET) * SCALE;
+    Y := (X + offset) * Scale;
 
 
     (* revision history

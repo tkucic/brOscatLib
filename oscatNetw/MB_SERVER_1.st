@@ -45,7 +45,7 @@ FUNCTION_BLOCK MB_SERVER_1
     				points := WORD_TO_INT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]));
     	
     				(* Virtual Address *)
-    				MB_VMAP(VMAP:=VMAP,FC:=fc,V_ADR:=adr1,V_CNT:=points,SIZE:=DATA_SIZE);
+    				MB_VMAP(VMAP:=VMAP,fc:=fc,V_ADR:=adr1,V_CNT:=points,SIZE:=DATA_SIZE);
     				adr1:=MB_VMAP.P_ADR;
     				bit_pos:=MB_VMAP.P_BIT;
     				ERROR:=BYTE_TO_DWORD(MB_VMAP.ERROR);
@@ -68,9 +68,9 @@ FUNCTION_BLOCK MB_SERVER_1
     								coils := coils OR mask;
     							END_IF
     	
-    							bit_Pos := bit_Pos + 1;
+    							bit_pos := bit_pos + 1;
     							IF bit_pos > 15 THEN
-    								ADR1 := ADR1 + 1;
+    								adr1 := adr1 + 1;
     								bit_pos := 0;
     							END_IF
     	
@@ -141,7 +141,7 @@ FUNCTION_BLOCK MB_SERVER_1
     						points2 := WORD_TO_INT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[14],R_BUF.BUFFER[15]));
     	
     						(* Virtual Address Write Register *)
-    						MB_VMAP(VMAP:=VMAP,FC:=16,V_ADR:=adr2,V_CNT:=points2,SIZE:=DATA_SIZE);
+    						MB_VMAP(VMAP:=VMAP,fc:=16,V_ADR:=adr2,V_CNT:=points2,SIZE:=DATA_SIZE);
     						adr2:=MB_VMAP.P_ADR;
     						ERROR:=BYTE_TO_DWORD(MB_VMAP.ERROR);
     	
@@ -204,7 +204,7 @@ FUNCTION_BLOCK MB_SERVER_1
     END_CASE
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
+    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
 
     (* revision history
     ks	05. jan. 2009	rev 1.0

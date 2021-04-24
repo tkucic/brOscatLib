@@ -244,7 +244,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     220:
     	IF snd_step = 0 THEN
     		DTI := UDINT_TO_DT(DT_TO_UDINT(DTI) + INT_TO_UDINT(- DTI_OFFSET * 60)); (* Minuten-Offset auf Sekunden umrechnen und addieren *)
-    		IF esmtp THEN (* ESMTP Format >Date: Thu, 21 May 1998 05:33:29 -0700< *)
+    		IF esmtp THEN (* esmtp Format >Date: Thu, 21 May 1998 05:33:29 -0700< *)
     			str2 := ';Mon;Tue;Wed;Thu;Fri;Sat;Sun';
     			str1 := ELEMENT_GET(59, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTI)), str2);
     			snd_text := CONCAT('Date: ',str1);
@@ -471,7 +471,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     (* ================================================== *)
 
     900:
-    	IF FILE_DELETE THEN (* Dateien nach transfer löschen *)
+    	IF file_delete THEN (* Dateien nach transfer löschen *)
     		cnt1 := ELEMENT_COUNT(59, FILES) - 1; (* Trennzeichen >;< , Anzahl der Dateien *)
     		step := 910;
     	ELSE
@@ -744,7 +744,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     DNS_CLIENT(IP_C:=IP_C, S_BUF:=S_BUF, R_BUF:=R_BUF, DOMAIN:=URL_DATA.DOMAIN, IP4_DNS:= DNS_IP4, ACTIVATE:=step=10); (* DNS-Client *)
     IPC(IP:= DWORD#0, PORT:= WORD#0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C, S_BUF:= S_BUF, R_BUF:= R_BUF); (* SMTP Steuerkanal *)
     FS(FSD:=FSD,PT:=F_BUF); (* FILE_SERVER *)
-    BASE64_ENCODE_STR(RUN:= b64_start, STR1:= b64_str1, STR2:= b64_str2, DONE=> b64_done); (* BASE64 kodierung *)
+    BASE64_ENCODE_STR(RUN:= b64_start, str1:= b64_str1, str2:= b64_str2, DONE=> b64_done); (* BASE64 kodierung *)
 
     TON_WAIT(IN:=step = last_step AND step > 0,PT:=timeout2);
     last_step := step;

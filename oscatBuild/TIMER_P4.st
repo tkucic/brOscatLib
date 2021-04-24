@@ -5,8 +5,8 @@ FUNCTION_BLOCK TIMER_P4
     IF RST THEN
     	(* reset all events to last active on 1.1.1970 *)
     	last_execute := DT#1970-1-1-00:00;
-    	FOR pos := 0 TO ARRAY_MAX DO
-    		IF (PROG[pos].CHANNEL >= OFS) AND (PROG[pos].CHANNEL < (OFS + 4)) THEN PROG[pos].LAST := last_execute; END_IF
+    	FOR pos := 0 TO array_max DO
+    		IF (PROG[pos].channel >= OFS) AND (PROG[pos].channel < (OFS + 4)) THEN PROG[pos].LAST := last_execute; END_IF
     	END_FOR
 
     	(* reset all set markers and logic masks *)
@@ -26,9 +26,9 @@ FUNCTION_BLOCK TIMER_P4
     	FOR pos := 0 TO channel_max DO qn[pos] := FALSE; END_FOR
 
     	(* search the array PROG for timer events *)
-    	FOR pos := 0 TO ARRAY_MAX DO
+    	FOR pos := 0 TO array_max DO
     		event := PROG[pos];
-    		channel := event.CHANNEL - OFS;
+    		channel := event.channel - OFS;
     		IF (event.TYP > 0) AND (channel >= 0) AND (channel <= channel_max) THEN
     			ma[channel] := event.LAND;
     			mo[channel] := event.LOR;

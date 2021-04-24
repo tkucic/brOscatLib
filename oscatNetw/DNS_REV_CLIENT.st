@@ -122,7 +122,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
+    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
 
     (* revision history
 

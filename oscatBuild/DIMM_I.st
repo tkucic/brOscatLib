@@ -27,7 +27,7 @@ FUNCTION_BLOCK DIMM_I
     			dir := TRUE;
     		ELSE
     			OUT := LIMIT(MAX(MIN_ON,1), OUT, MAX_ON);
-    			DIR := OUT < 127;
+    			dir := OUT < 127;
     		END_IF
     		Q := TRUE;
     	ELSE
@@ -41,7 +41,7 @@ FUNCTION_BLOCK DIMM_I
     IF decode.DOUBLE THEN DBL := NOT DBL; END_IF
 
     (* while dimming is active ramp the output OUT up or down *)
-    dim(DIR := dir, e := decode.LONG AND Q, TR := T_DIMM, rmp := OUT);
+    dim(dir := dir, e := decode.LONG AND Q, TR := T_DIMM, rmp := OUT);
 
     (* reverse direction when limits are reached *)
     IF OUT = 0 THEN
@@ -51,7 +51,7 @@ FUNCTION_BLOCK DIMM_I
     END_IF
 
     (* limit the maximum runtime *)
-    IF t_ON_MAX > t#0s THEN
+    IF T_ON_MAX > t#0s THEN
     	t3(IN := Q, pt := T_ON_MAX);
     	Q := Q XOR t3.Q;
     END_IF

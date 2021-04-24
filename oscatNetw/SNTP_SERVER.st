@@ -75,22 +75,22 @@ FUNCTION_BLOCK SNTP_SERVER
     		S_BUF.BUFFER[32] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[40] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(TIMESTAMP_INT,2); (* Timestamp Byte 2 *)
+    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,2); (* Timestamp Byte 2 *)
     		S_BUF.BUFFER[17] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[33] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[41] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(TIMESTAMP_INT,1); (* Timestamp Byte 1 *)
+    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,1); (* Timestamp Byte 1 *)
     		S_BUF.BUFFER[18] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[34] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[42] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(TIMESTAMP_INT,0); (* Timestamp Byte 0 *)
+    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,0); (* Timestamp Byte 0 *)
     		S_BUF.BUFFER[19] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[35] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[43] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(TIMESTAMP_SEK,1); (* Timestamp Byte 1 *)
+    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_sek,1); (* Timestamp Byte 1 *)
     		S_BUF.BUFFER[20] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[36] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[44] := ts_b; (* Transmit  Timestamp *)
@@ -122,7 +122,7 @@ FUNCTION_BLOCK SNTP_SERVER
     END_IF
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
+    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
 
     (* revision history
     ks	18. oct. 2008	rev 1.0

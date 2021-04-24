@@ -2,11 +2,11 @@ FUNCTION FINDB_NUM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=159*)
     pt := ADR(STR) + LEN(STR) - 1;
     FOR pos := LEN(STR) TO 1 BY -1 DO;
-    	IF (PT^ > 47 AND PT^ < 58) OR PT^ = 46 THEN
+    	IF (pt^ > 47 AND pt^ < 58) OR pt^ = 46 THEN
     		FINDB_NUM := pos;
     		RETURN;
     	END_IF
-    	PT := PT - 1;
+    	pt := pt - 1;
     END_FOR
     FINDB_NUM := 0;
 

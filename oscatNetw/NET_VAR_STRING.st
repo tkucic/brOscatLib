@@ -31,7 +31,7 @@ FUNCTION_BLOCK NET_VAR_STRING
     			len_str := BYTE_TO_INT(X.R_BUF.BUFFER[index]);
     			index2 := index + 1;
     			index := index2 + len_str;
-    			IF len_STR > 0 THEN
+    			IF len_str > 0 THEN
     				OUT := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(X.R_BUF.BUFFER),SIZE:=X.BUF_SIZE,START:=INT_TO_UINT(index2),STOP:=INT_TO_UINT(index - 1));
     			ELSE
     				OUT := '';

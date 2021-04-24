@@ -9,8 +9,8 @@ FUNCTION_BLOCK SELECT_8
     ELSIF DN AND NOT last_dn THEN
     	STATE := inc(STATE,-1,7);
     END_IF
-    last_UP := UP;
-    last_DN := DN;
+    last_up := UP;
+    last_dn := DN;
 
     Q0 := FALSE;
     Q1 := FALSE;

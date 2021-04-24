@@ -20,9 +20,9 @@ FUNCTION_BLOCK _RMP_NEXT
     END_IF
 
     IF NOT t_lock.Q AND xen THEN
-    		UP := XDIR;
-    		DIR := XDIR;
-    		DN := NOT XDIR;
+    		UP := xdir;
+    		DIR := xdir;
+    		DN := NOT xdir;
     ELSE
     	UP := FALSE;
     	DN := FALSE;

@@ -2,11 +2,11 @@ FUNCTION FINDB_NONUM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=158*)
     pt := ADR(STR) + LEN(STR) - 1;
     FOR pos := LEN(STR) TO 1 BY -1 DO;
-    	IF (PT^ < 48 AND PT^ <> 46) OR PT^ > 57 THEN
+    	IF (pt^ < 48 AND pt^ <> 46) OR pt^ > 57 THEN
     		FINDB_NONUM := pos;
     		RETURN;
     	END_IF
-    	PT := PT - 1;
+    	pt := pt - 1;
     END_FOR
     FINDB_NONUM := 0;
 

@@ -34,25 +34,25 @@ FUNCTION_BLOCK DCF77
     		(* decode the bits and check for possible errors *)
     		IF bits[0] OR NOT (bits[17] XOR bits[18]) OR NOT bits[20] THEN ERROR := TRUE; END_IF
     		(* decode minute *)
-    		MINUTE := 0;
-    		MINUTE.0 := bits[21];
-    		MINUTE.1 := bits[22];
-    		MINUTE.2 := bits[23];
-    		MINUTE.3 := bits[24];
-    		IF bits[25] THEN MINUTE := MINUTE + 10; END_IF
-    		IF bits[26] THEN MINUTE := MINUTE + 20; END_IF
-    		IF bits[27] THEN MINUTE := MINUTE + 40; END_IF
-    		IF MINUTE > 59 OR (bits[21] XOR bits[22] XOR bits[23] XOR bits[24] XOR bits[25] XOR bits[26] XOR bits[27] XOR bits[28]) THEN ERROR := TRUE; END_IF
+    		minute := 0;
+    		minute.0 := bits[21];
+    		minute.1 := bits[22];
+    		minute.2 := bits[23];
+    		minute.3 := bits[24];
+    		IF bits[25] THEN minute := minute + 10; END_IF
+    		IF bits[26] THEN minute := minute + 20; END_IF
+    		IF bits[27] THEN minute := minute + 40; END_IF
+    		IF minute > 59 OR (bits[21] XOR bits[22] XOR bits[23] XOR bits[24] XOR bits[25] XOR bits[26] XOR bits[27] XOR bits[28]) THEN ERROR := TRUE; END_IF
 
     		(* decode hour *)
-    		HOUR := 0;
-    		HOUR.0 := bits[29];
-    		HOUR.1 := bits[30];
-    		HOUR.2 := bits[31];
-    		HOUR.3 := bits[32];
-    		IF bits[33] THEN HOUR := HOUR + 10; END_IF
-    		IF bits[34] THEN HOUR := HOUR +20; END_IF
-    		IF HOUR > 23 OR (bits[29] XOR bits[30] XOR bits[31] XOR bits[32] XOR bits[33] XOR bits[34] XOR bits[35]) THEN ERROR := TRUE; END_IF
+    		hour := 0;
+    		hour.0 := bits[29];
+    		hour.1 := bits[30];
+    		hour.2 := bits[31];
+    		hour.3 := bits[32];
+    		IF bits[33] THEN hour := hour + 10; END_IF
+    		IF bits[34] THEN hour := hour +20; END_IF
+    		IF hour > 23 OR (bits[29] XOR bits[30] XOR bits[31] XOR bits[32] XOR bits[33] XOR bits[34] XOR bits[35]) THEN ERROR := TRUE; END_IF
 
     		(* decode day of month *)
     		day := 0;
@@ -72,24 +72,24 @@ FUNCTION_BLOCK DCF77
     		IF WDAY > 7 OR WDAY < 1 THEN ERROR := TRUE; END_IF
 
     		(* decode month *)
-    		MONTH := 0;
-    		MONTH.0 := bits[45];
-    		MONTH.1 := bits[46];
-    		MONTH.2 := bits[47];
-    		MONTH.3 := bits[48];
-    		IF bits[49] THEN MONTH := MONTH +10; END_IF
-    		IF MONTH > 12 THEN ERROR := TRUE; END_IF
+    		month := 0;
+    		month.0 := bits[45];
+    		month.1 := bits[46];
+    		month.2 := bits[47];
+    		month.3 := bits[48];
+    		IF bits[49] THEN month := month +10; END_IF
+    		IF month > 12 THEN ERROR := TRUE; END_IF
 
     		(* decode year *)
-    		YEAR := 0;
-    		YEAR.0 := bits[50];
-    		YEAR.1 := bits[51];
-    		YEAR.2 := bits[52];
-    		YEAR.3 := bits[53];
-    		IF bits[54] THEN YEAR := YEAR + 10; END_IF
-    		IF bits[55] THEN YEAR := YEAR + 20; END_IF
-    		IF bits[56] THEN YEAR := YEAR + 40; END_IF
-    		IF bits[57] THEN YEAR := YEAR + 80; END_IF
+    		year := 0;
+    		year.0 := bits[50];
+    		year.1 := bits[51];
+    		year.2 := bits[52];
+    		year.3 := bits[53];
+    		IF bits[54] THEN year := year + 10; END_IF
+    		IF bits[55] THEN year := year + 20; END_IF
+    		IF bits[56] THEN year := year + 40; END_IF
+    		IF bits[57] THEN year := year + 80; END_IF
 
     		(* check parity for bits 36 to 58 *)
     		cnt := 0;
@@ -100,13 +100,13 @@ FUNCTION_BLOCK DCF77
     		IF NOT ERROR THEN
     			(* SET outputs *)
     			old_time := mez;
-    			IF YEAR >= 70 THEN YEAR := YEAR + 1900; ELSE YEAR := YEAR + 2000; END_IF
-    			mez := SET_DT(YEAR,MONTH,day,HOUR,MINUTE,0);
+    			IF year >= 70 THEN year := year + 1900; ELSE year := year + 2000; END_IF
+    			mez := SET_DT(year,month,day,hour,minute,0);
     			DS := bits[17];
     			IF DS THEN
-    				UTC := DWORD_TO_DT(DT_TO_DWORD(mez) - 7200);
+    				utc := DWORD_TO_DT(DT_TO_DWORD(mez) - 7200);
     			ELSE
-    				UTC := DWORD_TO_DT(DT_TO_DWORD(mez) - 3600);
+    				utc := DWORD_TO_DT(DT_TO_DWORD(mez) - 3600);
     			END_IF
 
     			(* SET trigger signal only if the receiver has received 2 successive minutes *)
@@ -154,8 +154,8 @@ FUNCTION_BLOCK DCF77
     1 bis 14	reserviert für Betriebsinformationen (nicht für DCF77-Nutzer bestimmt)
     15			Rufbit für Alarmierung der PTB-Mitarbeiter
     			(bis Mai 2003: Bitwert = 0 falls normale Antenne in Verwendung; 1 = Backupantenne)
-    16			Bitwert = 1 falls ein Wechsel von MEZ nach MESZ oder umgekehrt bevorsteht; Dauer der Anzeige: 1 Stunde
-    17 + 18	gültige Zeit = MEZ, falls Bit 17=0 und Bit 18=1
+    16			Bitwert = 1 falls ein Wechsel von mez nach MESZ oder umgekehrt bevorsteht; Dauer der Anzeige: 1 Stunde
+    17 + 18	gültige Zeit = mez, falls Bit 17=0 und Bit 18=1
     			gültige Zeit = MESZ, falls Bit 17=1 und Bit 18=0
     19			Bitwert = 1 falls innerhalb den nächsten 59 Minuten eine Schaltsekunde angeordnet ist. Beim Einfügen einer Schaltsekunde wird anstelle der 59. die 60. Sekundenmarke weggelassen und in der 58. erfolgt ausnahmsweise ein Trägerabfall.
     20			Startbit für Zeitinformation (immer 1)

@@ -137,7 +137,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     				END_IF*)
     				(* -----------------------------------------------------------------*)
 
-    			ELSIF X.UCB.D_HEAD = WORD#16#EE00 THEN (* LOG_STOP Command *)
+    			ELSIF X.UCB.D_HEAD = WORD#16#EE00 THEN (* log_stop Command *)
     				X.UCB.D_MODE := 11;
     				UCB(DATA:=X.UCB); (* Element entfernen *)
     				log_stop := TRUE;

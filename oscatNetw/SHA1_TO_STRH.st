@@ -4,10 +4,10 @@ FUNCTION SHA1_TO_STRH
 
     FOR i := 0 TO 19 DO; (* write the 10 hex characters backwards *)
     	tmp := SHR(SHA1[i],4);
-    	PT^ := tmp + SEL(tmp <= 9,87,48);
+    	pt^ := tmp + SEL(tmp <= 9,87,48);
     	pt := pt + 1; (* decrement the pointer *)
     	tmp := SHA1[i] AND 2#1111;
-    	PT^ := tmp + SEL(tmp <= 9,87,48);
+    	pt^ := tmp + SEL(tmp <= 9,87,48);
     	pt := pt + 1; (* decrement the pointer *)
     END_FOR
     pt^:= 0; (* write the closing byte for the string *)

@@ -1,7 +1,7 @@
 FUNCTION BIT_COUNT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210*)
     WHILE IN > 0 DO
-    	IF IN.0 THEN Bit_Count := Bit_Count + 1; END_IF
+    	IF IN.0 THEN BIT_COUNT := BIT_COUNT + 1; END_IF
     	IN := SHR(IN,1);
     END_WHILE
 

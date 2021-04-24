@@ -5,7 +5,7 @@ FUNCTION_BLOCK FT_PIDWL
     	piwl(RST := TRUE);
     	piwl.RST := FALSE;
     ELSE
-    	(* run PIWL controller first *)
+    	(* run piwl controller first *)
     	(* we need to check if TN = 0 and do alternative calls *)
     	IF TN = 0.0 THEN
     		piwl(IN := IN * KP, KP := 1.0, KI := 0.0, LIM_L := LIM_L, LIM_H := LIM_H);

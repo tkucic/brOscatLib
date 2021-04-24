@@ -6,8 +6,8 @@ FUNCTION_BLOCK SRAMP
     (* assure range of inputs *)
     A_UP := MAX(0.0, A_UP);
     A_DN := MIN(0.0, A_DN);
-    VU_max := MAX(0.0, VU_max);
-    VD_max := MIN(0.0, VD_MAX);
+    VU_MAX := MAX(0.0, VU_MAX);
+    VD_MAX := MIN(0.0, VD_MAX);
 
     (* calculate the output offset *)
     IF RST OR NOT init THEN

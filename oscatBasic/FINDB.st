@@ -3,11 +3,11 @@ FUNCTION FINDB
     length := LEN(STR2);
     FOR pos := LEN(STR1) - length + 1 TO 1 BY -1 DO
     	IF MID(STR1,length,pos) = STR2 THEN
-    		FindB := pos;
+    		FINDB := pos;
     		RETURN;
     	END_IF
     END_FOR
-    FindB := 0;
+    FINDB := 0;
 
     (* revision history
     hm	6. oct 2006		rev 1.0

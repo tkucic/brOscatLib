@@ -27,7 +27,7 @@ FUNCTION_BLOCK LEGIONELLA
     END_IF
 
     (* oerational code *)
-    X1(DTi := DT_in);
+    X1(DTi := DT_IN);
     IF X1.Q OR MANUAL OR x2.RUN THEN
     	x3(in := TEMP_BOILER);
     	x2.in0 := x3.Q OR x3.win;

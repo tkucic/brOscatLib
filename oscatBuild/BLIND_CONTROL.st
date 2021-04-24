@@ -8,7 +8,7 @@ FUNCTION_BLOCK BLIND_CONTROL
     END_IF
 
     (* Check Position*)
-    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_LOCKOUT := T_Lockout);
+    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_LOCKOUT := T_LOCKOUT);
 
     IF UP AND DN THEN
     	(* automatic modus detected *)
@@ -48,7 +48,7 @@ FUNCTION_BLOCK BLIND_CONTROL
     END_IF
 
     (* blind control calls blind_actuator *)
-    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_LOCKOUT := T_Lockout);
+    act(T_UD:=T_UD, T_ANGLE:=T_ANGLE, T_LOCKOUT := T_LOCKOUT);
     POS := act.POS;
     ANG := act.ANG;
     MU := act.QU;

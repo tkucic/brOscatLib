@@ -1,6 +1,6 @@
 FUNCTION REPLACE_UML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178*)
-    PT := ADR(STR);
+    pt := ADR(STR);
     pto := ADR(REPLACE_UML);
     ptm := pto + INT_TO_DWORD(string_length);
     pt1 := ADR(su);

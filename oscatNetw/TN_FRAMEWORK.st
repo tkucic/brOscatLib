@@ -20,19 +20,19 @@ FUNCTION_BLOCK TN_FRAMEWORK
 
     (* Telnet-Menu-Bar *)
     FB_TN_INPUT_MENU_BAR(
-    	Xus_TN_MENU := us_TN_MENU,
-    	Xus_TN_SCREEN := us_TN_SCREEN);
+    	Xus_TN_MENU := US_TN_MENU,
+    	Xus_TN_SCREEN := US_TN_SCREEN);
 
     (* Telnet-Input-Control *)
     FB_TN_INPUT_CONTROL(
-    	Xus_TN_SCREEN := us_TN_SCREEN,
-    	Xus_TN_INPUT_CONTROL := us_TN_INPUT_CONTROL);
+    	Xus_TN_SCREEN := US_TN_SCREEN,
+    	Xus_TN_INPUT_CONTROL := US_TN_INPUT_CONTROL);
 
     (* Telnet-Data-Send Line-Updates *)
     FB_TN_SEND_ROWS(
     	IP_C :=IP_C,
     	S_BUF :=S_BUF,
-    	Xus_TN_SCREEN :=us_TN_SCREEN,
+    	Xus_TN_SCREEN :=US_TN_SCREEN,
     	S_BUF_SIZE :=SIZEOF(S_BUF.BUFFER));
 
     (* Telnet-Server *)
@@ -47,7 +47,7 @@ FUNCTION_BLOCK TN_FRAMEWORK
     (* Telnet-Data-Receive *)
     FB_TN_RECEIVE(
     	R_BUF := R_BUF,
-    	Xus_TN_SCREEN := us_TN_SCREEN);
+    	Xus_TN_SCREEN := US_TN_SCREEN);
 
     (* revision history
     ks	10. mai. 2010	rev 1.0

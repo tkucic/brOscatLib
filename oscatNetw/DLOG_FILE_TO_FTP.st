@@ -84,7 +84,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
 
     FTP_CLIENT(
     	ACTIVATE:= BUSY,
-    	FILENAME:= filename,
+    	filename:= filename,
     	FTP_URL:= FTP_URL,
     	FTP_DOWNLOAD:= FALSE,
     	FTP_ACTIV:= FTP_ACTIV,

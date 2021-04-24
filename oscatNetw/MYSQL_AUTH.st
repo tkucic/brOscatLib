@@ -9,7 +9,7 @@ FUNCTION_BLOCK MYSQL_AUTH
     		i2 := UDINT_TO_INT(size) - 1;
     		FOR i := 0 TO 63 DO
     			IF i <= i2 THEN
-    				buf[i] := OSCAT_BASIC.CODE(STR:=PASSWORD,POS:=i+1);
+    				buf[i] := OSCAT_BASIC.CODE(STR:=PASSWORD,pos:=i+1);
     			ELSE
     				buf[i] := BYTE#0;
     			END_IF
@@ -45,7 +45,7 @@ FUNCTION_BLOCK MYSQL_AUTH
     	END_IF
     END_CASE
 
-    SHA1_STREAM(SIZE:=size, MODE:=sha_mode, BUF:=buf, SHA1:=SCRAMBLE, POS=>pos);
+    SHA1_STREAM(size:=size, MODE:=sha_mode, buf:=buf, SHA1:=SCRAMBLE, pos=>pos);
 
     (* revision history
     ks	20. apr. 2012	rev 1.0

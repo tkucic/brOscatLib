@@ -2,7 +2,7 @@ FUNCTION_BLOCK HTTP_GET
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=98*)
     CASE state OF
     00:	DONE := FALSE;
-    	IF GET AND NOT GET_LAST THEN (* auf positive Flanke SET warten *)
+    	IF GET AND NOT get_last THEN (* auf positive Flanke SET warten *)
     		state := 10;
     		ip4_stored := IP4; (* aktuelle IP4 speichern *)
     		total_size := 0;
@@ -30,8 +30,8 @@ FUNCTION_BLOCK HTTP_GET
     		END_IF
     	        	(*####################  DEBUG-MESSAGE  ###################################*)
     		(*IF _debug_enable THEN
-    	       		LOG_CL.NEW_MSG := 'HTTP: S00 START /IP_ID ~4';
-    	            	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+    	       		LOG_CL.NEW_MSG := 'HTTP: S00 START /ip_id ~4';
+    	            	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
     	            	LOG_MSG();
     	        	END_IF*)
     	        	(*########################################################################*)
@@ -108,8 +108,8 @@ FUNCTION_BLOCK HTTP_GET
     		state := 30;
     	        	(*####################  DEBUG-MESSAGE  ###################################*)
     	        	(*IF _debug_enable THEN
-    	        		LOG_CL.NEW_MSG := 'HTTP: S20 SEND /IP_ID ~4';
-    	            	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+    	        		LOG_CL.NEW_MSG := 'HTTP: S20 SEND /ip_id ~4';
+    	            	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
     	            	LOG_MSG();
     	        	END_IF*)
     	        	(*########################################################################*)
@@ -136,12 +136,12 @@ FUNCTION_BLOCK HTTP_GET
     				IF del_pos > 0 THEN
     					HEADER_START := UINT#0;
     					HEADER_STOP := INT_TO_UINT(del_pos + LEN(del_end) - 1);
-    					TOTAL_SIZE := -1; (* HTTP Header empfangen aber noch keine gesamtlänge bekannt *)
+    					total_size := -1; (* HTTP Header empfangen aber noch keine gesamtlänge bekannt *)
     				END_IF
     		                	(*####################  DEBUG-MESSAGE  ###################################*)
     		                	(*IF _debug_enable THEN
-    		                   	LOG_CL.NEW_MSG := 'HTTP: S20 HEADER_START ~1 / HEADER_STOP ~2/IP_ID ~4';
-    		                   	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+    		                   	LOG_CL.NEW_MSG := 'HTTP: S20 HEADER_START ~1 / HEADER_STOP ~2/ip_id ~4';
+    		                   	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
     		                   	LOG_CL.PRINTF[1]  := UINT_TO_STRING(HEADER_START);
     		                   	LOG_CL.PRINTF[2]  := UINT_TO_STRING(HEADER_STOP);
     		                   	LOG_MSG();
@@ -174,11 +174,11 @@ FUNCTION_BLOCK HTTP_GET
     							total_size := STRING_TO_INT(text) + UINT_TO_INT(HEADER_STOP) + 1;
                                					(*####################  DEBUG-MESSAGE  ###################################*)
                                					(*IF _debug_enable THEN
-                                  					LOG_CL.NEW_MSG := 'HTTP: S20 HEADER ~1, BODY ~2 TOTAL ~3 /IP_ID ~4';
-                                 					LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+                                  					LOG_CL.NEW_MSG := 'HTTP: S20 HEADER ~1, BODY ~2 TOTAL ~3 /ip_id ~4';
+                                 					LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
                                    					LOG_CL.PRINTF[1]  := UINT_TO_STRING(HEADER_STOP);
-                                   					LOG_CL.PRINTF[2]  := INT_TO_STRING(TOTAL_SIZE-UINT_TO_INT(HEADER_STOP));
-                                   					LOG_CL.PRINTF[3]  := INT_TO_STRING(TOTAL_SIZE);
+                                   					LOG_CL.PRINTF[2]  := INT_TO_STRING(total_size-UINT_TO_INT(HEADER_STOP));
+                                   					LOG_CL.PRINTF[3]  := INT_TO_STRING(total_size);
                                   					LOG_MSG();
                               					END_IF*)
                               					(*########################################################################*)
@@ -199,8 +199,8 @@ FUNCTION_BLOCK HTTP_GET
     				BODY_STOP := R_BUF.SIZE - 1;
     		                	(*####################  DEBUG-MESSAGE  ###################################*)
     		                	(*IF _debug_enable THEN
-    		                   	LOG_CL.NEW_MSG := 'HTTP: S20 BODY ~1, START ~2 END ~3 /IP_ID ~4';
-    		                   	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+    		                   	LOG_CL.NEW_MSG := 'HTTP: S20 BODY ~1, START ~2 END ~3 /ip_id ~4';
+    		                   	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
     		                   	LOG_CL.PRINTF[1]  := UINT_TO_STRING(HEADER_STOP);
     		                   	LOG_CL.PRINTF[2]  := UINT_TO_STRING(BODY_START);
     		                   	LOG_CL.PRINTF[3]  := UINT_TO_STRING(BODY_STOP);
@@ -214,8 +214,8 @@ FUNCTION_BLOCK HTTP_GET
     			state := 40;
                 		(*####################  DEBUG-MESSAGE  ###################################*)
                 		(*IF _debug_enable THEN
-                    			LOG_CL.NEW_MSG := 'HTTP: S30 OK /IP_ID ~4';
-                    			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+                    			LOG_CL.NEW_MSG := 'HTTP: S30 OK /ip_id ~4';
+                    			LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
                     			LOG_MSG();
                 		END_IF*)
                 		(*########################################################################*)
@@ -239,16 +239,16 @@ FUNCTION_BLOCK HTTP_GET
     		state := 40;
     	        	(*####################  DEBUG-MESSAGE  ###################################*)
     	        	(*IF _debug_enable THEN
-    	            	LOG_CL.NEW_MSG := 'HTTP: S30 ERROR ~1 /IP_ID ~4';
+    	            	LOG_CL.NEW_MSG := 'HTTP: S30 ERROR ~1 /ip_id ~4';
     	            	LOG_CL.PRINTF[1]  := DWORD_TO_STRING(ERROR);
-    	            	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(IP_ID);
+    	            	LOG_CL.PRINTF[4]  := BYTE_TO_STRING(ip_id);
     	            	LOG_MSG();
     	        	END_IF*)
     	        	(*########################################################################*)
     	END_IF
 
-    40:	IF (UNLOCK_BUF OR NOT DONE) THEN (* Warten auf Release und Verbindung beendet -> IP_ID vom Stack nehmen *)
-    		IP_STATE := BYTE#4; (* Abmelden *)
+    40:	IF (UNLOCK_BUF OR NOT DONE) THEN (* Warten auf Release und Verbindung beendet -> ip_id vom Stack nehmen *)
+    		ip_state := BYTE#4; (* Abmelden *)
     		DONE := FALSE;
     		IP_C.MAILBOX[16] := BYTE#0; (* SSL MODE beenden *)
     		state := 0;
@@ -257,7 +257,7 @@ FUNCTION_BLOCK HTTP_GET
 
     get_last := GET; (* letzten Status sichern zur Flankenerkennung *)
 
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id); (* IP_FIFO *)
+    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id); (* IP_FIFO *)
 
     BASE64_ENCODE_STR(RUN:=b64_start,STR1:=b64_str1,STR2:=b64_str2); (* BASE64 kodierung *)
     b64_done:=BASE64_ENCODE_STR.DONE;

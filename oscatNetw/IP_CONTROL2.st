@@ -12,23 +12,23 @@ FUNCTION_BLOCK IP_CONTROL2
     (* read system time *)
     tx := OSCAT_BASIC.T_PLC_MS();
 
-    IF IP_C.C_PORT = 0 THEN
-    	IP_C.C_PORT := PORT; (* uebergebenen PORT durch parametrierten PORT ersetzen *)
+    IF IP_C.c_port = 0 THEN
+    	IP_C.c_port := PORT; (* uebergebenen PORT durch parametrierten PORT ersetzen *)
     END_IF
-    IF IP_C.C_IP = 0 AND IP_C.C_MODE < 4 THEN
-    	IP_C.C_IP := IP; (* uebergebene IP durch paramtrierte IP ersetzen *)
+    IF IP_C.c_ip = 0 AND IP_C.c_mode < 4 THEN
+    	IP_C.c_ip := IP; (* uebergebene IP durch paramtrierte IP ersetzen *)
     END_IF
 
-    new_connection := c_ip <> IP_C.C_IP OR c_mode <> IP_C.C_MODE OR c_port <> IP_C.C_PORT; (* neue Verbindungs erwünscht ? *)
-    c_enable := IP_C.C_ENABLE AND NOT new_connection;
+    new_connection := c_ip <> IP_C.c_ip OR c_mode <> IP_C.c_mode OR c_port <> IP_C.c_port; (* neue Verbindungs erwünscht ? *)
+    c_enable := IP_C.c_enable AND NOT new_connection;
 
-    IF IP_C.C_ENABLE AND IP_C.ERROR = 0 AND state = STOP THEN (* Freigabe,kein Fehler,kein socket offen *)
-    	c_ip   := IP_C.C_IP;
-    	c_mode := IP_C.C_MODE;
-    	c_port := IP_C.C_PORT;
+    IF IP_C.c_enable AND IP_C.ERROR = 0 AND state = STOP THEN (* Freigabe,kein Fehler,kein socket offen *)
+    	c_ip   := IP_C.c_ip;
+    	c_mode := IP_C.c_mode;
+    	c_port := IP_C.c_port;
     	plc_841 := SYSLIBSOCKETS_OPTION.1; (* Bit 1 = WAGO 750-841 *)
     	plc_881 := SYSLIBSOCKETS_OPTION.2; (* Bit 1 = WAGO 750-881 *)
-    	udp_mode := C_MODE.0; (* Mode 1,3,5 = udp *)
+    	udp_mode := c_mode.0; (* Mode 1,3,5 = udp *)
 
     	error_time := TIME_TO_DWORD(MAX(T#200ms,TIME_OUT));
     	IP_C.TIME_RESET := TRUE; (* Alle Timer ruecksetzen *)
@@ -36,9 +36,9 @@ FUNCTION_BLOCK IP_CONTROL2
     	r_max_size := SIZEOF(R_BUF.BUFFER);
     	s_max_size := SIZEOF(S_BUF.BUFFER);
 
-    	IF C_MODE.0 THEN (* Mode: 1,3,5 = UDP CLIENT/SERVER *)
+    	IF c_mode.0 THEN (* Mode: 1,3,5 = UDP CLIENT/SERVER *)
     		state := UDP_INIT;
-    	ELSIF C_MODE = 0 THEN (* Mode: 0 = TCP CLIENT *)
+    	ELSIF c_mode = 0 THEN (* Mode: 0 = TCP CLIENT *)
     		state := TC_INIT;
     	ELSE
     		state := TS_INIT; (* Mode: 2,4 = TCP SERVER *)
@@ -47,7 +47,7 @@ FUNCTION_BLOCK IP_CONTROL2
     	(* ---------------------- Debug-Message ----------------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'IP_CON: MODE ~1 / IP ~2 / PORT ~3 /ID ~6';
-    		LOG_CL.PRINTF[1] := BYTE_TO_STRING(C_MODE);
+    		LOG_CL.PRINTF[1] := BYTE_TO_STRING(c_mode);
     		LOG_CL.PRINTF[2] := IP4_TO_STRING(c_ip);
     		LOG_CL.PRINTF[3] := WORD_TO_STRING(c_port);
     		LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
@@ -337,7 +337,7 @@ FUNCTION_BLOCK IP_CONTROL2
     			(* ---------------------- Debug-Message ----------------------------*)
     			(*IF _debug_enable THEN
     				LOG_CL.NEW_MSG := 'IP_SEN INIT: TOTAL: ~1 -IP_ID ~6';
-    				LOG_CL.PRINTF[1] := INT_TO_STRING(S_TOTAL);
+    				LOG_CL.PRINTF[1] := INT_TO_STRING(s_total);
     				LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     				LOG_MSG();
     			END_IF*)
@@ -355,9 +355,9 @@ FUNCTION_BLOCK IP_CONTROL2
     				(* ---------------------- Debug-Message ----------------------------*)
     				(*IF _debug_enable THEN
     					LOG_CL.NEW_MSG := 'IP_SEN DATA: POS: ~1 : SIZE: ~2 TOTAL ~3 -IP_ID ~6';
-    					LOG_CL.PRINTF[1] := INT_TO_STRING(S_CUR_POS);
-    					LOG_CL.PRINTF[2] := INT_TO_STRING(S_CUR_SIZE);
-    					LOG_CL.PRINTF[3] := INT_TO_STRING(S_TOTAL);
+    					LOG_CL.PRINTF[1] := INT_TO_STRING(s_cur_pos);
+    					LOG_CL.PRINTF[2] := INT_TO_STRING(s_cur_size);
+    					LOG_CL.PRINTF[3] := INT_TO_STRING(s_total);
     					LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     					LOG_MSG();
     				END_IF*)

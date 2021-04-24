@@ -47,7 +47,7 @@ FUNCTION_BLOCK TIMER_EXT
     	(* turn OFF after sunrise *)
     	qx := FALSE;
     	STATUS := 114;
-    ELSIF T_SET_start > T#0s AND tdx - SUN_SET + T_SET_START <= tc THEN
+    ELSIF T_SET_START > T#0s AND tdx - SUN_SET + T_SET_START <= tc THEN
     	(* turn ON before sunset *)
     	qx := TRUE;
     	STATUS := 115;

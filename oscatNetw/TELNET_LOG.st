@@ -8,10 +8,10 @@ FUNCTION_BLOCK TELNET_LOG
     	IF PORT > 0 THEN (* bei portvorgabe wird der standardport überschrieben *)
     		TELNET_PRINT.PORT := PORT;
     	END_IF
-      	WATCHDOG.PT := T#1ms;
+      	watchdog.PT := T#1ms;
     END_IF
 
-    WATCHDOG(IN:=FALSE); (* Timer stoppen *)
+    watchdog(IN:=FALSE); (* Timer stoppen *)
 
     ci := LOG_CL.IDX;
 
@@ -27,28 +27,28 @@ FUNCTION_BLOCK TELNET_LOG
     		pi_last := pi;
     		pi := pi + 1;
     		IF pi > LOG_CL.SIZE THEN pi := 1; END_IF
-    		SEND := TRUE;
+    		send := TRUE;
     	ELSE
-    		SEND := FALSE;
+    		send := FALSE;
     	END_IF
 
     	TELNET_PRINT(	IP_C := IP_C,
     					S_BUF := S_BUF,
     					ENABLE := ENABLE,
-    					SEND := SEND,
+    					send := send,
     					TEXT := LOG_CL.MSG[pi],
     					BACK_COLOR := DWORD_TO_BYTE(SHL(LOG_CL.MSG_OPTION[pi],8)),
     					FRONT_COLOR := DWORD_TO_BYTE(LOG_CL.MSG_OPTION[pi] ));
     	READY := TELNET_PRINT.READY;
-    	done := TELNET_PRINT.DONE;
+    	done := TELNET_PRINT.done;
 
-    	IF SEND AND NOT done THEN
+    	IF send AND NOT done THEN
     		pi := pi_last;
     	END_IF
 
-    	WATCHDOG(IN:=TRUE);
+    	watchdog(IN:=TRUE);
 
-    UNTIL (WATCHDOG.Q OR NOT done )
+    UNTIL (watchdog.Q OR NOT done )
     END_REPEAT;
 
     (* revision history

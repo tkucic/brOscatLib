@@ -34,7 +34,7 @@ FUNCTION_BLOCK READ_HTTP
     	s1 := s1 + LEN(SRC); (* 'suchbegriff: ' nicht mitkopieren *)
 
     	(* copy string *)
-    	READ_HTTP := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(PT),SIZE:=SIZE,START:=s1,STOP:=e1);
+    	READ_HTTP := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(PT),SIZE:=SIZE,START:=s1,stop:=e1);
     ELSE
     	READ_HTTP := '';
     END_IF

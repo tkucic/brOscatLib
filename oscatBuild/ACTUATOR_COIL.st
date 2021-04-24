@@ -10,7 +10,7 @@ FUNCTION_BLOCK ACTUATOR_COIL
     ELSIF IN THEN
     	OUT := TRUE;
     	STATUS := 101; (* activated by input *)
-    	LAST := now;
+    	last := now;
     ELSE
     	OUT := FALSE;
     	STATUS := 100; (* disabled *)

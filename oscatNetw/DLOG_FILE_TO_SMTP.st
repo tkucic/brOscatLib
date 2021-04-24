@@ -96,7 +96,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     	MAILTO:= MAILTO,
     	SUBJECT:= SUBJECT,
     	BODY:= BODY,
-    	FILES:= FILES,
+    	files:= files,
     	DONE=> smtp_done,
     	BUSY=> smtp_busy
     	);

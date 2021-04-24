@@ -31,7 +31,7 @@ FUNCTION_BLOCK INI_PARSER_FILE
     	WHILE (state = 5) DO (* Schleife solange kein Ergebnis *)
 
     		mode := 1;
-    		FB(MODE:=mode,FSD:=FSD,PT:=PT,FILENAME:=FILENAME,POS:=i );
+    		FB(mode:=mode,FSD:=FSD,PT:=PT,FILENAME:=FILENAME,POS:=i );
     		e:=FB.ERROR;
     		c:=FB.DATA;
 

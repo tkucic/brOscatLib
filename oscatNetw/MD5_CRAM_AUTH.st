@@ -8,7 +8,7 @@ FUNCTION_BLOCK MD5_CRAM_AUTH
     		b64d_run := TRUE;
     	END_IF
 
-    5: IF B64D_DONE THEN (* IPAD Zyklus *)
+    5: IF b64d_done THEN (* IPAD Zyklus *)
     		b64d_run := FALSE;
     		xpad := 16#36;
     		md5_str1 := PASSWORD;
@@ -34,7 +34,7 @@ FUNCTION_BLOCK MD5_CRAM_AUTH
     		step := 30;
     	END_IF
 
-    30: IF B64E_DONE THEN
+    30: IF b64e_done THEN
     		AUTH_KEY := str_192;
     		b64e_run := FALSE;
     		RUN := FALSE;
@@ -75,7 +75,7 @@ FUNCTION_BLOCK MD5_CRAM_AUTH
     END_CASE
 
     IF md5_mode > 0 THEN
-    	MD5_STREAM(SIZE:=size, MODE:=md5_mode, BUF:=buf, MD5:=md5, POS=>pos);
+    	MD5_STREAM(size:=size, MODE:=md5_mode, buf:=buf, md5:=md5, pos=>pos);
     END_IF
 
     BASE64_DECODE_STR(RUN:=b64d_run, STR1:=str_192, STR2:=str_144, DONE=>b64d_done);

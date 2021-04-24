@@ -3,8 +3,8 @@ FUNCTION_BLOCK TEMPERATURE
     YK := K + (C + 273.15) + (F + 459.67) * 0.555555555555 + (RE * 1.25 + 273.15) + (RA * 0.555555555555);
     YC := YK -273.15;
     YF := YK * 1.8 - 459.67;
-    YRe := (YK - 273.15) * 0.8;
-    YRa := YK * 1.8;
+    YRE := (YK - 273.15) * 0.8;
+    YRA := YK * 1.8;
 
 
     (* revision history

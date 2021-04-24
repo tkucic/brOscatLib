@@ -43,7 +43,7 @@ FUNCTION FLOAT_TO_REAL
     	d := d + DEC_TO_INT(RIGHT(FLT, stop - i));
     END_IF
 
-    FLOAT_TO_REAL :=  EXPN(10, d) * DINT_TO_REAL(TMP * SIGN);
+    FLOAT_TO_REAL :=  EXPN(10, d) * DINT_TO_REAL(tmp * sign);
 
 
 

@@ -5,7 +5,7 @@ FUNCTION BIT_OF_DWORD
 
     (* old code used before rev 1.1
     temp := SHR(IN,N);
-    Bit_of_Dword := temp.0;
+    BIT_OF_DWORD := temp.0;
     *)
 
 

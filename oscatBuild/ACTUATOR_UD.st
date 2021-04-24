@@ -42,7 +42,7 @@ FUNCTION_BLOCK ACTUATOR_UD
     		STATUS := 104;
     	(* maual mode but no UP or down *)
     	ELSE
-    		IF YUP OR YDN THEN LAST := tx; END_IF
+    		IF YUP OR YDN THEN last := tx; END_IF
     		YUP := FALSE;
     		YDN := FALSE;
     	END_IF

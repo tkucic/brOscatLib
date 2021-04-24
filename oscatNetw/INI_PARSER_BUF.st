@@ -11,7 +11,7 @@ FUNCTION_BLOCK INI_PARSER_BUF
     		pke := pk + INT_TO_DWORD(OSCAT_BASIC.STRING_LENGTH);
 
     		i := UDINT_TO_INT(OFFSET);
-    		size := UINT_TO_INT(PT.SIZE) - 1;
+    		size := UINT_TO_INT(PT.size) - 1;
     		RESULT := 0;
     		state := 5; (* Befehl in Arbeit (Busy) *)
     		step := 0; (* Auswertung neu beginnen *)
@@ -41,7 +41,7 @@ FUNCTION_BLOCK INI_PARSER_BUF
     		ELSE
 
     			c := PT.BUFFER[i]; (* neues Zeichen aus Buffer lesen *)
-    			eof := i + 1 = PT.SIZE; (* End of File *)
+    			eof := i + 1 = PT.size; (* End of File *)
 
     			k_add := 0;
     			v_add := 0;

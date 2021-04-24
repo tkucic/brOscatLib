@@ -3,7 +3,7 @@ FUNCTION_BLOCK ESR_MON_X8
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    ESR_Flag := FALSE;
+    ESR_FLAG := FALSE;
     ESR_OUT[3].typ := 0;
     ESR_OUT[2].typ := 0;
     ESR_OUT[1].typ := 0;
@@ -13,49 +13,49 @@ FUNCTION_BLOCK ESR_MON_X8
 
     (* check if inputs have chaged and fill buffer *)
     IF S0 <> x0 AND ((S0 < 100) OR (S0 > 99 AND S0 < 200 AND MODE >= 2) OR (S0 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S0, A0, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S0, A0, DT_IN, tx);
     	x0 := S0;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF S1 <> x1 AND ((S1 < 100) OR (S1 > 99 AND S1 < 200 AND MODE >= 2) OR (S1 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S1, A1, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S1, A1, DT_IN, tx);
     	x1 := S1;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF S2 <> x2 AND ((S2 < 100) OR (S2 > 99 AND S2 < 200 AND MODE >= 2) OR (S2 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S2, A2, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S2, A2, DT_IN, tx);
     	x2 := S2;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF S3 <> x3 AND ((S3 < 100) OR (S3 > 99 AND S3 < 200 AND MODE >= 2) OR (S3 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S3, A3, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S3, A3, DT_IN, tx);
     	x3 := S3;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF cnt < 4 AND S4 <> x4 AND ((S4 < 100) OR (S4 > 99 AND S4 < 200 AND MODE >= 2) OR (S4 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S4, A4, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S4, A4, DT_IN, tx);
     	x4 := S4;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF cnt < 4 AND S5 <> x5 AND ((S5 < 100) OR (S5 > 99 AND S5 < 200 AND MODE >= 2) OR (S5 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S5, A5, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S5, A5, DT_IN, tx);
     	x5 := S5;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF cnt < 4 AND S6 <> x6 AND ((S6 < 100) OR (S6 > 99 AND S6 < 200 AND MODE >= 2) OR (S6 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S6, A6, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S6, A6, DT_IN, tx);
     	x6 := S6;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
     IF cnt < 4 AND S7 <> x7 AND ((S7 < 100) OR (S7 > 99 AND S7 < 200 AND MODE >= 2) OR (S7 > 199 AND MODE = 3)) THEN
-    	ESR_OUT[cnt] := status_to_ESR(S7, A7, DT_in, TX);
+    	ESR_OUT[cnt] := status_to_ESR(S7, A7, DT_IN, tx);
     	x7 := S7;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;

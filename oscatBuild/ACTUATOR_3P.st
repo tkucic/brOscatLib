@@ -93,7 +93,7 @@ FUNCTION_BLOCK ACTUATOR_3P
     			IF SWITCH_AVAIL THEN ERROR := TRUE; END_IF
     			STATUS := 100;
     			ARX := FALSE;
-    			next_CAL := tx + T_CAL;
+    			next_cal := tx + T_CAL;
     		END_IF
     END_CASE
 

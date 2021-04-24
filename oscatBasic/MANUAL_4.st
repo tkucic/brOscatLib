@@ -1,7 +1,7 @@
 FUNCTION_BLOCK MANUAL_4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=465*)
     IF MAN THEN
-    	IF NOT TOG THEN
+    	IF NOT tog THEN
     		Q0 := M0;
     		Q1 := M1;
     		Q2 := M2;

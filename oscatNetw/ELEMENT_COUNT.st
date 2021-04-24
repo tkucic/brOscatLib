@@ -3,7 +3,7 @@ FUNCTION ELEMENT_COUNT
     IF ELEMENT = '' THEN
     	ELEMENT_COUNT := 0;
     ELSE
-    	PT := ADR(ELEMENT);
+    	pt := ADR(ELEMENT);
     	ELEMENT_COUNT := 1;
     	l := LEN(ELEMENT);
     	FOR pos := 1 TO l DO

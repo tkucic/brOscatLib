@@ -1,9 +1,9 @@
 FUNCTION_BLOCK A_TRIG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=188*)
-    D := IN - LAST_IN;
+    D := IN - last_in;
     Q := ABS(D) > RES;
     IF Q THEN last_in := IN; END_IF
-    D := IN - LAST_IN;
+    D := IN - last_in;
 
 
     (* revision history

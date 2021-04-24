@@ -22,7 +22,7 @@ FUNCTION_BLOCK PRESSURE
     physik. Atmosphare ATM 1 ATM = 1,013 25 BAR
     techn. Atmosphare at 1 at = 1 kp/cm2 = 0,980665 BAR
     TORR TORR 1 TORR = (101325/760) PA = 1,333224 mbar
-    Meter-Wassersaule mWS 1 mWS = 9806,65 PA = 98,0665 mbar
+    Meter-Wassersaule MWS 1 MWS = 9806,65 PA = 98,0665 mbar
     psi lbf/in2 1 lbf/in2 = 68,947 57 mbar = 6894,757 PA
 
     *)

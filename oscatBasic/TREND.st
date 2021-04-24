@@ -3,7 +3,7 @@ FUNCTION_BLOCK TREND
     TU := X > last_X;
     TD := X < last_X;
     Q := TU OR TD;
-    D := X - LAST_X;
+    D := X - last_X;
 
     last_X := X;
 

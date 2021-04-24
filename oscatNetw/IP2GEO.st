@@ -65,7 +65,7 @@ FUNCTION_BLOCK IP2GEO
     		CASE UINT_TO_INT(CTRL.COUNT) OF
 
     		07: GEO.IP4 := IP4_DECODE(STR:=CTRL.VALUE); (* IP-Adresse *)
-    		10: GEO.STATE := 'OK' = CTRL.VALUE; (* STATUS *)
+    		10: GEO.state := 'OK' = CTRL.VALUE; (* STATUS *)
     		13: GEO.COUNTRY_CODE := CTRL.VALUE; (* Country-Code *)
     		16: GEO.COUNTRY_NAME := CTRL.VALUE; (* Country-Name *)
     		19: GEO.REGION_CODE := CTRL.VALUE; (* Region-Code *)

@@ -4,7 +4,7 @@ FUNCTION_BLOCK BLIND_ACTUATOR
     lock(i1 := UP, I2 := DN, TL := T_LOCKOUT);
 
     (* ramp UP or down to simulate the angle position of the blind slats *)
-    angle(e := lock.Q1 OR lock.Q2, UP := lock.Q1, PT := T_Angle);
+    angle(e := lock.Q1 OR lock.Q2, UP := lock.Q1, PT := T_ANGLE);
     position(e := lock.Q1 AND angle.high OR lock.Q2 AND angle.low, UP := lock.Q1, PT := T_UD);
 
     (* set the outputs *)

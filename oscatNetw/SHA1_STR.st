@@ -10,7 +10,7 @@ FUNCTION_BLOCK SHA1_STR
 
     2:	(* Data copy and Calc *)
     	IF size > 0 THEN
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=MID(STR, UDINT_TO_INT(SIZE), UDINT_TO_INT(POS) + 1), POS:=0, PT:=ADR(buf), SIZE:=SIZEOF(buf));
+    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=MID(STR, UDINT_TO_INT(size), UDINT_TO_INT(pos) + 1), pos:=0, PT:=ADR(buf), size:=SIZEOF(buf));
     	END_IF
 
     3:	DONE := TRUE;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK SHA1_STR
     END_CASE
 
     IF mode > 0 THEN
-    	SHA1_STREAM(SIZE:=size, MODE:=mode, BUF:=buf, SHA1:=SHA1, POS=>pos);
+    	SHA1_STREAM(size:=size, mode:=mode, buf:=buf, SHA1:=SHA1, pos=>pos);
     END_IF
 
     run_last := RUN;

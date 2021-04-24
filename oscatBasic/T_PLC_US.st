@@ -11,7 +11,7 @@ FUNCTION T_PLC_US
     oder etwa spring s7 bei überlauf auf -24 tage????? dann wäre keine korrektur nötig.
     *)
     IF debug THEN
-    	T_PLC_US := (SHL(T_PLC_US,N) OR SHL(DWORD#1,N)-1) + OFFSET;
+    	T_PLC_US := (SHL(T_PLC_US,N) OR SHL(DWORD#1,N)-1) + offset;
     END_IF
 
     (* revision history

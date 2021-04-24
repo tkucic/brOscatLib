@@ -36,7 +36,7 @@ FUNCTION_BLOCK TELNET_PRINT
     		IF IP_C.C_STATE = BYTE#1 THEN (* positive Flanke Connect off *)
     			init := FALSE;
     		ELSIF READY THEN (* Verbindung vorhanden *)
-    			IF IP_C.C_STATE = BYTE#254 AND NOT INIT THEN (* positive Flanke Connect on *)
+    			IF IP_C.C_STATE = BYTE#254 AND NOT init THEN (* positive Flanke Connect on *)
     				(* Var init ist notwendig, damit der Baustein im selben zyklus mehrmals ausgerufen werden kann *)
     				init := TRUE;
     				b0_screen_clear := (OPTION AND BYTE#2#0000_0001) > BYTE#0;
@@ -104,14 +104,14 @@ FUNCTION_BLOCK TELNET_PRINT
     			ELSIF SEND THEN
 
     				(* aktuelle Farbe bestimmen  *)
-    				IF b2_color AND FRONT_COLOR <> last_FC THEN
+    				IF b2_color AND FRONT_COLOR <> last_fc THEN
     					(* Farbeinstellung: ANSI-Sequenz ESC[x;Y;Zm ausgeben *)
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#1B; (* ESC *)
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#5B; (* [ *)
     					(* Farbeinstellung: dunkel oder Hell und blinken bestimmen *)
-    					IF ((FRONT_COLOR AND BYTE#2#0001_1000) XOR (last_FC AND BYTE#2#0001_1000)) <> BYTE#00 OR TRUE THEN
+    					IF ((FRONT_COLOR AND BYTE#2#0001_1000) XOR (last_fc AND BYTE#2#0001_1000)) <> BYTE#00 OR TRUE THEN
     						x := x + 1;
     						S_BUF.BUFFER[x] := BYTE#16#30; (* 0  *)
     						x := x + 1;
@@ -142,7 +142,7 @@ FUNCTION_BLOCK TELNET_PRINT
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#6D; (* m *)
     					(* neue Farbe als letzt verwendete speichern *)
-    					last_FC := FRONT_COLOR;
+    					last_fc := FRONT_COLOR;
     				END_IF
 
     				(* Cursor positionieren *)
@@ -195,7 +195,7 @@ FUNCTION_BLOCK TELNET_PRINT
     END_CASE
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
+    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
 
     (* revision history
     ks	05. jan. 2009	rev 1.0

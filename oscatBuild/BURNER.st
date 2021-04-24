@@ -180,7 +180,7 @@ FUNCTION_BLOCK BURNER
     31.12.2006	hm		rev 1.1
     	added PRE_HEAT timing and output
     	FLAME monitor before ignition will generate error on STATUS output
-    	added output for KWh
+    	added output for KWH
 
     31.12.2006	hm		rev 1.2
     	added oil_temp_input

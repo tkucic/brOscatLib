@@ -4,10 +4,10 @@ FUNCTION_BLOCK TUNE2
     tx := T_PLC_MS();
 
     IF RST THEN
-    	Y := RST_val;
+    	Y := RST_VAL;
     	state := 0;
     ELSIF SET THEN
-    	Y := SET_val;
+    	Y := SET_VAL;
     	state := 0;
     ELSIF state > 0 THEN
     	(* key has been pushed state machine operating *)

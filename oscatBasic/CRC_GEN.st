@@ -16,14 +16,14 @@ FUNCTION CRC_GEN
 
     (* calculate CRC for each byte *)
     WHILE pos < SIZE DO
-    	IF REV_IN THEN DX := REVERSE(PT^[pos]); ELSE DX := PT^[pos]; END_IF
+    	IF REV_IN THEN dx := REVERSE(PT^[pos]); ELSE dx := PT^[pos]; END_IF
     	pos := pos + 1;
     	(* crc calculation for one byte *)
     	FOR bits := 0 TO 7 DO
     		IF CRC_GEN.31 THEN
-    			CRC_GEN := (SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7)) XOR PN;
+    			CRC_GEN := (SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(dx.7)) XOR PN;
     		ELSE
-    			CRC_GEN := SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(DX.7);
+    			CRC_GEN := SHL(CRC_GEN, 1) OR BOOL_TO_DWORD(dx.7);
     		END_IF
     		dx := SHL(dx, 1);
     	END_FOR
@@ -46,7 +46,7 @@ FUNCTION CRC_GEN
 
     (* suggested optimization by deninis klopke
     die betreffs genannte Funktion kann folgendermaßen optimiert werden:
-    In Zeilen 33 und 35 des Implementierungsteils kann jeweils der Teil „OR BOOL_TO_DWORD(DX.7)“ entfallen, da nach 8maligem Linksshift von „DX“ in Zeile 26 der Wert von DX = BYTE#0 ist. Eine weitere Veroderung mit diesem Wert hat keine Auswirkungen auf das Ergebnis mehr.
+    In Zeilen 33 und 35 des Implementierungsteils kann jeweils der Teil „OR BOOL_TO_DWORD(dx.7)“ entfallen, da nach 8maligem Linksshift von „dx“ in Zeile 26 der Wert von dx = BYTE#0 ist. Eine weitere Veroderung mit diesem Wert hat keine Auswirkungen auf das Ergebnis mehr.
     *)
 
     (* typical crc polynoms

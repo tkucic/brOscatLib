@@ -6,9 +6,9 @@ FUNCTION_BLOCK FT_PT2
     	OUT := K * IN;
     	I2 := OUT;
     ELSE
-    	TN := TIME_TO_REAL(T) * 1.0E-3;
-    	tn2 := TN * TN;
-    	int1(X := IN * K / tn2 - I1 * 0.5 * D / TN - I2 / TN2, Y := I1);
+    	tn := TIME_TO_REAL(T) * 1.0E-3;
+    	tn2 := tn * tn;
+    	int1(X := IN * K / tn2 - I1 * 0.5 * D / tn - I2 / tn2, Y := I1);
     	int2(X := I1,Y := I2);
     	OUT := I2;
     END_IF

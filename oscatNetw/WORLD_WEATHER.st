@@ -38,7 +38,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     		idx := 0;
     		day := 0;
     		cnt := 0;
-    		OFFSET := HTTP_GET.BODY_START; (* Start offset vorgeben *)
+    		offset := HTTP_GET.BODY_START; (* Start offset vorgeben *)
     		size := HTTP_GET.BODY_STOP; (* End Position *)
     		run := 1; (* Element suchen *)
     		state := 80;
@@ -73,20 +73,20 @@ FUNCTION_BLOCK WORLD_WEATHER
     			IF cnt >=8 AND cnt <= 87 THEN
     				IF cnt > 22 THEN
     					CASE idx OF
-    					00:	WW.DAY[day].DATE_OF_DAY := value;
-    					01:	WW.DAY[day].TEMP_MAX_C := value_int;
-    					02:	WW.DAY[day].TEMP_MAX_F := value_int;
-    					03:	WW.DAY[day].TEMP_MIN_C := value_int;
-    					04:	WW.DAY[day].TEMP_MIN_F := value_int;
-    					05:	WW.DAY[day].WIND_SPEED_MILES := value_int;
-    					06:	WW.DAY[day].WIND_SPEED_KMPH := value_int;
-    					07:	WW.DAY[day].WIND_DIR_DEGREE := value_int;
-    					08:	WW.DAY[day].WIND_DIR16POINT := value;
-    					09:	WW.DAY[day].WEATHER_CODE := value_int;
+    					00:	WW.day[day].DATE_OF_DAY := value;
+    					01:	WW.day[day].TEMP_MAX_C := value_int;
+    					02:	WW.day[day].TEMP_MAX_F := value_int;
+    					03:	WW.day[day].TEMP_MIN_C := value_int;
+    					04:	WW.day[day].TEMP_MIN_F := value_int;
+    					05:	WW.day[day].WIND_SPEED_MILES := value_int;
+    					06:	WW.day[day].WIND_SPEED_KMPH := value_int;
+    					07:	WW.day[day].WIND_DIR_DEGREE := value_int;
+    					08:	WW.day[day].WIND_DIR16POINT := value;
+    					09:	WW.day[day].WEATHER_CODE := value_int;
     					10:	pos := FIND(value, '/wsymbol_');
-    						WW.DAY[day].WEATHER_ICON := OSCAT_BASIC.DEC_TO_INT(MID(value,4,pos+9));
-    					11:	WW.DAY[day].WEATHER_DESC := value;
-    					12:	WW.DAY[day].PRECIPMM := value_real;
+    						WW.day[day].WEATHER_ICON := OSCAT_BASIC.DEC_TO_INT(MID(value,4,pos+9));
+    					11:	WW.day[day].WEATHER_DESC := value;
+    					12:	WW.day[day].PRECIPMM := value_real;
     					END_CASE
     					idx := idx + 1;
     					IF idx > 12 THEN
@@ -166,7 +166,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     	BYTE :=HTTP_GET.ERROR;
     *)
     (* -------------------------------------*)
-    CPB(SEP:=sep,RUN:=run,OFFSET:=OFFSET,VALUE:=value,PT:=R_BUF,RESULT=>result); (* CSV PARAMETER BUF *)
+    CPB(sep:=sep,run:=run,offset:=offset,value:=value,PT:=R_BUF,result=>result); (* CSV PARAMETER BUF *)
 
     last_state := ACTIVATE;
 

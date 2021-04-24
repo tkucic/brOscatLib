@@ -1,6 +1,6 @@
 FUNCTION_BLOCK IRTRANS_DECODE
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=36*)
-    size := R_BUF.SIZE;
+    size := R_BUF.size;
 
     (* do nothing if the buffer is empty *)
     IF size > 0 AND IP_C.MAILBOX[1] <> z THEN
@@ -9,7 +9,7 @@ FUNCTION_BLOCK IRTRANS_DECODE
     	stop := size - 2;
     	(* read characters before first comma and store in device *)
     	pt := ADR(DEV);
-    	buffer := ADR(R_BUF.BUFFER);
+    	buffer := ADR(R_BUF.buffer);
     	WHILE i < stop DO
     		IF buffer^[i] = 44 THEN EXIT; END_IF
     		pt^ := buffer^[i];

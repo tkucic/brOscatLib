@@ -2,11 +2,11 @@ FUNCTION_BLOCK SUN_TIME
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=139*)
     b := LATITUDE * 0.0174532925199433;
     MIDDAY := SUN_MIDDAY(LONGITUDE, UTC);
-    DK := 0.40954 * SIN(0.0172 * (INT_TO_REAL(DAY_OF_YEAR(UTC)) - 79.35));
-    SUN_DECLINATION := DEG(DK);
+    dk := 0.40954 * SIN(0.0172 * (INT_TO_REAL(DAY_OF_YEAR(UTC)) - 79.35));
+    SUN_DECLINATION := DEG(dk);
     IF SUN_DECLINATION > 180.0 THEN SUN_DECLINATION := SUN_DECLINATION - 360.0; END_IF
     SUN_DECLINATION := 90.0 - LATITUDE + SUN_DECLINATION;
-    delta := HOUR_TO_TIME(ACOS((SIN(RAD(H)) - SIN(b) * SIN(DK)) / (COS(b) * COS(DK))) * 3.819718632);
+    delta := HOUR_TO_TIME(ACOS((SIN(RAD(H)) - SIN(b) * SIN(dk)) / (COS(b) * COS(dk))) * 3.819718632);
     SUN_RISE := MIDDAY - delta;
     SUN_SET := MIDDAY + delta;
 

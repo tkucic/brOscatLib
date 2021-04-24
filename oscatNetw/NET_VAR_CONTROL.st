@@ -115,7 +115,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     	step := 0;
     END_IF
 
-    ACTIVATE_LAST := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
     tscan(IN:= step <> 110 ,PT:=SCAN_TIME);
 
     (* revision history

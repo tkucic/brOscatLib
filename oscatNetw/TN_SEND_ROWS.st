@@ -12,14 +12,14 @@ FUNCTION_BLOCK TN_SEND_ROWS
     in_Write_Index_Backup := in_Write_Index;
 
     (* positive Flanke Connect on *)
-    IF (IP_C.C_STATE = BYTE#254) OR (Xus_TN_SCREEN.bo_Clear_Screen) THEN
+    IF (IP_C.C_STATE = BYTE#254) OR (XUS_TN_SCREEN.bo_Clear_Screen) THEN
 
     	(* Clear-Screen Meldung rücksetzen *)
-    	Xus_TN_SCREEN.bo_Clear_Screen := FALSE;
+    	XUS_TN_SCREEN.bo_Clear_Screen := FALSE;
 
     	(* alle Zeilen für Update markieren *)
     	FOR in_Line_Count := INT#00 TO INT#23 DO
-    		Xus_TN_SCREEN.bya_Line_Update[in_Line_Count] := TRUE;
+    		XUS_TN_SCREEN.bya_Line_Update[in_Line_Count] := TRUE;
     	END_FOR
 
     	(* ESC [0;30,40m  Reset Attributes + Black,Black *)
@@ -36,7 +36,7 @@ FUNCTION_BLOCK TN_SEND_ROWS
 
     	(* Einerstelle Farbe Foreground ausgeben *)
     	in_Write_Index := in_Write_Index + INT#1;
-    	S_BUF.BUFFER[in_Write_Index] := (SHR(Xus_TN_SCREEN.by_Clear_Screen_Attr,4) OR BYTE#16#30);
+    	S_BUF.BUFFER[in_Write_Index] := (SHR(XUS_TN_SCREEN.by_Clear_Screen_Attr,4) OR BYTE#16#30);
 
     	in_Write_Index := in_Write_Index + INT#1;
     	S_BUF.BUFFER[in_Write_Index] := BYTE#16#3B; (* ; *)
@@ -45,7 +45,7 @@ FUNCTION_BLOCK TN_SEND_ROWS
 
     	(* Einerstelle Farbe Background ausgeben *)
     	in_Write_Index := in_Write_Index + INT#1;
-    	S_BUF.BUFFER[in_Write_Index] := ((Xus_TN_SCREEN.by_Clear_Screen_Attr AND BYTE#16#07) OR BYTE#16#30);
+    	S_BUF.BUFFER[in_Write_Index] := ((XUS_TN_SCREEN.by_Clear_Screen_Attr AND BYTE#16#07) OR BYTE#16#30);
 
     	in_Write_Index := in_Write_Index + INT#1;
     	S_BUF.BUFFER[in_Write_Index] := BYTE#16#6D; (* m *)
@@ -84,7 +84,7 @@ FUNCTION_BLOCK TN_SEND_ROWS
     	in_Offset := in_Row_Count * INT#80;
 
     	(* prüfen ob Update einer Zeile notwendig ist bzw. nach Reconnect *)
-    	IF (Xus_TN_SCREEN.bya_Line_Update[in_Row_Count] = TRUE) THEN
+    	IF (XUS_TN_SCREEN.bya_Line_Update[in_Row_Count] = TRUE) THEN
 
     		(* Schreib-Cursor positionieren *)
     		in_Write_Index := in_Write_Index + INT#1;
@@ -113,7 +113,7 @@ FUNCTION_BLOCK TN_SEND_ROWS
     		FOR in_Col_Count := 0 TO 79 DO
 
     			(* aktuelle Farbe bestimmen *)
-    			by_Cur_Color := Xus_TN_SCREEN.bya_COLOR[in_Offset];
+    			by_Cur_Color := XUS_TN_SCREEN.bya_COLOR[in_Offset];
     			IF (by_Cur_Color <> by_last_Color) OR (in_Col_Count = INT#00) THEN
 
     				(* Farbeinstellung: ANSI-Sequenz ESC[X;Y;Zm ausgeben *)
@@ -193,7 +193,7 @@ FUNCTION_BLOCK TN_SEND_ROWS
 
     				(* ein TEXT-Zeichen von Screenbuffer in den Sendebuffer übertragen *)
     				in_Write_Index := in_Write_Index + INT#1;
-    				S_BUF.BUFFER[in_Write_Index] := Xus_TN_SCREEN.bya_CHAR[in_Offset];
+    				S_BUF.BUFFER[in_Write_Index] := XUS_TN_SCREEN.bya_CHAR[in_Offset];
 
     				(* nächste Spalte anwählen *)
     				in_Offset := in_Offset + INT#01;
@@ -209,7 +209,7 @@ FUNCTION_BLOCK TN_SEND_ROWS
 
     			(* Buffer ist noch nicht voll -> neue Zeile ubernehmen *)
     			in_Last_Row_Index := in_Write_Index;
-    			Xus_TN_SCREEN.bya_Line_Update[in_Row_Count] := FALSE;
+    			XUS_TN_SCREEN.bya_Line_Update[in_Row_Count] := FALSE;
 
     		END_IF
 
@@ -243,22 +243,22 @@ FUNCTION_BLOCK TN_SEND_ROWS
 
     		(* Zehnerstelle Zeilennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := SHR(OSCAT_BASIC.INT_TO_BCDC(Xus_TN_SCREEN.in_Cursor_Y + 1),INT#4) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := SHR(OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_Y + 1),INT#4) OR BYTE#16#30;
 
     		(* Einerstelle Zeilennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := (OSCAT_BASIC.INT_TO_BCDC(Xus_TN_SCREEN.in_Cursor_Y + 1) AND BYTE#16#0F) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := (OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_Y + 1) AND BYTE#16#0F) OR BYTE#16#30;
 
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] := BYTE#16#3B; (* ; *)
 
     		(* Zehnerstelle Spaltenummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := SHR(OSCAT_BASIC.INT_TO_BCDC(Xus_TN_SCREEN.in_Cursor_X + 1),INT#4) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := SHR(OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_X + 1),INT#4) OR BYTE#16#30;
 
     		(* Einerstelle Spaltennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := (OSCAT_BASIC.INT_TO_BCDC(Xus_TN_SCREEN.in_Cursor_X + 1) AND BYTE#16#0F) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := (OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_X + 1) AND BYTE#16#0F) OR BYTE#16#30;
 
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] := BYTE#16#48; (* H *)

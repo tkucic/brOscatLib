@@ -5,8 +5,8 @@ FUNCTION_BLOCK LOG_VIEWPORT
     	CASE LV.MOVE_TO_X OF
     	30000: pos := 1 ; (* älteste Meldung anzeigen *)
     	30001: pos := LC.SIZE; (* neueste Meldung anzeigen *)
-    	30002: pos := pos + LV.COUNT; (* eine Seite nach unten blättern -> Richtung neuere Nachrichten *)
-    	30003: pos := pos - LV.COUNT; (* eine Seite nach oben blättern -> Richtung ältere Nachrichten *)
+    	30002: pos := pos + LV.count; (* eine Seite nach unten blättern -> Richtung neuere Nachrichten *)
+    	30003: pos := pos - LV.count; (* eine Seite nach oben blättern -> Richtung ältere Nachrichten *)
     	ELSE
     		pos := pos + LV.MOVE_TO_X;
     	END_CASE
@@ -21,20 +21,20 @@ FUNCTION_BLOCK LOG_VIEWPORT
 
     	(* pos prüfen und übernehmen *)
     	IF LC.RING_MODE THEN
-    		pos := LIMIT(1,pos,LC.SIZE - LV.COUNT + 1);
+    		pos := LIMIT(1,pos,LC.SIZE - LV.count + 1);
     	ELSE
-    		IF LC.IDX > LV.COUNT THEN
-    			pos := LIMIT(1,pos,LC.IDX - LV.COUNT + 1);
+    		IF LC.idx > LV.count THEN
+    			pos := LIMIT(1,pos,LC.idx - LV.count + 1);
     		ELSE
     			pos := 1;
     		END_IF
     	END_IF
 
     	(* idxBasis berechnen *)
-    	base := LC.IDX - pos - LV.COUNT + 1;
+    	base := LC.idx - pos - LV.count + 1;
     	IF LC.RING_MODE THEN 
     		(* Anzeige im Ringpuffermodus *)
-    		FOR count:= 1 TO LV.COUNT DO
+    		FOR count:= 1 TO LV.count DO
     			idx := base + count;
     			IF idx < 1 THEN
     				idx := idx + LC.SIZE;
@@ -43,7 +43,7 @@ FUNCTION_BLOCK LOG_VIEWPORT
     		END_FOR
     	ELSE
     		(* Anzeige im Normalmodus *)
-    		FOR count:= 1 TO LV.COUNT DO
+    		FOR count:= 1 TO LV.count DO
     			idx := base + count;
     			IF idx < 1 THEN
     				(* Leere Zeile ausgeben *)
