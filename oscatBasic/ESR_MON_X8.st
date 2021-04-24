@@ -4,10 +4,10 @@ FUNCTION_BLOCK ESR_MON_X8
     tx := DWORD_TO_TIME(T_PLC_MS());
 
     ESR_FLAG := FALSE;
-    ESR_OUT[3].typ := 0;
-    ESR_OUT[2].typ := 0;
-    ESR_OUT[1].typ := 0;
-    ESR_OUT[0].typ := 0;
+    ESR_OUT[3].TYP := 0;
+    ESR_OUT[2].TYP := 0;
+    ESR_OUT[1].TYP := 0;
+    ESR_OUT[0].TYP := 0;
     cnt := 0;
 
 
