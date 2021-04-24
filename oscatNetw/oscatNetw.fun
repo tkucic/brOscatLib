@@ -2308,6 +2308,15 @@ FUNCTION_BLOCK BASE64_DECODE_STREAM (*  *)(* http://www.oscat.de/images/OSCATNet
         BUF1 : ARRAY[0..63] OF BYTE;
         BUF2 : ARRAY[0..47] OF BYTE;
     END_VAR
+    VAR
+        a : INT;
+        b : WORD;
+        o : INT;
+        off : INT;
+        i1 : INT;
+        i2 : INT;
+        c : INT;
+    END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK BASE64_ENCODE_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=74 *)
     VAR_INPUT
@@ -2717,6 +2726,9 @@ FUNCTION_BLOCK IRTRANS_RCV_4 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         DEV : STRING[255];
         KEY : STRING[255];
     END_VAR
+    VAR
+        decode : BOOL;
+    END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK IRTRANS_RCV_8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=39 *)
     VAR_INPUT
@@ -2744,6 +2756,9 @@ FUNCTION_BLOCK IRTRANS_RCV_8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
     VAR_IN_OUT
         DEV : STRING[255];
         KEY : STRING[255];
+    END_VAR
+    VAR
+        decode : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK IRTRANS_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=40 *)

@@ -6462,6 +6462,22 @@ FUNCTION_BLOCK SUN_POS (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basi
         H : REAL;
         HR : REAL;
     END_VAR
+    VAR
+        g : REAL;
+        a : REAL;
+        d : REAL;
+        t1 : REAL;
+        n : REAL;
+        e : REAL;
+        c : REAL;
+        tau : REAL;
+        sin_d : REAL;
+        rlat : REAL;
+        sin_lat : REAL;
+        cos_lat : REAL;
+        cos_tau : REAL;
+        cos_d : REAL;
+    END_VAR
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK SUN_TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=139 *)
     VAR_INPUT
