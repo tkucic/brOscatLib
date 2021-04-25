@@ -117,7 +117,7 @@ FUNCTION_BLOCK SMTP_CLIENT
 
     	IF LEN(str2) > 0 THEN
     		IF FIND(rcv_text,str2) > 0 THEN
-    			auth_state := OSCAT_BASIC.BIT_LOAD_B(auth_state, TRUE, idx1);
+    			auth_state := BIT_LOAD_B(auth_state, TRUE, idx1);
     			str3 := str2; (* aktuellen AUTH-Type Namen sichern *)
     			idx2 := 1000 + (idx1 * 100); (* Schritt berechnen *)
     		END_IF
@@ -246,12 +246,12 @@ FUNCTION_BLOCK SMTP_CLIENT
     		DTI := UDINT_TO_DT(DT_TO_UDINT(DTI) + INT_TO_UDINT(- DTI_OFFSET * 60)); (* Minuten-Offset auf Sekunden umrechnen und addieren *)
     		IF esmtp THEN (* esmtp Format >Date: Thu, 21 May 1998 05:33:29 -0700< *)
     			str2 := ';Mon;Tue;Wed;Thu;Fri;Sat;Sun';
-    			str1 := ELEMENT_GET(59, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTI)), str2);
+    			str1 := ELEMENT_GET(59, DAY_OF_WEEK(DT_TO_DATE(DTI)), str2);
     			snd_text := CONCAT('Date: ',str1);
-    			str1 := OSCAT_BASIC.DT_TO_STRF(DTI, 0, ', #H #E #A #N:#R:#T +0000', 1);
+    			str1 := DT_TO_STRF(DTI, 0, ', #H #E #A #N:#R:#T +0000', 1);
     			snd_text := CONCAT(snd_text,str1);
     		ELSE (* SMTP Format >Date: 21 May 98 05:33:29< *)
-    			snd_text := OSCAT_BASIC.DT_TO_STRF(DTI, 0, 'Date: #G #E #B #N:#R:#T', 1);
+    			snd_text := DT_TO_STRF(DTI, 0, 'Date: #G #E #B #N:#R:#T', 1);
     		END_IF
     		step := 230;
     	END_IF
@@ -527,13 +527,13 @@ FUNCTION_BLOCK SMTP_CLIENT
     		IF cnt1 + cnt2 <= 46 THEN (* USER + PASSWORD dürfen zusammen maximal 46 Zeichen haben *)
     			b64_buf1[0] := BYTE#0;
     			FOR i1 := 1 TO cnt1 DO
-    				b64_buf1[i1] := OSCAT_BASIC.CODE(URL_DATA.USER, i1);
+    				b64_buf1[i1] := CODE(URL_DATA.USER, i1);
     			END_FOR
     			b64_size1 := cnt1 + 1;
     			b64_buf1[b64_size1] := BYTE#0;
     			b64_size1 := b64_size1 + 1;
     			FOR i1 := 1 TO cnt2 DO
-    				b64_buf1[b64_size1] := OSCAT_BASIC.CODE(URL_DATA.PASSWORD, i1);
+    				b64_buf1[b64_size1] := CODE(URL_DATA.PASSWORD, i1);
     				b64_size1 := b64_size1 + 1;
     			END_FOR
     			BASE64_ENCODE_STREAM( SIZE1:= b64_size1, BUF1:= b64_buf1, BUF2:= b64_buf2, SIZE2=> b64_size2); (* BASE64 Kodierung *)
@@ -645,10 +645,10 @@ FUNCTION_BLOCK SMTP_CLIENT
     				R_BUF.BUFFER[i1] := BYTE#94; (* >^< *)
     			END_IF
     		END_FOR
-    		rcv_text := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=idx1+1,START:=0,STOP:=OSCAT_BASIC.STRING_LENGTH-1);
+    		rcv_text := BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=idx1+1,START:=0,STOP:=STRING_LENGTH-1);
     		IF LEN(rcv_text) >= 3 THEN (* Statuscode prüfen und auswerten *)
     			rcv_s := LEFT(rcv_text,3);
-    			IF OSCAT_BASIC.IS_NUM(STR:=rcv_s) THEN (* enthält nur Zahlen ? *)
+    			IF IS_NUM(STR:=rcv_s) THEN (* enthält nur Zahlen ? *)
     				rcv_state := STRING_TO_INT(rcv_s);
     			END_IF
     			IP_C.R_OBSERVE := FALSE;
@@ -682,7 +682,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		END_IF*)
     		(*########################################################################*)
 
-    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=snd_idx,pt:=ADR(S_BUF.BUFFER),size:=SIZEOF(S_BUF.BUFFER)); (* String in puffer kopieren *)
+    		_STRING_TO_BUFFER(str:=snd_text,pos:=snd_idx,pt:=ADR(S_BUF.BUFFER),size:=SIZEOF(S_BUF.BUFFER)); (* String in puffer kopieren *)
     		snd_idx := snd_idx + LEN(snd_text);
     		FOR i1 := 1 TO snd_lf_cnt DO
     			S_BUF.BUFFER[snd_idx] := BYTE#16#0D;

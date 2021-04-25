@@ -19,7 +19,7 @@ FUNCTION_BLOCK NET_VAR_STRING
     			index := index + 1;
     			X.S_BUF.BUFFER[index] := INT_TO_BYTE(len_str); (* Anzahl der Bytes *)
     			index := index + 1;
-    			OSCAT_BASIC._STRING_TO_BUFFER(STR:=IN,POS:=index,PT:=ADR(X.S_BUF.BUFFER),SIZE:=X.BUF_SIZE);
+    			_STRING_TO_BUFFER(STR:=IN,POS:=index,PT:=ADR(X.S_BUF.BUFFER),SIZE:=X.BUF_SIZE);
     			index := index + len_str;
     		END_IF
     	ELSIF X.STATE = BYTE#2 THEN (* Daten lesen *)
@@ -32,7 +32,7 @@ FUNCTION_BLOCK NET_VAR_STRING
     			index2 := index + 1;
     			index := index2 + len_str;
     			IF len_str > 0 THEN
-    				OUT := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(X.R_BUF.BUFFER),SIZE:=X.BUF_SIZE,START:=INT_TO_UINT(index2),STOP:=INT_TO_UINT(index - 1));
+    				OUT := BUFFER_TO_STRING(PT:=ADR(X.R_BUF.BUFFER),SIZE:=X.BUF_SIZE,START:=INT_TO_UINT(index2),STOP:=INT_TO_UINT(index - 1));
     			ELSE
     				OUT := '';
     			END_IF

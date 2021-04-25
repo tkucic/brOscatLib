@@ -12,7 +12,7 @@ FUNCTION_BLOCK TN_INPUT_EDIT_LINE
     			OR (XUS_TN_INPUT_CONTROL_DATA.bo_Input_Only_Num = FALSE) THEN
 
     			(* ASCII Wert in einen String wandeln *)
-    			st_CHAR := OSCAT_BASIC.CHR_TO_STRING(C:=XUS_TN_INPUT_CONTROL_DATA.by_Input_ASCII_Code);
+    			st_CHAR := CHR_TO_STRING(C:=XUS_TN_INPUT_CONTROL_DATA.by_Input_ASCII_Code);
 
     			(* Eingabe übernehmen *)
     			XUS_TN_INPUT_CONTROL_DATA.st_Input_Data := REPLACE(XUS_TN_INPUT_CONTROL_DATA.st_Input_Data,
@@ -42,7 +42,7 @@ FUNCTION_BLOCK TN_INPUT_EDIT_LINE
     			XUS_TN_INPUT_CONTROL_DATA.st_Input_String := XUS_TN_INPUT_CONTROL_DATA.st_Input_Data;
 
     			(* Eingabestring -> links und rechts Leerzeichen entfernen *)
-    			XUS_TN_INPUT_CONTROL_DATA.st_Input_String := OSCAT_BASIC.TRIME(str:=XUS_TN_INPUT_CONTROL_DATA.st_Input_String);
+    			XUS_TN_INPUT_CONTROL_DATA.st_Input_String := TRIME(str:=XUS_TN_INPUT_CONTROL_DATA.st_Input_String);
     			XUS_TN_INPUT_CONTROL_DATA.bo_Input_Entered := TRUE;
 
     			(* neue Eingabe vorbereiten *)

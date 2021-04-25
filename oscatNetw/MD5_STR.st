@@ -10,7 +10,7 @@ FUNCTION_BLOCK MD5_STR
 
     2:	(* Data copy and Calc *)
     	IF size > 0 THEN
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=MID(STR, UDINT_TO_INT(size), UDINT_TO_INT(pos) + 1), pos:=0, PT:=ADR(buf), size:=SIZEOF(buf));
+    		_STRING_TO_BUFFER(STR:=MID(STR, UDINT_TO_INT(size), UDINT_TO_INT(pos) + 1), pos:=0, PT:=ADR(buf), size:=SIZEOF(buf));
     	END_IF
 
     3:	DONE := TRUE;

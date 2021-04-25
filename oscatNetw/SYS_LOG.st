@@ -31,23 +31,23 @@ FUNCTION_BLOCK SYS_LOG
 
     		IF (OPTION AND BYTE#0000_0010) = BYTE#00 THEN (* OPTION: No Use Syslog RFC Header *)
     			(* 'month day hh:mm:ss ' *)
-    			s1 := CONCAT(s1,OSCAT_BASIC.DT_TO_STRF(DTI:=LOC_DT,MS:=0,FMT:='#E #W #N:#R:#T ',LANG:=1));
-    			OSCAT_BASIC._STRING_TO_BUFFER(STR:=s1,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
+    			s1 := CONCAT(s1,DT_TO_STRF(DTI:=LOC_DT,MS:=0,FMT:='#E #W #N:#R:#T ',LANG:=1));
+    			_STRING_TO_BUFFER(STR:=s1,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     			i := i + LEN(s1);
     			(* ' sourcename eintragen *)
-    			OSCAT_BASIC._STRING_TO_BUFFER(STR:=HOSTNAME,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
+    			_STRING_TO_BUFFER(STR:=HOSTNAME,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     			i := i + LEN(HOSTNAME);
     			S_BUF.BUFFER[i] := BYTE#32; (* leerzeichen einfuegen *)
     			i := i + 1;
     			(* ' TAG eintragen *)
-    			OSCAT_BASIC._STRING_TO_BUFFER(STR:=TAG,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
+    			_STRING_TO_BUFFER(STR:=TAG,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     			i := i + LEN(TAG);
     			S_BUF.BUFFER[i] := BYTE#32; (* leerzeichen einfuegen *)
     			i := i + 1;
     		END_IF
 
     		(* ' MESSAGE eintragen *)
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=MESSAGE,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
+    		_STRING_TO_BUFFER(STR:=MESSAGE,POS:=i,PT:=ADR(S_BUF.BUFFER),SIZE:=UINT#1024);
     		i := i + LEN(MESSAGE);
 
     		IF (OPTION AND BYTE#0000_0100) > BYTE#00 THEN (* OPTION: Add a CR & LF to end of MESSAGE *)

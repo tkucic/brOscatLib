@@ -25,7 +25,7 @@ FUNCTION_BLOCK NET_VAR_REAL8
     			X.S_BUF.BUFFER[index] := BYTE#15; (* TYPE REAL8 *)
     			index := index + 1;
     			FOR i2 := 1 TO 8 DO;
-    				r_dw := OSCAT_BASIC.REAL_TO_DW(X:=ra[i2]);
+    				r_dw := REAL_TO_DW(X:=ra[i2]);
     				FOR i := 1 TO 4 DO;
     					X.S_BUF.BUFFER[index] := DWORD_TO_BYTE(r_dw);
     					r_dw := ROR(r_dw,8);
@@ -46,7 +46,7 @@ FUNCTION_BLOCK NET_VAR_REAL8
     						r_dw := ROR(r_dw,8);
     						index := index + 1;
     					END_FOR
-    					ra[i2] := OSCAT_BASIC.DW_TO_REAL(X:=r_dw);
+    					ra[i2] := DW_TO_REAL(X:=r_dw);
     				END_FOR
     				OUT1 := ra[1];
     				OUT2 := ra[2];

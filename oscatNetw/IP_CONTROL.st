@@ -10,7 +10,7 @@ FUNCTION_BLOCK IP_CONTROL
     (* -----------------------------------------------------------------------------*)
 
     (* read system time *)
-    tx := OSCAT_BASIC.T_PLC_MS();
+    tx := T_PLC_MS();
 
     IF IP_C.c_port = 0 THEN
     	IP_C.c_port := PORT; (* uebergebenen PORT durch parametrierten PORT ersetzen *)
@@ -426,7 +426,7 @@ FUNCTION_BLOCK IP_CONTROL
     	r_status := 255; (* Timeout-Fehler ausgeben *)
     END_IF
 
-    IP_C.ERROR := OSCAT_BASIC.DWORD_OF_BYTE(c_status,s_status,r_status,0);
+    IP_C.ERROR := DWORD_OF_BYTE(c_status,s_status,r_status,0);
 
     (* ---------------------- Debug-Message ----------------------------*)
     (*IF  _debug_enable THEN

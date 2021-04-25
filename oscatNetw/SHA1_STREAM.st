@@ -36,7 +36,7 @@ FUNCTION_BLOCK SHA1_STREAM
 
     	n := 0;	(* Byte-Array in DWORD-Array umkopieren *)
     	FOR n1 := 0 TO 15 DO
-    		w[n1] := OSCAT_BASIC.DWORD_OF_BYTE(BUF[n],BUF[n+1],BUF[n+2],BUF[n+3]);
+    		w[n1] := DWORD_OF_BYTE(BUF[n],BUF[n+1],BUF[n+2],BUF[n+3]);
     		n := n + 4;
     	END_FOR
 

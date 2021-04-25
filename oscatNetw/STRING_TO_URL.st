@@ -27,7 +27,7 @@ FUNCTION STRING_TO_URL
     END_IF
 
     (* extract user and password if present ending with a @ *)
-    pos := OSCAT_BASIC.FINDB(STR1:=x,STR2:='@'); (* Find last @ *)
+    pos := FINDB(STR1:=x,STR2:='@'); (* Find last @ *)
 
     IF pos > 0 THEN
     	(* extract user *)

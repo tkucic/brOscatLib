@@ -38,7 +38,7 @@ FUNCTION_BLOCK TIMER_P4
     					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				2: 	(* event by selected weekdays *)
-    					IF (SHR(BYTE#128, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME))) AND event.DAY) > 0 THEN
+    					IF (SHR(BYTE#128, DAY_OF_WEEK(DT_TO_DATE(DTIME))) AND event.DAY) > 0 THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
@@ -50,37 +50,37 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				10:	(* weekly event exactly once a week the weekday is specified in day, 1= mo *)
-    					IF OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
+    					IF DAY_OF_WEEK(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				20:	(* monthly event *)
-    					IF OSCAT_BASIC.DAY_OF_MONTH(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
+    					IF DAY_OF_MONTH(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				21:	(* event on last day of month *)
-    					IF DT_TO_DATE(DTIME) = OSCAT_BASIC.MONTH_END(DT_TO_DATE(DTIME)) THEN
+    					IF DT_TO_DATE(DTIME) = MONTH_END(DT_TO_DATE(DTIME)) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				30:	(* yearly event on a specific day specified in day *)
-    					IF OSCAT_BASIC.DAY_OF_YEAR(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
+    					IF DAY_OF_YEAR(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				31:	(* event on last day of year *)
-    					IF DT_TO_DATE(DTIME) = OSCAT_BASIC.YEAR_END(OSCAT_BASIC.YEAR_OF_DATE(DT_TO_DATE(DTIME))) THEN
+    					IF DT_TO_DATE(DTIME) = YEAR_END(YEAR_OF_DATE(DT_TO_DATE(DTIME))) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				40:	(* event on leap days *)
-    					IF OSCAT_BASIC.LEAP_DAY(DT_TO_DATE(DTIME)) THEN
+    					IF LEAP_DAY(DT_TO_DATE(DTIME)) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
@@ -92,13 +92,13 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				42: (* event on holidays and weekends *)
-    					IF (HOLY OR (OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 6) OR (OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 7)) THEN
+    					IF (HOLY OR (DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 6) OR (DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 7)) THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				43:	(* event on workdays mo-FR and no holiday *)
-    					IF OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTIME)) < 6 THEN
+    					IF DAY_OF_WEEK(DT_TO_DATE(DTIME)) < 6 THEN
     						start := day_start + TOD_TO_TIME(event.start);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF

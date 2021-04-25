@@ -105,7 +105,7 @@ FUNCTION_BLOCK TN_INPUT_MENU_BAR
 
     	(* Scrolloffset *)
     	IF in_Scroll_Offset <> INT#00 THEN
-    		XUS_TN_MENU.in_Cur_Menu_Item := OSCAT_BASIC.INC2(XUS_TN_MENU.in_Cur_Menu_Item,in_Scroll_Offset,1,XUS_TN_MENU.in_Menu_E_Count);
+    		XUS_TN_MENU.in_Cur_Menu_Item := INC2(XUS_TN_MENU.in_Cur_Menu_Item,in_Scroll_Offset,1,XUS_TN_MENU.in_Menu_E_Count);
     		in_Scroll_Offset := INT#00;
     	ELSE
     		(* Item = 0 und kein Scrolloffset *)

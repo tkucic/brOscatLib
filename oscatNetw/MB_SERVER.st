@@ -1,7 +1,7 @@
 FUNCTION_BLOCK MB_SERVER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116*)
     (* read system time *)
-    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
+    tx := DWORD_TO_TIME(T_PLC_MS());
 
     FOR i := 1 TO 10 DO
     	IF VMAP[i].TIME_OUT > t#0s THEN
@@ -33,7 +33,7 @@ FUNCTION_BLOCK MB_SERVER
 
     20:	IF NOT ip_error THEN
     		IF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE > UINT#6 THEN	(* Datensenden nicht aktiv und Daten wurden empfangen *)
-    			IF  R_BUF.SIZE = WORD_TO_UINT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[4],R_BUF.BUFFER[5])) + UINT#6 THEN (* gültige Datenlänge *)
+    			IF  R_BUF.SIZE = WORD_TO_UINT(WORD_OF_BYTE(R_BUF.BUFFER[4],R_BUF.BUFFER[5])) + UINT#6 THEN (* gültige Datenlänge *)
     				ERROR := DWORD#00; (* ERROR löschen *)
 
     				(* Header kopieren *)
@@ -41,8 +41,8 @@ FUNCTION_BLOCK MB_SERVER
     					S_BUF.BUFFER[i] := R_BUF.BUFFER[i];
     				END_FOR
     				fc := BYTE_TO_INT(R_BUF.BUFFER[7]);
-    				adr1 := WORD_TO_INT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[8],R_BUF.BUFFER[9]));
-    				points := WORD_TO_INT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]));
+    				adr1 := WORD_TO_INT(WORD_OF_BYTE(R_BUF.BUFFER[8],R_BUF.BUFFER[9]));
+    				points := WORD_TO_INT(WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]));
 
     				(* Virtual Address *)
     				MB_VMAP(VMAP:=VMAP,fc:=fc,V_ADR:=adr1,V_CNT:=points,SIZE:=DATA_SIZE);
@@ -96,18 +96,18 @@ FUNCTION_BLOCK MB_SERVER
     						S_BUF.SIZE := INT_TO_UINT(idx2 + 1);
     					(*--------------------------------------------------*)
     					5 : (* Force Single Coil *)
-    						DATA[adr1]:=OSCAT_BASIC.BIT_LOAD_W(DATA[adr1],R_BUF.BUFFER[10] > BYTE#0,bit_pos);
+    						DATA[adr1]:=BIT_LOAD_W(DATA[adr1],R_BUF.BUFFER[10] > BYTE#0,bit_pos);
     						S_BUF.SIZE := UINT#12;
     					(*--------------------------------------------------*)
     					6 : (* Preset Single Register *)
-    						DATA[adr1] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]);
+    						DATA[adr1] := WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]);
     						S_BUF.SIZE := UINT#12;
     					(*--------------------------------------------------*)
     					15 : (* Force Multible coils *)
     						mask := BYTE#1;
     						idx1 := 13;
     						FOR i := 1 TO points DO
-    							DATA[adr1]:=OSCAT_BASIC.BIT_LOAD_W(DATA[adr1],(R_BUF.BUFFER[idx1] AND mask) > BYTE#0,bit_pos);
+    							DATA[adr1]:=BIT_LOAD_W(DATA[adr1],(R_BUF.BUFFER[idx1] AND mask) > BYTE#0,bit_pos);
     							bit_pos := bit_pos + 1;
     							IF bit_pos > 15 THEN
     								adr1:= adr1 + 1;
@@ -126,19 +126,19 @@ FUNCTION_BLOCK MB_SERVER
     						FOR i := adr1 TO count DO
     							idx1 := idx1 + 2;
     	 						idx2 := idx1 + 1;
-    							DATA[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
+    							DATA[i] := WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
     						END_FOR
     						S_BUF.SIZE := UINT#12;
     					(*--------------------------------------------------*)
     					22 : (* mask Write Register *)
-    						w_tmp := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]); (* and mask *)
-    						DATA[adr1] := (DATA[adr1] AND w_tmp) OR (OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[12],R_BUF.BUFFER[13]) AND (NOT w_tmp));
+    						w_tmp := WORD_OF_BYTE(R_BUF.BUFFER[10],R_BUF.BUFFER[11]); (* and mask *)
+    						DATA[adr1] := (DATA[adr1] AND w_tmp) OR (WORD_OF_BYTE(R_BUF.BUFFER[12],R_BUF.BUFFER[13]) AND (NOT w_tmp));
     						S_BUF.SIZE := UINT#14;
     					(*--------------------------------------------------*)
     					23 : (* Read / Write Registers	*)
     						(*--- Write-Register -----------------------------------*)
-    						adr2 := WORD_TO_INT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[12],R_BUF.BUFFER[13]));
-    						points2 := WORD_TO_INT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[14],R_BUF.BUFFER[15]));
+    						adr2 := WORD_TO_INT(WORD_OF_BYTE(R_BUF.BUFFER[12],R_BUF.BUFFER[13]));
+    						points2 := WORD_TO_INT(WORD_OF_BYTE(R_BUF.BUFFER[14],R_BUF.BUFFER[15]));
 
     						(* Virtual Address Write Register *)
     						MB_VMAP(VMAP:=VMAP,fc:=16,V_ADR:=adr2,V_CNT:=points2,SIZE:=DATA_SIZE);
@@ -151,7 +151,7 @@ FUNCTION_BLOCK MB_SERVER
     							FOR i := adr2 TO count DO
     								idx1 := idx1 + 2;
     	 							idx2 := idx1 + 1; (* zweiter index für pcworx notwendig ! *)
-    								DATA[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
+    								DATA[i] := WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
     							END_FOR
     	
     							(*--- Read-Register -----------------------------------*)

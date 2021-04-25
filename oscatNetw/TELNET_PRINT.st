@@ -153,25 +153,25 @@ FUNCTION_BLOCK TELNET_PRINT
     					S_BUF.BUFFER[x] := BYTE#16#5B; (* [ *)
     					(* Zehnerstelle Y_POS ausgeben *)
     					x := x + 1;
-    					S_BUF.BUFFER[x] := SHR(OSCAT_BASIC.INT_TO_BCDC(BYTE_TO_INT(Y_POS)),4) OR BYTE#16#30;
+    					S_BUF.BUFFER[x] := SHR(INT_TO_BCDC(BYTE_TO_INT(Y_POS)),4) OR BYTE#16#30;
     					(* Einerstelle Y_POS ausgeben *)
     					x := x + 1;
-    					S_BUF.BUFFER[x] := (OSCAT_BASIC.INT_TO_BCDC(BYTE_TO_INT(Y_POS)) AND BYTE#16#0F) OR BYTE#16#30;
+    					S_BUF.BUFFER[x] := (INT_TO_BCDC(BYTE_TO_INT(Y_POS)) AND BYTE#16#0F) OR BYTE#16#30;
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#3B; (* ; *)
     					(* Zehnerstelle X_POS ausgeben *)
     					x := x + 1;
-    					S_BUF.BUFFER[x] := SHR(OSCAT_BASIC.INT_TO_BCDC(BYTE_TO_INT(X_POS)),4) OR BYTE#16#30;
+    					S_BUF.BUFFER[x] := SHR(INT_TO_BCDC(BYTE_TO_INT(X_POS)),4) OR BYTE#16#30;
     					(* Einerstelle X_POS ausgeben *)
     					x := x + 1;
-    					S_BUF.BUFFER[x] := (OSCAT_BASIC.INT_TO_BCDC(BYTE_TO_INT(X_POS)) AND BYTE#16#0F) OR BYTE#16#30;
+    					S_BUF.BUFFER[x] := (INT_TO_BCDC(BYTE_TO_INT(X_POS)) AND BYTE#16#0F) OR BYTE#16#30;
     					x := x + 1;
     					S_BUF.BUFFER[x] := BYTE#16#48; (* H *)
     				END_IF
 
     				(* TEXT ausgeben *)
     				IF LEN(TEXT) > 0 THEN
-    					OSCAT_BASIC._STRING_TO_BUFFER(str:=TEXT,pos:=x + 1,pt :=ADR(S_BUF.BUFFER), size:=SIZEOF(S_BUF.BUFFER));
+    					_STRING_TO_BUFFER(str:=TEXT,pos:=x + 1,pt :=ADR(S_BUF.BUFFER), size:=SIZEOF(S_BUF.BUFFER));
     					x := x + LEN(TEXT);
     				END_IF
 
@@ -205,7 +205,7 @@ FUNCTION_BLOCK TELNET_PRINT
     	Networkbuffer und Buffer-funktionen auf Basis 0
 
     ks	20. oct. 2009	rev 1.2
-    	STRING(OSCAT_BASIC.STRING_LENGTH)
+    	STRING(STRING_LENGTH)
 
     ks	17. may. 2011	rev 1.3
     	automatischer re-connect

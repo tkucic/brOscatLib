@@ -41,7 +41,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     		char_count := 0;
 
     		WHILE i > 12 DO
-    			char := OSCAT_BASIC.CODE(STR:=d,POS:=i - 12);
+    			char := CODE(STR:=d,POS:=i - 12);
 
     			(* prüfe auf haupt/sub domänen namens-teiler "." *)
     			IF char = BYTE#46 THEN
@@ -99,7 +99,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     					R_BUF.BUFFER[i] := BYTE#46;
     					i := i + dl + 1;
     				ELSE
-    					DOMAIN := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=p1,STOP:=i-1);
+    					DOMAIN := BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=p1,STOP:=i-1);
     					EXIT;
     				END_IF
     			END_WHILE

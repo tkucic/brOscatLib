@@ -10,17 +10,17 @@ FUNCTION_BLOCK TN_SC_VIEWPORT
     		in_Color := DWORD_TO_INT(XUS_LOG_CONTROL.MSG_OPTION[in_index] AND DWORD#2#1111);
 
     		CASE in_Color OF
-    		0..3: by_Attr := OSCAT_BASIC.BYTE_OF_DWORD(IDW_ATTR_1,INT_TO_BYTE(in_Color));
-    		4..7: by_Attr := OSCAT_BASIC.BYTE_OF_DWORD(IDW_ATTR_2,INT_TO_BYTE(in_Color));
+    		0..3: by_Attr := BYTE_OF_DWORD(IDW_ATTR_1,INT_TO_BYTE(in_Color));
+    		4..7: by_Attr := BYTE_OF_DWORD(IDW_ATTR_2,INT_TO_BYTE(in_Color));
     		ELSE
-    			by_Attr := OSCAT_BASIC.BYTE_OF_DWORD(IDW_ATTR_1,BYTE#0);
+    			by_Attr := BYTE_OF_DWORD(IDW_ATTR_1,BYTE#0);
     		END_CASE
 
     		(* Message (Text + Farbe) ausgeben *)
     		FB_TN_SC_WRITE(	IIN_Y := IIN_Y + in_count - INT#01,
     						IIN_X := IIN_X,
     						Iby_ATTR := by_Attr,
-    						Ist_STRING := OSCAT_BASIC.FIX(str := XUS_LOG_CONTROL.MSG[in_index], L := IIN_WIDTH, C := BYTE#32, M := INT#00), (* String rechts ergänzen bzw. kürzen *)
+    						Ist_STRING := FIX(str := XUS_LOG_CONTROL.MSG[in_index], L := IIN_WIDTH, C := BYTE#32, M := INT#00), (* String rechts ergänzen bzw. kürzen *)
     						XUS_TN_SCREEN := XUS_TN_SCREEN);
 
     	END_FOR

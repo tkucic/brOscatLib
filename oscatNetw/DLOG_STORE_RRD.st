@@ -25,7 +25,7 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     		UCB(DATA:=X.UCB); (* Buffer löschen *)
 
     		URL_DATA:=STRING_TO_URL(STR:=URL,DEFAULT_PROTOCOL:='',DEFAULT_PATH:=''); (* URL zerlegen *)
-    		sep_char := OSCAT_BASIC.CHR_TO_STRING(SEP);
+    		sep_char := CHR_TO_STRING(SEP);
     		url_query := URL_DATA.QUERY;
     		step_1 := 30;
 
@@ -95,7 +95,7 @@ FUNCTION_BLOCK DLOG_STORE_RRD
     			IF n < USINT_TO_INT(X.ID_MAX) THEN (* Trennzeichen hinzufügen *)
     				X.UCB.D_STRING := CONCAT(X.UCB.D_STRING,sep_char);
     			END_IF
-    			IF LEN(X.UCB.D_STRING) + LEN(URL_DATA.QUERY) <= OSCAT_BASIC.STRING_LENGTH THEN
+    			IF LEN(X.UCB.D_STRING) + LEN(URL_DATA.QUERY) <= STRING_LENGTH THEN
     				URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,X.UCB.D_STRING); (* Query mit LOG-Daten ergänzen *)
     				step_2 := 40;
     			ELSE

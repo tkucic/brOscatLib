@@ -7,10 +7,10 @@ FUNCTION DEW_TEMP
     	V := LOG(DD/6.1078);
     	DEW_TEMP := b*V/(a-V);
     *)
-    	V := LOG(RH * 0.01 * OSCAT_BASIC.EXP10((a*T) / (b+T)));
+    	V := LOG(RH * 0.01 * EXP10((a*T) / (b+T)));
     	DEW_TEMP := b*V / (a-V);
     ELSE
-    	DEW_TEMP:= OSCAT_BASIC.phys.T0;
+    	DEW_TEMP:= phys.T0;
     END_IF
 
     (* revision history

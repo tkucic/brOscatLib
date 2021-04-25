@@ -1,7 +1,7 @@
 FUNCTION_BLOCK BURNER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=430*)
     (* read system time *)
-    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
+    tx := DWORD_TO_TIME(T_PLC_MS());
 
     (* check RST input and overtemp *)
     IF RST OR OVER_TEMP OR state = 0 THEN

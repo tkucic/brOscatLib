@@ -13,9 +13,9 @@ FUNCTION_BLOCK WORLD_WEATHER
 
     20: (* URL for DNS UND HTTP-GET *)
     	(* Example: http://api.worldweatheronline.com/free/v1/weather.ashx?q=48.21,16.37&format=csv&num_of_days=5&KEY=xxxxxxxxxxxxxxxxxxxxxx *)
-    	url_str := CONCAT('http://api.worldweatheronline.com/free/v1/weather.ashx?q=',OSCAT_BASIC.REAL_TO_STRF(LATITUDE,6,D:='.'));
+    	url_str := CONCAT('http://api.worldweatheronline.com/free/v1/weather.ashx?q=',REAL_TO_STRF(LATITUDE,6,D:='.'));
     	url_str := CONCAT(url_str,',');
-    	url_str := CONCAT(url_str,OSCAT_BASIC.REAL_TO_STRF(LONGITUDE,6,D:='.'));
+    	url_str := CONCAT(url_str,REAL_TO_STRF(LONGITUDE,6,D:='.'));
     	url_str := CONCAT(url_str,'&format=csv&num_of_days=5&KEY=');
     	url_str := CONCAT(url_str,KEY);
 
@@ -57,8 +57,8 @@ FUNCTION_BLOCK WORLD_WEATHER
     			value_real := 0.0;
     			(* automatische konvertierung in real und int ausführen *)
     			IF LEN(value) <= 20 THEN
-    				v_real:=OSCAT_BASIC.FLOAT_TO_REAL(FLT:=value);
-    				IF OSCAT_BASIC.CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
+    				v_real:=FLOAT_TO_REAL(FLT:=value);
+    				IF CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
     					value_real := v_real;
     					value_int := REAL_TO_INT(value_real);
     				END_IF
@@ -84,7 +84,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     					08:	WW.day[day].WIND_DIR16POINT := value;
     					09:	WW.day[day].WEATHER_CODE := value_int;
     					10:	pos := FIND(value, '/wsymbol_');
-    						WW.day[day].WEATHER_ICON := OSCAT_BASIC.DEC_TO_INT(MID(value,4,pos+9));
+    						WW.day[day].WEATHER_ICON := DEC_TO_INT(MID(value,4,pos+9));
     					11:	WW.day[day].WEATHER_DESC := value;
     					12:	WW.day[day].PRECIPMM := value_real;
     					END_CASE
@@ -100,7 +100,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     					10:	WW.CUR.TEMP_C := value_int;
     					11:	WW.CUR.WEATHER_CODE := value_int;
     					12:	pos := FIND(value, '/wsymbol_');
-    						WW.CUR.WEATHER_ICON := OSCAT_BASIC.DEC_TO_INT(MID(value,4,pos+9));
+    						WW.CUR.WEATHER_ICON := DEC_TO_INT(MID(value,4,pos+9));
     					13:	WW.CUR.WEATHER_DESC := value;
     					14:	WW.CUR.WIND_SPEED_MILES := value_int;
     					15:	WW.CUR.WIND_SPEED_KMPH := value_int;

@@ -13,7 +13,7 @@ FUNCTION_BLOCK ACTUATOR_2P
     ELSIF IN > BYTE#255 - SENS THEN
     	OUT := TRUE;
     ELSE
-    	pwgen.PTH := (CYCLE_TIME * OSCAT_BASIC.BAND_B(IN,SENS)) / 255;
+    	pwgen.PTH := (CYCLE_TIME * BAND_B(IN,SENS)) / 255;
     	pwgen.PTL := CYCLE_TIME - pwgen.PTH;
     	pwgen();
     	OUT := pwgen.Q;

@@ -11,7 +11,7 @@ FUNCTION_BLOCK DLOG_DT
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     03:	(* ADD DATA *)
-    	X.UCB.D_STRING := OSCAT_BASIC.DT_TO_STRF(DTI:=X.DTI,MS:=0,FMT:=FMT,LANG:=0);
+    	X.UCB.D_STRING := DT_TO_STRF(DTI:=X.DTI,MS:=0,FMT:=FMT,LANG:=0);
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)

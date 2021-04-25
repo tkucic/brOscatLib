@@ -30,7 +30,7 @@ FUNCTION_BLOCK MD5_STREAM
 
     	n := 0;	(* Byte-Array in DWORD-Array umkopieren *)
     	FOR n1 := 0 TO 15 DO
-    		x[n1] := OSCAT_BASIC.DWORD_OF_BYTE(BUF[n+3],BUF[n+2],BUF[n+1],BUF[n]); (* Little Endian Format *)
+    		x[n1] := DWORD_OF_BYTE(BUF[n+3],BUF[n+2],BUF[n+1],BUF[n]); (* Little Endian Format *)
     		n := n + 4;
     	END_FOR
 

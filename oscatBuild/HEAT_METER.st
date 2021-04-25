@@ -21,7 +21,7 @@ FUNCTION_BLOCK HEAT_METER
     edge_ := E;
 
     (* read system_time *)
-    tx := OSCAT_BASIC.T_PLC_MS();
+    tx := T_PLC_MS();
 
     (* only init at startup necessary *)
     IF NOT init THEN

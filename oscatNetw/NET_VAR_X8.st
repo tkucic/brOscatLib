@@ -12,8 +12,8 @@ FUNCTION_BLOCK NET_VAR_X8
     		X.ERROR_ID := ID;
     	ELSE
     		IF X.STATE = BYTE#1 THEN (* Daten schreiben *)
-    			ra[1] := OSCAT_BASIC.REAL_TO_DW(X:=IN_REAL1);
-    			ra[2] := OSCAT_BASIC.REAL_TO_DW(X:=IN_REAL2);
+    			ra[1] := REAL_TO_DW(X:=IN_REAL1);
+    			ra[2] := REAL_TO_DW(X:=IN_REAL2);
     			ra[3] := DINT_TO_DWORD(IN_DINT1);
     			ra[4] := DINT_TO_DWORD(IN_DINT2);
     			ra[5] := UDINT_TO_DWORD(IN_UDINT1);
@@ -46,8 +46,8 @@ FUNCTION_BLOCK NET_VAR_X8
     						index := index + 1;
     					END_FOR
     				END_FOR
-    				OUT_REAL1 := OSCAT_BASIC.DW_TO_REAL(X:=ra[1]);
-    				OUT_REAL2 := OSCAT_BASIC.DW_TO_REAL(X:=ra[2]);
+    				OUT_REAL1 := DW_TO_REAL(X:=ra[1]);
+    				OUT_REAL2 := DW_TO_REAL(X:=ra[2]);
     				OUT_DINT1 := DWORD_TO_DINT(ra[3]);
     				OUT_DINT2 := DWORD_TO_DINT(ra[4]);
     				OUT_UDINT1 := DWORD_TO_UDINT(ra[5]);

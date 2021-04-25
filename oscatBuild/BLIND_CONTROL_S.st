@@ -13,7 +13,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     *)
 
     (* read system time *)
-    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
+    tx := DWORD_TO_TIME(T_PLC_MS());
 
     (* check inputs and start state machine *)
     IF UP  AND NOT DN THEN

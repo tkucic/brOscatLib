@@ -45,13 +45,13 @@ FUNCTION_BLOCK HTTP_GET
     10:	IF ip_state = BYTE#3 THEN (* Bei IP_Control anmelden und auf freigabe warten *)
     		idx := 0;
     		text := CONCAT('GET ',URL_DATA.PATH);
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* GET path in buffer kopieren *)
+    		_STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* GET path in buffer kopieren *)
     		idx := idx + LEN(text);
 
     		IF LEN(URL_DATA.QUERY) > 0 THEN
     			S_BUF.BUFFER[idx] := 63; (* ASCII '?' *)
     			idx := idx + 1;
-    			OSCAT_BASIC._STRING_TO_BUFFER(STR:=URL_DATA.QUERY,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* QUERY in buffer kopieren *)
+    			_STRING_TO_BUFFER(STR:=URL_DATA.QUERY,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* QUERY in buffer kopieren *)
     			idx := idx + LEN(URL_DATA.QUERY);
     		END_IF
 
@@ -61,7 +61,7 @@ FUNCTION_BLOCK HTTP_GET
     			text := ' HTTP/1.0';
     		END_IF
     		text := CONCAT(text,delimiter2b);
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Version in buffer kopieren *)
+    		_STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Version in buffer kopieren *)
     		idx := idx + LEN(text);
 
     		IF MODE = BYTE#1 THEN (* HTTP/1.0 mit persistenter Verbindung gewünscht *)
@@ -74,19 +74,19 @@ FUNCTION_BLOCK HTTP_GET
 
     		(* Zusatz Parameter übernehmen *)
     		text := CONCAT(text,URL_DATA.HEADER);
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Version in buffer kopieren *)
+    		_STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Version in buffer kopieren *)
     		idx := idx + LEN(text);
 
     		IF authentication THEN
     			text := CONCAT('Authorization: Basic ',b64_str2);
     			text := CONCAT(text,delimiter2b); (* workaround für pcworx -> kein $0D$0A als Stringkonstante möglich *)
-    			OSCAT_BASIC._STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Host in buffer kopieren *)
+    			_STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Host in buffer kopieren *)
     			idx := idx + LEN(text);
     		END_IF
 
     		text := CONCAT('Host: ',URL_DATA.DOMAIN);
     		text := CONCAT(text,delimiter4b); (* workaround für pcworx -> kein $0D$0A als Stringkonstante möglich *)
-    		OSCAT_BASIC._STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Host in buffer kopieren *)
+    		_STRING_TO_BUFFER(STR:=text,POS:=idx,PT:=ADR(S_BUF.BUFFER),SIZE:=SIZEOF(S_BUF.BUFFER)); (* HTTP Host in buffer kopieren *)
     		idx := idx + LEN(text);
 
     		(* IP Datenverkehr einrichten *)
@@ -124,13 +124,13 @@ FUNCTION_BLOCK HTTP_GET
 
     				(* HTTP HEADER Ende suchen -> durch $0D$A$0D$A erkennbar bei DEC RT-11,CP/M,MS-DOS,Windows *)
     				del_end := '$0D$0A$0D$0A';
-    				del_pos := OSCAT_BASIC.BUFFER_SEARCH(PT:=ADR(R_BUF.BUFFER),SIZE:=R_BUF.SIZE,STR:=del_end,POS:=0,IGN:=FALSE);
+    				del_pos := BUFFER_SEARCH(PT:=ADR(R_BUF.BUFFER),SIZE:=R_BUF.SIZE,STR:=del_end,POS:=0,IGN:=FALSE);
 
     				(* kein Ende gefunden ? -> andere Ende-Codierung suchen *)
     				IF del_pos = 0 THEN
     					del_end := '$0A$0A';
     					(* HTTP HEADER Ende suchen -> durch $0A$0A erkennbar bei Multics, Unix-Derivate,Mac OS X *)
-    					del_pos := OSCAT_BASIC.BUFFER_SEARCH(PT:=ADR(R_BUF.BUFFER),SIZE:=R_BUF.SIZE,STR:=del_end,POS:=0,IGN:=FALSE);
+    					del_pos := BUFFER_SEARCH(PT:=ADR(R_BUF.BUFFER),SIZE:=R_BUF.SIZE,STR:=del_end,POS:=0,IGN:=FALSE);
     				END_IF
 
     				IF del_pos > 0 THEN
@@ -169,7 +169,7 @@ FUNCTION_BLOCK HTTP_GET
     					text:=READ_HTTP.READ_HTTP;
 
     					IF LEN(text) >= 1 THEN
-    						IF OSCAT_BASIC.IS_NUM(str:=text) THEN
+    						IF IS_NUM(str:=text) THEN
     							(* erwartete gesamtmenge an Bytes berechnen *)
     							total_size := STRING_TO_INT(text) + UINT_TO_INT(HEADER_STOP) + 1;
                                					(*####################  DEBUG-MESSAGE  ###################################*)

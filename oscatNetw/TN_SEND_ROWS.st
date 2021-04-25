@@ -95,12 +95,12 @@ FUNCTION_BLOCK TN_SEND_ROWS
     		(* Zehnerstelle Zeilennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] :=
-    		SHR(OSCAT_BASIC.INT_TO_BCDC(in_Row_Count + INT#1),INT#4) OR BYTE#16#30;
+    		SHR(INT_TO_BCDC(in_Row_Count + INT#1),INT#4) OR BYTE#16#30;
 
     		(* Einerstelle Zeilennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] :=
-    		(OSCAT_BASIC.INT_TO_BCDC(in_Row_Count + INT#1) AND BYTE#16#0F) OR BYTE#16#30;
+    		(INT_TO_BCDC(in_Row_Count + INT#1) AND BYTE#16#0F) OR BYTE#16#30;
 
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] := BYTE#16#3B; (* ; *)
@@ -243,22 +243,22 @@ FUNCTION_BLOCK TN_SEND_ROWS
 
     		(* Zehnerstelle Zeilennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := SHR(OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_Y + 1),INT#4) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := SHR(INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_Y + 1),INT#4) OR BYTE#16#30;
 
     		(* Einerstelle Zeilennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := (OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_Y + 1) AND BYTE#16#0F) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := (INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_Y + 1) AND BYTE#16#0F) OR BYTE#16#30;
 
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] := BYTE#16#3B; (* ; *)
 
     		(* Zehnerstelle Spaltenummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := SHR(OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_X + 1),INT#4) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := SHR(INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_X + 1),INT#4) OR BYTE#16#30;
 
     		(* Einerstelle Spaltennummer ausgeben *)
     		in_Write_Index := in_Write_Index + INT#1;
-    		S_BUF.BUFFER[in_Write_Index] := (OSCAT_BASIC.INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_X + 1) AND BYTE#16#0F) OR BYTE#16#30;
+    		S_BUF.BUFFER[in_Write_Index] := (INT_TO_BCDC(XUS_TN_SCREEN.in_Cursor_X + 1) AND BYTE#16#0F) OR BYTE#16#30;
 
     		in_Write_Index := in_Write_Index + INT#1;
     		S_BUF.BUFFER[in_Write_Index] := BYTE#16#48; (* H *)

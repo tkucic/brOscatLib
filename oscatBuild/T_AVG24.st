@@ -27,7 +27,7 @@ FUNCTION_BLOCK T_AVG24
     	(* add the new sample to sum *)
     	sum := sum + INT_TO_DINT(samples[pos]);
     	(* increment the counter for the next sample *)
-    	pos := OSCAT_BASIC.INC1(pos, 48);
+    	pos := INC1(pos, 48);
     	(* calculate the output value *)
     	TA := (INT_TO_REAL(ft1.Y) * 0.1 + OFS) * SCALE;
     	T24 := (DINT_TO_REAL(sum) * 0.00208333333333 + OFS) * SCALE;

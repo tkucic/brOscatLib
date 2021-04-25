@@ -99,7 +99,7 @@ FUNCTION_BLOCK MB_CLIENT
     				idx1 := 12;
     				idx2 := W_DATA_ADR;
     				FOR i := 1 TO W_POINTS DO
-    					w_tmp :=OSCAT_BASIC.BIT_LOAD_W(w_tmp,(DATA[idx2] AND w_mask) > WORD#0,bit_pos);
+    					w_tmp :=BIT_LOAD_W(w_tmp,(DATA[idx2] AND w_mask) > WORD#0,bit_pos);
     					bit_pos := bit_pos + 1;
     					IF bit_pos > 7 OR i=W_POINTS THEN
     						bit_pos := 0;
@@ -259,7 +259,7 @@ FUNCTION_BLOCK MB_CLIENT
     					idx2 := R_DATA_ADR;
     					bit_pos := R_DATA_BITPOS;
     					FOR i := 1 TO R_POINTS DO
-    						DATA[idx2]:=OSCAT_BASIC.BIT_LOAD_W(DATA[idx2],(R_BUF.BUFFER[idx1] AND b_mask) > BYTE#0,bit_pos);
+    						DATA[idx2]:=BIT_LOAD_W(DATA[idx2],(R_BUF.BUFFER[idx1] AND b_mask) > BYTE#0,bit_pos);
     						bit_pos := bit_pos + 1;
     						IF bit_pos > 15 THEN
     							idx2 := idx2 + 1;
@@ -282,7 +282,7 @@ FUNCTION_BLOCK MB_CLIENT
     					FOR i := R_DATA_ADR TO stop DO
     						idx1 := idx1 + 2;
     						idx2 := idx1 + 1;
-    						DATA[i] := OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
+    						DATA[i] := WORD_OF_BYTE(R_BUF.BUFFER[idx1],R_BUF.BUFFER[idx2]);
     					END_FOR
     				ELSE
     					ERROR := DWORD#2; (* ILLEGAL DATA ADDRESS *)

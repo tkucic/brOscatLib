@@ -1,7 +1,7 @@
 FUNCTION_BLOCK BLIND_SET
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=91*)
     (* read system time *)
-    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
+    tx := DWORD_TO_TIME(T_PLC_MS());
 
     (* check inputs *)
     IF IN THEN

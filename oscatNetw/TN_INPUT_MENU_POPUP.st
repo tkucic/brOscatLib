@@ -133,7 +133,7 @@ FUNCTION_BLOCK TN_INPUT_MENU_POPUP
 
     		FOR in_Count := INT#01 TO XUS_TN_MENU_POPUP.in_Menu_E_Count DO;
 
-    			in_index:=OSCAT_BASIC.INC2(in_index,in_Scroll_Offset,1,XUS_TN_MENU_POPUP.in_Menu_E_Count);
+    			in_index:=INC2(in_index,in_Scroll_Offset,1,XUS_TN_MENU_POPUP.in_Menu_E_Count);
 
     			IF ELEMENT_GET(SEP:=BYTE#35,POS:=in_index - 1,ELEMENT:=XUS_TN_MENU_POPUP.st_Menu_Text) <> '-' THEN
     				EXIT;

@@ -1,7 +1,7 @@
 FUNCTION_BLOCK TIMER_2
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=60*)
     (* read system time *)
-    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
+    tx := DWORD_TO_TIME(T_PLC_MS());
 
     IF NOT init THEN
     	init := TRUE;
@@ -14,7 +14,7 @@ FUNCTION_BLOCK TIMER_2
     (* calculate temp variables *)
     dat := DT_TO_DATE(DT_IN);
     daytime := DT_TO_TOD(DT_IN);
-    wday := OSCAT_BASIC.DAY_OF_WEEK(dat);
+    wday := DAY_OF_WEEK(dat);
 
     (* calculate if any action is necessary today *)
     CASE MODE OF
@@ -35,13 +35,13 @@ FUNCTION_BLOCK TIMER_2
     	24:	(* holidays only *)
     		enabled := HOLIDAY;
     	25:	(* 1st day of the month *)
-    		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat) = 1;
+    		enabled := DAY_OF_MONTH(dat) = 1;
     	26:	(* last day of month *)
-    		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat + T#1D) = 1;
+    		enabled := DAY_OF_MONTH(dat + T#1D) = 1;
     	27:	(* 31st of december *)
-    		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat) = 31 AND OSCAT_BASIC.MONTH_OF_DATE(dat) = 12;
+    		enabled := DAY_OF_MONTH(dat) = 31 AND MONTH_OF_DATE(dat) = 12;
     	28:	(* 1st of january *)
-    		enabled := OSCAT_BASIC.DAY_OF_YEAR(dat) = 1;
+    		enabled := DAY_OF_YEAR(dat) = 1;
     ELSE
     	enabled := FALSE;
     END_CASE

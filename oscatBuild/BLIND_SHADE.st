@@ -12,10 +12,10 @@ FUNCTION_BLOCK BLIND_SHADE
     	PO := SHADE_POS;
     	(* shading is active now calculate the slat angle *)
     	(* calculate the max angle for the blind *)
-    	angle := OSCAT_BASIC.DEG(ATAN(SLAT_SPACING / SLAT_WIDTH));
+    	angle := DEG(ATAN(SLAT_SPACING / SLAT_WIDTH));
     	(* check if SUN angle is between 0 and max angle *)
     	IF CX.SUN_VER > 0.0 AND CX.SUN_VER < angle THEN
-    		angle := CX.SUN_VER + OSCAT_BASIC.DEG(ACOS(COS(OSCAT_BASIC.RAD(CX.SUN_VER))*SLAT_SPACING / SLAT_WIDTH));
+    		angle := CX.SUN_VER + DEG(ACOS(COS(RAD(CX.SUN_VER))*SLAT_SPACING / SLAT_WIDTH));
     		AO := INT_TO_BYTE(DINT_TO_INT(LIMIT(0,TRUNC(angle * 2.833333333), 255)));
     	ELSE
     		AO := 255;

@@ -5,10 +5,10 @@ FUNCTION_BLOCK INI_PARSER_FILE
     	IF state = 0 THEN (* Auswertung neu beginnen *)
     		pv := ADR(VALUE);
     		pv^ := 0; (* VALUE = '' *)
-    		pve := pv + INT_TO_DWORD(OSCAT_BASIC.STRING_LENGTH);
+    		pve := pv + INT_TO_DWORD(STRING_LENGTH);
     		pk := ADR(KEY);
     		pk^ := 0; (* KEY = '' *)
-    		pke := pk + INT_TO_DWORD(OSCAT_BASIC.STRING_LENGTH);
+    		pke := pk + INT_TO_DWORD(STRING_LENGTH);
 
     		i := OFFSET;
     		RESULT := 0;

@@ -10,7 +10,7 @@ FUNCTION_BLOCK RC4_CRYPT_STREAM
     	END_IF
 
     	FOR a := 0 TO b DO
-    		skey[a] := OSCAT_BASIC.CODE(KEY, a + 1);
+    		skey[a] := CODE(KEY, a + 1);
     		sbox[a] := INT_TO_BYTE(a);
     	END_FOR
 

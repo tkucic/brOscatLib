@@ -4,7 +4,7 @@ FUNCTION URL_DECODE
     pos := FIND(URL_DECODE,'%');
     WHILE pos > 0 DO
     	seq := MID(URL_DECODE,2,pos + 1);
-    	new := OSCAT_BASIC.CHR_TO_STRING(DWORD_TO_BYTE(OSCAT_BASIC.HEX_TO_DWORD(seq)));
+    	new := CHR_TO_STRING(DWORD_TO_BYTE(HEX_TO_DWORD(seq)));
     	URL_DECODE := REPLACE(URL_DECODE, new, 3, pos);
     	pos := FIND(URL_DECODE,'%');
     END_WHILE

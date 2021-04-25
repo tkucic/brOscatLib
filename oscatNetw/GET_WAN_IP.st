@@ -50,7 +50,7 @@ FUNCTION_BLOCK GET_WAN_IP
     	IF p1 > 0 AND p3 < UINT_TO_INT(HTTP_GET.BODY_STOP) THEN
     		FOR p2 := p1 TO p3 DO
     			IF R_BUF.BUFFER[p2] <> BYTE#60 THEN (* suche '<' *)
-    				st_ip := CONCAT(st_ip,OSCAT_BASIC.CHR_TO_STRING(C:=R_BUF.BUFFER[p2]));
+    				st_ip := CONCAT(st_ip,CHR_TO_STRING(C:=R_BUF.BUFFER[p2]));
     			ELSE
     				EXIT;
     			END_IF

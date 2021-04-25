@@ -9,7 +9,7 @@ FUNCTION_BLOCK TN_SC_WRITE
     (* Zeichen und Attribute des String kopieren *)
     FOR in_Char_Index := 1 TO in_String_Length DO
     	IF bo_Color THEN XUS_TN_SCREEN.bya_COLOR[in_Offset] := IBY_ATTR; END_IF
-    	XUS_TN_SCREEN.bya_CHAR[in_Offset] := OSCAT_BASIC.CODE(STR:=IST_STRING,POS:=in_Char_Index);
+    	XUS_TN_SCREEN.bya_CHAR[in_Offset] := CODE(STR:=IST_STRING,POS:=in_Char_Index);
     	in_Offset := in_Offset + INT#1;
     END_FOR
 

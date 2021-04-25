@@ -1,7 +1,7 @@
 FUNCTION_BLOCK SNTP_CLIENT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=127*)
     (* Domain Name System (query) *)
-    tx := OSCAT_BASIC.T_PLC_MS(); (* read system time *)
+    tx := T_PLC_MS(); (* read system time *)
 
     CASE state OF
     00: (* auf positive Flanke SET warten *)
@@ -64,11 +64,11 @@ FUNCTION_BLOCK SNTP_CLIENT
     	ELSIF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE >= UINT#48 THEN (* länge der empfangenen Daten prüfen *)
 
     		(* Umrechnung SNTP Timestamp Base 1900-01-01 -> Unix 1970-01-01 = +2208988800 sekunden*)
-    		UDT := DWORD_TO_DT(OSCAT_BASIC.DWORD_OF_BYTE(R_BUF.BUFFER[40],R_BUF.BUFFER[41],R_BUF.BUFFER[42],R_BUF.BUFFER[43]) - DWORD#2208988800);
+    		UDT := DWORD_TO_DT(DWORD_OF_BYTE(R_BUF.BUFFER[40],R_BUF.BUFFER[41],R_BUF.BUFFER[42],R_BUF.BUFFER[43]) - DWORD#2208988800);
 
     		(* Original-Sekundenanteile sind als 32 Bit Fractal dargestellt *)
     		(* ms nur mit veringerte Auflösung berechnen 1/65535 -> Highword verwenden *)
-    		XMS := DWORD_TO_INT(SHR(DINT_TO_DWORD(WORD_TO_DINT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[44],R_BUF.BUFFER[45])) * DINT#1000),16));
+    		XMS := DWORD_TO_INT(SHR(DINT_TO_DWORD(WORD_TO_DINT(WORD_OF_BYTE(R_BUF.BUFFER[44],R_BUF.BUFFER[45])) * DINT#1000),16));
     		(* Zeitdifferenz (Laufzeitfehler) zwischen Send und Receive /2 teilen und addieren *)
     		XMS := XMS + DWORD_TO_INT(SHR(tx - last,1));
 

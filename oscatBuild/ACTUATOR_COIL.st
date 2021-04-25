@@ -1,7 +1,7 @@
 FUNCTION_BLOCK ACTUATOR_COIL
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16*)
     (* read system time *)
-    now := OSCAT_BASIC.T_PLC_MS();
+    now := T_PLC_MS();
 
     (* initialize for first cycle *)
     IF NOT init THEN

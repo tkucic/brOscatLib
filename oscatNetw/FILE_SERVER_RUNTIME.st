@@ -18,7 +18,7 @@ FUNCTION_BLOCK FILE_SERVER_RUNTIME
     	IF last_command = BYTE#0 AND COMMAND <> BYTE#0 THEN
 
     		(* read system time *)
-    		start_tx := OSCAT_BASIC.T_PLC_MS();
+    		start_tx := T_PLC_MS();
 
     	END_IF
     END_IF
@@ -27,7 +27,7 @@ FUNCTION_BLOCK FILE_SERVER_RUNTIME
     IF MODE = BYTE#1 THEN
 
     	(* read system time *)
-    	stop_tx:=  OSCAT_BASIC.T_PLC_MS();
+    	stop_tx:=  T_PLC_MS();
 
     	runtime:= (stop_tx - start_tx);
 

@@ -8,7 +8,7 @@ FUNCTION DEW_CON
     	DEW_CON := 0.1 * mw / RU * DD / (T - TK);
     *)
     IF RH > 0.0 AND T > -50.0 THEN
-    	DEW_CON := 2.166824303E-2 * RH * SDD(T,FALSE)  / (T - OSCAT_BASIC.phys.T0);
+    	DEW_CON := 2.166824303E-2 * RH * SDD(T,FALSE)  / (T - phys.T0);
     ELSE
     	DEW_CON := 0.0;
     END_IF

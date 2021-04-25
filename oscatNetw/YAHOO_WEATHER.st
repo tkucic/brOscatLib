@@ -1,7 +1,7 @@
 FUNCTION_BLOCK YAHOO_WEATHER
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=207*)
     (* read system time *)
-    tx := OSCAT_BASIC.T_PLC_MS();
+    tx := T_PLC_MS();
 
     CASE state OF
 
@@ -67,8 +67,8 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		value_real := 0.0;
     		(* automatische konvertierung in real und int ausführen *)
     		IF LEN(CTRL.VALUE) <= 20 THEN
-    			v_real:=OSCAT_BASIC.FLOAT_TO_REAL(FLT:=CTRL.VALUE);
-    			IF OSCAT_BASIC.CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten kann Twincat 2.x abstürzen !!!!  *)
+    			v_real:=FLOAT_TO_REAL(FLT:=CTRL.VALUE);
+    			IF CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten kann Twincat 2.x abstürzen !!!!  *)
     				value_real := v_real;
     				value_int := REAL_TO_INT(value_real);
     			END_IF

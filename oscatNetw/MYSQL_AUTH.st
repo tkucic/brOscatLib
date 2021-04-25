@@ -9,7 +9,7 @@ FUNCTION_BLOCK MYSQL_AUTH
     		i2 := UDINT_TO_INT(size) - 1;
     		FOR i := 0 TO 63 DO
     			IF i <= i2 THEN
-    				buf[i] := OSCAT_BASIC.CODE(STR:=PASSWORD,pos:=i+1);
+    				buf[i] := CODE(STR:=PASSWORD,pos:=i+1);
     			ELSE
     				buf[i] := BYTE#0;
     			END_IF

@@ -33,7 +33,7 @@ FUNCTION_BLOCK IRTRANS_SND_8
     		str := CONCAT(str,',');
     		str := CONCAT(str,skey);
     		size := LEN(str);
-    		OSCAT_BASIC._STRING_TO_BUFFER(str:=str, POS:=0, PT:=ADR(S_BUF.BUFFER), size:=size);
+    		_STRING_TO_BUFFER(str:=str, POS:=0, PT:=ADR(S_BUF.BUFFER), size:=size);
     		S_BUF.size := size; (* Sendelänge eintragen *)
     		KEY := k;
     		lk := k; (* letzten KEY speichern *)

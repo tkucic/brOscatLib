@@ -47,7 +47,7 @@ FUNCTION_BLOCK DNS_CLIENT
     		i := url_length + 12;	(* den servernamen von hinten nach vorne bearbeiten *)
     		char_count := 0;
     		WHILE i > 12 DO
-    			char := OSCAT_BASIC.CODE(STR:=domain_copy,POS:=i - 12);
+    			char := CODE(STR:=domain_copy,POS:=i - 12);
     			IF char = BYTE#46 THEN (* prüfe auf haupt/sub domänen namens-teiler "." *)
     				S_BUF.BUFFER[i] := INT_TO_BYTE(char_count); (* anstelle des teilers "." wird die länge des erkannten haupt/sub domänennames eingetragen *)
     				char_count := 0;
@@ -122,11 +122,11 @@ FUNCTION_BLOCK DNS_CLIENT
     				rr_stop := FALSE;
     				IF R_BUF.BUFFER[i+1] = BYTE#1 AND R_BUF.BUFFER[i+3] = BYTE#1 THEN (* Type A / Class IN *)
     					i := i + 4;
-    					ttl_tmp := OSCAT_BASIC.DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* Time to live *)
+    					ttl_tmp := DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* Time to live *)
     					i := i + 6;
     					IF ttl_tmp >= ttl_last THEN (* TTL ist länger *)
     						ttl_last := ttl_tmp;
-    						IP4 := OSCAT_BASIC.DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* IP-Adresse *)
+    						IP4 := DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* IP-Adresse *)
     					END_IF
     					i := i + 4;
     				ELSE

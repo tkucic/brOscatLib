@@ -57,7 +57,7 @@ FUNCTION_BLOCK TN_INPUT_SELECT_TEXT
 
     		st_String := ELEMENT_GET(SEP:=BYTE#35,POS:=XUS_TN_INPUT_CONTROL_DATA.in_selected - 1,ELEMENT:=XUS_TN_INPUT_CONTROL_DATA.st_Input_Data);
 
-    		st_String := OSCAT_BASIC.FIX(	str:=st_String,
+    		st_String := FIX(	str:=st_String,
     							L:=LEN(XUS_TN_INPUT_CONTROL_DATA.st_Input_Mask),
     							C:=BYTE#32,
     							M:=XUS_TN_INPUT_CONTROL_DATA.in_Input_Option);

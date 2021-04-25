@@ -23,7 +23,7 @@ FUNCTION_BLOCK TN_RECEIVE
     		END_IF
     	ELSIF REQ1 >= BYTE#32 AND REQ1 <= BYTE#126 THEN
     		XUS_TN_SCREEN.by_Input_ASCII_Code := REQ1;
-    		XUS_TN_SCREEN.bo_Input_ASCII_IsNum := OSCAT_BASIC.ISC_NUM(REQ1); (* Auswertung auf Zahleneingabe *)
+    		XUS_TN_SCREEN.bo_Input_ASCII_IsNum := ISC_NUM(REQ1); (* Auswertung auf Zahleneingabe *)
     	ELSIF REQ1 = BYTE#8 OR REQ1 = BYTE#9 OR REQ1 = BYTE#13 OR REQ1 = BYTE#27 THEN (* prüfe auf Steuerzeichen 8=Backspace / 9=Tabulator / 13=Return / 27=Escape *)
     		XUS_TN_SCREEN.by_Input_Exten_Code := REQ1;
     	END_IF

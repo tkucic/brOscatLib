@@ -2,24 +2,24 @@ FUNCTION_BLOCK TEMP_EXT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=449*)
     IF NOT init THEN
     	init := TRUE;
-    	heat_start := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(HEAT_PERIOD_START),OSCAT_BASIC.DAY_OF_MONTH(HEAT_PERIOD_START));
-    	heat_stop := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(HEAT_PERIOD_STOP),OSCAT_BASIC.DAY_OF_MONTH(HEAT_PERIOD_STOP));
-    	cool_start := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(COOL_PERIOD_START),OSCAT_BASIC.DAY_OF_MONTH(COOL_PERIOD_START));
-    	cool_stop := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(COOL_PERIOD_STOP),OSCAT_BASIC.DAY_OF_MONTH(COOL_PERIOD_STOP));
+    	heat_start := SET_DATE(1972,MONTH_OF_DATE(HEAT_PERIOD_START),DAY_OF_MONTH(HEAT_PERIOD_START));
+    	heat_stop := SET_DATE(1972,MONTH_OF_DATE(HEAT_PERIOD_STOP),DAY_OF_MONTH(HEAT_PERIOD_STOP));
+    	cool_start := SET_DATE(1972,MONTH_OF_DATE(COOL_PERIOD_START),DAY_OF_MONTH(COOL_PERIOD_START));
+    	cool_stop := SET_DATE(1972,MONTH_OF_DATE(COOL_PERIOD_STOP),DAY_OF_MONTH(COOL_PERIOD_STOP));
     END_IF
 
     (* read system time *)
-    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
+    tx := DWORD_TO_TIME(T_PLC_MS());
 
     (* for efficiency exit isf this program has been executed less then 1min ago *)
     IF tx - last_run < CYCLE_TIME THEN RETURN; END_IF
 
     (* calculate frequently used variables *)
-    xdate := OSCAT_BASIC.SET_DATE(1972,OSCAT_BASIC.MONTH_OF_DATE(DT_TO_DATE(DT_IN)),OSCAT_BASIC.DAY_OF_MONTH(DT_TO_DATE(DT_IN)));
+    xdate := SET_DATE(1972,MONTH_OF_DATE(DT_TO_DATE(DT_IN)),DAY_OF_MONTH(DT_TO_DATE(DT_IN)));
     day := DT_TO_TOD(DT_IN) >= START_DAY AND  DT_TO_TOD(DT_IN) < START_NIGHT;
 
     (* read the correct external temperature depending on the T_EXT_CONFIG setting *)
-    T_EXT := OSCAT_BASIC.MULTI_IN(T_EXT1, T_EXT2, T_EXT3, T_EXT_DEFAULT, T_EXT_MIN, T_EXT_MAX, T_EXT_CONFIG);
+    T_EXT := MULTI_IN(T_EXT1, T_EXT2, T_EXT3, T_EXT_DEFAULT, T_EXT_MIN, T_EXT_MAX, T_EXT_CONFIG);
 
     (* dtermine heating *)
     IF (heat_start <= heat_stop AND xdate >= heat_start AND xdate <= heat_stop) OR (heat_start > heat_stop AND (xdate >= heat_start OR xdate <= heat_stop)) THEN

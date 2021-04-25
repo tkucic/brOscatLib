@@ -55,8 +55,8 @@ FUNCTION_BLOCK IP2GEO
     		value_int := 0;
     		value_real := 0.0;
     		IF LEN(CTRL.VALUE) <= 20 THEN
-    			v_real :=OSCAT_BASIC.FLOAT_TO_REAL(FLT:=CTRL.VALUE);
-    			IF OSCAT_BASIC.CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
+    			v_real :=FLOAT_TO_REAL(FLT:=CTRL.VALUE);
+    			IF CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
     				value_real := v_real;
     				value_int := REAL_TO_INT(value_real);
     			END_IF

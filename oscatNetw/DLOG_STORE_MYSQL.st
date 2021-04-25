@@ -72,7 +72,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     			snd_size := idx + LEN(snd_text);
     			next_step := 40;
     		END_IF
-    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
+    		_STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
     		idx := idx + LEN(snd_text);
     		n := n + USINT#1;
 
@@ -122,7 +122,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     				snd_size := idx + LEN(snd_text);
     				next_step := 40;
     			END_IF
-    			OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
+    			_STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
     			idx := idx + LEN(snd_text);
     			n := n + USINT#1;
 
@@ -175,7 +175,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		y.S_BUF.SIZE := INT_TO_UINT(snd_size);
     		snd_size := 0;
     	ELSE
-    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=5,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
+    		_STRING_TO_BUFFER(str:=snd_text,pos:=5,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
     		y.S_BUF.SIZE := INT_TO_UINT(5 + LEN(snd_text));
     		snd_text := '';
     	END_IF

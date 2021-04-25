@@ -5,7 +5,7 @@ FUNCTION_BLOCK TIMER_EXT
     SUN_SET := DWORD_TO_TOD(TOD_TO_DWORD(SUN_SET) / 1000 * 1000);
 
     (* measure cycle time tc and make sure this circuitry is not called more then once in 200ms*)
-    tx := OSCAT_BASIC.T_PLC_MS();
+    tx := T_PLC_MS();
     IF NOT init THEN
     	init := TRUE;
     	tl := tx;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK TIMER_EXT
 
     (* read time of day and strip OFF all milliseconds *)
     tdx := DT_TO_TOD(DT_IN);
-    wdx := OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DT_IN));
+    wdx := DAY_OF_WEEK(DT_TO_DATE(DT_IN));
 
     (* automatic output control *)
     IF deb.Q THEN

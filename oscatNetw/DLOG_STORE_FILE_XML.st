@@ -5,7 +5,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_XML
     dti_last := DTI;
     trig_auto := FALSE;
     IF X.CLOCK_TRIG THEN (* Impuls in jeder Sekunde *)
-    	fn := OSCAT_BASIC.DT_TO_STRF(DTI, 0, FILENAME, 0); (* automatische Dateinamen generierung *)
+    	fn := DT_TO_STRF(DTI, 0, FILENAME, 0); (* automatische Dateinamen generierung *)
     	IF TRIG_T >= T#1000ms THEN (* automatischer Trigger *)
     		trig_auto := DT_TO_UDINT(DTI) MOD (TIME_TO_UDINT(TRIG_T) / UDINT#1000) = UDINT#0;
     	END_IF
@@ -132,7 +132,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_XML
     					IF FSD.MODE = BYTE#3 THEN
     						SAVE_DATA.TRIG_CNT := UDINT#0; (* Datei neu anlegen -> dann zähler reset *)
 
-    						OSCAT_BASIC._STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
+    						_STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
     						idx := idx + LEN(str);
     						X.NEW_FILE_SIZE := total_bytes + INT_TO_UDINT(idx);
     					END_IF
@@ -156,7 +156,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_XML
 
     				IF idx + LEN(str) < SIZEOF(PT.BUFFER) THEN (* Platz für Element vorhanden ? *)
 
-    					OSCAT_BASIC._STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
+    					_STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
     					idx := idx + LEN(str);
     					log_stop := TRUE;
     					step_2 := 10; (* Daten schreiben *)
@@ -184,11 +184,11 @@ FUNCTION_BLOCK DLOG_STORE_FILE_XML
     					str := '<entry>';
     				END_IF
 
-    				OSCAT_BASIC._STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
+    				_STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
     				idx := idx + LEN(str);
     				log_state := log_state + USINT#1;
 
-    				OSCAT_BASIC._STRING_TO_BUFFER(str:=X.UCB.D_STRING, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
+    				_STRING_TO_BUFFER(str:=X.UCB.D_STRING, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
     				idx := idx + LEN(X.UCB.D_STRING);
 
     				n := n + USINT#1;
@@ -199,7 +199,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_XML
     				ELSE
     					str := '</entry>';
     				END_IF
-    				OSCAT_BASIC._STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
+    				_STRING_TO_BUFFER(str:=str, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
     				idx := idx + LEN(str);
     				X.NEW_FILE_SIZE := total_bytes + INT_TO_UDINT(idx);
 

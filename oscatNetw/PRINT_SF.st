@@ -10,8 +10,8 @@ FUNCTION_BLOCK PRINT_SF
     		IF pos = 0 THEN
     			run:= FALSE;
     		ELSE
-    			c := OSCAT_BASIC.CODE(STR:=STR,pos:=pos + 1);
-    			IF OSCAT_BASIC.ISC_NUM(INT_TO_BYTE(c)) THEN
+    			c := CODE(STR:=STR,pos:=pos + 1);
+    			IF ISC_NUM(INT_TO_BYTE(c)) THEN
     				c := c - 48; (* notwendig weil innerhalb einer indexangabe nur eine var stehen darf *)
     				PRINTF_DATA[10] := PRINTF_DATA[c]; (* Kommando 1-9 ergibt Parameterindex 1-9 *)
     				(* Parameter gegen Text tauschen *)

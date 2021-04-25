@@ -5,7 +5,7 @@ FUNCTION_BLOCK CSV_PARSER_BUF
 
     		pv := ADR(VALUE);
     		pv^ := 0; (* VALUE = '' *)
-    		pve := pv + INT_TO_DWORD(OSCAT_BASIC.STRING_LENGTH);
+    		pve := pv + INT_TO_DWORD(STRING_LENGTH);
     		i := UDINT_TO_INT(OFFSET);
     		size := UINT_TO_INT(PT.size) - 1;
     		RESULT := 0;

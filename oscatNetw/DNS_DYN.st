@@ -51,7 +51,7 @@ FUNCTION_BLOCK DNS_DYN
     		HOSTNAME-Related Errors:	notfqdn , nohost , !yours , numhost , abuse
     		Server Error Conditions:	dnserr , 911
     		*)
-    		s2 := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=HTTP_GET.BODY_START + 3,STOP:=HTTP_GET.BODY_STOP - 7);
+    		s2 := BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=HTTP_GET.BODY_START + 3,STOP:=HTTP_GET.BODY_STOP - 7);
     		IF FIND(s2,'good') = 0 THEN
     			IF FIND(s2,'nochg') = 0 THEN
     				ERROR_C := DWORD#1;

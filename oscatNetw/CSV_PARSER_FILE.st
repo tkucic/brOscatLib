@@ -5,7 +5,7 @@ FUNCTION_BLOCK CSV_PARSER_FILE
     	IF state = 0 THEN (* Auswertung neu beginnen *)
     		pv := ADR(VALUE);
     		pv^ := 0; (* VALUE = '' *)
-    		pve := pv + INT_TO_DWORD(OSCAT_BASIC.STRING_LENGTH);
+    		pve := pv + INT_TO_DWORD(STRING_LENGTH);
     		i := OFFSET;
     		RESULT := 0;
     		state := 5; (* Befehl in Arbeit (Busy) *)

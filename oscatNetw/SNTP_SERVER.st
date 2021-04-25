@@ -1,7 +1,7 @@
 FUNCTION_BLOCK SNTP_SERVER
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=128*)
     (* Domain Name System (query) *)
-    tx := OSCAT_BASIC.T_PLC_MS(); (* read system time *)
+    tx := T_PLC_MS(); (* read system time *)
 
     CASE state OF
 
@@ -70,32 +70,32 @@ FUNCTION_BLOCK SNTP_SERVER
     		(* Berechnung des Sekundenanteils: XMS * 65535 / 1000 *)
     		timestamp_sek := DINT_TO_DWORD(DWORD_TO_DINT(SHL(INT_TO_DWORD(XMS),16))/DINT#1000);
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,3); (* Timestamp Byte 3 *)
+    		ts_b := BYTE_OF_DWORD(timestamp_int,3); (* Timestamp Byte 3 *)
     		S_BUF.BUFFER[16] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[32] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[40] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,2); (* Timestamp Byte 2 *)
+    		ts_b := BYTE_OF_DWORD(timestamp_int,2); (* Timestamp Byte 2 *)
     		S_BUF.BUFFER[17] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[33] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[41] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,1); (* Timestamp Byte 1 *)
+    		ts_b := BYTE_OF_DWORD(timestamp_int,1); (* Timestamp Byte 1 *)
     		S_BUF.BUFFER[18] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[34] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[42] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_int,0); (* Timestamp Byte 0 *)
+    		ts_b := BYTE_OF_DWORD(timestamp_int,0); (* Timestamp Byte 0 *)
     		S_BUF.BUFFER[19] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[35] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[43] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_sek,1); (* Timestamp Byte 1 *)
+    		ts_b := BYTE_OF_DWORD(timestamp_sek,1); (* Timestamp Byte 1 *)
     		S_BUF.BUFFER[20] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[36] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[44] := ts_b; (* Transmit  Timestamp *)
 
-    		ts_b := OSCAT_BASIC.BYTE_OF_DWORD(timestamp_sek,0);	(* Timestamp Byte 0 *)
+    		ts_b := BYTE_OF_DWORD(timestamp_sek,0);	(* Timestamp Byte 0 *)
     		S_BUF.BUFFER[21] := ts_b; (* Reference Timestamp *)
     		S_BUF.BUFFER[37] := ts_b; (* Receive   Timestamp *)
     		S_BUF.BUFFER[45] := ts_b; (* Transmit  Timestamp *)

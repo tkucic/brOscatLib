@@ -120,8 +120,8 @@ FUNCTION_BLOCK FTP_CLIENT
     				str2 := ELEMENT_GET(SEP:=BYTE#44,POS:=idx1,ELEMENT:=str1);
     				byar[idx1] := STRING_TO_BYTE(str2);
     			END_FOR
-    			dw_tmp := OSCAT_BASIC.DWORD_OF_BYTE(byar[0],byar[1],byar[2],byar[3]); (* IP Adresse des Datenkanals *)
-    			w_tmp := OSCAT_BASIC.WORD_OF_BYTE(byar[4],byar[5]); (* Port Nummer des Datenkanals *)
+    			dw_tmp := DWORD_OF_BYTE(byar[0],byar[1],byar[2],byar[3]); (* IP Adresse des Datenkanals *)
+    			w_tmp := WORD_OF_BYTE(byar[4],byar[5]); (* Port Nummer des Datenkanals *)
     		END_IF
     		step := 100;
     	END_IF
@@ -305,10 +305,10 @@ FUNCTION_BLOCK FTP_CLIENT
     		UNTIL idx1 = 0 OR R_BUF1.BUFFER[idx1] >= BYTE#32 (* TRUE = EXIT *)
     		END_REPEAT
     		idx1 := idx1 + 1; (* index auf SIZE umrechnen *)
-    		rcv_text := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF1.BUFFER),SIZE:=idx1,START:=0,STOP:=OSCAT_BASIC.STRING_LENGTH-1);
+    		rcv_text := BUFFER_TO_STRING(PT:=ADR(R_BUF1.BUFFER),SIZE:=idx1,START:=0,STOP:=STRING_LENGTH-1);
     		IF LEN(rcv_text) >= 3 THEN (* Statuscode prüfen und auswerten *)
     			str1 := LEFT(rcv_text,3);
-    			IF OSCAT_BASIC.IS_NUM(STR:=str1) THEN (* enthält nur Zahlen ? *)
+    			IF IS_NUM(STR:=str1) THEN (* enthält nur Zahlen ? *)
     				rcv_state := STRING_TO_INT(str1);
     			END_IF
     			IP_C1.R_OBSERVE := FALSE;
@@ -338,7 +338,7 @@ FUNCTION_BLOCK FTP_CLIENT
     	          LOG_MSG();
     	        END_IF*)
     	        (*########################################################################*)
-    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=0,pt:=ADR(S_BUF1.BUFFER),size:=SIZEOF(S_BUF1.BUFFER)); (* String in puffer kopieren *)
+    		_STRING_TO_BUFFER(str:=snd_text,pos:=0,pt:=ADR(S_BUF1.BUFFER),size:=SIZEOF(S_BUF1.BUFFER)); (* String in puffer kopieren *)
     		idx1 := LEN(snd_text);
     		S_BUF1.BUFFER[idx1] := BYTE#16#0D;
     		idx1 := idx1 + 1;

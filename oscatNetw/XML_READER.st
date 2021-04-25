@@ -22,7 +22,7 @@ FUNCTION_BLOCK XML_READER
     *)
 
     (* ---------- Init -------------- *)
-    IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(CTRL.command),15) THEN
+    IF BIT_OF_DWORD(WORD_TO_DWORD(CTRL.command),15) THEN
     	command := CTRL.command;
     	CTRL.command := WORD#0;
 
@@ -187,7 +187,7 @@ FUNCTION_BLOCK XML_READER
     			END_IF
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
-    			CTRL.ELEMENT := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    			CTRL.ELEMENT := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
     			CTRL.COUNT := CTRL.COUNT + UINT#1;
     			CTRL.LEVEL := CTRL.LEVEL + UINT#1;
 
@@ -202,7 +202,7 @@ FUNCTION_BLOCK XML_READER
     				END_IF
     			END_IF
 
-    			IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    			IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
             				(*####################  DEBUG-MESSAGE  ###################################*)
             				(*IF _debug_enable THEN
               				LOG_CL.NEW_MSG := 'EL: #T:~1 #c:~2 #E:~3 #P:~6 #L:~7';
@@ -230,7 +230,7 @@ FUNCTION_BLOCK XML_READER
     			e1 := index - 1;
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
-    			CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    			CTRL.VALUE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
     		END_IF
 
     		empty_tag := FALSE;
@@ -238,7 +238,7 @@ FUNCTION_BLOCK XML_READER
     		CTRL.COUNT := CTRL.COUNT + UINT#1;
     		CTRL.TYP := 3;
 
-    		IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    		IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
           			(*####################  DEBUG-MESSAGE  ###################################*)
           			(*IF _debug_enable THEN
             				LOG_CL.NEW_MSG := 'TE: #T:~1 #c:~2 #E:~3 #V:~4 #P:~6 #L:~7';
@@ -259,7 +259,7 @@ FUNCTION_BLOCK XML_READER
     			c := BUF[index];
     			IF c = BYTE#62 THEN (* '>' TagEnd *)
     				index := index + 1;
-    				s1 := OSCAT_BASIC.FINDB(str1:=CTRL.PATH,str2:='/');
+    				s1 := FINDB(str1:=CTRL.PATH,str2:='/');
     				IF path_overflow = FALSE THEN
     					IF s1 > 1 THEN
     						CTRL.ELEMENT := RIGHT(CTRL.PATH,LEN(CTRL.PATH) - s1);
@@ -275,7 +275,7 @@ FUNCTION_BLOCK XML_READER
     				CTRL.TYP := 2;
     				mode := 100;
 
-    				IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    				IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
              	 				(*####################  DEBUG-MESSAGE  ###################################*)
               				(*IF _debug_enable THEN
                 					LOG_CL.NEW_MSG := 'CE: #T:~1 #c:~2 #E:~3 #P:~6 #L:~7';
@@ -317,7 +317,7 @@ FUNCTION_BLOCK XML_READER
     			(* Attribute Name *)
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
-    			CTRL.ATTRIBUTE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    			CTRL.ATTRIBUTE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
     			(* search end of Attrib Value '=' *)
     			index := index + 2;
     			e1 := 0;
@@ -336,7 +336,7 @@ FUNCTION_BLOCK XML_READER
     				CTRL.BLOCK2_STOP  := INT_TO_UINT(e1);
 
     				(* bei leeren "" ist start groesser als stop und wird somit zum leerstring *)
-    				CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK2_START,stop:=CTRL.BLOCK2_STOP);
+    				CTRL.VALUE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK2_START,stop:=CTRL.BLOCK2_STOP);
     				(* search next non white space charakter *)
     				WHILE (index <= stop AND BUF[index] <= BYTE#32) DO
     					index := index + 1;
@@ -368,7 +368,7 @@ FUNCTION_BLOCK XML_READER
 
     				CTRL.COUNT := CTRL.COUNT + UINT#1;
     				CTRL.TYP := 4;
-    				IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    				IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
               				(*####################  DEBUG-MESSAGE  ###################################*)
               				(*IF _debug_enable THEN
                 					LOG_CL.NEW_MSG := 'AT: #T:~1 #c:~2 #E:~3 #A:~4 #V:~5 #P:~6 #L:~7';
@@ -411,7 +411,7 @@ FUNCTION_BLOCK XML_READER
     			END_CASE
 
     			e1 := LEN(s_code);
-    			IF OSCAT_BASIC.BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(index + e1),STR:=s_code,POS:=index,IGN:=FALSE) = index THEN
+    			IF BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(index + e1),STR:=s_code,POS:=index,IGN:=FALSE) = index THEN
     				s1 := index + e1;
     			END_IF
     		END_WHILE
@@ -419,7 +419,7 @@ FUNCTION_BLOCK XML_READER
     		CTRL.BLOCK1_START := INT_TO_UINT(s1);
     		IF LEN(e_code) > 0 THEN
     			(* Ende Kennung suchen *)
-    			e1 := OSCAT_BASIC.BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),STR:=e_code,POS:=index,IGN:=FALSE);
+    			e1 := BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),STR:=e_code,POS:=index,IGN:=FALSE);
     			CTRL.BLOCK1_STOP := INT_TO_UINT(e1 - 1);
     			index := e1 + LEN(e_code); (* naechstes element *)
     		ELSE
@@ -446,11 +446,11 @@ FUNCTION_BLOCK XML_READER
     			CTRL.BLOCK1_STOP := INT_TO_UINT(index - 2);
     		END_IF
 
-    		CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    		CTRL.VALUE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
     		CTRL.COUNT := CTRL.COUNT + UINT#1;
     		mode := 100; (* -> NEXT-JOB: ELEMENT *)
 
-    		IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    		IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
           			(*####################  DEBUG-MESSAGE  ###################################*)
           			(*IF _debug_enable THEN
             				LOG_CL.NEW_MSG := 'DTD: #T:~1 #c:~2 #S:~3 #E:~4 #V:~5 #P:~6 #L:~7';

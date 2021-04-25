@@ -11,7 +11,7 @@ FUNCTION HTML_ENCODE
     	B := pt_in^[pos_in];
     	CASE BYTE_TO_INT(B) OF
     		34: (* " detected *)
-    			IF pos_out > OSCAT_BASIC.STRING_LENGTH - 6 THEN EXIT; END_IF
+    			IF pos_out > STRING_LENGTH - 6 THEN EXIT; END_IF
     			pt_out^[pos_out] := 38;
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 113;
@@ -24,7 +24,7 @@ FUNCTION HTML_ENCODE
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 59;
     		38: (* & detected *)
-    			IF pos_out > OSCAT_BASIC.STRING_LENGTH - 5 THEN EXIT; END_IF
+    			IF pos_out > STRING_LENGTH - 5 THEN EXIT; END_IF
     			pt_out^[pos_out] := 38;
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 97;
@@ -35,7 +35,7 @@ FUNCTION HTML_ENCODE
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 59;
     		60: (* < detected *)
-    			IF pos_out > OSCAT_BASIC.STRING_LENGTH - 4 THEN EXIT; END_IF
+    			IF pos_out > STRING_LENGTH - 4 THEN EXIT; END_IF
     			pt_out^[pos_out] := 38;
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 108;
@@ -44,7 +44,7 @@ FUNCTION HTML_ENCODE
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 59;
     		62: (* > detected *)
-    			IF pos_out > OSCAT_BASIC.STRING_LENGTH - 4 THEN EXIT; END_IF
+    			IF pos_out > STRING_LENGTH - 4 THEN EXIT; END_IF
     			pt_out^[pos_out] := 38;
     			pos_out := pos_out + 1;
     			pt_out^[pos_out] := 103;
@@ -54,13 +54,13 @@ FUNCTION HTML_ENCODE
     			pt_out^[pos_out] := 59;
     	ELSE
     		IF M AND B > 127 THEN
-    			tmp := OSCAT_BASIC.CHARNAME(B);
+    			tmp := CHARNAME(B);
     			(* exit if output string has not enough space *)
     			IF pos_out + LEN(tmp) + 2 <= 250 THEN
     				pt_out^[pos_out] := 38;
     				pos_out := pos_out + 1;
     				FOR i := 1 TO LEN(tmp) DO
-    					pt_out^[pos_out] := OSCAT_BASIC.CODE(tmp, i);
+    					pt_out^[pos_out] := CODE(tmp, i);
     					pos_out := pos_out + 1;
     				END_FOR
     				pt_out^[pos_out] := 59;

@@ -17,7 +17,7 @@ FUNCTION_BLOCK DLOG_REAL_ARRAY
     		X.UCB.D_MODE := 1;
     		UCB(DATA:=X.UCB); (* Daten eintragen *)
     	03:	(* ADD DATA *)
-    		X.UCB.D_STRING := OSCAT_BASIC.REAL_TO_STRF(IN:=R_ARRAY[idx]._value_last,N:=N,D:=D);
+    		X.UCB.D_STRING := REAL_TO_STRF(IN:=R_ARRAY[idx]._value_last,N:=N,D:=D);
     		X.UCB.D_HEAD := id;
     		X.UCB.D_MODE := 1;
     		UCB(DATA:=X.UCB); (* Daten eintragen *)

@@ -16,7 +16,7 @@ FUNCTION_BLOCK NET_VAR_BOOL8
     			index := index + 1;
     			X.S_BUF.BUFFER[index] := BYTE#4; (* TYPE BOOL8 *)
     			index := index + 1;
-    			X.S_BUF.BUFFER[index] := OSCAT_BASIC.BYTE_OF_BIT(IN1,IN2,IN3,IN4,IN5,IN6,IN7,IN8);
+    			X.S_BUF.BUFFER[index] := BYTE_OF_BIT(IN1,IN2,IN3,IN4,IN5,IN6,IN7,IN8);
     			index := index + 1;
 
     		ELSIF X.STATE = BYTE#2 THEN (* Daten lesen *)

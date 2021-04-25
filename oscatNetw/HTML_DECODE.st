@@ -10,22 +10,22 @@ FUNCTION HTML_DECODE
     		(* hexadecimal representation found *)
     		tmp := MID(HTML_DECODE, 10, pos + 3);
     		end := FIND(tmp, ';');
-    		code := OSCAT_BASIC.CHR_TO_STRING(DWORD_TO_BYTE(OSCAT_BASIC.HEX_TO_DWORD(LEFT(tmp, end - 1))));
+    		code := CHR_TO_STRING(DWORD_TO_BYTE(HEX_TO_DWORD(LEFT(tmp, end - 1))));
     		HTML_DECODE := REPLACE(HTML_DECODE, code, end + 3, pos);
     	ELSIF LEFT(tmp,1) = '#' THEN
     		tmp := MID(HTML_DECODE, 10, pos + 2);
     		end := FIND(tmp, ';');
-    		code := OSCAT_BASIC.CHR_TO_STRING(INT_TO_BYTE(STRING_TO_INT(LEFT(tmp, end - 1))));
+    		code := CHR_TO_STRING(INT_TO_BYTE(STRING_TO_INT(LEFT(tmp, end - 1))));
     		HTML_DECODE := REPLACE(HTML_DECODE, code, end + 2, pos);
     	ELSE
     		(* replace all named characters *)
     		tmp := MID(HTML_DECODE, 10, pos + 1);
     		end := FIND(tmp, ';');
-    		code := OSCAT_BASIC.CHR_TO_STRING(OSCAT_BASIC.CHARCODE(LEFT(tmp, end - 1)));
+    		code := CHR_TO_STRING(CHARCODE(LEFT(tmp, end - 1)));
     		HTML_DECODE := REPLACE(HTML_DECODE, code, end + 1, pos);
     	END_IF
     	(* search for next occurence of encoded characters *)
-    	pos := OSCAT_BASIC.FINDP(HTML_DECODE, '&', pos + 1);
+    	pos := FINDP(HTML_DECODE, '&', pos + 1);
     END_WHILE
 
 

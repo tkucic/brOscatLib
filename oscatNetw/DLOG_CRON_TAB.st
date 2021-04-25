@@ -46,7 +46,7 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     			FOR idx2 := 0 TO cnt1 -1 DO
     				str3 := ELEMENT_GET(BYTE#44, idx2, str2);
     				IF FIND(str3, '*/') > 0 AND LEN(str3) <= 10 THEN
-    					pos1 := OSCAT_BASIC.DEC_TO_INT(str3);
+    					pos1 := DEC_TO_INT(str3);
     					IF pos1 > 0 THEN
     						idx3 := CD.CE[idx1].VALUE_MIN;
     						idx4 := CD.CE[idx1].VALUE_MAX;
@@ -66,11 +66,11 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     						char_cnt := LEN(str3);
     						IF char_cnt >= 1 AND char_cnt <= 10 THEN
     							num_str1 := ELEMENT_GET(BYTE#45, 0, str3);
-    							pos1 := OSCAT_BASIC.DEC_TO_INT(num_str1);
+    							pos1 := DEC_TO_INT(num_str1);
     							pos2 := pos1;
     							IF cnt2 = 2 THEN
     								num_str1 := ELEMENT_GET(BYTE#45, 1, str3);
-    								pos2 := OSCAT_BASIC.DEC_TO_INT(num_str1);
+    								pos2 := DEC_TO_INT(num_str1);
     							END_IF
     						END_IF
     					END_IF
@@ -84,13 +84,13 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     			END_FOR
     		END_FOR
     	ELSIF DTI <> dti_last THEN
-    		CD.CE[0].VALUE := OSCAT_BASIC.SECOND_OF_DT(DTI); (* Sekunden *)
-    		CD.CE[1].VALUE := OSCAT_BASIC.MINUTE_OF_DT(DTI); (* Minuten *)
-    		CD.CE[2].VALUE := OSCAT_BASIC.HOUR_OF_DT(DTI); (* Stunden *)
+    		CD.CE[0].VALUE := SECOND_OF_DT(DTI); (* Sekunden *)
+    		CD.CE[1].VALUE := MINUTE_OF_DT(DTI); (* Minuten *)
+    		CD.CE[2].VALUE := HOUR_OF_DT(DTI); (* Stunden *)
     		datei := DT_TO_DATE(DTI);
-    		CD.CE[3].VALUE := OSCAT_BASIC.DAY_OF_MONTH(datei); (* Tag *)
-    		CD.CE[4].VALUE := OSCAT_BASIC.DAY_OF_WEEK(datei); (* Wochentag *)
-    		CD.CE[5].VALUE := OSCAT_BASIC.MONTH_OF_DATE(datei); (*  Monat *)
+    		CD.CE[3].VALUE := DAY_OF_MONTH(datei); (* Tag *)
+    		CD.CE[4].VALUE := DAY_OF_WEEK(datei); (* Wochentag *)
+    		CD.CE[5].VALUE := MONTH_OF_DATE(datei); (*  Monat *)
     		dti_last := DTI;
 
     		idx2 := CD.CE[0].VALUE;	(* sekunden *)
