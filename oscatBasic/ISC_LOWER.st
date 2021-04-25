@@ -1,6 +1,6 @@
 FUNCTION ISC_LOWER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=171*)
-    IF setup.EXTENDED_ASCII THEN
+    IF cEXTENDED_ASCII THEN
     	ISC_LOWER := ((IN > 96) AND (IN < 123)) OR ((IN > 222) AND (IN <> 247));
     ELSE
     	ISC_LOWER := ((IN > 96) AND (IN < 123));

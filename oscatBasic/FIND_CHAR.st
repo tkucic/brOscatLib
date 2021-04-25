@@ -4,7 +4,7 @@ FUNCTION FIND_CHAR
     stop := LEN(STR);
     FOR i := MAX(POS,1) TO stop DO;
     	X := pt^[i];
-    	IF X > 31 AND ((setup.EXTENDED_ASCII AND X <> 127) OR (NOT setup.EXTENDED_ASCII AND X < 127)) THEN
+    	IF X > 31 AND ((cEXTENDED_ASCII AND X <> 127) OR (NOT cEXTENDED_ASCII AND X < 127)) THEN
     		FIND_CHAR := i;
     		RETURN;
     	END_IF

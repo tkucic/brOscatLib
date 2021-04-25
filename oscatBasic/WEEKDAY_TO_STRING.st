@@ -1,12 +1,12 @@
 FUNCTION WEEKDAY_TO_STRING
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182*)
-    IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF
+    IF LANG = 0 THEN ly := cDEFAULT; ELSE ly := MIN(LANG, cLMAX); END_IF
     IF WDAY < 1 OR WDAY > 7 THEN
     	RETURN;
     ELSIF LX = 0 THEN
-    	WEEKDAY_TO_STRING := language.WEEKDAYS[ly, WDAY];
+    	WEEKDAY_TO_STRING := cWEEKDAYS[ly, WDAY];
     ELSIF LX = 2 THEN
-    	WEEKDAY_TO_STRING := language.WEEKDAYS2[ly, WDAY];
+    	WEEKDAY_TO_STRING := cWEEKDAYS2[ly, WDAY];
     END_IF
 
 

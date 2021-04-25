@@ -8,9 +8,9 @@ FUNCTION CHARCODE
     	search := CONCAT(search, ';');
     	WHILE pos = 0 AND (i < 4) DO
     		i := i + 1;
-    		pos := FIND(setup.CHARNAMES[i], search);
+    		pos := FIND(cCHARNAMES[i], search);
     	END_WHILE
-    	found := MID(setup.CHARNAMES[i], 1, pos - 1);
+    	found := MID(cCHARNAMES[i], 1, pos - 1);
     	CHARCODE := CODE(found, 1);
     END_IF
 

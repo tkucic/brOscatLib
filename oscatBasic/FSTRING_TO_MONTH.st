@@ -1,12 +1,12 @@
 FUNCTION FSTRING_TO_MONTH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=162*)
-    IF LANG = 0 THEN lx := LANGUAGE.DEFAULT; ELSE lx := MIN(LANG, LANGUAGE.LMAX); END_IF
+    IF LANG = 0 THEN lx := cDEFAULT; ELSE lx := MIN(LANG, cLMAX); END_IF
     MTH := TRIM(MTH);
     MTH := CAPITALIZE(LOWERCASE(MTH));
 
     FOR FSTRING_TO_MONTH := 1 TO 12 DO
-    	IF MTH = language.MONTHS[lx, FSTRING_TO_MONTH] THEN RETURN; END_IF
-    	IF MTH = language.MONTHS3[lx, FSTRING_TO_MONTH] THEN RETURN; END_IF
+    	IF MTH = cMONTHS[lx, FSTRING_TO_MONTH] THEN RETURN; END_IF
+    	IF MTH = cMONTHS3[lx, FSTRING_TO_MONTH] THEN RETURN; END_IF
     END_FOR
 
     (* since no name matched try to decode as integer *)

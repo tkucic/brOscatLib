@@ -1,6 +1,6 @@
 FUNCTION DT_TO_STRF
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=152*)
-    IF LANG < 1 THEN ly := language.DEFAULT; ELSE ly := MIN(language.LMAX, LANG); END_IF
+    IF LANG < 1 THEN ly := cDEFAULT; ELSE ly := MIN(cLMAX, LANG); END_IF
 
     (* decode date and time information *)
     dx := DT_TO_DATE(DTI);

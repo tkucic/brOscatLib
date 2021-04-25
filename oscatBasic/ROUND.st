@@ -1,6 +1,6 @@
 FUNCTION ROUND
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65*)
-    X := setup.DECADES[LIMIT(0,N,8)];
+    X := cDECADES[LIMIT(0,N,8)];
     ROUND := DINT_TO_REAL(REAL_TO_DINT(IN * X)) / X;
 
 

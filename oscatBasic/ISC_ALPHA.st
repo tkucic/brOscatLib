@@ -1,6 +1,6 @@
 FUNCTION ISC_ALPHA
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=169*)
-    IF setup.EXTENDED_ASCII THEN
+    IF cEXTENDED_ASCII THEN
     	ISC_ALPHA := (IN > 64 AND IN < 91) OR (IN > 191  AND IN <> 215 AND IN <> 247) OR (IN > 96 AND IN < 123);
     ELSE
     	ISC_ALPHA := (IN > 64 AND IN < 91) OR (IN > 96 AND IN < 123);
