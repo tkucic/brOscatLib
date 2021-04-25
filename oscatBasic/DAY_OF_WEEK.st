@@ -1,6 +1,6 @@
 FUNCTION DAY_OF_WEEK
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=117*)
-    DAY_OF_WEEK := DWORD_TO_INT((DATE_TO_DWORD(IDATE) / 86400 + 3) MOD 7) + 1;
+    DAY_OF_WEEK := UDINT_TO_INT((DATE_TO_UDINT(IDATE) / 86400 + 3) MOD 7) + 1;
 
 
     (* revision history

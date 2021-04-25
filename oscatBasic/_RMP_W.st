@@ -9,7 +9,7 @@ FUNCTION_BLOCK _RMP_W
     	END_IF
     	(* check_elapsed time and calculate only if necessary *)
     	IF TR > t#0s THEN
-    		step := DWORD_TO_DINT(SHL(tx-tl, 16) / TIME_TO_DWORD(TR));
+    		step := UDINT_TO_DINT(SHL(tx-tl, 16) / TIME_TO_UDINT(TR));
     	ELSE
     		step := 65535;
     	END_IF

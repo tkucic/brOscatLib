@@ -9,7 +9,7 @@ FUNCTION_BLOCK RTC_2
     DSO := DST(UDT) AND DEN;
 
     (* calculate time offset and SET ldt output *)
-    LOCAL_DT := DWORD_TO_DT(DT_TO_DWORD(UDT) + INT_TO_DWORD(OFS + BOOL_TO_INT(DSO)*60) * 60);
+    LOCAL_DT := UDINT_TO_DT(DT_TO_UDINT(UDT) + INT_TO_UDINT(OFS + BOOL_TO_INT(DSO)*60) * 60);
 
 
     (* revision history

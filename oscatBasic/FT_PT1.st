@@ -8,7 +8,7 @@ FUNCTION_BLOCK FT_PT1
     	init := TRUE;
     	OUT := K * IN;
     ELSE
-    	OUT := OUT + (IN * K - OUT) * DWORD_TO_REAL(tx - last) / TIME_TO_REAL(T) * 1.0E-3;
+    	OUT := OUT + (IN * K - OUT) * UDINT_TO_REAL(tx - last) / TIME_TO_REAL(T) * 1.0E-3;
     	IF ABS(OUT) < 1.0E-20 THEN OUT := 0.0; END_IF
     END_IF
     last := tx;

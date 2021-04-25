@@ -1,24 +1,38 @@
 VAR CONSTANT
-    STRING_LENGTH : INT := 250;
-    LIST_LENGTH : INT := 250;
-    MATH : CONSTANTS_MATH := (PI:=3.1415926535897931,PI2:=6.2831853071795862,PI4:=12.566370614359172,PI05:=1.5707963267949,PI025:=0.785398163397448,PI_INV:=0.318309886183791,E:=2.7182818284590451,E_INV:=0.367879441171442,SQ2:=1.4142135623731,FACTS:=[1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600]); (*Math constants*)
-    cPI : REAL := 3.1415926535897931; (*Math constants - PI*)
-    cPI2 : REAL := 6.2831853071795862; (*Math constants - PI*2*)
-    cPI4 : REAL := 12.566370614359172; (*Math constants - PI*4*)
-    cPI05 : REAL := 1.5707963267949; (*Math constants - PI / 2*)
-    cPI025 : REAL := 0.785398163397448; (*Math constants - PI / 4*)
-    cPI_INV : REAL := 0.318309886183791; (*Math constants - Inverse PI number*)
-    ce : REAL := 2.7182818284590451; (*Math constants - Eulers number*)
-    ce_INV : REAL := 0.367879441171442; (*Math constants - Inverse eulers number*)
-    cSQ2 : REAL := 1.4142135623731; (*Math constants - Square root of 2*)
-    PHYS : CONSTANTS_PHYS := (C:=299792458,E:=1.60217653E-19,G:=9.80665,T0:=-273.15,RU:=8.314472,PN:=101325); (*Physics constants*)
-    cC : REAL := 299792458; (*Physics constants - Speed of light*)
-    cE : REAL := 1.60217653E-19; (*Physics constants - Mass energy*)
-    cg : REAL := 9.80665; (*Physics constants - Gravitational acceleration on Earth*)
-    cT0 : REAL := -273.15; (*Physics constants - Celsius at 0K*)
-    cR : REAL := 8.314472; (*Physics constants - Gas constant*)
-    cPN : REAL := 8.314472; (*Physics constants - Atmospheric pressure*)
-    LANGUAGE : CONSTANTS_LANGUAGE := (DEFAULT:=1,LMAX:=3,WEEKDAYS:=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],WEEKDAYS2:=['Mo','Tu','We','Th','Fr','Sa','Su','Mo','Di','Mi','Do','Fr','Sa','So','Lu','Ma','Me','Je','Ve','Sa','Di'],MONTHS:=['January','February','March','April','May','June','July','August','September','October','November','December','Januar','Februar','MÃƒÂ¤rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember','Janvier','FÃƒÂ©vrier','mars','Avril','Mai','Juin','Juillet','AoÃƒÂ»t','Septembre','Octobre','Novembre','Decembre'],MONTHS3:=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez','Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sep','Oct','Nov','Dec'],DIRS:=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW']); (*Language constants*)
-    SETUP : CONSTANTS_SETUP := (EXTENDED_ASCII:=TRUE,CHARNAMES:=['1'],MTH_OFS:=[0,31,59,90,120,151,181,212,243,273,304,334],DECADES:=[1,10,100,1000,10000,100000,1000000,10000000,100000000]); (*Setup constants*)
-    LOCATION : CONSTANTS_LOCATION := (DEFAULT:=1,LMAX:=5,LANGUAGE:=[2(2),3,2(2)]); (*Location constants*)
+	STRING_LENGTH : INT := 250;
+	cCHARNAMES : ARRAY[1..4] OF STRING[253] := ['1']; (*Setup - Extended ascii enabled*)
+	cMTH_OFS : ARRAY[1..12] OF INT := [0,31,59,90,120,151,181,212,243,273,304,334]; (*Setup - Month offsets*)
+	cDECADES : ARRAY[0..8] OF REAL := [1,10,100,1000,10000,100000,1000000,10000000,100000000]; (*Setup - Decades*)
+	cLOCATION_DEFAULT : INT := 1; (* Location - 1=germany, 2=austria 3=france 4=belgium-german 5= italien-Südtirol *)
+	cLOCATION_LMAX : INT := 5; (* Location - ?? *)
+	cLOCATION_LANGUAGE : ARRAY[1..5] OF INT := [2,2,3,2,2]; (* Location - language spoken in the location *)
+	cEXTENDED_ASCII : BOOL := TRUE; (*Setup - Extended ascii enabled*)
+	cLANGUAGE_DEFAULT : INT := 1; (* 1=english, 2=german 3=french *)
+	cLANGUAGE_WEEKDAYS : ARRAY[1..3,1..7] OF STRING[10] := ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+	cLANGUAGE_WEEKDAYS2 : ARRAY[1..3,1..7] OF STRING[2] := ['Mo','Tu','We','Th','Fr','Sa','Su','Mo','Di','Mi','Do','Fr','Sa','So','Lu','Ma','Me','Je','Ve','Sa','Di'];
+	cLANGUAGE_MONTHS : ARRAY[1..3,1..12] OF STRING[10] := ['January','February','March','April','May','June','July','August','September','October','November','December','Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember','Janvier','Février','mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Decembre'];
+	cLANGUAGE_MONTHS3 : ARRAY[1..3,1..12] OF STRING[3] := ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez','Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sep','Oct','Nov','Dec'];
+	cLANGUAGE_DIRS : ARRAY[1..3,0..15] OF STRING[3] := ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+	LANGUAGE : CONSTANTS_LANGUAGE := (DEFAULT:=1,LMAX:=3,WEEKDAYS:=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],WEEKDAYS2:=['Mo','Tu','We','Th','Fr','Sa','Su','Mo','Di','Mi','Do','Fr','Sa','So','Lu','Ma','Me','Je','Ve','Sa','Di'],MONTHS:=['January','February','March','April','May','June','July','August','September','October','November','December','Januar','Februar','MÃƒÂ¤rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember','Janvier','FÃƒÂ©vrier','mars','Avril','Mai','Juin','Juillet','AoÃƒÂ»t','Septembre','Octobre','Novembre','Decembre'],MONTHS3:=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez','Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sep','Oct','Nov','Dec'],DIRS:=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW','N','NNO','NO','ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW','NW','NNW']); (*Language constants*)
+	cLANGUAGE_LMAX : INT := 3;
+	cPN : REAL := 8.314472; (*Physics constants - Atmospheric pressure*)
+	cR : REAL := 8.314472; (*Physics constants - Gas constant*)
+	cT0 : REAL := -273.15; (*Physics constants - Celsius at 0K*)
+	LIST_LENGTH : INT := 250;
+	MATH : CONSTANTS_MATH := (PI:=3.1415926535897931,PI2:=6.2831853071795862,PI4:=12.566370614359172,PI05:=1.5707963267949,PI025:=0.785398163397448,PI_INV:=0.318309886183791,E:=2.7182818284590451,E_INV:=0.367879441171442,SQ2:=1.4142135623731,FACTS:=[1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600]); (*Math constants*)
+	cPI : REAL := 3.1415926535897931; (*Math constants - PI*)
+	cPI2 : REAL := 6.2831853071795862; (*Math constants - PI*2*)
+	cPI4 : REAL := 12.566370614359172; (*Math constants - PI*4*)
+	cPI05 : REAL := 1.5707963267949; (*Math constants - PI / 2*)
+	cPI025 : REAL := 0.785398163397448; (*Math constants - PI / 4*)
+	cPI_INV : REAL := 0.318309886183791; (*Math constants - Inverse PI number*)
+	ce : REAL := 2.7182818284590451; (*Math constants - Eulers number*)
+	ce_INV : REAL := 0.367879441171442; (*Math constants - Inverse eulers number*)
+	cSQ2 : REAL := 1.4142135623731; (*Math constants - Square root of 2*)
+	PHYS : CONSTANTS_PHYS := (C:=299792458,E:=1.60217653E-19,G:=9.80665,T0:=-273.15,RU:=8.314472,PN:=101325); (*Physics constants*)
+	cC : REAL := 299792458; (*Physics constants - Speed of light*)
+	cE : REAL := 1.60217653E-19; (*Physics constants - Mass energy*)
+	cg : REAL := 9.80665; (*Physics constants - Gravitational acceleration on Earth*)
+	SETUP : CONSTANTS_SETUP := (EXTENDED_ASCII:=TRUE,CHARNAMES:=['1'],MTH_OFS:=[0,31,59,90,120,151,181,212,243,273,304,334]); (*Setup constants*)
+	LOCATION : CONSTANTS_LOCATION := (DEFAULT:=1,LMAX:=5,LANGUAGE:=[2(2),3,2(2)]); (*Location constants*)
 END_VAR

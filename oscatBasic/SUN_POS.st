@@ -4,7 +4,7 @@ FUNCTION_BLOCK SUN_POS
     (* n is the julian date and the number of days since 1.1.2000-12:00 midday *)
     (* be careful for step7 date startes 1.1.1990 instead of 1.1.1970 *)
     (* for step7 this line must change *)
-    n := DWORD_TO_REAL(DT_TO_DWORD(UTC) - 946728000) * 0.000011574074074074;
+    n := UDINT_TO_REAL(DT_TO_UDINT(UTC) - 946728000) * 0.000011574074074074;
     g :=MODR(6.240040768 + 0.01720197 * n, cPI2);
     d := MODR(4.89495042 + 0.017202792 * n, cPI2) + 0.033423055 * SIN(g) + 0.000349066 * SIN(2.0*g);
     e := 0.409087723 - 0.000000006981317008 * n;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK SUN_POS
     c := ASIN(SIN(e) * sin_d);
 
     (* also here we must be very careful UTC is from 1.1.1970 for step7 the formula must change *)
-    tau := RAD(MODR(6.697376 + (n - 0.25) * 0.0657098245037645 + DWORD_TO_REAL(TOD_TO_DWORD(DT_TO_TOD(UTC))) * 0.0000002785383333, 24.0) * 15.0 + LONGITUDE) - a;
+    tau := RAD(MODR(6.697376 + (n - 0.25) * 0.0657098245037645 + UDINT_TO_REAL(TOD_TO_UDINT(DT_TO_TOD(UTC))) * 0.0000002785383333, 24.0) * 15.0 + LONGITUDE) - a;
     rlat := RAD(LATITUDE);
     sin_lat := SIN(rlat);
     cos_lat := COS(rlat);

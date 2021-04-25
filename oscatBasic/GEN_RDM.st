@@ -1,7 +1,7 @@
 FUNCTION_BLOCK GEN_RDM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=258*)
     (* read system time and prepare input data *)
-    tx := DWORD_TO_TIME(T_PLC_MS()) - last;
+    tx := UDINT_TO_TIME(T_PLC_MS()) - last;
 
     (* init section *)
     IF NOT init THEN

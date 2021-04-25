@@ -4,7 +4,7 @@ FUNCTION_BLOCK DCF77
     TP := FALSE;
 
     (* read system time *)
-    t1 := DWORD_TO_TIME(T_PLC_MS());
+    t1 := UDINT_TO_TIME(T_PLC_MS());
     tx := t1 - last;
 
     IF REC XOR edge_ THEN
@@ -104,9 +104,9 @@ FUNCTION_BLOCK DCF77
     			mez := SET_DT(year,month,day,hour,minute,0);
     			DS := bits[17];
     			IF DS THEN
-    				utc := DWORD_TO_DT(DT_TO_DWORD(mez) - 7200);
+    				utc := UDINT_TO_DT(DT_TO_UDINT(mez) - 7200);
     			ELSE
-    				utc := DWORD_TO_DT(DT_TO_DWORD(mez) - 3600);
+    				utc := UDINT_TO_DT(DT_TO_UDINT(mez) - 3600);
     			END_IF
 
     			(* SET trigger signal only if the receiver has received 2 successive minutes *)
@@ -116,7 +116,7 @@ FUNCTION_BLOCK DCF77
     END_IF
 
     (* this portion implements a free running clock which is triggered by the dcf77 signal *)
-    tz := DWORD_TO_TIME(INT_TO_DWORD(ABS(TIME_OFFSET))* 3600000);
+    tz := UDINT_TO_TIME(INT_TO_UDINT(ABS(TIME_OFFSET))* 3600000);
 
     (* input SDT is copied to utc at first power up *)
     IF NOT init OR SET THEN
@@ -136,11 +136,11 @@ FUNCTION_BLOCK DCF77
     	SYNC := TRUE;
     	last_sync := last;
     	ty := last;
-    ELSIF RTC > DWORD_TO_DT(0) AND t1 - ty >= t#1s THEN
+    ELSIF RTC > UDINT_TO_DT(0) AND t1 - ty >= t#1s THEN
     	RTC := RTC + t#1s;
     	RTC1 := RTC1 + t#1s;
     	ty := ty + t#1s;
-    	SYNC := ty - last_sync < SYNC_TIMEOUT AND last_sync > DWORD_TO_TIME(0);
+    	SYNC := ty - last_sync < SYNC_TIMEOUT AND last_sync > UDINT_TO_TIME(0);
     	WDAY := DAY_OF_WEEK(DT_TO_DATE(RTC1));
     	DS := DST_EN AND DST(utc);
     END_IF

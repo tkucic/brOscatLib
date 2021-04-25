@@ -1,7 +1,7 @@
 FUNCTION_BLOCK GEN_SIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=261*)
     (* read system time and prepare input data *)
-    tx := DWORD_TO_TIME(T_PLC_MS()) - last;
+    tx := UDINT_TO_TIME(T_PLC_MS()) - last;
     DL := MODR(DL,1.0);
     IF DL < 0.0 THEN DL := 1.0 - DL; END_IF
 
@@ -19,7 +19,7 @@ FUNCTION_BLOCK GEN_SIN
     END_IF
 
     (* generate sine wave *)
-    IF PT > t#0s THEN temp := SIN(cPI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(PT, DL))) / DWORD_TO_REAL(TIME_TO_DWORD(PT))); END_IF
+    IF PT > t#0s THEN temp := SIN(cPI2 * UDINT_TO_REAL(TIME_TO_UDINT(tx + MULTIME(PT, DL))) / UDINT_TO_REAL(TIME_TO_UDINT(PT))); END_IF
     OUT := AM * 0.5 *  temp + OS;
 
     (* boolean output Q *)

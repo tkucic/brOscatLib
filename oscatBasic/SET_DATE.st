@@ -2,9 +2,9 @@ FUNCTION SET_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136*)
     IF (MONTH > 2) AND (SHL(YEAR,14) = 0)
     THEN (* we add one DAY for leap YEAR *)
-    	SET_DATE := DWORD_TO_DATE((INT_TO_DWORD(ofs[MONTH] + DAY ) + SHR(INT_TO_DWORD(YEAR) * 1461 - 2878169, 2))*86400);
+    	SET_DATE := UDINT_TO_DATE((INT_TO_UDINT(ofs[MONTH] + DAY ) + SHR(INT_TO_UDINT(YEAR) * 1461 - 2878169, 2))*86400);
     ELSE
-    	SET_DATE := DWORD_TO_DATE((INT_TO_DWORD(ofs[MONTH] + DAY - 1 ) + SHR(INT_TO_DWORD(YEAR) * 1461 - 2878169, 2))*86400);
+    	SET_DATE := UDINT_TO_DATE((INT_TO_UDINT(ofs[MONTH] + DAY - 1 ) + SHR(INT_TO_UDINT(YEAR) * 1461 - 2878169, 2))*86400);
     END_IF
 
 
@@ -12,13 +12,13 @@ FUNCTION SET_DATE
     IF MONTH > 2 THEN
     	count := (MONTH - 1) * 30;
     	IF MONTH > 7 THEN count := count + SHR(MONTH - 3,1); ELSE count := count + SHR(MONTH - 4,1); END_IF
-    	(* chech for leap YEAR and add one DAY if true *)
+    	(* chech for leap YEAR and add one DAY if true 
     	IF SHL(YEAR,14) = 0 THEN count := count + 1; END_IF
     ELSE
     	count := (MONTH - 1) * 31;
     END_IF
 
-    SET_DATE := DWORD_TO_DATE((INT_TO_DWORD(count + DAY - 1) + SHR(INT_TO_DWORD(YEAR) * 1461 - 2878169, 2)) * 86400);
+    SET_DATE := UDINT_TO_DATE((INT_TO_UDINT(count + DAY - 1) + SHR(INT_TO_UDINT(YEAR) * 1461 - 2878169, 2)) * 86400);
     *)
 
     (* revision history

@@ -38,17 +38,17 @@ FUNCTION_BLOCK PARSET
     		start := TRUE;
     		last := tx;
     		(* save the step speed for the output changes in S *)
-    		S1 := (X[set,1] - P1)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    		S2 := (X[set,2] - P2)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    		S3 := (X[set,3] - P3)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    		S4 := (X[set,4] - P4)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
+    		S1 := (X[set,1] - P1)/UDINT_TO_REAL(TIME_TO_UDINT(TC));
+    		S2 := (X[set,2] - P2)/UDINT_TO_REAL(TIME_TO_UDINT(TC));
+    		S3 := (X[set,3] - P3)/UDINT_TO_REAL(TIME_TO_UDINT(TC));
+    		S4 := (X[set,4] - P4)/UDINT_TO_REAL(TIME_TO_UDINT(TC));
     	END_IF
-    ELSIF start AND tx - last < TIME_TO_DWORD(TC) THEN
+    ELSIF start AND tx - last < TIME_TO_UDINT(TC) THEN
     	(* ramp the outputs to the new value *)
-    	P1 := X[set,1] - S1 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
-    	P2 := X[set,2] - S2 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
-    	P3 := X[set,3] - S3 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
-    	P4 := X[set,4] - S4 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
+    	P1 := X[set,1] - S1 * UDINT_TO_REAL(TIME_TO_UDINT(TC) - tx + last);
+    	P2 := X[set,2] - S2 * UDINT_TO_REAL(TIME_TO_UDINT(TC) - tx + last);
+    	P3 := X[set,3] - S3 * UDINT_TO_REAL(TIME_TO_UDINT(TC) - tx + last);
+    	P4 := X[set,4] - S4 * UDINT_TO_REAL(TIME_TO_UDINT(TC) - tx + last);
     ELSE
     	(* make sure outputs match the correct set values *)
     	start := FALSE;

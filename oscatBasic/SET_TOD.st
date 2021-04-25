@@ -1,6 +1,6 @@
 FUNCTION SET_TOD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138*)
-    SET_TOD := DWORD_TO_TOD(REAL_TO_DWORD(SECOND * 1000.0) + INT_TO_DWORD(MINUTE) * 60000 + INT_TO_DWORD(HOUR) * 3600000);
+    SET_TOD := UDINT_TO_TOD(REAL_TO_UDINT(SECOND * 1000.0) + INT_TO_UDINT(MINUTE) * 60000 + INT_TO_UDINT(HOUR) * 3600000);
 
     (* revision history
 

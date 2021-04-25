@@ -5,9 +5,9 @@ FUNCTION_BLOCK SIGNAL
     	tx := T_PLC_MS();
     	(* calculate the step counter which is the lowest 3 bits of (time / TS) *)
     	IF TS > t#0s THEN
-    		step := DWORD_TO_BYTE(tx / TIME_TO_DWORD(TS) AND 16#0000_0007);
+    		step := UDINT_TO_BYTE(tx / TIME_TO_UDINT(TS) AND 16#0000_0007);
     	ELSE
-    		step := DWORD_TO_BYTE(SHR(tx,7) AND 16#0000_0007);
+    		step := UDINT_TO_BYTE(SHR(tx,7) AND 16#0000_0007);
     	END_IF
     	(* convert the value 0-7 IN step into one bit only (bit 0-7) *)
     	step := SHL(one,step);

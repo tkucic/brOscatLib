@@ -1,6 +1,6 @@
 FUNCTION SECOND
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135*)
-    SECOND := DWORD_TO_REAL(TOD_TO_DWORD(ITOD) - TOD_TO_DWORD(ITOD)/60000 * 60000) / 1000.0;
+    SECOND := UDINT_TO_REAL(TOD_TO_UDINT(ITOD) - TOD_TO_UDINT(ITOD)/60000 * 60000) / 1000.0;
 
 
 

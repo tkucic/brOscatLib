@@ -1,7 +1,7 @@
 FUNCTION_BLOCK GEN_RMP
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=260*)
     (* read system time and prepare input data *)
-    tx := DWORD_TO_TIME(T_PLC_MS()) - last;
+    tx := UDINT_TO_TIME(T_PLC_MS()) - last;
     DL := MODR(DL,1.0);
     IF DL < 0.0 THEN DL := 1.0 - DL; END_IF
 

@@ -11,7 +11,8 @@ FUNCTION FSTRING_TO_DWORD
     	FSTRING_TO_DWORD := HEX_TO_DWORD(RIGHT(IN, LEN(IN) - 3));
     ELSE
     	(* we assume decimal representation *)
-    	FSTRING_TO_DWORD := DEC_TO_DWORD(CLEAN(IN,'0123456789'));
+        CLEAN(IN,'0123456789', temp);
+    	FSTRING_TO_DWORD := DEC_TO_DWORD(temp);
     END_IF
 
 

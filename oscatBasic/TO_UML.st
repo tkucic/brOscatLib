@@ -2,23 +2,23 @@ FUNCTION TO_UML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180*)
     CASE IN OF
     	196:	(* Ä *)
-    		TO_UML := 'Ae';
+    		RETVAL := 'Ae';
     	214:	(* Ö *)
-    		TO_UML := 'Oe';
+    		RETVAL := 'Oe';
     	220:	(* Ü *)
-    		TO_UML := 'Ue';
+    		RETVAL := 'Ue';
     	223:	(* ß *)
-    		TO_UML := 'ss';
+    		RETVAL := 'ss';
     	228:	(* ä *)
-    		TO_UML := 'ae';
+    		RETVAL := 'ae';
     	246:	(* ö *)
-    		TO_UML := 'oe';
+    		RETVAL := 'oe';
     	252:	(* ü *)
-    		TO_UML := 'ue';
+    		RETVAL := 'ue';
     ELSE
-    	TO_UML := CHR_TO_STRING(IN);
+    	CHR_TO_STRING(IN, RETVAL);
     END_CASE
-
+    TO_UML := TRUE;
 
 
     (* revision history

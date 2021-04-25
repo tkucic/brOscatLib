@@ -1,7 +1,7 @@
 FUNCTION_BLOCK FT_Profile
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=457*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* determine start condition *)
     IF E AND NOT edge_ THEN

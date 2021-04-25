@@ -1,6 +1,6 @@
 FUNCTION YEAR_OF_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=144*)
-    YEAR_OF_DATE := DWORD_TO_INT((DATE_TO_DWORD(IDATE) + 43200) / 31557600 + 1970);
+    YEAR_OF_DATE := UDINT_TO_INT((DATE_TO_UDINT(IDATE) + 43200) / 31557600 + 1970);
 
 
     (* revision history

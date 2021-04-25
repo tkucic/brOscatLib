@@ -1,6 +1,6 @@
 FUNCTION YEAR_END
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=143*)
-    YEAR_END := DWORD_TO_DATE(SHR(INT_TO_DWORD(Y) * 1461 - 2876712, 2) * 86400);
+    YEAR_END := UDINT_TO_DATE(SHR(INT_TO_UDINT(Y) * 1461 - 2876712, 2) * 86400);
 
 
 

@@ -1,6 +1,6 @@
 FUNCTION FSTRING_TO_WEEKDAY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164*)
-    IF LANG = 0 THEN ly := cDEFAULT; ELSE ly := MIN(LANG, cLMAX); END_IF
+    IF LANG = 0 THEN ly := cLANGUAGE_DEFAULT; ELSE ly := MIN(LANG, cLANGUAGE_LMAX); END_IF
     (* tmp needs to be calculated first otherwise find can return wrong values *)
     TRIM(WDAY, tmp);
     LOWERCASE(tmp, tmp);

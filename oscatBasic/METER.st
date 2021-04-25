@@ -10,7 +10,7 @@ FUNCTION_BLOCK METER
     ELSIF tx = last THEN
     	RETURN;
     ELSE
-    	tc := DWORD_TO_REAL(tx - last) * 0.001;
+    	tc := UDINT_TO_REAL(tx - last) * 0.001;
     END_IF
     last := tx;
 

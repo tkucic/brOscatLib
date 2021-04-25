@@ -1,7 +1,7 @@
 FUNCTION_BLOCK _RMP_B
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     IF E AND init AND (DIR = last_dir) AND (RMP <> SEL(DIR, 0, 255)) AND TR = tn THEN
     	RMP := FRMP_B(start, DIR, tx - tl, TR);

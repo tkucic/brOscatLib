@@ -6,13 +6,13 @@ FUNCTION_BLOCK FILTER_DW
     (* startup initialisation *)
     IF NOT init OR T = T#0s THEN
     	init := TRUE;
-    	Yi := DWORD_TO_REAL(X);
+    	Yi := UDINT_TO_REAL(X);
     ELSE
-    	Yi := Yi + (DWORD_TO_REAL(X) - DWORD_TO_REAL(Y)) * DWORD_TO_REAL(tx - last) / TIME_TO_REAL(T);
+    	Yi := Yi + (UDINT_TO_REAL(X) - UDINT_TO_REAL(Y)) * UDINT_TO_REAL(tx - last) / TIME_TO_REAL(T);
     END_IF
     last := tx;
 
-    Y := REAL_TO_DWORD(Yi);
+    Y := REAL_TO_UDINT(Yi);
 
 
 

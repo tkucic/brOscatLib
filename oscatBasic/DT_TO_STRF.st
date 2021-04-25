@@ -1,17 +1,17 @@
 FUNCTION DT_TO_STRF
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=152*)
-    IF LANG < 1 THEN ly := cDEFAULT; ELSE ly := MIN(cLMAX, LANG); END_IF
+    IF LANG < 1 THEN ly := cLANGUAGE_DEFAULT; ELSE ly := MIN(cLANGUAGE_LMAX, LANG); END_IF
 
     (* decode date and time information *)
     dx := DT_TO_DATE(DTI);
     td := DT_TO_TOD(DTI);
 
     (* parse the format string *)
-    DT_TO_STRF := FMT;
-    pos := FIND(DT_TO_STRF, '#');
+    RETVAL := FMT;
+    pos := FIND(RETVAL, '#');
     WHILE pos > 0 DO
     	(* retrieve format identifier *)
-    	f := CODE(DT_TO_STRF, pos + 1);
+    	f := CODE(RETVAL, pos + 1);
     	(* generate the return string according to the format character *)
     	fs := '';
     	CASE f OF
@@ -78,10 +78,10 @@ FUNCTION DT_TO_STRF
     			fs := INT_TO_STRING(MONTH_OF_DATE(dx));
     			IF LEN(fs) < 2 THEN fs := CONCAT(BLANK, fs); END_IF
     		END_CASE
-    	DT_TO_STRF := REPLACE(DT_TO_STRF, fs, 2, pos);
-    	pos := FIND(DT_TO_STRF, '#');
+    	RETVAL := REPLACE(RETVAL, fs, 2, pos);
+    	pos := FIND(RETVAL, '#');
     END_WHILE
-
+    DT_TO_STRF := TRUE;
 
     (* revision history
     hm	7. oct. 2008	rev 1.0

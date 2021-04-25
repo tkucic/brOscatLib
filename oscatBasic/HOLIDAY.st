@@ -6,9 +6,9 @@ FUNCTION_BLOCK HOLIDAY
 
     (* determine language *)
     IF LANGU = 0 THEN
-    	lx := cDEFAULT;
+    	lx := cLANGUAGE_DEFAULT;
     ELSE
-    	lx := MIN(cLMAX, LANGU);
+    	lx := MIN(cLANGUAGE_LMAX, LANGU);
     END_IF
 
     (* berechnung von ostern für das aktuelle jahr *)
@@ -47,7 +47,7 @@ FUNCTION_BLOCK HOLIDAY
     (* check array if today is weekend *)
     IF NOT Y AND (wdx = 5 AND FRIDAY OR wdx = 6 AND SATURDAY OR wdx = 7 AND SUNDAY) THEN
     	Y := TRUE;
-    	NAME := cWEEKDAYS[LOCATION.LANGUAGE[lx],wdx];
+    	NAME := cWEEKDAYS[cLANGUAGE[lx],wdx];
     ELSE
     	NAME := '';
     END_IF

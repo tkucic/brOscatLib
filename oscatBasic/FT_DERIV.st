@@ -2,7 +2,7 @@ FUNCTION_BLOCK FT_DERIV
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=396*)
     (* read system time *)
     tx := T_PLC_US();
-    tc := DWORD_TO_REAL(tx - last);
+    tc := UDINT_TO_REAL(tx - last);
     last := tx;
 
     (* init on first startup *)

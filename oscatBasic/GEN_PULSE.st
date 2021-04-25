@@ -1,7 +1,7 @@
 FUNCTION_BLOCK GEN_PULSE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=257*)
     IF ENQ THEN
-    	tx := DWORD_TO_TIME(T_PLC_MS());
+    	tx := UDINT_TO_TIME(T_PLC_MS());
     	IF NOT init THEN init := TRUE; tn := tx; END_IF
     	IF tx - tn >= SEL(Q, PTL, PTH) THEN
     		tn := tn + SEL(Q, PTL, PTH);

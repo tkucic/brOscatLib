@@ -9,13 +9,13 @@ FUNCTION WORK_WEEK
     (* wenn der erste tag des jahres größer als donnerstag ist dann beginnt die letzte kw am montag davor *)
     (* wenn der erste tag des jahres ein donnerstag oder kleiner ist beginnt die erste kw 2 montage davor *)
     IF w1 < 5 THEN
-    	ds := DATE_TO_DWORD(d1) - INT_TO_DWORD(w1+6) * 86400;
+    	ds := DATE_TO_UDINT(d1) - INT_TO_UDINT(w1+6) * 86400;
     ELSE
-    	ds := DATE_TO_DWORD(d1) - INT_TO_DWORD(w1-1) * 86400;
+    	ds := DATE_TO_UDINT(d1) - INT_TO_UDINT(w1-1) * 86400;
     END_IF
 
     (* kalenderwoche des eingangsdatums *)
-    WORK_WEEK := DWORD_TO_INT((DATE_TO_DWORD(IDATE) - ds) / 604800);
+    WORK_WEEK := UDINT_TO_INT((DATE_TO_UDINT(IDATE) - ds) / 604800);
 
     (* korrektur wenn WORK_WEEK = 0 *)
     IF WORK_WEEK = 0 THEN

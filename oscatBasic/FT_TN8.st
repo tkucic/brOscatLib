@@ -1,6 +1,6 @@
 FUNCTION_BLOCK FT_TN8
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=420*)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
     TRIG := FALSE;
     IF NOT init THEN
     	X[cnt] := IN;

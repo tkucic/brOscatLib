@@ -9,7 +9,7 @@ FUNCTION_BLOCK FILTER_I
     	Yi := INT_TO_DINT(X) * 1000;
     ELSE
     	(* to increase accuracy of the filter we calculate internal Yi wich is Y * 1000 *)
-    	Yi := Yi + INT_TO_DINT(X - Y) * DWORD_TO_DINT(tx - last) * 1000 / TIME_TO_DINT(T);
+    	Yi := Yi + INT_TO_DINT(X - Y) * UDINT_TO_DINT(tx - last) * 1000 / TIME_TO_DINT(T);
     END_IF
     last := tx;
     Y := DINT_TO_INT(Yi / 1000);

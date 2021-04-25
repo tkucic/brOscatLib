@@ -15,7 +15,7 @@ FUNCTION_BLOCK M_D
     END_IF
 
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* detect rising edge_ on START *)
     IF START AND NOT edge_ AND NOT STOP THEN

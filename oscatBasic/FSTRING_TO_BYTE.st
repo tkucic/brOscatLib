@@ -11,7 +11,8 @@ FUNCTION FSTRING_TO_BYTE
     	FSTRING_TO_BYTE := HEX_TO_BYTE(RIGHT(IN, LEN(IN) - 3));
     ELSE
     	(* we assume decimal representation *)
-    	FSTRING_TO_BYTE := DEC_TO_BYTE(CLEAN(IN,'0123456789'));
+        CLEAN(IN,'0123456789', temp);
+    	FSTRING_TO_BYTE := DEC_TO_BYTE(temp);
     END_IF
 
 

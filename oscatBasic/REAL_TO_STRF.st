@@ -4,14 +4,14 @@ FUNCTION REAL_TO_STRF
     N := LIMIT(0,N,7);
     (* round the input to N digits and convert to string *)
     O := ABS(IN) * EXP10(N);
-    REAL_TO_STRF := DINT_TO_STRING(REAL_TO_DINT(O));
+    RETVAL := DINT_TO_STRING(REAL_TO_DINT(O));
     (* add zeroes IN front to make sure sting is at least 8 digits long *)
-    FOR i := LEN(REAL_TO_STRF) TO N DO REAL_TO_STRF := CONCAT('0', REAL_TO_STRF); END_FOR
+    FOR i := LEN(RETVAL) TO N DO RETVAL := CONCAT('0', RETVAL); END_FOR
     (* add a dot if N > 0 *)
-    IF N > 0 THEN REAL_TO_STRF := INSERT(REAL_TO_STRF, D, LEN(REAL_TO_STRF) - N); END_IF
+    IF N > 0 THEN RETVAL := INSERT(RETVAL, D, LEN(RETVAL) - N); END_IF
     (* add a minus sign if IN is negative *)
-    IF IN < 0 THEN REAL_TO_STRF := CONCAT('-', REAL_TO_STRF); END_IF
-
+    IF IN < 0 THEN RETVAL := CONCAT('-', RETVAL); END_IF
+    REAL_TO_STRF := TRUE;
 
     (* revision history
     hm	26 jan 2007	rev 1.0

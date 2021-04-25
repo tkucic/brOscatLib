@@ -1,7 +1,7 @@
 FUNCTION_BLOCK FT_TN64
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=419*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     TRIG := FALSE;
     IF NOT init THEN

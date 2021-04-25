@@ -1,53 +1,55 @@
 FUNCTION EXEC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155*)
     (* extract both numbers and operator *)
-    EXEC := UPPERCASE(TRIM(STR));
+    TRIM(STR, temp);
+    UPPERCASE(temp, RETVAL);
 
-    pos := FINDB_NONUM(EXEC);
-    IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(EXEC,pos-1)); END_IF
-    R2 := STRING_TO_REAL(RIGHT(EXEC,LEN(EXEC)-pos));
-    EXEC := LEFT(EXEC,pos);
-    pos := FINDB_NUM(EXEC);
-    operator := RIGHT(EXEC,LEN(EXEC) - pos);
+    pos := FINDB_NONUM(RETVAL);
+    IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(RETVAL,pos-1)); END_IF
+    R2 := STRING_TO_REAL(RIGHT(RETVAL,LEN(RETVAL)-pos));
+    RETVAL := LEFT(RETVAL,pos);
+    pos := FINDB_NUM(RETVAL);
+    operator := RIGHT(RETVAL,LEN(RETVAL) - pos);
     IF operator = '' AND LEN(STR) = 0 THEN
-    	EXEC := '';
+    	RETVAL := '';
     	RETURN;
     ELSIF operator = '' THEN
-    	EXEC := STR;
+    	RETVAL := STR;
     	RETURN;
     END_IF
     IF operator = '' THEN
-    	EXEC := REAL_TO_STRING(EXPT(R1, R2));
+    	RETVAL := REAL_TO_STRING(EXPT(R1, R2));
     ELSIF operator = 'SQRT' THEN
-    	EXEC := REAL_TO_STRING(SQRT(R2));
+    	RETVAL := REAL_TO_STRING(SQRT(R2));
     ELSIF operator = 'SIN' THEN
-    	EXEC := REAL_TO_STRING(SIN(R2));
+    	RETVAL := REAL_TO_STRING(SIN(R2));
     ELSIF operator = 'COS' THEN
-    	EXEC := REAL_TO_STRING(COS(R2));
+    	RETVAL := REAL_TO_STRING(COS(R2));
     ELSIF operator = 'TAN' THEN
-    	EXEC := REAL_TO_STRING(TAN(R2));
+    	RETVAL := REAL_TO_STRING(TAN(R2));
     ELSIF operator = '*' THEN
-    	EXEC := REAL_TO_STRING(R1 * R2);
+    	RETVAL := REAL_TO_STRING(R1 * R2);
     ELSIF operator = '/' THEN
-    	IF R2 <> 0 THEN EXEC := REAL_TO_STRING(R1 / R2); ELSE EXEC := 'ERROR'; END_IF
+    	IF R2 <> 0 THEN RETVAL := REAL_TO_STRING(R1 / R2); ELSE RETVAL := 'ERROR'; END_IF
     ELSIF operator = '+' THEN
-    	EXEC := REAL_TO_STRING(R1 + R2);
+    	RETVAL := REAL_TO_STRING(R1 + R2);
     ELSIF operator = '-' THEN
-    	EXEC := REAL_TO_STRING(R1 - R2);
+    	RETVAL := REAL_TO_STRING(R1 - R2);
     ELSE
-    	EXEC := 'ERROR';
+    	RETVAL := 'ERROR';
     END_IF
 
-    IF EXEC = 'ERROR' THEN
+    IF RETVAL = 'ERROR' THEN
+        EXEC := FALSE;
     	RETURN;
     (* some systems deliver integer instead of real *)
-    ELSIF FIND(EXEC,'.') = 0 THEN
-    	EXEC := CONCAT(EXEC, '.0');
+    ELSIF FIND(RETVAL,'.') = 0 THEN
+    	RETVAL := CONCAT(RETVAL, '.0');
     (* some systems deliver n. instead of n.0 ! *)
-    ELSIF RIGHT(EXEC,1) = '.' THEN
-    	EXEC := CONCAT(EXEC,'0');
+    ELSIF RIGHT(RETVAL,1) = '.' THEN
+    	RETVAL := CONCAT(RETVAL,'0');
     END_IF
-
+    EXEC := TRUE;
 
     (* revision history
 

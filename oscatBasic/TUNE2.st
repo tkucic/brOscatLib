@@ -23,12 +23,12 @@ FUNCTION_BLOCK TUNE2
     			in := FD;
     	END_CASE
     	(* check for single step operation *)
-    	IF NOT in AND tx - start <= TIME_TO_DWORD(TR) THEN
+    	IF NOT in AND tx - start <= TIME_TO_UDINT(TR) THEN
     		Y := Y_start + step;
     		state := 0;
     	(* check if ramp needs to be generated *)
-    	ELSIF in AND tx - start >= TIME_TO_DWORD(TR) THEN
-    		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(TR)) * SPEED;
+    	ELSIF in AND tx - start >= TIME_TO_UDINT(TR) THEN
+    		Y := Y_start + UDINT_TO_REAL(tx - start - TIME_TO_UDINT(TR)) * SPEED;
     	ELSIF NOT in THEN
     		state := 0;
     	END_IF

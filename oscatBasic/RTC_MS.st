@@ -7,7 +7,7 @@ FUNCTION_BLOCK RTC_MS
     	XDT := SDT;
     	XMS := SMS;
     ELSE
-    	XMS := XMS + DWORD_TO_INT(Tx - last);
+    	XMS := XMS + UDINT_TO_INT(Tx - last);
     	(* check if one second has expired *)
     	IF XMS > 999 THEN
     		XDT := XDT + T#1s;

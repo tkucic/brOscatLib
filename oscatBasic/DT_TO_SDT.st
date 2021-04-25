@@ -1,15 +1,15 @@
 FUNCTION DT_TO_SDT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122*)
     tmp := DT_TO_DATE(DTI);
-    tdt := DT_TO_DWORD(DTI) - DATE_TO_DWORD(tmp);
-    DT_TO_SDT.YEAR := YEAR_OF_DATE(tmp);
-    DT_TO_SDT.MONTH := MONTH_OF_DATE(tmp);
-    DT_TO_SDT.DAY := DAY_OF_MONTH(tmp);
-    DT_TO_SDT.WEEKDAY := DAY_OF_WEEK(tmp);
-    DT_TO_SDT.SECOND := DWORD_TO_INT(tdt MOD 60);
-    DT_TO_SDT.MINUTE := DWORD_TO_INT((tdt / 60) MOD 60);
-    DT_TO_SDT.HOUR := DWORD_TO_INT(tdt / 3600);
-
+    tdt := DT_TO_UDINT(DTI) - DATE_TO_UDINT(tmp);
+    RETVAL.YEAR := YEAR_OF_DATE(tmp);
+    RETVAL.MONTH := MONTH_OF_DATE(tmp);
+    RETVAL.DAY := DAY_OF_MONTH(tmp);
+    RETVAL.WEEKDAY := DAY_OF_WEEK(tmp);
+    RETVAL.SECOND := UDINT_TO_INT(tdt MOD 60);
+    RETVAL.MINUTE := UDINT_TO_INT((tdt / 60) MOD 60);
+    RETVAL.HOUR := UDINT_TO_INT(tdt / 3600);
+    DT_TO_SDT:=TRUE;
     (* revision history
 
     hm 18. oct. 2008	rev 1.0

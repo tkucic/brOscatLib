@@ -1,6 +1,6 @@
 FUNCTION LEAP_OF_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=127*)
-    LEAP_OF_DATE := SHL(((DATE_TO_DWORD(IDATE) + 43200) / 31557600), 30) = 16#80000000;
+    LEAP_OF_DATE := SHL(((DATE_TO_UDINT(IDATE) + 43200) / 31557600), 30) = 16#80000000;
 
 
     (* change history

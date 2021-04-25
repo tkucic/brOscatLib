@@ -1,11 +1,11 @@
 FUNCTION TRIM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181*)
-    TRIM := STR;
+    RETVAL := STR;
     REPEAT
-    	pos := FIND(TRIM,' ');
-    	IF pos > 0 THEN TRIM := REPLACE(TRIM,'',1,pos); END_IF
+    	pos := FIND(RETVAL,' ');
+    	IF pos > 0 THEN RETVAL := REPLACE(RETVAL,'',1,pos); END_IF
     UNTIL pos = 0	END_REPEAT
-
+    TRIM := TRUE;
 
     (* revision histroy
     hm	6.10.2006		rev 1.0

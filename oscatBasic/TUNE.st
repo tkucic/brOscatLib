@@ -20,15 +20,15 @@ FUNCTION_BLOCK TUNE
     		in := SD;
     	END_IF
     	(* check for single step operation *)
-    	IF NOT in AND tx - start <= TIME_TO_DWORD(T1) THEN
+    	IF NOT in AND tx - start <= TIME_TO_UDINT(T1) THEN
     		Y := Y_start + step;
     		state := 0;
     	(* check if fast ramp needs to be generated *)
-    	ELSIF in AND tx - start >= TIME_TO_DWORD(T2) THEN
-    		Y := Y_start2 + DWORD_TO_REAL(tx - start2) * S2 / SPEED;
+    	ELSIF in AND tx - start >= TIME_TO_UDINT(T2) THEN
+    		Y := Y_start2 + UDINT_TO_REAL(tx - start2) * S2 / SPEED;
     	(* check if slow ramp needs to be generated *)
-    	ELSIF in AND tx - start >= TIME_TO_DWORD(T1) THEN
-    		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(T1)) * S1 / SPEED;
+    	ELSIF in AND tx - start >= TIME_TO_UDINT(T1) THEN
+    		Y := Y_start + UDINT_TO_REAL(tx - start - TIME_TO_UDINT(T1)) * S1 / SPEED;
     		start2 := tx;
     		Y_start2 := Y;
     	ELSIF NOT in THEN

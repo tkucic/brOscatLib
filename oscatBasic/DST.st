@@ -1,11 +1,10 @@
 FUNCTION DST
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=121*)
     yr := YEAR_OF_DATE(DT_TO_DATE(UTC));
-    ltc := DT_TO_DWORD(UTC);
-    idate := DT_TO_DWORD(SET_DT(yr, 3, 31, 1, 0, 0));
-    yr4 := SHR(5 * INT_TO_DWORD(yr), 2) + 1;
+    ltc := DT_TO_UDINT(UTC);
+    idate := DT_TO_UDINT(SET_DT(yr, 3, 31, 1, 0, 0));
+    yr4 := SHR(5 * INT_TO_UDINT(yr), 2) + 1;
     DST := (idate - ((yr4 + 3) MOD 7) * 86400 <= ltc) AND (idate + (214 - (yr4) MOD 7) * 86400 > ltc);
-
 
     (*
     Equation used TO calculate the beginning OF European Summer TIME:

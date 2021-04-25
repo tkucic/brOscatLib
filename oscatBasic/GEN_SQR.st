@@ -12,7 +12,7 @@ FUNCTION_BLOCK GEN_SQR
     END_IF
 
     (* read system time and prepare input data *)
-    tx := DWORD_TO_TIME(T_PLC_MS()) - last;
+    tx := UDINT_TO_TIME(T_PLC_MS()) - last;
     DL := MODR(DL,1.0);
     IF DL < 0.0 THEN DL := 1.0 - DL; END_IF
     DC := MODR(DC,1.0);

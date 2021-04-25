@@ -1,10 +1,10 @@
 FUNCTION CHR_TO_STRING
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=148*)
-    PT := ADR(CHR_TO_STRING);
+    PT := ADR(RETVAL);
     PT := C;
     PT := PT + 1;
     PT := 0;
-
+    CHR_TO_STRING := TRUE;
     (* revision history
     hm	16 jan 2007		rev 1.0
     	original version

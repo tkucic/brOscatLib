@@ -19,7 +19,7 @@ FUNCTION_BLOCK M_TX
     END_IF
 
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* edge_ trigger rising and falling edge_ *)
     IF IN XOR edge_ THEN

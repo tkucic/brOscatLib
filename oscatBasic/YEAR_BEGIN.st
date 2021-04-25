@@ -1,6 +1,6 @@
 FUNCTION YEAR_BEGIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=143*)
-    YEAR_BEGIN := DWORD_TO_DATE(SHR(INT_TO_DWORD(Y) * 1461 - 2878169,2) * 86400);
+    YEAR_BEGIN := UDINT_TO_DATE(SHR(INT_TO_UDINT(Y) * 1461 - 2878169,2) * 86400);
 
 
 

@@ -1,6 +1,6 @@
 FUNCTION DAY_OF_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116*)
-    DAY_OF_DATE := DWORD_TO_DINT(DATE_TO_DWORD(IDATE) / 86400);
+    DAY_OF_DATE := UDINT_TO_DINT(DATE_TO_UDINT(IDATE) / 86400);
 
 
     (* revision history

@@ -1,14 +1,14 @@
 FUNCTION MONTH_TO_STRING
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=175*)
-    IF LANG = 0 THEN ly := cDEFAULT; ELSE ly := MIN(LANG, cLMAX); END_IF
+    IF LANG = 0 THEN ly := cLANGUAGE_DEFAULT; ELSE ly := MIN(LANG, cLANGUAGE_LMAX); END_IF
     IF MTH < 1 OR MTH > 12 THEN
     	RETURN;
     ELSIF LX = 0 THEN
-    	MONTH_TO_STRING := cMONTHS[ly, MTH];
+    	RETVAL := cMONTHS[ly, MTH];
     ELSIF LX = 3 THEN
-    	MONTH_TO_STRING := cMONTHS3[ly, MTH];
+    	RETVAL := cMONTHS3[ly, MTH];
     END_IF
-
+    MONTH_TO_STRING := TRUE;
 
     (* revisison history
 

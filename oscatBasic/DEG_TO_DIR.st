@@ -1,8 +1,8 @@
 FUNCTION DEG_TO_DIR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356*)
-    IF L = 0 THEN ly := cDEFAULT; ELSE ly := MIN(L, cLMAX); END_IF
-    DEG_TO_DIR := cDIRS[ly, ((SHL(DEG,N-1) + 45) / 90) MOD SHL(INT#2,N)*SHR(INT#8,N)];
-
+    IF L = 0 THEN ly := cLOCATION_DEFAULT; ELSE ly := MIN(L, cLOCATION_LMAX); END_IF
+    RETVAL := cDIRS[ly, ((SHL(DEG,N-1) + 45) / 90) MOD SHL(INT#2,N)*SHR(INT#8,N)];
+    DEG_TO_DIR := TRUE;
 
 
     (*

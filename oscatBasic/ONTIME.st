@@ -36,7 +36,7 @@ FUNCTION_BLOCK ONTIME
     	adding time up IN a real number will automatically lead to the point where 
     	small time scales like the cycle time will be below the resolution of real and therefore
     	ontime would not increase IN small steps as necessary
-    	the time is now measured internally IN two  dwords and be converted to real only for
+    	the time is now measured internally IN two  UDINTs and be converted to real only for
     	output purposes.
     	deleted the variable power because it was unnecessary
 

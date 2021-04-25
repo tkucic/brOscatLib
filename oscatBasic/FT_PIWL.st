@@ -10,7 +10,7 @@ FUNCTION_BLOCK FT_PIWL
     ELSE
     	(* read last cycle time IN Microseconds *)
     	tx := T_PLC_US();
-    	tc := DWORD_TO_REAL(tx - t_last);
+    	tc := UDINT_TO_REAL(tx - t_last);
     	t_last := tx;
 
     	(* calculate proportional part *)
