@@ -1,4 +1,4 @@
-FUNCTION_BLOCK DLOG_BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=48 *)
+FUNCTION_BLOCK DLOG_BOOL (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=48 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -16,7 +16,7 @@ FUNCTION_BLOCK DLOG_BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_
         state_last : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_CRON_TAB (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION_BLOCK DLOG_CRON_TAB (* Data logging *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_INPUT 
         ACTIVATE : BOOL;
         DTI : DT;
@@ -52,7 +52,7 @@ FUNCTION_BLOCK DLOG_CRON_TAB (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         num_str1 : STRING[10];
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_DINT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=49 *)
+FUNCTION_BLOCK DLOG_DINT (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=49 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -68,7 +68,7 @@ FUNCTION_BLOCK DLOG_DINT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_
         value_last : DINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_DT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=50 *)
+FUNCTION_BLOCK DLOG_DT (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=50 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -83,7 +83,7 @@ FUNCTION_BLOCK DLOG_DT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_ne
         delta_last : DT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_FILE_TO_FTP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=63 *)
+FUNCTION_BLOCK DLOG_FILE_TO_FTP (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=63 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -116,7 +116,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP (*  *)(* http://www.oscat.de/images/OSCATNetwork
         cnt : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_FILE_TO_SMTP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=66 *)
+FUNCTION_BLOCK DLOG_FILE_TO_SMTP (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=66 *)
     VAR_IN_OUT 
         SERVER : STRING[255];
         MAILFROM : STRING[255];
@@ -153,7 +153,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP (*  *)(* http://www.oscat.de/images/OSCATNetwor
         cnt : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_REAL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=51 *)
+FUNCTION_BLOCK DLOG_REAL (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=51 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -171,7 +171,7 @@ FUNCTION_BLOCK DLOG_REAL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_
         value_last : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_REAL_ARRAY (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION_BLOCK DLOG_REAL_ARRAY (* Data logging *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_IN_OUT 
         R_ARRAY : DLOG_REAL_ARRAY_DATA;
         X : DLOG_DATA;
@@ -187,7 +187,7 @@ FUNCTION_BLOCK DLOG_REAL_ARRAY (*  *)(* http://www.oscat.de/images/OSCATBasic/os
         idx : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_STORE_FILE_CSV (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=52 *)
+FUNCTION_BLOCK DLOG_STORE_FILE_CSV (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=52 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
         SAVE_DATA : DLOG_SAVE;
@@ -230,7 +230,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV (*  *)(* http://www.oscat.de/images/OSCATNetw
         total_bytes : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_STORE_FILE_HTML (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION_BLOCK DLOG_STORE_FILE_HTML (* Data logging *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
         SAVE_DATA : DLOG_SAVE;
@@ -280,7 +280,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_HTML (*  *)(* http://www.oscat.de/images/OSCATBas
         cur_ode : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_STORE_FILE_XML (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION_BLOCK DLOG_STORE_FILE_XML (* Data logging *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
         SAVE_DATA : DLOG_SAVE;
@@ -324,7 +324,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_XML (*  *)(* http://www.oscat.de/images/OSCATBasi
         total_bytes : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_STORE_MYSQL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION_BLOCK DLOG_STORE_MYSQL (* Data logging *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_IN_OUT 
         SQL_INFO : MYSQL_INFO;
         X : DLOG_DATA;
@@ -368,7 +368,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL (*  *)(* http://www.oscat.de/images/OSCATBasic/o
         run : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_STORE_RRD (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=54 *)
+FUNCTION_BLOCK DLOG_STORE_RRD (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=54 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -407,7 +407,7 @@ FUNCTION_BLOCK DLOG_STORE_RRD (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         n : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DLOG_STRING (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=52 *)
+FUNCTION_BLOCK DLOG_STRING (* Data logging *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=52 *)
     VAR_IN_OUT 
         X : DLOG_DATA;
     END_VAR
@@ -421,7 +421,7 @@ FUNCTION_BLOCK DLOG_STRING (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         str_last : STRING[255];
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MYSQL_AUTH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=1 *)
+FUNCTION_BLOCK MYSQL_AUTH (* Database *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=1 *)
     VAR_IN_OUT 
         RUN : BOOL;
         PASSWORD : STRING[64];
@@ -441,7 +441,7 @@ FUNCTION_BLOCK MYSQL_AUTH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
         scramble2 : ARRAY[0..19] OF BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MYSQL_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=1 *)
+FUNCTION_BLOCK MYSQL_CONTROL (* Database *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=1 *)
     VAR_IN_OUT 
         COM : MYSQL_COM;
         INFO : MYSQL_INFO;
@@ -472,7 +472,7 @@ FUNCTION_BLOCK MYSQL_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         client_flags : DWORD := 16#38601;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CSV_PARSER_BUF (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=147 *)
+FUNCTION_BLOCK CSV_PARSER_BUF (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=147 *)
     VAR_INPUT 
         SEP : BYTE;
     END_VAR
@@ -499,7 +499,7 @@ FUNCTION_BLOCK CSV_PARSER_BUF (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         x : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CSV_PARSER_FILE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=149 *)
+FUNCTION_BLOCK CSV_PARSER_FILE (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=149 *)
     VAR_INPUT 
         SEP : BYTE;
     END_VAR
@@ -530,7 +530,7 @@ FUNCTION_BLOCK CSV_PARSER_FILE (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         FB : FILE_BLOCK;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILE_BLOCK (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=152 *)
+FUNCTION_BLOCK FILE_BLOCK (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=152 *)
     VAR_IN_OUT 
         MODE : BYTE;
         FILENAME : STRING[255];
@@ -551,7 +551,7 @@ FUNCTION_BLOCK FILE_BLOCK (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         data_stop : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION FILE_PATH_SPLIT : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=153 *)
+FUNCTION FILE_PATH_SPLIT : BOOL (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=153 *)
     VAR_INPUT 
         FILENAME : STRING[STRING_LENGTH];
     END_VAR
@@ -566,7 +566,7 @@ FUNCTION FILE_PATH_SPLIT : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork
         p2 : INT;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK INI_PARSER_BUF (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=161 *)
+FUNCTION_BLOCK INI_PARSER_BUF (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=161 *)
     VAR_IN_OUT 
         STR : STRING[STRING_LENGTH];
         RUN : BYTE;
@@ -594,7 +594,7 @@ FUNCTION_BLOCK INI_PARSER_BUF (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         watchdog : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK INI_PARSER_FILE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=164 *)
+FUNCTION_BLOCK INI_PARSER_FILE (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=164 *)
     VAR_IN_OUT 
         FILENAME : STRING[255];
         FSD : FILE_SERVER_DATA;
@@ -626,7 +626,7 @@ FUNCTION_BLOCK INI_PARSER_FILE (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         watchdog : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILE_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=154 *)
+FUNCTION_BLOCK FILE_SERVER (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=154 *)
     VAR_IN_OUT 
         FSD : FILE_SERVER_DATA;
         PT : NETWORK_BUFFER;
@@ -654,7 +654,7 @@ FUNCTION_BLOCK FILE_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         FSR : FILE_SERVER_RUNTIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILE_SERVER_RUNTIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
+FUNCTION_BLOCK FILE_SERVER_RUNTIME (* File and server *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
     VAR_INPUT 
         MODE : BYTE;
         COMMAND : BYTE;
@@ -670,7 +670,7 @@ FUNCTION_BLOCK FILE_SERVER_RUNTIME (*  *)(* http://www.oscat.de/images/OSCATBasi
         runtime : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IP_CONTROL2 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=107 *)
+FUNCTION_BLOCK IP_CONTROL2 (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=107 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER_SHORT; (* Externer Sendbuffer *)
@@ -734,7 +734,7 @@ FUNCTION_BLOCK IP_CONTROL2 (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         C_CLOSE : BYTE := 251;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IP_CONTROL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=101 *)
+FUNCTION_BLOCK IP_CONTROL (* File and server *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=101 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER; (* Externer Sendbuffer *)
@@ -798,7 +798,7 @@ FUNCTION_BLOCK IP_CONTROL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         C_CLOSE : BYTE := 251;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_BOOL8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=200 *)
+FUNCTION_BLOCK NET_VAR_BOOL8 (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=200 *)
     VAR_IN_OUT 
         X : NET_VAR_DATA;
     END_VAR
@@ -830,7 +830,7 @@ FUNCTION_BLOCK NET_VAR_BOOL8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         BYTE_TO_BITS : BYTE_TO_BITS;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_BUFFER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=201 *)
+FUNCTION_BLOCK NET_VAR_BUFFER (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=201 *)
     VAR_IN_OUT 
         BUF_IN : ARRAY[1..64] OF BYTE;
         BUF_OUT : ARRAY[1..64] OF BYTE;
@@ -846,7 +846,7 @@ FUNCTION_BLOCK NET_VAR_BUFFER (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         index2 : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_CONTROL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=199 *)
+FUNCTION_BLOCK NET_VAR_CONTROL (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=199 *)
     VAR_INPUT 
         ACTIVATE : BOOL;
         MASTER : BOOL;
@@ -872,7 +872,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         reset : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_DWORD8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=202 *)
+FUNCTION_BLOCK NET_VAR_DWORD8 (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=202 *)
     VAR_IN_OUT 
         X : NET_VAR_DATA;
     END_VAR
@@ -906,7 +906,7 @@ FUNCTION_BLOCK NET_VAR_DWORD8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         ra : ARRAY[1..8] OF DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_REAL8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=202 *)
+FUNCTION_BLOCK NET_VAR_REAL8 (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=202 *)
     VAR_IN_OUT 
         X : NET_VAR_DATA;
     END_VAR
@@ -941,7 +941,7 @@ FUNCTION_BLOCK NET_VAR_REAL8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         ra : ARRAY[1..8] OF REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_STRING (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=203 *)
+FUNCTION_BLOCK NET_VAR_STRING (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=203 *)
     VAR_IN_OUT 
         IN : STRING[STRING_LENGTH];
         OUT : STRING[STRING_LENGTH];
@@ -957,7 +957,7 @@ FUNCTION_BLOCK NET_VAR_STRING (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         index2 : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK NET_VAR_X8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=204 *)
+FUNCTION_BLOCK NET_VAR_X8 (* Network variables *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=204 *)
     VAR_IN_OUT 
         X : NET_VAR_DATA;
     END_VAR
@@ -991,7 +991,7 @@ FUNCTION_BLOCK NET_VAR_X8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         ra : ARRAY[1..8] OF DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DNS_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=89 *)
+FUNCTION_BLOCK DNS_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=89 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1026,7 +1026,7 @@ FUNCTION_BLOCK DNS_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         ttl_tmp : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DNS_DYN (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=92 *)
+FUNCTION_BLOCK DNS_DYN (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=92 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1061,7 +1061,7 @@ FUNCTION_BLOCK DNS_DYN (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_ne
         w : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DNS_REV_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=90 *)
+FUNCTION_BLOCK DNS_REV_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=90 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1093,7 +1093,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         tid : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FTP_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=94 *)
+FUNCTION_BLOCK FTP_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=94 *)
     VAR_INPUT 
         ACTIVATE : BOOL;
         FILENAME : STRING[255];
@@ -1149,7 +1149,7 @@ FUNCTION_BLOCK FTP_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         ip_c2_red_disable : BOOL; (* IP_CONTROL 1 - Remote Disconnect Error unterdrücken *)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GET_WAN_IP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=96 *)
+FUNCTION_BLOCK GET_WAN_IP (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=96 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1179,7 +1179,7 @@ FUNCTION_BLOCK GET_WAN_IP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         p3 : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK HTTP_GET (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=98 *)
+FUNCTION_BLOCK HTTP_GET (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=98 *)
     VAR_IN_OUT 
         URL_DATA : url;
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
@@ -1228,7 +1228,7 @@ FUNCTION_BLOCK HTTP_GET (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_n
         con_rdce : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IP2GEO (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=99 *)
+FUNCTION_BLOCK IP2GEO (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=99 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1258,7 +1258,7 @@ FUNCTION_BLOCK IP2GEO (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_net
         state : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MB_CLIENT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
+FUNCTION_BLOCK MB_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
     VAR_IN_OUT 
         IP_C : IP_C;
         S_BUF : NETWORK_BUFFER_SHORT;
@@ -1306,7 +1306,7 @@ FUNCTION_BLOCK MB_CLIENT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
         ton_1 : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MB_SERVER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
+FUNCTION_BLOCK MB_SERVER (* Network *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
     VAR_IN_OUT 
         IP_C : IP_C;
         S_BUF : NETWORK_BUFFER_SHORT;
@@ -1347,7 +1347,7 @@ FUNCTION_BLOCK MB_SERVER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_ba
         ip_error : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MB_SERVER_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
+FUNCTION_BLOCK MB_SERVER_1 (* Network *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
     VAR_IN_OUT 
         IP_C : IP_C;
         S_BUF : NETWORK_BUFFER_SHORT;
@@ -1388,7 +1388,7 @@ FUNCTION_BLOCK MB_SERVER_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         ip_error : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MB_VMAP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=118 *)
+FUNCTION_BLOCK MB_VMAP (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=118 *)
     VAR_IN_OUT 
         VMAP : ARRAY[1..10] OF VMAP_DATA;
     END_VAR
@@ -1415,7 +1415,7 @@ FUNCTION_BLOCK MB_VMAP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_ne
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK READ_HTTP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=122 *)
+FUNCTION_BLOCK READ_HTTP (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=122 *)
     VAR_INPUT 
         SIZE : UINT;
         POS : INT;
@@ -1434,7 +1434,7 @@ FUNCTION_BLOCK READ_HTTP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_
         stop : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SMTP_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=123 *)
+FUNCTION_BLOCK SMTP_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=123 *)
     VAR_INPUT 
         ACTIVATE : BOOL;
         TIMEOUT : TIME;
@@ -1521,7 +1521,7 @@ FUNCTION_BLOCK SMTP_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         ssl_mode : BYTE; (*SSL/TLS Mode -   0 = off / 1 = SSL / 2 = TLS*)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SNTP_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=127 *)
+FUNCTION_BLOCK SNTP_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=127 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1549,7 +1549,7 @@ FUNCTION_BLOCK SNTP_CLIENT (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         ip4_stored : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SNTP_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=128 *)
+FUNCTION_BLOCK SNTP_SERVER (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=128 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1575,7 +1575,7 @@ FUNCTION_BLOCK SNTP_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         t : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SPIDER_ACCESS (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=129 *)
+FUNCTION_BLOCK SPIDER_ACCESS (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=129 *)
     VAR_IN_OUT 
         IP_C : IP_C; (*IP_Control Verwaltungsstruktur*)
         S_BUF : NETWORK_BUFFER;
@@ -1599,7 +1599,7 @@ FUNCTION_BLOCK SPIDER_ACCESS (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         mode_save : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SYS_LOG (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=131 *)
+FUNCTION_BLOCK SYS_LOG (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=131 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -1631,7 +1631,7 @@ FUNCTION_BLOCK SYS_LOG (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_ne
         i : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TELNET_LOG (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=135 *)
+FUNCTION_BLOCK TELNET_LOG (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=135 *)
     VAR_IN_OUT 
         IP_C : IP_C;
         S_BUF : NETWORK_BUFFER;
@@ -1656,7 +1656,7 @@ FUNCTION_BLOCK TELNET_LOG (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         send : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TELNET_PRINT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=137 *)
+FUNCTION_BLOCK TELNET_PRINT (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=137 *)
     VAR_IN_OUT 
         IP_C : IP_C;
         S_BUF : NETWORK_BUFFER;
@@ -1691,7 +1691,7 @@ FUNCTION_BLOCK TELNET_PRINT (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         b7_no_flush : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_FRAMEWORK (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=173 *)
+FUNCTION_BLOCK TN_FRAMEWORK (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=173 *)
     VAR 
         FB_IP_CONTROL : IP_CONTROL;
         FB_TN_INPUT_CONTROL : TN_INPUT_CONTROL;
@@ -1712,7 +1712,7 @@ FUNCTION_BLOCK TN_FRAMEWORK (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         PORT : WORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_INPUT_CONTROL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=174 *)
+FUNCTION_BLOCK TN_INPUT_CONTROL (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=174 *)
     VAR_IN_OUT 
         XUS_TN_SCREEN : us_TN_SCREEN;
         XUS_TN_INPUT_CONTROL : us_TN_INPUT_CONTROL;
@@ -1729,7 +1729,7 @@ FUNCTION_BLOCK TN_INPUT_CONTROL (*  *)(* http://www.oscat.de/images/OSCATNetwork
         bo_Tool_Tip_Update : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_INPUT_EDIT_LINE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=174 *)
+FUNCTION_BLOCK TN_INPUT_EDIT_LINE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=174 *)
     VAR 
         in_count : INT;
         in_Count_End : INT;
@@ -1746,7 +1746,7 @@ FUNCTION_BLOCK TN_INPUT_EDIT_LINE (*  *)(* http://www.oscat.de/images/OSCATNetwo
         XUS_TN_INPUT_CONTROL_DATA : us_TN_INPUT_CONTROL_DATA;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_INPUT_MENU_BAR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=176 *)
+FUNCTION_BLOCK TN_INPUT_MENU_BAR (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=176 *)
     VAR 
         FB_TN_INPUT_MENU_POPUP : TN_INPUT_MENU_POPUP;
         us_TN_MENU_POPUP : us_TN_MENU_POPUP;
@@ -1768,7 +1768,7 @@ FUNCTION_BLOCK TN_INPUT_MENU_BAR (*  *)(* http://www.oscat.de/images/OSCATNetwor
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_INPUT_MENU_POPUP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=178 *)
+FUNCTION_BLOCK TN_INPUT_MENU_POPUP (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=178 *)
     VAR 
         FB_TN_SC_AREA_SAVE : TN_SC_AREA_SAVE;
         FB_TN_SC_AREA_RESTORE : TN_SC_AREA_RESTORE;
@@ -1790,7 +1790,7 @@ FUNCTION_BLOCK TN_INPUT_MENU_POPUP (*  *)(* http://www.oscat.de/images/OSCATNetw
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_INPUT_SELECT_POPUP (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=178 *)
+FUNCTION_BLOCK TN_INPUT_SELECT_POPUP (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=178 *)
     VAR 
         in_index : INT;
         in_Element_Count : INT;
@@ -1806,7 +1806,7 @@ FUNCTION_BLOCK TN_INPUT_SELECT_POPUP (*  *)(* http://www.oscat.de/images/OSCATNe
         XUS_TN_INPUT_CONTROL_DATA : us_TN_INPUT_CONTROL_DATA;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_INPUT_SELECT_TEXT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=180 *)
+FUNCTION_BLOCK TN_INPUT_SELECT_TEXT (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=180 *)
     VAR 
         in_count : INT;
         by_Attr : BYTE;
@@ -1818,7 +1818,7 @@ FUNCTION_BLOCK TN_INPUT_SELECT_TEXT (*  *)(* http://www.oscat.de/images/OSCATNet
         XUS_TN_INPUT_CONTROL_DATA : us_TN_INPUT_CONTROL_DATA;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_RECEIVE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=182 *)
+FUNCTION_BLOCK TN_RECEIVE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=182 *)
     VAR_IN_OUT 
         R_BUF : NETWORK_BUFFER;
         XUS_TN_SCREEN : us_TN_SCREEN;
@@ -1830,7 +1830,7 @@ FUNCTION_BLOCK TN_RECEIVE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         REQ3 : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_ADD_SHADOW (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=184 *)
+FUNCTION_BLOCK TN_SC_ADD_SHADOW (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=184 *)
     VAR 
         in_Offset : INT;
         in_X : INT;
@@ -1847,7 +1847,7 @@ FUNCTION_BLOCK TN_SC_ADD_SHADOW (*  *)(* http://www.oscat.de/images/OSCATNetwork
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_AREA_RESTORE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=184 *)
+FUNCTION_BLOCK TN_SC_AREA_RESTORE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=184 *)
     VAR 
         in_Offset_1 : INT;
         in_Offset_2 : INT;
@@ -1862,7 +1862,7 @@ FUNCTION_BLOCK TN_SC_AREA_RESTORE (*  *)(* http://www.oscat.de/images/OSCATNetwo
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_AREA_SAVE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=185 *)
+FUNCTION_BLOCK TN_SC_AREA_SAVE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=185 *)
     VAR 
         in_Offset_1 : INT;
         in_Offset_2 : INT;
@@ -1879,7 +1879,7 @@ FUNCTION_BLOCK TN_SC_AREA_SAVE (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_BOX (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=186 *)
+FUNCTION_BLOCK TN_SC_BOX (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=186 *)
     VAR 
         FB_TN_SC_FILL : TN_SC_FILL;
         by_BorderChar_L_T : BYTE;
@@ -1909,7 +1909,7 @@ FUNCTION_BLOCK TN_SC_BOX (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_FILL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=187 *)
+FUNCTION_BLOCK TN_SC_FILL (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=187 *)
     VAR 
         in_X : INT;
         in_Y : INT;
@@ -1927,7 +1927,7 @@ FUNCTION_BLOCK TN_SC_FILL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_LINE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=188 *)
+FUNCTION_BLOCK TN_SC_LINE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=188 *)
     VAR 
         by_Connect_Left_Char : BYTE;
         by_Connect_Right_Char : BYTE;
@@ -1954,7 +1954,7 @@ FUNCTION_BLOCK TN_SC_LINE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_READ_ATTR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=190 *)
+FUNCTION_BLOCK TN_SC_READ_ATTR (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=190 *)
     VAR 
         in_Offset : INT;
     END_VAR
@@ -1969,7 +1969,7 @@ FUNCTION_BLOCK TN_SC_READ_ATTR (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_READ_CHAR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=190 *)
+FUNCTION_BLOCK TN_SC_READ_CHAR (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=190 *)
     VAR 
         in_Offset : INT;
     END_VAR
@@ -1984,12 +1984,12 @@ FUNCTION_BLOCK TN_SC_READ_CHAR (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TN_SC_SHADOW_ATTR : BYTE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=191 *)
+FUNCTION TN_SC_SHADOW_ATTR : BYTE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=191 *)
     VAR_INPUT 
         IBY_ATTR : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK TN_SC_VIEWPORT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=191 *)
+FUNCTION_BLOCK TN_SC_VIEWPORT (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=191 *)
     VAR 
         FB_TN_SC_WRITE : TN_SC_WRITE;
         FB_TON : TON;
@@ -2012,7 +2012,7 @@ FUNCTION_BLOCK TN_SC_VIEWPORT (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         ITI_TIME : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_WRITE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=192 *)
+FUNCTION_BLOCK TN_SC_WRITE (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=192 *)
     VAR 
         bo_Color : BOOL;
         in_Offset : INT;
@@ -2029,7 +2029,7 @@ FUNCTION_BLOCK TN_SC_WRITE (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_WRITE_ATTR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=193 *)
+FUNCTION_BLOCK TN_SC_WRITE_ATTR (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=193 *)
     VAR 
         in_Offset : INT;
     END_VAR
@@ -2042,7 +2042,7 @@ FUNCTION_BLOCK TN_SC_WRITE_ATTR (*  *)(* http://www.oscat.de/images/OSCATNetwork
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_WRITE_C (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=193 *)
+FUNCTION_BLOCK TN_SC_WRITE_C (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=193 *)
     VAR 
         FB_TN_SC_WRITE : TN_SC_WRITE;
     END_VAR
@@ -2058,7 +2058,7 @@ FUNCTION_BLOCK TN_SC_WRITE_C (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_WRITE_CHAR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=194 *)
+FUNCTION_BLOCK TN_SC_WRITE_CHAR (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=194 *)
     VAR 
         in_Offset : INT;
     END_VAR
@@ -2071,7 +2071,7 @@ FUNCTION_BLOCK TN_SC_WRITE_CHAR (*  *)(* http://www.oscat.de/images/OSCATNetwork
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TN_SC_WRITE_EOS (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=195 *)
+FUNCTION_BLOCK TN_SC_WRITE_EOS (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=195 *)
     VAR 
         TN_SC_WRITE : TN_SC_WRITE;
     END_VAR
@@ -2083,7 +2083,7 @@ FUNCTION_BLOCK TN_SC_WRITE_EOS (*  *)(* http://www.oscat.de/images/OSCATNetwork/
         XUS_TN_SCREEN : us_TN_SCREEN;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TN_SC_XY2_ERROR : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=196 *)
+FUNCTION TN_SC_XY2_ERROR : BOOL (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=196 *)
     VAR_INPUT 
         X1 : INT;
         Y1 : INT;
@@ -2091,13 +2091,13 @@ FUNCTION TN_SC_XY2_ERROR : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork
         Y2 : INT;
     END_VAR
 END_FUNCTION
-FUNCTION TN_SC_XY_ERROR : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=195 *)
+FUNCTION TN_SC_XY_ERROR : BOOL (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=195 *)
     VAR_INPUT 
         X : INT;
         Y : INT;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK TN_SEND_ROWS (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=183 *)
+FUNCTION_BLOCK TN_SEND_ROWS (* Telnet vision *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=183 *)
     VAR_IN_OUT 
         IP_C : IP_C;
         S_BUF : NETWORK_BUFFER;
@@ -2120,7 +2120,7 @@ FUNCTION_BLOCK TN_SEND_ROWS (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         in_Write_Stop : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MOON_PHASE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=206 *)
+FUNCTION_BLOCK MOON_PHASE (* Weather *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=206 *)
     VAR_INPUT 
         XDT : DT;
         SCALE : BYTE := 12;
@@ -2134,7 +2134,7 @@ FUNCTION_BLOCK MOON_PHASE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         last_dt : DT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK WORLD_WEATHER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=211 *)
+FUNCTION_BLOCK WORLD_WEATHER (* Weather *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=211 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -2176,7 +2176,7 @@ FUNCTION_BLOCK WORLD_WEATHER (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         pos : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK WORLD_WEATHER_DESC_GE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
+FUNCTION_BLOCK WORLD_WEATHER_DESC_GE (* Weather *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
     VAR_IN_OUT 
         WW : WORLD_WEATHER_DATA;
     END_VAR
@@ -2191,7 +2191,7 @@ FUNCTION_BLOCK WORLD_WEATHER_DESC_GE (*  *)(* http://www.oscat.de/images/OSCATBa
         i : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK WORLD_WEATHER_ICON_OSCAT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=215 *)
+FUNCTION_BLOCK WORLD_WEATHER_ICON_OSCAT (* Weather *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=215 *)
     VAR_IN_OUT 
         WW : WORLD_WEATHER_DATA;
     END_VAR
@@ -2205,7 +2205,7 @@ FUNCTION_BLOCK WORLD_WEATHER_ICON_OSCAT (*  *)(* http://www.oscat.de/images/OSCA
         i : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK YAHOO_WEATHER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=207 *)
+FUNCTION_BLOCK YAHOO_WEATHER (* Weather *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=207 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
@@ -2246,7 +2246,7 @@ FUNCTION_BLOCK YAHOO_WEATHER (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         tx : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK YAHOO_WEATHER_DESC_GE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=214 *)
+FUNCTION_BLOCK YAHOO_WEATHER_DESC_GE (* Weather *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=214 *)
     VAR_IN_OUT 
         YW : YAHOO_WEATHER_DATA;
     END_VAR
@@ -2260,7 +2260,7 @@ FUNCTION_BLOCK YAHOO_WEATHER_DESC_GE (*  *)(* http://www.oscat.de/images/OSCATBa
         str : STRING[40];
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK YAHOO_WEATHER_ICON_OSCAT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=211 *)
+FUNCTION_BLOCK YAHOO_WEATHER_ICON_OSCAT (* Weather *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=211 *)
     VAR_IN_OUT 
         YW : YAHOO_WEATHER_DATA;
     END_VAR
@@ -2274,7 +2274,7 @@ FUNCTION_BLOCK YAHOO_WEATHER_ICON_OSCAT (*  *)(* http://www.oscat.de/images/OSCA
         idx : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BASE64_DECODE_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=72 *)
+FUNCTION_BLOCK BASE64_DECODE_STR (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=72 *)
     VAR_INPUT 
         RUN : BOOL;
     END_VAR
@@ -2297,7 +2297,7 @@ FUNCTION_BLOCK BASE64_DECODE_STR (*  *)(* http://www.oscat.de/images/OSCATNetwor
         pos : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BASE64_DECODE_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=73 *)
+FUNCTION_BLOCK BASE64_DECODE_STREAM (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=73 *)
     VAR_IN_OUT 
         BUF1 : ARRAY[0..63] OF BYTE;
         BUF2 : ARRAY[0..47] OF BYTE;
@@ -2318,7 +2318,7 @@ FUNCTION_BLOCK BASE64_DECODE_STREAM (*  *)(* http://www.oscat.de/images/OSCATNet
         c : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BASE64_ENCODE_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=74 *)
+FUNCTION_BLOCK BASE64_ENCODE_STR (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=74 *)
     VAR_INPUT 
         RUN : BOOL;
     END_VAR
@@ -2341,7 +2341,7 @@ FUNCTION_BLOCK BASE64_ENCODE_STR (*  *)(* http://www.oscat.de/images/OSCATNetwor
         pos : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BASE64_ENCODE_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=74 *)
+FUNCTION_BLOCK BASE64_ENCODE_STREAM (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=74 *)
     VAR_IN_OUT 
         BUF1 : ARRAY[0..47] OF BYTE;
         BUF2 : ARRAY[0..63] OF BYTE;
@@ -2362,7 +2362,7 @@ FUNCTION_BLOCK BASE64_ENCODE_STREAM (*  *)(* http://www.oscat.de/images/OSCATNet
         BASE64 : STRING[64] := 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION HTML_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=75 *)
+FUNCTION HTML_DECODE : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=75 *)
     VAR_INPUT 
         IN : STRING[STRING_LENGTH];
     END_VAR
@@ -2376,7 +2376,7 @@ FUNCTION HTML_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION HTML_ENCODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=76 *)
+FUNCTION HTML_ENCODE : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=76 *)
     VAR_INPUT 
         IN : STRING[STRING_LENGTH];
         M : BOOL;
@@ -2395,14 +2395,14 @@ FUNCTION HTML_ENCODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION IP4_CHECK : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=77 *)
+FUNCTION IP4_CHECK : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=77 *)
     VAR_INPUT 
         NIP : DWORD;
         LIP : DWORD;
         SM : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION IP4_DECODE : DWORD (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=77 *)
+FUNCTION IP4_DECODE : DWORD (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=77 *)
     VAR_INPUT 
         STR : STRING[15];
     END_VAR
@@ -2410,7 +2410,7 @@ FUNCTION IP4_DECODE : DWORD (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IP4_TO_STRING : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=78 *)
+FUNCTION IP4_TO_STRING : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=78 *)
     VAR_INPUT 
         IP4 : DWORD;
     END_VAR
@@ -2421,17 +2421,17 @@ FUNCTION IP4_TO_STRING : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         RETVAL : STRING[15]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION IS_IP4 : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=78 *)
+FUNCTION IS_IP4 : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=78 *)
     VAR_INPUT 
         STR : STRING[255];
     END_VAR
 END_FUNCTION
-FUNCTION IS_URLCHR : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=79 *)
+FUNCTION IS_URLCHR : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=79 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION MD5_AUX : DWORD (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=79 *)
+FUNCTION MD5_AUX : DWORD (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=79 *)
     VAR_INPUT 
         N : INT;
         A : DWORD;
@@ -2446,7 +2446,7 @@ FUNCTION MD5_AUX : DWORD (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_
         w : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK MD5_CRAM_AUTH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78 *)
+FUNCTION_BLOCK MD5_CRAM_AUTH (* Convert *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78 *)
     VAR_IN_OUT 
         RUN : BOOL;
         USERNAME : STRING[64];
@@ -2479,7 +2479,7 @@ FUNCTION_BLOCK MD5_CRAM_AUTH (*  *)(* http://www.oscat.de/images/OSCATBasic/osca
         pt : REFERENCE TO BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MD5_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=80 *)
+FUNCTION_BLOCK MD5_STR (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=80 *)
     VAR_INPUT 
         RUN : BOOL;
     END_VAR
@@ -2499,7 +2499,7 @@ FUNCTION_BLOCK MD5_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_ne
         pos : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MD5_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=80 *)
+FUNCTION_BLOCK MD5_STREAM (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=80 *)
     VAR_IN_OUT 
         MODE : INT;
         BUF : ARRAY[0..63] OF BYTE;
@@ -2524,7 +2524,7 @@ FUNCTION_BLOCK MD5_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat
         pad_1 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MD5_TO_STRH : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=82 *)
+FUNCTION MD5_TO_STRH : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=82 *)
     VAR_INPUT 
         MD5 : ARRAY[0..15] OF BYTE;
     END_VAR
@@ -2537,7 +2537,7 @@ FUNCTION MD5_TO_STRH : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         RETVAL : STRING[32]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK RC4_CRYPT_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=82 *)
+FUNCTION_BLOCK RC4_CRYPT_STREAM (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=82 *)
     VAR_IN_OUT 
         MODE : INT;
         KEY : STRING[40];
@@ -2559,7 +2559,7 @@ FUNCTION_BLOCK RC4_CRYPT_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork
         v : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SHA1_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=83 *)
+FUNCTION_BLOCK SHA1_STR (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=83 *)
     VAR_INPUT 
         RUN : BOOL;
     END_VAR
@@ -2579,7 +2579,7 @@ FUNCTION_BLOCK SHA1_STR (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_n
         pos : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SHA1_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=84 *)
+FUNCTION_BLOCK SHA1_STREAM (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=84 *)
     VAR_IN_OUT 
         MODE : INT;
         BUF : ARRAY[0..63] OF BYTE;
@@ -2608,7 +2608,7 @@ FUNCTION_BLOCK SHA1_STREAM (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         z : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION SHA1_TO_STRH : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=85 *)
+FUNCTION SHA1_TO_STRH : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=85 *)
     VAR_INPUT 
         SHA1 : ARRAY[0..19] OF BYTE;
     END_VAR
@@ -2621,7 +2621,7 @@ FUNCTION SHA1_TO_STRH : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         RETVAL : STRING[40]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION STRING_TO_URL : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=86 *)
+FUNCTION STRING_TO_URL : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=86 *)
     VAR_INPUT 
         STR : STRING[STRING_LENGTH];
         DEFAULT_PROTOCOL : STRING[10];
@@ -2636,7 +2636,7 @@ FUNCTION STRING_TO_URL : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         RETVAL : URL; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION URL_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87 *)
+FUNCTION URL_DECODE : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87 *)
     VAR_INPUT 
         IN : STRING[STRING_LENGTH];
     END_VAR
@@ -2649,7 +2649,7 @@ FUNCTION URL_DECODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION URL_ENCODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87 *)
+FUNCTION URL_ENCODE : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87 *)
     VAR_INPUT 
         IN : STRING[STRING_LENGTH];
     END_VAR
@@ -2665,7 +2665,7 @@ FUNCTION URL_ENCODE : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/osca
         RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION URL_TO_STRING : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87 *)
+FUNCTION URL_TO_STRING : BOOL (* Convert *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=87 *)
     VAR_INPUT 
         IN : URL;
     END_VAR
@@ -2673,7 +2673,7 @@ FUNCTION URL_TO_STRING : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK IRTRANS_DECODE (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=36 *)
+FUNCTION_BLOCK IRTRANS_DECODE (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=36 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         R_BUF : NETWORK_BUFFER_SHORT;
@@ -2693,7 +2693,7 @@ FUNCTION_BLOCK IRTRANS_DECODE (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         z : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_RCV_1 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=37 *)
+FUNCTION_BLOCK IRTRANS_RCV_1 (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=37 *)
     VAR_INPUT 
         DEV_CODE : STRING[255];
         KEY_CODE : STRING[255];
@@ -2707,7 +2707,7 @@ FUNCTION_BLOCK IRTRANS_RCV_1 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         Q : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_RCV_4 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=39 *)
+FUNCTION_BLOCK IRTRANS_RCV_4 (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=39 *)
     VAR_INPUT 
         DEV_CODE : STRING[255];
         KEY_CODE_0 : STRING[255];
@@ -2730,7 +2730,7 @@ FUNCTION_BLOCK IRTRANS_RCV_4 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         decode : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_RCV_8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=39 *)
+FUNCTION_BLOCK IRTRANS_RCV_8 (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=39 *)
     VAR_INPUT 
         DEV_CODE : STRING[255];
         KEY_CODE_0 : STRING[255];
@@ -2761,7 +2761,7 @@ FUNCTION_BLOCK IRTRANS_RCV_8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         decode : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=40 *)
+FUNCTION_BLOCK IRTRANS_SERVER (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=40 *)
     VAR_IN_OUT 
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER_SHORT;
@@ -2779,7 +2779,7 @@ FUNCTION_BLOCK IRTRANS_SERVER (*  *)(* http://www.oscat.de/images/OSCATNetwork/o
         t : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_SND_1 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=42 *)
+FUNCTION_BLOCK IRTRANS_SND_1 (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=42 *)
     VAR_INPUT 
         DEV_CODE : STRING[255];
         KEY_CODE : STRING[255];
@@ -2803,7 +2803,7 @@ FUNCTION_BLOCK IRTRANS_SND_1 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         d : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_SND_4 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=43 *)
+FUNCTION_BLOCK IRTRANS_SND_4 (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=43 *)
     VAR_INPUT 
         DEV_CODE : STRING[255];
         KEY_CODE_0 : STRING[255];
@@ -2833,7 +2833,7 @@ FUNCTION_BLOCK IRTRANS_SND_4 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         d : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK IRTRANS_SND_8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=44 *)
+FUNCTION_BLOCK IRTRANS_SND_8 (* Driver *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=44 *)
     VAR_INPUT 
         DEV_CODE : STRING[255];
         KEY_CODE_0 : STRING[255];
@@ -2871,7 +2871,7 @@ FUNCTION_BLOCK IRTRANS_SND_8 (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         d : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION ELEMENT_COUNT : INT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=34 *)
+FUNCTION ELEMENT_COUNT : INT (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=34 *)
     VAR_INPUT 
         SEP : BYTE;
     END_VAR
@@ -2884,7 +2884,7 @@ FUNCTION ELEMENT_COUNT : INT (*  *)(* http://www.oscat.de/images/OSCATNetwork/os
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION ELEMENT_GET : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=34 *)
+FUNCTION ELEMENT_GET : BOOL (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=34 *)
     VAR_INPUT 
         SEP : BYTE;
         POS : INT;
@@ -2904,7 +2904,7 @@ FUNCTION ELEMENT_GET : BOOL (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         RETVAL : STRING[ELEMENT_LENGTH]; (*Return value of the function*)
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK IP_FIFO (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=108 *)
+FUNCTION_BLOCK IP_FIFO (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=108 *)
     VAR_IN_OUT 
         FIFO : IP_FIFO_DATA;
         ID : BYTE;
@@ -2914,13 +2914,13 @@ FUNCTION_BLOCK IP_FIFO (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_ne
         tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK LOG_MSG (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=111 *)
+FUNCTION_BLOCK LOG_MSG (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=111 *)
     VAR 
         FB_PRINT_SF : PRINT_SF;
         idX : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK LOG_VIEWPORT (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=111 *)
+FUNCTION_BLOCK LOG_VIEWPORT (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=111 *)
     VAR_IN_OUT 
         LC : LOG_CONTROL;
         LV : us_LOG_VIEWPORT;
@@ -2933,12 +2933,12 @@ FUNCTION_BLOCK LOG_VIEWPORT (*  *)(* http://www.oscat.de/images/OSCATNetwork/osc
         update_pos : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION NETWORK_VERSION : DWORD (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=35 *)
+FUNCTION NETWORK_VERSION : DWORD (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=35 *)
     VAR_INPUT 
         IN : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK PRINT_SF (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=121 *)
+FUNCTION_BLOCK PRINT_SF (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=121 *)
     VAR_IN_OUT 
         PRINTF_DATA : PRINTF_DATA;
         STR : STRING[LOG_SIZE];
@@ -2950,7 +2950,7 @@ FUNCTION_BLOCK PRINT_SF (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_n
         run : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK UNI_CIRCULAR_BUFFER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=69 *)
+FUNCTION_BLOCK UNI_CIRCULAR_BUFFER (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=69 *)
     VAR_IN_OUT 
         DATA : UNI_CIRCULAR_BUFFER_DATA;
     END_VAR
@@ -2971,7 +2971,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER (*  *)(* http://www.oscat.de/images/OSCATNetw
         mode_last : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK XML_READER (*  *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=140 *)
+FUNCTION_BLOCK XML_READER (* Other *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=140 *)
     VAR_IN_OUT 
         CTRL : XML_CONTROL;
         BUF : NW_BUF_LONG;
