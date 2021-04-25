@@ -3,7 +3,7 @@ FUNCTION LIST_LEN
     pt := ADR(LIST);
     LIST_LEN := 0;
     REPEAT
-    	c := pt^[pos];
+    	c := pt[pos];
     	IF c = SEP THEN LIST_LEN := LIST_LEN + 1; END_IF
     	pos := pos + 1;
     UNTIL

@@ -5,7 +5,7 @@ FUNCTION CODE
     	RETURN;
     ELSE
     	PT := ADR(STR) + INT_TO_DWORD(POS - 1);
-    	CODE := PT^;
+    	CODE := PT;
     END_IF
 
     (* revision history

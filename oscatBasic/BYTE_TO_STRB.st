@@ -4,13 +4,13 @@ FUNCTION BYTE_TO_STRB
     pt := ADR(BYTE_TO_STRB);
     (* die 8 ausgabecharacter ermitteln und schreiben *)
     FOR i := 1 TO 8 DO
-    	pt^ := BOOL_TO_BYTE(IN.7) + 48;
+    	pt := BOOL_TO_BYTE(IN.7) + 48;
     	IN := SHL(IN,1);
     	pt := pt + 1;
     END_FOR
 
     (* der ausgabestring muss noch mit 0 abgeschlossen werden *)
-    pt^ := 0;
+    pt := 0;
 
     (* code before rev 1.1
     FOR i := 1 TO 8 DO

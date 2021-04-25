@@ -17,7 +17,7 @@ FUNCTION RDM
 
     (*
     pt := ADR(temp);
-    pt^ := (T_PLC_MS() AND 16#007FFFFF) OR 16#3D000000;
+    pt := (T_PLC_MS() AND 16#007FFFFF) OR 16#3D000000;
     RDM := fract(modR(temp*e+pi1, PI1-LAST) + modR(temp*PI1+e + LAST,e-LAST));
     *)
 

@@ -21,7 +21,7 @@ FUNCTION TIMER_EVENT_DECODE
 
     (* parse the string for next ; *)
     FOR pos := 2 TO stop DO
-    	IF pt^[pos] = 59 OR pt^[pos] = 62 THEN
+    	IF pt[pos] = 59 OR pt[pos] = 62 THEN
     		tmp := MID(EVENT, pos - start, start);
     		CASE step OF
     			0:	(* read type *)

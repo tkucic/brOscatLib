@@ -1,9 +1,9 @@
 FUNCTION ARRAY_AVG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=76*)
     stop := SHR(SIZE,2)-1;
-    ARRAY_AVG := PT^[0];
+    ARRAY_AVG := PT[0];
     FOR i := 1 TO stop DO
-    	ARRAY_AVG := ARRAY_AVG + PT^[i];
+    	ARRAY_AVG := ARRAY_AVG + PT[i];
     END_FOR
     ARRAY_AVG := ARRAY_AVG / UINT_TO_REAL(stop + 1);
 

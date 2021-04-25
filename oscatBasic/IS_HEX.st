@@ -3,7 +3,7 @@ FUNCTION IS_HEX
     pt := ADR(STR);
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF NOT (ISC_HEX(pt^)) THEN
+    	IF NOT (ISC_HEX(pt)) THEN
     		IS_HEX := FALSE;
     		RETURN;
     	END_IF

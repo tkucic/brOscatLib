@@ -6,8 +6,8 @@ FUNCTION BUFFER_SEARCH
     lx := lx - 1;
     FOR i := POS TO end DO
     	FOR k := 0 TO lx DO
-    		IF IGN THEN chx := TO_UPPER(PT^[i+k]); ELSE chx := PT^[i+k]; END_IF
-    		IF ps^[k] <> chx THEN EXIT; END_IF
+    		IF IGN THEN chx := TO_UPPER(PT[i+k]); ELSE chx := PT[i+k]; END_IF
+    		IF ps[k] <> chx THEN EXIT; END_IF
     	END_FOR
     	IF k > lx THEN
     		BUFFER_SEARCH := i;

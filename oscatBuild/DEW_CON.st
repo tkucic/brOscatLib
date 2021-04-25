@@ -33,11 +33,11 @@ FUNCTION DEW_CON
 
     Formeln:
 
-       1. SDD(T) = 6.1078 * 10^((a*T)/(b+T))
+       1. SDD(T) = 6.1078 * 10((a*T)/(b+T))
        2. DD(r,T) = r/100 * SDD(T)
        3. r(T,TD) = 100 * SDD(TD) / SDD(T)
        4. TD(r,T) = b*v/(a-v) mit v(r,T) = log10(DD(r,T)/6.1078)
-       5. AF(r,TK) = 10^5 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 10^5 * mw/R* * SDD(TD)/TK 
+       5. AF(r,TK) = 105 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 105 * mw/R* * SDD(TD)/TK 
 
     *)
 

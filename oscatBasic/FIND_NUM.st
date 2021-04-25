@@ -3,7 +3,7 @@ FUNCTION FIND_NUM
     pt := ADR(STR);
     stop := LEN(STR);
     FOR i := MAX(POS,1) TO stop DO;
-    	X := pt^[i];
+    	X := pt[i];
     	IF (X > 47 AND X < 58) OR X = 46 THEN
     		FIND_NUM := i;
     		RETURN;

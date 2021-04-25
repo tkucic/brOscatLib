@@ -5,7 +5,7 @@ FUNCTION FLOAT_TO_REAL
 
     (* we first check for sign and exit if first number or dot is reached *)
     FOR i := 1 TO stop DO
-    	X := pt^[i];
+    	X := pt[i];
     	IF X > 47 AND X < 58 OR X = 46 THEN
     		EXIT;
     	ELSIF X = 45 THEN
@@ -16,7 +16,7 @@ FUNCTION FLOAT_TO_REAL
 
     (* now we scan numbers till end or dot or E is reached *)
     FOR i := i TO stop DO
-    	X := pt^[i];
+    	X := pt[i];
     	IF X = 44 OR X = 46 OR X = 69 OR X = 101 THEN
     		EXIT;
     	(* calculate the value of the digit *)
@@ -28,7 +28,7 @@ FUNCTION FLOAT_TO_REAL
     (* process the portion after the comma if comma or dot is reached exit if exponent starts *)
     IF X = 44 OR X = 46 THEN
     	FOR i := i + 1 TO stop DO
-    		X := pt^[i];
+    		X := pt[i];
     		IF X = 69 OR X = 101 THEN
     			EXIT;
     		ELSIF X > 47 AND X < 58 THEN

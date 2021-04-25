@@ -4,7 +4,7 @@ FUNCTION UPPERCASE
     UPPERCASE := STR;
     l := LEN(STR);
     FOR pos := 1 TO l DO
-    	pt^ := TO_UPPER(pt^);
+    	pt := TO_UPPER(pt);
     	pt := pt + 1;
     END_FOR
 

@@ -11,13 +11,13 @@ FUNCTION BUFFER_TO_STRING
     END_IF
 
     FOR i := sta TO stp DO
-    	ps^ := PT^[i];
+    	ps := PT[i];
     	ps := ps + 1;
     END_FOR
 
     (* terminate the string *)
 
-    ps^ := 0;
+    ps := 0;
 
 
 

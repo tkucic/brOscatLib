@@ -8,65 +8,65 @@ FUNCTION HTML_ENCODE
     stop := LEN(IN);
     FOR pos_out := 1 TO 250 DO
     	IF pos_in > stop THEN EXIT; END_IF
-    	B := pt_in^[pos_in];
+    	B := pt_in[pos_in];
     	CASE BYTE_TO_INT(B) OF
     		34: (* " detected *)
     			IF pos_out > STRING_LENGTH - 6 THEN EXIT; END_IF
-    			pt_out^[pos_out] := 38;
+    			pt_out[pos_out] := 38;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 113;
+    			pt_out[pos_out] := 113;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 117;
+    			pt_out[pos_out] := 117;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 111;
+    			pt_out[pos_out] := 111;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 116;
+    			pt_out[pos_out] := 116;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 59;
+    			pt_out[pos_out] := 59;
     		38: (* & detected *)
     			IF pos_out > STRING_LENGTH - 5 THEN EXIT; END_IF
-    			pt_out^[pos_out] := 38;
+    			pt_out[pos_out] := 38;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 97;
+    			pt_out[pos_out] := 97;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 109;
+    			pt_out[pos_out] := 109;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 112;
+    			pt_out[pos_out] := 112;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 59;
+    			pt_out[pos_out] := 59;
     		60: (* < detected *)
     			IF pos_out > STRING_LENGTH - 4 THEN EXIT; END_IF
-    			pt_out^[pos_out] := 38;
+    			pt_out[pos_out] := 38;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 108;
+    			pt_out[pos_out] := 108;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 116;
+    			pt_out[pos_out] := 116;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 59;
+    			pt_out[pos_out] := 59;
     		62: (* > detected *)
     			IF pos_out > STRING_LENGTH - 4 THEN EXIT; END_IF
-    			pt_out^[pos_out] := 38;
+    			pt_out[pos_out] := 38;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 103;
+    			pt_out[pos_out] := 103;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 116;
+    			pt_out[pos_out] := 116;
     			pos_out := pos_out + 1;
-    			pt_out^[pos_out] := 59;
+    			pt_out[pos_out] := 59;
     	ELSE
     		IF M AND B > 127 THEN
     			tmp := CHARNAME(B);
     			(* exit if output string has not enough space *)
     			IF pos_out + LEN(tmp) + 2 <= 250 THEN
-    				pt_out^[pos_out] := 38;
+    				pt_out[pos_out] := 38;
     				pos_out := pos_out + 1;
     				FOR i := 1 TO LEN(tmp) DO
-    					pt_out^[pos_out] := CODE(tmp, i);
+    					pt_out[pos_out] := CODE(tmp, i);
     					pos_out := pos_out + 1;
     				END_FOR
-    				pt_out^[pos_out] := 59;
+    				pt_out[pos_out] := 59;
     			END_IF
     		ELSE
-    			pt_out^[pos_out] := B;
+    			pt_out[pos_out] := B;
     		END_IF
     	END_CASE
     	(* increment IN by 1 *)
@@ -74,7 +74,7 @@ FUNCTION HTML_ENCODE
     END_FOR
 
     (* terminate the output string *)
-    pt_out^[pos_out] := 0;
+    pt_out[pos_out] := 0;
 
 
 

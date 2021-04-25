@@ -47,7 +47,7 @@ FUNCTION WATER_CP
 
     Die Berechnung der Dichte von luftfreiem Wasser DLF in Abhängigkeit von der Temperatur T ([T] = °C) kann mit Hilfe der folgenden 
     Virialgleichung erfolgen:
-    : \frac{D_{\rm LF}}{\rm g/l} = \frac{a_0 + a_1 T + a_2 T^2 + a_3 T^3 + a_4 T^4 + a_5 T^5}{1 + b T}.
+    : \frac{D_{\rm LF}}{\rm g/l} = \frac{a_0 + a_1 T + a_2 T2 + a_3 T3 + a_4 T4 + a_5 T5}{1 + b T}.
     mit den Koeffizienten: a0 = 999,83952; a1 = 16,952577 (°C)-1; a2 = -7,9905127·10-3 (°C)-2; a3 = -4,6241757·10-5 (°C)-3; 
     a4 = 1,0584601·10-7 (°C)-4; a5 = -2,8103006·10-10 (°C)-5 und b = 0,0168872. 
     Für die Berechnung der Dichte von luftgesättigtem Wasser korrigiert man den Wert nach 

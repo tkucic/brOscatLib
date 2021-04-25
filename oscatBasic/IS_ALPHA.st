@@ -3,7 +3,7 @@ FUNCTION IS_ALPHA
     pt := ADR(STR);
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF NOT ISC_ALPHA(pt^) THEN
+    	IF NOT ISC_ALPHA(pt) THEN
     		IS_ALPHA := FALSE;
     		RETURN;
     	END_IF

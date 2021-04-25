@@ -6,7 +6,7 @@ FUNCTION _BUFFER_INIT
     end := temp + UINT_TO_DWORD(SIZE);
     end32 := end - 3;
     WHILE (PT < end) AND ((temp AND 16#00000003) > 0) DO
-    	PT^ := INIT;
+    	PT := INIT;
     	PT := PT + 1;
     	temp := temp + 1;
     END_WHILE
@@ -14,13 +14,13 @@ FUNCTION _BUFFER_INIT
     ptw := PT;
     temp := SHL(BYTE_TO_DWORD(INIT),24) OR SHL(BYTE_TO_DWORD(INIT),16) OR SHL(BYTE_TO_DWORD(INIT),8) OR BYTE_TO_DWORD(INIT);
     WHILE ptw < end32 DO
-    	ptw^ := temp;
+    	ptw := temp;
     	ptw := ptw + 4;
     END_WHILE
     (* copy the remaining bytes in byte mode *)
     PT := ptw;
     WHILE PT < end DO
-    	PT^ := INIT;
+    	PT := INIT;
     	PT := PT + 1;
     END_WHILE
 

@@ -7,7 +7,7 @@ FUNCTION _ARRAY_SORT
 
     WHILE NOT ende_aussen DO						(* äußere Schleife *)
     	IF links < rechts THEN
-    		pivot := PT^[SHR(rechts+links,1)];			(* Wert des mittleren Elements als pivot-Wert *)
+    		pivot := PT[SHR(rechts+links,1)];			(* Wert des mittleren Elements als pivot-Wert *)
     		i := links -1;
     		j := rechts +1;
 
@@ -16,20 +16,20 @@ FUNCTION _ARRAY_SORT
     		REPEAT
 
     			(* steigende Reihenfolge *)
-    			REPEAT	i := i+1;	UNTIL (PT^[i] >= pivot) OR NOT (i < rechts)	END_REPEAT
-    			REPEAT	j := j-1;	UNTIL (PT^[j] <= pivot) OR NOT (j > links)	END_REPEAT
+    			REPEAT	i := i+1;	UNTIL (PT[i] >= pivot) OR NOT (i < rechts)	END_REPEAT
+    			REPEAT	j := j-1;	UNTIL (PT[j] <= pivot) OR NOT (j > links)	END_REPEAT
 
 
     			(*sinkende Reihenfolge *)
-    (*			REPEAT	i := i+1;	UNTIL (PT^[i] <= pivot) OR NOT (i < rechts)	END_REPEAT	*)
-    (*			REPEAT	j := j-1;	UNTIL (PT^[j] >= pivot) OR NOT (j > links)	END_REPEAT	*)
+    (*			REPEAT	i := i+1;	UNTIL (PT[i] <= pivot) OR NOT (i < rechts)	END_REPEAT	*)
+    (*			REPEAT	j := j-1;	UNTIL (PT[j] >= pivot) OR NOT (j > links)	END_REPEAT	*)
 
     			IF i >= j THEN
     				ende_innen := TRUE;
     			ELSE
-    				   tmp := PT^[j];
-    				PT^[j] := PT^[i];
-    				PT^[i] := tmp;
+    				   tmp := PT[j];
+    				PT[j] := PT[i];
+    				PT[i] := tmp;
     			END_IF
 
     		UNTIL ende_innen END_REPEAT
@@ -75,12 +75,12 @@ FUNCTION _ARRAY_SORT
         WHILE j <= SIZE2 DO
          	stop := j * 2 + 1;
             IF stop > UINT_TO_INT(SIZE) THEN stop := stop - 1;
-            ELSIF PT^[stop-1] > PT^[stop] THEN stop := stop - 1;
+            ELSIF PT[stop-1] > PT[stop] THEN stop := stop - 1;
     		END_IF
-            IF PT^[j] < PT^[stop] THEN
-             	temp := PT^[j];
-                PT^[j] := PT^[stop];
-                PT^[stop] := temp;
+            IF PT[j] < PT[stop] THEN
+             	temp := PT[j];
+                PT[j] := PT[stop];
+                PT[stop] := temp;
             END_IF
             j := stop;
         END_WHILE
@@ -90,23 +90,23 @@ FUNCTION _ARRAY_SORT
 
     (* heapsort
     FOR heapsize := UINT_TO_INT(SIZE) TO 1 BY -1 DO
-    	popmax := PT^[1];
-    	PT^[1] := PT^[heapsize];
+    	popmax := PT[1];
+    	PT[1] := PT[heapsize];
        	i := 1;
     	hs2 := SHR(heapsize,1);
     	WHILE i <= hs2 DO
            	stop := i * 2 + 1;  
             	IF stop > heapsize THEN stop := stop - 1;
-            	ELSIF PT^[stop-1] > PT^[stop] THEN stop := stop - 1;
+            	ELSIF PT[stop-1] > PT[stop] THEN stop := stop - 1;
     	 	END_IF
-            	IF PT^[i] < PT^[stop] THEN
-                		temp := PT^[i];
-                		PT^[i] := PT^[stop];
-                		PT^[stop] := temp;
+            	IF PT[i] < PT[stop] THEN
+                		temp := PT[i];
+                		PT[i] := PT[stop];
+                		PT[stop] := temp;
             	END_IF
             	i := stop;
         	END_WHILE
-    	PT^[heapsize] := popmax;
+    	PT[heapsize] := popmax;
     END_FOR
 
     _ARRAY_SORT2 := TRUE;
@@ -116,10 +116,10 @@ FUNCTION _ARRAY_SORT
     stop := (SIZE - SIZEOF(PT)) / SIZEOF(PT);
     FOR i := 0 TO stop - 1 DO
     	FOR m := i + 1 TO stop DO
-    		IF PT^[i] > PT^[m] THEN
-    			temp := PT^[i];
-    			PT^[i] := PT^[m];
-    			PT^[m] := temp;
+    		IF PT[i] > PT[m] THEN
+    			temp := PT[i];
+    			PT[i] := PT[m];
+    			PT[m] := temp;
     		END_IF
     	END_FOR
     END_FOR

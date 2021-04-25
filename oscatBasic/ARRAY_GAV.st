@@ -3,8 +3,8 @@ FUNCTION ARRAY_GAV
     stop := SHR(SIZE,2)-1;
     ARRAY_GAV := 1.0;
     FOR i := 0 TO stop DO
-    	IF PT^[i] > 0.0 THEN
-    		ARRAY_GAV := ARRAY_GAV * PT^[i];
+    	IF PT[i] > 0.0 THEN
+    		ARRAY_GAV := ARRAY_GAV * PT[i];
     	ELSE
     		ARRAY_GAV := 0.0;
     		RETURN;

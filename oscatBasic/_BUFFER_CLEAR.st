@@ -6,20 +6,20 @@ FUNCTION _BUFFER_CLEAR
     end := temp + UINT_TO_DWORD(SIZE);
     end32 := end - 3;
     WHILE (PT < end) AND ((temp AND 16#00000003) > 0) DO
-    	PT^ := 0;
+    	PT := 0;
     	PT := PT + 1;
     	temp := temp + 1;
     END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
     ptw := PT;
     WHILE ptw < end32 DO (* *)
-    	ptw^ := 0;
+    	ptw := 0;
     	ptw := ptw + 4;
     END_WHILE
     (* copy the remaining bytes in byte mode *)
     PT := ptw;
     WHILE PT < end DO
-    	PT^ := 0;
+    	PT := 0;
     	PT := PT + 1;
     END_WHILE
 

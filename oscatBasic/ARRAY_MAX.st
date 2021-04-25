@@ -1,9 +1,9 @@
 FUNCTION ARRAY_MAX
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77*)
     stop := (SIZE -SIZEOF(PT)) / SIZEOF(PT);
-    ARRAY_MAX := PT^[0];
+    ARRAY_MAX := PT[0];
     FOR i := 1 TO stop DO
-    	IF PT^[i] > ARRAY_MAX THEN ARRAY_MAX := PT^[i]; END_IF
+    	IF PT[i] > ARRAY_MAX THEN ARRAY_MAX := PT[i]; END_IF
     END_FOR
 
     (* revision history

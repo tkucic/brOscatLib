@@ -4,7 +4,7 @@ FUNCTION DEC_TO_BYTE
     stop := LEN(DEC);
     FOR i := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
-    	X := pt^;
+    	X := pt;
     	(* calculate the value of the digit *)
     	IF X > 47 AND X < 58 THEN
     		DEC_TO_BYTE := DEC_TO_BYTE * 10 + X - 48;

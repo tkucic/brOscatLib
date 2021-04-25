@@ -640,9 +640,9 @@ FUNCTION_BLOCK SMTP_CLIENT
     			idx1 := idx1 - 1;
     		UNTIL idx1 = 0 OR R_BUF.BUFFER[idx1] >= BYTE#32 (* TRUE = EXIT *)
     		END_REPEAT
-    		FOR i1 := 0 TO idx1 DO (* bei multiline alle CRLF durch >^< ersetzen *)
+    		FOR i1 := 0 TO idx1 DO (* bei multiline alle CRLF durch >< ersetzen *)
     			IF R_BUF.BUFFER[i1] < BYTE#32 THEN
-    				R_BUF.BUFFER[i1] := BYTE#94; (* >^< *)
+    				R_BUF.BUFFER[i1] := BYTE#94; (* >< *)
     			END_IF
     		END_FOR
     		rcv_text := BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=idx1+1,START:=0,STOP:=STRING_LENGTH-1);

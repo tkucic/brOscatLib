@@ -3,7 +3,7 @@ FUNCTION IS_CTRL
     pt := ADR(STR);
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF NOT (ISC_CTRL(pt^)) THEN
+    	IF NOT (ISC_CTRL(pt)) THEN
     		IS_CTRL := FALSE;
     		RETURN;
     	END_IF

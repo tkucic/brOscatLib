@@ -4,7 +4,7 @@ FUNCTION _STRING_TO_BUFFER
     end := MIN(POS + LEN(STR), UINT_TO_INT(SIZE));
     IF end > 0 THEN end := end -1; END_IF
     FOR i := POS TO end DO
-    	PT^[i] := ps^;
+    	PT[i] := ps;
     	ps := ps + 1;
     END_FOR
 

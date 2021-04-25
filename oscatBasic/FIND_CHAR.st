@@ -3,7 +3,7 @@ FUNCTION FIND_CHAR
     pt := ADR(STR);
     stop := LEN(STR);
     FOR i := MAX(POS,1) TO stop DO;
-    	X := pt^[i];
+    	X := pt[i];
     	IF X > 31 AND ((cEXTENDED_ASCII AND X <> 127) OR (NOT cEXTENDED_ASCII AND X < 127)) THEN
     		FIND_CHAR := i;
     		RETURN;

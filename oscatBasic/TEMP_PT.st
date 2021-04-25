@@ -16,7 +16,7 @@ FUNCTION TEMP_PT
     	WHILE step > accuracy DO
     		(* test if result greater or less *)
     		IF RES_PT(TEMP_PT, R0) < RES THEN TEMP_PT := TEMP_PT + step; ELSE TEMP_PT := TEMP_PT - step; END_IF
-    		pt^ := pt^ - 8388608;  (* this is A super fast divide by 2 method for non floating point CPUs *)
+    		pt := pt - 8388608;  (* this is A super fast divide by 2 method for non floating point CPUs *)
     		(* the alternative code: step := step * 0.5; *)
     	END_WHILE
     END_IF

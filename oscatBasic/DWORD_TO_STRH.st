@@ -3,7 +3,7 @@ FUNCTION DWORD_TO_STRH
     (* read output adress to pointer *)
     pt := ADR(DWORD_TO_STRH) + 8;
     (* wirte the closing byte for the string *)
-    pt^:= 0;
+    pt:= 0;
 
     (* write the 8 hex characters backwards *)
     FOR i := 1 TO 8 DO;
@@ -14,7 +14,7 @@ FUNCTION DWORD_TO_STRH
     	(* convert value to hex character *)
     	IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
     	(* write character to output string *)
-    	pt^ := temp;
+    	pt := temp;
     	(* shift IN for nect hex character *)
     	IN := SHR(IN,4);
     END_FOR

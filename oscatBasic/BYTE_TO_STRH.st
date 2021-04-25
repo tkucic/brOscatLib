@@ -7,16 +7,16 @@ FUNCTION BYTE_TO_STRH
     (* convert value to hex character *)
     IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
     (* write friat character to output string *)
-    PT^ := temp;
+    PT := temp;
     (* calculate low order hex value *)
     temp := IN AND 2#00001111;
     IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
     (* increment pointer and wirte low order character *)
     PT := PT + 1;
-    PT^ := temp;
+    PT := temp;
     (* set pointer at the end of the output string and close the string with 0 *)
     PT := PT + 1;
-    PT^:= 0;
+    PT:= 0;
 
 
     (* code before rev 1.2

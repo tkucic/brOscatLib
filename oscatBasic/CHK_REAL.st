@@ -1,7 +1,7 @@
 FUNCTION CHK_REAL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217*)
     pt := ADR(X);				(* move real to dword, real_to_dword does not work becasze it treats dword as a number on many systems *)
-    tmp := ROL(pt^,1);			(* rotate left foir easy checking, sign will be at lease significant digit *)
+    tmp := ROL(pt,1);			(* rotate left foir easy checking, sign will be at lease significant digit *)
     IF tmp < 16#FF000000 THEN
     	CHK_REAL := 16#00;		(* normalized and denormalized numbers *)
     ELSIF tmp = 16#FF000000 THEN

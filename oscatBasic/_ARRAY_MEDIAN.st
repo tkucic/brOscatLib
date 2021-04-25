@@ -3,28 +3,28 @@ FUNCTION _ARRAY_MEDIAN
     _ARRAY_SORT(PT,SIZE);
     stop := SHR(SIZE,2)-1;
     IF EVEN(UINT_TO_INT(stop)) THEN
-    	_ARRAY_MEDIAN := PT^[SHR(stop,1)];
+    	_ARRAY_MEDIAN := PT[SHR(stop,1)];
     ELSE
     	i := SHR(stop,1);
-    	_ARRAY_MEDIAN := (PT^[i] + PT^[i+1]) * 0.5;
+    	_ARRAY_MEDIAN := (PT[i] + PT[i+1]) * 0.5;
     END_IF
 
     (* old code
     stop := (SIZE - SIZEOF(PT)) / SIZEOF(PT);
     FOR i := 0 TO stop - 1 DO
     	FOR m := i + 1 TO stop DO
-    		IF PT^[i] > PT^[m] THEN
-    			temp := PT^[i];
-    			PT^[i] := PT^[m];
-    			PT^[m] := temp;
+    		IF PT[i] > PT[m] THEN
+    			temp := PT[i];
+    			PT[i] := PT[m];
+    			PT[m] := temp;
     		END_IF
     	END_FOR
     END_FOR
     IF even(stop) THEN
-    	_ARRAY_MEDIAN := PT^[stop/2];
+    	_ARRAY_MEDIAN := PT[stop/2];
     ELSE
     	i := stop/2;
-    	_ARRAY_MEDIAN := (PT^[i] + PT^[i+1])/2;
+    	_ARRAY_MEDIAN := (PT[i] + PT[i+1])/2;
     END_IF
     *)
     (* revision history

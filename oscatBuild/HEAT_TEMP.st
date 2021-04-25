@@ -15,7 +15,7 @@ FUNCTION_BLOCK HEAT_TEMP
 
     (*
 
-    tv=ti+(tvmax-ti)*((ti-tau)/(ti-taumin))^(1/n)
+    tv=ti+(tvmax-ti)*((ti-tau)/(ti-taumin))(1/n)
 
     tv aktuelle Vorlauftemp.
     ti Raumtemperatur innen (20°C)

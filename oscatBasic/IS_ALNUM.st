@@ -3,7 +3,7 @@ FUNCTION IS_ALNUM
     pt := ADR(STR);
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF NOT (ISC_ALPHA(pt^) OR ISC_NUM(pt^)) THEN
+    	IF NOT (ISC_ALPHA(pt) OR ISC_NUM(pt)) THEN
     		IS_ALNUM := FALSE;
     		RETURN;
     	END_IF

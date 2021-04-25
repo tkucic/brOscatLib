@@ -4,7 +4,7 @@ FUNCTION HEX_TO_DWORD
     stop := LEN(HEX);
     FOR i := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
-    	X := pt^;
+    	X := pt;
     	(* calculate the value of the digit *)
     	IF X > 47 AND X < 58 THEN
     		HEX_TO_DWORD := SHL(HEX_TO_DWORD,4) + X - 48;

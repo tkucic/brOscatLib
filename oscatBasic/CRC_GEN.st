@@ -7,7 +7,7 @@ FUNCTION CRC_GEN
     (* load first 4 bytes into register minimum message SIZE is 4 bytes
     	for smaller messages fill with 0#s at the beginning*)
     FOR pos := 0 TO 3 DO
-    	IF REV_IN THEN CRC_GEN := SHL(CRC_GEN, 8) OR REVERSE(PT^[pos]); ELSE CRC_GEN := SHL(CRC_GEN, 8) OR PT^[pos]; END_IF
+    	IF REV_IN THEN CRC_GEN := SHL(CRC_GEN, 8) OR REVERSE(PT[pos]); ELSE CRC_GEN := SHL(CRC_GEN, 8) OR PT[pos]; END_IF
     END_FOR
     pos := 4;
 
@@ -16,7 +16,7 @@ FUNCTION CRC_GEN
 
     (* calculate CRC for each byte *)
     WHILE pos < SIZE DO
-    	IF REV_IN THEN dx := REVERSE(PT^[pos]); ELSE dx := PT^[pos]; END_IF
+    	IF REV_IN THEN dx := REVERSE(PT[pos]); ELSE dx := PT[pos]; END_IF
     	pos := pos + 1;
     	(* crc calculation for one byte *)
     	FOR bits := 0 TO 7 DO

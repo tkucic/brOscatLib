@@ -3,7 +3,7 @@ FUNCTION BIN_TO_DWORD
     pt := ADR(BIN);
     stop := LEN(BIN);
     FOR i := 1 TO stop DO
-    	X := pt^;
+    	X := pt;
     	(* calculate the value of the digit *)
     	IF X = 48 THEN
     		BIN_TO_DWORD := SHL(BIN_TO_DWORD,1);

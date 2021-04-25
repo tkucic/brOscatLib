@@ -49,7 +49,7 @@ FUNCTION_BLOCK MD5_CRAM_AUTH
     1:	n2 := LEN(md5_str1) - 1;
     	pt := ADR(md5_str1);
     	FOR n1 := 0 TO n2 DO (* string in buf kopieren *)
-    		buf[n1] := pt^ XOR xpad;
+    		buf[n1] := pt XOR xpad;
     		pt := pt + 1;
     	END_FOR
     	FOR n1 := n2 + 1 TO 63 DO (* mit ipad füllen *)
@@ -66,7 +66,7 @@ FUNCTION_BLOCK MD5_CRAM_AUTH
     			n2 := LEN(md5_str2) - 1;
     			pt := ADR(md5_str2);
     			FOR n1 := 0 TO n2 DO (* string in buf kopieren *)
-    				buf[n1] := pt^;
+    				buf[n1] := pt;
     				pt := pt + 1;
     			END_FOR
     		END_IF

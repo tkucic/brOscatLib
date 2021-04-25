@@ -4,10 +4,10 @@ FUNCTION_BLOCK INI_PARSER_FILE
 
     	IF state = 0 THEN (* Auswertung neu beginnen *)
     		pv := ADR(VALUE);
-    		pv^ := 0; (* VALUE = '' *)
+    		pv := 0; (* VALUE = '' *)
     		pve := pv + INT_TO_DWORD(STRING_LENGTH);
     		pk := ADR(KEY);
-    		pk^ := 0; (* KEY = '' *)
+    		pk := 0; (* KEY = '' *)
     		pke := pk + INT_TO_DWORD(STRING_LENGTH);
 
     		i := OFFSET;
@@ -85,12 +85,12 @@ FUNCTION_BLOCK INI_PARSER_FILE
     						state  := 1; (* Beenden -> Section wurde gefunden *)
     					ELSE
     						pk := ADR(KEY);
-    						pk^ := 0; (* KEY = '' *)
+    						pk := 0; (* KEY = '' *)
     						step := 0; (* fehlerhafte Section-Zeile vorhanden -> weitersuchen *)
     					END_IF
     				ELSIF c < 32 OR eof THEN (* Steuerzeichen - fehlerhafte Section-Zeile -> weitersuchen *)
     					pk := ADR(KEY);
-    					pk^ := 0; (* KEY = '' *)
+    					pk := 0; (* KEY = '' *)
     					step := 0;
     				ELSE
     					k_add := c; (* Zeichen ablegen *)
@@ -98,7 +98,7 @@ FUNCTION_BLOCK INI_PARSER_FILE
     			300: (* Beginn: KEY erkannt -> Name auswerten *)
     				IF c < 32 THEN (* Steuerzeichen - fehlerhafte KEY-Zeile -> weitersuchen *)
     					pk := ADR(KEY);
-    					pk^ := 0; (* KEY = '' *)
+    					pk := 0; (* KEY = '' *)
     					step := 0;
     				ELSIF c = 61 THEN (* prüfe auf '=' *)
     					step := 330;
@@ -127,15 +127,15 @@ FUNCTION_BLOCK INI_PARSER_FILE
     			END_CASE
 
     			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-String hinzufügen *)
-    				pv^ := v_add; (* Zeichen eintragen *)
+    				pv := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
-    				pv^ := 0; (* String-Terminierung eintragen *)
+    				pv := 0; (* String-Terminierung eintragen *)
     			END_IF
 
     			IF k_add > 0 AND pk < pke THEN (* Zeichen zu KEY-String hinzufügen *)
-    				pk^ := k_add; (* Zeichen eintragen *)
+    				pk := k_add; (* Zeichen eintragen *)
     				pk := pk + 1;
-    				pk^ := 0; (* String-Terminierung eintragen *)
+    				pk := 0; (* String-Terminierung eintragen *)
     			END_IF
 
     			i := i + 1; (* Datenzeiger erhöhen *)
@@ -154,7 +154,7 @@ FUNCTION_BLOCK INI_PARSER_FILE
     			END_IF
     		ELSE
     			pk := ADR(KEY);
-    			pk^ := 0; (* KEY = '' *)
+    			pk := 0; (* KEY = '' *)
     			RESULT := 11; (* KEY nicht gefunden , Section-Ende - OFFSET nicht verändern *)
     			RUN := 0;
     			state := 0;

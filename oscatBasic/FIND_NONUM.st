@@ -3,7 +3,7 @@ FUNCTION FIND_NONUM
     pt := ADR(STR);
     end := LEN(STR);
     FOR i := MAX(POS,1) TO end DO;
-    	X := pt^[i];
+    	X := pt[i];
     	IF (X < 48 AND X <> 46) OR X > 57 THEN
     		FIND_NONUM := i;
     		RETURN;

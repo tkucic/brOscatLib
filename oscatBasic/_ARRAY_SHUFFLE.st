@@ -4,9 +4,9 @@ FUNCTION _ARRAY_SHUFFLE
     FOR i := 0 TO stop DO
             pos := RDM2(i+pos,0,stop);
             (* swap elements *)
-            temp := PT^[i];
-            PT^[i] := PT^[pos];
-            PT^[pos] := temp;
+            temp := PT[i];
+            PT[i] := PT[pos];
+            PT[pos] := temp;
     END_FOR
 
     _ARRAY_SHUFFLE := TRUE;

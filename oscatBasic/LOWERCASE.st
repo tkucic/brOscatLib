@@ -4,7 +4,7 @@ FUNCTION LOWERCASE
     LOWERCASE := STR;
     l := LEN(STR);
     FOR pos := 1 TO l DO
-    	PT^ := TO_LOWER(PT^);
+    	PT := TO_LOWER(PT);
     	PT := PT + 1;
     END_FOR
 

@@ -7,19 +7,19 @@ FUNCTION_BLOCK LIST_NEXT
     	pos := 1;
     END_IF
 
-    IF pt^[pos] = 0 OR pos = LIST_LENGTH THEN
+    IF pt[pos] = 0 OR pos = LIST_LENGTH THEN
     	LEL := '';
     	NUL := TRUE;
     ELSE
     	NUL := FALSE;
     	write := 1;
     	FOR pos := pos + 1 TO LIST_LENGTH DO
-    		c := pt^[pos];
+    		c := pt[pos];
     		IF c = 0 OR c = SEP THEN
-    			po^[write] := 0;
+    			po[write] := 0;
     			RETURN;
     		ELSE
-    			po^[write] := pt^[pos];
+    			po[write] := pt[pos];
     			write := write + 1;
     		END_IF
     	END_FOR

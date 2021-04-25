@@ -16,12 +16,12 @@ FUNCTION LIST_INSERT
     			LIST_INSERT := TRUE;
     			RETURN;
     		END_IF
-    		IF pt^[read]  = 0 THEN				(* LIST is too short add empty element *)
-    			pt^[read] := SEP;
-    			pt^[read + 1] := 0;
+    		IF pt[read]  = 0 THEN				(* LIST is too short add empty element *)
+    			pt[read] := SEP;
+    			pt[read + 1] := 0;
     		END_IF
     		read := read + 1;
-    		IF pt^[read] = SEP OR pt^[read] = 0 THEN cnt := cnt + 1; END_IF
+    		IF pt[read] = SEP OR pt[read] = 0 THEN cnt := cnt + 1; END_IF
     	END_WHILE
     END_IF
 

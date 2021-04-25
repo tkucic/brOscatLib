@@ -7,17 +7,17 @@ FUNCTION REPLACE_UML
     pt2 := pt1 + 1;
     L := LEN(STR);
     WHILE pos < L AND pos < string_length DO
-    	IF pt^ < 127 THEN
+    	IF pt < 127 THEN
     		(* no uml character simlply copy the character*)
-    		pto^ := pt^;
+    		pto := pt;
     	ELSE
     		(* convert the uml character *)
-    		su := TO_UML(pt^);
+    		su := TO_UML(pt);
     		(* we must make sure pointer are not out of range *)
-    		pto^ := pt1^;
-    		IF pto < ptm AND pt2^ > 0 THEN
+    		pto := pt1;
+    		IF pto < ptm AND pt2 > 0 THEN
     			pto := pto + 1;
-    			pto^ := pt2^;
+    			pto := pt2;
     		END_IF
     	END_IF
     	(* increment pointers *)
@@ -27,7 +27,7 @@ FUNCTION REPLACE_UML
     END_WHILE
 
     (* properly close the output string *)
-    pto^ := 0;
+    pto := 0;
 
 
     (* revision history

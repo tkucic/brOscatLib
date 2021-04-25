@@ -4,10 +4,10 @@ FUNCTION LIST_GET
     po := ADR(LIST_GET);
 
     REPEAT
-    	c := pt^[i];
+    	c := pt[i];
     	IF cnt = POS THEN						(* copy element to output string *)
     		IF c = SEP  THEN EXIT; END_IF		(* next element stop copy and finish *)
-    		po^[o] := c;
+    		po[o] := c;
     		o := o + 1;
     	ELSIF c = SEP THEN
     		cnt := cnt + 1;
@@ -16,7 +16,7 @@ FUNCTION LIST_GET
     UNTIL
     	(i = LIST_LENGTH) OR (c = 0)
     END_REPEAT
-    po^[o] := 0;						(* close the output string *)
+    po[o] := 0;						(* close the output string *)
 
 
 

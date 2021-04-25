@@ -50,7 +50,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     	REPEAT
     		n2 := MIN(cnt - n1, buf_totalsize - DATA._Last);
     		FOR n := 1 TO n2 DO
-    			DATA.BUF[DATA._Last] := pTmp^;
+    			DATA.BUF[DATA._Last] := pTmp;
     			pTmp := pTmp + 1;
     			DATA._Last := DATA._Last + 1;
     		END_FOR
@@ -124,7 +124,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		REPEAT
     			n2 := MIN(cnt - n1, buf_totalsize - DATA._GetEnd);
     			FOR n := 1 TO n2 DO
-    				pTmp^ := DATA.BUF[DATA._GetEnd];
+    				pTmp := DATA.BUF[DATA._GetEnd];
     				pTmp := pTmp + 1;
     				DATA._GetEnd := DATA._GetEnd + 1;
     			END_FOR
@@ -135,7 +135,7 @@ FUNCTION_BLOCK UNI_CIRCULAR_BUFFER
     		UNTIL n1 >= cnt
     		END_REPEAT
     		IF x = 1 THEN
-    			pTmp^ := 0; (* String terminieren *)
+    			pTmp := 0; (* String terminieren *)
     		END_IF
     		DATA.D_MODE := 0;
     	

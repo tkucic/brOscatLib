@@ -4,7 +4,7 @@ FUNCTION_BLOCK CSV_PARSER_FILE
 
     	IF state = 0 THEN (* Auswertung neu beginnen *)
     		pv := ADR(VALUE);
-    		pv^ := 0; (* VALUE = '' *)
+    		pv := 0; (* VALUE = '' *)
     		pve := pv + INT_TO_DWORD(STRING_LENGTH);
     		i := OFFSET;
     		RESULT := 0;
@@ -76,9 +76,9 @@ FUNCTION_BLOCK CSV_PARSER_FILE
     			END_IF
 
     			IF v_add > 0  AND pv < pve THEN (* Zeichen zu VALUE-String hinzufügen *)
-    				pv^ := v_add; (* Zeichen eintragen *)
+    				pv := v_add; (* Zeichen eintragen *)
     				pv := pv + 1;
-    				pv^ := 0; (* String-Terminierung eintragen *)
+    				pv := 0; (* String-Terminierung eintragen *)
     			END_IF
 
     			i := i + 1; (* Datenzeiger erhöhen *)

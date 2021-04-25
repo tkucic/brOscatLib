@@ -15,7 +15,7 @@ FUNCTION DEG_TO_DIR
     convert to integer calculation
     DIR := ((DIR*2 + 45) / 90) MOD 8
     N = 0, NE = 1 ....
-    ther above formula replaces 2^N with shift for performance
+    ther above formula replaces 2N with shift for performance
     *)
 
 

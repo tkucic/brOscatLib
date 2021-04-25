@@ -4,9 +4,9 @@ FUNCTION CAPITALIZE
     CAPITALIZE := STR;
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF first THEN PT^ := TO_UPPER(PT^);	END_IF
+    	IF first THEN PT := TO_UPPER(PT);	END_IF
     	(* remember in first if the next char needs to capitalized *)
-    	first := PT^= 32;
+    	first := PT= 32;
     	PT := PT + 1;
     END_FOR
 

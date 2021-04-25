@@ -3,7 +3,7 @@ FUNCTION IS_UPPER
     pt := ADR(STR);
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF NOT (ISC_UPPER(pt^)) THEN
+    	IF NOT (ISC_UPPER(pt)) THEN
     		IS_UPPER := FALSE;
     		RETURN;
     	END_IF

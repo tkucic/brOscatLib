@@ -4,13 +4,13 @@ FUNCTION DWORD_TO_STRB
     pt := ADR(DWORD_TO_STRB);
     (* die 8 ausgabecharacter ermitteln und schreiben *)
     FOR i := 1 TO 32 DO
-    	pt^:= BOOL_TO_BYTE(IN.31) + 48;
+    	pt:= BOOL_TO_BYTE(IN.31) + 48;
     	IN := SHL(IN,1);
     	pt := pt + 1;
     END_FOR
 
     (* der ausgabestring muss nochg mit 0 abgeschlossen werden *)
-    pt^ := 0;
+    pt := 0;
 
     (* revision history
     hm		9.6.2007	rev 1.0		

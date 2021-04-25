@@ -7,7 +7,7 @@ FUNCTION ELEMENT_COUNT
     	ELEMENT_COUNT := 1;
     	l := LEN(ELEMENT);
     	FOR pos := 1 TO l DO
-    		IF pt^[pos] = SEP THEN ELEMENT_COUNT := ELEMENT_COUNT + 1; END_IF
+    		IF pt[pos] = SEP THEN ELEMENT_COUNT := ELEMENT_COUNT + 1; END_IF
     	END_FOR
     END_IF
 

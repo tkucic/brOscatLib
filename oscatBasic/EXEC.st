@@ -16,7 +16,7 @@ FUNCTION EXEC
     	EXEC := STR;
     	RETURN;
     END_IF
-    IF operator = '^' THEN
+    IF operator = '' THEN
     	EXEC := REAL_TO_STRING(EXPT(R1, R2));
     ELSIF operator = 'SQRT' THEN
     	EXEC := REAL_TO_STRING(SQRT(R2));

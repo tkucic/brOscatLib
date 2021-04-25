@@ -3,7 +3,7 @@ FUNCTION IS_LOWER
     pt := ADR(STR);
     l := LEN(STR);
     FOR pos := 1 TO l DO
-    	IF NOT (ISC_LOWER(pt^)) THEN
+    	IF NOT (ISC_LOWER(pt)) THEN
     		IS_LOWER := FALSE;
     		RETURN;
     	END_IF

@@ -4,7 +4,7 @@ FUNCTION OCT_TO_DWORD
     stop := LEN(OCT);
     FOR i := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
-    	X := pt^;
+    	X := pt;
     	(* calculate the value of the digit *)
     	IF X > 47 AND X < 56 THEN
     		OCT_TO_DWORD := SHL(OCT_TO_DWORD,3) + X - 48;
