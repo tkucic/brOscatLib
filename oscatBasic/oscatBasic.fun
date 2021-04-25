@@ -743,8 +743,8 @@ FUNCTION_BLOCK FT_INT (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         K : REAL := 1;
         RUN : BOOL := TRUE;
         RST : BOOL;
-        OUT_MIN : REAL := -1E+37;
-        OUT_MAX : REAL := 1E+37;
+        OUT_MIN : REAL := -1.0E+37;
+        OUT_MAX : REAL := 1.0E+37;
     END_VAR
     VAR_OUTPUT 
         OUT : REAL;
@@ -760,8 +760,8 @@ FUNCTION_BLOCK FT_INT2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         K : REAL := 1;
         RUN : BOOL := TRUE;
         RST : BOOL;
-        OUT_MIN : REAL := -1E+38;
-        OUT_MAX : REAL := 1E+38;
+        OUT_MIN : REAL := -1.0E+38;
+        OUT_MAX : REAL := 1.0E+38;
     END_VAR
     VAR_OUTPUT 
         OUT : REAL;
@@ -806,8 +806,8 @@ FUNCTION_BLOCK FT_PI (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat
         IN : REAL;
         KP : REAL := 1;
         KI : REAL := 1;
-        ILIM_L : REAL := -1E+38;
-        ILIM_H : REAL := 1E+38;
+        ILIM_L : REAL := -1.0E+38;
+        ILIM_H : REAL := 1.0E+38;
         IEN : BOOL := TRUE;
         RST : BOOL;
     END_VAR
@@ -825,8 +825,8 @@ FUNCTION_BLOCK FT_PID (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         KP : REAL := 1;
         TN : REAL := 1;
         TV : REAL := 1;
-        ILIM_L : REAL := -1E+38;
-        ILIM_H : REAL := 1E+38;
+        ILIM_L : REAL := -1.0E+38;
+        ILIM_H : REAL := 1.0E+38;
         IEN : BOOL := TRUE;
         RST : BOOL;
     END_VAR
@@ -845,8 +845,8 @@ FUNCTION_BLOCK FT_PIDW (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         KP : REAL := 1;
         TN : REAL := 1;
         TV : REAL := 1;
-        LIM_L : REAL := -1E+38;
-        LIM_H : REAL := 1E+38;
+        LIM_L : REAL := -1.0E+38;
+        LIM_H : REAL := 1.0E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -865,8 +865,8 @@ FUNCTION_BLOCK FT_PIDWL (* Control *)(* http://www.oscat.de/images/OSCATBasic/os
         KP : REAL := 1;
         TN : REAL := 1;
         TV : REAL := 1;
-        LIM_L : REAL := -1E+38;
-        LIM_H : REAL := 1E+38;
+        LIM_L : REAL := -1.0E+38;
+        LIM_H : REAL := 1.0E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -883,8 +883,8 @@ FUNCTION_BLOCK FT_PIW (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         IN : REAL;
         KP : REAL := 1;
         KI : REAL := 1;
-        LIM_L : REAL := -1E+38;
-        LIM_H : REAL := 1E+38;
+        LIM_L : REAL := -1.0E+38;
+        LIM_H : REAL := 1.0E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -900,8 +900,8 @@ FUNCTION_BLOCK FT_PIWL (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         IN : REAL;
         KP : REAL := 1;
         KI : REAL := 1;
-        LIM_L : REAL := -1E+38;
-        LIM_H : REAL := 1E+38;
+        LIM_L : REAL := -1.0E+38;
+        LIM_H : REAL := 1.0E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
