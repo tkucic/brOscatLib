@@ -19,7 +19,7 @@ FUNCTION_BLOCK GEN_SIN
     END_IF
 
     (* generate sine wave *)
-    IF PT > t#0s THEN temp := SIN(math.PI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(PT, DL))) / DWORD_TO_REAL(TIME_TO_DWORD(PT))); END_IF
+    IF PT > t#0s THEN temp := SIN(cPI2 * DWORD_TO_REAL(TIME_TO_DWORD(tx + MULTIME(PT, DL))) / DWORD_TO_REAL(TIME_TO_DWORD(PT))); END_IF
     OUT := AM * 0.5 *  temp + OS;
 
     (* boolean output Q *)

@@ -12,7 +12,7 @@ FUNCTION RDM
     tn.24 := tn.3;
     tn := ROL(tn,BIT_COUNT(tn)) OR 16#80000001;
     tn := tn MOD 71474513 + INT_TO_DWORD(tc + 77);
-    RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (math.E - LIMIT(0.0,LAST,1.0)));
+    RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (cEuler - LIMIT(0.0,LAST,1.0)));
 
 
     (*

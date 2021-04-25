@@ -1,6 +1,6 @@
 FUNCTION F_TO_OM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362*)
-    F_TO_OM := math.PI2 * F;
+    F_TO_OM := cPI2 * F;
 
 
     (* revision history

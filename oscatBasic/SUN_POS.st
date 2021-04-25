@@ -5,13 +5,13 @@ FUNCTION_BLOCK SUN_POS
     (* be careful for step7 date startes 1.1.1990 instead of 1.1.1970 *)
     (* for step7 this line must change *)
     n := DWORD_TO_REAL(DT_TO_DWORD(UTC) - 946728000) * 0.000011574074074074;
-    g :=MODR(6.240040768 + 0.01720197 * n, math.PI2);
-    d := MODR(4.89495042 + 0.017202792 * n, math.PI2) + 0.033423055 * SIN(g) + 0.000349066 * SIN(2.0*g);
+    g :=MODR(6.240040768 + 0.01720197 * n, cPI2);
+    d := MODR(4.89495042 + 0.017202792 * n, cPI2) + 0.033423055 * SIN(g) + 0.000349066 * SIN(2.0*g);
     e := 0.409087723 - 0.000000006981317008 * n;
     cos_d := COS(d);
     sin_d := SIN(d);
     a := ATAN(COS(e) * sin_d / cos_d);
-    IF cos_d < 0.0 THEN a := a + math.PI; END_IF
+    IF cos_d < 0.0 THEN a := a + cPI; END_IF
     c := ASIN(SIN(e) * sin_d);
 
     (* also here we must be very careful UTC is from 1.1.1970 for step7 the formula must change *)
@@ -22,8 +22,8 @@ FUNCTION_BLOCK SUN_POS
     cos_tau := COS(tau);
     t1 := cos_tau * sin_lat - TAN(c) * cos_lat;
     B := ATAN(SIN(tau) / t1);
-    IF t1< 0.0 THEN B := B + math.PI2; ELSE B := B + math.PI; END_IF
-    B := DEG(MODR(B, math.PI2));
+    IF t1< 0.0 THEN B := B + cPI2; ELSE B := B + cPI; END_IF
+    B := DEG(MODR(B, cPI2));
     H := DEG(ASIN(COS(c) * cos_tau * cos_lat +SIN(c) * sin_lat));
     IF H > 180.0 THEN H := H - 360.0; END_IF
     (* consider refraction *)

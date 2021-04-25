@@ -3,11 +3,11 @@ FUNCTION GDF
     IF X = 0.0 THEN
     	GDF := 0.0;
     ELSIF X > 15.0 THEN
-    	GDF := math.PI05;
+    	GDF := cPI05;
     ELSIF X < -15.0 THEN
-    	GDF := -math.PI05;
+    	GDF := -cPI05;
     ELSE
-    	GDF := ATAN(EXP(X)) * 2.0 - math.PI05;
+    	GDF := ATAN(EXP(X)) * 2.0 - cPI05;
     END_IF
 
     (* revision history
