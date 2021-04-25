@@ -10,7 +10,7 @@ FUNCTION DEW_TEMP
     	V := LOG(RH * 0.01 * EXP10((a*T) / (b+T)));
     	DEW_TEMP := b*V / (a-V);
     ELSE
-    	DEW_TEMP:= phys.T0;
+    	DEW_TEMP:= cT0;
     END_IF
 
     (* revision history

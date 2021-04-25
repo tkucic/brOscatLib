@@ -1,6 +1,6 @@
 FUNCTION C_TO_K
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356*)
-    C_TO_K := CELSIUS - phys.T0;
+    C_TO_K := CELSIUS - cT0;
 
     (* revision history
 

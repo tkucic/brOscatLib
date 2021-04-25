@@ -1,6 +1,6 @@
 FUNCTION K_TO_C
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=366*)
-    K_TO_C := KELVIN + phys.T0;
+    K_TO_C := KELVIN + cT0;
 
 
     (* revision history
