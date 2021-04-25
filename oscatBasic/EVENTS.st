@@ -11,8 +11,8 @@ FUNCTION_BLOCK EVENTS
     	(* search list for events *)
     	FOR i := 0 TO size DO
     		check := ELIST[i];
-    		lday := DAY_OF_DATE(SET_DATE(cyr,check.month, check.day));
-    		IF day_in >= lday AND day_in <= lday + check.use - 1 THEN
+    		lday := DAY_OF_DATE(SET_DATE(cyr,check.MONTH, check.DAY));
+    		IF day_in >= lday AND day_in <= lday + check.USE - 1 THEN
     			y_int := TRUE;
     			name_int := check.NAME;
     			EXIT;

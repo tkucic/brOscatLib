@@ -2,11 +2,11 @@ FUNCTION CACOSH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84*)
     Y.re := (X.re - X.im)*(X.re + X.im) - 1.0;
     Y.im := 2.0 * X.re * X.im;
-    Y    := CSQRT(Y);
+    CSQRT(Y, Y);
     Y.re := Y.re + X.re;
     Y.im := Y.im + X.im;
-    CACOSH  := CLOG(Y);
-
+    CLOG(Y, RETVAL);
+    CACOSH  := TRUE;
 
 
     (* revision history

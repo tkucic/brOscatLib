@@ -1,6 +1,7 @@
 FUNCTION V3_PAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110*)
-    V3_PAR := V3_ABS(V3_XPRO(A, B)) = 0.0;
+    V3_XPRO(A, B,temp);
+    V3_PAR := V3_ABS(temp) = 0.0;
 
 
 

@@ -15,7 +15,7 @@ FUNCTION_BLOCK FT_PIDWL
 
     	(* run differentiator and add_to_output *)
     	diff(IN := IN, K := KP * TV);
-    	Y := piwl.Y + diff.out;
+    	Y := piwl.Y + diff.OUT;
 
     	(* limit the output *)
     	IF Y < LIM_L THEN

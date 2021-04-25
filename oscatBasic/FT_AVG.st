@@ -11,7 +11,7 @@ FUNCTION_BLOCK FT_AVG
     	init := TRUE;
     ELSIF E THEN
     	buff(IN := IN);
-    	AVG := AVG + (IN - buff.out ) / INT_TO_REAL(N);
+    	AVG := AVG + (IN - buff.OUT ) / INT_TO_REAL(N);
     END_IF
 
     (* revision history

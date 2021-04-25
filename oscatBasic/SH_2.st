@@ -31,7 +31,7 @@ FUNCTION_BLOCK SH_2
     	(* any calculation with the samples is here *)
     	stop := M - 1 - d2;
     	start := d2;
-    	IF NOT even(DISC) THEN start := start + 1; END_IF
+    	IF NOT EVEN(DISC) THEN start := start + 1; END_IF
     	AVG := 0;
     	FOR i := start TO stop DO AVG := AVG + buf[i]; END_FOR
     	AVG := AVG / INT_TO_REAL(stop - start +1);

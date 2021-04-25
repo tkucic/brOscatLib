@@ -2,7 +2,7 @@ FUNCTION_BLOCK _RMP_NEXT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255*)
     dirx(X := IN);
 
-    t_lock(IN := FALSE, pt := TL);
+    t_lock(IN := FALSE, PT := TL);
 
     IF dirx.TU AND (OUT < IN) THEN
     	IF NOT xdir AND xen THEN t_lock(IN := TRUE); END_IF
@@ -28,7 +28,7 @@ FUNCTION_BLOCK _RMP_NEXT
     	DN := FALSE;
     END_IF
 
-    rmx(rmp := OUT, E := E AND (UP OR DN) , DIR := DIR, TR := SEL(DIR, TF, TR));
+    rmx(RMP := OUT, E := E AND (UP OR DN) , DIR := DIR, TR := SEL(DIR, TF, TR));
 
 
     (* revison history

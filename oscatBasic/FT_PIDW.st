@@ -23,7 +23,7 @@ FUNCTION_BLOCK FT_PIDW
 
     (* add differential part and limit output Y *)
 
-    Y := LIMIT(LIM_L, Y + KP * diff.out, LIM_H);
+    Y := LIMIT(LIM_L, Y + KP * diff.OUT, LIM_H);
 
 
 

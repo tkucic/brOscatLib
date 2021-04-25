@@ -1,7 +1,7 @@
 FUNCTION_BLOCK FADE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=276*)
-    rmx(RST := RST AND NOT F, set := RST AND F, pt := TF, up := F);
-    Y := (IN2 - IN1) / 65535.0 * WORD_TO_REAL(rmx.out) + IN1;
+    rmx(RST := RST AND NOT F, SET := RST AND F, PT := TF, UP := F);
+    Y := (IN2 - IN1) / 65535.0 * WORD_TO_REAL(rmx.OUT) + IN1;
 
 
     (* code for rev 1.1

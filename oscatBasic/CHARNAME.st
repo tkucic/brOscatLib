@@ -2,23 +2,25 @@ FUNCTION CHARNAME
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147*)
     IF C <> 0 THEN
     	(* construct search string from code followed by $ sign, also clear CHARNAME string*)
-    	CHARNAME := CHR_TO_STRING(C);
-    	CHARNAME := CONCAT(CHARNAME,'&');
-    	CHARNAME := CONCAT(';', CHARNAME);
+    	CHR_TO_STRING(C, RETVAL);
+    	RETVAL := CONCAT(RETVAL,'&');
+    	RETVAL := CONCAT(';', RETVAL);
     	WHILE pos = 0 AND (i < 4) DO
     		i := i + 1;
-    		pos := FIND(cCHARNAMES[i], CHARNAME);
+    		pos := FIND(cCHARNAMES[i], RETVAL);
     	END_WHILE
     	IF pos > 0 THEN
-    		CHARNAME := MID(cCHARNAMES[i], 10, pos + 3);
+    		RETVAL := MID(cCHARNAMES[i], 10, pos + 3);
     		(* search for end of name and truncate *)
-    		pos := FIND(CHARNAME, ';');
-    		CHARNAME := LEFT(CHARNAME,pos - 1);
+    		pos := FIND(RETVAL, ';');
+    		RETVAL := LEFT(RETVAL,pos - 1);
     	ELSE
-    		CHARNAME := CHR_TO_STRING(C);
+    		 CHR_TO_STRING(C, RETVAL);
     	END_IF
+        CHARNAME:=TRUE;
     ELSE
-    	CHARNAME := '';
+    	RETVAL := '';
+        CHARNAME:=FALSE;
     END_IF
 
 

@@ -2,7 +2,7 @@ FUNCTION_BLOCK RTC_2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=133*)
     (* call rtc *)
     RT(SET := SET, SDT := SDT, SMS := SMS);
-    UDT := RT.xdt;
+    UDT := RT.XDT;
     XMS := RT.XMS;
 
     (* check for daylight savings time and SET DSO output *)

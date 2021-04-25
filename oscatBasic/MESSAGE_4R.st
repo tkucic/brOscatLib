@@ -3,10 +3,10 @@ FUNCTION_BLOCK MESSAGE_4R
     (* check for rising edge_ on EN *)
     TR := FALSE;
     IF ENQ THEN
-    	IF (NOT edge_ AND CLK) OR timer.q THEN
+    	IF (NOT edge_ AND CLK) OR timer.Q THEN
     			MN := INC1(MN, MM);
     			TR := TRUE;
-    			timer(in := FALSE);
+    			timer(IN := FALSE);
     			CASE MN OF
     				0 : MX := M0;
     				1 : MX := M1;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK MESSAGE_4R
     			END_CASE
     	END_IF
     	edge_ := CLK;
-    	timer( in := CLK, pt := T1);
+    	timer( IN := CLK, PT := T1);
     ELSE
     	MX := '';
     	MN := 0;

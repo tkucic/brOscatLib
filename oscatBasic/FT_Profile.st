@@ -9,7 +9,7 @@ FUNCTION_BLOCK FT_Profile
     	ET := t#0s;
     	t0 := tx;
     	ta := tx;
-    	tb := multime(TIME_1, M);
+    	tb := MULTIME(TIME_1, M);
     	va := VALUE_0;
     	vb := VALUE_1;
     	temp := VALUE_0;
@@ -22,7 +22,7 @@ FUNCTION_BLOCK FT_Profile
     	CASE state OF
     		1:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(TIME_2 - TIME_1, M);
+    				tb := MULTIME(TIME_2 - TIME_1, M);
     				va := VALUE_1;
     				vb := VALUE_2;
     				temp := VALUE_1;
@@ -32,7 +32,7 @@ FUNCTION_BLOCK FT_Profile
     			END_IF
     		2:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(TIME_3 - TIME_2, M);
+    				tb := MULTIME(TIME_3 - TIME_2, M);
     				va := VALUE_2;
     				vb := VALUE_3;
     				temp := VALUE_2;
@@ -42,7 +42,7 @@ FUNCTION_BLOCK FT_Profile
     			END_IF
     		3:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(TIME_10 - TIME_3, M);
+    				tb := MULTIME(TIME_10 - TIME_3, M);
     				va := VALUE_3;
     				vb := VALUE_10;
     				temp := VALUE_3;
@@ -52,7 +52,7 @@ FUNCTION_BLOCK FT_Profile
     			END_IF
     		4 :	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(TIME_11 - TIME_10, M);
+    				tb := MULTIME(TIME_11 - TIME_10, M);
     				va := VALUE_10;
     				vb := VALUE_11;
     				temp := VALUE_10;
@@ -68,7 +68,7 @@ FUNCTION_BLOCK FT_Profile
     			END_IF
     		6:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(TIME_12 - TIME_11, M);
+    				tb := MULTIME(TIME_12 - TIME_11, M);
     				va := VALUE_11;
     				vb := VALUE_12;
     				temp := VALUE_11;
@@ -78,7 +78,7 @@ FUNCTION_BLOCK FT_Profile
     			END_IF
     		7:	IF tx - ta >= tb THEN
     				ta := ta + tb;
-    				tb := multime(TIME_13 - TIME_12, M);
+    				tb := MULTIME(TIME_13 - TIME_12, M);
     				va := VALUE_12;
     				vb := VALUE_13;
     				temp := VALUE_12;

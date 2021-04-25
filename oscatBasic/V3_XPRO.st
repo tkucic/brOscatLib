@@ -1,9 +1,9 @@
 FUNCTION V3_XPRO
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112*)
-    V3_XPRO.X := A.Y * B.Z - A.Z * B.Y;
-    V3_XPRO.Y := A.Z * B.X - A.X * B.Z;
-    V3_XPRO.Z := A.X * B.Y - A.Y * B.X;
-
+    RETVAL.X := A.Y * B.Z - A.Z * B.Y;
+    RETVAL.Y := A.Z * B.X - A.X * B.Z;
+    RETVAL.Z := A.X * B.Y - A.Y * B.X;
+    V3_XPRO:=TRUE;
 
 
     (* revision history

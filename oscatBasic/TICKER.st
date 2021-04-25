@@ -10,10 +10,10 @@ FUNCTION_BLOCK TICKER
     		(* extract dispay from TEXT *)
     		DISPLAY := MID(TEXT, N, step);
     		(* set delay timer for next tick *)
-    		delay(in := TRUE, PT := PT);
+    		delay(IN := TRUE, PT := PT);
     	ELSE;
     		(* execute delay timer *)
-    		delay(in := FALSE);
+    		delay(IN := FALSE);
     	END_IF
     ELSE
     	DISPLAY := TEXT;

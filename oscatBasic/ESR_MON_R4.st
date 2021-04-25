@@ -20,36 +20,36 @@ FUNCTION_BLOCK ESR_MON_R4
     	ESR_OUT[cnt].ADRESS := A0;
     	ESR_OUT[cnt].DS := DT_IN;
     	ESR_OUT[cnt].TS := tx;
-    	ESR_OUT[cnt].DATA[0] := Byte_of_Dword(p0,0);
-    	ESR_OUT[cnt].DATA[1] := Byte_of_Dword(p0,1);
-    	ESR_OUT[cnt].DATA[2] := Byte_of_Dword(p0,2);
-    	ESR_OUT[cnt].DATA[3] := Byte_of_Dword(p0,3);
+    	ESR_OUT[cnt].DATA[0] := BYTE_OF_DWORD(p0,0);
+    	ESR_OUT[cnt].DATA[1] := BYTE_OF_DWORD(p0,1);
+    	ESR_OUT[cnt].DATA[2] := BYTE_OF_DWORD(p0,2);
+    	ESR_OUT[cnt].DATA[3] := BYTE_OF_DWORD(p0,3);
     	x0 := R0;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
-    IF differ(R1,  x1, S1) THEN
+    IF DIFFER(R1,  x1, S1) THEN
     	ESR_OUT[cnt].TYP := 20;
     	ESR_OUT[cnt].ADRESS := A1;
     	ESR_OUT[cnt].DS := DT_IN;
     	ESR_OUT[cnt].TS := tx;
-    	ESR_OUT[cnt].DATA[0] := Byte_of_Dword(p1,0);
-    	ESR_OUT[cnt].DATA[1] := Byte_of_Dword(p1,1);
-    	ESR_OUT[cnt].DATA[2] := Byte_of_Dword(p1,2);
-    	ESR_OUT[cnt].DATA[3] := Byte_of_Dword(p1,3);
+    	ESR_OUT[cnt].DATA[0] := BYTE_OF_DWORD(p1,0);
+    	ESR_OUT[cnt].DATA[1] := BYTE_OF_DWORD(p1,1);
+    	ESR_OUT[cnt].DATA[2] := BYTE_OF_DWORD(p1,2);
+    	ESR_OUT[cnt].DATA[3] := BYTE_OF_DWORD(p1,3);
     	x1 := R1;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
     END_IF
-    IF differ(R2,  x2, S2) THEN
+    IF DIFFER(R2,  x2, S2) THEN
     	ESR_OUT[cnt].TYP := 20;
     	ESR_OUT[cnt].ADRESS := A2;
     	ESR_OUT[cnt].DS := DT_IN;
     	ESR_OUT[cnt].TS := tx;
-    	ESR_OUT[cnt].DATA[0] := Byte_of_Dword(p2,0);
-    	ESR_OUT[cnt].DATA[1] := Byte_of_Dword(p2,1);
-    	ESR_OUT[cnt].DATA[2] := Byte_of_Dword(p2,2);
-    	ESR_OUT[cnt].DATA[3] := Byte_of_Dword(p2,3);
+    	ESR_OUT[cnt].DATA[0] := BYTE_OF_DWORD(p2,0);
+    	ESR_OUT[cnt].DATA[1] := BYTE_OF_DWORD(p2,1);
+    	ESR_OUT[cnt].DATA[2] := BYTE_OF_DWORD(p2,2);
+    	ESR_OUT[cnt].DATA[3] := BYTE_OF_DWORD(p2,3);
     	x2 := R2;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;
@@ -59,10 +59,10 @@ FUNCTION_BLOCK ESR_MON_R4
     	ESR_OUT[cnt].ADRESS := A3;
     	ESR_OUT[cnt].DS := DT_IN;
     	ESR_OUT[cnt].TS := tx;
-    	ESR_OUT[cnt].DATA[0] := Byte_of_Dword(p3,0);
-    	ESR_OUT[cnt].DATA[1] := Byte_of_Dword(p3,1);
-    	ESR_OUT[cnt].DATA[2] := Byte_of_Dword(p3,2);
-    	ESR_OUT[cnt].DATA[3] := Byte_of_Dword(p3,3);
+    	ESR_OUT[cnt].DATA[0] := BYTE_OF_DWORD(p3,0);
+    	ESR_OUT[cnt].DATA[1] := BYTE_OF_DWORD(p3,1);
+    	ESR_OUT[cnt].DATA[2] := BYTE_OF_DWORD(p3,2);
+    	ESR_OUT[cnt].DATA[3] := BYTE_OF_DWORD(p3,3);
     	x3 := R3;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;

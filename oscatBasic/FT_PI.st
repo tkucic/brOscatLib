@@ -5,7 +5,7 @@ FUNCTION_BLOCK FT_PI
 
     (* check if integrator has reached its limits and set overflow *)
     LIM := integ.LIM;
-    Y := KP * IN + integ.Out;
+    Y := KP * IN + integ.OUT;
 
 
 

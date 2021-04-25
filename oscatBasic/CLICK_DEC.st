@@ -8,7 +8,7 @@ FUNCTION_BLOCK CLICK_DEC
     	Q3 := FALSE;
     END_IF
 
-    IF IN AND NOT edge_ AND NOT tx.q THEN
+    IF IN AND NOT edge_ AND NOT tx.Q THEN
     	(* a rising edge_ on IN sets the counter to 0 *)
     	cnt := 0;
     ELSIF tx.Q AND NOT IN AND edge_ THEN
@@ -26,7 +26,7 @@ FUNCTION_BLOCK CLICK_DEC
 
     (* remember the status of IN *)
     edge_ := IN;
-    tx(IN := IN, pt := TC);
+    tx(IN := IN, PT := TC);
 
 
 

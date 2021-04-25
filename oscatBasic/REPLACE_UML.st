@@ -2,11 +2,11 @@ FUNCTION REPLACE_UML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178*)
     pt := ADR(STR);
     pto := ADR(REPLACE_UML);
-    ptm := pto + INT_TO_DWORD(string_length);
+    ptm := pto + INT_TO_DWORD(STRING_LENGTH);
     pt1 := ADR(su);
     pt2 := pt1 + 1;
     L := LEN(STR);
-    WHILE pos < L AND pos < string_length DO
+    WHILE pos < L AND pos < STRING_LENGTH DO
     	IF pt < 127 THEN
     		(* no uml character simlply copy the character*)
     		pto := pt;
@@ -35,7 +35,7 @@ FUNCTION REPLACE_UML
     	original version
 
     hm	29. mar. 2008	rev 1.1
-    	changed STRING to STRING(STRING_LENGTH)
+    	changed STRING to STRING(STRING_LENGHT)
     	new code to avoid pointer out of range
     	use new function to_uml
     *)

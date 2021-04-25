@@ -1,8 +1,8 @@
 FUNCTION_BLOCK CTRL_PI
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=382*)
     DIFF := CTRL_IN(SET, ACT, SUP);
-    pi(in := DIFF, KP := KP, KI := KI, lim_l := LL, lim_h := LH, RST := RST);
-    co(ci := pi.Y, OFFSET := OFS, man_in := M_I, lim_l := LL, lim_h := LH, MANUAL := MAN);
+    pi(IN := DIFF, KP := KP, KI := KI, LIM_L := LL, LIM_H := LH, RST := RST);
+    co(CI := pi.Y, OFFSET := OFS, MAN_IN := M_I, LIM_L := LL, LIM_H := LH, MANUAL := MAN);
     Y := co.Y;
     LIM := co.LIM;
 

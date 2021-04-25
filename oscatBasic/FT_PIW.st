@@ -4,7 +4,7 @@ FUNCTION_BLOCK FT_PIW
     integ(IN := IN, K := KI, RUN := NOT LIM, RST := RST);
 
     (* set output value *)
-    Y := KP * IN + integ.Out;
+    Y := KP * IN + integ.OUT;
 
     (* check for limits and set integrator for anti wind up *)
     IF Y < LIM_L THEN

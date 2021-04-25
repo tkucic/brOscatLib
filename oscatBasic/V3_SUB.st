@@ -1,9 +1,9 @@
 FUNCTION V3_SUB
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112*)
-    V3_SUB.X := A.X - B.X;
-    V3_SUB.Y := A.Y - B.Y;
-    V3_SUB.Z := A.Z - B.Z;
-
+    RETVAL.X := A.X - B.X;
+    RETVAL.Y := A.Y - B.Y;
+    RETVAL.Z := A.Z - B.Z;
+    V3_SUB := TRUE;
 
 
     (* revision history

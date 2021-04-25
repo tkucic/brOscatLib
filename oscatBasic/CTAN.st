@@ -3,9 +3,9 @@ FUNCTION CTAN
     xi2 := 2.0 * X.im;
     xr2 := 2.0 * X.re;
     temp := 1.0 / (COS(xr2) + COSH( xi2));
-    CTAN.re := temp * SIN(xr2);
-    CTAN.im := temp * SINH(xi2);
-
+    RETVAL.re := temp * SIN(xr2);
+    RETVAL.im := temp * SINH(xi2);
+    CTAN:=TRUE;
 
     (* revision history
     hm	21. feb 2008	rev 1.0

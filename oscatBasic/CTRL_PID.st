@@ -1,8 +1,8 @@
 FUNCTION_BLOCK CTRL_PID
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=384*)
     DIFF := CTRL_IN(SET, ACT, SUP);
-    pid(in := DIFF, KP := KP, TN := TN, TV := TV, lim_l := LL, lim_h := LH, RST := RST);
-    co(ci := pid.Y, OFFSET := OFS, man_in := M_I, lim_l := LL, lim_h := LH, MANUAL := MAN);
+    pid(IN := DIFF, KP := KP, TN := TN, TV := TV, LIM_L := LL, LIM_H := LH, RST := RST);
+    co(CI := pid.Y, OFFSET := OFS, MAN_IN := M_I, LIM_L := LL, LIM_H := LH, MANUAL := MAN);
     Y := co.Y;
     LIM := co.LIM;
 

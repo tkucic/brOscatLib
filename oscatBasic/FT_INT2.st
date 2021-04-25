@@ -1,11 +1,11 @@
 FUNCTION_BLOCK FT_INT2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=402*)
     IF RST THEN
-    	val := R2_SET(0.0);
+    	R2_SET(0.0, val);
     	OUT := 0.0;
     ELSE
     	integ(X := IN, E := RUN, K := K, Y := ix);
-    	val := R2_ADD(val, ix);
+    	R2_ADD(val, ix, val);
     	ix := 0.0;
     	OUT := val.RX;
     END_IF
@@ -15,7 +15,7 @@ FUNCTION_BLOCK FT_INT2
     	LIM := FALSE;
     ELSE
     	OUT := LIMIT(OUT_MIN, OUT, OUT_MAX);
-    	val := R2_SET(OUT);
+    	R2_SET(OUT, val);
     	LIM := TRUE;
     END_IF
 

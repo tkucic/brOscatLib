@@ -2,8 +2,8 @@ FUNCTION DWORD_TO_STRF
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154*)
     (* limit N to max 20 characters *)
     (* convert dword to string first and cut to length N *)
-    DWORD_TO_STRF := FIX(DWORD_TO_STRING(IN),LIMIT(0,N,20),48,1);
-
+    FIX(DWORD_TO_STRING(IN),LIMIT(0,N,20),48,1, RETVAL);
+    DWORD_TO_STRF := TRUE;
 
     (* revision history
     hm	26. jan.2007	rev 1.0		

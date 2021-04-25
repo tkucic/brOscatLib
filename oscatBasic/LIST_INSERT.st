@@ -10,7 +10,7 @@ FUNCTION LIST_INSERT
     	(* search for position *)
     	WHILE read < LIST_LENGTH DO
     		IF cnt >= POS THEN
-    			sx := CHR_TO_STRING(SEP);
+    			CHR_TO_STRING(SEP, sx);
     			INS := CONCAT(sx, INS);
     			LIST := INSERT(LIST, INS, read - 1);
     			LIST_INSERT := TRUE;

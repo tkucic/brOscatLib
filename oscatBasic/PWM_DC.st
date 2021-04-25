@@ -3,7 +3,7 @@ FUNCTION_BLOCK PWM_DC
     IF F > 0.0 THEN
     	tmp := 1000.0 / F;
     	clk(PT := REAL_TO_TIME(tmp));
-    	pulse(in := clk.Q, pt := REAL_TO_TIME(tmp * DC));
+    	pulse(IN := clk.Q, PT := REAL_TO_TIME(tmp * DC));
     	Q := pulse.Q;
     END_IF
 

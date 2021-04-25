@@ -5,9 +5,9 @@ FUNCTION_BLOCK SELECT_8
     ELSIF SET THEN
     	STATE := IN;
     ELSIF UP AND NOT last_up THEN
-    	STATE := inc(STATE,1,7);
+    	STATE := INC(STATE,1,7);
     ELSIF DN AND NOT last_dn THEN
-    	STATE := inc(STATE,-1,7);
+    	STATE := INC(STATE,-1,7);
     END_IF
     last_up := UP;
     last_dn := DN;

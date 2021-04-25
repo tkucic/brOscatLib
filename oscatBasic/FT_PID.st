@@ -11,7 +11,7 @@ FUNCTION_BLOCK FT_PID
     diff(IN := IN, K := TV);
 
     (* combine both values *)
-    Y := KP * (integ.Out + diff.out + IN);
+    Y := KP * (integ.OUT + diff.OUT + IN);
 
     (* check if integrator has reached its limits and set overflow *)
     LIM := integ.LIM;

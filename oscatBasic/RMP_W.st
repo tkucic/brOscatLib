@@ -1,7 +1,7 @@
 FUNCTION_BLOCK RMP_W
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=267*)
     (* generate ramp *)
-    rmp(dir := UP, E := E, TR := PT, rmp := OUT);
+    rmp(DIR := UP, E := E, TR := PT, RMP := OUT);
 
     (* SET or reset operation *)
     IF RST THEN

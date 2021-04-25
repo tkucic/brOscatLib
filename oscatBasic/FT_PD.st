@@ -4,7 +4,7 @@ FUNCTION_BLOCK FT_PD
     diff(IN := IN, K := TV);
 
     (* combine both values *)
-    Y := KP * (diff.out + IN);
+    Y := KP * (diff.OUT + IN);
 
 
 

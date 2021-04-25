@@ -23,7 +23,7 @@ FUNCTION_BLOCK METER
     	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF
     	IF I2 THEN MX2 := M2; ELSE MX2 := 0.0; END_IF
     	(* add up the current values in a double real *)
-    	MR := R2_ADD(MR,(SEL(I1,0.0,MX1) + SEL(I2, 0.0, MX2)) / D * tc);
+    	R2_ADD(MR,(SEL(I1,0.0,MX1) + SEL(I2, 0.0, MX2)) / D * tc, MR);
     	(* set the current output value *)
     	MX := MR.RX;
     END_IF

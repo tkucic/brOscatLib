@@ -16,7 +16,7 @@ FUNCTION_BLOCK CLICK_CNT
 
     (* remember the status of IN *)
     edge_ := IN;
-    tx(IN := IN, pt := TC);
+    tx(IN := IN, PT := TC);
 
 
     (* revision history

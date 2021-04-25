@@ -2,7 +2,7 @@ FUNCTION AOUT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=271*)
     (* if SIGN bit is defined *)
     IF SIGN < 32 THEN
-    	sx := sign_R(IN);
+    	sx := SIGN_R(IN);
     	in2 := ABS(IN);
     ELSE
     	in2 := IN;
