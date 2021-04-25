@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DLOG_REAL
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=51*)
-    CASE X.ADD_COM OF
+    CASE x.ADD_COM OF
 
     01:	(* ADD INFO *)
     	X.ID_MAX := X.ID_MAX + USINT#1;
@@ -11,7 +11,7 @@ FUNCTION_BLOCK DLOG_REAL
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
     03:	(* ADD DATA *)
-    	X.UCB.D_STRING := REAL_TO_STRF(IN:=value_last,N:=N,D:=D);
+    	X.UCB.D_STRING := OSCAT_BASIC.REAL_TO_STRF(IN:=value_last,N:=N,D:=D);
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
@@ -21,9 +21,9 @@ FUNCTION_BLOCK DLOG_REAL
     		IF VALUE <= (delta_last - DELTA) OR VALUE >= (delta_last + DELTA) THEN
     			X.ADD_DATA_REQ := TRUE;
     			delta_last := VALUE;
-    		END_IF
-    	END_IF
-    END_CASE
+    		END_IF;
+    	END_IF;
+    END_CASE;
     value_last := VALUE;
 
     (* revision history

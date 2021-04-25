@@ -27,28 +27,28 @@ FUNCTION_BLOCK PARSET
     	P2 := X02;
     	P3 := X03;
     	P4 := X04;
-    END_IF
+    END_IF;
 
     (* check for input change *)
     IF (A0 XOR set.0) OR (A1 XOR set.1) THEN
     	(* a new set is selected *)
     	set.0 := A0;
     	set.1 := A1;
-    	IF TC > t#0s THEN
+    	IF tc > t#0s THEN
     		start := TRUE;
     		last := tx;
     		(* save the step speed for the output changes in S *)
-    		S1 := (X[set,1] - P1)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    		S2 := (X[set,2] - P2)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    		S3 := (X[set,3] - P3)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    		S4 := (X[set,4] - P4)/DWORD_TO_REAL(TIME_TO_DWORD(TC));
-    	END_IF
-    ELSIF start AND tx - last < TIME_TO_DWORD(TC) THEN
+    		S1 := (X[set,1] - P1)/DWORD_TO_REAL(TIME_TO_DWORD(tc));
+    		S2 := (X[set,2] - P2)/DWORD_TO_REAL(TIME_TO_DWORD(tc));
+    		S3 := (X[set,3] - P3)/DWORD_TO_REAL(TIME_TO_DWORD(tc));
+    		S4 := (X[set,4] - P4)/DWORD_TO_REAL(TIME_TO_DWORD(tc));
+    	END_IF;
+    ELSIF start AND tx - last < TIME_TO_DWORD(tc) THEN
     	(* ramp the outputs to the new value *)
-    	P1 := X[set,1] - S1 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
-    	P2 := X[set,2] - S2 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
-    	P3 := X[set,3] - S3 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
-    	P4 := X[set,4] - S4 * DWORD_TO_REAL(TIME_TO_DWORD(TC) - tx + last);
+    	P1 := X[set,1] - S1 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
+    	P2 := X[set,2] - S2 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
+    	P3 := X[set,3] - S3 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
+    	P4 := X[set,4] - S4 * DWORD_TO_REAL(TIME_TO_DWORD(Tc) - tx + last);
     ELSE
     	(* make sure outputs match the correct set values *)
     	start := FALSE;
@@ -56,7 +56,7 @@ FUNCTION_BLOCK PARSET
     	P2 := X[set,2];
     	P3 := X[set,3];
     	P4 := X[set,4];
-    END_IF
+    END_IF;
 
     (* revision history
     hm	2.11.2007		rev 1.0

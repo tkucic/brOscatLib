@@ -1,25 +1,25 @@
 FUNCTION_BLOCK GEN_BIT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=196*)
-    (* check if number of runs is finished or REP = 0 which means continuous *)
+    (* check if number of runs is finished or rep = 0 which means continuous *)
 
-    IF CLK AND NOT RST THEN
-    	RUN := (REP = 0) OR (rx <= REP);
-    	IF RUN THEN
-    		(* check for step counter reached and reset to 0 if CNT = STEPS *)
-    		IF CNT = STEPS THEN
-    			CNT := 0;
-    		END_IF
+    IF clk AND NOT rst THEN
+    	run := (rep = 0) OR (rx <= rep);
+    	IF run THEN
+    		(* check for step counter reached and reset to 0 if cnt = steps *)
+    		IF cnt = steps THEN
+    			cnt := 0;
+    		END_IF;
 
-    		(* when CNT = 0 then reload the inputs into the registers *)
-    		IF CNT = 0 THEN
-    			r0 := IN0;
-    			r1 := IN1;
-    			r2 := IN2;
-    			r3 := IN3;
-    		END_IF
+    		(* when cnt = 0 then reload the inputs into the registers *)
+    		IF cnt = 0 THEN
+    			r0 := in0;
+    			r1 := in1;
+    			r2 := in2;
+    			r3 := in3;
+    		END_IF;
 
-    		(* when CNT < STEPS, shift the lowest bits to the outputs *)
-    		IF (CNT < STEPS) THEN
+    		(* when cnt < steps, shift the lowest bits to the outputs *)
+    		IF (cnt < steps) THEN
     			Q0 := r0.0;
     			Q1 := r1.0;
     			Q2 := r2.0;
@@ -28,16 +28,16 @@ FUNCTION_BLOCK GEN_BIT
     			r1 := SHR(r1,1);
     			r2 := SHR(r2,1);
     			r3 := SHR(r3,1);
-    		END_IF
+    		END_IF;
 
     		(* increment the step counter *)
-    		CNT := CNT +1;
-    		IF (CNT = STEPS) AND (REP <> 0) THEN rx := rx +1; END_IF
-    		IF (rx > REP) AND (REP <> 0) THEN RUN := FALSE; END_IF
-    	END_IF
+    		cnt := cnt +1;
+    		IF (cnt = steps) AND (rep <> 0) THEN rx := rx +1; END_IF;
+    		IF (rx > rep) AND (rep <> 0) THEN run := FALSE; END_IF;
+    	END_IF;
     ELSE
-    	IF RST THEN
-    		RUN := FALSE;
+    	IF rst THEN
+    		run := FALSE;
     		Q0 := FALSE;
     		Q1 := FALSE;
     		Q2 := FALSE;
@@ -46,10 +46,10 @@ FUNCTION_BLOCK GEN_BIT
     		r1 := 0;
     		r2 := 0;
     		r3 := 0;
-    		CNT := 0;
+    		cnt := 0;
     		rx := 1;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
 
 

@@ -1,15 +1,15 @@
 FUNCTION FSTRING_TO_WEEKDAY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164*)
-    IF LANG = 0 THEN ly := cDEFAULT; ELSE ly := MIN(LANG, cLMAX); END_IF
+    IF LANG = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(LANG, LANGUAGE.LMAX); END_IF;
     (* tmp needs to be calculated first otherwise find can return wrong values *)
-    tmp := TRIM(WDAY);
+    tmp := TRIM(wday);
     tmp := CAPITALIZE(LOWERCASE(tmp));
     FOR i := 1 TO 7 DO
-    	IF cWEEKDAYS2[ly, i] = tmp THEN
+    	IF language.WEEKDAYS2[ly, i] = tmp THEN
     		FSTRING_TO_WEEKDAY := i;
     		RETURN;
-    	END_IF
-    END_FOR
+    	END_IF;
+    END_FOR;
     FSTRING_TO_WEEKDAY := STRING_TO_INT(WDAY);
 
 

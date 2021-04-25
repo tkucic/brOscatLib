@@ -6,19 +6,19 @@ FUNCTION_BLOCK CLK_PRG
     (* initialize on startup *)
     IF NOT init THEN
     	init := TRUE;
-    	last := tx - PT;
-    END_IF
+    	last := tx - pt;
+    END_IF;
 
     (* generate output pulse when next_pulse is reached *)
-    Q := tx - last >= PT;
-    IF Q THEN last := tx; END_IF
+    Q := tx - last >= pt;
+    IF Q THEN last := tx; END_IF;
 
 
     (* revision hiostory
 
     hm 25 feb 2007	rev 1.1
     	rewritten code for higher performance
-    	PT can now be changed during runtime
+    	pt can now be changed during runtime
 
     hm	17. sep 2007	rev 1.2
     	replaced time() with t_plc_ms() for compatibility reasons

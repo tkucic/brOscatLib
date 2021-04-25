@@ -6,7 +6,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     	UCBD.D_MODE := 1;
     	UCBD.D_STRING := X.NEW_FILE;
     	UCB(DATA:=UCBD); (* Daten eintragen *)
-    END_IF
+    END_IF;
     ftrig_old := X.NEW_FILE_RTRIG;
 
     CASE step OF
@@ -17,7 +17,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     		files := UCBD.D_STRING;
     		IF FILE_DELETE THEN
     			files := CONCAT(files,';#DEL#');
-    		END_IF
+    		END_IF;
     		cnt := RETRY;
     		step := 10;
 
@@ -26,10 +26,10 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     			LOG_CL.NEW_MSG := 'F_T_SMTP: Auftrag aktiv /file: ~2';
     			LOG_CL.PRINTF[2] := files;
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
-    	END_IF
+    	END_IF;
 
     10:	IF smtp_busy = FALSE THEN
     		IF smtp_done THEN
@@ -38,13 +38,13 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     				LOG_CL.NEW_MSG := 'F_T_SMTP: Auftrag OK /file: ~2';
     				LOG_CL.PRINTF[2] := files;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 0;
     		ELSE
     			step := 20; (* pause nach error *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     20:	IF WT_1.Q THEN (* Wartezeit *)
     		cnt := cnt - 1;
@@ -54,7 +54,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     				LOG_CL.NEW_MSG := 'F_T_SMTP: Auftrag unbegrenzt wiederholen /file: ~2';
     				LOG_CL.PRINTF[2] := files;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 10; (* Transfer wiederholen *)
     		ELSIF cnt >= 0 THEN
@@ -64,7 +64,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     				LOG_CL.PRINTF[1] := INT_TO_STRING(cnt);
     				LOG_CL.PRINTF[2] := files;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 10; (* Transfer wiederholen *)
     		ELSE
@@ -73,13 +73,13 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     				LOG_CL.NEW_MSG := 'F_T_SMTP: Auftrag verworfen /file: ~2';
     				LOG_CL.PRINTF[2] := files;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 0; (* Auftrag verwerfen *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     BUSY := step = 10;
     DONE := step = 0;
@@ -96,7 +96,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     	MAILTO:= MAILTO,
     	SUBJECT:= SUBJECT,
     	BODY:= BODY,
-    	files:= files,
+    	FILES:= FILES,
     	DONE=> smtp_done,
     	BUSY=> smtp_busy
     	);
@@ -114,7 +114,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     ELSE
     	ERROR_C := DWORD#0;
     	ERROR_T := BYTE#0;
-    END_IF
+    END_IF;
 
     (* revision history
 
@@ -122,7 +122,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_SMTP
     	original version
 
     ks	28. apr. 2011	rev 1.1
-    	stringfehler bei option 'FILE_DELETE'
+    	stringfehler bei option 'file_delete'
 
     ks	26. jul. 2011	rev 1.2
         codeoptimierung D_MODE 12

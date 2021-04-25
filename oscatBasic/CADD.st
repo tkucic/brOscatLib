@@ -1,7 +1,7 @@
 FUNCTION CADD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84*)
-    CADD.re := X.re + Y.re;
-    CADD.im := X.im + Y.im;
+    CADD.re := x.re + y.re;
+    CADD.im := x.im + y.im;
 
 
     (* revision history

@@ -20,15 +20,15 @@ FUNCTION_BLOCK FILE_BLOCK
     			MODE := 0;
     			(* ---------------------- Debug-Message ----------------------------*)
     			(*IF _debug_enable THEN
-    				LOG_CL.NEW_MSG := 'FB: POS: ~1 Byte: ~2 >~3<';
+    				LOG_CL.NEW_MSG := 'FB: Pos: ~1 Byte: ~2 >~3<';
     				LOG_CL.PRINTF[1] := UDINT_TO_STRING(POS);
     				LOG_CL.PRINTF[2] := BYTE_TO_STRING(DATA);
     				LOG_CL.PRINTF[3] := CHR_TO_STRING(DATA);
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(* -----------------------------------------------------------------*)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     10:	IF FSD.MODE = 0 THEN (* Befehl beendet *)
     		IF FSD.ERROR > 0 THEN
@@ -37,10 +37,10 @@ FUNCTION_BLOCK FILE_BLOCK
     		ELSE
     			data_start := POS;
     			data_stop := POS + UINT_TO_UDINT(PT.SIZE) - 1;
-    		END_IF
+    		END_IF;
     		step := 0;
-    	END_IF
-    END_CASE
+    	END_IF;
+    END_CASE;
 
     (* revision history
     ks	23. sep. 2010	rev 1.0

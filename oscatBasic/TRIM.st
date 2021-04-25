@@ -1,10 +1,10 @@
 FUNCTION TRIM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181*)
-    TRIM := STR;
+    TRIM := str;
     REPEAT
-    	pos := FIND(TRIM,' ');
-    	IF pos > 0 THEN TRIM := REPLACE(TRIM,'',1,pos); END_IF
-    UNTIL pos = 0	END_REPEAT
+    	pos := FIND(trim,' ');
+    	IF pos > 0 THEN TRIM := REPLACE(TRIM,'',1,pos); END_IF;
+    UNTIL pos = 0	END_REPEAT;
 
 
     (* revision histroy

@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DNS_CLIENT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=89*)
-    (* DOMAIN Name System (query) *)
+    (* Domain Name System (query) *)
 
     CASE state OF
 
@@ -8,9 +8,9 @@ FUNCTION_BLOCK DNS_CLIENT
     		DONE := FALSE;
     		ERROR := DWORD#0;
     		state := 5;
-    	END_IF
+    	END_IF;
 
-    05:	IP4 := IP4_DECODE(str:=DOMAIN); (* prüfe ob DOMAIN schon eine IP4-Adresse ist *)
+    05:	IP4 := IP4_DECODE(str:=DOMAIN); (* prüfe ob domain schon eine IP4-Adresse ist *)
     	IF IP4 > DWORD#00 THEN
     		DONE := TRUE;
     		state := 0;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK DNS_CLIENT
                 		LOG_CL.NEW_MSG := 'DNS: S05 IP4 ~1';
                 		LOG_CL.PRINTF[1]  := DOMAIN;
                 		LOG_MSG();
-            		END_IF*)
+            		END_IF;*)
             		(*########################################################################*)
     	ELSE
     		ip_state := BYTE#1;
@@ -30,16 +30,16 @@ FUNCTION_BLOCK DNS_CLIENT
             		(*IF _debug_enable THEN
                 		LOG_CL.NEW_MSG := 'DNS: S05 START';
                 		LOG_MSG();
-            		END_IF*)
+            		END_IF;*)
             		(*########################################################################*)
-    	END_IF
+    	END_IF;
 
     10:	IF ip_state = BYTE#3 THEN (* Bei IP_Control anmelden *)
     		url_length := LEN(domain_copy);
     		char_count := 17 + url_length; (* sendebuffer initialisieren *)
     		FOR i := 0 TO char_count DO
     			S_BUF.BUFFER[i] := BYTE#00;
-    		END_FOR
+    		END_FOR;
     		tid := UINT_TO_BYTE(BYTE_TO_UINT(tid) + UINT#1);
     		S_BUF.BUFFER[01] := tid; (* Transaction ID lowbyte *)
     		S_BUF.BUFFER[02] := BYTE#16#01; (* Flags: highbyte *)
@@ -47,16 +47,16 @@ FUNCTION_BLOCK DNS_CLIENT
     		i := url_length + 12;	(* den servernamen von hinten nach vorne bearbeiten *)
     		char_count := 0;
     		WHILE i > 12 DO
-    			char := CODE(STR:=domain_copy,POS:=i - 12);
+    			char := OSCAT_BASIC.CODE(STR:=domain_copy,POS:=i - 12);
     			IF char = BYTE#46 THEN (* prüfe auf haupt/sub domänen namens-teiler "." *)
     				S_BUF.BUFFER[i] := INT_TO_BYTE(char_count); (* anstelle des teilers "." wird die länge des erkannten haupt/sub domänennames eingetragen *)
     				char_count := 0;
     			ELSE
     				S_BUF.BUFFER[i] := char; (* char in buffer eintragen *)
     				char_count := char_count + 1; (* anzahl char zählen *)
-    			END_IF
+    			END_IF;
     			i := i - 1;
-    		END_WHILE
+    		END_WHILE;
     		S_BUF.BUFFER[i] := INT_TO_BYTE(char_count); (* längenangabe des ganz linken (ersten) domänennamens eintragen *)
     		i := url_length + 15; (* position hinter dem servernamen *)
     		S_BUF.BUFFER[i] := BYTE#01; (* Type: A Hostaddress lowbyte *)
@@ -78,9 +78,9 @@ FUNCTION_BLOCK DNS_CLIENT
             		(*IF _debug_enable THEN
                 		LOG_CL.NEW_MSG := 'DNS: S10 SEND';
                 		LOG_MSG();
-            		END_IF*)
+            		END_IF;*)
             		(*########################################################################*)
-    	END_IF
+    	END_IF;
 
     30:	IF IP_C.ERROR <> DWORD#00 THEN
     		ERROR := IP_C.ERROR;
@@ -90,7 +90,7 @@ FUNCTION_BLOCK DNS_CLIENT
                 		LOG_CL.NEW_MSG := 'DNS: S30 ERROR ~1';
                 		LOG_CL.PRINTF[1]  := DWORD_TO_STRING(ERROR);
                 		LOG_MSG();
-            		END_IF*)
+            		END_IF;*)
             		(*########################################################################*)
 
     	ELSIF (S_BUF.SIZE = UINT#0) AND (tid = R_BUF.BUFFER[1]) AND (R_BUF.SIZE >= INT_TO_UINT(34 + url_length)) THEN	(* prüfe ob antwort telegramm die richtige Transaction-ID und mindestlänge hat *)
@@ -101,8 +101,8 @@ FUNCTION_BLOCK DNS_CLIENT
     			state := 40;
     		ELSE
     			state := 99;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     40:	IF anc > 0 THEN
     		anc := anc - 1;
@@ -116,26 +116,26 @@ FUNCTION_BLOCK DNS_CLIENT
     					rr_stop := TRUE;
     				ELSE
     					i := i + x; (* namen *)
-    				END_IF
+    				END_IF;
     				i := i + 1;
     			ELSE
     				rr_stop := FALSE;
     				IF R_BUF.BUFFER[i+1] = BYTE#1 AND R_BUF.BUFFER[i+3] = BYTE#1 THEN (* Type A / Class IN *)
     					i := i + 4;
-    					ttl_tmp := DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* Time to live *)
+    					ttl_tmp := OSCAT_BASIC.DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* Time to live *)
     					i := i + 6;
     					IF ttl_tmp >= ttl_last THEN (* TTL ist länger *)
     						ttl_last := ttl_tmp;
-    						IP4 := DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* IP-Adresse *)
-    					END_IF
+    						IP4 := OSCAT_BASIC.DWORD_OF_BYTE(R_BUF.BUFFER[i],R_BUF.BUFFER[i+1],R_BUF.BUFFER[i+2],R_BUF.BUFFER[i+3]); (* IP-Adresse *)
+    					END_IF;
     					i := i + 4;
     				ELSE
     					i := i + 9;
     					i := i + R_BUF.BUFFER[i] + 1; (* offset zu nächsten Block *)
-    				END_IF
+    				END_IF;
     				EXIT;
-    			END_IF
-    		END_WHILE
+    			END_IF;
+    		END_WHILE;
     	ELSE
     		IF IP4 > DWORD#0 THEN (* gültige RR mit IP gefunden *)
     			DONE := TRUE;
@@ -143,22 +143,22 @@ FUNCTION_BLOCK DNS_CLIENT
                 		(*IF _debug_enable THEN
                     			LOG_CL.NEW_MSG := 'DNS: S40 OK';
                     			LOG_MSG();
-                		END_IF*)
+                		END_IF;*)
                 		(*########################################################################*)
     		ELSE
     			ERROR := DWORD#255; (* Daten fehlerhaft - keine IP-Adresse vorhanden *)
-    		END_IF
+    		END_IF;
     		state := 99;
-    	END_IF
+    	END_IF;
 
     99:	R_BUF.SIZE := UINT#0; (* Empfangslänge rücksetzen *)
     	ip_state := BYTE#4; (* Abmelden *)
     	state := 00;
 
-    END_CASE
+    END_CASE;
 
     activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
-    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id); (* IP_FIFO *)
+    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id); (* IP_FIFO *)
 
     (* revision history
 
@@ -203,10 +203,10 @@ FUNCTION_BLOCK DNS_CLIENT
 
     (*
     Errorcodes  Description	References 
-    000	No ERROR. 		 	The request completed successfully.
-    001	Format ERROR. 		The name server was unable to interpret the query. 
+    000	No error. 		 	The request completed successfully.
+    001	Format error. 		The name server was unable to interpret the query. 
     002	Server failure.  	The name server was unable to process this query due to a problem with the name server. 
-    003	Name ERROR. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the DOMAIN name referenced in the query does not exist.
+    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the domain name referenced in the query does not exist.
     004	Not Implemented. 	The name server does not support the requested kind of query.
     005	Refused. 			The name server refuses to perform the specified operation for policy reasons.
       						 For example, a name server may not wish to provide the information to the particular requester, or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.
@@ -222,20 +222,20 @@ FUNCTION_BLOCK DNS_CLIENT
     ein request mit 3 Answer-Blocks
 
 
-    DOMAIN Name System (response)
+    Domain Name System (response)
     [Request In: 3]
     [Time: 0.027533000 seconds]
     Transaction ID: 0x5e1a
-    Flags: 0x8180 (Standard query response, No ERROR)
+    Flags: 0x8180 (Standard query response, No error)
     1... .... .... .... = Response: Message is a response
     .000 0... .... .... = Opcode: Standard query (0)
-    .... .0.. .... .... = Authoritative: Server is not an authority for DOMAIN
+    .... .0.. .... .... = Authoritative: Server is not an authority for domain
     .... ..0. .... .... = Truncated: Message is not truncated
     .... ...1 .... .... = Recursion desired: Do query recursively
     .... .... 1... .... = Recursion available: Server can do recursive queries
     .... .... .0.. .... = Z: reserved (0)
     .... .... ..0. .... = Answer authenticated: Answer/authority portion was not authenticated
-    .... .... .... 0000 = Reply code: No ERROR (0)
+    .... .... .... 0000 = Reply code: No error (0)
     Questions: 1
     Answer RRs: 3
     Authority RRs: 0

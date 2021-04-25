@@ -1,6 +1,6 @@
 FUNCTION YEAR_OF_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=144*)
-    YEAR_OF_DATE := DWORD_TO_INT((DATE_TO_DWORD(IDATE) + 43200) / 31557600 + 1970);
+    YEAR_OF_DATE := DWORD_TO_INT((DATE_TO_DWORD(idate) + 43200) / 31557600 + 1970);
 
 
     (* revision history
@@ -18,7 +18,7 @@ FUNCTION YEAR_OF_DATE
     	deleted unused step7 code
 
     hm	7. oct. 2008	rev 1.4
-    	renamed function (year) to YEAR_OF_DATE
+    	renamed function (year) to year_of_date
 
     *)
 END_FUNCTION

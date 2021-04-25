@@ -3,7 +3,7 @@ FUNCTION LIST_INSERT
     (* load pointers *)
     pt := ADR(LIST);
 
-    IF LEN(INS) + 1 + LEN(LIST) > LIST_LENGTH THEN
+    IF LEN(ins) + 1 + LEN(LIST) > LIST_LENGTH THEN
     	LIST_INSERT := FALSE;
     ELSE
     	LIST_INSERT := TRUE;
@@ -15,15 +15,15 @@ FUNCTION LIST_INSERT
     			LIST := INSERT(LIST, INS, read - 1);
     			LIST_INSERT := TRUE;
     			RETURN;
-    		END_IF
-    		IF pt[read]  = 0 THEN				(* LIST is too short add empty element *)
-    			pt[read] := SEP;
-    			pt[read + 1] := 0;
-    		END_IF
+    		END_IF;
+    		IF pt^[read]  = 0 THEN				(* list is too short add empty element *)
+    			pt^[read] := SEP;
+    			pt^[read + 1] := 0;
+    		END_IF;
     		read := read + 1;
-    		IF pt[read] = SEP OR pt[read] = 0 THEN cnt := cnt + 1; END_IF
-    	END_WHILE
-    END_IF
+    		IF pt^[read] = SEP OR pt^[read] = 0 THEN cnt := cnt + 1; END_IF;
+    	END_WHILE;
+    END_IF;
 
 
 
@@ -38,7 +38,7 @@ FUNCTION LIST_INSERT
     	changed string(255) to string(LIST_LENGTH)
 
     hm	21. mar. 2011	rev 2.0
-    	all LIST elements start with SEP
+    	all list elements start with SEP
     	
     *)	
 

@@ -20,9 +20,9 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     			idx4 := CD.CE[idx1].VALUE_MAx;
     			FOR idx2 := idx3 TO idx4 DO
     				CD.CE[idx1].ELEMENTS[idx2] := FALSE;
-    			END_FOR
+    			END_FOR;
     			CD.CE[idx1].ALL_SELECTED := FALSE;
-    		END_FOR
+    		END_FOR;
 
     		str1 := CONCAT(SECOND,'#');
     		str1 := CONCAT(str1,MINUTE);
@@ -41,20 +41,20 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     				cnt1 := ELEMENT_COUNT(BYTE#44, str2);	(* Trenzeichen ',' *)
     			ELSE
     				cnt1 := 1;
-    			END_IF
+    			END_IF;
 
     			FOR idx2 := 0 TO cnt1 -1 DO
     				str3 := ELEMENT_GET(BYTE#44, idx2, str2);
     				IF FIND(str3, '*/') > 0 AND LEN(str3) <= 10 THEN
-    					pos1 := DEC_TO_INT(str3);
+    					pos1 := OSCAT_BASIC.DEC_TO_INT(str3);
     					IF pos1 > 0 THEN
     						idx3 := CD.CE[idx1].VALUE_MIN;
     						idx4 := CD.CE[idx1].VALUE_MAX;
     						WHILE idx3 <= idx4 DO
     							CD.CE[idx1].ELEMENTS[idx3] := TRUE;
     							idx3 := idx3 + pos1;
-    						END_WHILE
-    					END_IF
+    						END_WHILE;
+    					END_IF;
 
     				ELSE
     					IF FIND(str3, '*') > 0 OR LEN(str3) = 0 THEN
@@ -66,31 +66,31 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     						char_cnt := LEN(str3);
     						IF char_cnt >= 1 AND char_cnt <= 10 THEN
     							num_str1 := ELEMENT_GET(BYTE#45, 0, str3);
-    							pos1 := DEC_TO_INT(num_str1);
+    							pos1 := OSCAT_BASIC.DEC_TO_INT(num_str1);
     							pos2 := pos1;
     							IF cnt2 = 2 THEN
     								num_str1 := ELEMENT_GET(BYTE#45, 1, str3);
-    								pos2 := DEC_TO_INT(num_str1);
-    							END_IF
-    						END_IF
-    					END_IF
+    								pos2 := OSCAT_BASIC.DEC_TO_INT(num_str1);
+    							END_IF;
+    						END_IF;
+    					END_IF;
 
     					IF pos1 >= CD.CE[idx1].VALUE_MIN AND pos2 <= CD.CE[idx1].VALUE_MAX THEN
     						FOR idx3 := pos1 TO pos2 DO
     							CD.CE[idx1].ELEMENTS[idx3] := TRUE;
-    						END_FOR
-    					END_IF
-    				END_IF
-    			END_FOR
-    		END_FOR
+    						END_FOR;
+    					END_IF;
+    				END_IF;
+    			END_FOR;
+    		END_FOR;
     	ELSIF DTI <> dti_last THEN
-    		CD.CE[0].VALUE := SECOND_OF_DT(DTI); (* Sekunden *)
-    		CD.CE[1].VALUE := MINUTE_OF_DT(DTI); (* Minuten *)
-    		CD.CE[2].VALUE := HOUR_OF_DT(DTI); (* Stunden *)
+    		CD.CE[0].VALUE := OSCAT_BASIC.SECOND_OF_DT(DTI); (* Sekunden *)
+    		CD.CE[1].VALUE := OSCAT_BASIC.MINUTE_OF_DT(DTI); (* Minuten *)
+    		CD.CE[2].VALUE := OSCAT_BASIC.HOUR_OF_DT(DTI); (* Stunden *)
     		datei := DT_TO_DATE(DTI);
-    		CD.CE[3].VALUE := DAY_OF_MONTH(datei); (* Tag *)
-    		CD.CE[4].VALUE := DAY_OF_WEEK(datei); (* Wochentag *)
-    		CD.CE[5].VALUE := MONTH_OF_DATE(datei); (*  Monat *)
+    		CD.CE[3].VALUE := OSCAT_BASIC.DAY_OF_MONTH(datei); (* Tag *)
+    		CD.CE[4].VALUE := OSCAT_BASIC.DAY_OF_WEEK(datei); (* Wochentag *)
+    		CD.CE[5].VALUE := OSCAT_BASIC.MONTH_OF_DATE(datei); (*  Monat *)
     		dti_last := DTI;
 
     		idx2 := CD.CE[0].VALUE;	(* sekunden *)
@@ -114,10 +114,10 @@ FUNCTION_BLOCK DLOG_CRON_TAB
     			Q := Q AND trig_weekday; (* nur Wochentag auswerten *)
     		ELSIF CD.CE[3].ALL_SELECTED = FALSE AND CD.CE[4].ALL_SELECTED = FALSE THEN
     			Q := Q AND (trig_weekday OR trig_day); (* Tag und Wochentag auswerten *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
-    END_IF
+    END_IF;
     activate_old := ACTIVATE;
 
     (* revision history

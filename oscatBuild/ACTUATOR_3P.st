@@ -1,33 +1,33 @@
 FUNCTION_BLOCK ACTUATOR_3P
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=13*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    (* check TEST input *)
+    (* check test input *)
     IF TEST THEN
-    	STATUS := 103;
+    	status := 103;
     	start := tx;
     	ARX := TRUE;
-    END_IF
+    END_IF;
 
-    CASE STATUS OF
+    CASE status OF
     	0:	(* power on setup *)
     		IF ARE AND NOT ARX THEN
-    			STATUS := 103;
+    			status := 103;
     			start := tx;
     			ARX := TRUE;
-    		END_IF
+    		END_IF;
 
     	100:	(* normal operation *)
     		(* check for auto diagnostics *)
     		IF T_DIAG > T#0s AND tx > next_diag AND ARE AND NOT ARX THEN
-    				STATUS := 103;
+    				status := 103;
     				start := tx;
     				ARX := TRUE;
 
     		(* check for auto calibration *)
     		ELSIF T_CAL > T#0s AND tx > next_cal AND ARE AND NOT ARX THEN
-    			IF POS > BYTE#127 THEN
+    			IF pos > BYTE#127 THEN
     				OUT1 := TRUE;
     				OUT2 := FALSE;
     				ramp.IN := 255;
@@ -37,15 +37,15 @@ FUNCTION_BLOCK ACTUATOR_3P
     				OUT2 := TRUE;
     				ramp.IN := 0;
     				ARX := TRUE;
-    			END_IF
-    			STATUS := 101;
+    			END_IF;
+    			status := 101;
     			start := tx;
     		ELSE
     			(* increment next_cal if not active *)
-    			IF NOT(OUT1 OR OUT2) THEN next_cal := next_cal + (tx-last); END_IF
+    			IF NOT(OUT1 OR OUT2) THEN next_cal := next_cal + (tx-last); END_IF;
     			(* set ramp generator to IN *)
     			ramp.IN := IN;
-    		END_IF
+    		END_IF;
 
     	101:	(* calibrate *)
     		IF tx - start < T_EXT THEN
@@ -56,10 +56,10 @@ FUNCTION_BLOCK ACTUATOR_3P
     		ELSIF tx - start > T_EXT + T_RUN THEN
     			ERROR := SWITCH_AVAIL;
     			ARX := FALSE;
-    		END_IF
+    		END_IF;
 
     	103:	(* diagnostics up*)
-    		(* run up for T_EXT *)
+    		(* run up for T_ext *)
     		IF tx - start < T_EXT THEN
     			ERROR := FALSE;
     			ramp.TR := T_RUN;
@@ -74,10 +74,10 @@ FUNCTION_BLOCK ACTUATOR_3P
     			ERROR := SWITCH_AVAIL;
     			STATUS := 104;
     			start := tx;
-    		END_IF
+    		END_IF;
 
     	104:	(* diagnostics dn*)
-    		IF tx - start < T_EXT THEN
+    		IF tx - start < T_ext THEN
     			OUT1 := FALSE;
     			OUT2 := TRUE;
     			ramp.IN := 0;
@@ -85,30 +85,30 @@ FUNCTION_BLOCK ACTUATOR_3P
     		ELSIF SWITCH_AVAIL AND END_POS THEN
     			ramp.TR := tx - start;
     			(* check if runtimes differ by more than 10% *)
-    			IF DINT_TO_TIME(ABS(TIME_TO_DINT(ramp.TR) - TIME_TO_DINT(ramp.TF))*10) > T_RUN THEN ERROR := TRUE; END_IF
+    			IF DINT_TO_TIME(ABS(TIME_TO_DINT(ramp.TR) - TIME_TO_DINT(ramp.TF))*10) > T_RUN THEN error := TRUE; END_IF;
     			STATUS := 100;
     			ARX := FALSE;
     			next_cal := tx + T_CAL;
     		ELSIF tx - start > T_EXT + T_RUN THEN
-    			IF SWITCH_AVAIL THEN ERROR := TRUE; END_IF
+    			IF SWITCH_AVAIL THEN ERROR := TRUE; END_IF;
     			STATUS := 100;
     			ARX := FALSE;
-    			next_cal := tx + T_CAL;
-    		END_IF
-    END_CASE
+    			next_CAL := tx + T_CAL;
+    		END_IF;
+    END_CASE;
 
     (* internal flap simulation and output activation *)
     ramp(OUT := POS);
     IF STATUS = 100 THEN
     	OUT1 := ramp.UP;
     	OUT2 := ramp.DN;
-    END_IF
+    END_IF;
 
     (* adjust position if end switch is active *)
     IF SWITCH_AVAIL AND END_POS THEN
     	POS := SEL(POS > 127, 0, 255);
     	next_cal := tx + T_CAL;
-    END_IF
+    END_IF;
 
     (* set last to tx for next cycle *)
     last := tx;

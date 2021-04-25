@@ -3,8 +3,8 @@ FUNCTION DEW_RH
     DEW_RH := LIMIT(0.0, VC / DEW_CON(1.0, T), 100.0);
 
     (* code before rev 1.1
-    DEW_RH := VC / dew_con(100,T) * 100;
-    IF DEW_RH > 100 THEN DEW_RH := 100; END_IF
+    dew_rh := VC / dew_con(100,T) * 100;
+    IF dew_rh > 100 THEN dew_rh := 100; END_IF;
     *)
 
     (* revision history

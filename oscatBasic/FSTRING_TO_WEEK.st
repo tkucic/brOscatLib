@@ -3,9 +3,9 @@ FUNCTION FSTRING_TO_WEEK
     pos := FIND(WEEK, ',');
     WHILE pos > 0 DO
     	FSTRING_TO_WEEK := FSTRING_TO_WEEK OR SHR(BYTE#128, FSTRING_TO_WEEKDAY(MID(WEEK, pos - 1, 1), LANG));
-    	WEEK := RIGHT(WEEK, LEN(WEEK) - pos);
+    	WEEK := RIGHT(WEEK, LEN(Week) - pos);
     	pos := FIND(WEEK, ',');
-    END_WHILE
+    END_WHILE;
     FSTRING_TO_WEEK := (FSTRING_TO_WEEK OR SHR(BYTE#128, FSTRING_TO_WEEKDAY(WEEK, LANG))) AND BYTE#127;
 
 
@@ -14,7 +14,7 @@ FUNCTION FSTRING_TO_WEEK
     	original release
 
     hm	25. oct. 2008	rev 1.1
-    	using language defauls and input LANG
+    	using language defauls and input lang
     *)	
 
 END_FUNCTION

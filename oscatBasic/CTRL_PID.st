@@ -1,7 +1,7 @@
 FUNCTION_BLOCK CTRL_PID
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=384*)
     DIFF := CTRL_IN(SET, ACT, SUP);
-    pid(in := DIFF, KP := KP, TN := TN, TV := TV, lim_l := LL, lim_h := LH, RST := RST);
+    pid(in := DIFF, kp := KP, tn := TN, tv := TV, lim_l := LL, lim_h := LH, rst := RST);
     co(ci := pid.Y, OFFSET := OFS, man_in := M_I, lim_l := LL, lim_h := LH, MANUAL := MAN);
     Y := co.Y;
     LIM := co.LIM;
@@ -24,9 +24,9 @@ FUNCTION_BLOCK CTRL_PID
 
     hm	3.11.2007	rev 1.5
     	added noise input to filter noise
-    	added output DIFF
-    	SET limit output false when output is within limits
-    	overfolw was not SET correctly
+    	added output diff
+    	set limit output false when output is within limits
+    	overfolw was not set correctly
 
     hm	5. jan 2008	rev 1.6
     	improved code for better performance

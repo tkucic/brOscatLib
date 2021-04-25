@@ -4,17 +4,17 @@ FUNCTION ATAN2
     	ATAN2 := ATAN(Y/X);
     ELSIF X < 0.0 THEN
     	IF Y >=0.0 THEN
-    		ATAN2 := ATAN(Y/X) + cPI;
+    		ATAN2 := ATAN(Y/X) + MATH.PI;
     	ELSE
-    		ATAN2 := ATAN(Y/X) - cPI;
-    	END_IF
+    		ATAN2 := ATAN(Y/X) - MATH.PI;
+    	END_IF;
     ELSIF Y > 0.0 THEN
-    	ATAN2 := cPI05;
+    	ATAN2 := MATH.PI05;
     ELSIF Y < 0.0 THEN
-    	ATAN2 := -cPI05;
+    	ATAN2 := -MATH.PI05;
     ELSE
     	ATAN2 := 0.0;
-    END_IF
+    END_IF;
 
 
     (* revision history

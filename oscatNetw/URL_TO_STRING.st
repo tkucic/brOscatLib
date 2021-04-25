@@ -12,7 +12,7 @@ FUNCTION URL_TO_STRING
     *)
 
     (* attach protocol *)
-    IF IN.PROTOCOL <> '' THEN URL_TO_STRING := CONCAT(IN.PROTOCOL,'://'); END_IF
+    IF IN.PROTOCOL <> '' THEN URL_TO_STRING := CONCAT(IN.PROTOCOL,'://'); END_IF;
 
     (* attach user and password *)
     IF IN.USER <> '' THEN
@@ -20,9 +20,9 @@ FUNCTION URL_TO_STRING
     	IF IN.PASSWORD <> '' THEN
     		URL_TO_STRING := CONCAT(URL_TO_STRING, ':');
     		URL_TO_STRING := CONCAT(URL_TO_STRING, IN.PASSWORD);
-    	END_IF
+    	END_IF;
     	URL_TO_STRING := CONCAT(URL_TO_STRING, '@');
-    END_IF
+    END_IF;
 
     (* attach domain *)
     URL_TO_STRING := CONCAT(URL_TO_STRING, IN.DOMAIN);
@@ -31,7 +31,7 @@ FUNCTION URL_TO_STRING
     IF IN.PORT > 0 THEN
     	URL_TO_STRING := CONCAT(URL_TO_STRING, ':');
     	URL_TO_STRING := CONCAT(URL_TO_STRING, WORD_TO_STRING(IN.PORT));
-    END_IF
+    END_IF;
 
     (* attach path *)
     URL_TO_STRING := CONCAT(URL_TO_STRING, IN.PATH);
@@ -40,13 +40,13 @@ FUNCTION URL_TO_STRING
     IF IN.QUERY <> '' THEN
     	URL_TO_STRING := CONCAT(URL_TO_STRING, '?');
     	URL_TO_STRING := CONCAT(URL_TO_STRING, IN.QUERY);
-    END_IF
+    END_IF;
 
     (* attach anchor *)
     IF IN.ANCHOR <> '' THEN
     	URL_TO_STRING := CONCAT(URL_TO_STRING, '#');
     	URL_TO_STRING := CONCAT(URL_TO_STRING, IN.ANCHOR);
-    END_IF
+    END_IF;
 
     (* revision history
     hm	18. apr 2008	rev 1.0

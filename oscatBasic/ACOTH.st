@@ -1,6 +1,6 @@
 FUNCTION ACOTH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39*)
-    ACOTH := LN((X+1.0)/(X-1.0))*0.5;
+    ACOTH := LN((x+1.0)/(x-1.0))*0.5;
 
     (* revision history
     hm		12 jan 2007	rev 1.0

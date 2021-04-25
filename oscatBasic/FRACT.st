@@ -1,10 +1,10 @@
 FUNCTION FRACT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=51*)
-    IF ABS(X) < 2.0E9 THEN
-    	FRACT := X - DINT_TO_REAL(D_TRUNC(X));
+    IF ABS(x) < 2.0E9 THEN
+    	FRACT := x - DINT_TO_REAL(D_TRUNC(x));
     ELSE
     	FRACT := 0.0;
-    END_IF
+    END_IF;
 
     (* revision history
     hm	4. aug 2006	rev 1.0
@@ -13,7 +13,7 @@ FUNCTION FRACT
     hm	11. mar 2008	rev 1.1
     	added dint_to_real for compatibility reasons
     	now returns 0 for number > 2e9
-    	changed input to X
+    	changed input to x
 
     hm	21. mar. 2008	rev 1.2
     	use D_trunc instead of TRUNC for compatibility reasons

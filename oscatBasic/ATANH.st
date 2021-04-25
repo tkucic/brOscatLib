@@ -1,6 +1,6 @@
 FUNCTION ATANH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41*)
-    ATANH := LN((1.0 + X)/(1.0 - X)) * 0.5;
+    ATANH := LN((1.0 + x)/(1.0 - x)) * 0.5;
 
 
     (* revision history

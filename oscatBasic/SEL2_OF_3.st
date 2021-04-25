@@ -11,24 +11,24 @@ FUNCTION_BLOCK SEL2_OF_3
     	W := 0;
     ELSIF D12 THEN
     	(* only inut 1 and 2 are valid *)
-    	Y := (IN1 + IN2) * 0.5;
+    	Y := (In1 + IN2) * 0.5;
     	E := FALSE;
     	W := 3;
     ELSIF D23 THEN
     	(* only inut 2 and 3 are valid *)
-    	Y := (IN2 + IN3) * 0.5;
+    	Y := (In2 + IN3) * 0.5;
     	E := FALSE;
     	W := 1;
     ELSIF D31 THEN
     	(* only inut 3 and 1 are valid *)
-    	Y := (IN3 + IN1) * 0.5;
+    	Y := (In3 + IN1) * 0.5;
     	E := FALSE;
     	W := 2;
     ELSE
     	(* no calculation possible *)
     	E := TRUE;
     	W := 4;
-    END_IF
+    END_IF;
 
 
     (* revision history

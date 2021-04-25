@@ -1,31 +1,31 @@
 FUNCTION_BLOCK SWITCH_I
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=58*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    (* asynchronous SET and reset first *)
-    IF SET AND NOT RST THEN
+    (* asynchronous set and reset first *)
+    IF set AND NOT rst THEN
     	Q := TRUE;
     	T_on := tx;
-    ELSIF RST THEN
+    ELSIF rst THEN
     	Q := FALSE;
-    (* check FOR input edge_ AND start debounce timer *)
-    ELSIF (IN XOR edge_) AND NOT (state = 1) THEN
+    (* check FOR input edge AND start debounce timer *)
+    ELSIF (in XOR edge) AND NOT (state = 1) THEN
     	state := 1;
-    	T_on := tx;
-    (* edge_ was detected and debounce time elapsed *)
-    ELSIF (state = 1) AND (tx - T_DEBOUNCE >= T_on) THEN
+    	T_on := Tx;
+    (* edge was detected and debounce time elapsed *)
+    ELSIF (state = 1) AND (Tx - t_debounce >= T_on) THEN
     	state := 2;
-    	(* react on rising or falling edge_ depending on r_edge *)
-    	IF r_edge XOR IN THEN Q := NOT Q; END_IF
-    (* wait for T_RECONFIG and adjust r_edge *)
-    ELSIF state = 2 AND tx - T_RECONFIG >= T_on THEN
-    	r_edge := IN;
-    END_IF
-    IF Q AND T_ON_MAX > t#0ms AND tx >= T_on + T_ON_MAX THEN
+    	(* react on rising or falling edge depending on r_edge *)
+    	IF r_edge XOR in THEN Q := NOT Q; END_IF;
+    (* wait for T_reconfig and adjust r_edge *)
+    ELSIF state = 2 AND Tx - t_reconfig >= T_on THEN
+    	r_edge := in;
+    END_IF;
+    IF Q AND T_on_max > t#0ms AND Tx >= T_on + T_on_max THEN
     	Q := FALSE;
-    END_IF
-    edge_ := IN;
+    END_IF;
+    edge := in;
 
     (* revision history
 

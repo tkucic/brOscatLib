@@ -1,6 +1,6 @@
 FUNCTION EVEN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=48*)
-    EVEN := NOT IN.0;
+    EVEN := NOT in.0;
 
     (* revision history
     hm	1. oct 2006	rev 1.0

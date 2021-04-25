@@ -4,8 +4,8 @@ FUNCTION_BLOCK INTERLOCK
     T1(IN := I1, PT := TL);
     T2(IN := I2, PT := TL);
 
-    Q1 := I1 AND NOT T2.Q;
-    Q2 := I2 AND NOT T1.Q;
+    Q1 := I1 AND NOT t2.Q;
+    Q2 := I2 AND NOT t1.Q;
 
 
     (* revision history

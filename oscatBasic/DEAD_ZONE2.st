@@ -1,12 +1,12 @@
 FUNCTION_BLOCK DEAD_ZONE2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=395*)
-    IF ABS(X) > L THEN
+    IF ABS(x) > L THEN
     	Y := X;
     ELSIF Y > 0.0 THEN
     	Y := L;
     ELSE
     	Y := -L;
-    END_IF
+    END_IF;
 
 
 

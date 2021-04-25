@@ -1,6 +1,6 @@
 FUNCTION INV
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=57*)
-    IF X <> 0.0 THEN INV := 1.0 / X; END_IF
+    IF X <> 0.0 THEN INV := 1.0 / X; END_IF;
 
 
 

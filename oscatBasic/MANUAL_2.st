@@ -1,23 +1,23 @@
 FUNCTION_BLOCK MANUAL_2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464*)
-    IF ENA THEN
+    IF ena THEN
     	IF NOT ON AND NOT OFF THEN
     		Q := IN;
     		STATUS := 100;
-    	ELSIF ON AND NOT OFF THEN
+    	ELSIF on AND NOT off THEN
     		Q := TRUE;
     		STATUS := 101;
-    	ELSIF NOT ON AND OFF THEN
-    		Q := FALSE;
+    	ELSIF NOT on AND off THEN
+    		q := FALSE;
     		STATUS := 102;
     	ELSE
     		Q := MAN;
     		STATUS := 103;
-    	END_IF
+    	END_IF;
     ELSE
     	Q := FALSE;
     	STATUS := 104;
-    END_IF
+    END_IF;
 
 
 

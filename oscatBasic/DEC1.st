@@ -4,7 +4,7 @@ FUNCTION DEC1
     	DEC1 := N - 1;
     ELSE
     	DEC1 := X - 1;
-    END_IF
+    END_IF;
 
 
     (* this is a very elegant version but 50% slower

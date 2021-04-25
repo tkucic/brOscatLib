@@ -1,198 +1,198 @@
 FUNCTION_BLOCK BURNER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=430*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
-    (* check RST input and overtemp *)
-    IF RST OR OVER_TEMP OR state = 0 THEN
-    	IF STATUS > 0 AND tx - last_change >= LOCKOUT_TIME AND RST THEN
-    		STATUS := 110;
-    		FAIL := FALSE;
+    (* check rst input and overtemp *)
+    IF rst OR over_temp OR state = 0 THEN
+    	IF status > 0 AND tx - last_change >= lockout_time AND rst THEN
+    		status := 110;
+    		fail := FALSE;
     		state := 1;
     	ELSE
     		(* normaler reset *)
-    		MOTOR := FALSE;
-    		COIL1 := FALSE;
-    		COIL2 := FALSE;
-    		IGNITE := FALSE;
-    		PRE_HEAT := FALSE;
-    		IF OVER_TEMP THEN
-    			STATUS := 9;
-    			FAIL := TRUE;
-    		END_IF
+    		motor := FALSE;
+    		coil1 := FALSE;
+    		coil2 := FALSE;
+    		ignite := FALSE;
+    		pre_heat := FALSE;
+    		IF over_temp THEN
+    			status := 9;
+    			fail := TRUE;
+    		END_IF;
     		last_change := tx;
     		last := tx;
     		state := 1;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
-    (* check for timer RST and RST timer if true *)
-    IF RST_TIMER THEN
-    	RUNTIME1 := 0;
-    	RUNTIME2 := 0;
-    	CYCLES := 0;
+    (* check for timer rst and rst timer if true *)
+    IF rst_timer THEN
+    	runtime1 := 0;
+    	runtime2 := 0;
+    	cycles := 0;
     	cycles2 := 0;
-    END_IF
+    END_IF;
 
     (* quit here if an error is present *)
-    IF (STATUS > 0 AND STATUS < 100) OR RST THEN RETURN; END_IF
+    IF (status > 0 AND status < 100) OR rst THEN RETURN; END_IF;
 
     (* start sequence *)
     CASE state OF
 
-    1:	(* IN signal starts oil pre heating *)
-    	IF IN AND FLAME THEN
+    1:	(* in signal starts oil pre heating *)
+    	IF in AND flame THEN
     		state := 7;
-    		PRE_HEAT := FALSE;
-    		STATUS := 2;
+    		pre_heat := FALSE;
+    		status := 2;
     		last_change := tx;
-    	ELSIF IN THEN
-    		PRE_HEAT := TRUE;
+    	ELSIF in THEN
+    		pre_heat := TRUE;
     		state := 2;
     		last_change := tx;
-    	END_IF
+    	END_IF;
 
-    2:	(* after pre_heating time start MOTOR *)
-    	IF (tx- last_change >= PRE_HEAT_TIME AND OIL_TEMP) OR (OIL_TEMP AND NOT oil_temp_last) THEN
-    		MOTOR := TRUE;
+    2:	(* after pre_heating time start motor *)
+    	IF (tx- last_change >= pre_heat_time AND oil_temp) OR (oil_temp AND NOT oil_temp_last) THEN
+    		motor := TRUE;
     		state := 3;
     		last_change := tx;
-    	(* PRE_HEAT_TIME ist abgelaufen und OIL_TEMP ist nicht aktiv *)
-    	ELSIF tx - last_change >= PRE_HEAT_TIME AND NOT OIL_TEMP THEN
+    	(* pre_heat_time ist abgelaufen und oil_temp ist nicht aktiv *)
+    	ELSIF tx - last_change >= pre_heat_time AND NOT oil_temp THEN
     		state := 7;
-    		PRE_HEAT := FALSE;
-    		STATUS := 1;
+    		pre_heat := FALSE;
+    		status := 1;
     		last_change := tx;
-    	(* FLAME monitor cannot be active at this time *)
-    	ELSIF FLAME THEN
+    	(* flame monitor cannot be active at this time *)
+    	ELSIF flame THEN
     		state := 7;
-    		PRE_HEAT := FALSE;
-    		STATUS := 2;
+    		pre_heat := FALSE;
+    		status := 2;
     		last_change := tx;
-    	END_IF
+    	END_IF;
 
     3:	(* abwarten bis zündung eingeschaltet werden kann *)
-    	IF tx - last_change >= PRE_VENT_TIME - PRE_IGNITE_TIME THEN
-    		IGNITE := TRUE;
+    	IF tx - last_change >= pre_vent_time - pre_ignite_time THEN
+    		ignite := TRUE;
     		state := 4;
     		last_change := tx;
-    	(* FLAME monitor cannot be active at this time *)
-    	ELSIF FLAME THEN
+    	(* flame monitor cannot be active at this time *)
+    	ELSIF flame THEN
     		state := 7;
-    		PRE_HEAT := FALSE;
-    		MOTOR := FALSE;
-    		STATUS := 3;
+    		pre_heat := FALSE;
+    		motor := FALSE;
+    		status := 3;
     		last_change := tx;
-    	END_IF
+    	END_IF;
 
     4:	(* warten bis oelzufuhr geoeffnet werden darf *)
-    	IF tx - last_change >= PRE_IGNITE_TIME THEN
-    		COIL1 := TRUE;
+    	IF tx - last_change >= pre_ignite_time THEN
+    		coil1 := TRUE;
     		state := 5;
     		last_change := tx;
-    	END_IF
+    	END_IF;
 
     5:	(* warten auf flammwaechter und falls noetig abschalten *)
-    	IF tx - last_change >= SAFETY_TIME OR FLAME THEN
-    		IF NOT FLAME THEN
+    	IF tx - last_change >= safety_time OR flame THEN
+    		IF NOT flame THEN
     			(* notabschaltung da flammwaechster nicht angesprochen hat *)
     			state := 7;
-    			MOTOR := FALSE;
-    			COIL1 := FALSE;
-    			PRE_HEAT := FALSE;
-    			IGNITE := FALSE;
-    			STATUS := 4;
+    			motor := FALSE;
+    			coil1 := FALSE;
+    			pre_heat := FALSE;
+    			ignite := FALSE;
+    			status := 4;
     			last_change := tx;
     		ELSE
     			state := 6;
     			last_change := tx;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
-    6:	(* brenner läuft, flammueberwachung und nach ablauf der nachigniteszeit IGNITE abschalten *)
-    	IF NOT FLAME AND NOT MULTIPLE_IGNITION THEN
+    6:	(* brenner läuft, flammueberwachung und nach ablauf der nachigniteszeit ignite abschalten *)
+    	IF NOT flame AND NOT multiple_ignition THEN
     		(* notabschaltung da flammwaechster keine flamme meldet *)
     		state := 7;
-    		MOTOR := FALSE;
-    		COIL1 := FALSE;
-    		COIL2 := FALSE;
-    		PRE_HEAT := FALSE;
-    		IGNITE := FALSE;
-    		STATUS := 5;
+    		motor := FALSE;
+    		coil1 := FALSE;
+    		coil2 := FALSE;
+    		pre_heat := FALSE;
+    		ignite := FALSE;
+    		status := 5;
     		last_change := tx;
-    	ELSIF NOT FLAME AND MULTIPLE_IGNITION THEN
-    		IGNITE := TRUE;
+    	ELSIF NOT flame AND multiple_ignition THEN
+    		ignite := TRUE;
     		state := 5;
-    		COIL2 := FALSE;
+    		coil2 := FALSE;
     		last_change := tx;
     	ELSE
-    		IF tx - last_change >= POST_IGNITE_TIME THEN
-    			(* POST_IGNITE_TIME abgelaufen, IGNITE abschalten *)
-    			IGNITE := FALSE;
-    		END_IF
-    		IF tx - last_change >= STAGE2_DELAY AND STAGE2 THEN
-    			COIL2 := TRUE;
+    		IF tx - last_change >= post_ignite_time THEN
+    			(* post_ignite_time abgelaufen, ignite abschalten *)
+    			ignite := FALSE;
+    		END_IF;
+    		IF tx - last_change >= stage2_delay AND stage2 THEN
+    			coil2 := TRUE;
     		ELSE
-    			COIL2 := FALSE;
-    		END_IF
-    	END_IF
-    END_CASE
+    			coil2 := FALSE;
+    		END_IF;
+    	END_IF;
+    END_CASE;
 
     (* abschaltung wenn kein eingangssignal *)
-    IF NOT IN THEN
+    IF NOT in THEN
     	state := 1;
-    	MOTOR := FALSE;
-    	COIL1 := FALSE;
-    	COIL2 := FALSE;
-    	IGNITE := FALSE;
-    	PRE_HEAT := FALSE;
+    	motor := FALSE;
+    	coil1 := FALSE;
+    	coil2 := FALSE;
+    	ignite := FALSE;
+    	pre_heat := FALSE;
     	last_change := tx;
-    END_IF
+    END_IF;
 
     (* runtimezähler *)
-    timer1(IN := FLAME AND IN AND MOTOR AND COIL1 AND NOT COIL2, seconds := RUNTIME1, CYCLES := CYCLES);
-    timer2(IN := FLAME AND IN AND MOTOR AND COIL1 AND COIL2, seconds := RUNTIME2, CYCLES := cycles2);
-    KWH := UDINT_TO_REAL(RUNTIME1) * KW1 / 3600.0 + UDINT_TO_REAL(RUNTIME2) * KW2 / 3600.0;
+    timer1(in := flame AND in AND motor AND coil1 AND NOT coil2, seconds := runtime1, cycles := cycles);
+    timer2(in := flame AND in AND motor AND coil1 AND coil2, seconds := runtime2, cycles := cycles2);
+    KWH := UDINT_TO_REAL(runtime1) * KW1 / 3600.0 + UDINT_TO_REAL(runtime2) * KW2 / 3600.0;
 
     (* zeit fuer naechsten aufruf merken *)
     last := tx;
 
-    (* set FAIL output IF ERROR and STATUS  if normal operation *)
+    (* set fail output IF ERROR and Status  if normal operation *)
 
-    IF STATUS > 0 AND STATUS < 100 THEN
-    	FAIL := TRUE;
+    IF status > 0 AND status < 100 THEN
+    	fail := TRUE;
     ELSE
-    	FAIL := FALSE;
-    	IF NOT IN THEN
-    		STATUS := 110;
-    	ELSIF FLAME AND IN AND MOTOR AND COIL2 AND COIL1 THEN
-    		STATUS := 113;
-    	ELSIF FLAME AND IN AND MOTOR AND COIL1 THEN
-    		STATUS := 112;
+    	fail := FALSE;
+    	IF NOT in THEN
+    		status := 110;
+    	ELSIF flame AND in AND motor AND coil2 AND coil1 THEN
+    		status := 113;
+    	ELSIF flame AND in AND motor AND coil1 THEN
+    		status := 112;
     	ELSE
-    		STATUS := 111;
-    	END_IF
-    END_IF
+    		status := 111;
+    	END_IF;
+    END_IF;
 
 
 
     (*
     31.12.2006	hm		rev 1.1
-    	added PRE_HEAT timing and output
-    	FLAME monitor before ignition will generate error on STATUS output
-    	added output for KWH
+    	added pre_heat timing and output
+    	flame monitor before ignition will generate error on status output
+    	added output for KWh
 
     31.12.2006	hm		rev 1.2
     	added oil_temp_input
 
     31.12.2006	hm		rev 1.3
-    	changed STATUS output to be byte instead of bool
+    	changed status output to be byte instead of bool
 
     22.1.2007		hm		rev 1.4
-    	renamed FAIL output to STATUS
-    	added output CYCLES
-    	corrected an error while PRE_HEAT would be on when an error was present
-    	added COIL2 output and STAGE2 input
+    	renamed fail output to status
+    	added output cycles
+    	corrected an error while pre_heat would be on when an error was present
+    	added coil2 output and stage2 input
 
     15.9.2007		hm		rev 1.5
     	replaced Time() with T_PLC_MS for compatibility and performance reasons

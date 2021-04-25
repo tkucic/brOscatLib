@@ -7,7 +7,7 @@ FUNCTION_BLOCK HEAT_TEMP
     	TY := 0.0;
     ELSE
     	TY := LIMIT(TY_MIN, tr + T_DIFF * 0.5 * tx + (TY_CONFIG - T_DIFF * 0.5 - tr) * EXPT(tx, 1.0 / C), TY_MAX);
-    END_IF
+    END_IF;
 
     TY := MAX(TY, T_REQ);
     HEAT := TY > 0.0;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK HEAT_TEMP
 
     (*
 
-    tv=ti+(tvmax-ti)*((ti-tau)/(ti-taumin))(1/n)
+    tv=ti+(tvmax-ti)*((ti-tau)/(ti-taumin))^(1/n)
 
     tv aktuelle Vorlauftemp.
     ti Raumtemperatur innen (20°C)

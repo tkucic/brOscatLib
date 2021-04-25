@@ -6,7 +6,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     	UCBD.D_MODE := 1;
     	UCBD.D_STRING := X.NEW_FILE;
     	UCB(DATA:=UCBD); (* Daten eintragen *)
-    END_IF
+    END_IF;
     ftrig_old := X.NEW_FILE_RTRIG;
 
     CASE step OF
@@ -23,10 +23,10 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     			LOG_CL.NEW_MSG := 'F_T_FTP: Auftrag aktiv /file: ~2';
     			LOG_CL.PRINTF[2] := files;
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
-    	END_IF
+    	END_IF;
 
     10:	IF ftp_busy = FALSE THEN
     		IF ftp_done THEN
@@ -35,13 +35,13 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     				LOG_CL.NEW_MSG := 'F_T_FTP: Auftrag OK /file: ~2';
     				LOG_CL.PRINTF[2] := filename;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 0;
     		ELSE
     			step := 20; (* pause nach error *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     20:	IF WT_1.Q THEN (* Wartezeit *)
     		cnt := cnt - 1;
@@ -51,7 +51,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     				LOG_CL.NEW_MSG := 'F_T_FTP: Auftrag unbegrenzt wiederholen /file: ~2';
     				LOG_CL.PRINTF[2] := filename;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 10; (* FTP Transfer wiederholen *)
     		ELSIF cnt >= 0 THEN
@@ -61,7 +61,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     				LOG_CL.PRINTF[1] := INT_TO_STRING(cnt);
     				LOG_CL.PRINTF[2] := filename;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 10; (* FTP Transfer wiederholen *)
     		ELSE
@@ -70,13 +70,13 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     				LOG_CL.NEW_MSG := 'F_T_FTP: Auftrag verworfen /file: ~2';
     				LOG_CL.PRINTF[2] := filename;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     			step := 0; (* FTP Auftrag verwerfen *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     BUSY := step = 10;
     DONE := step = 0;
@@ -84,7 +84,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
 
     FTP_CLIENT(
     	ACTIVATE:= BUSY,
-    	filename:= filename,
+    	FILENAME:= filename,
     	FTP_URL:= FTP_URL,
     	FTP_DOWNLOAD:= FALSE,
     	FTP_ACTIV:= FTP_ACTIV,
@@ -109,7 +109,7 @@ FUNCTION_BLOCK DLOG_FILE_TO_FTP
     ELSE
     	ERROR_C := DWORD#0;
     	ERROR_T := BYTE#0;
-    END_IF
+    END_IF;
 
     (* revision history
     ks	01. jan. 2011	rev 1.0

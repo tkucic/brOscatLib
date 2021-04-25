@@ -1,6 +1,6 @@
 FUNCTION BETA
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41*)
-    BETA := GAMMA(X) * GAMMA(Y) / GAMMA(X + Y);
+    BETA := GAMMA(X) * GAMMA(Y) / GAMMA(x + y);
 
 
     (* revision history

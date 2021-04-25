@@ -7,38 +7,38 @@ FUNCTION_BLOCK FT_RMP
     	init := TRUE;
     	last := tx;
     	tx := t#0s;
-    	OUT := IN;
-    END_IF
-    IF NOT RMP THEN
-    	OUT := IN;
-    	BUSY := FALSE;
-    ELSIF OUT > IN THEN
+    	out := in;
+    END_IF;
+    IF NOT rmp THEN
+    	out := in;
+    	busy := FALSE;
+    ELSIF out > in THEN
     	(* ramp down *)
-    	OUT := OUT - TIME_TO_REAL(tx) * 0.001 * KF;
-    	OUT := MAX(IN, OUT);
-    ELSIF OUT < IN THEN
+    	out := out - TIME_TO_REAL(tx) * 0.001 * KF;
+    	out := MAX(in, out);
+    ELSIF out < in THEN
     	(* ramp up *)
-    	OUT := OUT + TIME_TO_REAL(tx) * 0.001 * KR;
-    	OUT := MIN(IN, OUT);
-    END_IF
+    	out := out + TIME_TO_REAL(tx) * 0.001 * KR;
+    	out := MIN(in, out);
+    END_IF;
 
-    (* set BUSY and dir flags *)
-    IF OUT < IN THEN
-    	BUSY := TRUE;
-    	UD := TRUE;
-    ELSIF OUT > IN THEN
-    	BUSY := TRUE;
-    	UD := FALSE;
+    (* set busy and dir flags *)
+    IF out < in THEN
+    	busy := TRUE;
+    	ud := TRUE;
+    ELSIF out > in THEN
+    	busy := TRUE;
+    	ud := FALSE;
     ELSE
-    	BUSY := FALSE;
-    END_IF
+    	busy := FALSE;
+    END_IF;
     last := last + tx;
 
 
     (* revision history:
 
     hm 8.10.2006			rev 1.1
-    	added UD output
+    	added ud output
 
     hm 12. feb 2007		rev 1.2
     	added init variable and corrected a possible startup problem

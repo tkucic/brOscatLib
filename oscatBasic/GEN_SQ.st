@@ -9,8 +9,8 @@ FUNCTION_BLOCK GEN_SQ
     	Q := TRUE;
     ELSIF tx - tn >= SHR(TIME_TO_DWORD(PT),1) THEN
     	Q := NOT Q;
-    	tn := tn + SHR(TIME_TO_DWORD(PT),1);
-    END_IF
+    	tn := tn + SHR(TIME_TO_DWORD(pt),1);
+    END_IF;
 
 
     (* revision history

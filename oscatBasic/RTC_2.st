@@ -2,14 +2,14 @@ FUNCTION_BLOCK RTC_2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=133*)
     (* call rtc *)
     RT(SET := SET, SDT := SDT, SMS := SMS);
-    UDT := RT.xdt;
-    XMS := RT.XMS;
+    UDT := rt.xdt;
+    XMS := rt.XMS;
 
-    (* check for daylight savings time and SET DSO output *)
-    DSO := DST(UDT) AND DEN;
+    (* check for daylight savings time and set dso output *)
+    DSO := DST(udt) AND DEN;
 
-    (* calculate time offset and SET ldt output *)
-    LOCAL_DT := DWORD_TO_DT(DT_TO_DWORD(UDT) + INT_TO_DWORD(OFS + BOOL_TO_INT(DSO)*60) * 60);
+    (* calculate time offset and set ldt output *)
+    LOCAL_DT := DWORD_TO_DT(DT_TO_DWORD(UDT) + INT_TO_DWORD(ofs + BOOL_TO_INT(DSO)*60) * 60);
 
 
     (* revision history
@@ -17,7 +17,7 @@ FUNCTION_BLOCK RTC_2
     	original version
 
     hm		20. feb. 2008	rev 1.1
-    	added Millisecond SET input
+    	added Millisecond Set input
 
     hm		12. jun. 2008	rev 1.2
     	improved performance

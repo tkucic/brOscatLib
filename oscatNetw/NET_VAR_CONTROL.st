@@ -5,7 +5,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     	ERROR := BYTE_TO_DWORD(X.ERROR_ID);
     	X.ERROR_ID := BYTE#0;
     	step := 999;
-    END_IF
+    END_IF;
 
     CASE step OF
 
@@ -21,8 +21,8 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     	ELSE
     		IP_C.C_MODE := BYTE#2;
     		step := 200;
-    	END_IF
-            IF UDP THEN IP_C.C_MODE := IP_C.C_MODE OR BYTE#1; END_IF
+    	END_IF;
+            IF UDP THEN IP_C.C_MODE := IP_C.C_MODE OR BYTE#1; END_IF;
     	  	IP_C.C_PORT := REMOTE_PORT; (* Portnummer eintragen *)
     	  	IP_C.C_IP := REMOTE_IP4; (* IP eintragen *)
     	  	IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
@@ -33,7 +33,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     		X.CYCLE := UDINT#0;
     		X.ERROR_ID := BYTE#0;
     		reset := FALSE;
-    	END_IF
+    	END_IF;
 
     (* ++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -43,7 +43,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     		X.S_BUF.BUFFER[0] := UDINT_TO_BYTE(X.CYCLE);
     		X.INDEX := 1;
     		step := 110;
-    	END_IF
+    	END_IF;
 
     110:X.STATE := BYTE#0;
     	X.S_BUF.SIZE := INT_TO_UINT(X.INDEX); (* Datenlänge eintragen *)
@@ -58,7 +58,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     		ERROR := DWORD#0; (* nach erfolgreichen Zyklus letzten Fehlercode löschen *)
     		RUN := TRUE;
     		step := 130;
-    	END_IF
+    	END_IF;
 
     130:X.STATE := BYTE#0;
     	X.R_BUF.SIZE := UINT#0;
@@ -66,7 +66,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     		step := 999; (* Beenden *)
     	ELSIF tscan.Q THEN
     		step := 100;
-    	END_IF
+    	END_IF;
 
     (* ++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -75,7 +75,7 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     		X.BUF_SIZE := X.R_BUF.SIZE;
     		X.INDEX := 1;
     		step := 210;
-    	END_IF
+    	END_IF;
 
     210:X.STATE := BYTE#1; (* Daten sammeln *)
     	X.BUF_SIZE := SIZEOF(X.R_BUF.BUFFER);;
@@ -95,14 +95,14 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     			step := 999; (* Beenden *)
     		ELSE
     			step := 200;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     999:IP_C.C_ENABLE := FALSE; (* Beenden *)
     	RUN := FALSE;
     	step := 0;
 
-    END_CASE
+    END_CASE;
 
     (* ++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -113,9 +113,9 @@ FUNCTION_BLOCK NET_VAR_CONTROL
     	RUN := FALSE;
     	reset := TRUE;
     	step := 0;
-    END_IF
+    END_IF;
 
-    activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
+    ACTIVATE_LAST := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
     tscan(IN:= step <> 110 ,PT:=SCAN_TIME);
 
     (* revision history

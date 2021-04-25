@@ -1,60 +1,60 @@
 FUNCTION_BLOCK TIMER_2
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=60*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     IF NOT init THEN
     	init := TRUE;
     	last_check := tx - t#100ms;
-    END_IF
+    END_IF;
 
     (* for performance resons exit if execution is not necessary *)
-    IF tx - last_check < T#100ms THEN RETURN; END_IF
+    IF tx - last_check < T#100ms THEN RETURN; END_IF;
 
     (* calculate temp variables *)
-    dat := DT_TO_DATE(DT_IN);
-    daytime := DT_TO_TOD(DT_IN);
-    wday := DAY_OF_WEEK(dat);
+    dat := DT_TO_DATE(dt_in);
+    daytime := DT_TO_TOD(dt_in);
+    wday := OSCAT_BASIC.DAY_OF_WEEK(dat);
 
     (* calculate if any action is necessary today *)
-    CASE MODE OF
+    CASE mode OF
     	1..7:	(* mondays to fridays *)
-    		enabled := wday = BYTE_TO_INT(MODE);
+    		enabled := wday = BYTE_TO_INT(mode);
     	11:	(* every day *)
     		enabled := TRUE;
     	12..16:	(* every nth day *)
-    		enabled := (DATE_TO_DWORD(dat)/86400) MOD (MODE - 10) = 0;
+    		enabled := (DATE_TO_DWORD(dat)/86400) MOD (mode - 10) = 0;
     	20:	(* monday - friday *)
     		enabled := wday <= 5;
     	21:	(* saturday and sunday *)
     		enabled := wday > 5;
     	22: (* workdays only *)
-    		enabled := wday <= 5 AND NOT HOLIDAY;
+    		enabled := wday <= 5 AND NOT holiday;
     	23:	(* holidays and weekends *)
-    		enabled := wday > 5 OR HOLIDAY;
+    		enabled := wday > 5 OR holiday;
     	24:	(* holidays only *)
-    		enabled := HOLIDAY;
+    		enabled := holiday;
     	25:	(* 1st day of the month *)
-    		enabled := DAY_OF_MONTH(dat) = 1;
+    		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat) = 1;
     	26:	(* last day of month *)
-    		enabled := DAY_OF_MONTH(dat + T#1D) = 1;
+    		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat + T#1D) = 1;
     	27:	(* 31st of december *)
-    		enabled := DAY_OF_MONTH(dat) = 31 AND MONTH_OF_DATE(dat) = 12;
+    		enabled := OSCAT_BASIC.DAY_OF_MONTH(dat) = 31 AND OSCAT_BASIC.MONTH_OF_DATE(dat) = 12;
     	28:	(* 1st of january *)
-    		enabled := DAY_OF_YEAR(dat) = 1;
+    		enabled := OSCAT_BASIC.DAY_OF_YEAR(dat) = 1;
     ELSE
     	enabled := FALSE;
-    END_CASE
+    END_CASE;
 
     (* set output if necessary *)
-    IF enabled AND NOT Q AND daytime >= START AND run_date <> dat THEN
+    IF enabled AND NOT Q AND daytime >= start AND run_date <> dat THEN
     	Q := TRUE;
     	activation := tx;
     	run_date := dat;
-    ELSIF Q AND tx - activation >= DURATION THEN
+    ELSIF Q AND tx - activation >= duration THEN
     	Q := FALSE;
-    END_IF
-    last_check := tx;
+    END_IF;
+    last_check := Tx;
 
 
     (* revision history

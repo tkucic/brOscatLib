@@ -1,24 +1,24 @@
 FUNCTION_BLOCK COUNT_DR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=237*)
-    IF RST THEN
-    	CNT := 0;
-    ELSIF SET THEN
-    	CNT := LIMIT(0,IN,MX);
-    ELSIF UP AND NOT last_up THEN
+    IF rst THEN
+    	cnt := 0;
+    ELSIF set THEN
+    	cnt := LIMIT(0,in,mx);
+    ELSIF up AND NOT last_up THEN
     	IF STEP > MX - CNT THEN
     		CNT := CNT - MX + STEP - 1;
     	ELSE
     		CNT := CNT + STEP;
-    	END_IF
-    ELSIF DN AND NOT last_dn THEN
+    	END_IF;
+    ELSIF dn AND NOT last_dn THEN
     	IF STEP > CNT THEN
     		CNT := CNT - STEP + MX + 1;
     	ELSE
     		CNT := CNT - STEP;
-    	END_IF
-    END_IF
-    last_up := UP;
-    last_dn := DN;
+    	END_IF;
+    END_IF;
+    last_up := up;
+    last_dn := dn;
 
     (* revision history
     hm	12. jun 2008	rev 1.0

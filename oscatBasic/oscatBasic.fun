@@ -1,33 +1,33 @@
-FUNCTION _BUFFER_CLEAR : BOOL (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477 *)
+FUNCTION _BUFFER_CLEAR : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477 *)
     VAR_INPUT 
-        PT : REFERENCE TO BYTE;
+        PT : POINTER TO BYTE;
         SIZE : UINT;
     END_VAR
     VAR 
-        ptw : REFERENCE TO DWORD;
+        ptw : POINTER TO DWORD;
         temp : DWORD;
         end : DWORD;
         end32 : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION _BUFFER_INIT : BOOL (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477 *)
+FUNCTION _BUFFER_INIT : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477 *)
     VAR_INPUT 
-        PT : REFERENCE TO BYTE;
+        PT : POINTER TO BYTE;
         SIZE : UINT;
         INIT : BYTE;
     END_VAR
     VAR 
-        ptw : REFERENCE TO DWORD;
+        ptw : POINTER TO DWORD;
         temp : DWORD;
         end : DWORD;
         end32 : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION _BUFFER_INSERT : INT (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=478 *)
+FUNCTION _BUFFER_INSERT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=478 *)
     VAR_INPUT 
         STR : STRING[STRING_LENGTH];
         POS : INT;
-        PT : REFERENCE TO ARRAY[0..32767] OF BYTE;
+        PT : POINTER TO ARRAY[0..32767] OF BYTE;
         SIZE : UINT;
     END_VAR
     VAR 
@@ -36,33 +36,33 @@ FUNCTION _BUFFER_INSERT : INT (* Buffer Management *)(* http://www.oscat.de/imag
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION _BUFFER_UPPERCASE : BOOL (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=479 *)
+FUNCTION _BUFFER_UPPERCASE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=479 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF BYTE;
+        PT : POINTER TO ARRAY[0..32000] OF BYTE;
         SIZE : INT;
     END_VAR
     VAR 
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION _STRING_TO_BUFFER : INT (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=479 *)
+FUNCTION _STRING_TO_BUFFER : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=479 *)
     VAR_INPUT 
         STR : STRING[STRING_LENGTH];
         POS : INT;
-        PT : REFERENCE TO ARRAY[0..32767] OF BYTE;
+        PT : POINTER TO ARRAY[0..32767] OF BYTE;
         SIZE : UINT;
     END_VAR
     VAR 
-        ps : REFERENCE TO BYTE;
+        ps : POINTER TO BYTE;
         i : INT;
         end : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BUFFER_COMP : INT (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=480 *)
+FUNCTION BUFFER_COMP : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=480 *)
     VAR_INPUT 
-        PT1 : REFERENCE TO ARRAY[0..32767] OF BYTE;
+        PT1 : POINTER TO ARRAY[0..32767] OF BYTE;
         SIZE1 : INT;
-        PT2 : REFERENCE TO ARRAY[0..32767] OF BYTE;
+        PT2 : POINTER TO ARRAY[0..32767] OF BYTE;
         SIZE2 : INT;
         START : INT;
     END_VAR
@@ -73,16 +73,16 @@ FUNCTION BUFFER_COMP : INT (* Buffer Management *)(* http://www.oscat.de/images/
         firstbyte : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION BUFFER_SEARCH : INT (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=481 *)
+FUNCTION BUFFER_SEARCH : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=481 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32767] OF BYTE;
+        PT : POINTER TO ARRAY[0..32767] OF BYTE;
         SIZE : INT;
         STR : STRING[STRING_LENGTH];
         POS : INT;
         IGN : BOOL;
     END_VAR
     VAR 
-        ps : REFERENCE TO ARRAY[0..STRING_LENGTH] OF BYTE;
+        ps : POINTER TO ARRAY[0..STRING_LENGTH] OF BYTE;
         chx : BYTE;
         i : INT;
         end : INT;
@@ -90,27 +90,24 @@ FUNCTION BUFFER_SEARCH : INT (* Buffer Management *)(* http://www.oscat.de/image
         lx : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BUFFER_TO_STRING : BOOL (* Buffer Management *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=482 *)
+FUNCTION BUFFER_TO_STRING : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=482 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32767] OF BYTE;
+        PT : POINTER TO ARRAY[0..32767] OF BYTE;
         SIZE : UINT;
         START : UINT;
         STOP : UINT;
     END_VAR
     VAR 
-        ps : REFERENCE TO BYTE;
+        ps : POINTER TO BYTE;
         i : UINT;
         stp : UINT;
         sta : UINT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION_BLOCK DRIVER_1 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=454 *)
+FUNCTION_BLOCK DRIVER_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=454 *)
     VAR_INPUT 
-        TOGGLE_MODE : BOOL;
-        TIMEOUT : TIME;
+        Toggle_Mode : BOOL;
+        Timeout : TIME;
         SET : BOOL;
         IN : BOOL;
         RST : BOOL;
@@ -120,13 +117,13 @@ FUNCTION_BLOCK DRIVER_1 (* Automation *)(* http://www.oscat.de/images/OSCATBasic
     END_VAR
     VAR 
         off : TON;
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DRIVER_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=454 *)
+FUNCTION_BLOCK DRIVER_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=454 *)
     VAR_INPUT 
-        TOGGLE_MODE : BOOL;
-        TIMEOUT : TIME;
+        Toggle_Mode : BOOL;
+        Timeout : TIME;
         SET : BOOL;
         IN0 : BOOL;
         IN1 : BOOL;
@@ -147,12 +144,12 @@ FUNCTION_BLOCK DRIVER_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic
         d3 : DRIVER_1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DRIVER_4C (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=455 *)
+FUNCTION_BLOCK DRIVER_4C (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=455 *)
     VAR_INPUT 
         IN : BOOL;
         RST : BOOL;
-        TIMEOUT : TIME;
-        SX : ARRAY[1..7] OF BYTE := [1, 3, 7, 15];
+        Timeout : TIME;
+        SX : ARRAY[1..7] OF BYTE := ['1', '3', '7', '15'];
     END_VAR
     VAR_OUTPUT 
         SN : INT;
@@ -163,10 +160,10 @@ FUNCTION_BLOCK DRIVER_4C (* Automation *)(* http://www.oscat.de/images/OSCATBasi
     END_VAR
     VAR 
         off : TON;
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FLOW_CONTROL (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=456 *)
+FUNCTION_BLOCK FLOW_CONTROL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=456 *)
     VAR_INPUT 
         IN : BOOL;
         REQ : BOOL;
@@ -183,27 +180,27 @@ FUNCTION_BLOCK FLOW_CONTROL (* Automation *)(* http://www.oscat.de/images/OSCATB
         timer : TP_1D;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_Profile (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=457 *)
+FUNCTION_BLOCK FT_Profile (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=457 *)
     VAR_INPUT 
         K : REAL := 1;
         O : REAL;
         M : REAL := 1;
         E : BOOL;
-        VALUE_0 : REAL;
-        TIME_1 : TIME;
-        VALUE_1 : REAL;
-        TIME_2 : TIME;
-        VALUE_2 : REAL;
-        TIME_3 : TIME;
-        VALUE_3 : REAL;
-        TIME_10 : TIME;
-        VALUE_10 : REAL;
-        TIME_11 : TIME;
-        VALUE_11 : REAL;
-        TIME_12 : TIME;
-        VALUE_12 : REAL;
-        TIME_13 : TIME;
-        VALUE_13 : REAL;
+        value_0 : REAL;
+        time_1 : TIME;
+        value_1 : REAL;
+        time_2 : TIME;
+        value_2 : REAL;
+        time_3 : TIME;
+        value_3 : REAL;
+        time_10 : TIME;
+        value_10 : REAL;
+        time_11 : TIME;
+        value_11 : REAL;
+        time_12 : TIME;
+        value_12 : REAL;
+        time_13 : TIME;
+        value_13 : REAL;
     END_VAR
     VAR_OUTPUT 
         Y : REAL;
@@ -212,7 +209,7 @@ FUNCTION_BLOCK FT_Profile (* Automation *)(* http://www.oscat.de/images/OSCATBas
     END_VAR
     VAR 
         tx : TIME;
-        edge_ : BOOL;
+        edge : BOOL;
         state : BYTE;
         ta : TIME;
         tb : TIME;
@@ -222,15 +219,15 @@ FUNCTION_BLOCK FT_Profile (* Automation *)(* http://www.oscat.de/images/OSCATBas
         vb : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK INC_DEC (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=459 *)
+FUNCTION_BLOCK INC_DEC (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=459 *)
     VAR_INPUT 
-        CHA : BOOL;
-        CHB : BOOL;
+        CHa : BOOL;
+        CHb : BOOL;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        DIR : BOOL;
-        CNT : INT;
+        dir : BOOL;
+        cnt : INT;
     END_VAR
     VAR 
         edgea : BOOL;
@@ -241,7 +238,7 @@ FUNCTION_BLOCK INC_DEC (* Automation *)(* http://www.oscat.de/images/OSCATBasic/
         axb : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK INTERLOCK (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=461 *)
+FUNCTION_BLOCK INTERLOCK (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=461 *)
     VAR_INPUT 
         I1 : BOOL;
         I2 : BOOL;
@@ -256,7 +253,7 @@ FUNCTION_BLOCK INTERLOCK (* Automation *)(* http://www.oscat.de/images/OSCATBasi
         T2 : TOF;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK INTERLOCK_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=462 *)
+FUNCTION_BLOCK INTERLOCK_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=462 *)
     VAR_INPUT 
         I0 : BOOL;
         I1 : BOOL;
@@ -276,14 +273,14 @@ FUNCTION_BLOCK INTERLOCK_4 (* Automation *)(* http://www.oscat.de/images/OSCATBa
         lmode : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MANUAL : BOOL (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=463 *)
+FUNCTION MANUAL : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=463 *)
     VAR_INPUT 
         IN : BOOL;
         ON : BOOL;
         OFF : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK MANUAL_1 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464 *)
+FUNCTION_BLOCK MANUAL_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464 *)
     VAR_INPUT 
         IN : BOOL;
         MAN : BOOL;
@@ -298,10 +295,10 @@ FUNCTION_BLOCK MANUAL_1 (* Automation *)(* http://www.oscat.de/images/OSCATBasic
     VAR 
         S_edge : BOOL;
         r_edge : BOOL;
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MANUAL_2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464 *)
+FUNCTION_BLOCK MANUAL_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464 *)
     VAR_INPUT 
         IN : BOOL;
         ENA : BOOL;
@@ -314,7 +311,7 @@ FUNCTION_BLOCK MANUAL_2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic
         STATUS : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MANUAL_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=465 *)
+FUNCTION_BLOCK MANUAL_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=465 *)
     VAR_INPUT 
         I0 : BOOL;
         I1 : BOOL;
@@ -335,12 +332,12 @@ FUNCTION_BLOCK MANUAL_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic
         STATUS : BYTE;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
         pos : INT;
         tog : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PARSET (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=466 *)
+FUNCTION_BLOCK PARSET (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=466 *)
     VAR_INPUT 
         A0 : BOOL;
         A1 : BOOL;
@@ -381,7 +378,7 @@ FUNCTION_BLOCK PARSET (* Automation *)(* http://www.oscat.de/images/OSCATBasic/o
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PARSET2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=467 *)
+FUNCTION_BLOCK PARSET2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=467 *)
     VAR_INPUT 
         X : REAL;
         X01 : REAL;
@@ -412,11 +409,11 @@ FUNCTION_BLOCK PARSET2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/
         P4 : REAL;
     END_VAR
     VAR 
-        Pset : PARSET;
+        Pset : parset;
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SIGNAL (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=468 *)
+FUNCTION_BLOCK SIGNAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=468 *)
     VAR_INPUT 
         IN : BOOL;
         SIG : BYTE;
@@ -433,7 +430,7 @@ FUNCTION_BLOCK SIGNAL (* Automation *)(* http://www.oscat.de/images/OSCATBasic/o
         one : BYTE := 1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SIGNAL_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=469 *)
+FUNCTION_BLOCK SIGNAL_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=469 *)
     VAR_INPUT 
         IN1 : BOOL;
         IN2 : BOOL;
@@ -452,7 +449,7 @@ FUNCTION_BLOCK SIGNAL_4 (* Automation *)(* http://www.oscat.de/images/OSCATBasic
         sig : SIGNAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SRAMP (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=470 *)
+FUNCTION_BLOCK SRAMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=470 *)
     VAR_INPUT 
         X : REAL;
         A_UP : REAL;
@@ -472,17 +469,17 @@ FUNCTION_BLOCK SRAMP (* Automation *)(* http://www.oscat.de/images/OSCATBasic/os
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TUNE (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=472 *)
+FUNCTION_BLOCK TUNE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=472 *)
     VAR_INPUT 
         SET : BOOL;
         SU : BOOL;
         SD : BOOL;
         RST : BOOL;
         SS : REAL := 0.1;
-        LIMIT_L : REAL;
+        Limit_L : REAL;
         LIMIT_H : REAL := 100;
-        RST_VAL : REAL;
-        SET_VAL : REAL := 100;
+        RST_val : REAL;
+        SET_val : REAL := 100;
         T1 : TIME := TIME#500ms;
         T2 : TIME := TIME#2s0ms;
         S1 : REAL := 2;
@@ -503,7 +500,7 @@ FUNCTION_BLOCK TUNE (* Automation *)(* http://www.oscat.de/images/OSCATBasic/osc
         Y_start2 : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TUNE2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=475 *)
+FUNCTION_BLOCK TUNE2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=475 *)
     VAR_INPUT 
         SET : BOOL;
         SU : BOOL;
@@ -513,10 +510,10 @@ FUNCTION_BLOCK TUNE2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/os
         RST : BOOL;
         SS : REAL := 0.1;
         FS : REAL := 5;
-        LIMIT_L : REAL;
+        Limit_L : REAL;
         LIMIT_H : REAL := 100;
-        RST_VAL : REAL;
-        SET_VAL : REAL := 100;
+        RST_val : REAL;
+        SET_val : REAL := 100;
         TR : TIME := TIME#500ms;
         S1 : REAL := 2;
         S2 : REAL := 10;
@@ -534,16 +531,16 @@ FUNCTION_BLOCK TUNE2 (* Automation *)(* http://www.oscat.de/images/OSCATBasic/os
         Y_start : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BAND_B : BYTE (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=377 *)
+FUNCTION BAND_B : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=377 *)
     VAR_INPUT 
         X : BYTE;
         B : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK CONTROL_SET1 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=377 *)
+FUNCTION_BLOCK CONTROL_SET1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=377 *)
     VAR_INPUT 
-        KT : REAL;
-        TT : REAL;
+        Kt : REAL;
+        Tt : REAL;
         PI : BOOL;
         PID : BOOL;
         P_K : REAL := 0.5;
@@ -561,7 +558,7 @@ FUNCTION_BLOCK CONTROL_SET1 (* Control *)(* http://www.oscat.de/images/OSCATBasi
         KD : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CONTROL_SET2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=379 *)
+FUNCTION_BLOCK CONTROL_SET2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=379 *)
     VAR_INPUT 
         KS : REAL;
         TU : REAL;
@@ -586,14 +583,14 @@ FUNCTION_BLOCK CONTROL_SET2 (* Control *)(* http://www.oscat.de/images/OSCATBasi
         TX : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION CTRL_IN : REAL (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=380 *)
+FUNCTION CTRL_IN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=380 *)
     VAR_INPUT 
         SET_POINT : REAL;
         ACTUAL : REAL;
         NOISE : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK CTRL_OUT (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=381 *)
+FUNCTION_BLOCK CTRL_OUT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=381 *)
     VAR_INPUT 
         CI : REAL;
         OFFSET : REAL;
@@ -607,7 +604,7 @@ FUNCTION_BLOCK CTRL_OUT (* Control *)(* http://www.oscat.de/images/OSCATBasic/os
         LIM : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CTRL_PI (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=382 *)
+FUNCTION_BLOCK CTRL_PI (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=382 *)
     VAR_INPUT 
         ACT : REAL;
         SET : REAL;
@@ -631,7 +628,7 @@ FUNCTION_BLOCK CTRL_PI (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         co : CTRL_OUT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CTRL_PID (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=384 *)
+FUNCTION_BLOCK CTRL_PID (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=384 *)
     VAR_INPUT 
         ACT : REAL;
         SET : REAL;
@@ -656,7 +653,7 @@ FUNCTION_BLOCK CTRL_PID (* Control *)(* http://www.oscat.de/images/OSCATBasic/os
         co : CTRL_OUT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CTRL_PWM (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=386 *)
+FUNCTION_BLOCK CTRL_PWM (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=386 *)
     VAR_INPUT 
         CI : REAL;
         MAN_IN : REAL;
@@ -670,13 +667,13 @@ FUNCTION_BLOCK CTRL_PWM (* Control *)(* http://www.oscat.de/images/OSCATBasic/os
         PW : PWM_DC;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DEAD_BAND : REAL (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=387 *)
+FUNCTION DEAD_BAND : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=387 *)
     VAR_INPUT 
         X : REAL;
         L : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK DEAD_BAND_A (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=393 *)
+FUNCTION_BLOCK DEAD_BAND_A (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=393 *)
     VAR_INPUT 
         X : REAL;
         T : TIME;
@@ -692,13 +689,13 @@ FUNCTION_BLOCK DEAD_BAND_A (* Control *)(* http://www.oscat.de/images/OSCATBasic
         tp2 : FT_PT1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DEAD_ZONE : REAL (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=394 *)
+FUNCTION DEAD_ZONE : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=394 *)
     VAR_INPUT 
         X : REAL;
         L : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK DEAD_ZONE2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=395 *)
+FUNCTION_BLOCK DEAD_ZONE2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=395 *)
     VAR_INPUT 
         X : REAL;
         L : REAL;
@@ -707,14 +704,14 @@ FUNCTION_BLOCK DEAD_ZONE2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/
         Y : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_DERIV (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=396 *)
+FUNCTION_BLOCK FT_DERIV (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=396 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         K : REAL := 1;
-        RUN : BOOL := TRUE;
+        run : BOOL := TRUE;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
+        out : REAL;
     END_VAR
     VAR 
         old : REAL;
@@ -724,27 +721,27 @@ FUNCTION_BLOCK FT_DERIV (* Control *)(* http://www.oscat.de/images/OSCATBasic/os
         tc : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_IMP (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=399 *)
+FUNCTION_BLOCK FT_IMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=399 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         T : TIME;
         K : REAL := 1;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
+        out : REAL;
     END_VAR
     VAR 
         t1 : FT_PT1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_INT (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=400 *)
+FUNCTION_BLOCK FT_INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=400 *)
     VAR_INPUT 
         IN : REAL;
         K : REAL := 1;
         RUN : BOOL := TRUE;
         RST : BOOL;
-        OUT_MIN : REAL := -1.0E+37;
-        OUT_MAX : REAL := 1.0E+37;
+        OUT_MIN : REAL := -1E+37;
+        OUT_MAX : REAL := 1E+37;
     END_VAR
     VAR_OUTPUT 
         OUT : REAL;
@@ -754,14 +751,14 @@ FUNCTION_BLOCK FT_INT (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         INTeg : INTEGRATE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_INT2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=402 *)
+FUNCTION_BLOCK FT_INT2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=402 *)
     VAR_INPUT 
         IN : REAL;
         K : REAL := 1;
         RUN : BOOL := TRUE;
         RST : BOOL;
-        OUT_MIN : REAL := -1.0E+38;
-        OUT_MAX : REAL := 1.0E+38;
+        OUT_MIN : REAL := -1E+38;
+        OUT_MAX : REAL := 1E+38;
     END_VAR
     VAR_OUTPUT 
         OUT : REAL;
@@ -773,7 +770,7 @@ FUNCTION_BLOCK FT_INT2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         val : REAL2;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PD (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=403 *)
+FUNCTION_BLOCK FT_PD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=403 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
@@ -786,7 +783,7 @@ FUNCTION_BLOCK FT_PD (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat
         diff : FT_DERIV;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PDT1 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=403 *)
+FUNCTION_BLOCK FT_PDT1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=403 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
@@ -801,13 +798,13 @@ FUNCTION_BLOCK FT_PDT1 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         TP : FT_PT1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PI (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=404 *)
+FUNCTION_BLOCK FT_PI (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=404 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
         KI : REAL := 1;
-        ILIM_L : REAL := -1.0E+38;
-        ILIM_H : REAL := 1.0E+38;
+        ILIM_L : REAL := -1E+38;
+        ILIM_H : REAL := 1E+38;
         IEN : BOOL := TRUE;
         RST : BOOL;
     END_VAR
@@ -819,14 +816,14 @@ FUNCTION_BLOCK FT_PI (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat
         integ : FT_INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PID (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=406 *)
+FUNCTION_BLOCK FT_PID (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=406 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
         TN : REAL := 1;
         TV : REAL := 1;
-        ILIM_L : REAL := -1.0E+38;
-        ILIM_H : REAL := 1.0E+38;
+        ILIM_L : REAL := -1E+38;
+        ILIM_H : REAL := 1E+38;
         IEN : BOOL := TRUE;
         RST : BOOL;
     END_VAR
@@ -839,14 +836,14 @@ FUNCTION_BLOCK FT_PID (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         diff : FT_DERIV;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PIDW (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=407 *)
+FUNCTION_BLOCK FT_PIDW (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=407 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
         TN : REAL := 1;
         TV : REAL := 1;
-        LIM_L : REAL := -1.0E+38;
-        LIM_H : REAL := 1.0E+38;
+        LIM_L : REAL := -1E+38;
+        LIM_H : REAL := 1E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -859,14 +856,14 @@ FUNCTION_BLOCK FT_PIDW (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         YI : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PIDWL (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=409 *)
+FUNCTION_BLOCK FT_PIDWL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=409 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
         TN : REAL := 1;
         TV : REAL := 1;
-        LIM_L : REAL := -1.0E+38;
-        LIM_H : REAL := 1.0E+38;
+        LIM_L : REAL := -1E+38;
+        LIM_H : REAL := 1E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -878,13 +875,13 @@ FUNCTION_BLOCK FT_PIDWL (* Control *)(* http://www.oscat.de/images/OSCATBasic/os
         diff : FT_DERIV;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PIW (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=411 *)
+FUNCTION_BLOCK FT_PIW (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=411 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
         KI : REAL := 1;
-        LIM_L : REAL := -1.0E+38;
-        LIM_H : REAL := 1.0E+38;
+        LIM_L : REAL := -1E+38;
+        LIM_H : REAL := 1E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -895,13 +892,13 @@ FUNCTION_BLOCK FT_PIW (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         integ : FT_INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PIWL (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=412 *)
+FUNCTION_BLOCK FT_PIWL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=412 *)
     VAR_INPUT 
         IN : REAL;
         KP : REAL := 1;
         KI : REAL := 1;
-        LIM_L : REAL := -1.0E+38;
-        LIM_H : REAL := 1.0E+38;
+        LIM_L : REAL := -1E+38;
+        LIM_H : REAL := 1E+38;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
@@ -918,14 +915,14 @@ FUNCTION_BLOCK FT_PIWL (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         p : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PT1 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=414 *)
+FUNCTION_BLOCK FT_PT1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=414 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         T : TIME;
         K : REAL := 1;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
+        out : REAL;
     END_VAR
     VAR 
         last : DWORD;
@@ -933,15 +930,15 @@ FUNCTION_BLOCK FT_PT1 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_PT2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=415 *)
+FUNCTION_BLOCK FT_PT2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=415 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         T : TIME;
         D : REAL;
         K : REAL := 1;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
+        out : REAL;
     END_VAR
     VAR 
         init : BOOL;
@@ -953,14 +950,14 @@ FUNCTION_BLOCK FT_PT2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         tn2 : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_TN16 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=416 *)
+FUNCTION_BLOCK FT_TN16 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=416 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         T : TIME;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        TRIG : BOOL;
+        out : REAL;
+        trig : BOOL;
     END_VAR
     VAR 
         length : INT := 16;
@@ -971,14 +968,14 @@ FUNCTION_BLOCK FT_TN16 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_TN64 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=419 *)
+FUNCTION_BLOCK FT_TN64 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=419 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         T : TIME;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        TRIG : BOOL;
+        out : REAL;
+        trig : BOOL;
     END_VAR
     VAR 
         length : INT := 64;
@@ -989,14 +986,14 @@ FUNCTION_BLOCK FT_TN64 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osc
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_TN8 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=420 *)
+FUNCTION_BLOCK FT_TN8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=420 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         T : TIME;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        TRIG : BOOL;
+        out : REAL;
+        trig : BOOL;
     END_VAR
     VAR 
         length : INT := 8;
@@ -1007,29 +1004,29 @@ FUNCTION_BLOCK FT_TN8 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK HYST (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=421 *)
+FUNCTION_BLOCK HYST (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=421 *)
     VAR_INPUT 
-        IN : REAL;
+        In : REAL;
         ON : REAL;
         OFF : REAL;
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
-        WIN : BOOL;
+        win : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK HYST_1 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=422 *)
+FUNCTION_BLOCK HYST_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=422 *)
     VAR_INPUT 
-        IN : REAL;
-        HIGH : REAL;
-        LOW : REAL;
+        In : REAL;
+        high : REAL;
+        low : REAL;
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
-        WIN : BOOL;
+        win : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK HYST_2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=424 *)
+FUNCTION_BLOCK HYST_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=424 *)
     VAR_INPUT 
         IN : REAL;
         VAL : REAL;
@@ -1043,12 +1040,12 @@ FUNCTION_BLOCK HYST_2 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         tmp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK HYST_3 (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=425 *)
+FUNCTION_BLOCK HYST_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=425 *)
     VAR_INPUT 
-        IN : REAL;
-        HYST : REAL;
-        VAL1 : REAL;
-        VAL2 : REAL;
+        in : REAL;
+        hyst : REAL;
+        val1 : REAL;
+        val2 : REAL;
     END_VAR
     VAR_OUTPUT 
         Q1 : BOOL;
@@ -1058,7 +1055,7 @@ FUNCTION_BLOCK HYST_3 (* Control *)(* http://www.oscat.de/images/OSCATBasic/osca
         X : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK INTEGRATE (* Control *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=426 *)
+FUNCTION_BLOCK INTEGRATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=426 *)
     VAR_INPUT 
         E : BOOL := TRUE;
         X : REAL;
@@ -1074,36 +1071,36 @@ FUNCTION_BLOCK INTEGRATE (* Control *)(* http://www.oscat.de/images/OSCATBasic/o
         tx : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ASTRO (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=354 *)
+FUNCTION_BLOCK ASTRO (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=354 *)
     VAR_INPUT 
-        M : REAL;
+        m : REAL;
         AE : REAL;
         PC : REAL;
         LJ : REAL;
     END_VAR
     VAR_OUTPUT 
-        YM : REAL;
+        Ym : REAL;
         YAE : REAL;
         YPC : REAL;
         YLJ : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BFT_TO_MS : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=354 *)
+FUNCTION BFT_TO_MS : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=354 *)
     VAR_INPUT 
         BFT : INT;
     END_VAR
 END_FUNCTION
-FUNCTION C_TO_F : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356 *)
+FUNCTION C_TO_F : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356 *)
     VAR_INPUT 
-        CELSIUS : REAL;
+        celsius : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION C_TO_K : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356 *)
+FUNCTION C_TO_K : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356 *)
     VAR_INPUT 
-        CELSIUS : REAL;
+        Celsius : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DEG_TO_DIR : BOOL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356 *)
+FUNCTION DEG_TO_DIR : STRING[3] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356 *)
     VAR_INPUT 
         DEG : INT;
         N : INT;
@@ -1112,11 +1109,8 @@ FUNCTION DEG_TO_DIR : BOOL (* Conversion *)(* http://www.oscat.de/images/OSCATBa
     VAR 
         ly : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[3]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION DIR_TO_DEG : INT (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=360 *)
+FUNCTION DIR_TO_DEG : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=360 *)
     VAR_INPUT 
         DIR : STRING[3];
         L : INT;
@@ -1126,141 +1120,141 @@ FUNCTION DIR_TO_DEG : INT (* Conversion *)(* http://www.oscat.de/images/OSCATBas
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK ENERGY (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=361 *)
+FUNCTION_BLOCK ENERGY (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=361 *)
     VAR_INPUT 
         J : REAL;
         C : REAL;
-        WH : REAL;
+        Wh : REAL;
     END_VAR
     VAR_OUTPUT 
         YJ : REAL;
         YC : REAL;
-        YWH : REAL;
+        YWh : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION F_TO_C : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=361 *)
+FUNCTION F_TO_C : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=361 *)
     VAR_INPUT 
-        FAHRENHEIT : REAL;
+        fahrenheit : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION F_TO_OM : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362 *)
-    VAR_INPUT 
-        F : REAL;
-    END_VAR
-END_FUNCTION
-FUNCTION F_TO_PT : TIME (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362 *)
+FUNCTION F_TO_OM : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362 *)
     VAR_INPUT 
         F : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GEO_TO_DEG : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362 *)
+FUNCTION F_TO_PT : TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362 *)
+    VAR_INPUT 
+        F : REAL;
+    END_VAR
+END_FUNCTION
+FUNCTION GEO_TO_DEG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362 *)
     VAR_INPUT 
         D : INT;
         M : INT;
         SEC : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION K_TO_C : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=366 *)
+FUNCTION K_TO_C : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=366 *)
     VAR_INPUT 
-        KELVIN : REAL;
+        Kelvin : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION KMH_TO_MS : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=366 *)
+FUNCTION KMH_TO_MS : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=366 *)
     VAR_INPUT 
-        KMH : REAL;
+        kmh : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK LENGTH (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=367 *)
+FUNCTION_BLOCK LENGTH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=367 *)
     VAR_INPUT 
-        M : REAL;
-        P : REAL;
-        IN : REAL;
-        FT : REAL;
-        YD : REAL;
-        MILE : REAL;
-        SM : REAL;
-        FM : REAL;
+        m : REAL;
+        p : REAL;
+        in : REAL;
+        ft : REAL;
+        yd : REAL;
+        mile : REAL;
+        sm : REAL;
+        fm : REAL;
     END_VAR
     VAR_OUTPUT 
-        YM : REAL;
-        YP : REAL;
-        YIN : REAL;
-        YFT : REAL;
-        YYD : REAL;
-        YMILE : REAL;
-        YSM : REAL;
-        YFM : REAL;
+        Ym : REAL;
+        Yp : REAL;
+        Yin : REAL;
+        Yft : REAL;
+        Yyd : REAL;
+        Ymile : REAL;
+        Ysm : REAL;
+        Yfm : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MS_TO_BFT : INT (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=368 *)
+FUNCTION MS_TO_BFT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=368 *)
     VAR_INPUT 
         MS : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MS_TO_KMH : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=369 *)
+FUNCTION MS_TO_KMH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=369 *)
     VAR_INPUT 
-        MS : REAL;
+        ms : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION OM_TO_F : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=369 *)
+FUNCTION OM_TO_F : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=369 *)
     VAR_INPUT 
         OM : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK PRESSURE (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=371 *)
+FUNCTION_BLOCK PRESSURE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=371 *)
     VAR_INPUT 
-        MWS : REAL;
-        TORR : REAL;
-        ATT : REAL;
-        ATM : REAL;
-        PA : REAL;
-        BAR : REAL;
+        mws : REAL;
+        torr : REAL;
+        att : REAL;
+        atm : REAL;
+        pa : REAL;
+        bar : REAL;
     END_VAR
     VAR_OUTPUT 
-        YMWS : REAL;
-        YTORR : REAL;
-        YATT : REAL;
-        YATM : REAL;
-        YPA : REAL;
-        YBAR : REAL;
+        Ymws : REAL;
+        Ytorr : REAL;
+        Yatt : REAL;
+        Yatm : REAL;
+        Ypa : REAL;
+        Ybar : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION PT_TO_F : REAL (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=372 *)
+FUNCTION PT_TO_F : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=372 *)
     VAR_INPUT 
         PT : TIME;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK SPEED (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=372 *)
+FUNCTION_BLOCK SPEED (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=372 *)
     VAR_INPUT 
-        MS : REAL;
-        KMH : REAL;
-        KN : REAL;
-        MH : REAL;
+        ms : REAL;
+        kmh : REAL;
+        kn : REAL;
+        mh : REAL;
     END_VAR
     VAR_OUTPUT 
-        YMS : REAL;
-        YKMH : REAL;
-        YKN : REAL;
-        YMH : REAL;
+        Yms : REAL;
+        Ykmh : REAL;
+        Ykn : REAL;
+        Ymh : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TEMPERATURE (* Conversion *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=374 *)
+FUNCTION_BLOCK TEMPERATURE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=374 *)
     VAR_INPUT 
         K : REAL;
         C : REAL := -273.15;
         F : REAL := -459.67;
-        RE : REAL := -218.52;
-        RA : REAL;
+        Re : REAL := -218.52;
+        Ra : REAL;
     END_VAR
     VAR_OUTPUT 
         YK : REAL;
         YC : REAL;
         YF : REAL;
-        YRE : REAL;
-        YRA : REAL;
+        YRe : REAL;
+        YRa : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ALARM_2 (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=333 *)
+FUNCTION_BLOCK ALARM_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=333 *)
     VAR_INPUT 
         X : REAL;
         LO_1 : REAL;
@@ -1279,15 +1273,15 @@ FUNCTION_BLOCK ALARM_2 (* Measurements *)(* http://www.oscat.de/images/OSCATBasi
         tmp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK BAR_GRAPH (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=333 *)
+FUNCTION_BLOCK BAR_GRAPH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=333 *)
     VAR_INPUT 
         X : REAL;
-        RST : BOOL;
-        TRIGGER_LOW : REAL;
-        TRIGGER_HIGH : REAL;
-        ALARM_LOW : BOOL;
-        ALARM_HIGH : BOOL;
-        LOG_SCALE : BOOL;
+        rst : BOOL;
+        trigger_Low : REAL;
+        trigger_High : REAL;
+        Alarm_low : BOOL;
+        Alarm_high : BOOL;
+        log_scale : BOOL;
     END_VAR
     VAR_OUTPUT 
         LOW : BOOL;
@@ -1298,8 +1292,8 @@ FUNCTION_BLOCK BAR_GRAPH (* Measurements *)(* http://www.oscat.de/images/OSCATBa
         Q5 : BOOL;
         Q6 : BOOL;
         HIGH : BOOL;
-        ALARM : BOOL;
-        STATUS : BYTE;
+        Alarm : BOOL;
+        Status : BYTE;
     END_VAR
     VAR 
         init : BOOL;
@@ -1309,17 +1303,17 @@ FUNCTION_BLOCK BAR_GRAPH (* Measurements *)(* http://www.oscat.de/images/OSCATBa
         T4 : REAL;
         T5 : REAL;
     END_VAR
-    VAR 
+    VAR_TEMP 
         temp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CALIBRATE (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=337 *)
+FUNCTION_BLOCK CALIBRATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=337 *)
     VAR_INPUT 
         X : REAL;
         CO : BOOL;
         CS : BOOL;
-        Y_OFFSET : REAL;
-        Y_SCALE : REAL;
+        Y_Offset : REAL;
+        Y_Scale : REAL;
     END_VAR
     VAR_OUTPUT 
         Y : REAL;
@@ -1329,17 +1323,17 @@ FUNCTION_BLOCK CALIBRATE (* Measurements *)(* http://www.oscat.de/images/OSCATBa
         Scale : REAL := 1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CYCLE_TIME (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=338 *)
+FUNCTION_BLOCK CYCLE_TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=338 *)
     VAR_INPUT 
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        CT_MIN : TIME;
-        CT_MAX : TIME;
-        CT_LAST : TIME;
-        SYSTIME : TIME;
-        SYSDAYS : INT;
-        CYCLES : DWORD;
+        ct_min : TIME;
+        ct_max : TIME;
+        ct_last : TIME;
+        systime : TIME;
+        sysdays : INT;
+        cycles : DWORD;
     END_VAR
     VAR 
         last_cycle : TIME;
@@ -1347,7 +1341,7 @@ FUNCTION_BLOCK CYCLE_TIME (* Measurements *)(* http://www.oscat.de/images/OSCATB
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DT_SIMU (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=338 *)
+FUNCTION_BLOCK DT_SIMU (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=338 *)
     VAR_INPUT 
         START : DT;
         SPEED : REAL := 1;
@@ -1363,7 +1357,7 @@ FUNCTION_BLOCK DT_SIMU (* Measurements *)(* http://www.oscat.de/images/OSCATBasi
         td : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FLOW_METER (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=339 *)
+FUNCTION_BLOCK FLOW_METER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=339 *)
     VAR_INPUT 
         VX : REAL;
         E : BOOL;
@@ -1389,26 +1383,26 @@ FUNCTION_BLOCK FLOW_METER (* Measurements *)(* http://www.oscat.de/images/OSCATB
         y_last : UDINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK M_D (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=341 *)
+FUNCTION_BLOCK M_D (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=341 *)
     VAR_INPUT 
-        START : BOOL;
-        STOP : BOOL;
-        TMAX : TIME := TIME#14400m0s0ms;
-        RST : BOOL;
+        start : BOOL;
+        stop : BOOL;
+        tmax : TIME := TIME#14400m0s0ms;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         PT : TIME;
         ET : TIME;
-        RUN : BOOL;
+        run : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
         T0 : TIME;
         tx : TIME;
         startup : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK M_T (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342 *)
+FUNCTION_BLOCK M_T (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342 *)
     VAR_INPUT 
         IN : BOOL;
         TMAX : TIME := TIME#14400m0s0ms;
@@ -1419,16 +1413,16 @@ FUNCTION_BLOCK M_T (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/os
         ET : TIME;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
         start : TIME;
         tx : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK M_TX (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342 *)
+FUNCTION_BLOCK M_TX (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342 *)
     VAR_INPUT 
-        IN : BOOL;
-        TMAX : TIME := TIME#14400m0s0ms;
-        RST : BOOL;
+        in : BOOL;
+        tmax : TIME := TIME#14400m0s0ms;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         TH : TIME;
@@ -1438,7 +1432,7 @@ FUNCTION_BLOCK M_TX (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/o
         ET : TIME;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
         start : TIME;
         stop : TIME;
         tx : TIME;
@@ -1447,7 +1441,7 @@ FUNCTION_BLOCK M_TX (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/o
         startup : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK METER (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=343 *)
+FUNCTION_BLOCK METER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=343 *)
     VAR_INPUT 
         M1 : REAL;
         M2 : REAL;
@@ -1469,21 +1463,21 @@ FUNCTION_BLOCK METER (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK METER_STAT (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=345 *)
+FUNCTION_BLOCK METER_STAT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=345 *)
     VAR_INPUT 
         IN : REAL;
         DI : DATE;
         RST : BOOL;
     END_VAR
     VAR_IN_OUT 
-        LAST_DAY : REAL;
-        CURRENT_DAY : REAL;
-        LAST_WEEK : REAL;
-        CURRENT_WEEK : REAL;
-        LAST_MONTH : REAL;
-        CURRENT_MONTH : REAL;
-        LAST_YEAR : REAL;
-        CURRENT_YEAR : REAL;
+        Last_Day : REAL;
+        Current_Day : REAL;
+        Last_Week : REAL;
+        Current_Week : REAL;
+        Last_Month : REAL;
+        Current_Month : REAL;
+        Last_Year : REAL;
+        Current_Year : REAL;
     END_VAR
     VAR RETAIN
         Year_Start : REAL;
@@ -1493,7 +1487,7 @@ FUNCTION_BLOCK METER_STAT (* Measurements *)(* http://www.oscat.de/images/OSCATB
         last_run : DATE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ONTIME (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=346 *)
+FUNCTION_BLOCK ONTIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=346 *)
     VAR_INPUT 
         IN : BOOL;
         RST : BOOL;
@@ -1505,12 +1499,12 @@ FUNCTION_BLOCK ONTIME (* Measurements *)(* http://www.oscat.de/images/OSCATBasic
     VAR 
         tx : DWORD;
         last : DWORD;
-        edge_ : BOOL;
+        edge : BOOL;
         init : BOOL;
         ms : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION T_PLC_MS : DWORD (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=348 *)
+FUNCTION T_PLC_MS : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=348 *)
     VAR CONSTANT
         debug : BOOL := 0;
         N : INT := 0;
@@ -1520,7 +1514,7 @@ FUNCTION T_PLC_MS : DWORD (* Measurements *)(* http://www.oscat.de/images/OSCATB
         tx : TIME;
     END_VAR
 END_FUNCTION
-FUNCTION T_PLC_US : DWORD (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=351 *)
+FUNCTION T_PLC_US : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=351 *)
     VAR CONSTANT
         debug : BOOL := 0;
         N : INT := 0;
@@ -1530,7 +1524,7 @@ FUNCTION T_PLC_US : DWORD (* Measurements *)(* http://www.oscat.de/images/OSCATB
         tx : TIME;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK TC_MS (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=352 *)
+FUNCTION_BLOCK TC_MS (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=352 *)
     VAR_OUTPUT 
         TC : DWORD;
     END_VAR
@@ -1540,7 +1534,7 @@ FUNCTION_BLOCK TC_MS (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/
         last : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TC_S (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=353 *)
+FUNCTION_BLOCK TC_S (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=353 *)
     VAR_OUTPUT 
         TC : REAL;
     END_VAR
@@ -1550,7 +1544,7 @@ FUNCTION_BLOCK TC_S (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/o
         last : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TC_US (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=353 *)
+FUNCTION_BLOCK TC_US (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=353 *)
     VAR_OUTPUT 
         TC : DWORD;
     END_VAR
@@ -1560,15 +1554,15 @@ FUNCTION_BLOCK TC_US (* Measurements *)(* http://www.oscat.de/images/OSCATBasic/
         last : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MULTI_IN : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=317 *)
+FUNCTION MULTI_IN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=317 *)
     VAR_INPUT 
-        IN_1 : REAL;
-        IN_2 : REAL;
-        IN_3 : REAL;
-        DEFAULT : REAL;
-        IN_MIN : REAL;
-        IN_MAX : REAL;
-        MODE : BYTE;
+        in_1 : REAL;
+        in_2 : REAL;
+        in_3 : REAL;
+        default : REAL;
+        in_min : REAL;
+        in_max : REAL;
+        mode : BYTE;
     END_VAR
     VAR 
         count : INT;
@@ -1577,7 +1571,7 @@ FUNCTION MULTI_IN : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/os
         F3 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION RES_NI : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=318 *)
+FUNCTION RES_NI : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=318 *)
     VAR_INPUT 
         T : REAL;
         R0 : REAL;
@@ -1591,14 +1585,14 @@ FUNCTION RES_NI : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/osca
         T2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RES_NTC : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=319 *)
+FUNCTION RES_NTC : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=319 *)
     VAR_INPUT 
         T : REAL;
         RN : REAL;
         B : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RES_PT : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=322 *)
+FUNCTION RES_PT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=322 *)
     VAR_INPUT 
         T : REAL;
         R0 : REAL;
@@ -1612,7 +1606,7 @@ FUNCTION RES_PT : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/osca
         T2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RES_SI : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=323 *)
+FUNCTION RES_SI : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=323 *)
     VAR_INPUT 
         T : REAL;
         RS : REAL;
@@ -1626,10 +1620,10 @@ FUNCTION RES_SI : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/osca
         TX : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SENSOR_INT : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=324 *)
+FUNCTION SENSOR_INT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=324 *)
     VAR_INPUT 
-        VOLTAGE : REAL;
-        CURRENT : REAL;
+        Voltage : REAL;
+        Current : REAL;
         RP : REAL;
         RS : REAL;
     END_VAR
@@ -1637,22 +1631,22 @@ FUNCTION SENSOR_INT : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/
         RG : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TEMP_NI : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=325 *)
+FUNCTION TEMP_NI : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=325 *)
     VAR_INPUT 
-        RES : REAL;
+        Res : REAL;
         R0 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TEMP_NTC : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=326 *)
+FUNCTION TEMP_NTC : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=326 *)
     VAR_INPUT 
         RES : REAL;
         RN : REAL;
         B : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TEMP_PT : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=326 *)
+FUNCTION TEMP_PT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=326 *)
     VAR_INPUT 
-        RES : REAL;
+        Res : REAL;
         R0 : REAL;
     END_VAR
     VAR CONSTANT
@@ -1665,17 +1659,17 @@ FUNCTION TEMP_PT : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/osc
         X : REAL;
         Y : REAL;
         t1 : REAL;
-        pt : REFERENCE TO DWORD;
+        pt : POINTER TO DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION TEMP_SI : REAL (* Sensor *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=331 *)
+FUNCTION TEMP_SI : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=331 *)
     VAR_INPUT 
-        RES : REAL;
+        Res : REAL;
         RS : REAL;
         TS : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK _RMP_B (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255 *)
+FUNCTION_BLOCK _RMP_B (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255 *)
     VAR_INPUT 
         DIR : BOOL; (* true = up *)
         E : BOOL := TRUE;
@@ -1693,7 +1687,7 @@ FUNCTION_BLOCK _RMP_B (* Signal generators *)(* http://www.oscat.de/images/OSCAT
         start : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK _RMP_NEXT (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255 *)
+FUNCTION_BLOCK _RMP_NEXT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=255 *)
     VAR_INPUT 
         E : BOOL := TRUE;
         IN : BYTE;
@@ -1717,7 +1711,7 @@ FUNCTION_BLOCK _RMP_NEXT (* Signal generators *)(* http://www.oscat.de/images/OS
         xdir : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK _RMP_W (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=256 *)
+FUNCTION_BLOCK _RMP_W (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=256 *)
     VAR_INPUT 
         DIR : BOOL;
         E : BOOL := TRUE;
@@ -1734,7 +1728,7 @@ FUNCTION_BLOCK _RMP_W (* Signal generators *)(* http://www.oscat.de/images/OSCAT
         last_dir : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_PULSE (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=257 *)
+FUNCTION_BLOCK GEN_PULSE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=257 *)
     VAR_INPUT 
         ENQ : BOOL := TRUE;
         PTH : TIME;
@@ -1749,7 +1743,7 @@ FUNCTION_BLOCK GEN_PULSE (* Signal generators *)(* http://www.oscat.de/images/OS
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_PW2 (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=258 *)
+FUNCTION_BLOCK GEN_PW2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=258 *)
     VAR_INPUT 
         ENQ : BOOL;
         TH1 : TIME;
@@ -1772,7 +1766,7 @@ FUNCTION_BLOCK GEN_PW2 (* Signal generators *)(* http://www.oscat.de/images/OSCA
         et : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_RDM (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=258 *)
+FUNCTION_BLOCK GEN_RDM (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=258 *)
     VAR_INPUT 
         PT : TIME;
         AM : REAL := 1;
@@ -1780,7 +1774,7 @@ FUNCTION_BLOCK GEN_RDM (* Signal generators *)(* http://www.oscat.de/images/OSCA
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
-        OUT : REAL;
+        Out : REAL;
     END_VAR
     VAR 
         tx : TIME;
@@ -1788,15 +1782,15 @@ FUNCTION_BLOCK GEN_RDM (* Signal generators *)(* http://www.oscat.de/images/OSCA
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_RDT (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=259 *)
+FUNCTION_BLOCK GEN_RDT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=259 *)
     VAR_INPUT 
-        ENABLE : BOOL := TRUE;
-        MIN_TIME_MS : TIME := TIME#1s0ms; (* min Taktzeit *)
-        MAX_TIME_MS : TIME := TIME#1s200ms; (* Max Taktzeit *)
+        Enable : BOOL := TRUE;
+        Min_Time_ms : TIME := TIME#1s0ms; (* min Taktzeit *)
+        Max_Time_ms : TIME := TIME#1s200ms; (* Max Taktzeit *)
         TP_Q : TIME := TIME#100ms; (* Zeit Ausgang auf TRUE *)
     END_VAR
     VAR_OUTPUT 
-        XQ : BOOL;
+        xQ : BOOL;
     END_VAR
     VAR 
         tonRDMTimer : TON; (* Zeitbaustein Taktgenerator *)
@@ -1805,7 +1799,7 @@ FUNCTION_BLOCK GEN_RDT (* Signal generators *)(* http://www.oscat.de/images/OSCA
         rRDMTime : REAL; (* Zufalswert Timer *)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_RMP (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=260 *)
+FUNCTION_BLOCK GEN_RMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=260 *)
     VAR_INPUT 
         PT : TIME := TIME#1s0ms;
         AM : REAL := 1;
@@ -1824,7 +1818,7 @@ FUNCTION_BLOCK GEN_RMP (* Signal generators *)(* http://www.oscat.de/images/OSCA
         ltemp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_SIN (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=261 *)
+FUNCTION_BLOCK GEN_SIN (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=261 *)
     VAR_INPUT 
         PT : TIME;
         AM : REAL := 1;
@@ -1833,7 +1827,7 @@ FUNCTION_BLOCK GEN_SIN (* Signal generators *)(* http://www.oscat.de/images/OSCA
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
-        OUT : REAL;
+        Out : REAL;
     END_VAR
     VAR 
         tx : TIME;
@@ -1842,7 +1836,7 @@ FUNCTION_BLOCK GEN_SIN (* Signal generators *)(* http://www.oscat.de/images/OSCA
         temp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_SQR (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=262 *)
+FUNCTION_BLOCK GEN_SQR (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=262 *)
     VAR_INPUT 
         PT : TIME;
         AM : REAL := 1;
@@ -1852,7 +1846,7 @@ FUNCTION_BLOCK GEN_SQR (* Signal generators *)(* http://www.oscat.de/images/OSCA
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
-        OUT : REAL;
+        Out : REAL;
     END_VAR
     VAR 
         tx : TIME;
@@ -1860,7 +1854,7 @@ FUNCTION_BLOCK GEN_SQR (* Signal generators *)(* http://www.oscat.de/images/OSCA
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PWM_DC (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=263 *)
+FUNCTION_BLOCK PWM_DC (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=263 *)
     VAR_INPUT 
         F : REAL;
         DC : REAL;
@@ -1874,7 +1868,7 @@ FUNCTION_BLOCK PWM_DC (* Signal generators *)(* http://www.oscat.de/images/OSCAT
         tmp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PWM_PW (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264 *)
+FUNCTION_BLOCK PWM_PW (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264 *)
     VAR_INPUT 
         F : REAL;
         PW : TIME;
@@ -1887,7 +1881,7 @@ FUNCTION_BLOCK PWM_PW (* Signal generators *)(* http://www.oscat.de/images/OSCAT
         pulse : TP_X;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK RMP_B (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264 *)
+FUNCTION_BLOCK RMP_B (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264 *)
     VAR_INPUT 
         SET : BOOL;
         PT : TIME;
@@ -1905,7 +1899,7 @@ FUNCTION_BLOCK RMP_B (* Signal generators *)(* http://www.oscat.de/images/OSCATB
         rmp : _RMP_B;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK RMP_SOFT (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=266 *)
+FUNCTION_BLOCK RMP_SOFT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=266 *)
     VAR_INPUT 
         IN : BOOL;
         VAL : BYTE;
@@ -1920,7 +1914,7 @@ FUNCTION_BLOCK RMP_SOFT (* Signal generators *)(* http://www.oscat.de/images/OSC
         tmp : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK RMP_W (* Signal generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=267 *)
+FUNCTION_BLOCK RMP_W (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=267 *)
     VAR_INPUT 
         SET : BOOL;
         PT : TIME;
@@ -1929,22 +1923,22 @@ FUNCTION_BLOCK RMP_W (* Signal generators *)(* http://www.oscat.de/images/OSCATB
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        OUT : WORD;
-        BUSY : BOOL;
-        HIGH : BOOL;
-        LOW : BOOL;
+        out : WORD;
+        busy : BOOL;
+        high : BOOL;
+        low : BOOL;
     END_VAR
     VAR 
         rmp : _RMP_W;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION AIN : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=269 *)
+FUNCTION AIN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=269 *)
     VAR_INPUT 
-        IN : DWORD;
-        BITS : BYTE;
-        SIGN : BYTE := 255;
-        LOW : REAL;
-        HIGH : REAL := 10;
+        in : DWORD;
+        Bits : BYTE;
+        sign : BYTE := 255;
+        low : REAL;
+        high : REAL := 10;
     END_VAR
     VAR CONSTANT
         ff : DWORD := 16#FFFFFFFF;
@@ -1955,42 +1949,42 @@ FUNCTION AIN : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBa
         sx : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK AIN1 (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=270 *)
+FUNCTION_BLOCK AIN1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=270 *)
     VAR_INPUT 
-        IN : DWORD;
-        SIGN_BIT : INT := 255;
-        ERROR_BIT : INT := 255;
-        ERROR_CODE_EN : BOOL;
-        ERROR_CODE : DWORD;
-        OVERFLOW_BIT : INT := 255;
-        OVERFLOW_CODE_EN : BOOL;
-        OVERFLOW_CODE : DWORD;
-        BIT_0 : INT;
-        BIT_N : INT := 31;
-        OUT_MIN : REAL;
-        OUT_MAX : REAL := 10;
-        CODE_MIN : DWORD;
-        CODE_MAX : DWORD := 16#FFFFFFFF;
-        ERROR_OUTPUT : REAL;
-        OVERFLOW_OUTPUT : REAL := 10;
+        in : DWORD;
+        sign_bit : INT := 255;
+        error_bit : INT := 255;
+        error_code_en : BOOL;
+        error_code : DWORD;
+        overflow_bit : INT := 255;
+        overflow_code_en : BOOL;
+        overflow_code : DWORD;
+        Bit_0 : INT;
+        Bit_N : INT := 31;
+        out_min : REAL;
+        out_max : REAL := 10;
+        code_min : DWORD;
+        code_max : DWORD := 16#FFFFFFFF;
+        error_output : REAL;
+        overflow_output : REAL := 10;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        SIGN : BOOL;
-        ERROR : BOOL;
-        OVERFLOW : BOOL;
+        out : REAL;
+        sign : BOOL;
+        error : BOOL;
+        overflow : BOOL;
     END_VAR
     VAR 
         tB : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION AOUT : DWORD (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=271 *)
+FUNCTION AOUT : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=271 *)
     VAR_INPUT 
-        IN : REAL;
-        BITS : BYTE;
-        SIGN : BYTE := 255;
-        LOW : REAL;
-        HIGH : REAL := 10;
+        in : REAL;
+        Bits : BYTE;
+        sign : BYTE := 255;
+        low : REAL;
+        high : REAL := 10;
     END_VAR
     VAR CONSTANT
         ff : DWORD := 2#1;
@@ -2000,14 +1994,14 @@ FUNCTION AOUT : DWORD (* Signal processing *)(* http://www.oscat.de/images/OSCAT
         sx : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION AOUT1 : DWORD (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=272 *)
+FUNCTION AOUT1 : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=272 *)
     VAR_INPUT 
-        IN : REAL;
-        BIT_0 : INT;
-        BIT_N : INT := 31;
-        SIGN : INT := 255;
-        LOW : REAL;
-        HIGH : REAL := 10;
+        in : REAL;
+        Bit_0 : INT;
+        Bit_N : INT := 31;
+        sign : INT := 255;
+        low : REAL;
+        high : REAL := 10;
     END_VAR
     VAR CONSTANT
         ff : DWORD := 2#1;
@@ -2017,14 +2011,14 @@ FUNCTION AOUT1 : DWORD (* Signal processing *)(* http://www.oscat.de/images/OSCA
         in2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_RANGE : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=273 *)
+FUNCTION BYTE_TO_RANGE : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=273 *)
     VAR_INPUT 
         X : BYTE;
-        LOW : REAL;
-        HIGH : REAL;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK DELAY (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=274 *)
+FUNCTION_BLOCK DELAY (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=274 *)
     VAR_INPUT 
         IN : REAL;
         N : INT;
@@ -2040,27 +2034,27 @@ FUNCTION_BLOCK DELAY (* Signal processing *)(* http://www.oscat.de/images/OSCATB
         stop : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DELAY_4 (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=275 *)
+FUNCTION_BLOCK DELAY_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=275 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
     END_VAR
     VAR_OUTPUT 
-        OUT1 : REAL;
-        OUT2 : REAL;
-        OUT3 : REAL;
-        OUT4 : REAL;
+        out1 : REAL;
+        out2 : REAL;
+        out3 : REAL;
+        out4 : REAL;
     END_VAR
     VAR 
         temp : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FADE (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=276 *)
+FUNCTION_BLOCK FADE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=276 *)
     VAR_INPUT 
         IN1 : REAL;
         IN2 : REAL;
         F : BOOL;
         TF : TIME;
-        RST : BOOL;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         Y : REAL;
@@ -2069,7 +2063,7 @@ FUNCTION_BLOCK FADE (* Signal processing *)(* http://www.oscat.de/images/OSCATBa
         rmx : RMP_W;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILTER_DW (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=277 *)
+FUNCTION_BLOCK FILTER_DW (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=277 *)
     VAR_INPUT 
         X : DWORD;
         T : TIME;
@@ -2084,7 +2078,7 @@ FUNCTION_BLOCK FILTER_DW (* Signal processing *)(* http://www.oscat.de/images/OS
         Yi : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILTER_I (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=278 *)
+FUNCTION_BLOCK FILTER_I (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=278 *)
     VAR_INPUT 
         X : INT;
         T : TIME;
@@ -2099,7 +2093,7 @@ FUNCTION_BLOCK FILTER_I (* Signal processing *)(* http://www.oscat.de/images/OSC
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILTER_MAV_DW (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=278 *)
+FUNCTION_BLOCK FILTER_MAV_DW (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=278 *)
     VAR_INPUT 
         X : DWORD;
         N : UINT;
@@ -2113,11 +2107,11 @@ FUNCTION_BLOCK FILTER_MAV_DW (* Signal processing *)(* http://www.oscat.de/image
         buffer : ARRAY[0..31] OF DWORD;
         i : INT;
     END_VAR
-    VAR 
+    VAR_TEMP 
         tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILTER_MAV_W (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=279 *)
+FUNCTION_BLOCK FILTER_MAV_W (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=279 *)
     VAR_INPUT 
         X : WORD;
         N : UINT;
@@ -2132,11 +2126,11 @@ FUNCTION_BLOCK FILTER_MAV_W (* Signal processing *)(* http://www.oscat.de/images
         i : INT;
         sum : DWORD;
     END_VAR
-    VAR 
+    VAR_TEMP 
         tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILTER_W (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=280 *)
+FUNCTION_BLOCK FILTER_W (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=280 *)
     VAR_INPUT 
         X : WORD;
         T : TIME;
@@ -2151,7 +2145,7 @@ FUNCTION_BLOCK FILTER_W (* Signal processing *)(* http://www.oscat.de/images/OSC
         tmp : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FILTER_WAV (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=280 *)
+FUNCTION_BLOCK FILTER_WAV (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=280 *)
     VAR_INPUT 
         X : REAL;
         W : ARRAY[0..15] OF REAL;
@@ -2167,21 +2161,21 @@ FUNCTION_BLOCK FILTER_WAV (* Signal processing *)(* http://www.oscat.de/images/O
         n : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MIX : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=281 *)
+FUNCTION MIX : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=281 *)
     VAR_INPUT 
         A : REAL;
         B : REAL;
         M : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MUX_R2 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=281 *)
+FUNCTION MUX_R2 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=281 *)
     VAR_INPUT 
         IN0 : REAL;
         IN1 : REAL;
         A : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION MUX_R4 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=282 *)
+FUNCTION MUX_R4 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=282 *)
     VAR_INPUT 
         IN0 : REAL;
         IN1 : REAL;
@@ -2191,7 +2185,7 @@ FUNCTION MUX_R4 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCA
         A1 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION OFFSET : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=282 *)
+FUNCTION OFFSET : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=282 *)
     VAR_INPUT 
         X : REAL;
         O1 : BOOL;
@@ -2199,14 +2193,14 @@ FUNCTION OFFSET : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCA
         O3 : BOOL;
         O4 : BOOL;
         D : BOOL;
-        OFFSET_1 : REAL;
-        OFFSET_2 : REAL;
-        OFFSET_3 : REAL;
-        OFFSET_4 : REAL;
-        DEFAULT : REAL;
+        Offset_1 : REAL;
+        Offset_2 : REAL;
+        Offset_3 : REAL;
+        Offset_4 : REAL;
+        default : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION OFFSET2 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=285 *)
+FUNCTION OFFSET2 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=285 *)
     VAR_INPUT 
         X : REAL;
         O1 : BOOL;
@@ -2214,14 +2208,14 @@ FUNCTION OFFSET2 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSC
         O3 : BOOL;
         O4 : BOOL;
         D : BOOL;
-        OFFSET_1 : REAL;
-        OFFSET_2 : REAL;
-        OFFSET_3 : REAL;
-        OFFSET_4 : REAL;
-        DEFAULT : REAL;
+        Offset_1 : REAL;
+        Offset_2 : REAL;
+        Offset_3 : REAL;
+        Offset_4 : REAL;
+        default : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION OVERRIDE : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=286 *)
+FUNCTION OVERRIDE : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=286 *)
     VAR_INPUT 
         X1 : REAL;
         X2 : REAL;
@@ -2231,21 +2225,21 @@ FUNCTION OVERRIDE : REAL (* Signal processing *)(* http://www.oscat.de/images/OS
         E3 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION RANGE_TO_BYTE : BYTE (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288 *)
+FUNCTION RANGE_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288 *)
     VAR_INPUT 
         X : REAL;
-        LOW : REAL;
-        HIGH : REAL;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RANGE_TO_WORD : WORD (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288 *)
+FUNCTION RANGE_TO_WORD : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288 *)
     VAR_INPUT 
         X : REAL;
-        LOW : REAL;
-        HIGH : REAL;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288 *)
+FUNCTION SCALE : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=288 *)
     VAR_INPUT 
         X : REAL;
         K : REAL;
@@ -2254,7 +2248,7 @@ FUNCTION SCALE : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCAT
         MN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=289 *)
+FUNCTION SCALE_B : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=289 *)
     VAR_INPUT 
         X : BYTE;
         I_LO : BYTE;
@@ -2263,67 +2257,67 @@ FUNCTION SCALE_B : REAL (* Signal processing *)(* http://www.oscat.de/images/OSC
         O_HI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B2 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=290 *)
+FUNCTION SCALE_B2 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=290 *)
     VAR_INPUT 
-        IN1 : BYTE;
-        IN2 : BYTE;
+        in1 : BYTE;
+        in2 : BYTE;
         K : REAL;
         O : REAL;
-        IN1_MIN : REAL;
-        IN1_MAX : REAL := 1000;
-        IN2_MIN : REAL;
-        IN2_MAX : REAL := 1000;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B4 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=291 *)
+FUNCTION SCALE_B4 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=291 *)
     VAR_INPUT 
-        IN1 : BYTE;
-        IN2 : BYTE;
-        IN3 : BYTE;
-        IN4 : BYTE;
+        in1 : BYTE;
+        in2 : BYTE;
+        in3 : BYTE;
+        in4 : BYTE;
         K : REAL;
         O : REAL;
-        IN1_MIN : REAL;
-        IN1_MAX : REAL := 1000;
-        IN2_MIN : REAL;
-        IN2_MAX : REAL := 1000;
-        IN3_MIN : REAL;
-        IN3_MAX : REAL := 1000;
-        IN4_MIN : REAL;
-        IN4_MAX : REAL := 1000;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
+        in3_min : REAL;
+        in3_max : REAL := 1000;
+        in4_min : REAL;
+        in4_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_B8 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=292 *)
+FUNCTION SCALE_B8 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=292 *)
     VAR_INPUT 
-        IN1 : BYTE;
-        IN2 : BYTE;
-        IN3 : BYTE;
-        IN4 : BYTE;
-        IN5 : BYTE;
-        IN6 : BYTE;
-        IN7 : BYTE;
-        IN8 : BYTE;
+        in1 : BYTE;
+        in2 : BYTE;
+        in3 : BYTE;
+        in4 : BYTE;
+        in5 : BYTE;
+        in6 : BYTE;
+        in7 : BYTE;
+        in8 : BYTE;
         K : REAL;
         O : REAL;
-        IN1_MIN : REAL;
-        IN1_MAX : REAL := 1000;
-        IN2_MIN : REAL;
-        IN2_MAX : REAL := 1000;
-        IN3_MIN : REAL;
-        IN3_MAX : REAL := 1000;
-        IN4_MIN : REAL;
-        IN4_MAX : REAL := 1000;
-        IN5_MIN : REAL;
-        IN5_MAX : REAL := 1000;
-        IN6_MIN : REAL;
-        IN6_MAX : REAL := 1000;
-        IN7_MIN : REAL;
-        IN7_MAX : REAL := 1000;
-        IN8_MIN : REAL;
-        IN8_MAX : REAL := 1000;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
+        in3_min : REAL;
+        in3_max : REAL := 1000;
+        in4_min : REAL;
+        in4_max : REAL := 1000;
+        in5_min : REAL;
+        in5_max : REAL := 1000;
+        in6_min : REAL;
+        in6_max : REAL := 1000;
+        in7_min : REAL;
+        in7_max : REAL := 1000;
+        in8_min : REAL;
+        in8_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_D : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=293 *)
+FUNCTION SCALE_D : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=293 *)
     VAR_INPUT 
         X : DWORD;
         I_LO : DWORD;
@@ -2332,7 +2326,7 @@ FUNCTION SCALE_D : REAL (* Signal processing *)(* http://www.oscat.de/images/OSC
         O_HI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_R : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=294 *)
+FUNCTION SCALE_R : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=294 *)
     VAR_INPUT 
         X : REAL;
         I_LO : REAL;
@@ -2341,7 +2335,7 @@ FUNCTION SCALE_R : REAL (* Signal processing *)(* http://www.oscat.de/images/OSC
         O_HI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_X2 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=295 *)
+FUNCTION SCALE_X2 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=295 *)
     VAR_INPUT 
         IN1 : BOOL;
         IN2 : BOOL;
@@ -2353,7 +2347,7 @@ FUNCTION SCALE_X2 : REAL (* Signal processing *)(* http://www.oscat.de/images/OS
         IN2_MAX : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_X4 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=296 *)
+FUNCTION SCALE_X4 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=296 *)
     VAR_INPUT 
         IN1 : BOOL;
         IN2 : BOOL;
@@ -2371,37 +2365,37 @@ FUNCTION SCALE_X4 : REAL (* Signal processing *)(* http://www.oscat.de/images/OS
         IN4_MAX : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION SCALE_X8 : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=297 *)
+FUNCTION SCALE_X8 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=297 *)
     VAR_INPUT 
-        IN1 : BOOL;
-        IN2 : BOOL;
-        IN3 : BOOL;
-        IN4 : BOOL;
-        IN5 : BOOL;
-        IN6 : BOOL;
-        IN7 : BOOL;
-        IN8 : BOOL;
+        in1 : BOOL;
+        in2 : BOOL;
+        in3 : BOOL;
+        in4 : BOOL;
+        in5 : BOOL;
+        in6 : BOOL;
+        in7 : BOOL;
+        in8 : BOOL;
         K : REAL;
         O : REAL;
-        IN1_MIN : REAL;
-        IN1_MAX : REAL := 1000;
-        IN2_MIN : REAL;
-        IN2_MAX : REAL := 1000;
-        IN3_MIN : REAL;
-        IN3_MAX : REAL := 1000;
-        IN4_MIN : REAL;
-        IN4_MAX : REAL := 1000;
-        IN5_MIN : REAL;
-        IN5_MAX : REAL := 1000;
-        IN6_MIN : REAL;
-        IN6_MAX : REAL := 1000;
-        IN7_MIN : REAL;
-        IN7_MAX : REAL := 1000;
-        IN8_MIN : REAL;
-        IN8_MAX : REAL := 1000;
+        in1_min : REAL;
+        in1_max : REAL := 1000;
+        in2_min : REAL;
+        in2_max : REAL := 1000;
+        in3_min : REAL;
+        in3_max : REAL := 1000;
+        in4_min : REAL;
+        in4_max : REAL := 1000;
+        in5_min : REAL;
+        in5_max : REAL := 1000;
+        in6_min : REAL;
+        in6_max : REAL := 1000;
+        in7_min : REAL;
+        in7_max : REAL := 1000;
+        in8_min : REAL;
+        in8_max : REAL := 1000;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK SEL2_OF_3 (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=298 *)
+FUNCTION_BLOCK SEL2_OF_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=298 *)
     VAR_INPUT 
         IN1 : REAL;
         IN2 : REAL;
@@ -2419,7 +2413,7 @@ FUNCTION_BLOCK SEL2_OF_3 (* Signal processing *)(* http://www.oscat.de/images/OS
         D31 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SEL2_OF_3B (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=299 *)
+FUNCTION_BLOCK SEL2_OF_3B (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=299 *)
     VAR_INPUT 
         IN1 : BOOL;
         IN2 : BOOL;
@@ -2434,46 +2428,46 @@ FUNCTION_BLOCK SEL2_OF_3B (* Signal processing *)(* http://www.oscat.de/images/O
         TDEL : TON;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SH (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=299 *)
+FUNCTION_BLOCK SH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=299 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         CLK : BOOL;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        TRIG : BOOL;
+        out : REAL;
+        trig : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SH_1 (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=300 *)
+FUNCTION_BLOCK SH_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=300 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         PT : TIME;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        TRIG : BOOL;
+        out : REAL;
+        Trig : BOOL;
     END_VAR
     VAR 
         last : TIME;
         tx : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SH_2 (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=301 *)
+FUNCTION_BLOCK SH_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=301 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         PT : TIME;
         N : INT := 16;
-        DISC : INT;
+        disc : INT;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        TRIG : BOOL;
-        AVG : REAL;
-        HIGH : REAL;
-        LOW : REAL;
+        out : REAL;
+        trig : BOOL;
+        avg : REAL;
+        high : REAL;
+        low : REAL;
     END_VAR
     VAR 
         M : INT;
@@ -2488,7 +2482,7 @@ FUNCTION_BLOCK SH_2 (* Signal processing *)(* http://www.oscat.de/images/OSCATBa
         d2 : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SH_T (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=303 *)
+FUNCTION_BLOCK SH_T (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=303 *)
     VAR_INPUT 
         IN : REAL;
         E : BOOL;
@@ -2497,13 +2491,13 @@ FUNCTION_BLOCK SH_T (* Signal processing *)(* http://www.oscat.de/images/OSCATBa
         OUT : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION STAIR : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=304 *)
+FUNCTION STAIR : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=304 *)
     VAR_INPUT 
         X : REAL;
         D : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK STAIR2 (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=304 *)
+FUNCTION_BLOCK STAIR2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=304 *)
     VAR_INPUT 
         X : REAL;
         D : REAL;
@@ -2512,7 +2506,7 @@ FUNCTION_BLOCK STAIR2 (* Signal processing *)(* http://www.oscat.de/images/OSCAT
         Y : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TREND (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=305 *)
+FUNCTION_BLOCK TREND (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=305 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
@@ -2526,7 +2520,7 @@ FUNCTION_BLOCK TREND (* Signal processing *)(* http://www.oscat.de/images/OSCATB
         last_X : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TREND_DW (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=315 *)
+FUNCTION_BLOCK TREND_DW (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=315 *)
     VAR_INPUT 
         X : DWORD;
     END_VAR
@@ -2540,14 +2534,14 @@ FUNCTION_BLOCK TREND_DW (* Signal processing *)(* http://www.oscat.de/images/OSC
         last_X : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION WORD_TO_RANGE : REAL (* Signal processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=316 *)
+FUNCTION WORD_TO_RANGE : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=316 *)
     VAR_INPUT 
         X : WORD;
-        LOW : REAL;
-        HIGH : REAL;
+        low : REAL;
+        high : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION LIST_CLEAN : BOOL (* List Processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=485 *)
+FUNCTION LIST_CLEAN : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=485 *)
     VAR_INPUT 
         SEP : BYTE;
     END_VAR
@@ -2555,14 +2549,14 @@ FUNCTION LIST_CLEAN : BOOL (* List Processing *)(* http://www.oscat.de/images/OS
         LIST : STRING[LIST_LENGTH];
     END_VAR
     VAR 
-        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
         read : INT := 1;
         write : INT := 1;
         last : BYTE;
         c : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION LIST_GET : BOOL (* List Processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=485 *)
+FUNCTION LIST_GET : STRING[LIST_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=485 *)
     VAR_INPUT 
         SEP : BYTE;
         POS : INT;
@@ -2573,16 +2567,13 @@ FUNCTION LIST_GET : BOOL (* List Processing *)(* http://www.oscat.de/images/OSCA
     VAR 
         i : INT := 1;
         o : INT := 1;
-        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
-        po : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        po : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
         cnt : INT := 0;
         c : BYTE;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[LIST_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION LIST_INSERT : BOOL (* List Processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=486 *)
+FUNCTION LIST_INSERT : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=486 *)
     VAR_INPUT 
         SEP : BYTE;
         POS : INT;
@@ -2592,13 +2583,13 @@ FUNCTION LIST_INSERT : BOOL (* List Processing *)(* http://www.oscat.de/images/O
         LIST : STRING[LIST_LENGTH];
     END_VAR
     VAR 
-        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
         read : INT := 1;
         cnt : INT := 1;
         sx : STRING[1];
     END_VAR
 END_FUNCTION
-FUNCTION LIST_LEN : INT (* List Processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=487 *)
+FUNCTION LIST_LEN : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=487 *)
     VAR_INPUT 
         SEP : BYTE;
     END_VAR
@@ -2606,12 +2597,12 @@ FUNCTION LIST_LEN : INT (* List Processing *)(* http://www.oscat.de/images/OSCAT
         LIST : STRING[LIST_LENGTH];
     END_VAR
     VAR 
-        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
         pos : INT := 1;
         c : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK LIST_NEXT (* List Processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=487 *)
+FUNCTION_BLOCK LIST_NEXT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=487 *)
     VAR_INPUT 
         SEP : BYTE;
         RST : BOOL;
@@ -2625,13 +2616,13 @@ FUNCTION_BLOCK LIST_NEXT (* List Processing *)(* http://www.oscat.de/images/OSCA
     END_VAR
     VAR 
         pos : INT := 1;
-        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
-        po : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        po : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
         c : BYTE;
         write : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION LIST_RETRIEVE : BOOL (* List Processing *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=488 *)
+FUNCTION LIST_RETRIEVE : STRING[LIST_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=488 *)
     VAR_INPUT 
         SEP : BYTE;
         POS : INT;
@@ -2643,16 +2634,13 @@ FUNCTION LIST_RETRIEVE : BOOL (* List Processing *)(* http://www.oscat.de/images
         i : INT;
         o : INT := 1;
         w : INT := 1;
-        pt : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
-        po : REFERENCE TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        pt : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
+        po : POINTER TO ARRAY[1..LIST_LENGTH] OF BYTE;
         cnt : INT := 0;
         c : BYTE;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[LIST_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION_BLOCK COUNT_BR (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=236 *)
+FUNCTION_BLOCK COUNT_BR (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=236 *)
     VAR_INPUT 
         SET : BOOL;
         IN : BYTE;
@@ -2670,7 +2658,7 @@ FUNCTION_BLOCK COUNT_BR (* FF Edge triggered *)(* http://www.oscat.de/images/OSC
         last_dn : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK COUNT_DR (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=237 *)
+FUNCTION_BLOCK COUNT_DR (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=237 *)
     VAR_INPUT 
         SET : BOOL;
         IN : DWORD;
@@ -2688,7 +2676,7 @@ FUNCTION_BLOCK COUNT_DR (* FF Edge triggered *)(* http://www.oscat.de/images/OSC
         last_dn : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FF_D2E (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=238 *)
+FUNCTION_BLOCK FF_D2E (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=238 *)
     VAR_INPUT 
         D0 : BOOL;
         D1 : BOOL;
@@ -2700,10 +2688,10 @@ FUNCTION_BLOCK FF_D2E (* FF Edge triggered *)(* http://www.oscat.de/images/OSCAT
         Q1 : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FF_D4E (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=239 *)
+FUNCTION_BLOCK FF_D4E (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=239 *)
     VAR_INPUT 
         D0 : BOOL;
         D1 : BOOL;
@@ -2719,10 +2707,10 @@ FUNCTION_BLOCK FF_D4E (* FF Edge triggered *)(* http://www.oscat.de/images/OSCAT
         Q3 : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FF_DRE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=240 *)
+FUNCTION_BLOCK FF_DRE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=240 *)
     VAR_INPUT 
         SET : BOOL;
         D : BOOL;
@@ -2733,10 +2721,10 @@ FUNCTION_BLOCK FF_DRE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCAT
         Q : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FF_JKE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=241 *)
+FUNCTION_BLOCK FF_JKE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=241 *)
     VAR_INPUT 
         SET : BOOL;
         J : BOOL;
@@ -2748,10 +2736,10 @@ FUNCTION_BLOCK FF_JKE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCAT
         Q : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FF_RSE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242 *)
+FUNCTION_BLOCK FF_RSE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242 *)
     VAR_INPUT 
         CS : BOOL;
         CR : BOOL;
@@ -2765,7 +2753,7 @@ FUNCTION_BLOCK FF_RSE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCAT
         er : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SELECT_8 (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=247 *)
+FUNCTION_BLOCK SELECT_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=247 *)
     VAR_INPUT 
         E : BOOL;
         SET : BOOL;
@@ -2790,7 +2778,7 @@ FUNCTION_BLOCK SELECT_8 (* FF Edge triggered *)(* http://www.oscat.de/images/OSC
         last_dn : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SHR_4E (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=249 *)
+FUNCTION_BLOCK SHR_4E (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=249 *)
     VAR_INPUT 
         SET : BOOL;
         D0 : BOOL;
@@ -2807,7 +2795,7 @@ FUNCTION_BLOCK SHR_4E (* FF Edge triggered *)(* http://www.oscat.de/images/OSCAT
         trig : R_TRIG;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SHR_4UDE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=250 *)
+FUNCTION_BLOCK SHR_4UDE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=250 *)
     VAR_INPUT 
         SET : BOOL;
         D0 : BOOL;
@@ -2826,24 +2814,24 @@ FUNCTION_BLOCK SHR_4UDE (* FF Edge triggered *)(* http://www.oscat.de/images/OSC
         trig : R_TRIG;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SHR_8PLE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=251 *)
+FUNCTION_BLOCK SHR_8PLE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=251 *)
     VAR_INPUT 
-        DIN : BOOL;
-        DLOAD : BYTE;
+        Din : BOOL;
+        Dload : BYTE;
         CLK : BOOL;
         UP : BOOL := 1;
-        LOAD : BOOL;
+        load : BOOL;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        DOUT : BOOL;
+        DOut : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL := 1;
+        edge : BOOL := 1;
         register : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SHR_8UDE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=252 *)
+FUNCTION_BLOCK SHR_8UDE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=252 *)
     VAR_INPUT 
         SET : BOOL;
         D0 : BOOL;
@@ -2866,19 +2854,19 @@ FUNCTION_BLOCK SHR_8UDE (* FF Edge triggered *)(* http://www.oscat.de/images/OSC
         trig : R_TRIG;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TOGGLE (* FF Edge triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=254 *)
+FUNCTION_BLOCK TOGGLE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=254 *)
     VAR_INPUT 
         CLK : BOOL;
-        RST : BOOL;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK LTCH (* FF pulse triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242 *)
+FUNCTION_BLOCK LTCH (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242 *)
     VAR_INPUT 
         D : BOOL;
         L : BOOL;
@@ -2888,7 +2876,7 @@ FUNCTION_BLOCK LTCH (* FF pulse triggered *)(* http://www.oscat.de/images/OSCATB
         Q : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK LTCH_4 (* FF pulse triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=246 *)
+FUNCTION_BLOCK LTCH_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=246 *)
     VAR_INPUT 
         D0 : BOOL;
         D1 : BOOL;
@@ -2904,9 +2892,9 @@ FUNCTION_BLOCK LTCH_4 (* FF pulse triggered *)(* http://www.oscat.de/images/OSCA
         Q3 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK STORE_8 (* FF pulse triggered *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=253 *)
+FUNCTION_BLOCK STORE_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=253 *)
     VAR_INPUT 
-        SET : BOOL;
+        Set : BOOL;
         D0 : BOOL;
         D1 : BOOL;
         D2 : BOOL;
@@ -2915,8 +2903,8 @@ FUNCTION_BLOCK STORE_8 (* FF pulse triggered *)(* http://www.oscat.de/images/OSC
         D5 : BOOL;
         D6 : BOOL;
         D7 : BOOL;
-        CLR : BOOL;
-        RST : BOOL;
+        Clr : BOOL;
+        Rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         Q0 : BOOL;
@@ -2929,20 +2917,20 @@ FUNCTION_BLOCK STORE_8 (* FF pulse triggered *)(* http://www.oscat.de/images/OSC
         Q7 : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BCDC_TO_INT : INT (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
+FUNCTION BCDC_TO_INT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_COUNT : INT (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
+FUNCTION BIT_COUNT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
     VAR_INPUT 
         IN : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_B : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
+FUNCTION BIT_LOAD_B : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=210 *)
     VAR_INPUT 
         IN : BYTE;
         VAL : BOOL;
@@ -2952,7 +2940,7 @@ FUNCTION BIT_LOAD_B : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBa
         dat : BYTE := 1;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_B2 : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=211 *)
+FUNCTION BIT_LOAD_B2 : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=211 *)
     VAR_INPUT 
         I : BYTE;
         D : BOOL;
@@ -2960,7 +2948,7 @@ FUNCTION BIT_LOAD_B2 : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATB
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_DW : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=211 *)
+FUNCTION BIT_LOAD_DW : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=211 *)
     VAR_INPUT 
         IN : DWORD;
         VAL : BOOL;
@@ -2970,7 +2958,7 @@ FUNCTION BIT_LOAD_DW : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCAT
         dat : DWORD := 1;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_DW2 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=212 *)
+FUNCTION BIT_LOAD_DW2 : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=212 *)
     VAR_INPUT 
         I : DWORD;
         D : BOOL;
@@ -2978,7 +2966,7 @@ FUNCTION BIT_LOAD_DW2 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCA
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_W : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=212 *)
+FUNCTION BIT_LOAD_W : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=212 *)
     VAR_INPUT 
         IN : WORD;
         VAL : BOOL;
@@ -2988,7 +2976,7 @@ FUNCTION BIT_LOAD_W : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBa
         dat : WORD := 1;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_LOAD_W2 : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=213 *)
+FUNCTION BIT_LOAD_W2 : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=213 *)
     VAR_INPUT 
         I : WORD;
         D : BOOL;
@@ -2996,31 +2984,31 @@ FUNCTION BIT_LOAD_W2 : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATB
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_OF_DWORD : BOOL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=213 *)
+FUNCTION BIT_OF_DWORD : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=213 *)
     VAR_INPUT 
-        IN : DWORD;
+        in : DWORD;
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_TOGGLE_B : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=214 *)
+FUNCTION BIT_TOGGLE_B : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=214 *)
     VAR_INPUT 
         IN : BYTE;
         POS : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_TOGGLE_DW : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=214 *)
+FUNCTION BIT_TOGGLE_DW : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=214 *)
     VAR_INPUT 
         IN : DWORD;
         POS : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIT_TOGGLE_W : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=215 *)
+FUNCTION BIT_TOGGLE_W : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=215 *)
     VAR_INPUT 
         IN : WORD;
         POS : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_OF_BIT : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=215 *)
+FUNCTION BYTE_OF_BIT : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=215 *)
     VAR_INPUT 
         B0 : BOOL;
         B1 : BOOL;
@@ -3032,13 +3020,13 @@ FUNCTION BYTE_OF_BIT : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATB
         B7 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_OF_DWORD : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=216 *)
+FUNCTION BYTE_OF_DWORD : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=216 *)
     VAR_INPUT 
-        IN : DWORD;
+        in : DWORD;
         N : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK BYTE_TO_BITS (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=216 *)
+FUNCTION_BLOCK BYTE_TO_BITS (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=216 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
@@ -3053,27 +3041,27 @@ FUNCTION_BLOCK BYTE_TO_BITS (* Gate logic *)(* http://www.oscat.de/images/OSCATB
         B7 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BYTE_TO_GRAY : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217 *)
+FUNCTION BYTE_TO_GRAY : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION CHECK_PARITY : BOOL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217 *)
+FUNCTION CHECK_PARITY : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217 *)
     VAR_INPUT 
-        IN : DWORD;
-        P : BOOL;
+        in : DWORD;
+        p : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION CHK_REAL : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217 *)
+FUNCTION CHK_REAL : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
     VAR 
-        pt : REFERENCE TO DWORD;
+        pt : POINTER TO DWORD;
         tmp : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK DEC_2 (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=222 *)
+FUNCTION_BLOCK DEC_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=222 *)
     VAR_INPUT 
         D : BOOL;
         A : BOOL;
@@ -3083,7 +3071,7 @@ FUNCTION_BLOCK DEC_2 (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/os
         Q1 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DEC_4 (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=222 *)
+FUNCTION_BLOCK DEC_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=222 *)
     VAR_INPUT 
         D : BOOL;
         A0 : BOOL;
@@ -3096,7 +3084,7 @@ FUNCTION_BLOCK DEC_4 (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/os
         Q3 : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK DEC_8 (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=223 *)
+FUNCTION_BLOCK DEC_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=223 *)
     VAR_INPUT 
         D : BOOL;
         A0 : BOOL;
@@ -3117,15 +3105,15 @@ FUNCTION_BLOCK DEC_8 (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/os
         X : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DW_TO_REAL : REAL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=225 *)
+FUNCTION DW_TO_REAL : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=225 *)
     VAR_INPUT 
         X : DWORD;
     END_VAR
     VAR 
-        pt : REFERENCE TO REAL;
+        pt : POINTER TO REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DWORD_OF_BYTE : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=225 *)
+FUNCTION DWORD_OF_BYTE : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=225 *)
     VAR_INPUT 
         B3 : BYTE;
         B2 : BYTE;
@@ -3133,30 +3121,30 @@ FUNCTION DWORD_OF_BYTE : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSC
         B0 : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION DWORD_OF_WORD : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=226 *)
+FUNCTION DWORD_OF_WORD : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=226 *)
     VAR_INPUT 
         W1 : WORD;
         W0 : WORD;
     END_VAR
 END_FUNCTION
-FUNCTION GRAY_TO_BYTE : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=226 *)
+FUNCTION GRAY_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=226 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION INT_TO_BCDC : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=227 *)
+FUNCTION INT_TO_BCDC : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=227 *)
     VAR_INPUT 
         IN : INT;
     END_VAR
 END_FUNCTION
-FUNCTION MUX_2 : BOOL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=229 *)
+FUNCTION MUX_2 : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=229 *)
     VAR_INPUT 
         D0 : BOOL;
         D1 : BOOL;
         A0 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION MUX_4 : BOOL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=229 *)
+FUNCTION MUX_4 : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=229 *)
     VAR_INPUT 
         D0 : BOOL;
         D1 : BOOL;
@@ -3166,20 +3154,20 @@ FUNCTION MUX_4 : BOOL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/o
         A1 : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION PARITY : BOOL (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=230 *)
+FUNCTION PARITY : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=230 *)
     VAR_INPUT 
-        IN : DWORD;
+        in : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION REAL_TO_DW : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=231 *)
+FUNCTION REAL_TO_DW : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=231 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
     VAR 
-        pt : REFERENCE TO DWORD;
+        pt : POINTER TO DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION REFLECT : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=232 *)
+FUNCTION REFLECT : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=232 *)
     VAR_INPUT 
         D : DWORD;
         L : INT;
@@ -3188,12 +3176,12 @@ FUNCTION REFLECT : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasi
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION REVERSE : BYTE (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=232 *)
+FUNCTION REVERSE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=232 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION SHL1 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=233 *)
+FUNCTION SHL1 : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=233 *)
     VAR_INPUT 
         IN : DWORD;
         N : INT;
@@ -3202,7 +3190,7 @@ FUNCTION SHL1 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/o
         temp : DWORD := 16#FFFFFFFF;
     END_VAR
 END_FUNCTION
-FUNCTION SHR1 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=233 *)
+FUNCTION SHR1 : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=233 *)
     VAR_INPUT 
         IN : DWORD;
         N : INT;
@@ -3211,29 +3199,29 @@ FUNCTION SHR1 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/o
         temp : DWORD := 16#FFFFFFFF;
     END_VAR
 END_FUNCTION
-FUNCTION SWAP_BYTE : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=234 *)
+FUNCTION SWAP_BYTE : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=234 *)
     VAR_INPUT 
         IN : WORD;
     END_VAR
 END_FUNCTION
-FUNCTION SWAP_BYTE2 : DWORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=234 *)
+FUNCTION SWAP_BYTE2 : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=234 *)
     VAR_INPUT 
         IN : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION WORD_OF_BYTE : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=234 *)
+FUNCTION WORD_OF_BYTE : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=234 *)
     VAR_INPUT 
         B1 : BYTE;
         B0 : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION WORD_OF_DWORD : WORD (* Gate logic *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=235 *)
+FUNCTION WORD_OF_DWORD : WORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=235 *)
     VAR_INPUT 
-        IN : DWORD;
+        in : DWORD;
         N : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK A_TRIG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=188 *)
+FUNCTION_BLOCK A_TRIG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=188 *)
     VAR_INPUT 
         IN : REAL;
         RES : REAL;
@@ -3246,7 +3234,7 @@ FUNCTION_BLOCK A_TRIG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/o
         last_in : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK B_TRIG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=188 *)
+FUNCTION_BLOCK B_TRIG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=188 *)
     VAR_INPUT 
         CLK : BOOL;
     END_VAR
@@ -3254,10 +3242,10 @@ FUNCTION_BLOCK B_TRIG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/o
         Q : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLICK_CNT (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=189 *)
+FUNCTION_BLOCK CLICK_CNT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=189 *)
     VAR_INPUT 
         IN : BOOL;
         N : INT;
@@ -3268,11 +3256,11 @@ FUNCTION_BLOCK CLICK_CNT (* Generators *)(* http://www.oscat.de/images/OSCATBasi
     END_VAR
     VAR 
         tx : TP;
-        edge_ : BOOL;
+        edge : BOOL;
         cnt : INT := -1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLICK_DEC (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=190 *)
+FUNCTION_BLOCK CLICK_DEC (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=190 *)
     VAR_INPUT 
         IN : BOOL;
         TC : TIME;
@@ -3285,14 +3273,14 @@ FUNCTION_BLOCK CLICK_DEC (* Generators *)(* http://www.oscat.de/images/OSCATBasi
     END_VAR
     VAR 
         tx : TP;
-        edge_ : BOOL;
+        edge : BOOL;
         cnt : INT := -1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLK_DIV (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=190 *)
+FUNCTION_BLOCK CLK_DIV (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=190 *)
     VAR_INPUT 
-        CLK : BOOL;
-        RST : BOOL;
+        clk : BOOL;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         Q0 : BOOL;
@@ -3308,7 +3296,7 @@ FUNCTION_BLOCK CLK_DIV (* Generators *)(* http://www.oscat.de/images/OSCATBasic/
         cnt : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLK_N (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=192 *)
+FUNCTION_BLOCK CLK_N (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=192 *)
     VAR_INPUT 
         N : INT;
     END_VAR
@@ -3316,12 +3304,12 @@ FUNCTION_BLOCK CLK_N (* Generators *)(* http://www.oscat.de/images/OSCATBasic/os
         Q : BOOL;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
         stime : DWORD;
         clk : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLK_PRG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=192 *)
+FUNCTION_BLOCK CLK_PRG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=192 *)
     VAR_INPUT 
         PT : TIME := TIME#10ms;
     END_VAR
@@ -3334,7 +3322,7 @@ FUNCTION_BLOCK CLK_PRG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/
         tx : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CLK_PULSE (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=193 *)
+FUNCTION_BLOCK CLK_PULSE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=193 *)
     VAR_INPUT 
         PT : TIME;
         N : INT;
@@ -3351,7 +3339,7 @@ FUNCTION_BLOCK CLK_PULSE (* Generators *)(* http://www.oscat.de/images/OSCATBasi
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK CYCLE_4 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=194 *)
+FUNCTION_BLOCK CYCLE_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=194 *)
     VAR_INPUT 
         E : BOOL := TRUE;
         T0 : TIME;
@@ -3371,9 +3359,9 @@ FUNCTION_BLOCK CYCLE_4 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK D_TRIG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=195 *)
+FUNCTION_BLOCK D_TRIG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=195 *)
     VAR_INPUT 
-        IN : DWORD;
+        in : DWORD;
     END_VAR
     VAR_OUTPUT 
         Q : BOOL;
@@ -3383,24 +3371,24 @@ FUNCTION_BLOCK D_TRIG (* Generators *)(* http://www.oscat.de/images/OSCATBasic/o
         last_in : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_BIT (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=196 *)
+FUNCTION_BLOCK GEN_BIT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=196 *)
     VAR_INPUT 
-        IN0 : DWORD;
-        IN1 : DWORD;
-        IN2 : DWORD;
-        IN3 : DWORD;
-        CLK : BOOL;
-        STEPS : INT;
-        REP : INT;
-        RST : BOOL;
+        in0 : DWORD;
+        in1 : DWORD;
+        in2 : DWORD;
+        in3 : DWORD;
+        clk : BOOL;
+        steps : INT;
+        rep : INT;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
         Q0 : BOOL;
         Q1 : BOOL;
         Q2 : BOOL;
         Q3 : BOOL;
-        CNT : INT;
-        RUN : BOOL;
+        cnt : INT;
+        run : BOOL;
     END_VAR
     VAR 
         r0 : DWORD;
@@ -3410,7 +3398,7 @@ FUNCTION_BLOCK GEN_BIT (* Generators *)(* http://www.oscat.de/images/OSCATBasic/
         rx : INT := 1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK GEN_SQ (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=197 *)
+FUNCTION_BLOCK GEN_SQ (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=197 *)
     VAR_INPUT 
         PT : TIME;
     END_VAR
@@ -3423,7 +3411,7 @@ FUNCTION_BLOCK GEN_SQ (* Generators *)(* http://www.oscat.de/images/OSCATBasic/o
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SCHEDULER (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=198 *)
+FUNCTION_BLOCK SCHEDULER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=198 *)
     VAR_INPUT 
         E0 : BOOL;
         E1 : BOOL;
@@ -3450,7 +3438,7 @@ FUNCTION_BLOCK SCHEDULER (* Generators *)(* http://www.oscat.de/images/OSCATBasi
         c : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SCHEDULER_2 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=198 *)
+FUNCTION_BLOCK SCHEDULER_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=198 *)
     VAR_INPUT 
         E0 : BOOL;
         E1 : BOOL;
@@ -3475,23 +3463,23 @@ FUNCTION_BLOCK SCHEDULER_2 (* Generators *)(* http://www.oscat.de/images/OSCATBa
         sx : UINT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SEQUENCE_4 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=199 *)
+FUNCTION_BLOCK SEQUENCE_4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=199 *)
     VAR_INPUT 
-        IN0 : BOOL := TRUE;
-        IN1 : BOOL := TRUE;
-        IN2 : BOOL := TRUE;
-        IN3 : BOOL := TRUE;
-        START : BOOL;
-        RST : BOOL;
-        WAIT0 : TIME;
-        DELAY0 : TIME;
-        WAIT1 : TIME;
-        DELAY1 : TIME;
-        WAIT2 : TIME;
-        DELAY2 : TIME;
-        WAIT3 : TIME;
-        DELAY3 : TIME;
-        STOP_ON_ERROR : BOOL;
+        in0 : BOOL := TRUE;
+        in1 : BOOL := TRUE;
+        in2 : BOOL := TRUE;
+        in3 : BOOL := TRUE;
+        start : BOOL;
+        rst : BOOL;
+        wait0 : TIME;
+        delay0 : TIME;
+        wait1 : TIME;
+        delay1 : TIME;
+        wait2 : TIME;
+        delay2 : TIME;
+        wait3 : TIME;
+        delay3 : TIME;
+        stop_on_error : BOOL;
     END_VAR
     VAR_OUTPUT 
         Q0 : BOOL;
@@ -3499,18 +3487,18 @@ FUNCTION_BLOCK SEQUENCE_4 (* Generators *)(* http://www.oscat.de/images/OSCATBas
         Q2 : BOOL;
         Q3 : BOOL;
         QX : BOOL;
-        RUN : BOOL;
-        STEP : INT := -1;
-        STATUS : BYTE;
+        run : BOOL;
+        step : INT := -1;
+        status : BYTE;
     END_VAR
     VAR 
         last : TIME;
-        edge_ : BOOL;
+        edge : BOOL;
         tx : TIME;
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SEQUENCE_64 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=202 *)
+FUNCTION_BLOCK SEQUENCE_64 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=202 *)
     VAR_INPUT 
         START : BOOL;
         SMAX : INT;
@@ -3523,39 +3511,39 @@ FUNCTION_BLOCK SEQUENCE_64 (* Generators *)(* http://www.oscat.de/images/OSCATBa
     END_VAR
     VAR 
         tx : TIME;
-        edge_ : BOOL;
+        edge : BOOL;
         last : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SEQUENCE_8 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=203 *)
+FUNCTION_BLOCK SEQUENCE_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=203 *)
     VAR_INPUT 
-        IN0 : BOOL := TRUE;
-        IN1 : BOOL := TRUE;
-        IN2 : BOOL := TRUE;
-        IN3 : BOOL := TRUE;
-        IN4 : BOOL := TRUE;
-        IN5 : BOOL := TRUE;
-        IN6 : BOOL := TRUE;
-        IN7 : BOOL := TRUE;
-        START : BOOL;
-        RST : BOOL;
-        WAIT0 : TIME;
-        DELAY0 : TIME;
-        WAIT1 : TIME;
-        DELAY1 : TIME;
-        WAIT2 : TIME;
-        DELAY2 : TIME;
-        WAIT3 : TIME;
-        DELAY3 : TIME;
-        WAIT4 : TIME;
-        DELAY4 : TIME;
-        WAIT5 : TIME;
-        DELAY5 : TIME;
-        WAIT6 : TIME;
-        DELAY6 : TIME;
-        WAIT7 : TIME;
-        DELAY7 : TIME;
-        STOP_ON_ERROR : BOOL;
+        in0 : BOOL := TRUE;
+        in1 : BOOL := TRUE;
+        in2 : BOOL := TRUE;
+        in3 : BOOL := TRUE;
+        in4 : BOOL := TRUE;
+        in5 : BOOL := TRUE;
+        in6 : BOOL := TRUE;
+        in7 : BOOL := TRUE;
+        start : BOOL;
+        rst : BOOL;
+        wait0 : TIME;
+        delay0 : TIME;
+        wait1 : TIME;
+        delay1 : TIME;
+        wait2 : TIME;
+        delay2 : TIME;
+        wait3 : TIME;
+        delay3 : TIME;
+        wait4 : TIME;
+        delay4 : TIME;
+        wait5 : TIME;
+        delay5 : TIME;
+        wait6 : TIME;
+        delay6 : TIME;
+        wait7 : TIME;
+        delay7 : TIME;
+        stop_on_error : BOOL;
     END_VAR
     VAR_OUTPUT 
         Q0 : BOOL;
@@ -3567,18 +3555,18 @@ FUNCTION_BLOCK SEQUENCE_8 (* Generators *)(* http://www.oscat.de/images/OSCATBas
         Q6 : BOOL;
         Q7 : BOOL;
         QX : BOOL;
-        RUN : BOOL;
-        STEP : INT := -1;
-        STATUS : BYTE;
+        run : BOOL;
+        step : INT := -1;
+        status : BYTE;
     END_VAR
     VAR 
         last : TIME;
-        edge_ : BOOL;
+        edge : BOOL;
         tx : TIME;
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TMAX (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=204 *)
+FUNCTION_BLOCK TMAX (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=204 *)
     VAR_INPUT 
         IN : BOOL;
         PT : TIME;
@@ -3593,7 +3581,7 @@ FUNCTION_BLOCK TMAX (* Generators *)(* http://www.oscat.de/images/OSCATBasic/osc
         last_in : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TMIN (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=205 *)
+FUNCTION_BLOCK TMIN (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=205 *)
     VAR_INPUT 
         IN : BOOL;
         PT : TIME;
@@ -3605,7 +3593,7 @@ FUNCTION_BLOCK TMIN (* Generators *)(* http://www.oscat.de/images/OSCATBasic/osc
         pm : TP;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TOF_1 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=205 *)
+FUNCTION_BLOCK TOF_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=205 *)
     VAR_INPUT 
         IN : BOOL;
         PT : TIME;
@@ -3619,7 +3607,7 @@ FUNCTION_BLOCK TOF_1 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/os
         start : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TONOF (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=206 *)
+FUNCTION_BLOCK TONOF (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=206 *)
     VAR_INPUT 
         IN : BOOL;
         T_ON : TIME;
@@ -3634,7 +3622,7 @@ FUNCTION_BLOCK TONOF (* Generators *)(* http://www.oscat.de/images/OSCATBasic/os
         mode : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TP_1 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=207 *)
+FUNCTION_BLOCK TP_1 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=207 *)
     VAR_INPUT 
         IN : BOOL;
         PT : TIME;
@@ -3649,7 +3637,7 @@ FUNCTION_BLOCK TP_1 (* Generators *)(* http://www.oscat.de/images/OSCATBasic/osc
         ix : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TP_1D (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=208 *)
+FUNCTION_BLOCK TP_1D (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=208 *)
     VAR_INPUT 
         IN : BOOL;
         PT1 : TIME;
@@ -3666,7 +3654,7 @@ FUNCTION_BLOCK TP_1D (* Generators *)(* http://www.oscat.de/images/OSCATBasic/os
         ix : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK TP_X (* Generators *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=208 *)
+FUNCTION_BLOCK TP_X (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=208 *)
     VAR_INPUT 
         IN : BOOL;
         PT : TIME;
@@ -3676,21 +3664,21 @@ FUNCTION_BLOCK TP_X (* Generators *)(* http://www.oscat.de/images/OSCATBasic/osc
         ET : TIME;
     END_VAR
     VAR 
-        edge_ : BOOL;
+        edge : BOOL;
         start : TIME;
         tx : TIME;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FIFO_16 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=184 *)
+FUNCTION_BLOCK FIFO_16 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=184 *)
     VAR_INPUT 
-        DIN : DWORD;
+        Din : DWORD;
         E : BOOL := TRUE;
         RD : BOOL;
         WD : BOOL;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        DOUT : DWORD;
+        Dout : DWORD;
         EMPTY : BOOL := TRUE;
         FULL : BOOL;
     END_VAR
@@ -3703,16 +3691,16 @@ FUNCTION_BLOCK FIFO_16 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/osca
         n : INT := 16; (* changing this value will chage the number of stored elements in the fifo *)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FIFO_32 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=184 *)
+FUNCTION_BLOCK FIFO_32 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=184 *)
     VAR_INPUT 
-        DIN : DWORD;
+        Din : DWORD;
         E : BOOL := TRUE;
         RD : BOOL;
         WD : BOOL;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        DOUT : DWORD;
+        Dout : DWORD;
         EMPTY : BOOL := TRUE;
         FULL : BOOL;
     END_VAR
@@ -3725,16 +3713,16 @@ FUNCTION_BLOCK FIFO_32 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/osca
         n : INT := 32; (* changing this value will chage the number of stored elements in the fifo *)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK STACK_16 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=185 *)
+FUNCTION_BLOCK STACK_16 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=185 *)
     VAR_INPUT 
-        DIN : DWORD;
+        Din : DWORD;
         E : BOOL := TRUE;
         RD : BOOL;
         WD : BOOL;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        DOUT : DWORD;
+        Dout : DWORD;
         EMPTY : BOOL := TRUE;
         FULL : BOOL;
     END_VAR
@@ -3746,16 +3734,16 @@ FUNCTION_BLOCK STACK_16 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/osc
         n : INT := 15; (* changing this value will chage the number of stored elements in the fifo *)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK STACK_32 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=186 *)
+FUNCTION_BLOCK STACK_32 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=186 *)
     VAR_INPUT 
-        DIN : DWORD;
+        Din : DWORD;
         E : BOOL := TRUE;
         RD : BOOL;
         WD : BOOL;
         RST : BOOL;
     END_VAR
     VAR_OUTPUT 
-        DOUT : DWORD;
+        Dout : DWORD;
         EMPTY : BOOL := TRUE;
         FULL : BOOL;
     END_VAR
@@ -3767,44 +3755,44 @@ FUNCTION_BLOCK STACK_32 (* Memory *)(* http://www.oscat.de/images/OSCATBasic/osc
         n : INT := 31; (* changing this value will chage the number of stored elements in the fifo *)
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION ACOSH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39 *)
+FUNCTION ACOSH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ACOTH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39 *)
+FUNCTION ACOTH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION AGDF : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39 *)
+FUNCTION AGDF : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=39 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ASINH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=40 *)
+FUNCTION ASINH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=40 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ATAN2 : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=40 *)
+FUNCTION ATAN2 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=40 *)
     VAR_INPUT 
         Y : REAL;
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ATANH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41 *)
+FUNCTION ATANH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION BETA : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41 *)
+FUNCTION BETA : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=41 *)
     VAR_INPUT 
         X : REAL;
         Y : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION BINOM : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=42 *)
+FUNCTION BINOM : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=42 *)
     VAR_INPUT 
         N : INT;
         K : INT;
@@ -3813,7 +3801,7 @@ FUNCTION BINOM : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION CAUCHY : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=42 *)
+FUNCTION CAUCHY : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=42 *)
     VAR_INPUT 
         X : REAL;
         T : REAL;
@@ -3823,24 +3811,24 @@ FUNCTION CAUCHY : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasi
         tmp : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CAUCHYCD : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43 *)
+FUNCTION CAUCHYCD : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43 *)
     VAR_INPUT 
         X : REAL;
         T : REAL;
         U : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CEIL : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43 *)
+FUNCTION CEIL : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CEIL2 : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=44 *)
+FUNCTION CEIL2 : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=44 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CMP : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=44 *)
+FUNCTION CMP : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=44 *)
     VAR_INPUT 
         X : REAL;
         Y : REAL;
@@ -3850,7 +3838,7 @@ FUNCTION CMP : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/o
         tmp : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION COSH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=45 *)
+FUNCTION COSH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=45 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
@@ -3858,35 +3846,35 @@ FUNCTION COSH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/
         t : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION COTH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=45 *)
+FUNCTION COTH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=45 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION D_TRUNC : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION D_TRUNC : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DEC1 : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION DEC1 : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_INPUT 
         X : INT;
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DEG : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
+FUNCTION DEG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=46 *)
     VAR_INPUT 
-        RAD : REAL;
+        rad : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DIFFER : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=47 *)
+FUNCTION DIFFER : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=47 *)
     VAR_INPUT 
-        IN1 : REAL;
-        IN2 : REAL;
+        in1 : REAL;
+        in2 : REAL;
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ERF : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=47 *)
+FUNCTION ERF : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=47 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
@@ -3895,22 +3883,22 @@ FUNCTION ERF : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/o
         ax2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ERFC : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=48 *)
+FUNCTION ERFC : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=48 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION EVEN : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=48 *)
+FUNCTION EVEN : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=48 *)
     VAR_INPUT 
-        IN : DINT;
+        in : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION EXP10 : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
+FUNCTION EXP10 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION EXPN : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
+FUNCTION EXPN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
     VAR_INPUT 
         X : REAL;
         N : INT;
@@ -3919,12 +3907,12 @@ FUNCTION EXPN : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/
         sign : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION FACT : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
+FUNCTION FACT : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49 *)
     VAR_INPUT 
         X : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FIB : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50 *)
+FUNCTION FIB : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50 *)
     VAR_INPUT 
         X : INT;
     END_VAR
@@ -3933,27 +3921,27 @@ FUNCTION FIB : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/o
         t2 : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION FLOOR : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50 *)
+FUNCTION FLOOR : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION FLOOR2 : DINT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=51 *)
+FUNCTION FLOOR2 : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=51 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION FRACT : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=51 *)
+FUNCTION FRACT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=51 *)
+    VAR_INPUT 
+        x : REAL;
+    END_VAR
+END_FUNCTION
+FUNCTION GAMMA : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GAMMA : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52 *)
-    VAR_INPUT 
-        X : REAL;
-    END_VAR
-END_FUNCTION
-FUNCTION GAUSS : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52 *)
+FUNCTION GAUSS : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52 *)
     VAR_INPUT 
         X : REAL;
         U : REAL;
@@ -3964,14 +3952,14 @@ FUNCTION GAUSS : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic
         si_inv : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GAUSSCD : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=53 *)
+FUNCTION GAUSSCD : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=53 *)
     VAR_INPUT 
         X : REAL;
         U : REAL;
         SI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GCD : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=53 *)
+FUNCTION GCD : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=53 *)
     VAR_INPUT 
         A : DINT;
         B : DINT;
@@ -3980,36 +3968,36 @@ FUNCTION GCD : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/os
         t : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION GDF : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=54 *)
+FUNCTION GDF : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=54 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION GOLD : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=54 *)
+FUNCTION GOLD : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=54 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION HYPOT : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=55 *)
+FUNCTION HYPOT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=55 *)
     VAR_INPUT 
         X : REAL;
         Y : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION INC : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=55 *)
+FUNCTION INC : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=55 *)
     VAR_INPUT 
         X : INT;
         D : INT;
         M : INT;
     END_VAR
 END_FUNCTION
-FUNCTION INC1 : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56 *)
+FUNCTION INC1 : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56 *)
     VAR_INPUT 
         X : INT;
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION INC2 : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56 *)
+FUNCTION INC2 : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=56 *)
     VAR_INPUT 
         X : INT;
         D : INT;
@@ -4020,12 +4008,12 @@ FUNCTION INC2 : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/o
         tmp : INT;
     END_VAR
 END_FUNCTION
-FUNCTION INV : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=57 *)
+FUNCTION INV : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=57 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION LAMBERT_W : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=58 *)
+FUNCTION LAMBERT_W : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=58 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
@@ -4038,81 +4026,81 @@ FUNCTION LAMBERT_W : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATB
         ewx : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION LANGEVIN : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=58 *)
+FUNCTION LANGEVIN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=58 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MAX3 : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=59 *)
+FUNCTION MAX3 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=59 *)
+    VAR_INPUT 
+        in1 : REAL;
+        in2 : REAL;
+        in3 : REAL;
+    END_VAR
+END_FUNCTION
+FUNCTION MID3 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=59 *)
     VAR_INPUT 
         IN1 : REAL;
         IN2 : REAL;
         IN3 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MID3 : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=59 *)
+FUNCTION MIN3 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60 *)
     VAR_INPUT 
-        IN1 : REAL;
-        IN2 : REAL;
-        IN3 : REAL;
+        in1 : REAL;
+        in2 : REAL;
+        in3 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MIN3 : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60 *)
-    VAR_INPUT 
-        IN1 : REAL;
-        IN2 : REAL;
-        IN3 : REAL;
-    END_VAR
-END_FUNCTION
-FUNCTION MODR : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60 *)
+FUNCTION MODR : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60 *)
     VAR_INPUT 
         IN : REAL;
         DIVI : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MUL_ADD : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61 *)
+FUNCTION MUL_ADD : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61 *)
     VAR_INPUT 
         X : REAL;
         K : REAL;
         O : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION NEGX : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61 *)
+FUNCTION NEGX : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RAD : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61 *)
+FUNCTION RAD : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=61 *)
     VAR_INPUT 
         DEG : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION RDM : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62 *)
+FUNCTION RDM : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62 *)
     VAR_INPUT 
-        LAST : REAL;
+        last : REAL;
     END_VAR
     VAR 
         tn : DWORD;
         tc : INT;
     END_VAR
 END_FUNCTION
-FUNCTION RDM2 : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62 *)
+FUNCTION RDM2 : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62 *)
     VAR_INPUT 
-        LAST : INT;
-        LOW : INT;
-        HIGH : INT;
+        last : INT;
+        low : INT;
+        high : INT;
     END_VAR
 END_FUNCTION
-FUNCTION RDMDW : DWORD (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=63 *)
+FUNCTION RDMDW : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=63 *)
     VAR_INPUT 
-        LAST : DWORD;
+        last : DWORD;
     END_VAR
     VAR 
         RX : REAL;
         M : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION REAL_TO_FRAC : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=64 *)
+FUNCTION REAL_TO_FRAC : FRACTION (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=64 *)
     VAR_INPUT 
         X : REAL; (* in einen Bruch umzuwandelnder Wert *)
         N : INT; (* maximale Größe des Nenners *)
@@ -4127,11 +4115,8 @@ FUNCTION REAL_TO_FRAC : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSC
         Numerator_old : DINT := 0; (* Initialwert Zaehler der letzten Berechnung  *)
         Denominator_old : DINT := 1; (* Initialwert Zaehler der letzten Berechnung   *)
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : FRACTION; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION RND : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=64 *)
+FUNCTION RND : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=64 *)
     VAR_INPUT 
         X : REAL;
         N : INT;
@@ -4140,89 +4125,89 @@ FUNCTION RND : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/o
         M : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ROUND : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65 *)
+FUNCTION ROUND : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
         N : INT;
     END_VAR
     VAR 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SGN : INT (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65 *)
+FUNCTION SGN : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SIGMOID : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=66 *)
+FUNCTION SIGMOID : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=66 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SIGN_I : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=66 *)
+FUNCTION SIGN_I : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=66 *)
     VAR_INPUT 
         IN : DINT;
     END_VAR
 END_FUNCTION
-FUNCTION SIGN_R : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67 *)
+FUNCTION SIGN_R : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67 *)
     VAR_INPUT 
-        IN : REAL;
+        in : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SINC : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67 *)
-    VAR_INPUT 
-        X : REAL;
-    END_VAR
-END_FUNCTION
-FUNCTION SINH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67 *)
+FUNCTION SINC : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SQRTN : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=68 *)
+FUNCTION SINH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=67 *)
+    VAR_INPUT 
+        X : REAL;
+    END_VAR
+END_FUNCTION
+FUNCTION SQRTN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=68 *)
     VAR_INPUT 
         X : REAL;
         N : INT;
     END_VAR
 END_FUNCTION
-FUNCTION TANC : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=68 *)
+FUNCTION TANC : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=68 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TANH : REAL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69 *)
+FUNCTION TANH : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION WINDOW : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69 *)
+FUNCTION WINDOW : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69 *)
+    VAR_INPUT 
+        low : REAL;
+        in : REAL;
+        high : REAL;
+    END_VAR
+END_FUNCTION
+FUNCTION WINDOW2 : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69 *)
     VAR_INPUT 
         LOW : REAL;
         IN : REAL;
         HIGH : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION WINDOW2 : BOOL (* Mathematical *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=69 *)
+FUNCTION _ARRAY_ABS : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=71 *)
     VAR_INPUT 
-        LOW : REAL;
-        IN : REAL;
-        HIGH : REAL;
-    END_VAR
-END_FUNCTION
-FUNCTION _ARRAY_ABS : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=71 *)
-    VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_ADD : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=71 *)
+FUNCTION _ARRAY_ADD : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=71 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
         X : REAL;
     END_VAR
     VAR 
@@ -4230,31 +4215,31 @@ FUNCTION _ARRAY_ADD : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/o
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_INIT : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=72 *)
+FUNCTION _ARRAY_INIT : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=72 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
-        INIT : REAL;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
+        init : REAL;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_MEDIAN : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=73 *)
+FUNCTION _ARRAY_MEDIAN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=73 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_MUL : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=73 *)
+FUNCTION _ARRAY_MUL : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=73 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
         X : REAL;
     END_VAR
     VAR 
@@ -4262,10 +4247,10 @@ FUNCTION _ARRAY_MUL : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/o
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_SHUFFLE : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=74 *)
+FUNCTION _ARRAY_SHUFFLE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=74 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         temp : REAL;
@@ -4274,9 +4259,9 @@ FUNCTION _ARRAY_SHUFFLE : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBas
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION _ARRAY_SORT : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=75 *)
+FUNCTION _ARRAY_SORT : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=75 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[1..32000] OF REAL;
+        PT : POINTER TO ARRAY[1..32000] OF REAL;
         SIZE : UINT;
     END_VAR
     VAR 
@@ -4292,66 +4277,66 @@ FUNCTION _ARRAY_SORT : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/
         tmp : REAL; (* Hilfsvariable zum Tauschen von Werten *)
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_AVG : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=76 *)
+FUNCTION ARRAY_AVG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=76 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_GAV : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=76 *)
+FUNCTION ARRAY_GAV : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=76 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_HAV : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77 *)
+FUNCTION ARRAY_HAV : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_MAX : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77 *)
+FUNCTION ARRAY_MAX : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=77 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_MIN : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78 *)
+FUNCTION ARRAY_MIN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_SDV : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=79 *)
+FUNCTION ARRAY_SDV : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=79 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_SPR : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=79 *)
+FUNCTION ARRAY_SPR : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=79 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
@@ -4360,20 +4345,20 @@ FUNCTION ARRAY_SPR : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/os
         array_min : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_SUM : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=80 *)
+FUNCTION ARRAY_SUM : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=80 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_TREND : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=81 *)
+FUNCTION ARRAY_TREND : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=81 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         i : UINT;
@@ -4382,10 +4367,10 @@ FUNCTION ARRAY_TREND : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/
         stop2 : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION ARRAY_VAR : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=81 *)
+FUNCTION ARRAY_VAR : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=81 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         avg : REAL;
@@ -4393,323 +4378,236 @@ FUNCTION ARRAY_VAR : REAL (* Array *)(* http://www.oscat.de/images/OSCATBasic/os
         stop : UINT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_SORTED : BOOL (* Array *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=82 *)
+FUNCTION IS_SORTED : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=82 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF REAL;
-        SIZE : UINT;
+        pt : POINTER TO ARRAY[0..32000] OF REAL;
+        size : UINT;
     END_VAR
     VAR 
         stop : INT;
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION CABS : REAL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=83 *)
+FUNCTION CABS : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=83 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CACOS : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=83 *)
+FUNCTION CACOS : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=83 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CACOSH : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
+FUNCTION CACOSH : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CADD : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
+FUNCTION CADD : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
     VAR_INPUT 
-        X : COMPLEX;
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CARG : REAL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
+FUNCTION CARG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=84 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CASIN : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85 *)
+FUNCTION CASIN : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CASINH : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85 *)
+FUNCTION CASINH : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CATAN : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=86 *)
+FUNCTION CATAN : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=86 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         r2 : REAL;
         num : REAL;
         den : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CATANH : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=86 *)
+FUNCTION CATANH : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=86 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         i2 : REAL;
         num : REAL;
         den : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+END_FUNCTION
+FUNCTION CCON : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=86 *)
+    VAR_INPUT 
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CCON : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=86 *)
+FUNCTION CCOS : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
     VAR_INPUT 
-        X : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CCOS : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
+FUNCTION CCOSH : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
     VAR_INPUT 
-        X : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CCOSH : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
+FUNCTION CDIV : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
     VAR_INPUT 
-        X : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION CDIV : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=87 *)
-    VAR_INPUT 
-        X : COMPLEX;
-        Y : COMPLEX;
+        X : complex;
+        Y : complex;
     END_VAR
     VAR 
         Temp : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CEXP : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88 *)
+FUNCTION CEXP : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         Temp : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CINV : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88 *)
+FUNCTION CINV : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         temp : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CLOG : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88 *)
+FUNCTION CLOG : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=88 *)
     VAR_INPUT 
-        X : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CMUL : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
+FUNCTION CMUL : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
     VAR_INPUT 
-        X : COMPLEX;
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CPOL : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
+FUNCTION CPOL : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
     VAR_INPUT 
         L : REAL;
         A : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CPOW : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
+FUNCTION CPOW : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=89 *)
     VAR_INPUT 
-        X : COMPLEX;
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
+        Y : Complex;
     END_VAR
 END_FUNCTION
-FUNCTION CSET : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=90 *)
+FUNCTION CSET : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=90 *)
     VAR_INPUT 
         RE : REAL;
         IM : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+END_FUNCTION
+FUNCTION CSIN : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=90 *)
+    VAR_INPUT 
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CSIN : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=90 *)
+FUNCTION CSINH : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=90 *)
     VAR_INPUT 
-        X : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+        X : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CSINH : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=90 *)
+FUNCTION CSQRT : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
     VAR_INPUT 
-        X : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION CSQRT : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
-    VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         temp : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
+END_FUNCTION
+FUNCTION CSUB : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
+    VAR_INPUT 
+        X : complex;
+        Y : complex;
     END_VAR
 END_FUNCTION
-FUNCTION CSUB : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
+FUNCTION CTAN : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
     VAR_INPUT 
-        X : COMPLEX;
-        Y : COMPLEX;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION CTAN : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91 *)
-    VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         temp : REAL;
         xi2 : REAL;
         xr2 : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CTANH : BOOL (* Complex *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=92 *)
+FUNCTION CTANH : complex (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=92 *)
     VAR_INPUT 
-        X : COMPLEX;
+        X : complex;
     END_VAR
     VAR 
         temp : REAL;
         xi2 : REAL;
         xr2 : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : COMPLEX; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION R2_ABS : BOOL (* Double Precision *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=93 *)
+FUNCTION R2_ABS : REAL2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=93 *)
     VAR_INPUT 
         X : REAL2;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : REAL2; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION R2_ADD : BOOL (* Double Precision *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=93 *)
+FUNCTION R2_ADD : REAL2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=93 *)
     VAR_INPUT 
-        X : REAL2;
+        X : Real2;
         Y : REAL;
     END_VAR
     VAR 
         temp : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : REAL2; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION R2_ADD2 : BOOL (* Double Precision *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=94 *)
+FUNCTION R2_ADD2 : REAL2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=94 *)
     VAR_INPUT 
-        X : REAL2;
+        X : Real2;
         Y : REAL2;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : REAL2; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION R2_MUL : BOOL (* Double Precision *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=94 *)
+FUNCTION R2_MUL : REAL2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=94 *)
     VAR_INPUT 
         X : REAL2;
         Y : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : REAL2; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION R2_SET : BOOL (* Double Precision *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=95 *)
+FUNCTION R2_SET : REAL2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=95 *)
     VAR_INPUT 
         X : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : REAL2; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION F_LIN : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96 *)
+FUNCTION F_LIN : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96 *)
     VAR_INPUT 
         X : REAL;
         A : REAL;
         B : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION F_LIN2 : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96 *)
+FUNCTION F_LIN2 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=96 *)
     VAR_INPUT 
         X : REAL;
         X1 : REAL;
@@ -4718,20 +4616,20 @@ FUNCTION F_LIN2 : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/o
         Y2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION F_POLY : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97 *)
+FUNCTION F_POLY : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97 *)
     VAR_INPUT 
         X : REAL;
         C : ARRAY[0..7] OF REAL;
     END_VAR
 END_FUNCTION
-FUNCTION F_POWER : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97 *)
+FUNCTION F_POWER : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97 *)
     VAR_INPUT 
-        A : REAL;
-        X : REAL;
-        N : REAL;
+        a : REAL;
+        x : REAL;
+        n : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION F_QUAD : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97 *)
+FUNCTION F_QUAD : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=97 *)
     VAR_INPUT 
         X : REAL;
         A : REAL;
@@ -4739,7 +4637,7 @@ FUNCTION F_QUAD : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/o
         C : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION FRMP_B : BYTE (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=98 *)
+FUNCTION FRMP_B : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=98 *)
     VAR_INPUT 
         START : BYTE;
         DIR : BOOL;
@@ -4747,7 +4645,7 @@ FUNCTION FRMP_B : BYTE (* Functions *)(* http://www.oscat.de/images/OSCATBasic/o
         TR : TIME;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK FT_AVG (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=98 *)
+FUNCTION_BLOCK FT_AVG (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=98 *)
     VAR_INPUT 
         IN : REAL;
         E : BOOL := TRUE;
@@ -4763,29 +4661,29 @@ FUNCTION_BLOCK FT_AVG (* Functions *)(* http://www.oscat.de/images/OSCATBasic/os
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_MIN_MAX (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=99 *)
+FUNCTION_BLOCK FT_MIN_MAX (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=99 *)
     VAR_INPUT 
-        IN : REAL;
-        RST : BOOL;
+        in : REAL;
+        rst : BOOL;
     END_VAR
     VAR_OUTPUT 
-        MX : REAL;
-        MN : REAL;
+        mx : REAL;
+        mn : REAL;
     END_VAR
     VAR 
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK FT_RMP (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=100 *)
+FUNCTION_BLOCK FT_RMP (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=100 *)
     VAR_INPUT 
-        RMP : BOOL := TRUE;
-        IN : REAL;
+        Rmp : BOOL := TRUE;
+        in : REAL;
         KR : REAL;
         KF : REAL;
     END_VAR
     VAR_OUTPUT 
-        OUT : REAL;
-        BUSY : BOOL;
+        out : REAL;
+        busy : BOOL;
         UD : BOOL;
     END_VAR
     VAR 
@@ -4794,21 +4692,21 @@ FUNCTION_BLOCK FT_RMP (* Functions *)(* http://www.oscat.de/images/OSCATBasic/os
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION LINEAR_INT : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=101 *)
+FUNCTION LINEAR_INT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=101 *)
     VAR_INPUT 
         X : REAL;
         XY : ARRAY[1..20, 0..1] OF REAL;
-        PTS : INT;
+        Pts : INT;
     END_VAR
     VAR 
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION POLYNOM_INT : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=102 *)
+FUNCTION POLYNOM_INT : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=102 *)
     VAR_INPUT 
         X : REAL;
         XY : ARRAY[1..5, 0..1] OF REAL;
-        PTS : INT;
+        Pts : INT;
     END_VAR
     VAR 
         I : INT;
@@ -4816,48 +4714,48 @@ FUNCTION POLYNOM_INT : REAL (* Functions *)(* http://www.oscat.de/images/OSCATBa
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION CIRCLE_A : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=104 *)
+FUNCTION CIRCLE_A : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=104 *)
     VAR_INPUT 
-        RX : REAL;
-        AX : REAL;
+        rx : REAL;
+        ax : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CIRCLE_C : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=104 *)
+FUNCTION CIRCLE_C : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=104 *)
     VAR_INPUT 
-        RX : REAL;
-        AX : REAL;
+        Rx : REAL;
+        Ax : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION CIRCLE_SEG : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105 *)
-    VAR_INPUT 
-        RX : REAL;
-        HX : REAL;
-    END_VAR
-END_FUNCTION
-FUNCTION CONE_V : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105 *)
+FUNCTION CIRCLE_SEG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105 *)
     VAR_INPUT 
         RX : REAL;
         HX : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ELLIPSE_A : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105 *)
+FUNCTION CONE_V : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105 *)
+    VAR_INPUT 
+        rx : REAL;
+        hx : REAL;
+    END_VAR
+END_FUNCTION
+FUNCTION ELLIPSE_A : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105 *)
     VAR_INPUT 
         R1 : REAL;
         R2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION ELLIPSE_C : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=106 *)
+FUNCTION ELLIPSE_C : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=106 *)
     VAR_INPUT 
         R1 : REAL;
         R2 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SPHERE_V : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=106 *)
+FUNCTION SPHERE_V : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=106 *)
     VAR_INPUT 
-        RX : REAL;
+        rx : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION TRIANGLE_A : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=107 *)
+FUNCTION TRIANGLE_A : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=107 *)
     VAR_INPUT 
         S1 : REAL;
         A : REAL;
@@ -4865,133 +4763,115 @@ FUNCTION TRIANGLE_A : REAL (* Geometry *)(* http://www.oscat.de/images/OSCATBasi
         S3 : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION V3_ABS : REAL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=108 *)
+FUNCTION V3_ABS : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=108 *)
     VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_ADD : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=108 *)
+FUNCTION V3_ADD : vector_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=108 *)
     VAR_INPUT 
-        A : VECTOR_3;
-        B : VECTOR_3;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : VECTOR_3; (*Return value of the function*)
+        A : Vector_3;
+        B : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_ANG : REAL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=109 *)
+FUNCTION V3_ANG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=109 *)
     VAR_INPUT 
-        A : VECTOR_3;
-        B : VECTOR_3;
+        A : Vector_3;
+        B : Vector_3;
     END_VAR
     VAR 
         d : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION V3_DPRO : REAL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=109 *)
+FUNCTION V3_DPRO : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=109 *)
     VAR_INPUT 
-        A : VECTOR_3;
-        B : VECTOR_3;
+        A : Vector_3;
+        B : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_NORM : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110 *)
+FUNCTION V3_NORM : vector_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110 *)
     VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
     END_VAR
     VAR 
         la : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : VECTOR_3; (*Return value of the function*)
+END_FUNCTION
+FUNCTION V3_NUL : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110 *)
+    VAR_INPUT 
+        A : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_NUL : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110 *)
+FUNCTION V3_PAR : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110 *)
     VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
+        B : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_PAR : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=110 *)
+FUNCTION V3_REV : vector_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=111 *)
     VAR_INPUT 
-        A : VECTOR_3;
-        B : VECTOR_3;
+        A : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_REV : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=111 *)
+FUNCTION V3_SMUL : vector_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=111 *)
     VAR_INPUT 
-        A : VECTOR_3;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : VECTOR_3; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION V3_SMUL : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=111 *)
-    VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
         M : REAL;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : VECTOR_3; (*Return value of the function*)
+END_FUNCTION
+FUNCTION V3_SUB : vector_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
+    VAR_INPUT 
+        A : Vector_3;
+        B : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_SUB : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
+FUNCTION V3_XANG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
     VAR_INPUT 
-        A : VECTOR_3;
-        B : VECTOR_3;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : VECTOR_3; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION V3_XANG : REAL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
-    VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
     END_VAR
     VAR 
         la : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION V3_XPRO : BOOL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
+FUNCTION V3_XPRO : vector_3 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=112 *)
     VAR_INPUT 
-        A : VECTOR_3;
-        B : VECTOR_3;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : VECTOR_3; (*Return value of the function*)
+        A : Vector_3;
+        B : Vector_3;
     END_VAR
 END_FUNCTION
-FUNCTION V3_YANG : REAL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=113 *)
+FUNCTION V3_YANG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=113 *)
     VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
     END_VAR
     VAR 
         la : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION V3_ZANG : REAL (* Vector math *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=113 *)
+FUNCTION V3_ZANG : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=113 *)
     VAR_INPUT 
-        A : VECTOR_3;
+        A : Vector_3;
     END_VAR
     VAR 
         la : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK ESR_COLLECT (* Other *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=33 *)
+FUNCTION_BLOCK ESR_COLLECT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=33 *)
     VAR_INPUT 
-        ESR_0 : ARRAY[0..3] OF ESR_DATA;
-        ESR_1 : ARRAY[0..3] OF ESR_DATA;
-        ESR_2 : ARRAY[0..3] OF ESR_DATA;
-        ESR_3 : ARRAY[0..3] OF ESR_DATA;
-        ESR_4 : ARRAY[0..3] OF ESR_DATA;
-        ESR_5 : ARRAY[0..3] OF ESR_DATA;
-        ESR_6 : ARRAY[0..3] OF ESR_DATA;
-        ESR_7 : ARRAY[0..3] OF ESR_DATA;
-        RST : BOOL;
+        ESR_0 : ARRAY[0..3] OF esr_data;
+        ESR_1 : ARRAY[0..3] OF esr_data;
+        ESR_2 : ARRAY[0..3] OF esr_data;
+        ESR_3 : ARRAY[0..3] OF esr_data;
+        ESR_4 : ARRAY[0..3] OF esr_data;
+        ESR_5 : ARRAY[0..3] OF esr_data;
+        ESR_6 : ARRAY[0..3] OF esr_data;
+        ESR_7 : ARRAY[0..3] OF esr_data;
+        rst : BOOL;
     END_VAR
     VAR_IN_OUT 
-        POS : INT;
+        pos : INT;
     END_VAR
     VAR_OUTPUT 
-        ESR_OUT : ARRAY[0..31] OF ESR_DATA;
+        ESR_OUT : ARRAY[0..31] OF esr_data;
     END_VAR
     VAR CONSTANT
         max_in : INT := 3; (* max limit of input array *)
@@ -5001,31 +4881,31 @@ FUNCTION_BLOCK ESR_COLLECT (* Other *)(* http://www.oscat.de/images/OSCATBasic/o
         cnt : INT := -1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ESR_MON_B8 (* Other *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35 *)
+FUNCTION_BLOCK ESR_MON_B8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35 *)
     VAR_INPUT 
-        S0 : BOOL;
-        S1 : BOOL;
-        S2 : BOOL;
-        S3 : BOOL;
-        S4 : BOOL;
-        S5 : BOOL;
-        S6 : BOOL;
-        S7 : BOOL;
-        DT_IN : DT;
-        A0 : STRING[10];
-        A1 : STRING[10];
-        A2 : STRING[10];
-        A3 : STRING[10];
-        A4 : STRING[10];
-        A5 : STRING[10];
-        A6 : STRING[10];
-        A7 : STRING[10];
+        s0 : BOOL;
+        s1 : BOOL;
+        s2 : BOOL;
+        s3 : BOOL;
+        s4 : BOOL;
+        s5 : BOOL;
+        s6 : BOOL;
+        s7 : BOOL;
+        DT_in : DT;
+        a0 : STRING[10];
+        a1 : STRING[10];
+        a2 : STRING[10];
+        a3 : STRING[10];
+        a4 : STRING[10];
+        a5 : STRING[10];
+        a6 : STRING[10];
+        a7 : STRING[10];
     END_VAR
     VAR_OUTPUT 
-        ESR_FLAG : BOOL;
+        ESR_Flag : BOOL;
     END_VAR
     VAR_IN_OUT 
-        ESR_OUT : ARRAY[0..3] OF ESR_DATA;
+        ESR_Out : ARRAY[0..3] OF esr_data;
     END_VAR
     VAR 
         x0 : BOOL;
@@ -5040,33 +4920,33 @@ FUNCTION_BLOCK ESR_MON_B8 (* Other *)(* http://www.oscat.de/images/OSCATBasic/os
         cnt : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ESR_MON_R4 (* Other *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35 *)
+FUNCTION_BLOCK ESR_MON_R4 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35 *)
     VAR_INPUT 
         R0 : REAL;
         R1 : REAL;
         R2 : REAL;
         R3 : REAL;
-        DT_IN : DT;
-        A0 : STRING[10];
-        A1 : STRING[10];
-        A2 : STRING[10];
-        A3 : STRING[10];
-        S0 : REAL;
-        S1 : REAL;
-        S2 : REAL;
-        S3 : REAL;
+        DT_in : DT;
+        a0 : STRING[10];
+        a1 : STRING[10];
+        a2 : STRING[10];
+        a3 : STRING[10];
+        s0 : REAL;
+        s1 : REAL;
+        s2 : REAL;
+        s3 : REAL;
     END_VAR
     VAR_OUTPUT 
-        ESR_FLAG : BOOL;
+        ESR_Flag : BOOL;
     END_VAR
     VAR_IN_OUT 
-        ESR_OUT : ARRAY[0..3] OF ESR_DATA;
+        ESR_Out : ARRAY[0..3] OF esr_data;
     END_VAR
     VAR 
-        p0 : REFERENCE TO DWORD;
-        p1 : REFERENCE TO DWORD;
-        p2 : REFERENCE TO DWORD;
-        p3 : REFERENCE TO DWORD;
+        p0 : POINTER TO DWORD;
+        p1 : POINTER TO DWORD;
+        p2 : POINTER TO DWORD;
+        p3 : POINTER TO DWORD;
         x0 : REAL;
         x1 : REAL;
         x2 : REAL;
@@ -5075,32 +4955,32 @@ FUNCTION_BLOCK ESR_MON_R4 (* Other *)(* http://www.oscat.de/images/OSCATBasic/os
         cnt : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK ESR_MON_X8 (* Other *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=36 *)
+FUNCTION_BLOCK ESR_MON_X8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=36 *)
     VAR_INPUT 
-        S0 : BYTE;
-        S1 : BYTE;
-        S2 : BYTE;
-        S3 : BYTE;
-        S4 : BYTE;
-        S5 : BYTE;
-        S6 : BYTE;
-        S7 : BYTE;
-        DT_IN : DT;
-        MODE : BYTE := 3;
-        A0 : STRING[10];
-        A1 : STRING[10];
-        A2 : STRING[10];
-        A3 : STRING[10];
-        A4 : STRING[10];
-        A5 : STRING[10];
-        A6 : STRING[10];
-        A7 : STRING[10];
+        s0 : BYTE;
+        s1 : BYTE;
+        s2 : BYTE;
+        s3 : BYTE;
+        s4 : BYTE;
+        s5 : BYTE;
+        s6 : BYTE;
+        s7 : BYTE;
+        DT_in : DT;
+        Mode : BYTE := 3;
+        a0 : STRING[10];
+        a1 : STRING[10];
+        a2 : STRING[10];
+        a3 : STRING[10];
+        a4 : STRING[10];
+        a5 : STRING[10];
+        a6 : STRING[10];
+        a7 : STRING[10];
     END_VAR
     VAR_OUTPUT 
-        ESR_FLAG : BOOL;
+        ESR_Flag : BOOL;
     END_VAR
     VAR_IN_OUT 
-        ESR_OUT : ARRAY[0..3] OF ESR_DATA;
+        ESR_Out : ARRAY[0..3] OF esr_data;
     END_VAR
     VAR 
         x0 : BYTE;
@@ -5115,25 +4995,22 @@ FUNCTION_BLOCK ESR_MON_X8 (* Other *)(* http://www.oscat.de/images/OSCATBasic/os
         cnt : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION OSCAT_VERSION : DWORD (* Other *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=37 *)
+FUNCTION OSCAT_VERSION : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=37 *)
     VAR_INPUT 
         IN : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION STATUS_TO_ESR : BOOL (* Other *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=38 *)
+FUNCTION STATUS_TO_ESR : esr_data (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=38 *)
     VAR_INPUT 
-        STATUS : BYTE;
-        ADRESS : STRING[10];
-        DT_IN : DT;
+        status : BYTE;
+        adress : STRING[10];
+        DT_in : DT;
         TS : TIME;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : ESR_DATA; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CRC_GEN : DWORD (* Others *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=219 *)
+FUNCTION CRC_GEN : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=219 *)
     VAR_INPUT 
-        PT : REFERENCE TO ARRAY[0..32000] OF BYTE;
+        PT : POINTER TO ARRAY[0..32000] OF BYTE;
         SIZE : INT;
         PL : INT;
         PN : DWORD;
@@ -5149,22 +5026,22 @@ FUNCTION CRC_GEN : DWORD (* Others *)(* http://www.oscat.de/images/OSCATBasic/os
         bits : INT;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK MATRIX (* Others *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=227 *)
+FUNCTION_BLOCK MATRIX (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=227 *)
     VAR_INPUT 
-        X1 : BOOL;
-        X2 : BOOL;
-        X3 : BOOL;
-        X4 : BOOL;
+        x1 : BOOL;
+        x2 : BOOL;
+        x3 : BOOL;
+        x4 : BOOL;
         X5 : BOOL;
-        RELEASE : BOOL;
+        Release : BOOL;
     END_VAR
     VAR_OUTPUT 
-        CODE : BYTE;
+        code : BYTE;
         TP : BOOL;
-        Y1 : BOOL := TRUE;
-        Y2 : BOOL;
-        Y3 : BOOL;
-        Y4 : BOOL;
+        y1 : BOOL := TRUE;
+        y2 : BOOL;
+        y3 : BOOL;
+        y4 : BOOL;
     END_VAR
     VAR 
         line : BYTE;
@@ -5174,7 +5051,7 @@ FUNCTION_BLOCK MATRIX (* Others *)(* http://www.oscat.de/images/OSCATBasic/oscat
         temp : BYTE;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK PIN_CODE (* Others *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=231 *)
+FUNCTION_BLOCK PIN_CODE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=231 *)
     VAR_INPUT 
         CB : BYTE;
         E : BOOL;
@@ -5187,67 +5064,58 @@ FUNCTION_BLOCK PIN_CODE (* Others *)(* http://www.oscat.de/images/OSCATBasic/osc
         POS : INT := 1;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION BIN_TO_BYTE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145 *)
+FUNCTION BIN_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145 *)
     VAR_INPUT 
         BIN : STRING[12];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BIN_TO_DWORD : DWORD (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145 *)
+FUNCTION BIN_TO_DWORD : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145 *)
     VAR_INPUT 
         BIN : STRING[40];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_STRB : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145 *)
+FUNCTION BYTE_TO_STRB : STRING[8] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
     VAR 
         i : INT;
-        pt : REFERENCE TO BYTE;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[8]; (*Return value of the function*)
+        pt : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION BYTE_TO_STRH : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146 *)
+FUNCTION BYTE_TO_STRH : STRING[2] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
     VAR 
         temp : BYTE;
-        PT : REFERENCE TO BYTE;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[2]; (*Return value of the function*)
+        PT : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION CAPITALIZE : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146 *)
+FUNCTION CAPITALIZE : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
-        PT : REFERENCE TO BYTE;
+        PT : POINTER TO BYTE;
         pos : INT;
         L : INT;
         first : BOOL := TRUE;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CHARCODE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147 *)
+FUNCTION CHARCODE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147 *)
     VAR_INPUT 
         STR : STRING[10];
     END_VAR
@@ -5258,7 +5126,7 @@ FUNCTION CHARCODE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/os
         i : INT;
     END_VAR
 END_FUNCTION
-FUNCTION CHARNAME : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147 *)
+FUNCTION CHARNAME : STRING[10] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147 *)
     VAR_INPUT 
         C : BYTE;
     END_VAR
@@ -5266,22 +5134,16 @@ FUNCTION CHARNAME : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/os
         pos : INT;
         i : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[10]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CHR_TO_STRING : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=148 *)
+FUNCTION CHR_TO_STRING : STRING[1] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=148 *)
     VAR_INPUT 
         C : BYTE;
     END_VAR
     VAR 
-        PT : REFERENCE TO BYTE;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[1]; (*Return value of the function*)
+        PT : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION CLEAN : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149 *)
+FUNCTION CLEAN : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149 *)
     VAR_INPUT 
         IN : STRING[STRING_LENGTH];
         CX : STRING[80];
@@ -5290,75 +5152,72 @@ FUNCTION CLEAN : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat
         pos : INT := 1;
         stop : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION CODE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149 *)
+FUNCTION CODE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=149 *)
     VAR_INPUT 
         STR : STRING[STRING_LENGTH];
         POS : INT;
     END_VAR
     VAR 
-        PT : REFERENCE TO BYTE;
+        PT : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION COUNT_CHAR : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
+FUNCTION COUNT_CHAR : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        CHR : BYTE;
+        str : STRING[STRING_LENGTH];
+        chr : BYTE;
     END_VAR
     VAR 
         l : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION COUNT_SUBSTRING : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
+FUNCTION COUNT_SUBSTRING : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
     VAR_INPUT 
-        SEARCH : STRING[255];
-        STR : STRING[255];
+        SEARCH : STRING[None];
+        STR : STRING[None];
     END_VAR
     VAR 
         pos : INT;
         size : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DEC_TO_BYTE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
+FUNCTION DEC_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
     VAR_INPUT 
         DEC : STRING[10];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DEC_TO_DWORD : DWORD (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
+FUNCTION DEC_TO_DWORD : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150 *)
     VAR_INPUT 
         DEC : STRING[20];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DEC_TO_INT : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=151 *)
+FUNCTION DEC_TO_INT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=151 *)
     VAR_INPUT 
         DEC : STRING[10];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         sign : BOOL;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DEL_CHARS : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=151 *)
+FUNCTION DEL_CHARS : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=151 *)
     VAR_INPUT 
         IN : STRING[STRING_LENGTH];
         CX : STRING[80];
@@ -5367,15 +5226,12 @@ FUNCTION DEL_CHARS : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/o
         pos : INT := 1;
         stop : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION DT_TO_STRF : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=152 *)
+FUNCTION DT_TO_STRF : STRING[None] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=152 *)
     VAR_INPUT 
         DTI : DT;
         MS : INT;
-        FMT : STRING[255];
+        FMT : STRING[None];
         LANG : INT;
     END_VAR
     VAR CONSTANT
@@ -5391,47 +5247,35 @@ FUNCTION DT_TO_STRF : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/
         pos : INT;
         f : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[255]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION DWORD_TO_STRB : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=153 *)
+FUNCTION DWORD_TO_STRB : STRING[32] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=153 *)
     VAR_INPUT 
         IN : DWORD;
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[32]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION DWORD_TO_STRF : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
+FUNCTION DWORD_TO_STRF : STRING[20] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
     VAR_INPUT 
         IN : DWORD;
         N : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[20]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION DWORD_TO_STRH : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
+FUNCTION DWORD_TO_STRH : STRING[8] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
     VAR_INPUT 
         IN : DWORD;
     END_VAR
     VAR 
         i : INT;
         temp : BYTE;
-        pt : REFERENCE TO BYTE;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[8]; (*Return value of the function*)
+        pt : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION EXEC : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155 *)
+FUNCTION EXEC : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
@@ -5439,11 +5283,8 @@ FUNCTION EXEC : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         R2 : REAL;
         operator : STRING[10];
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION FILL : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155 *)
+FUNCTION FILL : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155 *)
     VAR_INPUT 
         C : BYTE;
         L : INT;
@@ -5452,91 +5293,88 @@ FUNCTION FILL : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         i : INT;
         sx : STRING[1];
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION FIND_CHAR : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=156 *)
+FUNCTION FIND_CHAR : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=156 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        POS : INT;
+        str : STRING[STRING_LENGTH];
+        pos : INT;
     END_VAR
     VAR 
         i : INT;
-        pt : REFERENCE TO ARRAY[1..255] OF BYTE;
+        pt : POINTER TO ARRAY[1..255] OF BYTE;
         stop : INT;
         X : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION FIND_CTRL : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157 *)
+FUNCTION FIND_CTRL : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        POS : INT;
+        str : STRING[STRING_LENGTH];
+        pos : INT;
     END_VAR
     VAR 
         i : INT;
-        pt : REFERENCE TO ARRAY[1..255] OF BYTE;
+        pt : POINTER TO ARRAY[1..255] OF BYTE;
         stop : INT;
         x : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION FIND_NONUM : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157 *)
+FUNCTION FIND_NONUM : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        POS : INT;
+        str : STRING[STRING_LENGTH];
+        pos : INT;
     END_VAR
     VAR 
         i : INT;
-        pt : REFERENCE TO ARRAY[1..255] OF BYTE;
+        pt : POINTER TO ARRAY[1..255] OF BYTE;
         end : INT;
         X : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION FIND_NUM : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157 *)
+FUNCTION FIND_NUM : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        POS : INT;
+        str : STRING[STRING_LENGTH];
+        pos : INT;
     END_VAR
     VAR 
         i : INT;
-        pt : REFERENCE TO ARRAY[1..255] OF BYTE;
+        pt : POINTER TO ARRAY[1..255] OF BYTE;
         stop : INT;
         X : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION FINDB : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=158 *)
+FUNCTION FINDB : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=158 *)
     VAR_INPUT 
-        STR1 : STRING[STRING_LENGTH];
-        STR2 : STRING[STRING_LENGTH];
+        str1 : STRING[STRING_LENGTH];
+        str2 : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
         length : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FINDB_NONUM : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=158 *)
+FUNCTION FINDB_NONUM : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=158 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION FINDB_NUM : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=159 *)
+FUNCTION FINDB_NUM : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=159 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION FINDP : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=159 *)
+FUNCTION FINDP : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=159 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        SRC : STRING[STRING_LENGTH];
-        POS : INT;
+        str : STRING[STRING_LENGTH];
+        src : STRING[STRING_LENGTH];
+        pos : INT;
     END_VAR
     VAR 
         i : INT;
@@ -5545,9 +5383,9 @@ FUNCTION FINDP : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_
         stp : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FIX : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=160 *)
+FUNCTION FIX : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=160 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
         L : INT;
         C : BYTE;
         M : INT;
@@ -5556,16 +5394,13 @@ FUNCTION FIX : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_b
         N : INT;
         SX : STRING[STRING_LENGTH];
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION FLOAT_TO_REAL : REAL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=160 *)
+FUNCTION FLOAT_TO_REAL : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=160 *)
     VAR_INPUT 
         FLT : STRING[20];
     END_VAR
     VAR 
-        pt : REFERENCE TO ARRAY[1..20] OF BYTE;
+        pt : POINTER TO ARRAY[1..20] OF BYTE;
         i : INT;
         X : BYTE;
         sign : INT := 1;
@@ -5574,12 +5409,12 @@ FUNCTION FLOAT_TO_REAL : REAL (* String *)(* http://www.oscat.de/images/OSCATBas
         d : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_BYTE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=161 *)
+FUNCTION FSTRING_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=161 *)
     VAR_INPUT 
         IN : STRING[12];
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_DT : DT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=161 *)
+FUNCTION FSTRING_TO_DT : DT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=161 *)
     VAR_INPUT 
         SDT : STRING[60];
         FMT : STRING[60];
@@ -5600,12 +5435,12 @@ FUNCTION FSTRING_TO_DT : DT (* String *)(* http://www.oscat.de/images/OSCATBasic
         ts : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_DWORD : DWORD (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=162 *)
+FUNCTION FSTRING_TO_DWORD : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=162 *)
     VAR_INPUT 
         IN : STRING[40];
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_MONTH : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=162 *)
+FUNCTION FSTRING_TO_MONTH : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=162 *)
     VAR_INPUT 
         MTH : STRING[20];
         LANG : INT;
@@ -5614,7 +5449,7 @@ FUNCTION FSTRING_TO_MONTH : INT (* String *)(* http://www.oscat.de/images/OSCATB
         lx : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_WEEK : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=163 *)
+FUNCTION FSTRING_TO_WEEK : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=163 *)
     VAR_INPUT 
         WEEK : STRING[60];
         LANG : INT;
@@ -5623,7 +5458,7 @@ FUNCTION FSTRING_TO_WEEK : BYTE (* String *)(* http://www.oscat.de/images/OSCATB
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION FSTRING_TO_WEEKDAY : INT (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164 *)
+FUNCTION FSTRING_TO_WEEKDAY : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164 *)
     VAR_INPUT 
         WDAY : STRING[20];
         LANG : INT;
@@ -5634,162 +5469,159 @@ FUNCTION FSTRING_TO_WEEKDAY : INT (* String *)(* http://www.oscat.de/images/OSCA
         ly : INT;
     END_VAR
 END_FUNCTION
-FUNCTION HEX_TO_BYTE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164 *)
+FUNCTION HEX_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=164 *)
     VAR_INPUT 
         HEX : STRING[5];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION HEX_TO_DWORD : DWORD (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165 *)
+FUNCTION HEX_TO_DWORD : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165 *)
     VAR_INPUT 
-        HEX : STRING[20];
+        Hex : STRING[20];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_ALNUM : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165 *)
+FUNCTION IS_ALNUM : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165 *)
+    VAR_INPUT 
+        str : STRING[STRING_LENGTH];
+    END_VAR
+    VAR 
+        L : INT;
+        pt : POINTER TO BYTE;
+        pos : INT;
+    END_VAR
+END_FUNCTION
+FUNCTION IS_ALPHA : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165 *)
+    VAR_INPUT 
+        str : STRING[STRING_LENGTH];
+    END_VAR
+    VAR 
+        L : INT;
+        pt : POINTER TO BYTE;
+        pos : INT;
+    END_VAR
+END_FUNCTION
+FUNCTION IS_CC : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=166 *)
+    VAR_INPUT 
+        str : STRING[STRING_LENGTH];
+        cmp : STRING[STRING_LENGTH];
+    END_VAR
+    VAR 
+        L : INT;
+        pos : INT;
+    END_VAR
+END_FUNCTION
+FUNCTION IS_CTRL : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=166 *)
     VAR_INPUT 
         STR : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         L : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_ALPHA : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165 *)
+FUNCTION IS_HEX : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=167 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         L : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_CC : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=166 *)
+FUNCTION IS_LOWER : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=167 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        CMP : STRING[STRING_LENGTH];
-    END_VAR
-    VAR 
-        L : INT;
-        pos : INT;
-    END_VAR
-END_FUNCTION
-FUNCTION IS_CTRL : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=166 *)
-    VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-    END_VAR
-    VAR 
-        L : INT;
-        pt : REFERENCE TO BYTE;
-        pos : INT;
-    END_VAR
-END_FUNCTION
-FUNCTION IS_HEX : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=167 *)
-    VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-    END_VAR
-    VAR 
-        L : INT;
-        pt : REFERENCE TO BYTE;
-        pos : INT;
-    END_VAR
-END_FUNCTION
-FUNCTION IS_LOWER : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=167 *)
-    VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         l : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_NCC : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=168 *)
+FUNCTION IS_NCC : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=168 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        CMP : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
+        cmp : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         L : INT;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_NUM : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=168 *)
+FUNCTION IS_NUM : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=168 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         L : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION IS_UPPER : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=169 *)
+FUNCTION IS_UPPER : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=169 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         L : INT;
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
     END_VAR
 END_FUNCTION
-FUNCTION ISC_ALPHA : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=169 *)
+FUNCTION ISC_ALPHA : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=169 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION ISC_CTRL : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=170 *)
+FUNCTION ISC_CTRL : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=170 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION ISC_HEX : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=170 *)
+FUNCTION ISC_HEX : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=170 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION ISC_LOWER : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=171 *)
+FUNCTION ISC_LOWER : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=171 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION ISC_NUM : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=171 *)
+FUNCTION ISC_NUM : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=171 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION ISC_UPPER : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=172 *)
+FUNCTION ISC_UPPER : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=172 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION LOWERCASE : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=172 *)
+FUNCTION LOWERCASE : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=172 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
-        PT : REFERENCE TO BYTE;
+        PT : POINTER TO BYTE;
         pos : INT;
         l : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION_BLOCK MESSAGE_4R (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173 *)
+FUNCTION_BLOCK MESSAGE_4R (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173 *)
     VAR_INPUT 
         M0 : STRING[STRING_LENGTH];
         M1 : STRING[STRING_LENGTH];
@@ -5807,10 +5639,10 @@ FUNCTION_BLOCK MESSAGE_4R (* String *)(* http://www.oscat.de/images/OSCATBasic/o
     END_VAR
     VAR 
         timer : TON;
-        edge_ : BOOL;
+        edge : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK MESSAGE_8 (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173 *)
+FUNCTION_BLOCK MESSAGE_8 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=173 *)
     VAR_INPUT 
         IN1 : BOOL;
         IN2 : BOOL;
@@ -5833,21 +5665,18 @@ FUNCTION_BLOCK MESSAGE_8 (* String *)(* http://www.oscat.de/images/OSCATBasic/os
         M : STRING[STRING_LENGTH];
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION MIRROR : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=174 *)
+FUNCTION MIRROR : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=174 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
-        pi : REFERENCE TO ARRAY[1..255] OF BYTE;
-        po : REFERENCE TO BYTE;
+        pi : POINTER TO ARRAY[1..255] OF BYTE;
+        po : POINTER TO BYTE;
         lx : INT;
         i : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION MONTH_TO_STRING : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=175 *)
+FUNCTION MONTH_TO_STRING : STRING[10] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=175 *)
     VAR_INPUT 
         MTH : INT;
         LANG : INT;
@@ -5856,33 +5685,30 @@ FUNCTION MONTH_TO_STRING : BOOL (* String *)(* http://www.oscat.de/images/OSCATB
     VAR 
         ly : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[10]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION OCT_TO_BYTE : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=175 *)
+FUNCTION OCT_TO_BYTE : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=175 *)
     VAR_INPUT 
         OCT : STRING[10];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION OCT_TO_DWORD : DWORD (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=176 *)
+FUNCTION OCT_TO_DWORD : DWORD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=176 *)
     VAR_INPUT 
         OCT : STRING[20];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         i : INT;
         X : BYTE;
         stop : INT;
     END_VAR
 END_FUNCTION
-FUNCTION REAL_TO_STRF : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=176 *)
+FUNCTION REAL_TO_STRF : STRING[20] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=176 *)
     VAR_INPUT 
         IN : REAL;
         N : INT;
@@ -5892,30 +5718,24 @@ FUNCTION REAL_TO_STRF : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasi
         O : REAL;
         i : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[20]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION REPLACE_ALL : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=177 *)
+FUNCTION REPLACE_ALL : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=177 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-        SRC : STRING[STRING_LENGTH];
-        REP : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
+        src : STRING[STRING_LENGTH];
+        rep : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
         lp : INT;
         lx : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION REPLACE_CHARS : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=177 *)
+FUNCTION REPLACE_CHARS : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=177 *)
     VAR_INPUT 
         STR : STRING[STRING_LENGTH];
-        SRC : STRING[255];
-        REP : STRING[255];
+        SRC : STRING[None];
+        REP : STRING[None];
     END_VAR
     VAR 
         a : INT;
@@ -5923,106 +5743,85 @@ FUNCTION REPLACE_CHARS : BOOL (* String *)(* http://www.oscat.de/images/OSCATBas
         c : STRING[1];
         stp : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION REPLACE_UML : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178 *)
+FUNCTION REPLACE_UML : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         L : INT;
-        pt : REFERENCE TO BYTE;
-        pto : REFERENCE TO BYTE;
-        ptm : REFERENCE TO BYTE;
-        pt1 : REFERENCE TO BYTE;
-        pt2 : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
+        pto : POINTER TO BYTE;
+        ptm : POINTER TO BYTE;
+        pt1 : POINTER TO BYTE;
+        pt2 : POINTER TO BYTE;
         su : STRING[2];
         pos : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION_BLOCK TICKER (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178 *)
+FUNCTION_BLOCK TICKER (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178 *)
     VAR_INPUT 
         N : INT;
         PT : TIME;
     END_VAR
     VAR_IN_OUT 
-        TEXT : STRING[STRING_LENGTH];
+        Text : STRING[STRING_LENGTH];
     END_VAR
     VAR_OUTPUT 
-        DISPLAY : STRING[STRING_LENGTH];
+        Display : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         delay : TP;
         step : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TO_LOWER : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=179 *)
+FUNCTION TO_LOWER : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=179 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION TO_UML : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
-    VAR_INPUT 
-        IN : BYTE;
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[2]; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION TO_UPPER : BYTE (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
+FUNCTION TO_UML : STRING[2] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
     VAR_INPUT 
         IN : BYTE;
     END_VAR
 END_FUNCTION
-FUNCTION TRIM : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181 *)
+FUNCTION TO_UPPER : BYTE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        IN : BYTE;
+    END_VAR
+END_FUNCTION
+FUNCTION TRIM : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181 *)
+    VAR_INPUT 
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION TRIM1 : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181 *)
+FUNCTION TRIM1 : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
         pos : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
+END_FUNCTION
+FUNCTION TRIME : STRING[string_length] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181 *)
+    VAR_INPUT 
+        str : STRING[STRING_LENGTH];
     END_VAR
 END_FUNCTION
-FUNCTION TRIME : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=181 *)
+FUNCTION UPPERCASE : STRING[STRING_LENGTH] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182 *)
     VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
-    END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
-END_FUNCTION
-FUNCTION UPPERCASE : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182 *)
-    VAR_INPUT 
-        STR : STRING[STRING_LENGTH];
+        str : STRING[STRING_LENGTH];
     END_VAR
     VAR 
-        pt : REFERENCE TO BYTE;
+        pt : POINTER TO BYTE;
         pos : INT;
         l : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[STRING_LENGTH]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION WEEKDAY_TO_STRING : BOOL (* String *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182 *)
+FUNCTION WEEKDAY_TO_STRING : STRING[10] (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182 *)
     VAR_INPUT 
         WDAY : INT;
         LANG : INT;
@@ -6031,11 +5830,8 @@ FUNCTION WEEKDAY_TO_STRING : BOOL (* String *)(* http://www.oscat.de/images/OSCA
     VAR 
         ly : INT;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : STRING[10]; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION_BLOCK CALENDAR_CALC (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=114 *)
+FUNCTION_BLOCK CALENDAR_CALC (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=114 *)
     VAR_INPUT 
         SPE : BOOL;
         H : REAL := -0.83333333333;
@@ -6054,12 +5850,12 @@ FUNCTION_BLOCK CALENDAR_CALC (* Time and date *)(* http://www.oscat.de/images/OS
         pos : SUN_POS;
         plast : DT;
     END_VAR
-    VAR 
+    VAR_TEMP 
         dtemp : DINT;
         tmp : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DATE_ADD : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=115 *)
+FUNCTION DATE_ADD : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=115 *)
     VAR_INPUT 
         IDATE : DATE;
         D : INT;
@@ -6073,12 +5869,12 @@ FUNCTION DATE_ADD : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATB
         dm : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_DATE : DINT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
+FUNCTION DAY_OF_DATE : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
     VAR_INPUT 
-        IDATE : DATE;
+        idate : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_MONTH : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
+FUNCTION DAY_OF_MONTH : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=116 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
@@ -6086,38 +5882,38 @@ FUNCTION DAY_OF_MONTH : INT (* Time and date *)(* http://www.oscat.de/images/OSC
         leap : INT;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_WEEK : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=117 *)
+FUNCTION DAY_OF_WEEK : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=117 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_OF_YEAR : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=117 *)
+FUNCTION DAY_OF_YEAR : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=117 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAY_TO_TIME : TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=118 *)
+FUNCTION DAY_TO_TIME : TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=118 *)
     VAR_INPUT 
         IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION DAYS_DELTA : DINT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=118 *)
+FUNCTION DAYS_DELTA : DINT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=118 *)
     VAR_INPUT 
-        DATE_1 : DATE;
-        DATE_2 : DATE;
+        date_1 : DATE;
+        date_2 : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION DAYS_IN_MONTH : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=119 *)
-    VAR_INPUT 
-        IDATE : DATE;
-    END_VAR
-END_FUNCTION
-FUNCTION DAYS_IN_YEAR : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=119 *)
+FUNCTION DAYS_IN_MONTH : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=119 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK DCF77 (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=119 *)
+FUNCTION DAYS_IN_YEAR : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=119 *)
+    VAR_INPUT 
+        IDATE : DATE;
+    END_VAR
+END_FUNCTION
+FUNCTION_BLOCK DCF77 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=119 *)
     VAR_INPUT 
         REC : BOOL;
         SET : BOOL;
@@ -6141,7 +5937,7 @@ FUNCTION_BLOCK DCF77 (* Time and date *)(* http://www.oscat.de/images/OSCATBasic
         mez : DT;
         utc : DT;
         state : INT;
-        edge_ : BOOL;
+        edge : BOOL;
         tx : TIME;
         ty : TIME;
         last : TIME;
@@ -6160,7 +5956,7 @@ FUNCTION_BLOCK DCF77 (* Time and date *)(* http://www.oscat.de/images/OSCATBasic
         init : BOOL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION DST : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=121 *)
+FUNCTION DST : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=121 *)
     VAR_INPUT 
         UTC : DT;
     END_VAR
@@ -6171,7 +5967,7 @@ FUNCTION DST : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/
         idate : DWORD;
     END_VAR
 END_FUNCTION
-FUNCTION DT_TO_SDT : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122 *)
+FUNCTION DT_TO_SDT : SDT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122 *)
     VAR_INPUT 
         DTI : DT;
     END_VAR
@@ -6179,22 +5975,16 @@ FUNCTION DT_TO_SDT : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCAT
         tmp : DATE;
         tdt : DWORD;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : SDT; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION DT2_TO_SDT : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=121 *)
+FUNCTION DT2_TO_SDT : SDT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=121 *)
     VAR_INPUT 
         DI : DATE;
         TI : TOD;
     END_VAR
-    VAR_IN_OUT 
-        RETVAL : SDT; (*Return value of the function*)
-    END_VAR
 END_FUNCTION
-FUNCTION EASTER : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122 *)
+FUNCTION EASTER : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122 *)
     VAR_INPUT 
-        YEAR : INT;
+        year : INT;
     END_VAR
     VAR 
         b : INT;
@@ -6202,7 +5992,7 @@ FUNCTION EASTER : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBas
         oday : INT;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK EVENTS (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122 *)
+FUNCTION_BLOCK EVENTS (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122 *)
     VAR_INPUT 
         DATE_IN : DATE;
         ENA : BOOL;
@@ -6226,7 +6016,7 @@ FUNCTION_BLOCK EVENTS (* Time and date *)(* http://www.oscat.de/images/OSCATBasi
         ELIST : ARRAY[0..49] OF HOLIDAY_DATA;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK HOLIDAY (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=123 *)
+FUNCTION_BLOCK HOLIDAY (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=123 *)
     VAR_INPUT 
         DATE_IN : DATE;
         LANGU : INT;
@@ -6254,94 +6044,94 @@ FUNCTION_BLOCK HOLIDAY (* Time and date *)(* http://www.oscat.de/images/OSCATBas
         wdx : INT;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION HOUR : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=124 *)
+FUNCTION HOUR : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=124 *)
     VAR_INPUT 
-        ITOD : TOD;
+        itod : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION HOUR_OF_DT : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=125 *)
+FUNCTION HOUR_OF_DT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=125 *)
     VAR_INPUT 
         XDT : DT;
     END_VAR
 END_FUNCTION
-FUNCTION HOUR_TO_TIME : TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=125 *)
+FUNCTION HOUR_TO_TIME : TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=125 *)
     VAR_INPUT 
         IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION HOUR_TO_TOD : TOD (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=125 *)
+FUNCTION HOUR_TO_TOD : TOD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=125 *)
     VAR_INPUT 
         IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION JD2000 : REAL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=126 *)
+FUNCTION JD2000 : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=126 *)
     VAR_INPUT 
         DTI : DT;
     END_VAR
 END_FUNCTION
-FUNCTION LEAP_DAY : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=126 *)
+FUNCTION LEAP_DAY : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=126 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION LEAP_OF_DATE : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=127 *)
+FUNCTION LEAP_OF_DATE : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=127 *)
     VAR_INPUT 
-        IDATE : DATE;
+        idate : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION LEAP_YEAR : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=127 *)
+FUNCTION LEAP_YEAR : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=127 *)
     VAR_INPUT 
-        YR : INT;
+        yr : INT;
     END_VAR
 END_FUNCTION
-FUNCTION LTIME_TO_UTC : DT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128 *)
+FUNCTION LTIME_TO_UTC : DT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128 *)
     VAR_INPUT 
         LOCAL_TIME : DT;
         DST : BOOL;
         TIME_ZONE_OFFSET : INT;
     END_VAR
 END_FUNCTION
-FUNCTION MINUTE : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128 *)
+FUNCTION MINUTE : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128 *)
     VAR_INPUT 
-        ITOD : TOD;
+        itod : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION MINUTE_OF_DT : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128 *)
+FUNCTION MINUTE_OF_DT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=128 *)
     VAR_INPUT 
         XDT : DT;
     END_VAR
 END_FUNCTION
-FUNCTION MINUTE_TO_TIME : TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=129 *)
+FUNCTION MINUTE_TO_TIME : TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=129 *)
     VAR_INPUT 
         IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_BEGIN : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=129 *)
+FUNCTION MONTH_BEGIN : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=129 *)
+    VAR_INPUT 
+        idate : DATE;
+    END_VAR
+END_FUNCTION
+FUNCTION MONTH_END : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_END : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130 *)
+FUNCTION MONTH_OF_DATE : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION MONTH_OF_DATE : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130 *)
+FUNCTION MULTIME : TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130 *)
     VAR_INPUT 
-        IDATE : DATE;
-    END_VAR
-END_FUNCTION
-FUNCTION MULTIME : TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130 *)
-    VAR_INPUT 
-        T : TIME;
+        t : TIME;
         M : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION PERIOD : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=131 *)
+FUNCTION PERIOD : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=131 *)
     VAR_INPUT 
-        D1 : DATE;
-        DX : DATE;
-        D2 : DATE;
+        d1 : DATE;
+        dx : DATE;
+        d2 : DATE;
     END_VAR
     VAR 
         day1 : INT;
@@ -6349,18 +6139,18 @@ FUNCTION PERIOD : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBas
         dayx : INT;
     END_VAR
 END_FUNCTION
-FUNCTION PERIOD2 : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=131 *)
+FUNCTION PERIOD2 : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=131 *)
     VAR_INPUT 
         DP : ARRAY[0..3, 0..1] OF DATE;
         DX : DATE;
     END_VAR
 END_FUNCTION
-FUNCTION REFRACTION : REAL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=132 *)
+FUNCTION REFRACTION : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=132 *)
     VAR_INPUT 
         ELEV : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK RTC_2 (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=133 *)
+FUNCTION_BLOCK RTC_2 (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=133 *)
     VAR_INPUT 
         SET : BOOL;
         SDT : DT;
@@ -6378,7 +6168,7 @@ FUNCTION_BLOCK RTC_2 (* Time and date *)(* http://www.oscat.de/images/OSCATBasic
         RT : RTC_MS;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK RTC_MS (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=134 *)
+FUNCTION_BLOCK RTC_MS (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=134 *)
     VAR_INPUT 
         SET : BOOL;
         SDT : DT;
@@ -6394,37 +6184,37 @@ FUNCTION_BLOCK RTC_MS (* Time and date *)(* http://www.oscat.de/images/OSCATBasi
         Tx : DWORD;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION SDT_TO_DATE : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=134 *)
+FUNCTION SDT_TO_DATE : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=134 *)
     VAR_INPUT 
         DTI : SDT;
     END_VAR
 END_FUNCTION
-FUNCTION SDT_TO_DT : DT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135 *)
+FUNCTION SDT_TO_DT : DT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135 *)
     VAR_INPUT 
         DTI : SDT;
     END_VAR
 END_FUNCTION
-FUNCTION SDT_TO_TOD : TOD (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135 *)
+FUNCTION SDT_TO_TOD : TOD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135 *)
     VAR_INPUT 
         DTI : SDT;
     END_VAR
 END_FUNCTION
-FUNCTION SECOND : REAL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135 *)
+FUNCTION SECOND : REAL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=135 *)
     VAR_INPUT 
-        ITOD : TOD;
+        itod : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION SECOND_OF_DT : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136 *)
+FUNCTION SECOND_OF_DT : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136 *)
     VAR_INPUT 
         XDT : DT;
     END_VAR
 END_FUNCTION
-FUNCTION SECOND_TO_TIME : TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136 *)
+FUNCTION SECOND_TO_TIME : TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136 *)
     VAR_INPUT 
         IN : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SET_DATE : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136 *)
+FUNCTION SET_DATE : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=136 *)
     VAR_INPUT 
         YEAR : INT;
         MONTH : INT;
@@ -6432,28 +6222,28 @@ FUNCTION SET_DATE : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATB
     END_VAR
     VAR 
         count : INT;
-        ofs : ARRAY[1..12] OF INT := [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+        ofs : ARRAY[1..12] OF INT := ['0', '31', '59', '90', '120', '151', '181', '212', '243', '273', '304', '334'];
         ENDIF : BOOL;
     END_VAR
 END_FUNCTION
-FUNCTION SET_DT : DT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=137 *)
+FUNCTION SET_DT : DT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=137 *)
     VAR_INPUT 
-        YEAR : INT;
-        MONTH : INT;
-        DAY : INT;
-        HOUR : INT;
-        MINUTE : INT;
-        SECOND : INT;
+        year : INT;
+        month : INT;
+        day : INT;
+        hour : INT;
+        minute : INT;
+        second : INT;
     END_VAR
 END_FUNCTION
-FUNCTION SET_TOD : TOD (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138 *)
+FUNCTION SET_TOD : TOD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138 *)
     VAR_INPUT 
-        HOUR : INT;
-        MINUTE : INT;
-        SECOND : REAL;
+        hour : INT;
+        minute : INT;
+        second : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION SUN_MIDDAY : TOD (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138 *)
+FUNCTION SUN_MIDDAY : TOD (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138 *)
     VAR_INPUT 
         LON : REAL;
         UTC : DATE;
@@ -6463,18 +6253,18 @@ FUNCTION SUN_MIDDAY : TOD (* Time and date *)(* http://www.oscat.de/images/OSCAT
         OFFSET : REAL;
     END_VAR
 END_FUNCTION
-FUNCTION_BLOCK SUN_POS (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138 *)
+FUNCTION_BLOCK SUN_POS (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=138 *)
     VAR_INPUT 
-        LATITUDE : REAL; (* latitude of geographical position  *)
-        LONGITUDE : REAL; (* longitude of geographical position  *)
-        UTC : DT; (*	world time				*)
+        latitude : REAL; (* latitude of geographical position  *)
+        longitude : REAL; (* longitude of geographical position  *)
+        utc : DT; (*	world time				*)
     END_VAR
     VAR_OUTPUT 
         B : REAL;
         H : REAL;
         HR : REAL;
     END_VAR
-    VAR 
+    VAR_TEMP 
         g : REAL;
         a : REAL;
         d : REAL;
@@ -6491,7 +6281,7 @@ FUNCTION_BLOCK SUN_POS (* Time and date *)(* http://www.oscat.de/images/OSCATBas
         cos_d : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION_BLOCK SUN_TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=139 *)
+FUNCTION_BLOCK SUN_TIME (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=139 *)
     VAR_INPUT 
         LATITUDE : REAL; (* latitude of geographical position  *)
         LONGITUDE : REAL; (* longitude of geographical position  *)
@@ -6510,14 +6300,14 @@ FUNCTION_BLOCK SUN_TIME (* Time and date *)(* http://www.oscat.de/images/OSCATBa
         b : REAL;
     END_VAR
 END_FUNCTION_BLOCK
-FUNCTION TIMECHECK : BOOL (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=141 *)
+FUNCTION TIMECHECK : BOOL (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=141 *)
     VAR_INPUT 
         TD : TOD;
         START : TOD;
         STOP : TOD;
     END_VAR
 END_FUNCTION
-FUNCTION UTC_TO_LTIME : DT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=142 *)
+FUNCTION UTC_TO_LTIME : DT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=142 *)
     VAR_INPUT 
         UTC : DT;
         DST_ENABLE : BOOL;
@@ -6527,9 +6317,9 @@ FUNCTION UTC_TO_LTIME : DT (* Time and date *)(* http://www.oscat.de/images/OSCA
         tmp : INT;
     END_VAR
 END_FUNCTION
-FUNCTION WORK_WEEK : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=142 *)
+FUNCTION WORK_WEEK : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=142 *)
     VAR_INPUT 
-        IDATE : DATE;
+        idate : DATE;
     END_VAR
     VAR 
         d1 : DATE;
@@ -6541,17 +6331,17 @@ FUNCTION WORK_WEEK : INT (* Time and date *)(* http://www.oscat.de/images/OSCATB
         wm : INT;
     END_VAR
 END_FUNCTION
-FUNCTION YEAR_BEGIN : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=143 *)
+FUNCTION YEAR_BEGIN : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=143 *)
     VAR_INPUT 
-        Y : INT;
+        y : INT;
     END_VAR
 END_FUNCTION
-FUNCTION YEAR_END : DATE (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=143 *)
+FUNCTION YEAR_END : DATE (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=143 *)
     VAR_INPUT 
-        Y : INT;
+        y : INT;
     END_VAR
 END_FUNCTION
-FUNCTION YEAR_OF_DATE : INT (* Time and date *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=144 *)
+FUNCTION YEAR_OF_DATE : INT (*  *)(* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=144 *)
     VAR_INPUT 
         IDATE : DATE;
     END_VAR

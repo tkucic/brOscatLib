@@ -14,7 +14,7 @@ FUNCTION_BLOCK XML_READER
     13 = !COMMENT
     14 = !DTD ELEMENT (Document Type Declarations )
 
-    98 = watchdog
+    98 = WATCHDOG
     99 = ENDE
 
     Bei Typ 02 werden keine Blockdaten ausgegeben !
@@ -22,9 +22,9 @@ FUNCTION_BLOCK XML_READER
     *)
 
     (* ---------- Init -------------- *)
-    IF BIT_OF_DWORD(WORD_TO_DWORD(CTRL.command),15) THEN
-    	command := CTRL.command;
-    	CTRL.command := WORD#0;
+    IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(CTRL.COMMAND),15) THEN
+    	COMMAND := CTRL.COMMAND;
+    	CTRL.COMMAND := WORD#0;
 
     	index := UINT_TO_INT(CTRL.START_POS);
     	stop := UINT_TO_INT(CTRL.STOP_POS);
@@ -39,34 +39,34 @@ FUNCTION_BLOCK XML_READER
     	CTRL.PATH := '';
     	CTRL.VALUE := '';
 
-    	watchdog.PT := CTRL.watchdog;
-    END_IF
+    	WATCHDOG.PT := CTRL.WATCHDOG;
+    END_IF;
 
     (*----------------------------------------------- *)
 
-    IF index < 0 THEN RETURN;END_IF
+    IF index < 0 THEN RETURN;END_IF;
 
     CTRL.BLOCK1_START := UINT#0;
     CTRL.BLOCK1_STOP := UINT#0;
     CTRL.BLOCK2_START := UINT#0;
     CTRL.BLOCK2_STOP := UINT#0;
 
-    watchdog(IN:=FALSE); (* Timer stoppen *)
+    WATCHDOG(IN:=FALSE); (* Timer stoppen *)
 
     WHILE (TRUE) DO
 
-    	(* -------------- watchdog ------------------ *)
-    	watchdog(IN:=CTRL.watchdog > T#0s);
-    	IF watchdog.Q THEN
+    	(* -------------- WATCHDOG ------------------ *)
+    	WATCHDOG(IN:=CTRL.WATCHDOG > T#0s);
+    	IF WATCHDOG.Q THEN
     		CTRL.TYP := 98;
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'watchdog:';
+          			LOG_CL.NEW_MSG := 'WATCHDOG:';
           			LOG_MSG();
-        		END_IF*)
+        		END_IF;*)
         		(*########################################################################*)
     		RETURN;
-    	END_IF
+    	END_IF;
 
     	(* -------------- PARSING END ------------------ *)
     	IF index > stop THEN
@@ -74,18 +74,18 @@ FUNCTION_BLOCK XML_READER
     		CTRL.TYP := 99;
         		(*####################  DEBUG-MESSAGE  ###################################*)
         		(*IF _debug_enable THEN
-          			LOG_CL.NEW_MSG := 'EX: #T:~1 #c:~2 #P:~6 #L:~7';
+          			LOG_CL.NEW_MSG := 'EX: #T:~1 #C:~2 #P:~6 #L:~7';
           			LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
           			LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
           			LOG_CL.PRINTF[6] := CTRL.PATH;
           			LOG_CL.PRINTF[7] := UINT_TO_STRING(CTRL.LEVEL);
           			LOG_MSG();
-        		END_IF*)
+        		END_IF;*)
         		(*########################################################################*)
     		mode  := 0; (* Schritt ruecksetzen *)
     		index := 0; (* Abarbeitung stoppen *)
     		RETURN;
-    	END_IF
+    	END_IF;
 
     	CASE mode OF
 
@@ -94,21 +94,21 @@ FUNCTION_BLOCK XML_READER
     		s1 := 0;
     		e1 := 0;
     		WHILE (index <= stop) DO
-    			IF BUF[index]=BYTE#60 THEN (* '<' TagBegin *)
+    			IF BUF[INDEX]=BYTE#60 THEN (* '<' TagBegin *)
     				index := index + 1;
-    				c := BUF[index];
-    				IF c = BYTE#47 THEN (* '/' TagTerm *)
+    				C := BUF[index];
+    				IF C = BYTE#47 THEN (* '/' TagTerm *)
     					mode := 300; (* End Element Section *)
-    				ELSIF c = BYTE#33 THEN (* '!' for Special Section *)
+    				ELSIF C = BYTE#33 THEN (* '!' for Special Section *)
     					index := index + 1;
     					mode := 500;
     				ELSE
     					s1 := index;
-    				END_IF
+    				END_IF;
     				EXIT;
-    			END_IF
+    			END_IF;
     			index := index + 1;
-    		END_WHILE
+    		END_WHILE;
 
     		(* analyse element *)
     		CTRL.TYP := 0; (* TYP löschen *)
@@ -121,14 +121,14 @@ FUNCTION_BLOCK XML_READER
     					index2 := index;
     					WHILE (index2 <= stop) AND (BUF[index2] <= BYTE#32) DO
     						index2 := index2 + 1;
-    					END_WHILE
+    					END_WHILE;
     					IF BUF[index2] = BYTE#47 THEN (* pruefe auf leeres Element '/' *)
     						index := index2;
     						e1 := index - 2;
     						CTRL.TYP := 1; (* struktur-element *)
     						mode := 300;   (* Close Element *)
     						EXIT;
-    					END_IF
+    					END_IF;
 
     					e1 := index - 1;
     					CTRL.TYP := 1; (* Element mit Attribute *)
@@ -141,10 +141,10 @@ FUNCTION_BLOCK XML_READER
     					IF BUF[index2] = BYTE#47 THEN (* TagTerm '/' *)
     						e1 := index2 - 1;
     						CTRL.TYP := 1;
-    						empty_tag := TRUE; (* EMPTY TAG mode *)
+    						EMPTY_TAG := TRUE; (* EMPTY TAG Mode *)
     						mode := 200; (* TEXT Element *)
     						EXIT;
-    					END_IF
+    					END_IF;
 
     					e1 := index - 1;
     					index2 := index + 1;
@@ -162,20 +162,20 @@ FUNCTION_BLOCK XML_READER
     								mode := 200; (* TEXT Element *)
     							ELSE
     								mode := 100; (* Element *)
-    							END_IF
+    							END_IF;
     							CTRL.TYP := 1; (* struktur-element *)
     							EXIT;
     						ELSIF c > BYTE#32  THEN (* Printable-Character *)
     							CTRL.TYP := 1; (* element with text *)
     							mode := 200;
     							EXIT;
-    						END_IF
+    						END_IF;
     						index2 := index2 + 1;
-    					END_WHILE
-    				END_IF
+    					END_WHILE;
+    				END_IF;
     				index := index + 1;
-    			END_WHILE
-    		END_IF
+    			END_WHILE;
+    		END_IF;
 
     		(* Neues Element gefunden*)
     		IF CTRL.TYP > 0 THEN
@@ -184,10 +184,10 @@ FUNCTION_BLOCK XML_READER
     			IF BUF[s1] = BYTE#63 THEN (* '?' for Processing Instruction *)
     				s1 := s1 + 1; (* führendes '?' auslassen *)
     				CTRL.TYP := 5;
-    			END_IF
+    			END_IF;
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
-    			CTRL.ELEMENT := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    			CTRL.ELEMENT := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,STOP:=CTRL.BLOCK1_STOP);
     			CTRL.COUNT := CTRL.COUNT + UINT#1;
     			CTRL.LEVEL := CTRL.LEVEL + UINT#1;
 
@@ -199,24 +199,24 @@ FUNCTION_BLOCK XML_READER
     				ELSE
     					CTRL.PATH := CONCAT(CTRL.PATH,'/');
     					CTRL.PATH  := CONCAT(CTRL.PATH,CTRL.ELEMENT);
-    				END_IF
-    			END_IF
+    				END_IF;
+    			END_IF;
 
-    			IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    			IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(COMMAND),CTRL.TYP) THEN
             				(*####################  DEBUG-MESSAGE  ###################################*)
             				(*IF _debug_enable THEN
-              				LOG_CL.NEW_MSG := 'EL: #T:~1 #c:~2 #E:~3 #P:~6 #L:~7';
+              				LOG_CL.NEW_MSG := 'EL: #T:~1 #C:~2 #E:~3 #P:~6 #L:~7';
               				LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
               				LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
               				LOG_CL.PRINTF[3] := CTRL.ELEMENT;
               				LOG_CL.PRINTF[6] := CTRL.PATH;
               				LOG_CL.PRINTF[7] := UINT_TO_STRING(CTRL.LEVEL);
               				LOG_MSG();
-            				END_IF*)
+            				END_IF;*)
             				(*########################################################################*)
     				RETURN;
-    			END_IF
-    		END_IF
+    			END_IF;
+    		END_IF;
 
     	200: (* ---------- TEXT SECTION ------------------ *)
     		CTRL.VALUE := '';
@@ -225,23 +225,23 @@ FUNCTION_BLOCK XML_READER
     			(* suche '<' EndTag*)
     			WHILE (index <= stop) AND (BUF[index] <> BYTE#60) DO
     				index := index + 1;
-    			END_WHILE
+    			END_WHILE;
 
-    			e1 := index - 1;
+    			E1 := index - 1;
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
-    			CTRL.VALUE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
-    		END_IF
+    			CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,STOP:=CTRL.BLOCK1_STOP);
+    		END_IF;
 
     		empty_tag := FALSE;
     		mode := 300; (* -> NEXT-JOB: END ELEMENT *)
     		CTRL.COUNT := CTRL.COUNT + UINT#1;
     		CTRL.TYP := 3;
 
-    		IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    		IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
           			(*####################  DEBUG-MESSAGE  ###################################*)
           			(*IF _debug_enable THEN
-            				LOG_CL.NEW_MSG := 'TE: #T:~1 #c:~2 #E:~3 #V:~4 #P:~6 #L:~7';
+            				LOG_CL.NEW_MSG := 'TE: #T:~1 #C:~2 #E:~3 #V:~4 #P:~6 #L:~7';
             				LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
             				LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
             				LOG_CL.PRINTF[3] := CTRL.ELEMENT;
@@ -249,17 +249,17 @@ FUNCTION_BLOCK XML_READER
             				LOG_CL.PRINTF[6] := CTRL.PATH;
             				LOG_CL.PRINTF[7] := UINT_TO_STRING(CTRL.LEVEL);
             				LOG_MSG();
-          			END_IF*)
+          			END_IF;*)
           			(*########################################################################*)
     			RETURN;
-    		END_IF
+    		END_IF;
 
     	300: (* ---------- END ELEMENT SECTION ------------------ *)
     		WHILE (index <= stop) DO
     			c := BUF[index];
     			IF c = BYTE#62 THEN (* '>' TagEnd *)
     				index := index + 1;
-    				s1 := FINDB(str1:=CTRL.PATH,str2:='/');
+    				s1 := OSCAT_BASIC.FINDB(str1:=CTRL.PATH,str2:='/');
     				IF path_overflow = FALSE THEN
     					IF s1 > 1 THEN
     						CTRL.ELEMENT := RIGHT(CTRL.PATH,LEN(CTRL.PATH) - s1);
@@ -267,39 +267,39 @@ FUNCTION_BLOCK XML_READER
     					ELSE
     						CTRL.ELEMENT := RIGHT(CTRL.PATH,LEN(CTRL.PATH) - 1);
     						CTRL.PATH :='';
-    					END_IF
-    				END_IF
+    					END_IF;
+    				END_IF;
 
     				CTRL.LEVEL := CTRL.LEVEL - UINT#1;
     				CTRL.COUNT := CTRL.COUNT + UINT#1;
     				CTRL.TYP := 2;
     				mode := 100;
 
-    				IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    				IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(COMMAND),CTRL.TYP) THEN
              	 				(*####################  DEBUG-MESSAGE  ###################################*)
               				(*IF _debug_enable THEN
-                					LOG_CL.NEW_MSG := 'CE: #T:~1 #c:~2 #E:~3 #P:~6 #L:~7';
+                					LOG_CL.NEW_MSG := 'CE: #T:~1 #C:~2 #E:~3 #P:~6 #L:~7';
                 					LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
                 					LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
                 					LOG_CL.PRINTF[3] := CTRL.ELEMENT;
                 					LOG_CL.PRINTF[6] := CTRL.PATH;
                 					LOG_CL.PRINTF[7] := UINT_TO_STRING(CTRL.LEVEL);
                 					LOG_MSG();
-              				END_IF*)
+              				END_IF;*)
               				(*########################################################################*)
     					RETURN;
     				ELSE
     					EXIT;
-    				END_IF
-    			END_IF
+    				END_IF;
+    			END_IF;
     			index := index + 1;
-    		END_WHILE
+    		END_WHILE;
 
     	400: (* ---------- ATTRIBUTE SECTION ------------------ *)
     		(* search first normal charakter *)
     		WHILE (index <= stop AND BUF[index] <= BYTE#32) DO
     			index := index + 1;
-    		END_WHILE
+    		END_WHILE;
 
     		(* begin Attribe name *)
     		e1 := 0;
@@ -309,26 +309,26 @@ FUNCTION_BLOCK XML_READER
     			IF BUF[index] = BYTE#61 THEN (* '=' Equals *)
     				e1 := index - 1;
     				EXIT;
-    			END_IF
+    			END_IF;
     			index := index + 1;
-    		END_WHILE
+    		END_WHILE;
 
     		IF e1 > 0 THEN
     			(* Attribute Name *)
     			CTRL.BLOCK1_START := INT_TO_UINT(s1);
     			CTRL.BLOCK1_STOP  := INT_TO_UINT(e1);
-    			CTRL.ATTRIBUTE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    			CTRL.ATTRIBUTE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(STOP + 1),START:=CTRL.BLOCK1_START,STOP:=CTRL.BLOCK1_STOP);
     			(* search end of Attrib Value '=' *)
     			index := index + 2;
     			e1 := 0;
-    			s1 := index;
+    			s1 := INDEX;
     			WHILE (index <= stop AND e1 = 0) DO
     				c := BUF[index];
     				IF c = BYTE#34 OR c = BYTE#39 THEN (* " OR ' Equals *)
     					e1 := index - 1;
-    				END_IF
+    				END_IF;
     				index := index + 1;
-    			END_WHILE
+    			END_WHILE;
 
     			IF e1 > 0 THEN
     				(* Value *)
@@ -336,11 +336,11 @@ FUNCTION_BLOCK XML_READER
     				CTRL.BLOCK2_STOP  := INT_TO_UINT(e1);
 
     				(* bei leeren "" ist start groesser als stop und wird somit zum leerstring *)
-    				CTRL.VALUE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK2_START,stop:=CTRL.BLOCK2_STOP);
+    				CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK2_START,STOP:=CTRL.BLOCK2_STOP);
     				(* search next non white space charakter *)
     				WHILE (index <= stop AND BUF[index] <= BYTE#32) DO
     					index := index + 1;
-    				END_WHILE
+    				END_WHILE;
 
     					c := BUF[index];
     					(* TagEnd '>' *)
@@ -351,27 +351,27 @@ FUNCTION_BLOCK XML_READER
     					(* search next non white space charakter *)
     					WHILE (index <= stop AND BUF[index] <= BYTE#32) DO
     						index := index + 1;
-    					END_WHILE
+    					END_WHILE;
 
     					IF BUF[index] = BYTE#60 THEN (* TagBegin '<' *)
     						mode := 100; (* -> NEXT-JOB: ELEMENT-SECTION *)
     					ELSE
     						index := index2;
     						mode := 200; (* -> NEXT-JOB: TEXT-SECTION *)
-    					END_IF
+    					END_IF;
 
     				ELSIF c = BYTE#47 OR c = BYTE#63 THEN (* TagTerm '/' OR '?' end Processing Instruction *)
     					mode := 300; (* -> NEXT-JOB: END ELEMENT *)
     				ELSE
     					mode := 400; (* -> NEXT-JOB: ATTRIBUTE-SECTION *)
-    				END_IF
+    				END_IF;
 
     				CTRL.COUNT := CTRL.COUNT + UINT#1;
     				CTRL.TYP := 4;
-    				IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    				IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
               				(*####################  DEBUG-MESSAGE  ###################################*)
               				(*IF _debug_enable THEN
-                					LOG_CL.NEW_MSG := 'AT: #T:~1 #c:~2 #E:~3 #A:~4 #V:~5 #P:~6 #L:~7';
+                					LOG_CL.NEW_MSG := 'AT: #T:~1 #C:~2 #E:~3 #A:~4 #V:~5 #P:~6 #L:~7';
                 					LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
                 					LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
                 					LOG_CL.PRINTF[3] := CTRL.ELEMENT;
@@ -380,12 +380,12 @@ FUNCTION_BLOCK XML_READER
                 					LOG_CL.PRINTF[6] := CTRL.PATH;
                 					LOG_CL.PRINTF[7] := UINT_TO_STRING(CTRL.LEVEL);
                 					LOG_MSG();
-              				END_IF*)
+              				END_IF;*)
               				(*########################################################################*)
     					RETURN;
-    				END_IF
-    			END_IF
-    		END_IF
+    				END_IF;
+    			END_IF;
+    		END_IF;
 
     	500: (* ---------- SPECIAL DATA SECTION (Document Type Declarations) ---------- *)
 
@@ -408,18 +408,18 @@ FUNCTION_BLOCK XML_READER
     				e_code := '';
     				s1 := index;
     				EXIT;
-    			END_CASE
+    			END_CASE;
 
     			e1 := LEN(s_code);
-    			IF BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(index + e1),STR:=s_code,POS:=index,IGN:=FALSE) = index THEN
+    			IF OSCAT_BASIC.BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(index + e1),STR:=S_CODE,POS:=index,IGN:=FALSE) = INDEX THEN
     				s1 := index + e1;
-    			END_IF
-    		END_WHILE
+    			END_IF;
+    		END_WHILE;
 
     		CTRL.BLOCK1_START := INT_TO_UINT(s1);
     		IF LEN(e_code) > 0 THEN
     			(* Ende Kennung suchen *)
-    			e1 := BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),STR:=e_code,POS:=index,IGN:=FALSE);
+    			e1 := OSCAT_BASIC.BUFFER_SEARCH(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),STR:=e_code,POS:=index,IGN:=FALSE);
     			CTRL.BLOCK1_STOP := INT_TO_UINT(e1 - 1);
     			index := e1 + LEN(e_code); (* naechstes element *)
     		ELSE
@@ -437,23 +437,23 @@ FUNCTION_BLOCK XML_READER
     						c := BUF[index];
     						IF c = BYTE#34 OR c = BYTE#39 THEN (* " Double Quote OR ' Single Quote *)
     							EXIT;
-    						END_IF
+    						END_IF;
     						index := index + 1;
-    					END_WHILE
-    				END_IF
+    					END_WHILE;
+    				END_IF;
     				index := index + 1;
-    			END_WHILE
+    			END_WHILE;
     			CTRL.BLOCK1_STOP := INT_TO_UINT(index - 2);
-    		END_IF
+    		END_IF;
 
-    		CTRL.VALUE := BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,stop:=CTRL.BLOCK1_STOP);
+    		CTRL.VALUE := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(BUF),SIZE:=INT_TO_UINT(stop + 1),START:=CTRL.BLOCK1_START,STOP:=CTRL.BLOCK1_STOP);
     		CTRL.COUNT := CTRL.COUNT + UINT#1;
     		mode := 100; (* -> NEXT-JOB: ELEMENT *)
 
-    		IF BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
+    		IF OSCAT_BASIC.BIT_OF_DWORD(WORD_TO_DWORD(command),CTRL.TYP) THEN
           			(*####################  DEBUG-MESSAGE  ###################################*)
           			(*IF _debug_enable THEN
-            				LOG_CL.NEW_MSG := 'DTD: #T:~1 #c:~2 #S:~3 #E:~4 #V:~5 #P:~6 #L:~7';
+            				LOG_CL.NEW_MSG := 'DTD: #T:~1 #C:~2 #S:~3 #E:~4 #V:~5 #P:~6 #L:~7';
             				LOG_CL.PRINTF[1] := INT_TO_STRING(CTRL.TYP);
             				LOG_CL.PRINTF[2] := UINT_TO_STRING(CTRL.COUNT);
             				LOG_CL.PRINTF[3] := UINT_TO_STRING(CTRL.BLOCK1_START);
@@ -462,13 +462,13 @@ FUNCTION_BLOCK XML_READER
             				LOG_CL.PRINTF[6] := CTRL.PATH;
             				LOG_CL.PRINTF[7] := UINT_TO_STRING(CTRL.LEVEL);
             				LOG_MSG();
-          			END_IF*)
+          			END_IF;*)
           			(*########################################################################*)
     			RETURN;
-    		END_IF
+    		END_IF;
 
-    	END_CASE
-    END_WHILE
+    	END_CASE;
+    END_WHILE;
 
 
     (* revision history

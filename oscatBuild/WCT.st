@@ -3,8 +3,8 @@ FUNCTION WCT
     IF V < 5.0 OR T > 10.0 THEN
     	WCT := T;
     ELSE
-    	WCT := 13.12 + 0.6215 * T +(0.3965 * T - 11.37) * EXP(LN(V) * 0.16);
-    END_IF
+    	WCT := 13.12 + 0.6215 * T +(0.3965 * T - 11.37) * EXP(LN(v) * 0.16);
+    END_IF;
 
 
     (* revision history

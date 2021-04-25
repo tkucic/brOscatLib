@@ -12,7 +12,7 @@ FUNCTION STRING_TO_URL
     *)
 
     (* check if string is empty and return empty url *)
-    IF STR = '' THEN RETURN; END_IF
+    IF STR = '' THEN RETURN; END_IF;
 
     (* extract the protocol *)
     (* first we check if the optional protocol is specified ending with a :// *)
@@ -24,10 +24,10 @@ FUNCTION STRING_TO_URL
     ELSE
     	x := STR;
     	STRING_TO_URL.PROTOCOL := DEFAULT_PROTOCOL;
-    END_IF
+    END_IF;
 
     (* extract user and password if present ending with a @ *)
-    pos := FINDB(STR1:=x,STR2:='@'); (* Find last @ *)
+    pos := OSCAT_BASIC.FINDB(STR1:=x,STR2:='@'); (* Find last @ *)
 
     IF pos > 0 THEN
     	(* extract user *)
@@ -38,12 +38,12 @@ FUNCTION STRING_TO_URL
     	ELSE
     		STRING_TO_URL.USER := LEFT(x, pos - 2);
     		STRING_TO_URL.PASSWORD := '';
-    	END_IF
+    	END_IF;
     	x := RIGHT(x, LEN(x) - pos);
     ELSE
     	STRING_TO_URL.USER := '';
     	STRING_TO_URL.PASSWORD := '';
-    END_IF
+    END_IF;
 
     (* extract anchor *)
     pos := FIND(x, '#');
@@ -52,7 +52,7 @@ FUNCTION STRING_TO_URL
     	x := LEFT(x, pos - 1);
     ELSE
     	STRING_TO_URL.ANCHOR := '';
-    END_IF
+    END_IF;
 
     (* extract query  *)
     pos := FIND(x, '?');
@@ -61,7 +61,7 @@ FUNCTION STRING_TO_URL
     	x := LEFT(x, pos - 1);
     ELSE
     	STRING_TO_URL.QUERY := '';
-    END_IF
+    END_IF;
 
     (* extract path  *)
     pos := FIND(x, '/');
@@ -70,7 +70,7 @@ FUNCTION STRING_TO_URL
     	x := LEFT(x, pos - 1);
     ELSE
     	STRING_TO_URL.PATH := DEFAULT_PATH;
-    END_IF
+    END_IF;
 
     (* extract port and leave domain *)
     pos := FIND(x, ':');
@@ -80,7 +80,7 @@ FUNCTION STRING_TO_URL
     ELSE
     	STRING_TO_URL.PORT := 0;
     	STRING_TO_URL.DOMAIN := x;
-    END_IF
+    END_IF;
 
     (* revision history
     hm		18. apr 2008	rev 1.0

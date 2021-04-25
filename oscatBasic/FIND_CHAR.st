@@ -1,14 +1,14 @@
 FUNCTION FIND_CHAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=156*)
-    pt := ADR(STR);
-    stop := LEN(STR);
-    FOR i := MAX(POS,1) TO stop DO;
-    	X := pt[i];
-    	IF X > 31 AND ((cEXTENDED_ASCII AND X <> 127) OR (NOT cEXTENDED_ASCII AND X < 127)) THEN
+    pt := ADR(str);
+    stop := LEN(str);
+    FOR i := MAX(pos,1) TO stop DO;
+    	X := pt^[i];
+    	IF X > 31 AND ((setup.EXTENDED_ASCII AND X <> 127) OR (NOT setup.EXTENDED_ASCII AND X < 127)) THEN
     		FIND_CHAR := i;
     		RETURN;
-    	END_IF
-    END_FOR
+    	END_IF;
+    END_FOR;
     FIND_CHAR := 0;
 
 

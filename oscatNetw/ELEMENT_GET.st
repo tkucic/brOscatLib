@@ -5,22 +5,22 @@ FUNCTION ELEMENT_GET
     po := ADR(ELEMENT_GET);
 
     (* search for the n-th occurence of a separation character and store position in i *)
-    WHILE (cnt < POS) AND (i < ELEMENT_LENGTH) AND (pt[i] > 0) DO
-    	IF pt[i] = SEP THEN cnt := cnt + 1; END_IF
+    WHILE (cnt < pos) AND (i < ELEMENT_LENGTH) AND (pt^[i] > 0) DO
+    	IF pt^[i] = sep THEN cnt := cnt + 1; END_IF;
     	i := i + 1;
-    END_WHILE
+    END_WHILE;
 
-    (* copy the list ELEMENT to output *)
-    IF i < ELEMENT_LENGTH THEN c := pt[i]; END_IF
-    WHILE (c <> SEP) AND (c > 0) AND (o < ELEMENT_LENGTH) AND (i < ELEMENT_LENGTH) DO
-    	po[o] :=pt[i];
+    (* copy the list element to output *)
+    IF i < ELEMENT_LENGTH THEN c := pt^[i]; END_IF;
+    WHILE (c <> sep) AND (c > 0) AND (o < ELEMENT_LENGTH) AND (i < ELEMENT_LENGTH) DO
+    	po^[o] :=pt^[i];
     	o := o + 1;
     	i := i + 1;
-    	c := pt[i];
-    END_WHILE
+    	c := pt^[i];
+    END_WHILE;
 
     (* terminate the output string *)
-    po[o] := 0;
+    po^[o] := 0;
 
     (* revision histroy
     ks 05. apr. 2011	rev 1.0

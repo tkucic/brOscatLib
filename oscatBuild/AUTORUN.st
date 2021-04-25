@@ -5,10 +5,10 @@ FUNCTION_BLOCK AUTORUN
     	timer(DIR:= OUT, TR := SEL(OUT, TOFF, TRUN), RMP := val);
     ELSE
     	val := 255;
-    END_IF
+    END_IF;
 
 
-    (* when timer = 0 or TEST then initiate autorun until timer reaches 255 *)
+    (* when timer = 0 or test then initiate autorun until timer reaches 255 *)
     IF (NOT ARX AND ARE AND val = 0) OR TEST THEN
     	val := 0;
     	ARO := TRUE;
@@ -16,10 +16,10 @@ FUNCTION_BLOCK AUTORUN
     ELSIF val = 255 AND ARO THEN
     	ARO := FALSE;
     	ARX := FALSE;
-    END_IF
+    END_IF;
 
-    (* output is true when autorun ARO is true or IN = TRUE *)
-    OUT := IN OR ARO;
+    (* output is true when autorun ARO is true or in = TRUE *)
+    out := IN OR ARO;
 
 
 

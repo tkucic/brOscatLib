@@ -9,15 +9,15 @@ FUNCTION_BLOCK WORLD_WEATHER
     		BUSY := TRUE;
     		ERROR_C := DWORD#0;
     		ERROR_T := BYTE#0;
-    	END_IF
+    	END_IF;
 
     20: (* URL for DNS UND HTTP-GET *)
-    	(* Example: http://api.worldweatheronline.com/free/v1/weather.ashx?q=48.21,16.37&format=csv&num_of_days=5&KEY=xxxxxxxxxxxxxxxxxxxxxx *)
-    	url_str := CONCAT('http://api.worldweatheronline.com/free/v1/weather.ashx?q=',REAL_TO_STRF(LATITUDE,6,D:='.'));
+    	(* Example: http://api.worldweatheronline.com/free/v1/weather.ashx?q=48.21,16.37&format=csv&num_of_days=5&key=xxxxxxxxxxxxxxxxxxxxxx *)
+    	url_str := CONCAT('http://api.worldweatheronline.com/free/v1/weather.ashx?q=',OSCAT_BASIC.REAL_TO_STRF(LATITUDE,6,D:='.'));
     	url_str := CONCAT(url_str,',');
-    	url_str := CONCAT(url_str,REAL_TO_STRF(LONGITUDE,6,D:='.'));
-    	url_str := CONCAT(url_str,'&format=csv&num_of_days=5&KEY=');
-    	url_str := CONCAT(url_str,KEY);
+    	url_str := CONCAT(url_str,OSCAT_BASIC.REAL_TO_STRF(LONGITUDE,6,D:='.'));
+    	url_str := CONCAT(url_str,'&format=csv&num_of_days=5&key=');
+    	url_str := CONCAT(url_str,key);
 
     	URL_DATA:=STRING_TO_URL(STR:=url_str, DEFAULT_PROTOCOL:='', DEFAULT_PATH:='' );
     	state := 40;
@@ -30,7 +30,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     		ERROR_C := DNS_CLIENT.ERROR;
     	ERROR_T := BYTE#01;
     		state   := 100;
-    	END_IF
+    	END_IF;
 
     60:
     	IF HTTP_GET.DONE THEN
@@ -38,7 +38,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     		idx := 0;
     		day := 0;
     		cnt := 0;
-    		offset := HTTP_GET.BODY_START; (* Start offset vorgeben *)
+    		OFFSET := HTTP_GET.BODY_START; (* Start Offset vorgeben *)
     		size := HTTP_GET.BODY_STOP; (* End Position *)
     		run := 1; (* Element suchen *)
     		state := 80;
@@ -48,7 +48,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     		ERROR_C := HTTP_GET.ERROR;
     		ERROR_T := BYTE#02;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     80:	IF run = 0 THEN (* kein Befehl mehr aktiv ? *)
     		run := 1; (*  nächstes Element suchen  *)
@@ -57,42 +57,42 @@ FUNCTION_BLOCK WORLD_WEATHER
     			value_real := 0.0;
     			(* automatische konvertierung in real und int ausführen *)
     			IF LEN(value) <= 20 THEN
-    				v_real:=FLOAT_TO_REAL(FLT:=value);
-    				IF CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
+    				v_real:=OSCAT_BASIC.FLOAT_TO_REAL(FLT:=value);
+    				IF OSCAT_BASIC.CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
     					value_real := v_real;
     					value_int := REAL_TO_INT(value_real);
-    				END_IF
-    			END_IF
+    				END_IF;
+    			END_IF;
     			cnt := cnt + 1;
 
 
     			IF cnt = 1 AND LEFT(value,1) <> '#' THEN
     				cnt := 0;
-    			END_IF
+    			END_IF;
 
     			IF cnt >=8 AND cnt <= 87 THEN
     				IF cnt > 22 THEN
     					CASE idx OF
-    					00:	WW.day[day].DATE_OF_DAY := value;
-    					01:	WW.day[day].TEMP_MAX_C := value_int;
-    					02:	WW.day[day].TEMP_MAX_F := value_int;
-    					03:	WW.day[day].TEMP_MIN_C := value_int;
-    					04:	WW.day[day].TEMP_MIN_F := value_int;
-    					05:	WW.day[day].WIND_SPEED_MILES := value_int;
-    					06:	WW.day[day].WIND_SPEED_KMPH := value_int;
-    					07:	WW.day[day].WIND_DIR_DEGREE := value_int;
-    					08:	WW.day[day].WIND_DIR16POINT := value;
-    					09:	WW.day[day].WEATHER_CODE := value_int;
+    					00:	WW.DAY[day].DATE_OF_DAY := value;
+    					01:	WW.DAY[day].TEMP_MAX_C := value_int;
+    					02:	WW.DAY[day].TEMP_MAX_F := value_int;
+    					03:	WW.DAY[day].TEMP_MIN_C := value_int;
+    					04:	WW.DAY[day].TEMP_MIN_F := value_int;
+    					05:	WW.DAY[day].WIND_SPEED_MILES := value_int;
+    					06:	WW.DAY[day].WIND_SPEED_KMPH := value_int;
+    					07:	WW.DAY[day].WIND_DIR_DEGREE := value_int;
+    					08:	WW.DAY[day].WIND_DIR16POINT := value;
+    					09:	WW.DAY[day].WEATHER_CODE := value_int;
     					10:	pos := FIND(value, '/wsymbol_');
-    						WW.day[day].WEATHER_ICON := DEC_TO_INT(MID(value,4,pos+9));
-    					11:	WW.day[day].WEATHER_DESC := value;
-    					12:	WW.day[day].PRECIPMM := value_real;
-    					END_CASE
+    						WW.DAY[day].WEATHER_ICON := OSCAT_BASIC.DEC_TO_INT(MID(value,4,pos+9));
+    					11:	WW.DAY[day].WEATHER_DESC := value;
+    					12:	WW.DAY[day].PRECIPMM := value_real;
+    					END_CASE;
     					idx := idx + 1;
     					IF idx > 12 THEN
     						idx := 0;
     						day := day + 1;
-    					END_IF
+    					END_IF;
     				ELSE
     					CASE cnt OF
     					08:	sep :=44; (* ab jetzt mit Trennzeichen arbeiten, *)
@@ -100,7 +100,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     					10:	WW.CUR.TEMP_C := value_int;
     					11:	WW.CUR.WEATHER_CODE := value_int;
     					12:	pos := FIND(value, '/wsymbol_');
-    						WW.CUR.WEATHER_ICON := DEC_TO_INT(MID(value,4,pos+9));
+    						WW.CUR.WEATHER_ICON := OSCAT_BASIC.DEC_TO_INT(MID(value,4,pos+9));
     					13:	WW.CUR.WEATHER_DESC := value;
     					14:	WW.CUR.WIND_SPEED_MILES := value_int;
     					15:	WW.CUR.WIND_SPEED_KMPH := value_int;
@@ -111,15 +111,15 @@ FUNCTION_BLOCK WORLD_WEATHER
     					20:	WW.CUR.VISIBILITY := value_int;
     					21:	WW.CUR.PRESSURE := value_int;
     					22:	WW.CUR.CLOUDOVER := value_int;
-    					END_CASE
-    				END_IF
-    			END_IF
+    					END_CASE;
+    				END_IF;
+    			END_IF;
     		ELSIF result = 10 THEN (* nichts mehr gefunden *)
     			DONE  := TRUE;
     			run := 0; (* Auswertung beenden *)
     			state := 100;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     100:
     	(* UNLOCK HTTP DATA *)
@@ -127,9 +127,9 @@ FUNCTION_BLOCK WORLD_WEATHER
     		state := 0;
     		BUSY := FALSE;
     		DONE := ERROR_T = BYTE#0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* ---------------- DNS --------------- *)
     DNS_CLIENT(	IP_C:=IP_C,
@@ -166,7 +166,7 @@ FUNCTION_BLOCK WORLD_WEATHER
     	BYTE :=HTTP_GET.ERROR;
     *)
     (* -------------------------------------*)
-    CPB(sep:=sep,run:=run,offset:=offset,value:=value,PT:=R_BUF,result=>result); (* CSV PARAMETER BUF *)
+    CPB(SEP:=sep,RUN:=run,OFFSET:=OFFSET,VALUE:=value,PT:=R_BUF,RESULT=>result); (* CSV PARAMETER BUF *)
 
     last_state := ACTIVATE;
 
@@ -187,6 +187,6 @@ FUNCTION_BLOCK WORLD_WEATHER
     	workaround für chunked html data
 
     ks	11.may. 2013	rev 1.5
-    	New worldwaether url and api KEY required (new API-Services)
+    	New worldwaether url and api key required (new API-Services)
     *)
 END_FUNCTION_BLOCK

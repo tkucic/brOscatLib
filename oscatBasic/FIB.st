@@ -2,7 +2,7 @@ FUNCTION FIB
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=50*)
     IF X < 0 OR X > 46 THEN
     	FIB := -1;
-    ELSIF X < 2 THEN
+    ELSIF x < 2 THEN
     	FIB := X;
     	RETURN;
     ELSE
@@ -13,18 +13,18 @@ FUNCTION FIB
     		X := X-2;
     		t1 := t1 + t2;
     		t2 := t1 + t2;
-    	END_WHILE
-    	IF X > 2 THEN t1 := t1 + t2; END_IF
-    	FIB := t1 + t2;
-    END_IF
+    	END_WHILE;
+    	IF X > 2 THEN t1 := t1 + t2; END_IF;
+    	fib := t1 + t2;
+    END_IF;
 
     (* alternative code for very big numbers
 
     IF X < 31 THEN
-    	FIB := 0.4472136 * (expn(1.618034,X) - expn(-0.618034,X));
+    	fib := 0.4472136 * (expn(1.618034,X) - expn(-0.618034,X));
     ELSE
-    	FIB := 0.4472133 * expn(1.618034,X);
-    END_IF
+    	fib := 0.4472133 * expn(1.618034,X);
+    END_IF;
 
     *)
 

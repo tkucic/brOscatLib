@@ -10,16 +10,16 @@ FUNCTION_BLOCK IRTRANS_SERVER
     	IP_C.TIME_RESET := TRUE; (* Zeitueberwachung rücksetzen *)
     	S_BUF.SIZE := UINT#0; (* Sendedaten rücksetzen *)
     	R_BUF.SIZE := UINT#0; (* Empfangsdaten rücksetzen *)
-    END_IF
+    END_IF;
 
     R_ENABLE := IP_C.C_STATE > 127;
     S_ENABLE := R_ENABLE AND (IP_C.MAILBOX[1] > 0 OR IP_C.C_MODE <> 5);
     ERROR := IP_C.ERROR;
 
-    t(IN:= IP_C.ERROR > 0, PT:=t#5s);
+    t(IN:= IP_C.ERROR > 0, PT:=T#5s);
     IF t.Q THEN
-    	IP_C.TIME_RESET := TRUE; (* ERROR Reset *)
-    END_IF
+    	IP_C.TIME_RESET := TRUE; (* Error Reset *)
+    END_IF;
 
     (* revision history
     ks	6. dec 2009		rev 1.0

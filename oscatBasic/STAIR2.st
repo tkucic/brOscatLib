@@ -1,10 +1,10 @@
 FUNCTION_BLOCK STAIR2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=304*)
     IF D > 0.0 THEN
-    	IF X >= Y + D OR X <= Y - D THEN Y := FLOOR(X/D) * D; END_IF
+    	IF X >= Y + D OR X <= Y - D THEN Y := FLOOR(X/D) * D; END_IF;
     ELSE
     	Y := X;
-    END_IF
+    END_IF;
 
 
 

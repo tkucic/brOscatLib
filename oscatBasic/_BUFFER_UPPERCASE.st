@@ -1,10 +1,10 @@
 FUNCTION _BUFFER_UPPERCASE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=479*)
     pos := 0;
-    WHILE pos < SIZE DO
-    	PT[pos] := TO_UPPER(PT[pos]);
+    WHILE pos < size DO
+    	PT^[pos] := TO_UPPER(pt^[pos]);
     	pos := pos + 1;
-    END_WHILE
+    END_WHILE;
 
     _BUFFER_UPPERCASE := TRUE;
 

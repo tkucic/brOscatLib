@@ -1,12 +1,12 @@
 FUNCTION_BLOCK TIMER_1
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60*)
     IF E THEN
-    	STOP := TOD_TO_TIME(START) + DURATION;
-    	IF STOP > T#24h THEN STOP := STOP - T#24h; END_IF
-    	Q := TIMECHECK(DT_TO_TOD(DTI), START, TIME_TO_TOD(STOP)) AND (SHR(BYTE#128, DAY_OF_WEEK(DT_TO_DATE(DTI))) AND DAY) > BYTE#0;
+    	stop := TOD_TO_TIME(START) + DURATION;
+    	IF stop > T#24h THEN stop := stop - T#24h; END_IF;
+    	Q := OSCAT_BASIC.TIMECHECK(DT_TO_TOD(DTI), START, TIME_TO_TOD(stop)) AND (SHR(BYTE#128, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTI))) AND DAY) > BYTE#0;
     ELSE
-    	Q := FALSE; (* clear output when E is not true *)
-    END_IF
+    	Q := FALSE; (* clear output when e is not true *)
+    END_IF;
 
 
     (*
@@ -17,7 +17,7 @@ FUNCTION_BLOCK TIMER_1
     	corrected an error when timer overflows.
 
     14.apr 2007 hm		rev 1.3
-    	corrected an error while while output would not go active when START year would be 1970.
+    	corrected an error while while output would not go active when start year would be 1970.
     	increase accuracy by checking every 100ms
     	added init section to compensate for timer overflow
 
@@ -29,14 +29,14 @@ FUNCTION_BLOCK TIMER_1
 
     hm	17. jan 2008	rev 1.6
     	New code with better performance  
-    	Output is now only active during the time of DAY it is supposed to 
+    	Output is now only active during the time of day it is supposed to 
     	no pulse is generated at power up
 
     hm	7. oct. 2008	rev 1.7
     	changed function weekday to day_of_week
 
     hm	23. oct. 2008	rev 2.0
-    	new code, added input E, now days can be selected by bits in byte DAY
+    	new code, added input E, now days can be selected by bits in byte day
 
     hm	6. nov. 2008	rev 2.1
     	added default for input EN and input DAY

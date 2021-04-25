@@ -7,7 +7,7 @@ FUNCTION DEG
     	original version
 
     hm 16. oct 2007	rev 1.1
-    	added modr statement which prohibits DEG to become bigger than 360
+    	added modr statement which prohibits deg to become bigger than 360
 
     hm	10. mar. 2009	rev 1.2
     	real constants updated to new systax using dot

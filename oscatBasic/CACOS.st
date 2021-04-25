@@ -1,8 +1,8 @@
 FUNCTION CACOS
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=83*)
-    Y := CACOSH(X);
-    CACOS.re := Y.im;
-    CACOS.im := -Y.re;
+    y := CACOSH(x);
+    CACOS.re := y.im;
+    CACOS.im := -y.re;
 
 
 

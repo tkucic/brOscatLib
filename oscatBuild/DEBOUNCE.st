@@ -8,7 +8,7 @@ FUNCTION_BLOCK DEBOUNCE
     	Q := deb.Q;
     ELSE
     	Q := FALSE;
-    END_IF
+    END_IF;
 
     (* run debounce timer *)
     deb(IN := IN, PT := TD);

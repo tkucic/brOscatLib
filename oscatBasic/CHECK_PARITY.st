@@ -1,17 +1,17 @@
 FUNCTION CHECK_PARITY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=217*)
-    CHECK_PARITY := NOT P;
-    WHILE IN > 0 DO
-    	CHECK_PARITY := CHECK_PARITY XOR IN.0 XOR IN.1 XOR IN.2 XOR IN.3;
-    	IN := SHR(IN,4);
-    END_WHILE
+    CHECK_PARITY := NOT p;
+    WHILE in > 0 DO
+    	CHECK_PARITY := CHECK_PARITY XOR in.0 XOR in.1 XOR in.2 XOR in.3;
+    	in := SHR(in,4);
+    END_WHILE;
 
     (* code before rev 1.2
-    WHILE IN > 0 DO
-    	IF IN.0 THEN cnt := cnt + 1; END_IF
-    	IN := SHR(IN,1);
-    END_WHILE
-    CHECK_PARITY := even(cnt) XOR P;
+    WHILE in > 0 DO
+    	IF in.0 THEN cnt := cnt + 1; END_IF;
+    	in := SHR(in,1);
+    END_WHILE;
+    check_parity := even(cnt) XOR P;
     *)
 
 

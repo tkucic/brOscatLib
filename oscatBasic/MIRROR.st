@@ -1,14 +1,14 @@
 FUNCTION MIRROR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=174*)
-    pi := ADR(STR);
-    po := ADR(MIRROR);
-    lx := LEN(STR);
+    pi := ADR(str);
+    po := ADR(mirror);
+    lx := LEN(str);
     FOR i := lx TO 1 BY - 1 DO
-    	po := pi[i];
+    	po^ := pi^[i];
     	po := po + 1;
-    END_FOR
+    END_FOR;
     (* close output string *)
-    po:= 0;
+    po^:= 0;
 
 
     (* revision histroy

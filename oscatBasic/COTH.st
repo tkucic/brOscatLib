@@ -6,7 +6,7 @@ FUNCTION COTH
     	COTH := -1.0;
     ELSE
     	COTH := 1.0 + 2.0 / (EXP(X * 2.0) - 1.0);
-    END_IF
+    END_IF;
 
 
     (* revision histroy

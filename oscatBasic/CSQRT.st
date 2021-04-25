@@ -1,8 +1,8 @@
 FUNCTION CSQRT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=91*)
-    temp := HYPOT(X.re, X.im);
-    CSQRT.re :=  SQRT(0.5 * (temp + X.re));
-    CSQRT.im :=  sgn(X.im) * SQRT(0.5 * (temp - X.re));
+    temp := HYPOT(x.re, x.im);
+    CSQRT.re :=  SQRT(0.5 * (temp + x.re));
+    CSQRT.im :=  sgn(x.im) * SQRT(0.5 * (temp - x.re));
 
 
     (* revision history

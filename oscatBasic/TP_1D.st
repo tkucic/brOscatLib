@@ -5,21 +5,21 @@ FUNCTION_BLOCK TP_1D
 
     IF RST THEN
     	Q := FALSE;
-    	RST := FALSE;
+    	rst := FALSE;
     	W := FALSE;
     ELSIF W THEN
     	IF tx - start >= PTD THEN
     		W := FALSE;
-    	END_IF
+    	END_IF;
     ELSIF IN AND NOT ix THEN
     	Q := TRUE;
     	start := tx;
-    	IN := FALSE;
+    	in := FALSE;
     ELSIF tx - start >= PT1 THEN
     	Q := FALSE;
     	W := TRUE;
     	start := tx;
-    END_IF
+    END_IF;
 
     ix := IN;
 

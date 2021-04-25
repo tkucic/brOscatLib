@@ -1,50 +1,50 @@
 FUNCTION_BLOCK M_TX
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=342*)
-    (* check FOR RST input *)
-    IF RST OR (ET >= TMAX) THEN
+    (* check FOR rst input *)
+    IF rst OR (et >= tmax) THEN
     	rise := FALSE;
     	fall := FALSE;
     	startup := FALSE;
-    	TH := t#0ms;
-    	TL := t#0ms;
+    	th := t#0ms;
+    	tl := t#0ms;
     	DC := 0.0;
     	F := 0.0;
     	ET := t#0s;
-    END_IF
+    END_IF;
 
     (* avoid timers to start when input is true at startup *)
     IF NOT startup THEN
-    	edge_ := IN;
+    	edge := in;
     	startup := TRUE;
-    END_IF
+    END_IF;
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* edge_ trigger rising and falling edge_ *)
-    IF IN XOR edge_ THEN
-    	edge_ := IN;
-    	(* rising edge_ starts measurement *)
-    	IF IN THEN
-    		start := tx;
+    (* edge trigger rising and falling edge *)
+    IF in XOR edge THEN
+    	edge := in;
+    	(* rising edge starts measurement *)
+    	IF in THEN
+    		start := Tx;
     		rise := TRUE;
-    		IF fall THEN TL := start - stop; END_IF
-    		IF TH > t#0ms AND TL > t#0ms THEN
-    			DC := TIME_TO_REAL(TH) / TIME_TO_REAL(TH+TL);
-    			F := 1000.0 / TIME_TO_REAL(TH + TL);
-    		END_IF
-    	(* falling edge_ starts second cycle measurement *)
+    		IF fall THEN tl := start - stop; END_IF;
+    		IF th > t#0ms AND tl > t#0ms THEN
+    			dc := TIME_TO_REAL(th) / TIME_TO_REAL(th+tl);
+    			f := 1000.0 / TIME_TO_REAL(th + tl);
+    		END_IF;
+    	(* falling edge starts second cycle measurement *)
     	ELSE
-    		stop := tx;
+    		stop := Tx;
     		fall := TRUE;
-    		IF rise THEN TH := stop - start; END_IF
-    		IF TH > t#0ms AND TL > t#0ms THEN
-    			DC := TIME_TO_REAL(TH) /  TIME_TO_REAL(TH+TL);
-    			F := 1000.0 / TIME_TO_REAL(TH + TL);
-    		END_IF
-    	END_IF
-    END_IF
-    IF rise THEN ET := tx - start; END_IF
+    		IF rise THEN th := stop - start; END_IF;
+    		IF th > t#0ms AND tl > t#0ms THEN
+    			dc := TIME_TO_REAL(th) /  TIME_TO_REAL(th+tl);
+    			f := 1000.0 / TIME_TO_REAL(th + tl);
+    		END_IF;
+    	END_IF;
+    END_IF;
+    IF rise THEN et := tx - start; END_IF;
 
     (* revision history
     hm	4. aug. 2006	rev 1.0
@@ -52,9 +52,9 @@ FUNCTION_BLOCK M_TX
 
     hm	2. mai. 2007	rev 1.1
     	made sure that no undefined values would be measured at startup conditions
-    	added output ET
-    	added RST input
-    	added TMAX input
+    	added output et
+    	added rst input
+    	added tmax input
 
     hm	16. sep. 2007	rev 1.2
     	changes time() to T_plc_ms() for compatibility reasons

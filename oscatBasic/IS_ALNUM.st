@@ -1,14 +1,14 @@
 FUNCTION IS_ALNUM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=165*)
-    pt := ADR(STR);
-    L := LEN(STR);
+    PT := ADR(str);
+    L := LEN(str);
     FOR pos := 1 TO L DO
-    	IF NOT (ISC_ALPHA(pt) OR ISC_NUM(pt)) THEN
+    	IF NOT (ISC_ALPHA(pt^) OR ISC_NUM(pt^)) THEN
     		IS_ALNUM := FALSE;
     		RETURN;
-    	END_IF
-        	pt := pt + 1;
-    END_FOR
+    	END_IF;
+        	PT := PT + 1;
+    END_FOR;
     IS_ALNUM := L > 0;
 
 

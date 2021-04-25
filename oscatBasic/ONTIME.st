@@ -8,7 +8,7 @@ FUNCTION_BLOCK ONTIME
     	init := TRUE;
     	last := tx;
     	ms := 0;
-    END_IF
+    END_IF;
     IF RST THEN
     	SECONDS := 0;
     	CYCLES := 0;
@@ -18,13 +18,13 @@ FUNCTION_BLOCK ONTIME
     	(* add the current milliseconds *)
     	ms := (tx - last) + ms;
     	IF ms >= 1000 THEN
-    		SECONDS := SECONDS + 1;
+    		seconds := seconds + 1;
     		ms := ms - 1000;
-    	END_IF
-    	CYCLES := CYCLES + BOOL_TO_UINT(NOT edge_);
-    END_IF
+    	END_IF;
+    	cycles := cycles + BOOL_TO_UINT(NOT edge);
+    END_IF;
     last := tx;
-    edge_ := IN;
+    edge := in;
 
 
     (* revision history
@@ -33,10 +33,10 @@ FUNCTION_BLOCK ONTIME
     	wago lon contollers do not support persisitent
 
     hm 2.8.2007		rev 1.2
-    	adding time up IN a real number will automatically lead to the point where 
+    	adding time up in a real number will automatically lead to the point where 
     	small time scales like the cycle time will be below the resolution of real and therefore
-    	ontime would not increase IN small steps as necessary
-    	the time is now measured internally IN two  dwords and be converted to real only for
+    	ontime would not increase in small steps as necessary
+    	the time is now measured internally in two  dwords and be converted to real only for
     	output purposes.
     	deleted the variable power because it was unnecessary
 
@@ -59,10 +59,10 @@ FUNCTION_BLOCK ONTIME
     	changed typecast to avoid warnings
 
     hm	17. dec. 2008	rev 2.3
-    	fixed an error when IN would be true for more then 49 days
+    	fixed an error when in would be true for more then 49 days
 
     hm	17. jan 2011	rev 2.4
-    	init will not clear SECONDS and CYCLES, only RST clears these values	
+    	init will not clear seconds and cycles, only rst clears these values	
 
     hm	18. mar. 2011	rev 2.5
     	reset was not working

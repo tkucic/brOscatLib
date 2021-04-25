@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DLOG_STRING
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=52*)
-    CASE X.ADD_COM OF
+    CASE x.ADD_COM OF
 
     01:	(* ADD INFO *)
     	X.ID_MAX := X.ID_MAX + USINT#1;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK DLOG_STRING
     	X.UCB.D_HEAD := id;
     	X.UCB.D_MODE := 1;
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
-    END_CASE
+    END_CASE;
     str_last := STR;
 
     (* revision history

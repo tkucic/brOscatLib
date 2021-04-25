@@ -1,15 +1,15 @@
 FUNCTION_BLOCK HYST_2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=424*)
-    tmp := VAL - HYS * 0.5;
-    IF IN < tmp THEN
+    tmp := val - hys * 0.5;
+    IF in < tmp THEN
     	Q := FALSE;
-    	WIN := FALSE;
-    ELSIF IN > tmp + HYS THEN
+    	win := FALSE;
+    ELSIF in > tmp + hys THEN
     	Q := TRUE;
-    	WIN := FALSE;
+    	win := FALSE;
     ELSE
-    	WIN := TRUE;
-    END_IF
+    	win := TRUE;
+    END_IF;
 
 
 

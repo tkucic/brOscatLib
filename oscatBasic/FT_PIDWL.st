@@ -1,17 +1,17 @@
 FUNCTION_BLOCK FT_PIDWL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=409*)
-    (* if RST then *)
-    IF RST THEN
-    	piwl(RST := TRUE);
+    (* if rst then *)
+    IF rst THEN
+    	piwl(rst := TRUE);
     	piwl.RST := FALSE;
     ELSE
-    	(* run piwl controller first *)
+    	(* run PIWL controller first *)
     	(* we need to check if TN = 0 and do alternative calls *)
     	IF TN = 0.0 THEN
-    		piwl(IN := IN * KP, KP := 1.0, KI := 0.0, LIM_L := LIM_L, LIM_H := LIM_H);
+    		piwl(in := IN * KP, KP := 1.0, KI := 0.0, LIM_L := LIM_L, LIM_H := LIM_H);
     	ELSE
-    		piwl(IN := IN * KP, KP := 1.0, KI := 1.0 / TN, LIM_L := LIM_L, LIM_H := LIM_H);
-    	END_IF
+    		piwl(in := IN * KP, KP := 1.0, KI := 1.0 / TN, LIM_L := LIM_L, LIM_H := LIM_H);
+    	END_IF;
 
     	(* run differentiator and add_to_output *)
     	diff(IN := IN, K := KP * TV);
@@ -26,8 +26,8 @@ FUNCTION_BLOCK FT_PIDWL
     		Y := LIM_H;
     	ELSE
     		LIM := FALSE;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
 
 

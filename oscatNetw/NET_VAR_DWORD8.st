@@ -4,11 +4,11 @@ FUNCTION_BLOCK NET_VAR_DWORD8
     	init := TRUE;
     	X.ID_MAX := X.ID_MAX + USINT#1;
     	ID := USINT_TO_BYTE(X.ID_MAX);
-    END_IF
+    END_IF;
 
     IF X.STATE > BYTE#0 AND X.ERROR_ID = BYTE#0 THEN
     	index := X.index; (* PCWORX Workaround *)
-    	IF INT_TO_UINT(index + 34) > X.BUF_SIZE THEN  (* ID (1) + TYPE (1) + 8 X DWORD (4) *)
+    	IF INT_TO_UINT(index + 34) > X.BUF_SIZE THEN  (* ID (1) + TYPE (1) + 8 x DWORD (4) *)
     		X.ERROR_ID := ID;
     	ELSE
     		IF X.STATE = BYTE#1 THEN (* Daten schreiben *)
@@ -29,8 +29,8 @@ FUNCTION_BLOCK NET_VAR_DWORD8
     					X.S_BUF.BUFFER[index] := DWORD_TO_BYTE(ra[i2]);
     					ra[i2] := ROR(ra[i2],8);
     					index := index + 1;
-    				END_FOR
-    			END_FOR
+    				END_FOR;
+    			END_FOR;
 
     		ELSIF X.STATE = BYTE#2 THEN (* Daten lesen *)
     			index2 := index + 1; (* PCWORX Workaround *)
@@ -44,8 +44,8 @@ FUNCTION_BLOCK NET_VAR_DWORD8
     						ra[i2] := ra[i2] OR BYTE_TO_DWORD(X.R_BUF.BUFFER[index]);
     						ra[i2] := ROR(ra[i2],8);
     						index := index + 1;
-    					END_FOR
-    				END_FOR
+    					END_FOR;
+    				END_FOR;
     				OUT1 := ra[1];
     				OUT2 := ra[2];
     				OUT3 := ra[3];
@@ -54,11 +54,11 @@ FUNCTION_BLOCK NET_VAR_DWORD8
     				OUT6 := ra[6];
     				OUT7 := ra[7];
     				OUT8 := ra[8];
-    			END_IF
-    		END_IF
+    			END_IF;
+    		END_IF;
     		X.index := index;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (* revision history
     ks	15.may. 2011	rev 1.0

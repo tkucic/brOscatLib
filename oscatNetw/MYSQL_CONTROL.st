@@ -10,7 +10,7 @@ FUNCTION_BLOCK MYSQL_CONTROL
     		COM.ERROR_T := BYTE#0;
     		URL_DATA := STRING_TO_URL(STR:=COM.SQL_URL,DEFAULT_PROTOCOL:='',DEFAULT_PATH:='/');
     		step := 10;
-    	END_IF
+    	END_IF;
 
     10:	IF DNS_CLIENT.DONE THEN
     		step := 20;
@@ -18,12 +18,12 @@ FUNCTION_BLOCK MYSQL_CONTROL
     		COM.ERROR_C := DNS_CLIENT.ERROR;
     		COM.ERROR_T := BYTE#1;
     		step := 980;
-    	END_IF
+    	END_IF;
 
     20:	(* MySQL Steuerkanal einrichten *)
     	IF URL_DATA.PORT = WORD#0 THEN
     		URL_DATA.PORT := WORD#3306; (* Standard Port *)
-    	END_IF
+    	END_IF;
     	IP_C.C_PORT := URL_DATA.PORT; (* Portnummer eintragen *)
       	IP_C.C_IP := DNS_CLIENT.IP4; (* IP eintragen *)
       	IP_C.C_MODE := BYTE#0; (* Mode: TCP+ACTIV+PORT *)
@@ -40,28 +40,28 @@ FUNCTION_BLOCK MYSQL_CONTROL
     		(* ende markierung von string server_version suchen *)
     		idx2 := UINT_TO_INT(COM.R_BUF.SIZE) - 1;
     		FOR idx1 := 5 TO idx2 DO
-    			IF COM.R_BUF.BUFFER[idx1] = BYTE#0 THEN EXIT; END_IF
-    		END_FOR
+    			IF COM.R_BUF.BUFFER[idx1] = BYTE#0 THEN EXIT; END_IF;
+    		END_FOR;
     		idx1 := idx1 + 5; (* terminierung und thread-id überspringen *)
 
     		FOR idx2:=0 TO 7 DO	(* Byte 0-7 *)
     			scramble1_buffer[idx2] := COM.R_BUF.BUFFER[idx1];
     			idx1 := idx1 + 1;
-    		END_FOR
+    		END_FOR;
     		idx1 := idx1 + 1;
     		idx2 := idx1 + 1;
-    		INFO.SERVER_CAPABILITIES := WORD_OF_BYTE(COM.R_BUF.BUFFER[idx2], COM.R_BUF.BUFFER[idx1]);
+    		INFO.SERVER_CAPABILITIES := OSCAT_BASIC.WORD_OF_BYTE(COM.R_BUF.BUFFER[idx2], COM.R_BUF.BUFFER[idx1]);
     		idx1 := idx1 + 2;
     		INFO.SERVER_LANGUAGE := COM.R_BUF.BUFFER[idx1];
     		idx1 := idx1 + 1;
     		idx2 := idx1 + 1;
-    		INFO.SERVER_STATUS := WORD_OF_BYTE(COM.R_BUF.BUFFER[idx2], COM.R_BUF.BUFFER[idx1]);
+    		INFO.SERVER_STATUS := OSCAT_BASIC.WORD_OF_BYTE(COM.R_BUF.BUFFER[idx2], COM.R_BUF.BUFFER[idx1]);
     		idx1 := idx1 + 15;
 
     		FOR idx2:=8 TO 19 DO	(* Byte 8-19 *)
     			scramble1_buffer[idx2] := COM.R_BUF.BUFFER[idx1];
     			idx1 := idx1 + 1;
-    		END_FOR
+    		END_FOR;
 
     		IF INFO.SERVER_PROTOCOL_VERSION < BYTE#10 THEN  (* Error: protocol version zu niedrig *)
     			COM.ERROR_T := BYTE#2;
@@ -73,33 +73,33 @@ FUNCTION_BLOCK MYSQL_CONTROL
     			auth_password := URL_DATA.PASSWORD;
     			auth_run := TRUE;
     			step := 40;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     40:	MYSQL_AUTH(RUN:= auth_run,PASSWORD:= auth_password ,MESSAGE:= scramble1_buffer,SCRAMBLE:= scramble2_buffer);
     	IF NOT auth_run THEN
     		step := 50;
-    	END_IF
+    	END_IF;
 
     50: (* Client Authentication Packet *)
     	(* Byte 0-3 werden später eingetragen *)
-    	COM.S_BUF.BUFFER[04] := BYTE_OF_DWORD(client_flags, BYTE#0); (* client_flags *)
-    	COM.S_BUF.BUFFER[05] := BYTE_OF_DWORD(client_flags, BYTE#1);
-    	COM.S_BUF.BUFFER[06] := BYTE_OF_DWORD(client_flags, BYTE#2);
-    	COM.S_BUF.BUFFER[07] := BYTE_OF_DWORD(client_flags, BYTE#3);
-    	COM.S_BUF.BUFFER[08] := BYTE_OF_DWORD(max_packet_size, BYTE#0); (* max_packet_size *)
-    	COM.S_BUF.BUFFER[09] := BYTE_OF_DWORD(max_packet_size, BYTE#1);
-    	COM.S_BUF.BUFFER[10] := BYTE_OF_DWORD(max_packet_size, BYTE#2);
-    	COM.S_BUF.BUFFER[11] := BYTE_OF_DWORD(max_packet_size, BYTE#3);
+    	COM.S_BUF.BUFFER[04] := OSCAT_BASIC.BYTE_OF_DWORD(client_flags, BYTE#0); (* client_flags *)
+    	COM.S_BUF.BUFFER[05] := OSCAT_BASIC.BYTE_OF_DWORD(client_flags, BYTE#1);
+    	COM.S_BUF.BUFFER[06] := OSCAT_BASIC.BYTE_OF_DWORD(client_flags, BYTE#2);
+    	COM.S_BUF.BUFFER[07] := OSCAT_BASIC.BYTE_OF_DWORD(client_flags, BYTE#3);
+    	COM.S_BUF.BUFFER[08] := OSCAT_BASIC.BYTE_OF_DWORD(max_packet_size, BYTE#0); (* max_packet_size *)
+    	COM.S_BUF.BUFFER[09] := OSCAT_BASIC.BYTE_OF_DWORD(max_packet_size, BYTE#1);
+    	COM.S_BUF.BUFFER[10] := OSCAT_BASIC.BYTE_OF_DWORD(max_packet_size, BYTE#2);
+    	COM.S_BUF.BUFFER[11] := OSCAT_BASIC.BYTE_OF_DWORD(max_packet_size, BYTE#3);
     	COM.S_BUF.BUFFER[12] := charset_number; (* charset_number *)
     	FOR idx1 := 13 TO 35 DO (* 23 bytes filler always 0x00.. *)
     		COM.S_BUF.BUFFER[idx1] := BYTE#0;
-    	END_FOR
+    	END_FOR;
     	idx3 := LEN(URL_DATA.USER);
     	FOR idx2 :=1 TO idx3 DO
-    		COM.S_BUF.BUFFER[idx1] := CODE(URL_DATA.USER, idx2);
+    		COM.S_BUF.BUFFER[idx1] := OSCAT_BASIC.CODE(URL_DATA.USER, idx2);
     		idx1 := idx1 + 1;
-    	END_FOR
+    	END_FOR;
     	COM.S_BUF.BUFFER[idx1] := BYTE#0; (* String terminierung eintragen *)
     	idx1 := idx1 + 1;
     	IF LEN(URL_DATA.PASSWORD) = 0 THEN
@@ -109,8 +109,8 @@ FUNCTION_BLOCK MYSQL_CONTROL
     		FOR idx2 :=0 TO 19 DO
     			idx1 := idx1 + 1;
     			COM.S_BUF.BUFFER[idx1] := scramble2_buffer[idx2];
-    		END_FOR
-    	END_IF
+    		END_FOR;
+    	END_IF;
     	COM.S_BUF.SIZE  := INT_TO_UINT(idx1 + 1); (* Sendelänge eintragen *)
 
     	step := 60;
@@ -118,7 +118,7 @@ FUNCTION_BLOCK MYSQL_CONTROL
     60:	IF COM.SQL_RCV_STATE = BYTE#1 THEN
     		INFO.SQL_CONNECTED := TRUE;
     		step := 300;
-    	END_IF
+    	END_IF;
 
     (* ================================================== *)
 
@@ -137,7 +137,7 @@ FUNCTION_BLOCK MYSQL_CONTROL
 
     710:	IF IP_C.C_STATE = BYTE#0 THEN (* Verbindung durch SQL-Server beendet ? *)
     		step := 980;
-    	END_IF
+    	END_IF;
 
     (* ================================================== *)
 
@@ -155,20 +155,20 @@ FUNCTION_BLOCK MYSQL_CONTROL
     		LOG_CL.PRINTF[1] := DWORD_TO_STRH(COM.ERROR_C);
     		LOG_CL.PRINTF[2] := BYTE_TO_STRING(COM.ERROR_T);
     		LOG_MSG();
-    	END_IF*)
+    	END_IF;*)
     	(*########################################################################*)
 
     990:IF IP_C.C_STATE = BYTE#0 THEN
     		step := 0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
     IF step >= 30 THEN
     	IF COM.R_BUF.SIZE >= UINT#3 AND COM.SQL_RCV_STATE = BYTE#0 THEN (* Daten wurden empfangen ? *)
-    		IF DWORD_TO_UINT(DWORD_OF_BYTE(BYTE#0, COM.R_BUF.BUFFER[2], COM.R_BUF.BUFFER[1], COM.R_BUF.BUFFER[0])) + UINT#4 = COM.R_BUF.SIZE THEN
+    		IF DWORD_TO_UINT(OSCAT_BASIC.DWORD_OF_BYTE(BYTE#0, COM.R_BUF.BUFFER[2], COM.R_BUF.BUFFER[1], COM.R_BUF.BUFFER[0])) + UINT#4 = COM.R_BUF.SIZE THEN
     			COM.SQL_PACKET_NO := COM.R_BUF.BUFFER[3];
     			IF COM.R_BUF.BUFFER[4] = BYTE#16#FF THEN
     				idx2 := 13; (* Error String - Erstes Zeichen *)
@@ -176,11 +176,11 @@ FUNCTION_BLOCK MYSQL_CONTROL
     				FOR idx1 := idx2 TO idx3 DO (* alle ' durch ´ ersetzen *)
     					IF COM.R_BUF.BUFFER[idx1] = BYTE#39 THEN
     						COM.R_BUF.BUFFER[idx1] := BYTE#96;
-    					END_IF
-    				END_FOR
-    				INFO.SQL_ERROR := BUFFER_TO_STRING(PT:=ADR(COM.R_BUF.BUFFER),SIZE:=COM.R_BUF.SIZE,START:=INT_TO_UINT(idx2),STOP:=INT_TO_UINT(idx3));
+    					END_IF;
+    				END_FOR;
+    				INFO.SQL_ERROR := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(COM.R_BUF.BUFFER),SIZE:=COM.R_BUF.SIZE,START:=INT_TO_UINT(idx2),STOP:=INT_TO_UINT(idx3));
     				COM.ERROR_T := BYTE#3;
-    				COM.ERROR_C := DWORD_OF_BYTE(BYTE#0,BYTE#0,COM.R_BUF.BUFFER[6], COM.R_BUF.BUFFER[5]);
+    				COM.ERROR_C := OSCAT_BASIC.DWORD_OF_BYTE(BYTE#0,BYTE#0,COM.R_BUF.BUFFER[6], COM.R_BUF.BUFFER[5]);
     				COM.SQL_RCV_STATE := BYTE#2;
     				COM.R_BUF.SIZE := UINT#0; (* Empfangsbuffer nach Fehler rücksetzen *)
     				step := 980;
@@ -193,12 +193,12 @@ FUNCTION_BLOCK MYSQL_CONTROL
     					LOG_CL.NEW_MSG := 'RCV: size >~1<';
     					LOG_CL.PRINTF[1] := UINT_TO_STRING(COM.R_BUF.SIZE);
     					LOG_MSG();
-    				END_IF*)
+    				END_IF;*)
     				(*########################################################################*)
-    			END_IF
-    		END_IF
-    	END_IF
-    END_IF
+    			END_IF;
+    		END_IF;
+    	END_IF;
+    END_IF;
 
     (* automatisches Datensenden *)
 
@@ -206,8 +206,8 @@ FUNCTION_BLOCK MYSQL_CONTROL
 
     00:	IF step >= 20 AND COM.S_BUF.SIZE > UINT#0 THEN
     		dw_tmp := UINT_TO_DWORD(COM.S_BUF.SIZE - UINT#4); (* packet_length *)
-    		COM.S_BUF.BUFFER[0] := BYTE_OF_DWORD(dw_tmp, BYTE#0);
-    		COM.S_BUF.BUFFER[1] := BYTE_OF_DWORD(dw_tmp, BYTE#1);
+    		COM.S_BUF.BUFFER[0] := OSCAT_BASIC.BYTE_OF_DWORD(dw_tmp, BYTE#0);
+    		COM.S_BUF.BUFFER[1] := OSCAT_BASIC.BYTE_OF_DWORD(dw_tmp, BYTE#1);
     		COM.S_BUF.BUFFER[2] := 0;
     		COM.SQL_PACKET_NO := COM.SQL_PACKET_NO + 1;
     		COM.S_BUF.BUFFER[3] := COM.SQL_PACKET_NO;
@@ -221,17 +221,17 @@ FUNCTION_BLOCK MYSQL_CONTROL
     	          LOG_CL.NEW_MSG := 'SND: size >~1<';
     	          LOG_CL.PRINTF[1] := UINT_TO_STRING(COM.S_BUF.SIZE);
     	          LOG_MSG();
-    	        END_IF*)
+    	        END_IF;*)
     	        (*########################################################################*)
 
     		snd_step := 10;
-    	END_IF
+    	END_IF;
 
     10:	IF COM.S_BUF.SIZE = UINT#0 THEN (* warten bis alle daten gesendet sind *)
     		snd_step := 0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* Globale Fehlerbehandlung für Haupt-Routine *)
     IF COM.ERROR_T = BYTE#0 AND step > 20 THEN (* noch kein Fehler gespeichert und Hauptroutine aktiv *)
@@ -240,15 +240,15 @@ FUNCTION_BLOCK MYSQL_CONTROL
     			COM.ERROR_C := IP_C.ERROR;
     			COM.ERROR_T := BYTE#2;
     			step := 980;
-    		END_IF
-    	END_IF
-    END_IF
+    		END_IF;
+    	END_IF;
+    END_IF;
 
     IF TON_WAIT.Q THEN (* Ablaufstörung - Schrittkette *)
     	COM.ERROR_C := INT_TO_DWORD(step); (* aktuellen Schritt eintragen *)
     	COM.ERROR_T := BYTE#5;
     	step := 980;
-    END_IF
+    END_IF;
 
     (* ######################################################## *)
 
@@ -262,7 +262,7 @@ FUNCTION_BLOCK MYSQL_CONTROL
     ks	20. apr. 2012	rev 1.0
     	original version
     ks	14. oct. 2013	rev 1.1
-    	DNS_CLIENT Fehler durch zugriffskonflikt zwischen DNS_CLIENT und mySQL auf S_BUF
+    	DNS_CLIENT Fehler durch zugriffskonflikt zwischen dns_client und mySQL auf S_BUF
 
     *)
 END_FUNCTION_BLOCK

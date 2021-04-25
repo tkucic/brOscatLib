@@ -1,24 +1,24 @@
 FUNCTION_BLOCK MANUAL_1
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=464*)
-    IF NOT MAN THEN
+    IF NOT man THEN
     	Q := IN;
     	STATUS := 100;
-    	edge_ := FALSE;
-    ELSIF NOT S_edge AND SET THEN
+    	edge := FALSE;
+    ELSIF NOT s_edge AND set THEN
     	Q := TRUE;
-    	edge_ := TRUE;
-    	STATUS := 101;
-    ELSIF NOT r_edge AND RST THEN
+    	edge := TRUE;
+    	status := 101;
+    ELSIF NOT r_edge AND rst THEN
     	Q := FALSE;
-    	edge_ := TRUE;
-    	STATUS := 102;
-    ELSIF NOT edge_ THEN
+    	edge := TRUE;
+    	status := 102;
+    ELSIF NOT edge THEN
     	Q := M_I;
-    	STATUS := 103;
-    END_IF
+    	status := 103;
+    END_IF;
 
     (* remember levels of manual signals *)
-    S_edge := SET;
+    s_edge := SET;
     r_edge := RST;
 
 

@@ -31,8 +31,8 @@ FUNCTION DST
     	original version
 
     hm	24. okt 2007	rev 1.1
-    	deleted time_zone_offset input because DST is generally at 01:00 UTC and not mesz
-    	uk starts 01:00 UTC and also greece
+    	deleted time_zone_offset input because dst is generally at 01:00 utc and not mesz
+    	uk starts 01:00 utc and also greece
 
     hm	1. dec 2007	rev 1.2
     	changed code to improve performance

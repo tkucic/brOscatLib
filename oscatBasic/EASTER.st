@@ -1,14 +1,14 @@
 FUNCTION EASTER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=122*)
     b := (204 - 11 * (YEAR MOD 19)) MOD 30;
-    IF b > 27 THEN b := b - 1; END_IF
-    c := (YEAR + SHR(YEAR,2) + b - 13) MOD 7;
+    IF b > 27 THEN b := b - 1; END_IF;
+    c := (year + SHR(year,2) + b - 13) MOD 7;
     oday := 28 + b - c;
     IF oday > 33 THEN
-    	EASTER := SET_DATE(YEAR, 4, oday - 31);
+    	EASTER := SET_DATE(year, 4, oday - 31);
     ELSE
-    	EASTER := SET_DATE(YEAR, 3, oday);
-    END_IF
+    	EASTER := SET_DATE(year, 3, oday);
+    END_IF;
 
 
 
@@ -32,15 +32,15 @@ FUNCTION EASTER
 
 
     (* this algorithm is 180 us
-    a := YEAR MOD 19;
-    b := YEAR / 100;
-    c := YEAR MOD 100;
+    a := year MOD 19;
+    b := year / 100;
+    c := year MOD 100;
     d := b / 4;
     e := b MOD 4;
     f := (b + 8) / 25;
     g := (b - f + 1) / 3;
     h := (19 * a + b - d -g + 15) MOD 30;
-    i := c / 4;
+    i := C / 4;
     k := c MOD 4;
     l := (32 + 2*e + 2*i - h - k) MOD 7;
     m := (a + 11 * h + 22 * l) / 451;
@@ -48,7 +48,7 @@ FUNCTION EASTER
     n := X / 31;
     o := x MOD 31 + 1;
 
-    EASTER := set_Date(YEAR,n,o);
+    easter := set_Date(year,n,o);
     *)
     (*
     Im Magazin "Nature" vom 20. April 1876 veröffentlichte ein anonymer Autor eine Tabelle mit Regeln zur Berechnung des (Gregorianischen) Ostersonntages des Jahres J. In Formeln ausgedrückt erhält man das Folgende:

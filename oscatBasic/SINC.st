@@ -3,8 +3,8 @@ FUNCTION SINC
     IF X = 0.0 THEN
     	SINC := 1.0;
     ELSE
-    	SINC := SIN(X) / X;
-    END_IF
+    	SINC := SIN(x) / x;
+    END_IF;
 
 
     (* revision histroy

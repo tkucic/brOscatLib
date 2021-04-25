@@ -1,6 +1,6 @@
 FUNCTION IP4_CHECK
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=77*)
-    IP4_CHECK := (NIP AND SM) = (LIP AND SM);
+    IP4_CHECK := (NIP AND sm) = (LIP AND SM);
 
 
     (* revision history

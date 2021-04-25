@@ -1,9 +1,9 @@
 FUNCTION IS_NCC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=168*)
-    L := LEN(STR);
+    L := LEN(str);
     FOR pos := 1 TO L DO
-    	IF FIND(CMP,MID(STR,1,pos)) > 0 THEN RETURN; END_IF
-    END_FOR
+    	IF FIND(CMP,MID(str,1,pos)) > 0 THEN RETURN; END_IF;
+    END_FOR;
     IS_NCC := TRUE;
 
 

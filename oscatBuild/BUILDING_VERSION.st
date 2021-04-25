@@ -1,10 +1,10 @@
 FUNCTION BUILDING_VERSION
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=11*)
-    IF IN THEN
+    IF in THEN
     	BUILDING_VERSION := DATE_TO_DWORD(D#2011-02-3);
     ELSE
     	BUILDING_VERSION := 100;
-    END_IF
+    END_IF;
 
     (* revision history
     hm	6. oct 2006	rev 1.0

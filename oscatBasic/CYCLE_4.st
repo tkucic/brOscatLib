@@ -6,43 +6,43 @@ FUNCTION_BLOCK CYCLE_4
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
-    END_IF
+    END_IF;
 
     IF E THEN
     	IF SL THEN
-    		(* when SX > 0 then the STATE SX is forced to start *)
-    		STATE:= LIMIT(0,SX,3);
+    		(* when sx > 0 then the state sx is forced to start *)
+    		state:= LIMIT(0,SX,3);
     		last := tx;
-    		(* this is to avoid to reset SX from the calling programm it does work fine on codesys but i am not sure about other systems, because we are writing to an input *)
+    		(* this is to avoid to reset sx from the calling programm it does work fine on codesys but i am not sure about other systems, because we are writing to an input *)
     		SL := FALSE;
     	ELSE
-    		CASE STATE OF
+    		CASE state OF
     			0 :	(* wait for T0 and switch to next cycle *)
     				IF tx - last >= T0 THEN
-    					STATE := 1;
+    					state := 1;
     					last := tx;
-    				END_IF
+    				END_IF;
     			1 : (* wait for T1 over 1st cycle *)
     				IF tx - last >= T1 THEN
-    					STATE := 2;
+    					state := 2;
     					last := tx;
-    				END_IF
+    				END_IF;
     			2 : (* wait for T1 over 1st cycle *)
     				IF tx - last >= T2 THEN
-    					STATE := 3;
+    					state := 3;
     					last := tx;
-    				END_IF
+    				END_IF;
     			3 : (* wait for T2 over 2nd cycle *)
     				IF tx - last >= T3 THEN
-    					IF S0 THEN STATE := 0; END_IF (* if S0 is false, the sequence stops at STATE 3 *)
+    					IF S0 THEN State := 0; END_IF; (* if S0 is false, the sequence stops at state 3 *)
     					last := tx;
-    				END_IF
-    		END_CASE
-    	END_IF
+    				END_IF;
+    		END_CASE;
+    	END_IF;
     ELSE
-    	STATE := 0;
+    	state := 0;
     	last := tx;
-    END_IF
+    END_IF;
 
 
 

@@ -1,13 +1,13 @@
 FUNCTION_BLOCK DRIVER_4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=454*)
-    d0(SET:=SET, in:=IN0, RST:=RST, TOGGLE_MODE:=TOGGLE_MODE, TIMEOUT:=TIMEOUT);
-    d1(SET:=SET, in:=IN1, RST:=RST, TOGGLE_MODE:=TOGGLE_MODE, TIMEOUT:=TIMEOUT);
-    d2(SET:=SET, in:=IN2, RST:=RST, TOGGLE_MODE:=TOGGLE_MODE, TIMEOUT:=TIMEOUT);
-    d3(SET:=SET, in:=IN3, RST:=RST, TOGGLE_MODE:=TOGGLE_MODE, TIMEOUT:=TIMEOUT);
-    Q0 := d0.Q;
-    Q1 := d1.Q;
-    Q2 := d2.Q;
-    Q3 := d3.Q;
+    D0(Set:=set, in:=in0, rst:=rst, toggle_mode:=toggle_mode, timeout:=timeout);
+    D1(Set:=set, in:=in1, rst:=rst, toggle_mode:=toggle_mode, timeout:=timeout);
+    D2(Set:=set, in:=in2, rst:=rst, toggle_mode:=toggle_mode, timeout:=timeout);
+    D3(Set:=set, in:=in3, rst:=rst, toggle_mode:=toggle_mode, timeout:=timeout);
+    Q0 := D0.Q;
+    Q1 := D1.Q;
+    Q2 := D2.Q;
+    Q3 := D3.Q;
 
 
     (* revision history

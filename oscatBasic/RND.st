@@ -5,7 +5,7 @@ FUNCTION RND
     ELSE
     	M := EXPN(10.0,N - CEIL(LOG(ABS(X))));
     	RND := DINT_TO_REAL(REAL_TO_DINT(X * M)) / M;
-    END_IF
+    END_IF;
 
 
     (* revision history

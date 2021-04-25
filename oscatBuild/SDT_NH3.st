@@ -19,7 +19,7 @@ FUNCTION SDT_NH3
     	SDT_NH3 := 506.713 / (3.18757 - LOG(P)) - 192.37 ;
     ELSE
     	SDT_NH3 := 1113.928 / (4.86886 - LOG(P)) - 262.71 ;
-    END_IF
+    END_IF;
 
 
 

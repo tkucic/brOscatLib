@@ -9,7 +9,7 @@ FUNCTION_BLOCK SCHEDULER
     	s1 := tx - T1;
     	s2 := tx - T2;
     	s3 := tx - T3;
-    END_IF
+    END_IF;
 
     Q0 := FALSE;
     Q1 := FALSE;
@@ -20,24 +20,24 @@ FUNCTION_BLOCK SCHEDULER
     	0: 	IF tx - s0 >= T0 THEN
     			Q0 := E0;
     			s0 := tx;
-    		END_IF
+    		END_IF;
     		c := 1;
     	1: 	IF tx - s1 >= T1 THEN
     			Q1 := E1;
     			s1 := tx;
-    		END_IF
+    		END_IF;
     		c := 2;
     	2: 	IF tx - s2 >= T2 THEN
     			Q2 := E2;
     			s2 := tx;
-    		END_IF
+    		END_IF;
     		c := 3;
     	3: 	IF tx - s3 >= T3 THEN
     			Q3 := E3;
     			s3 := tx;
-    		END_IF
+    		END_IF;
     		c := 0;
-    END_CASE
+    END_CASE;
 
 
     (* revision history

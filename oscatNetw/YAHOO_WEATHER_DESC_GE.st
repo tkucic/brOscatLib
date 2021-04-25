@@ -26,7 +26,7 @@ FUNCTION_BLOCK YAHOO_WEATHER_DESC_GE
     		11:	YW.FORECAST_DAY[8].TEXT := str;
     			x := YW.FORECAST_DAY[9].CODE;
     		12:	YW.FORECAST_DAY[9].TEXT := str;
-    		END_CASE
+    		END_CASE;
 
     		CASE x OF
     		00:	str := 'Wirbelsturm';
@@ -79,9 +79,9 @@ FUNCTION_BLOCK YAHOO_WEATHER_DESC_GE
     		47:	str := 'örtliche gewittrige Regenfälle';
     		ELSE
     			str := 'nicht verfügbar';
-    		END_CASE
-    	END_FOR
-    END_IF
+    		END_CASE;
+    	END_FOR;
+    END_IF;
     act_last := ACTIVATE;
 
     (* revision history

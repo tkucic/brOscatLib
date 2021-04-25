@@ -1,19 +1,19 @@
 FUNCTION_BLOCK BLIND_SET
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=91*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     (* check inputs *)
     IF IN THEN
-    	IF OVERRIDE_MANUAL OR (UP AND DN) THEN
-    		STATUS := 178;
-    	END_IF
-    END_IF
+    	IF override_manual OR (UP AND DN) THEN
+    		status := 178;
+    	END_IF;
+    END_IF;
 
     (* state machine *)
     CASE STATUS OF
     	0: (* power on state *)
-    		STATUS := S_IN;
+    		status := S_IN;
 
     	178: (* force values from PX and AX *)
     		PO := PX;
@@ -21,17 +21,17 @@ FUNCTION_BLOCK BLIND_SET
     		QU := TRUE;
     		QD := TRUE;
     		(* check for end of forced position *)
-    		IF NOT IN THEN
+    		IF NOT in THEN
     			STATUS := SEL(RESTORE_POSITION, S_IN, 179);
     			last := tx;
-    		END_IF
+    		END_IF;
 
     	179: (* restore previous position *)
     		PO := ps;
     		AO := as;
     		IF ((PO = PI) AND (AO = AI))  OR tx - last >= RESTORE_TIME THEN
-    			STATUS := S_IN;
-    		END_IF
+    			status := S_IN;
+    		END_IF;
 
     ELSE
     	(* no operation transfer inputs to outputs *)
@@ -42,7 +42,7 @@ FUNCTION_BLOCK BLIND_SET
     	STATUS := S_IN;
     	QU := UP;
     	QD := DN;
-    END_CASE
+    END_CASE;
 
 
     (* revision history

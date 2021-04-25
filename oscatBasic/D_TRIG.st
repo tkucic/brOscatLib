@@ -1,8 +1,8 @@
 FUNCTION_BLOCK D_TRIG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=195*)
-    Q := IN <> last_in;
-    X := IN - last_in;
-    last_in := IN;
+    Q := in <> last_in;
+    X := in - last_in;
+    last_in := in;
 
 
     (* revision history

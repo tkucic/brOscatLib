@@ -1,14 +1,14 @@
 FUNCTION_BLOCK HYST_1
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=422*)
-    IF IN < LOW THEN
+    IF in < low THEN
     	Q := FALSE;
-    	WIN := FALSE;
-    ELSIF IN > HIGH THEN
+    	win := FALSE;
+    ELSIF in > high THEN
     	Q := TRUE;
-    	WIN := FALSE;
+    	win := FALSE;
     ELSE
-    	WIN := TRUE;
-    END_IF
+    	win := TRUE;
+    END_IF;
 
 
 

@@ -1,9 +1,9 @@
 FUNCTION CEIL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43*)
-    CEIL := REAL_TO_INT(X);
+    CEIL := REAL_TO_INT(x);
     IF CEIL < X THEN
     	CEIL := CEIL + 1;
-    END_IF
+    END_IF;
 
 
     (* revision history

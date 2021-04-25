@@ -1,14 +1,14 @@
 FUNCTION FIND_CTRL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157*)
-    pt := ADR(STR);
-    stop := LEN(STR);
-    FOR i := MAX(POS,1) TO stop DO;
-    	x := pt[i];
-    	IF x < 32 OR x = 127 THEN
+    pt := ADR(str);
+    stop := LEN(str);
+    FOR i := MAX(pos,1) TO stop DO;
+    	x := PT^[I];
+    	IF x < 32 OR X = 127 THEN
     		FIND_CTRL := i;
     		RETURN;
-    	END_IF
-    END_FOR
+    	END_IF;
+    END_FOR;
     FIND_CTRL := 0;
 
 

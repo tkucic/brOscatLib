@@ -3,7 +3,7 @@ FUNCTION FLOOR
     FLOOR := REAL_TO_INT(X);
     IF FLOOR > X THEN
     	FLOOR := FLOOR - 1;
-    END_IF
+    END_IF;
 
     (* revision history
     hm		7. feb 2007		rev 1.0

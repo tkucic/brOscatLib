@@ -2,26 +2,26 @@ FUNCTION _BUFFER_CLEAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477*)
     (* this routine uses 32 bit access to gain speed *)
     (* first access bytes till pointer is aligned for 32 bit access *)
-    temp := PT;
-    end := temp + UINT_TO_DWORD(SIZE);
+    temp := pt;
+    end := temp + UINT_TO_DWORD(size);
     end32 := end - 3;
-    WHILE (PT < end) AND ((temp AND 16#00000003) > 0) DO
-    	PT := 0;
-    	PT := PT + 1;
+    WHILE (pt < end) AND ((temp AND 16#00000003) > 0) DO
+    	pt^ := 0;
+    	pt := pt + 1;
     	temp := temp + 1;
-    END_WHILE
+    END_WHILE;
     (* pointer is aligned, now copy 32 bits at a time *)
-    ptw := PT;
+    ptw := pt;
     WHILE ptw < end32 DO (* *)
-    	ptw := 0;
+    	ptw^ := 0;
     	ptw := ptw + 4;
-    END_WHILE
+    END_WHILE;
     (* copy the remaining bytes in byte mode *)
-    PT := ptw;
-    WHILE PT < end DO
-    	PT := 0;
-    	PT := PT + 1;
-    END_WHILE
+    pt := ptw;
+    WHILE pt < end DO
+    	pt^ := 0;
+    	pt := pt + 1;
+    END_WHILE;
 
     _BUFFER_CLEAR := TRUE;
 
@@ -31,7 +31,7 @@ FUNCTION _BUFFER_CLEAR
 
     hm	16. mar. 2008	rev 1.1
     	added type conversion to avoid warnings under codesys 30
-    	chaged type of input SIZE to uint
+    	chaged type of input size to uint
     	deleted unused variable i
 
     hm	31. oct. 2008	rev 1.2

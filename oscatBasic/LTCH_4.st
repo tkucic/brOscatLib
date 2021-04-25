@@ -2,7 +2,7 @@ FUNCTION_BLOCK LTCH_4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=246*)
     (* as long as L is true, the latch is transparent and and change of D is transferred to Q *)
     (* of course only when there is no asynchronous reset *)
-    IF RST THEN			(* if asynchronous reset then Q=0 *)
+    IF rst THEN			(* if asynchronous reset then Q=0 *)
     	Q0 := FALSE;
     	Q1 := FALSE;
     	Q2 := FALSE;
@@ -12,7 +12,7 @@ FUNCTION_BLOCK LTCH_4
     	Q1 := D1;
     	Q2 := D2;
     	Q3 := D3;
-    END_IF
+    END_IF;
 
     (* revision history
     hm	4. aug 2006	rev 1.0

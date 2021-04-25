@@ -1,10 +1,10 @@
 FUNCTION CASIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85*)
-    Y.re := -X.im;
-    Y.im := X.re;
-    Y := CASINH(Y);
-    CASIN.re := Y.im;
-    CASIN.im := -Y.re;
+    y.re := -x.im;
+    y.im := x.re;
+    y := CASINH(y);
+    CASIN.re := y.im;
+    CASIN.im := -y.re;
 
 
 

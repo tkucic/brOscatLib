@@ -1,14 +1,14 @@
 FUNCTION_BLOCK GEN_RDT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=259*)
-    tonRDMTimer ( IN:= ENABLE , PT:= tRDMTime );
+    tonRDMTimer ( IN:= Enable , PT:= tRDMTime );
     tof_xQ ( IN:= tonRDMTimer.Q , PT:= TP_Q );
-    XQ := tof_xQ.Q;
+    XQ := tof_xq.Q;
     IF tonRDMTimer.Q THEN
-    		 XQ := TRUE ;
+    		 xQ := TRUE ;
     		 rRDMTime := RDM ( last:= rRDMTime ) ;
-    		 tRDMTime := REAL_TO_TIME ( rRDMTime * DINT_TO_REAL(TIME_TO_DINT( MAX_TIME_MS - MIN_TIME_MS ) + TIME_TO_DINT(MIN_TIME_MS ))) ;
+    		 tRDMTime := REAL_TO_TIME ( rRDMTime * DINT_TO_REAL(TIME_TO_DINT( Max_Time_ms - Min_Time_ms ) + TIME_TO_DINT(Min_Time_ms ))) ;
     		 tonRDMTimer ( IN:= FALSE );
-    END_IF
+    END_IF;
 
     (* revision history
     J. Schohaus	19. nov 2007	rev 1.0

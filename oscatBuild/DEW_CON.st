@@ -5,13 +5,13 @@ FUNCTION DEW_CON
     	DD := RH/100 * SDD;
     	V := LOG(DD/6.1078);
     	TD := b*V/(a-v);
-    	DEW_CON := 0.1 * mw / RU * DD / (T - TK);
+    	dew_con := 0.1 * mw / RU * DD / (T - TK);
     *)
     IF RH > 0.0 AND T > -50.0 THEN
-    	DEW_CON := 2.166824303E-2 * RH * SDD(T,FALSE)  / (T - cT0);
+    	DEW_CON := 2.166824303E-2 * RH * SDD(T,FALSE)  / (T - OSCAT_BASIC.phys.T0);
     ELSE
     	DEW_CON := 0.0;
-    END_IF
+    END_IF;
 
     (*
     Bezeichnungen:
@@ -33,11 +33,11 @@ FUNCTION DEW_CON
 
     Formeln:
 
-       1. SDD(T) = 6.1078 * 10((a*T)/(b+T))
+       1. SDD(T) = 6.1078 * 10^((a*T)/(b+T))
        2. DD(r,T) = r/100 * SDD(T)
        3. r(T,TD) = 100 * SDD(TD) / SDD(T)
        4. TD(r,T) = b*v/(a-v) mit v(r,T) = log10(DD(r,T)/6.1078)
-       5. AF(r,TK) = 105 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 105 * mw/R* * SDD(TD)/TK 
+       5. AF(r,TK) = 10^5 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 10^5 * mw/R* * SDD(TD)/TK 
 
     *)
 

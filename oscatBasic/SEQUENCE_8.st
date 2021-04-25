@@ -7,12 +7,12 @@ FUNCTION_BLOCK SEQUENCE_8
     IF NOT init THEN
     	last := tx;
     	init := TRUE;
-    	STATUS := 110;
-    END_IF
+    	status := 110;
+    END_IF;
 
     (* asynchronous reset *)
-    IF RST THEN
-    	STEP := -1;
+    IF rst THEN
+    	step := -1;
     	Q0 := 0;
     	Q1 := 0;
     	Q2 := 0;
@@ -21,14 +21,14 @@ FUNCTION_BLOCK SEQUENCE_8
     	Q5 := 0;
     	Q6 := 0;
     	Q7 := 0;
-    	STATUS := 110;
-    	RUN := 0;
+    	status := 110;
+    	run := 0;
 
-    (* edge_ on START input restarts the sequencer *)
-    ELSIF START AND NOT edge_ THEN
-    	STEP := 0;
+    (* edge on start input restarts the sequencer *)
+    ELSIF start AND NOT edge THEN
+    	step := 0;
     	last := tx;
-    	STATUS := 111;
+    	status := 111;
     	Q0 := 0;
     	Q1 := 0;
     	Q2 := 0;
@@ -37,127 +37,127 @@ FUNCTION_BLOCK SEQUENCE_8
     	Q5 := 0;
     	Q6 := 0;
     	Q7 := 0;
-    	RUN := 1;
-    END_IF
-    edge_ := START;
+    	run := 1;
+    END_IF;
+    edge := start;
 
     (* check if stop on error is necessary *)
-    IF STATUS > 0 AND STATUS < 100 AND STOP_ON_ERROR THEN RETURN; END_IF
+    IF status > 0 AND status < 100 AND stop_on_error THEN RETURN; END_IF;
 
     (* sequence is running *)
-    IF RUN AND STEP = 0 THEN
-    	IF NOT Q0 AND IN0 AND tx - last <= WAIT0 THEN
+    IF run AND step = 0 THEN
+    	IF NOT q0 AND in0 AND tx - last <= wait0 THEN
     		Q0 := TRUE;
     		last := tx;
-    	ELSIF NOT Q0 AND tx - last > WAIT0 THEN
-    		STATUS := 1;
-    		RUN := FALSE;
-    	ELSIF Q0 AND tx - last >= DELAY0 THEN
-    		STEP := 1;
+    	ELSIF NOT q0 AND tx - last > wait0 THEN
+    		status := 1;
+    		run := FALSE;
+    	ELSIF q0 AND tx - last >= delay0 THEN
+    		step := 1;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 1 THEN
-    	IF NOT Q1 AND IN1 AND tx - last <= WAIT1 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 1 THEN
+    	IF NOT q1 AND in1 AND tx - last <= wait1 THEN
     		Q0 := FALSE;
     		Q1 := TRUE;
     		last := tx;
-    	ELSIF NOT Q1 AND tx - last > WAIT1 THEN
-    		STATUS := 2;
-    		Q0 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q1 AND tx - last >= DELAY1 THEN
-    		STEP := 2;
+    	ELSIF NOT q1 AND Tx - last > wait1 THEN
+    		status := 2;
+    		q0 := FALSE;
+    		run := FALSE;
+    	ELSIF q1 AND tx - last >= delay1 THEN
+    		step := 2;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 2 THEN
-    	IF NOT Q2 AND IN2 AND tx - last <= WAIT2 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 2 THEN
+    	IF NOT q2 AND in2 AND tx - last <= wait2 THEN
     		Q1 := FALSE;
     		Q2 := TRUE;
     		last := tx;
-    	ELSIF NOT Q2 AND tx - last > WAIT2 THEN
-    		STATUS := 3;
-    		Q1 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q2 AND tx - last >= DELAY2 THEN
-    		STEP := 3;
+    	ELSIF NOT q2 AND Tx - last > wait2 THEN
+    		status := 3;
+    		q1 := FALSE;
+    		run := FALSE;
+    	ELSIF q2 AND tx - last >= delay2 THEN
+    		step := 3;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 3 THEN
-    	IF NOT Q3 AND IN3 AND tx - last <= WAIT3 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 3 THEN
+    	IF NOT q3 AND in3 AND tx - last <= wait3 THEN
     		Q2 := FALSE;
     		Q3 := TRUE;
     		last := tx;
-    	ELSIF NOT Q3 AND tx - last > WAIT3 THEN
-    		STATUS := 4;
-    		Q2 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q3 AND tx - last >= DELAY3 THEN
-    		STEP := 4;
+    	ELSIF NOT q3 AND Tx - last > wait3 THEN
+    		status := 4;
+    		q2 := FALSE;
+    		run := FALSE;
+    	ELSIF q3 AND tx - last >= delay3 THEN
+    		step := 4;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 4 THEN
-    	IF NOT Q4 AND IN4 AND tx - last <= WAIT4 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 4 THEN
+    	IF NOT q4 AND in4 AND tx - last <= wait4 THEN
     		Q3 := FALSE;
     		Q4 := TRUE;
     		last := tx;
-    	ELSIF NOT Q4 AND tx - last > WAIT4 THEN
-    		STATUS := 5;
-    		Q3 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q4 AND tx - last >= DELAY4 THEN
-    		STEP := 5;
+    	ELSIF NOT q4 AND Tx - last > wait4 THEN
+    		status := 5;
+    		q3 := FALSE;
+    		run := FALSE;
+    	ELSIF q4 AND tx - last >= delay4 THEN
+    		step := 5;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 5 THEN
-    	IF NOT Q5 AND IN5 AND tx - last <= WAIT5 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 5 THEN
+    	IF NOT q5 AND in5 AND tx - last <= wait5 THEN
     		Q4 := FALSE;
     		Q5 := TRUE;
     		last := tx;
-    	ELSIF NOT Q5 AND tx - last > WAIT5 THEN
-    		STATUS := 6;
-    		Q4 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q5 AND tx - last >= DELAY5 THEN
-    		STEP := 6;
+    	ELSIF NOT q5 AND Tx - last > wait5 THEN
+    		status := 6;
+    		q4 := FALSE;
+    		run := FALSE;
+    	ELSIF q5 AND tx - last >= delay5 THEN
+    		step := 6;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 6 THEN
-    	IF NOT Q6 AND IN6 AND tx - last <= WAIT6 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 6 THEN
+    	IF NOT q6 AND in6 AND tx - last <= wait6 THEN
     		Q5 := FALSE;
     		Q6 := TRUE;
     		last := tx;
-    	ELSIF NOT Q6 AND tx - last > WAIT6 THEN
-    		STATUS := 7;
-    		Q5 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q6 AND tx - last >= DELAY6 THEN
-    		STEP := 7;
+    	ELSIF NOT q6 AND Tx - last > wait6 THEN
+    		status := 7;
+    		q5 := FALSE;
+    		run := FALSE;
+    	ELSIF q6 AND tx - last >= delay6 THEN
+    		step := 7;
     		last := tx;
-    	END_IF
-    END_IF
-    IF RUN AND STEP = 7 THEN
-    	IF NOT Q7 AND IN7 AND tx - last <= WAIT7 THEN
+    	END_IF;
+    END_IF;
+    IF run AND step = 7 THEN
+    	IF NOT q7 AND in7 AND tx - last <= wait7 THEN
     		Q6 := FALSE;
     		Q7 := TRUE;
     		last := tx;
-    	ELSIF NOT Q7 AND tx - last > WAIT7 THEN
-    		STATUS := 8;
-    		Q6 := FALSE;
-    		RUN := FALSE;
-    	ELSIF Q7 AND tx - last >= DELAY7 THEN
-    		STEP := -1;
+    	ELSIF NOT q7 AND Tx - last > wait7 THEN
+    		status := 8;
+    		q6 := FALSE;
+    		run := FALSE;
+    	ELSIF q7 AND tx - last >= delay7 THEN
+    		step := -1;
     		Q7 := FALSE;
-    		RUN := FALSE;
-    		STATUS := 110;
-    	END_IF
-    END_IF
-    QX := Q0 OR Q1 OR Q2 OR Q3 OR Q4 OR Q5 OR Q6 OR Q7;
+    		Run := FALSE;
+    		status := 110;
+    	END_IF;
+    END_IF;
+    QX := q0 OR q1 OR q2 OR q3 OR q4 OR q5 OR q6 OR q7;
 
     (*
     hm 1.10.06		rev 1.1
@@ -166,19 +166,19 @@ FUNCTION_BLOCK SEQUENCE_8
 
     hm 1.12.06		rev 1.2
     	corrected failure in sequence logic.
-    	added init at startup to prevent from initial statuss after START.
+    	added init at startup to prevent from initial statuss after start.
 
     hm 17.1.2007		rev 1.3
-    	changed output fault to STATUS for better compatibility with other modules (ESR)
+    	changed output fault to status for better compatibility with other modules (ESR)
     	added stop on error functionality and setup variable
-    	default for inputs IN0..7 is true.
-    	renames variable state to STEP
+    	default for inputs in0..7 is true.
+    	renames variable state to step
 
     hm	17.sep 2007	rev 1.4
     	replaced time() with T_PLC_MS() for compatibility reasons
 
     hm	13. mar. 2009	rev 1.5
-    	renamed output any to QX for compatibility resons
+    	renamed output any to qx for compatibility resons
 
     *)
 END_FUNCTION_BLOCK

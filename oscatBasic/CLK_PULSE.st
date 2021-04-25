@@ -9,11 +9,11 @@ FUNCTION_BLOCK CLK_PULSE
     	CNT := 0;
     	tn := tx - TIME_TO_DWORD(PT);
     	RUN := FALSE;
-    ELSIF (CNT < N OR N = 0) AND tx - tn >= TIME_TO_DWORD(PT) THEN		(* generate a pulse *)
+    ELSIF (cnt < N OR N = 0) AND tx - tn >= TIME_TO_DWORD(PT) THEN		(* generate a pulse *)
     	CNT := CNT + 1;
     	Q := TRUE;
     	tn := tn + TIME_TO_DWORD(PT);
-    END_IF
+    END_IF;
 
 
 

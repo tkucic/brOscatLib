@@ -1,7 +1,7 @@
 FUNCTION CAUCHY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=42*)
-    tmp := X - T;
-    CAUCHY := cPI_INV * U / (U*U + tmp*tmp);
+    tmp := x - t;
+    CAUCHY := math.PI_INV * U / (U*U + tmp*tmp);
 
 
 

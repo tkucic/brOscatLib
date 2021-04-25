@@ -1,12 +1,12 @@
 FUNCTION_BLOCK DNS_REV_CLIENT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=90*)
-    (* DOMAIN Name System (query) *)
+    (* Domain Name System (query) *)
 
     CASE state OF
     00: (* auf positive Flanke GET warten *)
     	IF ACTIVATE AND NOT activate_last THEN
     		ERROR := DWORD#0;
-    		ip4_copy := IP4; (* IP4 sichern *)
+    		ip4_copy := ip4; (* IP4 sichern *)
     		ip_state := BYTE#1;
     		DOMAIN := '';
     		DONE := FALSE;
@@ -16,10 +16,10 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     			d := CONCAT(d,BYTE_TO_STRING(DWORD_TO_BYTE(IP4)));
     			d := CONCAT(d,'.');
     			IP4 := ROR(IP4,8);
-    		END_FOR
+    		END_FOR;
     		d := CONCAT(d,'in-addr.arpa');
     		state := 10;
-    	END_IF
+    	END_IF;
 
     10: (* Bei IP_Control anmelden *)
     	IF ip_state = BYTE#3 THEN
@@ -29,7 +29,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     		char_count := 17 + dl;
     		FOR i := 0 TO char_count DO
     			S_BUF.BUFFER[i] := BYTE#00;
-    		END_FOR
+    		END_FOR;
 
     		tid := UINT_TO_BYTE(BYTE_TO_UINT(tid) + UINT#1);
     		S_BUF.BUFFER[01] := tid; (* Transaction ID lowbyte *)
@@ -41,7 +41,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     		char_count := 0;
 
     		WHILE i > 12 DO
-    			char := CODE(STR:=d,POS:=i - 12);
+    			char := OSCAT_BASIC.CODE(STR:=d,POS:=i - 12);
 
     			(* prüfe auf haupt/sub domänen namens-teiler "." *)
     			IF char = BYTE#46 THEN
@@ -51,13 +51,13 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     			ELSE
     				S_BUF.BUFFER[i] := char; (* char in buffer eintragen *)
     				char_count := char_count + 1; (* anzahl char zählen *)
-    			END_IF
+    			END_IF;
     			i := i - 1;
-    		END_WHILE
+    		END_WHILE;
 
     		S_BUF.BUFFER[i] := INT_TO_BYTE(char_count); (* längenangabe des ganz linken (ersten) domänennamens eintragen *)
     		i := dl + 15; (* position hinter dem servernamen *)
-    		S_BUF.BUFFER[i] := BYTE#12; (* Type: PTR (DOMAIN name pointer) lowbyte *)
+    		S_BUF.BUFFER[i] := BYTE#12; (* Type: PTR (Domain name pointer) lowbyte *)
     		i := i + 2;
     		S_BUF.BUFFER[i] := BYTE#01; (* Class: IN lowbyte *)
     		i := i + 1;
@@ -72,7 +72,7 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     		S_BUF.SIZE := INT_TO_UINT(i); (* sendelänge eintragen *)
     		R_BUF.SIZE := UINT#0; (* Empfangslänge rücksetzen *)
     		state := 30;
-    	END_IF
+    	END_IF;
 
     30:
     	IF IP_C.ERROR <> DWORD#00 THEN
@@ -87,9 +87,9 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     			i := R_BUF.SIZE - 2;
     			WHILE R_BUF.BUFFER[i] > 0 DO
-    				IF i = 0 THEN EXIT; END_IF
+    				IF i = 0 THEN EXIT; END_IF;
     				i := i - 1;
-    			END_WHILE
+    			END_WHILE;
 
     			i := i + 2;
     			p1 := i + 1;
@@ -99,30 +99,30 @@ FUNCTION_BLOCK DNS_REV_CLIENT
     					R_BUF.BUFFER[i] := BYTE#46;
     					i := i + dl + 1;
     				ELSE
-    					DOMAIN := BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=p1,STOP:=i-1);
+    					DOMAIN := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=SIZEOF(R_BUF.BUFFER),START:=p1,STOP:=i-1);
     					EXIT;
-    				END_IF
-    			END_WHILE
+    				END_IF;
+    			END_WHILE;
     			state := 0;
     			DONE := TRUE;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     	IF ERROR <> DWORD#0 THEN
     		state := 0;
-    	END_IF
+    	END_IF;
 
     	IF state = 0 THEN
     		IP_C.R_OBSERVE := FALSE; (* Datenempfang ueberwachen *)
     		ip_state := BYTE#4; (* Abmelden *)
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
+    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
 
     (* revision history
 
@@ -144,10 +144,10 @@ FUNCTION_BLOCK DNS_REV_CLIENT
 
     (*
     Errorcodes  Description	References 
-    000	No ERROR. 		 	The request completed successfully.
-    001	Format ERROR. 		The name server was unable to interpret the query. 
+    000	No error. 		 	The request completed successfully.
+    001	Format error. 		The name server was unable to interpret the query. 
     002	Server failure.  	The name server was unable to process this query due to a problem with the name server. 
-    003	Name ERROR. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the DOMAIN name referenced in the query does not exist.
+    003	Name Error. 	 	Meaningful only for responses from an authoritative name server, this code signifies that the domain name referenced in the query does not exist.
     004	Not Implemented. 	The name server does not support the requested kind of query.
     005	Refused. 			The name server refuses to perform the specified operation for policy reasons.
       						 For example, a name server may not wish to provide the information to the particular requester, or a name server may not wish to perform a particular operation (e.g., zone transfer) for particular data.

@@ -1,13 +1,13 @@
 FUNCTION MONTH_OF_DATE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=130*)
-    MONTH_OF_DATE := DAY_OF_YEAR(IDATE);
+    MONTH_OF_DATE := DAY_OF_YEAR(idate);
     IF MONTH_OF_DATE < 32 THEN
     	MONTH_OF_DATE := 1;
     ELSIF LEAP_OF_DATE(IDATE) THEN
     	MONTH_OF_DATE := (MONTH_OF_DATE * 53 + 1668) / 1623;
     ELSE
     	MONTH_OF_DATE := (MONTH_OF_DATE * 53 + 1700) / 1620;
-    END_IF
+    END_IF;
 
 
     (* code for rev 1.2
@@ -26,7 +26,7 @@ FUNCTION MONTH_OF_DATE
     		275..305:	MONTH_OF_DATE := 10;
     		306..335:	MONTH_OF_DATE := 11;
     		336..366:	MONTH_OF_DATE := 12;
-    	END_CASE
+    	END_CASE;
     ELSE
     	CASE MONTH_OF_DATE OF
     		1..31 	:	MONTH_OF_DATE := 1;
@@ -41,8 +41,8 @@ FUNCTION MONTH_OF_DATE
     		274..304:	MONTH_OF_DATE := 10;
     		305..334:	MONTH_OF_DATE := 11;
     		335..365:	MONTH_OF_DATE := 12;
-    	END_CASE
-    END_IF
+    	END_CASE;
+    END_IF;
     *)
 
 

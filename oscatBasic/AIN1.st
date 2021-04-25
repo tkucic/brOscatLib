@@ -1,28 +1,28 @@
 FUNCTION_BLOCK AIN1
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=270*)
-    (* extract ERROR bit *)
-    ERROR := ((SHR(IN,ERROR_BIT) AND 16#0000_0001) = 1) OR (ERROR_CODE_EN AND ERROR_CODE = IN);
-    IF ERROR THEN
-    	OUT := ERROR_OUTPUT;
+    (* extract error bit *)
+    error := ((SHR(in,error_bit) AND 16#0000_0001) = 1) OR (error_code_en AND error_code = in);
+    IF error THEN
+    	out := error_output;
     	RETURN;
-    END_IF
+    END_IF;
 
     (* strip off the data input *)
-    tB := SHR(SHL(IN, 31 - BIT_N), 31 - BIT_N + BIT_0);
+    tb := SHR(SHL(in, 31 - bit_N), 31 - bit_N + Bit_0);
 
-    (* extract OVERFLOW bit *)
-    OVERFLOW := ((SHR(IN,OVERFLOW_BIT) AND 16#0000_0001) = 1) OR (OVERFLOW_CODE_EN AND OVERFLOW_CODE = IN) OR (tB < CODE_MIN OR tB > CODE_MAX);
-    IF OVERFLOW THEN
-    	OUT := OVERFLOW_OUTPUT;
+    (* extract overflow bit *)
+    overflow := ((SHR(in,overflow_bit) AND 16#0000_0001) = 1) OR (overflow_code_en AND overflow_code = in) OR (tb < code_min OR tb > code_max);
+    IF overflow THEN
+    	out := overflow_output;
     	RETURN;
-    END_IF
+    END_IF;
 
-    (* extract SIGN bit *)
-    SIGN := (SHR(IN,SIGN_BIT) AND 16#0000_0001) = 1;
+    (* extract sign bit *)
+    sign := (SHR(in,sign_bit) AND 16#0000_0001) = 1;
 
-    (* convert IN to OUT *)
-    OUT := (DWORD_TO_REAL(tB - CODE_MIN) * (OUT_MAX - OUT_MIN) / DWORD_TO_REAL(CODE_MAX - CODE_MIN) + OUT_MIN);
-    IF SIGN THEN OUT := OUT * -1.0; END_IF
+    (* convert in to out *)
+    out := (DWORD_TO_REAL(tb - code_min) * (out_max - out_min) / DWORD_TO_REAL(code_max - code_min) + out_min);
+    IF sign THEN out := out * -1.0; END_IF;
 
 
 
@@ -34,8 +34,8 @@ FUNCTION_BLOCK AIN1
     	added type conversions to avoid warnngs under codesys 30
 
     hm	22. apr. 2008	rev 1.2
-    	corrected ERROR IN formula when CODE_MIN was set
-    	corrected ERROR when SIGN bit was used
+    	corrected error in formula when code_min was set
+    	corrected error when sign bit was used
     	optimized code for better performance
 
     hm	10. mar. 2009	rev 1.3

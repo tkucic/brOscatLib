@@ -1,7 +1,7 @@
 FUNCTION DEG_TO_DIR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=356*)
-    IF L = 0 THEN ly := cDEFAULT; ELSE ly := MIN(L, cLMAX); END_IF
-    DEG_TO_DIR := cDIRS[ly, ((SHL(DEG,N-1) + 45) / 90) MOD SHL(INT#2,N)*SHR(INT#8,N)];
+    IF L = 0 THEN ly := LANGUAGE.DEFAULT; ELSE ly := MIN(L, LANGUAGE.LMAX); END_IF;
+    DEG_TO_DIR := LANGUAGE.DIRS[ly, ((SHL(DEG,N-1) + 45) / 90) MOD SHL(INT#2,N)*SHR(INT#8,N)];
 
 
 
@@ -15,7 +15,7 @@ FUNCTION DEG_TO_DIR
     convert to integer calculation
     DIR := ((DIR*2 + 45) / 90) MOD 8
     N = 0, NE = 1 ....
-    ther above formula replaces 2N with shift for performance
+    ther above formula replaces 2^N with shift for performance
     *)
 
 

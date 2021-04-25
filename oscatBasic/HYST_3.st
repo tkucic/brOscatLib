@@ -1,16 +1,16 @@
 FUNCTION_BLOCK HYST_3
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=425*)
-    X := HYST * 0.5;
-    IF IN < VAL1 - X THEN
-    	Q1 := TRUE;
-    ELSIF IN > VAL1 + X THEN
-    	Q1 := FALSE;
-    END_IF
-    IF IN < VAL2 - X THEN
-    	Q2 := FALSE;
-    ELSIF IN > VAL2 + X THEN
-    	Q2 := TRUE;
-    END_IF
+    X := hyst * 0.5;
+    IF in < val1 - X THEN
+    	q1 := TRUE;
+    ELSIF in > val1 + X THEN
+    	q1 := FALSE;
+    END_IF;
+    IF in < val2 - X THEN
+    	q2 := FALSE;
+    ELSIF in > val2 + X THEN
+    	q2 := TRUE;
+    END_IF;
 
 
 

@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DLOG_BOOL
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=48*)
-    CASE X.ADD_COM OF
+    CASE x.ADD_COM OF
 
     01:	(* ADD INFO *)
     	X.ID_MAX := X.ID_MAX + USINT#1;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK DLOG_BOOL
     		X.UCB.D_STRING := SEL(state_last,'0','1');
     	ELSE
     		X.UCB.D_STRING := SEL(state_last,OFF,ON);
-    	END_IF
+    	END_IF;
     	X.UCB.D_HEAD := id;
 
     	X.UCB.D_MODE := 1;
@@ -25,8 +25,8 @@ FUNCTION_BLOCK DLOG_BOOL
     	IF DELTA AND (STATE XOR last_delta) THEN
     		X.ADD_DATA_REQ := TRUE;
     		last_delta := STATE;
-    	END_IF
-    END_CASE
+    	END_IF;
+    END_CASE;
     state_last := STATE;
 
     (* revision history

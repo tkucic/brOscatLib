@@ -8,8 +8,8 @@ FUNCTION_BLOCK YAHOO_WEATHER_ICON_OSCAT
     	FOR idx := 1 TO 9 DO
     		x := MIN(YW.FORECAST_DAY[idx].CODE,48);
     		YW.FORECAST_DAY[idx].ICON := dat[x];
-    	END_FOR
-    END_IF
+    	END_FOR;
+    END_IF;
     act_last := ACTIVATE;
 
     (* revision history

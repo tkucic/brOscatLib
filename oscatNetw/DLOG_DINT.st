@@ -1,6 +1,6 @@
 FUNCTION_BLOCK DLOG_DINT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=49*)
-    CASE X.ADD_COM OF
+    CASE x.ADD_COM OF
 
     01:	(* ADD INFO *)
     	X.ID_MAX := X.ID_MAX + USINT#1;
@@ -21,9 +21,9 @@ FUNCTION_BLOCK DLOG_DINT
     		IF VALUE <= (delta_last - DELTA) OR VALUE >= (delta_last + DELTA) THEN
     			X.ADD_DATA_REQ := TRUE;
     			delta_last := VALUE;
-    		END_IF
-    	END_IF
-    END_CASE
+    		END_IF;
+    	END_IF;
+    END_CASE;
     value_last := VALUE;
 
     (* revision history

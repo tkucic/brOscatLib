@@ -1,34 +1,34 @@
 FUNCTION_BLOCK PULSE_LENGTH
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=56*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     (* reset outputs, they should only be active 1 cycle *)
-    SHORT := FALSE;
-    MIDDLE := FALSE;
-    LONG := FALSE;
+    short := FALSE;
+    Middle := FALSE;
+    long := FALSE;
 
-    (* detect rising edge_ *)
-    IF IN AND NOT edge_ THEN
-    	edge_ := TRUE;
+    (* detect rising edge *)
+    IF in AND NOT edge THEN
+    	edge := TRUE;
     	tn := tx;
 
-    (* detect for falling edge_ *)
-    ELSIF NOT IN AND edge_ THEN
-    	edge_ := FALSE;
+    (* detect for falling edge *)
+    ELSIF NOT in AND edge THEN
+    	edge := FALSE;
     	tn := tx - tn;
-    	IF tn < T_SHORT THEN
-    		SHORT := TRUE;
-    	ELSIF tn > T_LONG THEN
-    		LONG := TRUE;
+    	IF tn < t_short THEN
+    		short := TRUE;
+    	ELSIF tn > t_long THEN
+    		long := TRUE;
     	ELSE
-    		MIDDLE := TRUE;
-    	END_IF
+    		Middle := TRUE;
+    	END_IF;
 
-    (* generate LONG pulse as soon as T_LONG is reached *)
-    ELSIF IN AND tx - tn > T_LONG THEN
-    	LONG := TRUE;
-    END_IF
+    (* generate long pulse as soon as T_long is reached *)
+    ELSIF in AND tx - tn > t_long THEN
+    	long := TRUE;
+    END_IF;
 
 
     (* revision history

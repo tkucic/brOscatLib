@@ -1,7 +1,7 @@
 FUNCTION ROUND
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=65*)
-    X := cDECADES[LIMIT(0,N,8)];
-    ROUND := DINT_TO_REAL(REAL_TO_DINT(IN * X)) / X;
+    X := setup.DECADES[LIMIT(0,N,8)];
+    ROUND := DINT_TO_REAL(REAL_TO_DINT(in * X)) / X;
 
 
 
@@ -13,7 +13,7 @@ FUNCTION ROUND
     	changed code for better performance
 
     hm	8. jan 2008	rev 1.2
-    	further improvement IN performance
+    	further improvement in performance
 
     hm 11. mar. 2008	rev 1.3
     	corrected an error with negative numbers

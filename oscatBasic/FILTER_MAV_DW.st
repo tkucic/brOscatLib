@@ -4,19 +4,19 @@ FUNCTION_BLOCK FILTER_MAV_DW
     N := MIN(N, 32);
 
     (* startup initialisation *)
-    IF NOT init OR RST OR N = 0 THEN
+    IF NOT init OR rst OR N = 0 THEN
     	init := TRUE;
     	tmp := UINT_TO_INT(N)-1;
     	FOR i := 0 TO tmp DO
     		buffer[i] := X;
-    	END_FOR
+    	END_FOR;
     	Y := X;
     ELSE
     	tmp := UINT_TO_INT(N);
     	i := INC1(i, tmp);
     	Y := Y + (X - buffer[i]) / N;
     	buffer[i] := X;
-    END_IF
+    END_IF;
 
 
 

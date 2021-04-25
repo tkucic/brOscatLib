@@ -1,6 +1,6 @@
 FUNCTION_BLOCK TMIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=205*)
-    pm(IN := IN, PT := PT);
+    pm(in := IN, PT := PT);
     Q := IN OR pm.Q;
 
 

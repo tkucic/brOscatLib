@@ -8,13 +8,13 @@ FUNCTION_BLOCK FT_DERIV
     (* init on first startup *)
     IF NOT init THEN
     	init := TRUE;
-    	old := IN;
-    ELSIF RUN AND tc > 0.0 THEN
-    	OUT := (IN - old) / tc * 1000000.0 * K;
-    	old := IN;
+    	old := in;
+    ELSIF run AND tc > 0.0 THEN
+    	out := (in - old) / tc * 1000000.0 * K;
+    	old := in;
     ELSE
-    	OUT := 0.0;
-    END_IF
+    	out := 0.0;
+    END_IF;
 
 
 
@@ -25,7 +25,7 @@ FUNCTION_BLOCK FT_DERIV
 
     hm	15. sep 2007	rev 1.2
     	replaced Time() with T_PLC_US for compatibility and performance reasons
-    	increased accuracy and work IN microseconds internally
+    	increased accuracy and work in microseconds internally
 
     hm 29 oct 2007	rev 1.3
     	prohibit calculation when tx - last = 0 to avoid division by 0 and increase accuracy on fast systems

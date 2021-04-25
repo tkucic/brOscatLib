@@ -12,19 +12,19 @@ FUNCTION_BLOCK MATRIX
     (* compare for change *)
     FOR i := 0 TO 3 DO
     	IF X[i] <> L[i] THEN
-    		(* scan line information has changed CODE need to be found and generated *)
-    		temp := X[i] XOR L[i];
+    		(* scan line information has changed code need to be found and generated *)
+    		temp := x[i] XOR L[i];
     		IF temp.0 THEN
     			CODE := 1;
-    			CODE.7 := X[i].0;
+    			code.7 := X[i].0;
     			L[i].0 := X[i].0;
     		ELSIF temp.1 THEN
-    			CODE := 2;
-    			CODE.7 := X[i].1;
+    			code := 2;
+    			code.7 := X[i].1;
     			L[i].1 := X[i].1;
     		ELSIF temp.2 THEN
-    			CODE := 3;
-    			CODE.7 := X[i].2;
+    			code := 3;
+    			code.7 := X[i].2;
     			L[i].2 := X[i].2;
     		ELSIF temp.3 THEN
     			CODE := 4;
@@ -34,20 +34,20 @@ FUNCTION_BLOCK MATRIX
     			CODE := 5;
     			CODE.7 := X[i].4;
     			L[i].4 := X[i].4;
-    		END_IF
+    		END_IF;
     		TP := TRUE;
-    		CODE.4 := line.0;
-    		CODE.5 := line.1;
-    		CODE.6 := line.2;
+    		CODE.4 := Line.0;
+    		CODE.5 := Line.1;
+    		CODE.6 := Line.2;
 
-    		(* check if RELEASE codes need to be killed *)
-    		IF NOT RELEASE AND CODE < 127 THEN
+    		(* check if release codes need to be killed *)
+    		IF NOT release AND CODE < 127 THEN
     			CODE := 0;
     			TP := FALSE;
-    		END_IF
+    		END_IF;
     		EXIT;
-    	END_IF
-    END_FOR
+    	END_IF;
+    END_FOR;
 
     (* increment scan line every cycle *)
     line := (line + 1) AND 2#0000_0011;
@@ -72,7 +72,7 @@ FUNCTION_BLOCK MATRIX
     	added exit statement in for loop instead of i:=5
 
     hm		26. oct. 2008	rev 1.3
-    	CODE optimized
+    	code optimized
 
     *)
 

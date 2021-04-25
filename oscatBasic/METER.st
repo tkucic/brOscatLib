@@ -5,28 +5,28 @@ FUNCTION_BLOCK METER
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
-    	MR.RX := MX;
-    	MR.R1 := 0.0;
+    	mr.RX := mx;
+    	mr.R1 := 0.0;
     ELSIF tx = last THEN
     	RETURN;
     ELSE
     	tc := DWORD_TO_REAL(tx - last) * 0.001;
-    END_IF
+    END_IF;
     last := tx;
 
     (* reset *)
-    IF RST THEN
-    	MR.R1 := 0.0;
-    	MR.RX := 0.0;
+    IF rst THEN
+    	mr.R1 := 0.0;
+    	mr.RX := 0.0;
     ELSE
     	(* current consumption measurement *)
-    	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF
-    	IF I2 THEN MX2 := M2; ELSE MX2 := 0.0; END_IF
+    	IF I1 THEN MX1 := M1; ELSE MX1 := 0.0; END_IF;
+    	IF I2 THEN MX2 := M2; ELSE MX2 := 0.0; END_IF;
     	(* add up the current values in a double real *)
-    	MR := R2_ADD(MR,(SEL(I1,0.0,MX1) + SEL(I2, 0.0, MX2)) / D * tc);
+    	MR := R2_ADD(MR,(SEL(I1,0.0,mx1) + SEL(I2, 0.0, mx2)) / D * TC);
     	(* set the current output value *)
-    	MX := MR.RX;
-    END_IF
+    	MX := mr.RX;
+    END_IF;
 
 
 
@@ -45,7 +45,7 @@ FUNCTION_BLOCK METER
     	do not use ft_int which adds unnecessary overhead
 
     hm	8. feb. 2009	rev 1.3
-    	changed MX to be I/O
+    	changed mx to be I/O
     	make sure calculation works for cycle times < 1 ms
 
     hm	8. mar. 2009	rev 1.4

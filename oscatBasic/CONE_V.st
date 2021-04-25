@@ -1,6 +1,6 @@
 FUNCTION CONE_V
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=105*)
-    CONE_V := 1.047197551 * RX * RX * HX;
+    cone_V := 1.047197551 * RX * RX * hx;
 
     (* revision histroy
     hm	17. oct 2007	rev 1.0

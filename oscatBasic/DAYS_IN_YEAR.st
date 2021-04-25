@@ -4,7 +4,7 @@ FUNCTION DAYS_IN_YEAR
     	DAYS_IN_YEAR := 366;
     ELSE
     	DAYS_IN_YEAR := 365;
-    END_IF
+    END_IF;
 
 
     (* revision history

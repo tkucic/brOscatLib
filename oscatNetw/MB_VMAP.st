@@ -7,8 +7,8 @@ FUNCTION_BLOCK MB_VMAP
     		VMAP[1].V_ADR := 0;
     		VMAP[1].V_SIZE := 256;
     		VMAP[1].P_ADR := 0;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     ERROR := BYTE#02; (* ILLEGAL DATA ADDRESS *)
     mask := SHL(DWORD#1,FC);
@@ -17,7 +17,7 @@ FUNCTION_BLOCK MB_VMAP
     	V_CNT := 1;
     ELSIF V_CNT = 0 THEN
     	RETURN;
-    END_IF
+    END_IF;
 
     FOR i := 1 TO 10 DO
     	vopt := VMAP[i].FC; 
@@ -34,27 +34,27 @@ FUNCTION_BLOCK MB_VMAP
     				P_BIT := WORD_TO_INT(w_tmp AND WORD#16#000F);
     				ERROR := BYTE#0;
     				EXIT;
-    			END_IF
+    			END_IF;
     		ELSIF (mask AND DWORD#2#00000000_11000001_00000000_01011000) <> DWORD#0 THEN (* FC 3,4,6,16,22,23 für Register-Access *)
     			IF V_ADR >= vadr AND V_ADR + V_CNT <= vadr + vsize THEN (* gültiger virtueller bereich *)
     				P_ADR := V_ADR - vadr + padr; (* reale Adresse berechnen *)
     				IF P_ADR + V_CNT <= SIZE THEN (* bereichsueberschreitung ? *)
     					ERROR := BYTE#0;
     					EXIT;
-    				END_IF
-    			END_IF
+    				END_IF;
+    			END_IF;
     		ELSE
     			ERROR := BYTE#01; (* ILLEGAL FUNCTION *)
     			RETURN;
-    		END_IF
-    	END_IF
-    END_FOR
+    		END_IF;
+    	END_IF;
+    END_FOR;
 
     IF ERROR = BYTE#0 THEN
     	IF (mask AND DWORD#2#00000000_11000001_10000000_01100000) <> DWORD#0 THEN (* FC 5,6,15,16,22,23 Schreib-zugriff *)
     		VMAP[i].TIME_OUT := T#1ms;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (* revision history
     ks	05. jan. 2009	rev 1.0

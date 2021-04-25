@@ -1,14 +1,14 @@
 FUNCTION LEAP_YEAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=127*)
-    LEAP_YEAR := SHL(YR,14) = 0;
+    LEAP_YEAR := SHL(yr,14) = 0;
 
     (* this code was used prior to rev 1.1
 
-    IF YR MOD 400 = 0 THEN LEAP_YEAR := TRUE;
-    ELSIF YR MOD 100 = 0 THEN LEAP_YEAR := FALSE;
-    ELSIF YR MOD 4 =0 THEN LEAP_YEAR := TRUE;
-    ELSE LEAP_YEAR := FALSE;
-    END_IF
+    IF yr MOD 400 = 0 THEN leap_year := TRUE;
+    ELSIF yr MOD 100 = 0 THEN leap_year := FALSE;
+    ELSIF yr MOD 4 =0 THEN leap_year := TRUE;
+    ELSE leap_year := FALSE;
+    END_IF;
 
     *)
 

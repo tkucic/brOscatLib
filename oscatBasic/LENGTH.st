@@ -1,34 +1,34 @@
 FUNCTION_BLOCK LENGTH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=367*)
-    YM :=	M
-    		+ P * 0.000376065
-    		+ IN * 0.0254
-    		+ FT * 0.3048
-    		+ YD * 0.9144
-    		+ MILE * 1609.344
-    		+ SM * 1852.0
-    		+ FM * 1.829;
-    YP := YM * 2659.11478068951;
-    YIN := YM * 39.37007874016;
-    YFT := YM * 3.28083989501;
-    YYD := YM * 1.09361329834;
-    YMILE := YM * 0.00062137119;
-    YSM := YM * 0.00053995680;
-    YFM := YM * 0.54674685621;
+    Ym :=	m
+    		+ p * 0.000376065
+    		+ in * 0.0254
+    		+ ft * 0.3048
+    		+ yd * 0.9144
+    		+ mile * 1609.344
+    		+ sm * 1852.0
+    		+ fm * 1.829;
+    Yp := Ym * 2659.11478068951;
+    Yin := Ym * 39.37007874016;
+    Yft := Ym * 3.28083989501;
+    Yyd := Ym * 1.09361329834;
+    Ymile := Ym * 0.00062137119;
+    Ysm := Ym * 0.00053995680;
+    Yfm := Ym * 0.54674685621;
 
     (*
-    Länge Meter M SI-Basiseinheit
-    Astronomische Einheit* AE 1 AE = 149,597 870 · E9 M
-    Parsec pc 1 pc = 206265 AE = 30,857 · E15 M
-    Lichtjahr Lj 1 Lj = 9,460 530 · E15 M = 63240 AE = 0,306 59 pc
-    Ångström Å 1 Å = E–l0 M
-    typograph. Punkt P 1 P = 0,376 065 mm • im Druckereigewerbe
-    inch** IN 1 IN = 2,54 · E–2 M = 25,4 mm***
-    foot FT 1 FT = 0,3048 M = 30,48 cm
-    yard YD 1 YD = 0,9144 M
-    MILE MILE 1 MILE = 1609,344 M
-    Internat. Seemeile SM 1 SM = 1852 M
-    Fathom FM 1 FM = 1,829 M • IN der Seeschifffahrt
+    Länge Meter m SI-Basiseinheit
+    Astronomische Einheit* AE 1 AE = 149,597 870 · E9 m
+    Parsec pc 1 pc = 206265 AE = 30,857 · E15 m
+    Lichtjahr Lj 1 Lj = 9,460 530 · E15 m = 63240 AE = 0,306 59 pc
+    Ångström Å 1 Å = E–l0 m
+    typograph. Punkt p 1 p = 0,376 065 mm • im Druckereigewerbe
+    inch** in 1 in = 2,54 · E–2 m = 25,4 mm***
+    foot ft 1 ft = 0,3048 m = 30,48 cm
+    yard yd 1 yd = 0,9144 m
+    mile mile 1 mile = 1609,344 m
+    Internat. Seemeile sm 1 sm = 1852 m
+    Fathom fm 1 fm = 1,829 m • in der Seeschifffahrt
     *)
 
     (* revision history

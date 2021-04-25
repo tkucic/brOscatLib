@@ -3,15 +3,15 @@ FUNCTION_BLOCK FT_PT2
     (* startup initialisation *)
     IF NOT init OR T = T#0s THEN
     	init := TRUE;
-    	OUT := K * IN;
-    	I2 := OUT;
+    	out := K * in;
+    	I2 := out;
     ELSE
-    	tn := TIME_TO_REAL(T) * 1.0E-3;
-    	tn2 := tn * tn;
-    	int1(X := IN * K / tn2 - I1 * 0.5 * D / tn - I2 / tn2, Y := I1);
+    	TN := TIME_TO_REAL(T) * 1.0E-3;
+    	tn2 := TN * TN;
+    	int1(X := in * K / tn2 - I1 * 0.5 * D / TN - I2 / TN2, Y := I1);
     	int2(X := I1,Y := I2);
-    	OUT := I2;
-    END_IF
+    	out := I2;
+    END_IF;
 
 
     (* revision history
@@ -23,7 +23,7 @@ FUNCTION_BLOCK FT_PT2
     	deleted unused code for init system time reading tx	
 
     hm	30.11.2007	rev 1.3
-    	changed OUT to be K * IN during initialization
+    	changed out to be K * in during initialization
     	avoind divide by 0 if tn = 0
 
     hm	3. nov. 2008	rev 1.4

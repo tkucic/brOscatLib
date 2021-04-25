@@ -9,7 +9,7 @@ FUNCTION_BLOCK WORLD_WEATHER_DESC_GE
     					i := i + 1;
     		11:			x :=  WW.CUR.WEATHER_CODE;
     		12:			WW.CUR.WEATHER_DESC := str;
-    		END_CASE
+    		END_CASE;
 
     		CASE x OF
     			113	:	str := 'heiter/sonnig';
@@ -62,9 +62,9 @@ FUNCTION_BLOCK WORLD_WEATHER_DESC_GE
     			395	:	str := 'mäßiger oder starker Schnee in Gewittergebiet';
     		ELSE
     			str := 	'nicht verfügbar';
-    		END_CASE
-    	END_FOR
-    END_IF
+    		END_CASE;
+    	END_FOR;
+    END_IF;
     act_last := ACTIVATE;
 
     (* revision history

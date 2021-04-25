@@ -1,12 +1,12 @@
 FUNCTION_BLOCK FT_PIDW
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=407*)
     (* run the integrator *)
-    IF TN = 0.0 OR RST THEN
+    IF tn = 0.0 OR rst THEN
     	integ(E := FALSE, Y := YI);
     	YI := 0.0;
     ELSE
     	integ(X := IN, K := 1.0 / TN, E := NOT LIM, Y := YI);
-    END_IF
+    END_IF;
 
     (* add up integrator and linear part *)
     Y := KP * (IN + YI);
@@ -14,12 +14,12 @@ FUNCTION_BLOCK FT_PIDW
     (* run differentiator *)
     diff(IN := IN, K := TV);
 
-    (* set LIM before differentiator is added to stop integrator if necessary *)
+    (* set lim before differentiator is added to stop integrator if necessary *)
     IF Y > LIM_L AND Y < LIM_H THEN
     	LIM := FALSE;
     ELSE
     	LIM := TRUE;
-    END_IF
+    END_IF;
 
     (* add differential part and limit output Y *)
 

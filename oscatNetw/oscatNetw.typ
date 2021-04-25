@@ -18,7 +18,7 @@ TYPE
         DTI : DT;
         UCB : UNI_CIRCULAR_BUFFER_DATA;
         LOAD_TIME_MAX : TIME;
-        NEW_FILE : STRING[255];
+        NEW_FILE : STRING[None];
         NEW_FILE_SIZE : UDINT;
         NEW_FILE_RTRIG : BOOL;
     END_STRUCT;
@@ -30,14 +30,14 @@ TYPE
         _VALUE_LAST : REAL;
     END_STRUCT;
     DLOG_RETAIN :    STRUCT
-        FN_REM : STRING[255];
+        FN_REM : STRING[None];
         COLOR : BOOL;
         HEAD : BOOL;
         TRIG_CNT : UDINT;
         TRIG_CNT_TOTAL : UDINT;
     END_STRUCT;
     DLOG_SAVE :    STRUCT
-        FN_REM : STRING[255];
+        FN_REM : STRING[None];
         COLOR : BOOL;
         HEAD : BOOL;
         TRIG_CNT : UDINT;
@@ -60,7 +60,7 @@ TYPE
         D_MODE : INT;
         D_SIZE : INT;
         D_HEAD : WORD;
-        D_STRING : STRING[STRING_LENGTH];
+        D_STRING : STRING[OSCAT_BASIC.STRING_LENGTH];
         D_REAL : REAL;
         D_DWORD : DWORD;
         BUF_SIZE : UINT;
@@ -86,7 +86,7 @@ TYPE
         S_BUF : NETWORK_BUFFER;
         R_BUF : NETWORK_BUFFER;
         SQL_CON : BOOL;
-        SQL_URL : STRING[STRING_LENGTH];
+        SQL_URL : STRING[OSCAT_BASIC.STRING_LENGTH];
         SQL_PACKET_NO : BYTE;
         TIMEOUT : TIME;
         DNS_IP4 : DWORD;
@@ -100,19 +100,19 @@ TYPE
         SERVER_STATUS : WORD;
         SERVER_LANGUAGE : BYTE;
         SQL_CONNECTED : BOOL;
-        SQL_ERROR : STRING[STRING_LENGTH];
+        SQL_ERROR : STRING[OSCAT_BASIC.STRING_LENGTH];
         DATA_INSERT_AKTIV : BOOL;
         DATA_INSERT_OK_CNT : UDINT;
         DATA_INSERT_NOK_CNT : UDINT;
     END_STRUCT;
     FILE_PATH_DATA :    STRUCT
         DRIVE : STRING[3];
-        DIRECTORY : STRING[STRING_LENGTH];
-        FILENAME : STRING[255];
+        DIRECTORY : STRING[OSCAT_BASIC.STRING_LENGTH];
+        FILENAME : STRING[None];
     END_STRUCT;
     FILE_SERVER_DATA :    STRUCT
         FILE_OPEN : BOOL;
-        FILENAME : STRING[255];
+        FILENAME : STRING[None];
         MODE : BYTE;
         OFFSET : UDINT;
         FILE_SIZE : UDINT;
@@ -205,7 +205,7 @@ TYPE
         DOMAIN : STRING[80];
         PORT : WORD;
         PATH : STRING[80];
-        QUERY : STRING[STRING_LENGTH];
+        QUERY : STRING[OSCAT_BASIC.STRING_LENGTH];
         ANCHOR : STRING[40];
         HEADER : STRING[160];
     END_STRUCT;
@@ -224,10 +224,10 @@ TYPE
         COUNT : UINT;
         TYP : INT;
         LEVEL : UINT;
-        PATH : STRING[STRING_LENGTH];
-        ELEMENT : STRING[STRING_LENGTH];
-        ATTRIBUTE : STRING[STRING_LENGTH];
-        VALUE : STRING[STRING_LENGTH];
+        PATH : STRING[OSCAT_BASIC.STRING_LENGTH];
+        ELEMENT : STRING[OSCAT_BASIC.STRING_LENGTH];
+        ATTRIBUTE : STRING[OSCAT_BASIC.STRING_LENGTH];
+        VALUE : STRING[OSCAT_BASIC.STRING_LENGTH];
         BLOCK1_START : UINT;
         BLOCK1_STOP : UINT;
         BLOCK2_START : UINT;
@@ -252,7 +252,7 @@ TYPE
         in_Title_X_Offset : INT; (* Title Text X-Offset *)
         in_Title_Y_Offset : INT; (* Title Text Y-Offset *)
         by_Title_Attr : BYTE; (* Title Text Attribute *)
-        st_Title_String : STRING[255]; (* Title Text String *)
+        st_Title_String : STRING[None]; (* Title Text String *)
         in_Cursor_X : INT; (* aktuelle Cursor X-Position *)
         in_Cursor_Y : INT; (* aktuelle Cursor Y-Position *)
         in_Type : INT; (* Type des Elements *)
@@ -262,10 +262,10 @@ TYPE
         by_Attr_mF : BYTE; (* Text Attribute mit Fokus *)
         by_Attr_oF : BYTE; (* Text Attribute ohne Fokus *)
         in_selected : INT; (* Text Item wurde ausgewählt *)
-        st_Input_Mask : STRING[255]; (* Text Eingabemaske *)
-        st_Input_Data : STRING[STRING_LENGTH]; (* Text aktuelle Eingabedaten *)
-        st_Input_String : STRING[255]; (* Text Kopie nach Return-Taste *)
-        st_Input_ToolTip : STRING[255]; (* Text ToolTip (Eingabeinformation) *)
+        st_Input_Mask : STRING[None]; (* Text Eingabemaske *)
+        st_Input_Data : STRING[OSCAT_BASIC.STRING_LENGTH]; (* Text aktuelle Eingabedaten *)
+        st_Input_String : STRING[None]; (* Text Kopie nach Return-Taste *)
+        st_Input_ToolTip : STRING[None]; (* Text ToolTip (Eingabeinformation) *)
         in_Input_Option : INT; (* Text Ausgabe-Optionen *)
         bo_Input_Entered : BOOL; (* RETURN-Taste wurde betätigt *)
         bo_Input_Hidden : BOOL; (* Text versteckete Eingabe mit '*' *)
@@ -275,7 +275,7 @@ TYPE
         bo_Update_All : BOOL; (* Element komplett neuzeichnen *)
     END_STRUCT;
     us_TN_MENU :    STRUCT
-        st_Menu_Text : STRING[STRING_LENGTH]; (* X Menue Texte *)
+        st_Menu_Text : STRING[OSCAT_BASIC.STRING_LENGTH]; (* X Menue Texte *)
         in_Menu_E_Count : INT; (* Menue Elemente Anzahl *)
         in_Y : INT; (* Menue Zeilennummer  Y-Position *)
         in_X : INT; (* Menue Spaltennummer X-Position *)
@@ -294,7 +294,7 @@ TYPE
         bo_Update : BOOL; (* X Menu updaten *)
     END_STRUCT;
     us_TN_MENU_POPUP :    STRUCT
-        st_Menu_Text : STRING[STRING_LENGTH]; (* X Menue Texte *)
+        st_Menu_Text : STRING[OSCAT_BASIC.STRING_LENGTH]; (* X Menue Texte *)
         in_Menu_E_Count : INT; (* Menue Elemente Anzahl *)
         in_X : INT; (* X Menue X-Position *)
         in_Y : INT; (* X Menue Y-Position *)

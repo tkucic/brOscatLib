@@ -3,8 +3,8 @@ FUNCTION TANC
     IF X = 0.0 THEN
     	TANC := 1.0;
     ELSE
-    	TANC := TAN(X) / X;
-    END_IF
+    	TANC := TAN(x) / x;
+    END_IF;
 
 
     (* revision histroy

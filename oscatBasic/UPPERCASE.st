@@ -1,12 +1,12 @@
 FUNCTION UPPERCASE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=182*)
     pt := ADR(UPPERCASE);
-    UPPERCASE := STR;
-    l := LEN(STR);
+    UPPERCASE := str;
+    l := LEN(str);
     FOR pos := 1 TO l DO
-    	pt := TO_UPPER(pt);
+    	pt^ := TO_UPPER(pt^);
     	pt := pt + 1;
-    END_FOR
+    END_FOR;
 
     (* revision histroy
     hm	6. oct. 2006	rev 1.0

@@ -4,7 +4,7 @@ FUNCTION REFLECT
     FOR i := 1 TO L DO
     	REFLECT := SHL(REFLECT, 1) OR BOOL_TO_DWORD(D.0);
     	D := SHR(D, 1);
-    END_FOR
+    END_FOR;
     REFLECT := REFLECT OR SHL(D, L);
 
     (* revision history

@@ -1,28 +1,28 @@
 FUNCTION_BLOCK F_LAMP
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=54*)
-    runtime(in := SWITCH, seconds := ONTIME, CYCLES := CYCLES);
+    runtime(in := switch, seconds := ontime, cycles := cycles);
 
     IF RST THEN
     	ONTIME := 0;
     	CYCLES := 0;
-    END_IF
+    END_IF;
     IF SWITCH THEN
-    	IF ONTIME < T_NO_DIMM * 3600 THEN
+    	IF ontime < T_NO_DIMM * 3600 THEN
     		LAMP := 255;
     		STATUS := 111;
     	ELSE
     		LAMP := DIMM;
     		STATUS := 112;
-    	END_IF
+    	END_IF;
     ELSE
     	LAMP := 0;
     	STATUS := 110;
-    END_IF
+    END_IF;
 
 
-    IF ONTIME >= T_MAINTENANCE * 3600 AND T_MAINTENANCE > 0 THEN
-    	STATUS := 120;
-    END_IF
+    IF ontime >= T_maintenance * 3600 AND T_Maintenance > 0 THEN
+    	status := 120;
+    END_IF;
 
 
 
@@ -31,8 +31,8 @@ FUNCTION_BLOCK F_LAMP
     	original version
 
     hm	22. oct. 2008	rev 1.2
-    	changed use of ONTIME for ONTIME 2.0
-    	ONTIME is now in seconds not hours
+    	changed use of ontime for ontime 2.0
+    	ontime is now in seconds not hours
     *)
 
 

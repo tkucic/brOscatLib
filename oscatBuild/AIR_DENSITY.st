@@ -1,12 +1,12 @@
 FUNCTION AIR_DENSITY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=426*)
-    AIR_DENSITY := cPN * (1.0 - RH * SDD(T, TRUE) * RX / P) / (RL * ( T - cT0));
+    AIR_DENSITY := OSCAT_BASIC.phys.PN * (1.0 - RH * SDD(T, TRUE) * RX / P) / (RL * ( T - OSCAT_BASIC.phys.T0));
 
     (* original code used for rev 1.0
 
     SDD := SDD(T,FALSE);
     RF := RL / (1- RH*SDD/P*RX);
-    AIR_DENSITY := P / (RF * (T-TK));
+    Air_density := P / (RF * (T-TK));
 
     *)
 

@@ -1,27 +1,27 @@
 FUNCTION_BLOCK RMP_B
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264*)
     (* generate ramp *)
-    rmp(dir := UP, E := E, TR := PT, rmp := OUT);
+    rmp(dir := UP, E := E, TR := PT, rmp := out);
 
-    (* SET or reset operation *)
+    (* set or reset operation *)
     IF RST THEN
-    	OUT := 0;
+    	out := 0;
     ELSIF SET THEN
-    	OUT := 255;
-    END_IF
+    	out := 255;
+    END_IF;
 
-    (* checks for outputs stable and reset or SET BUSY flag *)
-    LOW := OUT = 0;
-    HIGH := OUT = 255;
-    BUSY := NOT (LOW OR HIGH) AND E;
+    (* checks for outputs stable and reset or set busy flag *)
+    low := out = 0;
+    high := out = 255;
+    busy := NOT (low OR high) AND E;
 
 
     (* revision history
 
     hm 5.10.2006	rev 1.1
-    	added BUSY output
+    	added busy output
     hm 17.1.2007	rev 1.2
-    	renamed input ud to UP for better usability
+    	renamed input ud to up for better usability
     	deleted unused variable step
 
     hm	17.9.2007		rev 1.3
@@ -29,7 +29,7 @@ FUNCTION_BLOCK RMP_B
 
     hm	28. sep 2007	rev 1.4
     	added outputs on and off
-    	BUSY is now disabled while en is false
+    	busy is now disabled while en is false
     	new coding for higher accuracy and performance
 
     hm	5. oct 2007	rev 1.5
@@ -43,7 +43,7 @@ FUNCTION_BLOCK RMP_B
 
     hm	18. oct. 2008	rev 1.8
     	added type conversion to avoid warnings
-    	changed input en to E for compatibility reasons
+    	changed input en to e for compatibility reasons
 
     hm	23. oct. 2008	REV 	2.0
     	new code using _RMP_B

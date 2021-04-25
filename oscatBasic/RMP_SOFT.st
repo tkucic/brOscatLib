@@ -1,20 +1,20 @@
 FUNCTION_BLOCK RMP_SOFT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=266*)
-    tmp := SEL(IN, 0, VAL);
-    IF tmp > OUT THEN
+    tmp := SEL(in, 0, val);
+    IF tmp > out THEN
     	(* we need to ramp down *)
-    	rmp(dir := TRUE, E := TRUE, TR := PT_ON, rmp := OUT);
-    	(* make sure OUT does not surpass tmp *)
-    	OUT := MIN(OUT, tmp);
-    ELSIF tmp < OUT THEN
+    	rmp(dir := TRUE, E := TRUE, TR := PT_ON, rmp := out);
+    	(* make sure out does not surpass tmp *)
+    	out := MIN(out, tmp);
+    ELSIF tmp < out THEN
     	(* we need to ramp up *)
-    	rmp(dir := FALSE, E := TRUE, TR := PT_OFF, rmp := OUT);
-    	(* make sure OUT does not surpass tmp *)
-    	OUT := MAX(OUT, tmp);
+    	rmp(dir := FALSE, E := TRUE, TR := PT_OFF, rmp := out);
+    	(* make sure out does not surpass tmp *)
+    	out := MAX(out, tmp);
     ELSE
     	(* no ramp necessary *)
-    	rmp(E := FALSE, rmp := OUT);
-    END_IF
+    	rmp(E := FALSE, rmp := out);
+    END_IF;
 
 
     (* revision history

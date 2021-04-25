@@ -8,9 +8,9 @@ FUNCTION_BLOCK READ_HTTP
     ELSE
     	(* gesuchten Parametertext ergänzen *)
     	SRC := CONCAT(SRC,': ');
-    END_IF
+    END_IF;
 
-    s1 := BUFFER_SEARCH(PT:=ADR(PT),SIZE:=SIZE,STR:=SRC,POS:=POS,IGN:=TRUE);
+    s1 := OSCAT_BASIC.BUFFER_SEARCH(pt:=ADR(PT),SIZE:=SIZE,STR:=SRC,POS:=POS,IGN:=TRUE);
 
     IF s1 >= 0 THEN (* Text found *)
     	e1 := s1;
@@ -18,26 +18,26 @@ FUNCTION_BLOCK READ_HTTP
     	(* search start of line *)
     	index := s1 - 1;
     	WHILE (index > 0) DO
-    		IF PT[index] < BYTE#32 THEN EXIT; END_IF
+    		IF pt[index] < BYTE#32 THEN EXIT; END_IF;
     		s1 := s1 - 1;
     		index := index - 1;
-    	END_WHILE
+    	END_WHILE;
 
     	(* search end of line *)
     	index := e1 + 1;
     	WHILE (index <= stop) DO
-    		IF PT[index] < BYTE#32 THEN EXIT; END_IF
+    		IF pt[index] < BYTE#32 THEN EXIT; END_IF;
     		e1 := e1 + 1;
     		index := index + 1;
-    	END_WHILE
+    	END_WHILE;
 
     	s1 := s1 + LEN(SRC); (* 'suchbegriff: ' nicht mitkopieren *)
 
     	(* copy string *)
-    	READ_HTTP := BUFFER_TO_STRING(PT:=ADR(PT),SIZE:=SIZE,START:=s1,stop:=e1);
+    	READ_HTTP := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(PT),SIZE:=SIZE,START:=s1,STOP:=e1);
     ELSE
     	READ_HTTP := '';
-    END_IF
+    END_IF;
 
     (* revision history
 

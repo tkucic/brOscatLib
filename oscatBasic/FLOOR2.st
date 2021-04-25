@@ -3,7 +3,7 @@ FUNCTION FLOOR2
     FLOOR2 := REAL_TO_DINT(X);
     IF DINT_TO_REAL(FLOOR2) > X THEN
     	FLOOR2 := FLOOR2 - 1;
-    END_IF
+    END_IF;
 
     (* revision history
     hm	21. mar. 2008	rev 1.0

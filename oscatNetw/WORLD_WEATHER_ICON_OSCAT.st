@@ -6,8 +6,8 @@ FUNCTION_BLOCK WORLD_WEATHER_ICON_OSCAT
     	FOR i := 0 TO 4 DO
     		x := LIMIT(0,WW.DAY[i].WEATHER_ICON,41);
     		WW.DAY[i].WEATHER_ICON := dat[x];
-    	END_FOR
-    END_IF
+    	END_FOR;
+    END_IF;
     act_last := ACTIVATE;
 
     (* revision history

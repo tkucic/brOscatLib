@@ -1,6 +1,6 @@
 FUNCTION SCALE_B2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=290*)
-    SCALE_B2 := 	(((IN1_MAX - IN1_MIN)* IN1 + (IN2_MAX - IN2_MIN)* IN2) * 0.003921569 + IN1_MIN + IN2_MIN) * K + O;
+    SCALE_B2 := 	(((in1_max - in1_min)* in1 + (in2_max - in2_min)* in2) * 0.003921569 + in1_min + in2_min) * K + O;
 
 
     (* revision History

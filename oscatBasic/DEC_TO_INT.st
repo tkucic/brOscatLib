@@ -1,19 +1,19 @@
 FUNCTION DEC_TO_INT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=151*)
-    pt := ADR(DEC);
-    stop := LEN(DEC);
-    FOR i := 1 TO stop DO
+    pt := ADR(dec);
+    stop := LEN(dec);
+    FOR I := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
-    	X := pt;
+    	x := pt^;
     	(* calculate the value of the digit *)
-    	IF X > 47 AND X < 58 THEN
+    	IF X > 47 AND x < 58 THEN
     		DEC_TO_INT := DEC_TO_INT * 10 + X - 48;
     	ELSIF X = 45 AND DEC_TO_INT = 0 THEN
     		sign := TRUE;
-    	END_IF
+    	END_IF;
     	pt := pt + 1;
-    END_FOR
-    IF sign THEN DEC_TO_INT := -DEC_TO_INT; END_IF
+    END_FOR;
+    IF sign THEN DEC_TO_INT := -DEC_TO_INT; END_IF;
 
 
     (* revision histroy

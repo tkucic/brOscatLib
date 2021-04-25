@@ -2,11 +2,11 @@ FUNCTION_BLOCK DRIVER_4C
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=455*)
     IF RST OR off.Q THEN
     	SN := 0;
-    ELSIF IN AND NOT edge_ THEN
+    ELSIF IN AND NOT edge THEN
     	SN := SN + 1;
-    	IF SN > 7 OR SX[SN] = 0 THEN SN := 0; END_IF
-    END_IF
-    edge_ := IN;
+    	IF SN > 7 OR SX[SN] = 0 THEN SN := 0; END_IF;
+    END_IF;
+    edge := in;
     IF SN > 0 THEN
     	Q0 := SX[SN].0;
     	Q1 := SX[SN].1;
@@ -17,10 +17,10 @@ FUNCTION_BLOCK DRIVER_4C
     	Q1 := FALSE;
     	Q2 := FALSE;
     	Q3 := FALSE;
-    END_IF
+    END_IF;
 
-    (* maximaum TIMEOUT *)
-    IF TIMEOUT > t#0s THEN off(IN := SN > 0, PT := TIMEOUT); END_IF
+    (* maximaum timeout *)
+    IF timeout > t#0s THEN off(in := SN > 0, PT := Timeout); END_IF;
 
 
     (* revision history

@@ -1,11 +1,11 @@
 FUNCTION CASINH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=85*)
-    Y.re := (X.re - X.im)*(X.re + X.im) + 1.0;
-    Y.im := 2.0 * X.re * X.im;
-    Y    := CSQRT(Y);
-    Y.re := Y.re + X.re;
-    Y.im := Y.im + X.im;
-    CASINH  := CLOG(Y);
+    y.re := (X.re - X.im)*(X.re + X.im) + 1.0;
+    y.im := 2.0 * X.re * X.im;
+    y    := CSQRT(y);
+    y.re := y.re + x.re;
+    y.im := y.im + x.im;
+    CASINH  := CLOG(y);
 
 
 

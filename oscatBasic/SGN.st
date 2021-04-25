@@ -6,7 +6,7 @@ FUNCTION SGN
     	SGN := -1;
     ELSE
     	SGN := 0;
-    END_IF
+    END_IF;
 
 
 

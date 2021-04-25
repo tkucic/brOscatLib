@@ -9,7 +9,7 @@ FUNCTION_BLOCK HYST
     		WIN := FALSE;
     	ELSE
     		WIN := TRUE;
-    	END_IF
+    	END_IF;
     ELSE
     	IF IN > OFF THEN
     		Q := FALSE;
@@ -19,8 +19,8 @@ FUNCTION_BLOCK HYST
     		WIN := FALSE;
     	ELSE
     		WIN := TRUE;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
 
     (* revision history

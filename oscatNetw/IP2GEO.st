@@ -9,16 +9,16 @@ FUNCTION_BLOCK IP2GEO
     		BUSY := TRUE;
     		ERROR_C := DWORD#0;
     		ERROR_T := BYTE#0;
-    	END_IF
+    	END_IF;
 
     20: (* URL for DNS UND HTTP-GET *)
-    	(* Example: http://ipinfodb.com/ip_query.php?IP=10.10.10.10 *)
+    	(* Example: http://ipinfodb.com/ip_query.php?ip=10.10.10.10 *)
     	(* Example: http://ipinfodb.com/ip_query.php?timezone=true&IP=*)
     	URL_DATA:=STRING_TO_URL(STR:='http://ipinfodb.com/ip_query.php?timezone=true&IP=',DEFAULT_PROTOCOL:='',DEFAULT_PATH:='');
 
     	IF IP > DWORD#0 THEN
     		URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,IP4_TO_STRING(IP4:=IP));
-    	END_IF
+    	END_IF;
 
     	state := 40;
 
@@ -30,7 +30,7 @@ FUNCTION_BLOCK IP2GEO
     		ERROR_C := DNS_CLIENT.ERROR;
     		ERROR_T := BYTE#01;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     60:
     	IF HTTP_GET.DONE THEN
@@ -45,7 +45,7 @@ FUNCTION_BLOCK IP2GEO
     		ERROR_C := HTTP_GET.ERROR;
     		ERROR_T := BYTE#02;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     80:
     	(* XML Daten seriell lesen *)
@@ -55,17 +55,17 @@ FUNCTION_BLOCK IP2GEO
     		value_int := 0;
     		value_real := 0.0;
     		IF LEN(CTRL.VALUE) <= 20 THEN
-    			v_real :=FLOAT_TO_REAL(FLT:=CTRL.VALUE);
-    			IF CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
+    			v_real :=OSCAT_BASIC.FLOAT_TO_REAL(FLT:=CTRL.VALUE);
+    			IF OSCAT_BASIC.CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten stürzt Twincat ab !!!!  *)
     				value_real := v_real;
     				value_int := REAL_TO_INT(value_real);
-    			END_IF
-    		END_IF
+    			END_IF;
+    		END_IF;
 
     		CASE UINT_TO_INT(CTRL.COUNT) OF
 
     		07: GEO.IP4 := IP4_DECODE(STR:=CTRL.VALUE); (* IP-Adresse *)
-    		10: GEO.state := 'OK' = CTRL.VALUE; (* STATUS *)
+    		10: GEO.STATE := 'OK' = CTRL.VALUE; (* STATUS *)
     		13: GEO.COUNTRY_CODE := CTRL.VALUE; (* Country-Code *)
     		16: GEO.COUNTRY_NAME := CTRL.VALUE; (* Country-Name *)
     		19: GEO.REGION_CODE := CTRL.VALUE; (* Region-Code *)
@@ -76,12 +76,12 @@ FUNCTION_BLOCK IP2GEO
     		37: GEO.TIME_ZONE_NAME := CTRL.VALUE; (* TimeZone Name *)
     		40: GEO.GMT_OFFSET := value_int; (* GMT OFFSET in Sekunden *)
     		43: GEO.IS_DST := value_int > 0; (* Sommerzeit aktiv *)
-    		END_CASE
+    		END_CASE;
 
     	ELSIF CTRL.TYP = 99 THEN (* EXIT - letztes Element gelesen *)
     		DONE := TRUE;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     100:
     	(* UNLOCK HTTP DATA *)
@@ -89,9 +89,9 @@ FUNCTION_BLOCK IP2GEO
     		state := 0;
     		BUSY := FALSE;
     		DONE := ERROR_T = BYTE#0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* ---------------- DNS --------------- *)
     DNS_CLIENT(	IP_C:=IP_C,

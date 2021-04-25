@@ -7,9 +7,9 @@ FUNCTION COUNT_SUBSTRING
        IF pos > 0 THEN
           STR := REPLACE(STR, '', size,pos);
           COUNT_SUBSTRING := COUNT_SUBSTRING + 1;
-       END_IF
+       END_IF;
     UNTIL pos = 0
-    END_REPEAT
+    END_REPEAT;
 
 
     (* revision history

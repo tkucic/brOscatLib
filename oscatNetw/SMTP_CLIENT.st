@@ -17,10 +17,10 @@ FUNCTION_BLOCK SMTP_CLIENT
     		idx1 := FIND(URL_DATA.USER,'%'); (* % Zeichen auf @ ändern *)
     		IF idx1 > 0 THEN
     			URL_DATA.USER := REPLACE(URL_DATA.USER,'@',1,idx1);
-    		END_IF
+    		END_IF;
     		esmtp := LEN(URL_DATA.PASSWORD) > 0; (* SMTP oder ExtendedSMTP *)
     		step := 10;
-    	END_IF
+    	END_IF;
 
     10:
     	IF DNS_CLIENT.DONE THEN
@@ -29,7 +29,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		ERROR_C := DNS_CLIENT.ERROR;
     		ERROR_T := BYTE#1;
     		step := 980;
-    	END_IF
+    	END_IF;
 
     20:	(* SMTP Kommunikation einrichten *)
     	IF FIND(';SSL;ssl;Ssl', URL_DATA.PROTOCOL) > 1 THEN
@@ -44,7 +44,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		ssl_mode := BYTE#0;
     		IP_C.C_PORT := SEL(URL_DATA.PORT = WORD#0,URL_DATA.PORT,WORD#25); (* Portnummer eintragen *)
     		IP_C.MAILBOX[16] := BYTE#0; (* kein SSL Mode*)
-    	END_IF
+    	END_IF;
 
       	IP_C.C_IP := DNS_CLIENT.IP4; (* IP eintragen *)
       	IP_C.C_MODE := BYTE#0; (* Mode: TCP+ACTIV+PORT *)
@@ -70,9 +70,9 @@ FUNCTION_BLOCK SMTP_CLIENT
     		ELSE
     			snd_text := 'HELO OSCAT'; (* SMTP *)
     			next_step := 90;
-    		END_IF
+    		END_IF;
     		snd_lf_cnt := 1;
-    	END_IF
+    	END_IF;
 
     40:	
     	IF rcv_state = 250 THEN
@@ -88,18 +88,18 @@ FUNCTION_BLOCK SMTP_CLIENT
     				LOG_CL.NEW_MSG := 'SMTP: PROBLEM /rcv_text ~1';
     				LOG_CL.PRINTF[1] := rcv_text;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
 
-    		END_IF
+    		END_IF;
 
     		IF FIND(rcv_text,'AUTH') > 0 THEN (* BUGFIX  !*)
     			IP_C.MAILBOX[3] := BYTE#1; (* IP Empfang blockieren bis Daten überprüft wurden *)
     			idx1 := 0;
     			step := 50;
-    		END_IF
+    		END_IF;
 
-    	END_IF
+    	END_IF;
 
     50:
     	str2 := ELEMENT_GET(59, idx1, str1); (* Trennzeichen >;< *)
@@ -112,15 +112,15 @@ FUNCTION_BLOCK SMTP_CLIENT
     		LOG_CL.PRINTF[3] := INT_TO_STRING(idx1);
     		LOG_CL.PRINTF[4] := rcv_text;
     		LOG_MSG();
-    	END_IF*)
+    	END_IF;*)
     	(*########################################################################*)
 
     	IF LEN(str2) > 0 THEN
     		IF FIND(rcv_text,str2) > 0 THEN
-    			auth_state := BIT_LOAD_B(auth_state, TRUE, idx1);
+    			auth_state := OSCAT_BASIC.BIT_LOAD_B(auth_state, TRUE, idx1);
     			str3 := str2; (* aktuellen AUTH-Type Namen sichern *)
     			idx2 := 1000 + (idx1 * 100); (* Schritt berechnen *)
-    		END_IF
+    		END_IF;
     		idx1 := idx1 + 1;
     	ELSE
     		IF auth_state <> BYTE#0 THEN (* AUTH-Type gefunden *)
@@ -133,8 +133,8 @@ FUNCTION_BLOCK SMTP_CLIENT
     			rcv_text := '';
     			IP_C.MAILBOX[3] := BYTE#0; (* IP Empfang wieder freigeben *)
     			step := 40; (* warten auf nächste 250 auth meldung *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     	(*####################  DEBUG-MESSAGE  ###################################*)
     	(*IF _debug_enable THEN
@@ -147,7 +147,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		LOG_CL.PRINTF[6] := INT_TO_STRING(step);
     		LOG_CL.PRINTF[7] := str1;
     		LOG_MSG();
-    	END_IF*)
+    	END_IF;*)
     	(*########################################################################*)
 
      (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++*)
@@ -161,7 +161,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		next_step := 95;
     		cnt1 := ELEMENT_COUNT(35, MAILTO); (* Trennzeichen >#< , Anzahl der Blöcke bestimmen *)
     		cnt2 := 0;
-    	END_IF
+    	END_IF;
 
     95:	
     	IF rcv_state = 250 THEN (* 250 = Requested mail action okay *)
@@ -173,8 +173,8 @@ FUNCTION_BLOCK SMTP_CLIENT
     			step := 100; (* Blockinhalt auswerten *)
     		ELSE
     			step := 110; (* alle Blöcke bearbeitet *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     100:
     	IF rcv_state = 250 THEN (* 250 = Requested mail action okay *)
@@ -185,14 +185,14 @@ FUNCTION_BLOCK SMTP_CLIENT
     			next_step := 100;
     		ELSE
     			step := 95;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     110:
     	IF rcv_state = 250 THEN (* 250 = Requested mail action okay *)
     		snd_text := 'DATA';
     		next_step := 120;
-    	END_IF
+    	END_IF;
 
     120:
     	IF rcv_state = 354 THEN (* 354 = Start mail input; end with. *)
@@ -204,11 +204,11 @@ FUNCTION_BLOCK SMTP_CLIENT
     			snd_text := INSERT(str3, str2, 6);
     		ELSE
     			snd_text := str3;
-    		END_IF
+    		END_IF;
     		cnt2 := 0;
     		cnt1 := MIN(2,cnt1); (* BlindCopy Block ausblenden *)
     		step := 200;
-    	END_IF
+    	END_IF;
 
     200:
     	IF snd_step = 0 THEN
@@ -221,8 +221,8 @@ FUNCTION_BLOCK SMTP_CLIENT
     			step := 205; (* Blockinhalt auswerten *)
     		ELSE
     			step := 210; (* alle Blöcke bearbeitet *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     205:
     	IF snd_step = 0 THEN
@@ -232,49 +232,49 @@ FUNCTION_BLOCK SMTP_CLIENT
     			cnt4 := cnt4 + 1;
     		ELSE
     			step := 200;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     210:
     	IF snd_step = 0 THEN
-    		snd_text := CONCAT('SUBJECT: ',SUBJECT);
+    		snd_text := CONCAT('Subject: ',SUBJECT);
     		step := 220;
-    	END_IF
+    	END_IF;
 
     220:
     	IF snd_step = 0 THEN
     		DTI := UDINT_TO_DT(DT_TO_UDINT(DTI) + INT_TO_UDINT(- DTI_OFFSET * 60)); (* Minuten-Offset auf Sekunden umrechnen und addieren *)
-    		IF esmtp THEN (* esmtp Format >Date: Thu, 21 May 1998 05:33:29 -0700< *)
+    		IF esmtp THEN (* ESMTP Format >Date: Thu, 21 May 1998 05:33:29 -0700< *)
     			str2 := ';Mon;Tue;Wed;Thu;Fri;Sat;Sun';
-    			str1 := ELEMENT_GET(59, DAY_OF_WEEK(DT_TO_DATE(DTI)), str2);
+    			str1 := ELEMENT_GET(59, OSCAT_BASIC.DAY_OF_WEEK(DT_TO_DATE(DTI)), str2);
     			snd_text := CONCAT('Date: ',str1);
-    			str1 := DT_TO_STRF(DTI, 0, ', #H #E #A #N:#R:#T +0000', 1);
+    			str1 := OSCAT_BASIC.DT_TO_STRF(DTI, 0, ', #H #E #A #N:#R:#T +0000', 1);
     			snd_text := CONCAT(snd_text,str1);
     		ELSE (* SMTP Format >Date: 21 May 98 05:33:29< *)
-    			snd_text := DT_TO_STRF(DTI, 0, 'Date: #G #E #B #N:#R:#T', 1);
-    		END_IF
+    			snd_text := OSCAT_BASIC.DT_TO_STRF(DTI, 0, 'Date: #G #E #B #N:#R:#T', 1);
+    		END_IF;
     		step := 230;
-    	END_IF
+    	END_IF;
 
     230:
     	IF snd_step = 0 THEN
     		snd_text := 'MIME-Version: 1.0';
     		step := 250;
-    	END_IF
+    	END_IF;
 
     250:
     	IF snd_step = 0 THEN
     		snd_text := 'Content-Type: multipart/mixed;boundary="x"';
     		snd_lf_cnt := 2;
     		step := 260;
-    	END_IF
+    	END_IF;
 
     260:
     	IF snd_step = 0 THEN
     		snd_enable := TRUE;
     		snd_text := 'This is a multi-part message in MIME format.';
     		step := 270;
-    	END_IF
+    	END_IF;
 
     270:
     	IF snd_step = 0 THEN
@@ -282,21 +282,21 @@ FUNCTION_BLOCK SMTP_CLIENT
     		snd_text := '--x';
     		snd_lf_cnt := 1;
     		step := 280;
-    	END_IF
+    	END_IF;
 
     280:
     	IF snd_step = 0 THEN
     		snd_text := 'Content-Type: text/plain; format=flowed; charset="iso-8859-1";';
     		snd_text := CONCAT(snd_text,' reply-type=original'); (* PCWORX kann nur konstanten mit max 80 zeichen *)
     		step := 290;
-    	END_IF
+    	END_IF;
 
     290:
     	IF snd_step = 0 THEN
     		snd_text := 'Content-Transfer-Encoding: 8bit';
     		snd_lf_cnt := 2;
     		step := 300;
-    	END_IF
+    	END_IF;
 
     300:
     	IF snd_step = 0 THEN
@@ -304,13 +304,13 @@ FUNCTION_BLOCK SMTP_CLIENT
     		snd_text := BODY;
     		snd_lf_cnt := 2;
     		step := 310;
-    	END_IF
+    	END_IF;
 
     310:
     	IF snd_step = 0 THEN
     		cnt1 := ELEMENT_COUNT(59, FILES) - 1; (* Anzahl der Dateien *)
     		step := 400;
-    	END_IF
+    	END_IF;
 
     (* +++++++++++++ File-Attachment ++++++++++++ *)
     400:
@@ -321,11 +321,11 @@ FUNCTION_BLOCK SMTP_CLIENT
     			file_delete := TRUE;
     		ELSE
     			step := 410;
-    		END_IF
+    		END_IF;
     		cnt1 := cnt1 - 1;
     	ELSE
     		step := 800;
-    	END_IF
+    	END_IF;
 
     410:
     	IF snd_step = 0 THEN
@@ -333,20 +333,20 @@ FUNCTION_BLOCK SMTP_CLIENT
     		snd_text := '--x';
     		snd_lf_cnt := 1;
     		step := 420;
-    	END_IF
+    	END_IF;
 
     420:
     	IF snd_step = 0 THEN
     		snd_text := 'Content-Transfer-Encoding: BASE64';
     		str2 := CONCAT(fpd.FILENAME,'"');
     		step := 430;
-    	END_IF
+    	END_IF;
 
     430:
     	IF snd_step = 0 THEN
     		snd_text := CONCAT('Content-Type: application/octet-stream; name="',str2);
     		step := 440;
-    	END_IF
+    	END_IF;
 
     440:
     	IF snd_step = 0 THEN
@@ -354,14 +354,14 @@ FUNCTION_BLOCK SMTP_CLIENT
     		snd_text := CONCAT('Content-Disposition: attachment; filename="',str2);
     		snd_lf_cnt := 2;
     		step := 450;
-    	END_IF
+    	END_IF;
 
     450:
     	IF snd_step = 0 THEN
     		FSD.FILENAME := str1; (* Dateiname *)
     		FSD.OFFSET := UDINT#0; (* Start bei Dateianfang *)
     		step := 460;
-    	END_IF
+    	END_IF;
 
     460:
     	FSD.MODE := BYTE#1; (* vorhandene Datei zum lesen öffnen *)
@@ -379,13 +379,13 @@ FUNCTION_BLOCK SMTP_CLIENT
     			FOR i1 := 0 TO idx3 DO (* daten in BASE64 buffer kopieren *)
     				b64_buf1[i1] := F_BUF.BUFFER[idx1];
     				idx1 := idx1 + 1;
-    			END_FOR
+    			END_FOR;
     			BASE64_ENCODE_STREAM( SIZE1:= b64_size1, BUF1:= b64_buf1, BUF2:= b64_buf2, SIZE2=> b64_size2); (* BASE64 Kodierung *)
     			idx3 := b64_size2 - 1;
     			FOR i1 := 0 TO idx3 DO (* Daten aus BASE64 buffer kopieren *)
     				S_BUF.BUFFER[idx2] := b64_buf2[i1];
     				idx2 := idx2 + 1;
-    			END_FOR
+    			END_FOR;
     			b64_lf := TRUE;
     			(*####################  DEBUG-MESSAGE  ###################################*)
     			(*IF _debug_enable THEN
@@ -397,18 +397,18 @@ FUNCTION_BLOCK SMTP_CLIENT
     				LOG_CL.PRINTF[5] := INT_TO_STRING(idx1);
     				LOG_CL.PRINTF[6] := INT_TO_STRING(idx2);
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
     		ELSE
     			b64_lf := last_block;
     			step := 480; (* block beendet  *)
-    		END_IF
+    		END_IF;
     		IF b64_lf THEN
     			S_BUF.BUFFER[idx2] := BYTE#16#0D;
     			idx2 := idx2 + 1;
     			S_BUF.BUFFER[idx2] := BYTE#16#0A;
     			idx2 := idx2 + 1;
-    		END_IF
+    		END_IF;
     		(*####################  DEBUG-MESSAGE  ###################################*)
     		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'B64: exit ~1 /SIZE ~2 /OFF ~3 /eof ~4 /lf_cnt ~5';
@@ -418,9 +418,9 @@ FUNCTION_BLOCK SMTP_CLIENT
     			LOG_CL.PRINTF[4] := BOOL_TO_STRING(last_block);
     			LOG_CL.PRINTF[5] := INT_TO_STRING(snd_lf_cnt);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
-    	END_IF
+    	END_IF;
 
     480:
     	S_BUF.SIZE := INT_TO_UINT(idx2); (* Daten senden *)
@@ -429,14 +429,14 @@ FUNCTION_BLOCK SMTP_CLIENT
     		LOG_CL.NEW_MSG := 'B64: tcp_send ~1';
     		LOG_CL.PRINTF[1] := INT_TO_STRING(idx2);
     		LOG_MSG();
-    	END_IF*)
+    	END_IF;*)
     	(*########################################################################*)
     	step := 490;
 
     490:
     	IF S_BUF.SIZE = UINT#0 THEN (* warten bis alle daten gesendet sind *)
     		step := SEL(last_block ,460,400);
-    	END_IF
+    	END_IF;
 
     (* ++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -446,7 +446,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     		snd_text := '--x--';
     		snd_lf_cnt := 2;
     		step := 810;
-    	END_IF
+    	END_IF;
 
     810:
     	IF snd_step = 0 THEN
@@ -454,29 +454,29 @@ FUNCTION_BLOCK SMTP_CLIENT
     		snd_text := '.';
     		snd_lf_cnt := 1;
     		step := 820;
-    	END_IF
+    	END_IF;
 
     820:
     	IF rcv_state = 250 THEN (* 250 = Requested mail action okay *)
     		snd_text := 'QUIT';
     		ip_c_red_disable := TRUE;
     		next_step := 830;
-    	END_IF
+    	END_IF;
 
     830:
     	IF rcv_state = 221  OR TON_WAIT.ET > timeout3 THEN (* 221 = Service closing transmission channel *)
     		step := 900;
-    	END_IF
+    	END_IF;
 
     (* ================================================== *)
 
     900:
-    	IF file_delete THEN (* Dateien nach transfer löschen *)
+    	IF FILE_DELETE THEN (* Dateien nach transfer löschen *)
     		cnt1 := ELEMENT_COUNT(59, FILES) - 1; (* Trennzeichen >;< , Anzahl der Dateien *)
     		step := 910;
     	ELSE
     		step := 950;
-    	END_IF
+    	END_IF;
 
     910:
     	IF FSD.MODE = BYTE#0 AND FSD.ERROR = BYTE#0 THEN
@@ -485,12 +485,12 @@ FUNCTION_BLOCK SMTP_CLIENT
     			IF str1 <> '#DEL#' THEN
     				FSD.FILENAME := str1;
     				FSD.MODE := BYTE#4; (* File Remove *)
-    			END_IF
+    			END_IF;
     			cnt1 := cnt1 - 1;
     		ELSE
     			step := 950;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     950:
     	DONE := TRUE;
@@ -509,7 +509,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     990:
     	IF IP_C.C_STATE = BYTE#0 AND FSD.FILE_OPEN = FALSE THEN
     		step := 0;
-    	END_IF
+    	END_IF;
 
     (*  +++++++++++++++++ Authentifizierung +++++++++++++++++ *)
 
@@ -527,29 +527,29 @@ FUNCTION_BLOCK SMTP_CLIENT
     		IF cnt1 + cnt2 <= 46 THEN (* USER + PASSWORD dürfen zusammen maximal 46 Zeichen haben *)
     			b64_buf1[0] := BYTE#0;
     			FOR i1 := 1 TO cnt1 DO
-    				b64_buf1[i1] := CODE(URL_DATA.USER, i1);
-    			END_FOR
+    				b64_buf1[i1] := OSCAT_BASIC.CODE(URL_DATA.USER, i1);
+    			END_FOR;
     			b64_size1 := cnt1 + 1;
     			b64_buf1[b64_size1] := BYTE#0;
     			b64_size1 := b64_size1 + 1;
     			FOR i1 := 1 TO cnt2 DO
-    				b64_buf1[b64_size1] := CODE(URL_DATA.PASSWORD, i1);
+    				b64_buf1[b64_size1] := OSCAT_BASIC.CODE(URL_DATA.PASSWORD, i1);
     				b64_size1 := b64_size1 + 1;
-    			END_FOR
+    			END_FOR;
     			BASE64_ENCODE_STREAM( SIZE1:= b64_size1, BUF1:= b64_buf1, BUF2:= b64_buf2, SIZE2=> b64_size2); (* BASE64 Kodierung *)
     			idx1 := b64_size2 - 1;
     			FOR i1 := 0 TO idx1 DO
     				S_BUF.BUFFER[i1] := b64_buf2[i1];
-    			END_FOR
+    			END_FOR;
     			S_BUF.BUFFER[b64_size2] := BYTE#16#0D;
     			b64_size2 := b64_size2 + 1;
     			S_BUF.BUFFER[b64_size2] := BYTE#16#0A;
     			b64_size2 := b64_size2 + 1;
     			S_BUF.SIZE := INT_TO_UINT(b64_size2);
     			rcv_state := 0;
-    		END_IF
+    		END_IF;
     		step := 90;
-    	END_IF
+    	END_IF;
 
     (* LOGIN ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -563,28 +563,28 @@ FUNCTION_BLOCK SMTP_CLIENT
     		b64_str1 := URL_DATA.USER;
     		b64_start := TRUE; (* BASE64 kodierung von Username *)
     		step := 1120;
-    	END_IF
+    	END_IF;
 
     1120:
     	IF b64_start AND b64_done THEN
     		b64_start := FALSE;
     		snd_text := b64_str2;
     		next_step := 1130;
-    	END_IF
+    	END_IF;
 
     1130:
     	IF rcv_state = 334 THEN (* 334 = Password:  *)
     		b64_str1 := URL_DATA.PASSWORD;
     		b64_start := TRUE; (* BASE64 kodierung von Password *)
     		step := 1140;
-    	END_IF
+    	END_IF;
 
     1140:
     	IF b64_start AND b64_done THEN
     		b64_start := FALSE;
     		snd_text := b64_str2;
     		next_step := 90;
-    	END_IF
+    	END_IF;
 
     (* CRAM-MD5  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     (Challenge-Response Authentication Mechanism, Message Digest 5) Authentifizierung auf Basis von MD5-HMAC-Algorithmus. *)
@@ -601,14 +601,14 @@ FUNCTION_BLOCK SMTP_CLIENT
     		md5_password := URL_DATA.PASSWORD;
     		MD5_RUN := TRUE;
     		step := 1220;
-    	END_IF
+    	END_IF;
 
     1220:
     	MD5_CRAM_AUTH(RUN:=MD5_RUN,USERNAME:=md5_user,PASSWORD:=md5_password,B64_TS:=md5_b64_ts,AUTH_KEY:=md5_auth_key);
     	IF NOT MD5_RUN THEN
     		snd_text := md5_auth_key;
     		step := 90;
-    	END_IF
+    	END_IF;
 
     (* STARTTLS  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -621,17 +621,17 @@ FUNCTION_BLOCK SMTP_CLIENT
     	IF rcv_state = 220 THEN (* 220 = Service ready - Ready to start TLS *)
     		IP_C.MAILBOX[16] := BYTE#1; (* SSL/TLS aktivieren *)
     		step := 1320;
-    	END_IF
+    	END_IF;
 
     1320:
     	IF IP_C.MAILBOX[16] = BYTE#2 THEN (* warten bis SSL/TLS aktiviert wurde *)
     		step := 30; (* ganzer Ablauf von vorne beginnen *)
-    	END_IF
+    	END_IF;
 
     (* keine Authentifizierung gefunden +++++++++++++++++++++++++++++++ *)
     1900: ; (* Auf Laufzeitfehler warten *)
 
-    END_CASE
+    END_CASE;
     (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
     IF step >= 30 THEN
     	IF R_BUF.SIZE > UINT#0 THEN (* Daten wurden empfangen ? *)
@@ -639,20 +639,20 @@ FUNCTION_BLOCK SMTP_CLIENT
     		REPEAT (* zeilenterminierung erkennen und echtes TEXT-Ende bestimmen *)
     			idx1 := idx1 - 1;
     		UNTIL idx1 = 0 OR R_BUF.BUFFER[idx1] >= BYTE#32 (* TRUE = EXIT *)
-    		END_REPEAT
-    		FOR i1 := 0 TO idx1 DO (* bei multiline alle CRLF durch >< ersetzen *)
+    		END_REPEAT;
+    		FOR i1 := 0 TO idx1 DO (* bei multiline alle CRLF durch >^< ersetzen *)
     			IF R_BUF.BUFFER[i1] < BYTE#32 THEN
-    				R_BUF.BUFFER[i1] := BYTE#94; (* >< *)
-    			END_IF
-    		END_FOR
-    		rcv_text := BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=idx1+1,START:=0,STOP:=STRING_LENGTH-1);
+    				R_BUF.BUFFER[i1] := BYTE#94; (* >^< *)
+    			END_IF;
+    		END_FOR;
+    		rcv_text := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF.BUFFER),SIZE:=idx1+1,START:=0,STOP:=OSCAT_BASIC.STRING_LENGTH-1);
     		IF LEN(rcv_text) >= 3 THEN (* Statuscode prüfen und auswerten *)
     			rcv_s := LEFT(rcv_text,3);
-    			IF IS_NUM(STR:=rcv_s) THEN (* enthält nur Zahlen ? *)
+    			IF OSCAT_BASIC.IS_NUM(STR:=rcv_s) THEN (* enthält nur Zahlen ? *)
     				rcv_state := STRING_TO_INT(rcv_s);
-    			END_IF
+    			END_IF;
     			IP_C.R_OBSERVE := FALSE;
-    		END_IF
+    		END_IF;
     		R_BUF.SIZE := UINT#0; (* daten löschen *)
 
     		(*####################  DEBUG-MESSAGE  ###################################*)
@@ -660,11 +660,11 @@ FUNCTION_BLOCK SMTP_CLIENT
     			LOG_CL.NEW_MSG := 'RCV: >~1<';
     			LOG_CL.PRINTF[1] := rcv_text;
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (* automatisches Datensenden *)
 
@@ -679,17 +679,17 @@ FUNCTION_BLOCK SMTP_CLIENT
     			LOG_CL.PRINTF[1] := snd_text;
     			LOG_CL.PRINTF[2] := INT_TO_STRING(snd_lf_cnt);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
-    		_STRING_TO_BUFFER(str:=snd_text,pos:=snd_idx,pt:=ADR(S_BUF.BUFFER),size:=SIZEOF(S_BUF.BUFFER)); (* String in puffer kopieren *)
+    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=snd_idx,pt:=ADR(S_BUF.BUFFER),size:=SIZEOF(S_BUF.BUFFER)); (* String in puffer kopieren *)
     		snd_idx := snd_idx + LEN(snd_text);
     		FOR i1 := 1 TO snd_lf_cnt DO
     			S_BUF.BUFFER[snd_idx] := BYTE#16#0D;
     			snd_idx := snd_idx + 1;
     			S_BUF.BUFFER[snd_idx] := BYTE#16#0A;
     			snd_idx := snd_idx + 1;
-    		END_FOR
+    		END_FOR;
     		snd_text := '';
     		rcv_state := 9999; (* letzen SMTP Status löschen *)
 
@@ -699,19 +699,19 @@ FUNCTION_BLOCK SMTP_CLIENT
     			IP_C.R_OBSERVE := step <= 120 OR step >= 820;
     			snd_idx := 0;
     			snd_step := 10;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     10:
     	IF S_BUF.SIZE = UINT#0 THEN (* warten bis alle daten gesendet sind *)
     		IF next_step <> 0 THEN
     			step := next_step;
     			next_step := 0;
-    		END_IF
+    		END_IF;
     		snd_step := 0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* Globale Fehlerbehandlung für Haupt-Routine *)
     IF ERROR_T = BYTE#0 AND step > 20 THEN (* noch kein Fehler gespeichert und Hauptroutine aktiv *)
@@ -721,30 +721,30 @@ FUNCTION_BLOCK SMTP_CLIENT
     			ERROR_C := IP_C.ERROR;
     			ERROR_T := BYTE#2;
     			step := 980;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     	IF FSD.MODE = BYTE#0 THEN
     		IF FSD.ERROR > BYTE#0 THEN
     			ERROR_C := BYTE_TO_DWORD(FSD.ERROR);
     			ERROR_T := BYTE#4; (* Dateizugriff *)
     			step := 980;
-    		END_IF
-    	END_IF
-    END_IF
+    		END_IF;
+    	END_IF;
+    END_IF;
 
     IF TON_WAIT.Q THEN (* Ablaufstörung - Schrittkette *)
     	ERROR_C := SHL(INT_TO_DWORD(step),16) OR INT_TO_DWORD(rcv_state); (* aktuellen Schritt und letzten SMTP Status eintragen *)
     	ERROR_T := BYTE#5;
     	step := 980;
-    END_IF
+    END_IF;
 
     (* ######################################################## *)
 
     DNS_CLIENT(IP_C:=IP_C, S_BUF:=S_BUF, R_BUF:=R_BUF, DOMAIN:=URL_DATA.DOMAIN, IP4_DNS:= DNS_IP4, ACTIVATE:=step=10); (* DNS-Client *)
     IPC(IP:= DWORD#0, PORT:= WORD#0 , TIME_OUT:= TIMEOUT, IP_C:= IP_C, S_BUF:= S_BUF, R_BUF:= R_BUF); (* SMTP Steuerkanal *)
     FS(FSD:=FSD,PT:=F_BUF); (* FILE_SERVER *)
-    BASE64_ENCODE_STR(RUN:= b64_start, str1:= b64_str1, str2:= b64_str2, DONE=> b64_done); (* BASE64 kodierung *)
+    BASE64_ENCODE_STR(RUN:= b64_start, STR1:= b64_str1, STR2:= b64_str2, DONE=> b64_done); (* BASE64 kodierung *)
 
     TON_WAIT(IN:=step = last_step AND step > 0,PT:=timeout2);
     last_step := step;
@@ -759,7 +759,7 @@ FUNCTION_BLOCK SMTP_CLIENT
     ks	11. may 2011	rev 1.2
     	ip_control - remote disconnect error ausblenden, und sonderbehandlung für pcworx
     ks	30. may 2011	rev 1.3
-    	fehler bei receive-TIMEOUT
+    	fehler bei receive-timeout
     ks	05. may. 2012	rev 1.4
     	FileServer AutoClose entfernt und Fehler im Alias Name korrigiert
     ks	06. apr. 2013	rev 1.5

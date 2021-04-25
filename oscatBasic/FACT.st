@@ -1,10 +1,10 @@
 FUNCTION FACT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=49*)
     IF X >= 0 AND X <= 12 THEN
-    	FACT := cFACTS[X];
+    	FACT := math.FACTS[X];
     ELSE
     	FACT := -1;
-    END_IF
+    END_IF;
 
 
     (* working code without array
@@ -14,13 +14,13 @@ FUNCTION FACT
     	FACT := 1;
     	FOR i := 2 TO X DO
     		FACT := FACT * i;
-    	END_FOR
+    	END_FOR;
     ELSE
     	FACT := 5040;
     	FOR i := 8 TO X DO
     		FACT := FACT * i;
-    	END_FOR
-    END_IF
+    	END_FOR;
+    END_IF;
     *)
 
     (* revision history
@@ -31,12 +31,12 @@ FUNCTION FACT
     	start value for i has changed to 2 for better performance
 
     hm	10. mar 2008	rev 1.3
-    	changed output of FACT to dint to allow bigger values
+    	changed output of fact to dint to allow bigger values
 
     hm	27. oct. 2008	rev 1.4
     	optimized code
 
     hm	26. mar. 2011	rev 1.5
-    	using array cfacts
+    	using array math.facts
     *)
 END_FUNCTION

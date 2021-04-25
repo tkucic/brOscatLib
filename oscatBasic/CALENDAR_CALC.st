@@ -1,24 +1,24 @@
 FUNCTION_BLOCK CALENDAR_CALC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=114*)
-    IF XCAL.UTC <> last THEN
+    IF xcal.UTC <> last THEN
     	(* run once per second *)
     	(* update utc last calculated  *)
     	last := XCAL.UTC;
-    	utod := DT_TO_TOD(XCAL.UTC);
+    	utod := DT_TO_TOD(xcal.UTC);
 
     	(* calculate ltc from utc *)
     	XCAL.LOCAL_DT := UTC_TO_LTIME(XCAL.UTC, XCAL.DST_EN, XCAL.OFFSET);
     	XCAL.LOCAL_DATE := DT_TO_DATE(XCAL.LOCAL_DT);
     	XCAL.LOCAL_TOD := DT_TO_TOD(XCAL.LOCAL_DT);
     	dtemp := DAY_OF_DATE(XCAL.LOCAL_DATE);
-    	XCAL.night := XCAL.LOCAL_TOD < XCAL.SUN_RISE OR XCAL.LOCAL_TOD > XCAL.SUN_SET;
+    	xcal.night := XCAL.LOCAL_TOD < XCAL.SUN_RISE OR XCAL.LOCAL_TOD > XCAL.SUN_SET;
 
     	(* run once per hour *)
-    	tmp := HOUR(XCAL.LOCAL_TOD);
+    	tmp := HOUR(xcal.LOCAL_TOD);
     	IF  tmp <> last_hour THEN
-    		XCAL.DST_ON := DST(XCAL.UTC) AND XCAL.DST_EN;
+    		XCAL.DST_ON := DST(XCAL.UTC) AND xcal.DST_EN;
     		last_hour := tmp;
-    	END_IF
+    	END_IF;
 
     	(* run once per day *)
     	IF dtemp <> last_day THEN
@@ -28,25 +28,25 @@ FUNCTION_BLOCK CALENDAR_CALC
     		XCAL.MONTH := MONTH_OF_DATE(XCAL.LOCAL_DATE);
     		XCAL.DAY := DAY_OF_MONTH(XCAL.LOCAL_DATE);
     		XCAL.WEEKDAY := DAY_OF_WEEK(XCAL.LOCAL_DATE);
-    		holy(date_in := XCAL.LOCAL_DATE, LANGU := XCAL.LANGUAGE, HOLIDAYS := HOLIDAYS);
-    		XCAL.HOLIDAY := holy.Y;
-    		XCAL.HOLY_NAME := holy.NAME;
-    		sun(latitude := XCAL.LATITUDE, longitude := XCAL.LONGITUDE, utc := DT_TO_DATE(XCAL.UTC), H := H);
+    		HOLY(date_in := XCAL.LOCAL_DATE, LANGU := xcal.LANGUAGE, HOLIDAYS := HOLIDAYS);
+    		XCAL.HOLIDAY := HOLY.Y;
+    		XCAL.HOLY_NAME := HOLY.NAME;
+    		sun(latitude := XCAL.LATITUDE, longitude := xcal.LONGITUDE, utc := DT_TO_DATE(xcal.UTC), H := H);
     		XCAL.SUN_RISE := DINT_TO_TOD(TOD_TO_DINT(sun.sun_rise) + XCAL.OFFSET * 60000 + SEL(XCAL.DST_ON,DINT#0,3600000));
     		XCAL.SUN_SET := DINT_TO_TOD(TOD_TO_DINT(sun.sun_set) + XCAL.OFFSET * 60000 + SEL(XCAL.DST_ON,DINT#0,3600000));
     		XCAL.SUN_MIDDAY := DINT_TO_TOD(TOD_TO_DINT(sun.MIDDAY) + XCAL.OFFSET * 60000 + SEL(XCAL.DST_ON,DINT#0,3600000));
     		XCAL.SUN_HEIGTH := sun.sun_declination;
     		XCAL.WORK_WEEK := WORK_WEEK(XCAL.LOCAL_DATE);
-    	END_IF
+    	END_IF;
 
     	(* calculate the suns position every 10 seconds when SPE = TRUE *)
-    	IF SPE AND XCAL.UTC -  plast >= t#25s THEN
+    	IF SPE AND xcal.UTC -  plast >= t#25s THEN
     		plast := last;
-    		pos(latitude := XCAL.LATITUDE, longitude := XCAL.LONGITUDE, utc := XCAL.UTC);
-    		XCAL.SUN_HOR := pos.B;
-    		XCAL.SUN_VER := pos.HR;
-    	END_IF
-    END_IF
+    		pos(latitude := xcal.LATITUDE, longitude := xcal.LONGITUDE, utc := xcal.UTC);
+    		xcal.SUN_HOR := pos.B;
+    		xcal.SUN_VER := pos.HR;
+    	END_IF;
+    END_IF;
 
 
 
@@ -68,7 +68,7 @@ FUNCTION_BLOCK CALENDAR_CALC
     	sun_rise, sun_set and sun_midday are now calculated in local time
 
     hm	18. jan. 2011	rev 1.4
-    	added input HOLIDAYS to specify local HOLIDAYS
+    	added input holidays to specify local holidays
     	changed call for function sun_time
 
     hm	2. feb. 2011	rev 1.5

@@ -1,7 +1,7 @@
 FUNCTION COSH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=45*)
-    t := EXP(X);
-    COSH := (1.0 / t + t) * 0.5;
+    T := EXP(X);
+    COSH := (1.0 / T + T) * 0.5;
 
     (* revision histroy
     hm	12.1.2007	rev 1.0

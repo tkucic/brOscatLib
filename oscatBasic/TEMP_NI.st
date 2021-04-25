@@ -1,6 +1,6 @@
 FUNCTION TEMP_NI
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=325*)
-    TEMP_NI := (SQRT(0.30085225 - 2.66E-3 * (R0 - RES)) - 0.5485) * 751.8796992;
+    TEMP_NI := (SQRT(0.30085225 - 2.66E-3 * (R0 - Res)) - 0.5485) * 751.8796992;
 
 
     (* revision history

@@ -4,7 +4,7 @@ FUNCTION_BLOCK MOON_PHASE
     	x := (DT_TO_UDINT(XDT) - 603240) MOD 2551392;
     	PHASE := UDINT_TO_BYTE(SCALE * x / 2551392) ;
     	last_dt := XDT;
-    END_IF
+    END_IF;
 
     (* revision history
     ks	15.may. 2011	rev 1.0

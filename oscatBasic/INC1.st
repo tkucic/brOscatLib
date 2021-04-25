@@ -4,7 +4,7 @@ FUNCTION INC1
     	INC1 := 0;
     ELSE
     	INC1 := X + 1;
-    END_IF
+    END_IF;
 
 
 
@@ -16,6 +16,6 @@ FUNCTION INC1
     	added statement to return value for compatibility reasons
 
     hm	23. feb. 2009	rev 1.2
-     	when INC1 is called with X >= N inc will continue with 0
+     	when inc1 is called with X >= N inc will continue with 0
     *)
 END_FUNCTION

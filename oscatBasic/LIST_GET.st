@@ -4,19 +4,19 @@ FUNCTION LIST_GET
     po := ADR(LIST_GET);
 
     REPEAT
-    	c := pt[i];
-    	IF cnt = POS THEN						(* copy element to output string *)
-    		IF c = SEP  THEN EXIT; END_IF		(* next element stop copy and finish *)
-    		po[o] := c;
+    	c := pt^[i];
+    	IF cnt = pos THEN						(* copy element to output string *)
+    		IF c = SEP  THEN EXIT; END_IF;		(* next element stop copy and finish *)
+    		po^[o] := c;
     		o := o + 1;
     	ELSIF c = SEP THEN
     		cnt := cnt + 1;
-    	END_IF
+    	END_IF;
     	i := i + 1;
     UNTIL
     	(i = LIST_LENGTH) OR (c = 0)
-    END_REPEAT
-    po[o] := 0;						(* close the output string *)
+    END_REPEAT;
+    po^[o] := 0;						(* close the output string *)
 
 
 
@@ -28,7 +28,7 @@ FUNCTION LIST_GET
     	changed string(255) to strring(LIST_LENGTH)
 
     hm	21. mar. 2011	rev 2.0
-    	all LIST elements start with SEP
+    	all list elements start with SEP
     *)	
 
 END_FUNCTION

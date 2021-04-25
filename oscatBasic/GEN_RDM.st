@@ -8,19 +8,19 @@ FUNCTION_BLOCK GEN_RDM
     	init := TRUE;
     	last := tx;
     	tx := t#0s;
-    END_IF
+    END_IF;
 
     (* add last if one cycle is finished *)
-    IF tx >= PT THEN
-    	last := last + PT;
-    	tx := tx - PT;
+    IF tx >= pt THEN
+    	last := last + pt;
+    	tx := tx - pt;
 
     	(* generate output signal *)
-    	OUT := AM * (RDM(0) - 0.5) + OS;
-    	Q := TRUE;
+    	out := am * (RDM(0) - 0.5) + os;
+    	q := TRUE;
     ELSE
-    	Q := FALSE;
-    END_IF
+    	q := FALSE;
+    END_IF;
 
     (* revision history
 

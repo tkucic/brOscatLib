@@ -3,64 +3,64 @@ FUNCTION_BLOCK TUNE2
     (* read system time *)
     tx := T_PLC_MS();
 
-    IF RST THEN
-    	Y := RST_VAL;
+    IF rst THEN
+    	Y := RST_val;
     	state := 0;
-    ELSIF SET THEN
-    	Y := SET_VAL;
+    ELSIF set THEN
+    	Y := SET_val;
     	state := 0;
     ELSIF state > 0 THEN
     	(* key has been pushed state machine operating *)
     	(* first read the correct input *)
     	CASE state OF
     		1 :	(* slow up *)
-    			in := SU;
+    			in := su;
     		2 :	(* slow down *)
-    			in := SD;
+    			in := sd;
     		3 :	(* fast up *)
-    			in := FU;
+    			in := fu;
     		4 :	(* fast down *)
-    			in := FD;
-    	END_CASE
+    			in := fd;
+    	END_CASE;
     	(* check for single step operation *)
     	IF NOT in AND tx - start <= TIME_TO_DWORD(TR) THEN
     		Y := Y_start + step;
     		state := 0;
     	(* check if ramp needs to be generated *)
     	ELSIF in AND tx - start >= TIME_TO_DWORD(TR) THEN
-    		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(TR)) * SPEED;
+    		Y := Y_start + DWORD_TO_REAL(tx - start - TIME_TO_DWORD(TR)) * speed;
     	ELSIF NOT in THEN
     		state := 0;
-    	END_IF
-    ELSIF SU THEN
+    	END_IF;
+    ELSIF su THEN
     	(* slow step up *)
     	state := 1;
     	start := tx;
-    	step := SS;
-    	SPEED := S1 * 1.0E-3;
+    	step := ss;
+    	speed := s1 * 1.0E-3;
     	Y_start := Y;
-    ELSIF SD THEN
+    ELSIF sd THEN
     	(* slow step down *)
     	state := 2;
     	start := tx;
-    	step := -SS;
-    	SPEED := -S1 * 1.0E-3;
+    	step := -ss;
+    	speed := -s1 * 1.0E-3;
     	Y_start := Y;
-    ELSIF FU THEN
+    ELSIF fu THEN
     	(* fast step up *)
     	state := 3;
     	start := tx;
-    	step := FS;
-    	SPEED := S2 * 1.0E-3;
-    	Y_start := Y;
-    ELSIF FD THEN
+    	step := fs;
+    	speed := s2 * 1.0E-3;
+    	y_start := Y;
+    ELSIF fd THEN
     	(* fast step down *)
     	state := 4;
     	start := tx;
-    	step := -FS;
-    	SPEED := -S2 * 1.0E-3;
-    	Y_start := Y;
-    END_IF
+    	step := -fs;
+    	speed := -s2 * 1.0E-3;
+    	y_start := Y;
+    END_IF;
 
     (* make sure output does not exceed limits *)
     Y := LIMIT(LIMIT_L, Y, LIMIT_H);

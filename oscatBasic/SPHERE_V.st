@@ -1,6 +1,6 @@
 FUNCTION SPHERE_V
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=106*)
-    SPHERE_V := 4.188790205 * RX * RX * RX;
+    sphere_V := 4.188790205 * Rx * RX * RX;
 
     (* revision histroy
     hm	16. oct 2007	rev 1.0

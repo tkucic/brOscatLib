@@ -1,10 +1,10 @@
 FUNCTION SQRTN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=68*)
     IF N > 0 THEN
-    	SQRTN := EXP(LN(X) / INT_TO_REAL(N));
+    	SQRTN := EXP(LN(x) / INT_TO_REAL(n));
     ELSE
     	SQRTN := 0.0;
-    END_IF
+    END_IF;
 
 
     (* revision history

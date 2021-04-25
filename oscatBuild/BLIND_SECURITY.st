@@ -1,32 +1,32 @@
 FUNCTION_BLOCK BLIND_SECURITY
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=89*)
-    IF FIRE THEN
+    IF Fire THEN
     	QU := TRUE;
     	QD := FALSE;
-    	STATUS := 111;
-    ELSIF WIND THEN
-    	QU := WIND_UP;
-    	QD := NOT WIND_UP;
-    	STATUS := 112;
-    ELSIF ALARM THEN
-    	QU := ALARM_UP;
-    	QD := NOT ALARM_UP;
-    	STATUS := 113;
-    ELSIF DOOR THEN
+    	status := 111;
+    ELSIF Wind THEN
+    	QU := Wind_up;
+    	QD := NOT wind_up;
+    	status := 112;
+    ELSIF alarm THEN
+    	QU := Alarm_up;
+    	QD := NOT Alarm_up;
+    	status := 113;
+    ELSIF Door THEN
     	QU := TRUE;
     	QD := FALSE;
-    	STATUS := 114;
-    ELSIF RAIN AND NOT (UP XOR DN) THEN
-    	QU := RAIN_UP;
-    	QD := NOT RAIN_UP;
-    	STATUS := 115;
+    	status := 114;
+    ELSIF Rain AND NOT (up XOR dn) THEN
+    	QU := rain_up;
+    	QD := NOT rain_up;
+    	status := 115;
     ELSE
     	QU := UP;
     	QD := DN;
-    	STATUS := S_IN;
-    	PO := PI;
-    	AO := AI;
-    END_IF
+    	status := S_IN;
+    	po := pi;
+    	ao := ai;
+    END_IF;
 
 
     (* revision history
@@ -35,12 +35,12 @@ FUNCTION_BLOCK BLIND_SECURITY
 
     hm	6. oct 2007		rev 1.1
     	added pos and angle inputs and outputs
-    	manual will override RAIN position
-    	ALARM position can now be configured
+    	manual will override rain position
+    	alarm position can now be configured
 
     hm		12. feb. 2008	rev 1.2
-    	added config variables RAIN_UP and WIND_UP
-    	position for RAIN and WIND is now configurable
+    	added config variables rain_up and wind_up
+    	position for rain and wind is now configurable
     *)
 
 

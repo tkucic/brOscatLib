@@ -1,10 +1,10 @@
 FUNCTION_BLOCK PWM_PW
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=264*)
     IF F > 0.0 THEN
-    	clk(PT := REAL_TO_TIME(1000.0 / F));
-    	pulse(in := clk.Q, pt := PW);
+    	CLK(PT := REAL_TO_TIME(1000.0 / F));
+    	Pulse(in := clk.Q, pt := pw);
     	Q := pulse.Q;
-    END_IF
+    END_IF;
 
     (* revision history
 

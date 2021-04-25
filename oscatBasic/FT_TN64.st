@@ -3,18 +3,18 @@ FUNCTION_BLOCK FT_TN64
     (* read system time *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    TRIG := FALSE;
+    trig := FALSE;
     IF NOT init THEN
-    	X[cnt] := IN;
+    	x[cnt] := in;
     	init := TRUE;
     	last := tx;
     ELSIF tx - last >= T / length THEN
-    	IF cnt = length - 1 THEN cnt := 0; ELSE cnt := cnt + 1; END_IF
-    	OUT := X[cnt];
-    	X[cnt] := IN;
+    	IF cnt = length - 1 THEN cnt := 0; ELSE cnt := cnt + 1; END_IF;
+    	Out := X[cnt];
+    	x[cnt] := in;
     	last := tx;
-    	TRIG := TRUE;
-    END_IF
+    	trig := TRUE;
+    END_IF;
 
     (* revision history
     hm		1. jan 2007		rev 1.0

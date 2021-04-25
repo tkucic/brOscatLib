@@ -1,18 +1,18 @@
 FUNCTION CHARCODE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=147*)
-    IF LEN(STR) = 1 THEN
+    IF LEN(str) = 1 THEN
     	CHARCODE := CODE(STR, 1);
-    ELSIF STR <> '' THEN
+    ELSIF str <> '' THEN
     	(* construct search string *)
-    	search := CONCAT('&', STR);
+    	search := CONCAT('&', str);
     	search := CONCAT(search, ';');
     	WHILE pos = 0 AND (i < 4) DO
     		i := i + 1;
-    		pos := FIND(cCHARNAMES[i], search);
-    	END_WHILE
-    	found := MID(cCHARNAMES[i], 1, pos - 1);
+    		pos := FIND(setup.CHARNAMES[i], search);
+    	END_WHILE;
+    	found := MID(setup.CHARNAMES[i], 1, pos - 1);
     	CHARCODE := CODE(found, 1);
-    END_IF
+    END_IF;
 
 
 

@@ -1,10 +1,10 @@
 FUNCTION ARRAY_MIN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=78*)
-    stop := (SIZE - SIZEOF(PT)) / SIZEOF(PT);
-    ARRAY_MIN := PT[0];
+    stop := (size - SIZEOF(pt)) / SIZEOF(pt);
+    array_min := pt^[0];
     FOR i := 1 TO stop DO
-    	IF PT[i] < ARRAY_MIN THEN ARRAY_MIN := PT[i]; END_IF
-    END_FOR
+    	IF pt^[i] < array_min THEN array_min := pt^[i]; END_IF;
+    END_FOR;
 
 
     (* revision history
@@ -12,7 +12,7 @@ FUNCTION ARRAY_MIN
     	original version
 
     hm		16. mar. 2008
-    	changed type of input SIZE to uint
+    	changed type of input size to uint
 
     *)
 END_FUNCTION

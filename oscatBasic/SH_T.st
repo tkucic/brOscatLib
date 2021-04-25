@@ -1,6 +1,6 @@
 FUNCTION_BLOCK SH_T
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=303*)
-    IF E THEN OUT := IN; END_IF
+    IF E THEN out := in; END_IF;
 
 
 
@@ -9,7 +9,7 @@ FUNCTION_BLOCK SH_T
     	original version
 
     hm	18. oct. 2008	rev 1.1
-    	changed input en to E for compatibility reasons
+    	changed input en to e for compatibility reasons
 
     *)
 END_FUNCTION_BLOCK

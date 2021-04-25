@@ -1,30 +1,30 @@
 FUNCTION_BLOCK ACTUATOR_2P
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=12*)
     (* run the autorun timer *)
-    timer(trun := SELF_ACT_PULSE * (2 * SELF_ACT_CYCLES), toff := SELF_ACT_TIME, TEST := TEST, ARE := ARE, ARX := ARX);
+    timer(trun := SELF_ACT_PULSE * (2 * SELF_ACT_CYCLES), toff := SELF_ACT_TIME, Test := TEST, ARE := ARE, arx := ARX);
     ARO := timer.ARO;
 
     (* run the pulse width generator *)
-    IF ARO THEN
+    IF aro THEN
     	pwgen(PTL := SELF_ACT_PULSE, PTH := SELF_ACT_PULSE);
-    	OUT := pwgen.Q;
-    ELSIF IN < SENS THEN
-    	OUT := FALSE;
-    ELSIF IN > BYTE#255 - SENS THEN
-    	OUT := TRUE;
+    	out := pwgen.Q;
+    ELSIF in < sens THEN
+    	out := FALSE;
+    ELSIF in > BYTE#255 - sens THEN
+    	out := TRUE;
     ELSE
-    	pwgen.PTH := (CYCLE_TIME * BAND_B(IN,SENS)) / 255;
+    	pwgen.PTH := (CYCLE_TIME * OSCAT_BASIC.BAND_B(IN,SENS)) / 255;
     	pwgen.PTL := CYCLE_TIME - pwgen.PTH;
     	pwgen();
-    	OUT := pwgen.Q;
-    END_IF
+    	out := pwgen.Q;
+    END_IF;
 
 
 
     (* revision history
     hm	7.10.2006 		rev 1.1
-    	changed error pos could not reach 1 or 0 under certain conditions due to error IN code.
-    	changed on and off IN force and force_in for better usability.
+    	changed error pos could not reach 1 or 0 under certain conditions due to error in code.
+    	changed on and off in force and force_in for better usability.
 
     hm	17.1.2007		rev 1.2
     	deleted unused variable time_overflow

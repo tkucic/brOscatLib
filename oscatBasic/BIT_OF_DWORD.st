@@ -1,11 +1,11 @@
 FUNCTION BIT_OF_DWORD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=213*)
-    BIT_OF_DWORD := (SHR(IN,N) AND 16#00000001) > 0;
+    BIT_OF_DWORD := (SHR(in,N) AND 16#00000001) > 0;
 
 
     (* old code used before rev 1.1
-    temp := SHR(IN,N);
-    BIT_OF_DWORD := temp.0;
+    temp := SHR(in,n);
+    Bit_of_Dword := temp.0;
     *)
 
 

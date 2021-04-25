@@ -4,7 +4,7 @@ FUNCTION_BLOCK NET_VAR_BUFFER
     	init := TRUE;
     	X.ID_MAX := X.ID_MAX + USINT#1;
     	ID := USINT_TO_BYTE(X.ID_MAX);
-    END_IF
+    END_IF;
 
     IF X.STATE > BYTE#0 AND X.ERROR_ID = BYTE#0 THEN
     	index := X.index; (* PCWORX Workaround *)
@@ -22,8 +22,8 @@ FUNCTION_BLOCK NET_VAR_BUFFER
     			FOR index2 := 1 TO size DO
     				X.S_BUF.BUFFER[index] := BUF_IN[index2];
     				index := index + 1;
-    			END_FOR
-    		END_IF
+    			END_FOR;
+    		END_IF;
     	ELSIF X.STATE = BYTE#2 THEN (* Daten lesen *)
     		index2 := index + 1; (* PCWORX Workaround *)
     		IF X.R_BUF.BUFFER[index] <> ID OR X.R_BUF.BUFFER[index2] <> BYTE#20 THEN
@@ -35,11 +35,11 @@ FUNCTION_BLOCK NET_VAR_BUFFER
     			FOR index2 := 1 TO size DO
     				BUF_OUT[index2] := X.R_BUF.BUFFER[index];
     				index := index + 1;
-    			END_FOR
-    		END_IF
-    	END_IF
+    			END_FOR;
+    		END_IF;
+    	END_IF;
     	X.index := index;
-    END_IF
+    END_IF;
 
     (* revision history
     ks	15.may. 2011	rev 1.0

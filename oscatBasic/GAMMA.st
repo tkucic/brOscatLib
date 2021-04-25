@@ -1,12 +1,12 @@
 FUNCTION GAMMA
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=52*)
-    IF X > 0.0 THEN
-    	GAMMA := SQRT(cPI2 / X) * EXPT(ce_INV * (X + 1.0 / (12.0 * X - 0.1 / X)), X);
-    END_IF
+    IF x > 0.0 THEN
+    	GAMMA := SQRT(math.PI2 / X) * EXPT(math.E_INV * (x + 1.0 / (12.0 * x - 0.1 / X)), X);
+    END_IF;
 
 
     (* the stirling formula is not very accurate for small values of X
-    IF X >=0 THEN GAMMA := SQRT(cPI2 * X) * EXPT(X / ce, X); END_IF
+    IF X >=0 THEN GAMMA := SQRT(math.PI2 * X) * EXPT(X / math.E, X); END_IF;
     *)
 
 

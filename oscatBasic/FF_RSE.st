@@ -1,6 +1,6 @@
 FUNCTION_BLOCK FF_RSE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=242*)
-    IF RST THEN
+    IF rst THEN
     	(* asynchronous reset *)
     	Q := FALSE;
     ELSIF CR AND NOT er THEN
@@ -9,7 +9,7 @@ FUNCTION_BLOCK FF_RSE
     ELSIF CS AND NOT es THEN
     	(* rising edge on CS *)
     	Q := TRUE;
-    END_IF
+    END_IF;
 
     es := CS;
     er := CR;

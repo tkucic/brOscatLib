@@ -9,18 +9,18 @@ FUNCTION_BLOCK FILE_SERVER
     			LOG_CL.NEW_MSG := 'File_Start Mode=~1';
     			LOG_CL.PRINTF[1] := BYTE_TO_STRING(FSD.MODE);
     			FB_LOG_MESSAGE();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------*)
 
     		buf_size := SIZEOF(PT.BUFFER);
 
     		IF FSD.MODE = 4 THEN (* File_Remove *)
     			IF handle > 0 THEN
-    				file_change := TRUE;
+    				File_change := TRUE;
     				step := 32000; (* File_Close ausführen *)
     			ELSE
     				step := 90; (* File_Remove ausführen *)
-    			END_IF
+    			END_IF;
 
     		ELSIF FSD.MODE = 5 THEN (* File_Close *)
     			step := 32000; (* File_Close ausführen *)
@@ -33,10 +33,10 @@ FUNCTION_BLOCK FILE_SERVER
     				step := 200; (* ohne open prozedure weitermachen *)
     			ELSE
     				step := 32000;
-    				file_change := TRUE;
-    			END_IF
-    		END_IF
-    	END_IF
+    				File_change := TRUE;
+    			END_IF;
+    		END_IF;
+    	END_IF;
 
     (* ----------------------------------- *)
     090: (* File_Remove *)
@@ -46,7 +46,7 @@ FUNCTION_BLOCK FILE_SERVER
     095: (* File_Remove beendet *)
     	IF command = 0 THEN
     		step := 30000; (* Beenden *)
-    	END_IF
+    	END_IF;
     (* ----------------------------------- *)
 
     100: (* File Size - Dateigroesse bestimmen *)
@@ -57,18 +57,18 @@ FUNCTION_BLOCK FILE_SERVER
     	IF command = 0 THEN
     		IF FSD.MODE = 1 THEN (* open + read *)
     			open_mode := 'r';
-    			FSD.file_size := file_size; (* aktuelle Dateigroesse *)
+    			FSD.FILE_SIZE := file_size; (* aktuelle Dateigroesse *)
     		ELSIF FSD.MODE = 2 THEN (* open + write *)
     			open_mode := 'a';
-    			FSD.file_size := file_size; (* aktuelle Dateigroesse *)
+    			FSD.FILE_SIZE := file_size; (* aktuelle Dateigroesse *)
     		ELSE (* open new + write *)
     			open_mode := 'w';
-    			FSD.file_size := 0; (* aktuelle Dateigroesse *)
-    		END_IF
+    			FSD.FILE_SIZE := 0; (* aktuelle Dateigroesse *)
+    		END_IF;
     		command := 1; (* File Open *)
     		last_mode := FSD.MODE;
     		step := 150; (* File_Open ausführen *)
-    	END_IF
+    	END_IF;
 
     150: (* File Open *)
     	IF command = BYTE#0 THEN
@@ -81,15 +81,15 @@ FUNCTION_BLOCK FILE_SERVER
     			file_position := UDINT#4294967295; (* maximal = unbekannt *)
     			FSD.FILE_OPEN := TRUE;
     			step := 200;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     200: (* File Seek *)
     	IF FSD.OFFSET = UDINT#4294967294 THEN (* 16#FFFF_FFFE -> Zeiger auf Dateiende stellen *)
     		command := 5; (* File-Seek *)
-    		seek_position := FSD.file_size;
+    		seek_position := FSD.FILE_SIZE;
     		step := 210;
-    	ELSIF FSD.OFFSET > FSD.file_size THEN (* prüfe auf gültige offset-vorgabe *)
+    	ELSIF FSD.OFFSET > FSD.FILE_SIZE THEN (* prüfe auf gültige offset-vorgabe *)
     		error_code := 255;
     		step := 30000; (* Beenden *)
     	ELSIF FSD.OFFSET <> file_position THEN
@@ -98,7 +98,7 @@ FUNCTION_BLOCK FILE_SERVER
     		step := 210;
     	ELSE
     		step := 300;
-    	END_IF
+    	END_IF;
 
     210: (* File Seek *)
     	IF command = 0 THEN
@@ -107,27 +107,27 @@ FUNCTION_BLOCK FILE_SERVER
     			step := 30000; (* Beenden *)
     		ELSE
     			step := 300;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     300: (* Read or Write ? *)
     	IF FSD.MODE = 1 THEN
     		step := 400; (* Read *)
     	ELSE
     		step := 500; (* Write *)
-    	END_IF
+    	END_IF;
 
     400: (* File Read *)
     	IF UINT_TO_UDINT(PT.SIZE) > buf_size THEN (* Leselänge auf Buffergroesse begrenzen *)
     		read_max_length := buf_size;
     	ELSE
     		read_max_length := UINT_TO_UDINT(PT.SIZE);
-    	END_IF
+    	END_IF;
 
     	(* Leselänge an Dateilänge anpassen *)
-    	IF file_position + read_max_length > FSD.file_size THEN
-    		read_max_length := FSD.file_size - file_position;
-    	END_IF
+    	IF file_position + read_max_length > FSD.FILE_SIZE THEN
+    		read_max_length := FSD.FILE_SIZE - file_position;
+    	END_IF;
 
     	IF read_max_length > 0 THEN
     		command := 3; (* File_Read *)
@@ -135,49 +135,49 @@ FUNCTION_BLOCK FILE_SERVER
     	ELSE
     		PT.SIZE := UINT#0;
     		step := 30000; (* Beenden *)
-    	END_IF
+    	END_IF;
 
     410: (* File Read *)
     	IF command = 0 THEN
     		PT.SIZE := UDINT_TO_UINT(length_read);
-    		IF NOT error THEN
-    			file_position := file_position + length_read; (* aktueller file_position korrigieren *)
+    		IF NOT Error THEN
+    			file_position := file_position + length_read; (* aktueller File_Position korrigieren *)
     			FSD.OFFSET := file_position;
-    		END_IF
+    		END_IF;
     		step := 30000; (* Beenden *)
-    	END_IF
+    	END_IF;
 
     500: (* File Write *)
     	IF UINT_TO_UDINT(PT.SIZE) > buf_size THEN (* Schreiblänge auf Buffergroesse begrenzen *)
     		write_length := buf_size;
     	ELSE
     		write_length := UINT_TO_UDINT(PT.SIZE);
-    	END_IF
+    	END_IF;
 
     	IF write_length > 0 THEN
     		command := 4; (* File_Write *)
     		step := 510;
     	ELSE
     		step := 30000; (* Beenden *)
-    	END_IF
+    	END_IF;
 
     510:
     	IF command = 0 THEN
-    		IF NOT error THEN
-    			file_position := file_position + length_written; (* aktueller file_position korrigieren *)
+    		IF NOT Error THEN
+    			file_position := file_position + length_written; (* aktueller File_Position korrigieren *)
     			FSD.OFFSET := file_position;
-    			IF file_position > FSD.file_size THEN (* Datei ist groesser geworden *)
-    				FSD.file_size := file_position;
-    			END_IF
-    		END_IF
+    			IF file_position > FSD.FILE_SIZE THEN (* Datei ist groesser geworden *)
+    				FSD.FILE_SIZE := file_position;
+    			END_IF;
+    		END_IF;
     		step := 30000; (* Beenden *)
-    	END_IF
+    	END_IF;
 
      (* --------------------------------------------- *)
 
     30000: (* Befehl fertig *)
     	FSD.MODE := 0;
-    	FSD.error := error_code;
+    	FSD.ERROR := error_code;
     	step := 0;
 
     	(* ---------------- Debug-Message -----------------------*)
@@ -187,13 +187,13 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7]  := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8]  := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* --------------------------------------------- *)
 
     32000:
     	IF handle > 0 THEN
     		command := 2; (* File_Close ausführen *)
-    	END_IF
+    	END_IF;
     	step := 32100;
 
     32100:
@@ -201,21 +201,21 @@ FUNCTION_BLOCK FILE_SERVER
     		(* Filedaten ablöschen *)
     		FSD.FILE_OPEN := FALSE;
     		file_position := 0;
-    		FSD.file_size := 0;
+    		FSD.FILE_SIZE := 0;
     		FSD.OFFSET := 0;
     		used_filename := '';
     		handle := 0;
 
     		(* File_Name wurde fliegend geändert ? *)
-    		IF file_change THEN
-    			file_change := FALSE;
+    		IF File_change THEN
+    			File_change := FALSE;
     			step := 0;
     		ELSE
     			step := 30000;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* 1 = file_open
        2 = file_close
@@ -226,7 +226,7 @@ FUNCTION_BLOCK FILE_SERVER
        7 = file_remove
     *) 
 
-    FSR(MODE:=BYTE#0,command:=command,FSD:=FSD); (* File server Runtime / Befehlsstart überwachen *)
+    FSR(MODE:=BYTE#0,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlsstart überwachen *)
 
     (* ------------ File Open ------------- *)
     IF command = 1 THEN
@@ -234,7 +234,7 @@ FUNCTION_BLOCK FILE_SERVER
     	error := open_handle = 0;
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Open: File ~1, handle ~2 , mode ~3 , error ~7, code ~8';
@@ -244,16 +244,16 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ----------- File Close ------------- *)
     IF command = 2 THEN
     	error := NOT SysFileClose(handle);
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Close: File ~1, error ~7, code ~8';
@@ -261,9 +261,9 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ------------ File Read ------------- *)
     IF command = 3 THEN
@@ -271,7 +271,7 @@ FUNCTION_BLOCK FILE_SERVER
     	error := length_read = 0;
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Read: File ~1, soll ~2,ist ~3 ,error ~7, code ~8';
@@ -281,9 +281,9 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ------------ File Write ------------- *)
     IF command = 4 THEN
@@ -291,7 +291,7 @@ FUNCTION_BLOCK FILE_SERVER
     	error := length_written = 0;
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Write: File ~1, soll ~2,ist ~3 ,error ~7, code ~8';
@@ -301,16 +301,16 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ------------ File Seek ------------- *)
     IF command = 5 THEN
     	error := NOT SysFileSetPos(handle, seek_position);
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Seek: File ~1,pos ~3 ,error ~7, code ~8';
@@ -319,9 +319,9 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ------------ File Tell ------------- *)
     IF command = 6 THEN
@@ -329,7 +329,7 @@ FUNCTION_BLOCK FILE_SERVER
     	error := tell_position < 0;
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Tell: File ~1, pos ~3 ,error ~7, code ~8';
@@ -338,16 +338,16 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ------------ File Remove ------------- *)
     IF command = 7 THEN
     	error := NOT SysFileDelete(FSD.FILENAME);
     	error_code := SEL(error,0,command);
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Remove: File ~1, error ~7, code ~8';
@@ -355,16 +355,16 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ------------ File Size ------------- *)
     IF command = 8 THEN
     	file_size := SysFileGetSize(FSD.FILENAME);
     	error_code := 0; (* kein Errorcode vorhanden *)
     	command := 0;
-    	FSR(MODE:=BYTE#1,command:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
+    	FSR(MODE:=BYTE#1,COMMAND:=command,FSD:=FSD); (* File server Runtime / Befehlstop überwachen *)
     	(* ---------------- Debug-Message -----------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'Size: File ~1, size ~3, error ~7, code ~8';
@@ -373,19 +373,19 @@ FUNCTION_BLOCK FILE_SERVER
     		LOG_CL.PRINTF[7] := INT_TO_STRING(BOOL_TO_INT(error));
     		LOG_CL.PRINTF[8] := BYTE_TO_STRING(error_code);
     		FB_LOG_MESSAGE();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------*)
-    END_IF
+    END_IF;
 
     (* ---------------- Debug-Message -----------------------*)
     (*IF _debug_enable THEN
     	IF step_last <> step THEN
-    		LOG_CL.NEW_MSG := 'step: ~1';
+    		LOG_CL.NEW_MSG := 'Step: ~1';
     		LOG_CL.PRINTF[1] := INT_TO_STRING(step);
     		FB_LOG_MESSAGE();
-    	END_IF
+    	END_IF;
     	step_last := step;
-    END_IF*)
+    END_IF;*)
     (* -----------------------------------------------------------------*)
 
     (* revision history

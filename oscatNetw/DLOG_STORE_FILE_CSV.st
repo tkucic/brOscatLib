@@ -5,11 +5,11 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     dti_last := DTI;
     trig_auto := FALSE;
     IF X.CLOCK_TRIG THEN (* Impuls in jeder Sekunde *)
-    	fn := DT_TO_STRF(DTI, 0, FILENAME, 0); (* automatische Dateinamen generierung *)
+    	fn := OSCAT_BASIC.DT_TO_STRF(DTI, 0, FILENAME, 0); (* automatische Dateinamen generierung *)
     	IF TRIG_T >= T#1000ms THEN (* automatischer Trigger *)
     		trig_auto := DT_TO_UDINT(DTI) MOD (TIME_TO_UDINT(TRIG_T) / UDINT#1000) = UDINT#0;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     CASE step_1 OF
 
@@ -20,7 +20,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     		IF X.ID_MAX = USINT#0 THEN (* nur einmal nach Satellitenbausteinen scannen *)
     			X.ADD_COM := 01; (* ADD INFO *)
     			X.STORE_TYPE := BYTE#2; (* CSV-Modus *)
-    		END_IF
+    		END_IF;
     		step_1 := 10;
 
     		(* ---------------- Debug-Message -----------------------*)
@@ -29,10 +29,10 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     			LOG_CL.PRINTF[1] := fn_last;
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------*)
 
-    	END_IF
+    	END_IF;
 
     10:	X.UCB.D_STRING := fn_last;
     	IF fn_last = SAVE_DATA.FN_REM THEN
@@ -41,7 +41,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     	ELSE
     		X.UCB.D_HEAD := WORD#16#F301; (* Filemode create + write *)
     		X.ADD_COM := 02; (* ADD HEADER *)
-    	END_IF
+    	END_IF;
 
     	X.UCB.D_MODE := 1; (* Dateinamen als String ablegen *)
     	UCB(DATA:=X.UCB); (* Daten eintragen *)
@@ -63,7 +63,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     			LOG_CL.NEW_MSG := 'FILE_CSV1 - Stop: [~2]';
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------*)
 
     	ELSIF ENABLE THEN
@@ -77,14 +77,14 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     				LOG_CL.NEW_MSG := 'FILE_CSV1 - Trig: [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(* -----------------------------------------------------------------*)
     		ELSE
     			X.ADD_COM := 04;	(* ADD DATA REQ *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
-    END_CASE
+    END_CASE;
     X.ADD_DATA_REQ := FALSE; (* externe Anforderung rücksetzen *)
 
     (* ##################################### *)
@@ -100,7 +100,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     			LOG_CL.NEW_MSG := 'FILE_CSV2 - AutoWrite: [~2]';
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------*)
 
     	ELSE
@@ -122,7 +122,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     	
     				IF FSD.MODE = BYTE#3 THEN	(* Datei neu anlegen -> dann zähler reset *)
     					SAVE_DATA.TRIG_CNT := UDINT#0;
-    				END_IF
+    				END_IF;
     	
     				X.NEW_FILE := FSD.FILENAME;
     				X.NEW_FILE_SIZE := UDINT#0;
@@ -134,10 +134,10 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     					LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     					LOG_CL.PRINTF[1] := BYTE_TO_STRING(FSD.MODE);
     					LOG_MSG();
-    				END_IF*)
+    				END_IF;*)
     				(* -----------------------------------------------------------------*)
 
-    			ELSIF X.UCB.D_HEAD = WORD#16#EE00 THEN (* log_stop Command *)
+    			ELSIF X.UCB.D_HEAD = WORD#16#EE00 THEN (* LOG_STOP Command *)
     				X.UCB.D_MODE := 11;
     				UCB(DATA:=X.UCB); (* Element entfernen *)
     				log_stop := TRUE;
@@ -153,9 +153,9 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     					LOG_CL.PRINTF[2] := INT_TO_STRING(idx);
     					LOG_CL.PRINTF[3] := DT_TO_STRING(DTI);
     					LOG_MSG();
-    				END_IF*)
+    				END_IF;*)
     				(* -----------------------------------------------------------------*)
-    				_STRING_TO_BUFFER(STR:=X.UCB.D_STRING, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
+    				OSCAT_BASIC._STRING_TO_BUFFER(STR:=X.UCB.D_STRING, POS:=idx, PT:=ADR(PT.BUFFER), SIZE:=SIZEOF(PT.BUFFER));
     				idx := idx + LEN(X.UCB.D_STRING);
     				n := n + USINT#1;
     				IF n = X.ID_MAX THEN (* letztes Element einer Zeile *)
@@ -165,15 +165,15 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     					PT.BUFFER[idx] := BYTE#16#0A;
     				ELSE
     					PT.BUFFER[idx] := SEP;
-    				END_IF
+    				END_IF;
     				idx := idx + 1;
     				X.NEW_FILE_SIZE := total_bytes + INT_TO_UDINT(idx);
     			ELSE (* kein Platz vorhanden *)
     				step_2 := 10; (* Daten schreiben *)
-    			END_IF
+    			END_IF;
     			wd_ton();
-    		END_WHILE
-    	END_IF
+    		END_WHILE;
+    	END_IF;
 
     10:	IF idx > 0 THEN (* Daten schreiben *)
     		FSD.MODE := BYTE#2; (* File_Open_Exist + File_Write *)
@@ -187,9 +187,9 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     			LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     			LOG_CL.PRINTF[3] := BYTE_TO_STRING(FSD.MODE);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------*)
-    	END_IF
+    	END_IF;
     	step_2 := 20;
 
     20:	IF FSD.MODE = BYTE#0 THEN
@@ -203,22 +203,22 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     				LOG_CL.NEW_MSG := 'FILE_CSV2 - Close: [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(* -----------------------------------------------------------------*)
-    		END_IF
+    		END_IF;
     		step_2 := 30;
-    	END_IF
+    	END_IF;
 
     30:	IF FSD.MODE = BYTE#0 THEN (* Befehl beendet ? *)
     		IF log_stop THEN
     			X.NEW_FILE_RTRIG := TRUE;
     			log_stop := FALSE;
     			SAVE_DATA.FN_REM := ''; (* remanenten Dateinamen löschen *)
-    		END_IF
+    		END_IF;
     		step_2 := 00;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     FS(FSD:=FSD,PT:=PT); (* FILE_SERVER *)
     (* Fehlerauswertung *)
@@ -234,7 +234,7 @@ FUNCTION_BLOCK DLOG_STORE_FILE_CSV
     ELSE
     	ERROR_C := DWORD#0;
     	ERROR_T := BYTE#0;
-    END_IF
+    END_IF;
 
     trig_m_last := TRIG_M;
 

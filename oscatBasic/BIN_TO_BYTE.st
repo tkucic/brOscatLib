@@ -1,17 +1,17 @@
 FUNCTION BIN_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=145*)
-    pt := ADR(BIN);
-    stop := LEN(BIN);
-    FOR i := 1 TO stop DO
-    	X := pt;
+    pt := ADR(bin);
+    stop := LEN(bin);
+    FOR I := 1 TO stop DO
+    	x := pt^;
     	(* calculate the value of the digit *)
     	IF X = 48 THEN
     		BIN_TO_BYTE := SHL(BIN_TO_BYTE,1);
     	ELSIF X = 49 THEN
     		BIN_TO_BYTE := SHL(BIN_TO_BYTE,1) OR 1;
-    	END_IF
+    	END_IF;
     	pt := pt + 1;
-    END_FOR
+    END_FOR;
 
 
 

@@ -1,12 +1,12 @@
 FUNCTION TO_UPPER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180*)
-    IF IN > 96 AND IN < 123 THEN
-       TO_UPPER := IN AND 16#DF;
-    ELSIF IN > 223 AND IN <> 247 AND IN <> 255 AND cEXTENDED_ASCII THEN
-       TO_UPPER := IN AND 16#DF;
+    IF in > 96 AND in < 123 THEN
+       TO_UPPER := in AND 16#DF;
+    ELSIF in > 223 AND in <> 247 AND in <> 255 AND setup.EXTENDED_ASCII THEN
+       TO_UPPER := in AND 16#DF;
     ELSE
-       TO_UPPER := IN;
-    END_IF
+       TO_UPPER := in;
+    END_IF;
 
 
 
@@ -22,7 +22,7 @@ FUNCTION TO_UPPER
     	optimized code
 
     hm 16. jan 2009	rev 1.3
-    	corrected an error IN module
+    	corrected an error in module
 
     *)
 END_FUNCTION

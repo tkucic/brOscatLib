@@ -1,10 +1,10 @@
 FUNCTION BIT_LOAD_W2
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=213*)
     IF D THEN
-    	BIT_LOAD_W2 := ROL(SHR(WORD#65535, 16 - N) OR ROR(I, P), P);
+    	BIT_LOAD_W2 := ROL(SHR(WORD#65535, 16 - N) OR ROR(i, P), P);
     ELSE
     	BIT_LOAD_W2 := ROL(SHL(WORD#65535, N) AND ROR(I, P), P);
-    END_IF
+    END_IF;
 
 
 

@@ -1,33 +1,33 @@
 FUNCTION_BLOCK M_D
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=341*)
-    (* check for RST input *)
-    IF RST OR ET >= TMAX THEN
-    	PT := t#0ms;
-    	ET := t#0ms;
+    (* check for rst input *)
+    IF rst OR et >= tmax THEN
+    	pt := t#0ms;
+    	et := t#0ms;
     	startup := FALSE;
-    	RUN := FALSE;
-    END_IF
+    	run := FALSE;
+    END_IF;
 
-    (* avoid timers to START when input is true at startup *)
+    (* avoid timers to start when input is true at startup *)
     IF NOT startup THEN
-    	edge_ := START;
+    	edge := start;
     	startup := TRUE;
-    END_IF
+    END_IF;
 
     (* read system timer *)
     tx := DWORD_TO_TIME(T_PLC_MS());
 
-    (* detect rising edge_ on START *)
-    IF START AND NOT edge_ AND NOT STOP THEN
-    	T0 := tx;
-    	RUN := TRUE;
-    	PT := t#0s;
-    ELSIF STOP AND RUN THEN
-    	PT := ET;
-    	RUN := FALSE;
-    END_IF
-    edge_ := START;
-    IF RUN THEN ET := tx - T0; END_IF
+    (* detect rising edge on start *)
+    IF start AND NOT edge AND NOT stop THEN
+    	t0 := tx;
+    	run := TRUE;
+    	pt := t#0s;
+    ELSIF stop AND run THEN
+    	pt := et;
+    	run := FALSE;
+    END_IF;
+    edge := start;
+    IF run THEN et := tx - t0; END_IF;
 
     (* revision history
     hm		2.5.2007	rev 1.0

@@ -1,17 +1,17 @@
 FUNCTION MODR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=60*)
-    IF DIVI = 0.0 THEN
+    IF divi = 0.0 THEN
     	MODR := 0.0;
     ELSE
-    	MODR := IN - DINT_TO_REAL(FLOOR2(IN / DIVI)) * DIVI;
-    END_IF
+    	MODR := in - DINT_TO_REAL(FLOOR2(in / divi)) * divi;
+    END_IF;
 
     (* revision history
 
     hm	4. aug.2006		rev 1.0
 
     hm	28. jan.2007	rev 1.1
-    	MODR(x,0) will deliver the result 0
+    	modr(x,0) will deliver the result 0
 
     hm	21. mar 2008	rev 1.2
     	use D_trunc for compatibility reasons

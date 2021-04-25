@@ -3,12 +3,12 @@ FUNCTION_BLOCK FT_PIWL
     (* initialize at power_up *)
     IF NOT init OR RST THEN
     	init := TRUE;
-    	in_last := IN;
+    	in_last := in;
     	t_last := T_PLC_US();
     	i := 0.0;
     	tc := 0.0;
     ELSE
-    	(* read last cycle time IN Microseconds *)
+    	(* read last cycle time in Microseconds *)
     	tx := T_PLC_US();
     	tc := DWORD_TO_REAL(tx - t_last);
     	t_last := tx;
@@ -26,24 +26,24 @@ FUNCTION_BLOCK FT_PIWL
     	(* check output for limits *)
     	IF Y >= LIM_H THEN
     		Y := LIM_H;
-    		IF KI <> 0.0 THEN
+    		IF ki <> 0.0 THEN
     			i := LIM_H - p;
     		ELSE
     			i := 0.0;
-    		END_IF
+    		END_IF;
     		LIM := TRUE;
     	ELSIF Y <= LIM_L THEN
     		Y := LIM_L;
-    		IF KI <> 0.0 THEN
+    		IF ki <> 0.0 THEN
     			i := LIM_L - p;
     		ELSE
     			i := 0.0;
-    		END_IF
+    		END_IF;
     		LIM := TRUE;
     	ELSE
     		LIM := FALSE;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
 
 
@@ -53,7 +53,7 @@ FUNCTION_BLOCK FT_PIWL
     	original version
 
     hm	27. oct. 2008	rev 1.1
-    	integrator will not be adjusted when KI = 0
+    	integrator will not be adjusted when ki = 0
 
     hm	25. jan 2009	rev 1.2
     	module will also work with negative K

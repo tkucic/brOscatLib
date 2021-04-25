@@ -1,27 +1,27 @@
 FUNCTION_BLOCK DELAY
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=274*)
     stop := LIMIT(0,N,32) - 1;
-    IF RST OR NOT init THEN
+    IF rst OR NOT init THEN
     	init := TRUE;
-    	FOR i := 0 TO stop DO buf[i] := IN; END_FOR
-    	OUT := IN;
+    	FOR i := 0 TO stop DO buf[i] := in; END_FOR;
+    	out := in;
     	i := 0;
     ELSIF stop < 0 THEN
-    	OUT := IN;
+    	out := in;
     ELSE
-    	OUT := buf[i];
-    	buf[i] := IN;
+    	out := buf[i];
+    	buf[i] := in;
     	i := INC1(i, N);
-    END_IF
+    END_IF;
 
 
 
     (* revision history
     hm 1.10.2006		rev 1.1
-    	corrected error IN buffer management
+    	corrected error in buffer management
 
     hm 19.1.2007		rev 1.2
-    	changed reset to load the value of IN instead of 0
+    	changed reset to load the value of in instead of 0
 
     hm	27. oct. 2008	rev 1.3
     	improved performance

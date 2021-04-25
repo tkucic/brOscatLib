@@ -4,7 +4,7 @@ FUNCTION STAIR
     	STAIR := DINT_TO_REAL(REAL_TO_DINT(X / D)) * D;
     ELSE
     	STAIR := X;
-    END_IF
+    END_IF;
 
 
 

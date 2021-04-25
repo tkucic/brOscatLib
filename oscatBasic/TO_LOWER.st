@@ -1,12 +1,12 @@
 FUNCTION TO_LOWER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=179*)
-    IF IN > 64 AND IN < 91 THEN
-       TO_LOWER := IN OR 16#20;
-    ELSIF (IN > 191 AND IN < 223) AND IN <> 215 AND cEXTENDED_ASCII THEN
-       TO_LOWER := IN OR 16#20;
+    IF in > 64 AND in < 91 THEN
+       TO_LOWER := in OR 16#20;
+    ELSIF (in > 191 AND in < 223) AND in <> 215 AND setup.EXTENDED_ASCII THEN
+       TO_LOWER := in OR 16#20;
     ELSE
-       TO_LOWER := IN;
-    END_IF
+       TO_LOWER := in;
+    END_IF;
 
 
     (* revision history

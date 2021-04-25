@@ -1,13 +1,13 @@
 FUNCTION_BLOCK FF_D2E
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=238*)
-    IF RST THEN
+    IF rst THEN
     	Q0 := FALSE;
     	Q1 := FALSE;
-    ELSIF CLK AND NOT edge_ THEN
+    ELSIF clk AND NOT edge THEN
     	Q0 := D0;
     	Q1 := D1;
-    END_IF
-    edge_ := CLK;
+    END_IF;
+    edge := CLK;
 
     (* revision history
     hm	25. dec 2007	rev 1.0

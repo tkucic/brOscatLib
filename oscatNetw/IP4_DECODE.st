@@ -1,12 +1,12 @@
 FUNCTION IP4_DECODE
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=77*)
-    pos := FIND(STR, '.');
+    pos := FIND(str, '.');
     WHILE pos > 0 DO
-    	IP4_DECODE := SHL(IP4_DECODE,8) OR STRING_TO_DWORD(LEFT(STR,pos - 1));
-    	STR := DELETE(STR, pos, 1);
-    	pos := FIND(STR, '.');
-    END_WHILE
-    IP4_DECODE := SHL(IP4_DECODE,8) OR STRING_TO_DWORD(STR);
+    	IP4_DECODE := SHL(IP4_DECODE,8) OR STRING_TO_DWORD(LEFT(str,pos - 1));
+    	str := DELETE(str, pos, 1);
+    	pos := FIND(str, '.');
+    END_WHILE;
+    IP4_DECODE := SHL(IP4_DECODE,8) OR STRING_TO_DWORD(str);
 
 
     (* revision history

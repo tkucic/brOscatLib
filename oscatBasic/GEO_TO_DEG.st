@@ -1,6 +1,6 @@
 FUNCTION GEO_TO_DEG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=362*)
-    GEO_TO_DEG := INT_TO_REAL(D) + INT_TO_REAL(M) * 0.016666666666667 + SEC * 0.00027777777777778;
+    GEO_TO_DEG := INT_TO_REAL(D) + INT_TO_REAL(M) * 0.016666666666667 + sec * 0.00027777777777778;
 
 
     (* revision histroy

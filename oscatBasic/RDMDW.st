@@ -1,10 +1,10 @@
 FUNCTION RDMDW
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=63*)
-    M := BIT_COUNT(LAST);
-    RX := RDM(FRACT(M * cPI));
-    RDMDW := SHL(REAL_TO_DWORD(RX*65535),16);
-    RX := RDM(FRACT(M * ce));
-    RDMDW := RDMDW OR (REAL_TO_DWORD(RX*65535) AND 16#0000FFFF);
+    M := BIT_COUNT(last);
+    RX := RDM(FRACT(M * math.PI));
+    RDMDW := SHL(REAL_TO_DWORD(rx*65535),16);
+    RX := RDM(FRACT(M * math.E));
+    RDMDW := RDMDW OR (REAL_TO_DWORD(rx*65535) AND 16#0000FFFF);
 
 
 

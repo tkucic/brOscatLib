@@ -1,18 +1,18 @@
 FUNCTION_BLOCK PIN_CODE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=231*)
-    TP := FALSE;
-    IF E THEN
-    	IF CB = CODE(PIN, POS) THEN
-    		POS := POS + 1;
-    		IF POS > LEN(PIN) THEN
+    tp := FALSE;
+    IF e THEN
+    	IF CB = CODE(pin, pos) THEN
+    		pos := pos + 1;
+    		IF pos > LEN(PIN) THEN
     			(* proper code is detected *)
     			TP := TRUE;
-    			POS := 1;
-    		END_IF
+    			pos := 1;
+    		END_IF;
     	ELSE
-    		POS := 1;
-    	END_IF
-    END_IF
+    		pos := 1;
+    	END_IF;
+    END_IF;
 
 
     (* revision history

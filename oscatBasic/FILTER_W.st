@@ -15,8 +15,8 @@ FUNCTION_BLOCK FILTER_W
     	IF tmp <> 0 THEN
     		Y := DINT_TO_WORD(WORD_TO_DINT(Y) + DWORD_TO_DINT(tmp));
     		last := tx;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (*
     hm 10. oct. 2008	rev 1.0

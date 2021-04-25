@@ -1,30 +1,30 @@
 FUNCTION_BLOCK BLIND_NIGHT
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=84*)
-    IF NOT (UP AND DN) AND night THEN
+    IF NOT (up AND dn) AND night THEN
     	(* manual operation at night will cancel operation for one night *)
     	night := FALSE;
-    ELSIF (DT_TO_TOD(DTIN) > SUNSET + SUNSET_OFFSET) AND (last_night < DT_TO_DATE(DTIN)) AND NOT night AND E_NIGHT THEN
+    ELSIF (DT_TO_TOD(dtin) > sunset + sunset_offset) AND (last_night < DT_TO_DATE(dtin)) AND NOT night AND e_night THEN
     	(* enable night *)
     	night := TRUE;
-    	last_night := DT_TO_DATE(DTIN);
-    ELSIF (DT_TO_TOD(DTIN) > SUNRISE + SUNRISE_OFFSET) AND (last_day < DT_TO_DATE(DTIN)) AND night AND E_DAY AND (last_night < DT_TO_DATE(DTIN)) THEN
+    	last_night := DT_TO_DATE(dtin);
+    ELSIF (DT_TO_TOD(dtin) > sunrise + sunrise_offset) AND (last_day < DT_TO_DATE(dtin)) AND night AND e_day AND (last_night < DT_TO_DATE(dtin)) THEN
     	(* disable night *)
     	night := FALSE;
-    	last_day := DT_TO_DATE(DTIN);
-    END_IF
+    	last_day := DT_TO_DATE(dtin);
+    END_IF;
 
     (* shade at night only in auto mode and enable = true *)
     IF UP AND DN AND night THEN
-    	STATUS := 141;
-    	PO := NIGHT_POSITION;
-    	AO := NIGHT_ANGLE;
+    	status := 141;
+    	po := night_position;
+    	ao := night_angle;
     ELSE
     	QU := UP;
     	QD := DN;
-    	PO := PI;
-    	AO := AI;
-    	STATUS := S_IN;
-    END_IF
+    	po := pi;
+    	ao := ai;
+    	status := s_in;
+    END_IF;
 
 
     (* revision history

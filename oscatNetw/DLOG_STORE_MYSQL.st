@@ -8,8 +8,8 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     	del_start := DT_TO_UDINT(DTI) - del_dt > AUTO_DELETE AND AUTO_DELETE > UDINT#0;
     	IF TRIG_T >= T#1000ms THEN (* automatischer Trigger *)
     		trig_auto := DT_TO_UDINT(DTI) MOD (TIME_TO_UDINT(TRIG_T) / UDINT#1000) = UDINT#0;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
     X.ADD_COM := 00;
 
     CASE step OF
@@ -26,26 +26,26 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		IF X.ID_MAX = USINT#0 THEN (* nur einmal nach Satellitenbausteinen scannen *)
     			X.ADD_COM := 01; (* ADD INFO *)
     			X.STORE_TYPE := BYTE#5; (* MySQL-Modus *)
-    		END_IF
+    		END_IF;
 
     		step := 05;
-    	END_IF
+    	END_IF;
 
     05:	X.ADD_COM := 02; (* ADD HEADER *)
     	step := 10;
 
     10:	IF SQL_INFO.SQL_CONNECTED THEN
-    		sql_command := BYTE#3; (* CREATE DATABASE IF NOT EXISTS `DB_NAME` *)
+    		sql_command := BYTE#3; (* CREATE DATABASE IF NOT EXISTS `db_name` *)
     		snd_text :=  CONCAT('CREATE DATABASE IF NOT EXISTS `' ,DB_NAME);
     		snd_text :=  CONCAT(snd_text, '`');
     		next_step := 20;
-    	END_IF
+    	END_IF;
 
     20:	sql_command := BYTE#2; (* 0x02 COM_INIT_DB mysql_select_db *)
     	snd_text := DB_NAME;
     	next_step := 30;
 
-    30:	(* CREATE TABLE IF NOT EXISTS TB_NAME (Timestamp TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, n1,n2) *)
+    30:	(* CREATE TABLE IF NOT EXISTS tb_name (Timestamp TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, n1,n2) *)
     	sql_command := BYTE#0;
     	idx := 5;
     	n := USINT#0;
@@ -65,14 +65,14 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     			13:	snd_text := CONCAT(snd_text, '` DATETIME'); (* DT *)
     			ELSE
     				snd_text := CONCAT(snd_text, '` VARCHAR(80)'); (* STRING(80) *)
-    			END_CASE
+    			END_CASE;
     		ELSE
     			snd_text := ')';
     			sql_command := BYTE#3;
     			snd_size := idx + LEN(snd_text);
     			next_step := 40;
-    		END_IF
-    		_STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
+    		END_IF;
+    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
     		idx := idx + LEN(snd_text);
     		n := n + USINT#1;
 
@@ -81,13 +81,13 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     			LOG_CL.NEW_MSG := 'dlog_mysql: create >~1<';
     			LOG_CL.PRINTF[1] := snd_text;
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
-    	END_WHILE
+    	END_WHILE;
 
     40:	IF del_start THEN
     		del_start := FALSE;
-    		sql_command := BYTE#3; (* DELETE FROM `TB_NAME` WHERE TIMESTAMPDIFF(SECOND, Timestamp, NOW()) > xxx *)
+    		sql_command := BYTE#3; (* DELETE FROM `tb_name` WHERE TIMESTAMPDIFF(SECOND, Timestamp, NOW()) > xxx *)
     		snd_text := CONCAT('DELETE FROM `', TB_NAME);
     		snd_text := CONCAT(snd_text, '` WHERE TIMESTAMPDIFF(SECOND, store_timestamp, NOW()) > ');
     		snd_text := CONCAT(snd_text, UDINT_TO_STRING(AUTO_DELETE));
@@ -99,10 +99,10 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     			LOG_CL.PRINTF[1] := UDINT_TO_STRING(AUTO_DELETE);
     			LOG_CL.PRINTF[2] := snd_text;
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
-             (* INSERT INTO `TB_NAME` VALUES (CURRENT_TIMESTAMP,  "n1","n2") *)
+             (* INSERT INTO `tb_name` VALUES (CURRENT_TIMESTAMP,  "n1","n2") *)
     	ELSIF X.UCB.BUF_COUNT >= USINT_TO_INT(X.ID_MAX) AND step > 0 THEN (* Neue Datenreihe(n) vorhanden *)
     		idx := 5;
     		n := USINT#0;
@@ -121,8 +121,8 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     				sql_command := BYTE#3;
     				snd_size := idx + LEN(snd_text);
     				next_step := 40;
-    			END_IF
-    			_STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
+    			END_IF;
+    			OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=idx,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
     			idx := idx + LEN(snd_text);
     			n := n + USINT#1;
 
@@ -131,10 +131,10 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     				LOG_CL.NEW_MSG := 'dlog_mysql: insert >~1<';
     				LOG_CL.PRINTF[1] := snd_text;
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(*########################################################################*)
-    		END_WHILE
-    	END_IF
+    		END_WHILE;
+    	END_IF;
 
     	IF ENABLE THEN 	(* LOG-Trigger verarbeiten *)
     		trig_tmp := (TRIG_M AND NOT trig_m_last) OR trig_auto OR X.ADD_DATA_REQ;
@@ -146,15 +146,15 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     				LOG_CL.NEW_MSG := 'dlog_mysql: Trigger: DATE [~2]';
     				LOG_CL.PRINTF[2] := DT_TO_STRING(DTI);
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(* -----------------------------------------------------------------*)
     		ELSE
     			X.ADD_COM := 04;	(* ADD DATA REQ *)
-    		END_IF
+    		END_IF;
     	ELSE
     		y.SQL_CON := FALSE; (* MySQL Verbindung beenden *)
     		step := 0;
-    	END_IF
+    	END_IF;
     	X.ADD_DATA_REQ := FALSE;
 
     (* ~~~~~~~~~~~~~~~~~~~~~~ *)
@@ -163,9 +163,9 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		step := next_step;
     	ELSIF y.SQL_RCV_STATE = BYTE#2 THEN  (* FEHLER *)
     		step := 0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* ########################## *)
     (* SQL-Kommando ausführen *)
@@ -175,10 +175,10 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		y.S_BUF.SIZE := INT_TO_UINT(snd_size);
     		snd_size := 0;
     	ELSE
-    		_STRING_TO_BUFFER(str:=snd_text,pos:=5,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
+    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=5,pt:=ADR(y.S_BUF.BUFFER),size:=SIZEOF(y.S_BUF.BUFFER)); (* String in puffer kopieren *)
     		y.S_BUF.SIZE := INT_TO_UINT(5 + LEN(snd_text));
     		snd_text := '';
-    	END_IF
+    	END_IF;
 
     	IF y.S_BUF.SIZE > SIZEOF(y.S_BUF.BUFFER) THEN (* buffer überlauf erkannt -> Abbruch *)
     		y.S_BUF.SIZE := 0;
@@ -191,15 +191,15 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     		FOR i1 := 5 TO i2 DO
     			IF y.S_BUF.BUFFER[i1] = BYTE#34 THEN
     				y.S_BUF.BUFFER[i1] := BYTE#39;
-    			END_IF
-    		END_FOR
+    			END_IF;
+    		END_FOR;
     	
     		y.S_BUF.BUFFER[4] := sql_command;
     		y.SQL_PACKET_NO := BYTE#255;
     		sql_command := BYTE#0;
     		step := 199;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (* ########################## *)
 
@@ -222,7 +222,7 @@ FUNCTION_BLOCK DLOG_STORE_MYSQL
     ELSE
     	ERROR_C := DWORD#0;
     	ERROR_T := BYTE#0;
-    END_IF
+    END_IF;
 
 
 

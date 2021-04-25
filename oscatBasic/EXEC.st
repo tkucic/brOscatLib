@@ -1,42 +1,42 @@
 FUNCTION EXEC
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=155*)
     (* extract both numbers and operator *)
-    EXEC := UPPERCASE(TRIM(STR));
+    EXEC := UPPERCASE(TRIM(str));
 
     pos := FINDB_NONUM(EXEC);
-    IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(EXEC,pos-1)); END_IF
+    IF pos > 1 THEN R1 := STRING_TO_REAL(LEFT(EXEC,pos-1)); END_IF;
     R2 := STRING_TO_REAL(RIGHT(EXEC,LEN(EXEC)-pos));
     EXEC := LEFT(EXEC,pos);
     pos := FINDB_NUM(EXEC);
     operator := RIGHT(EXEC,LEN(EXEC) - pos);
-    IF operator = '' AND LEN(STR) = 0 THEN
+    IF operator = '' AND LEN(str) = 0 THEN
     	EXEC := '';
     	RETURN;
     ELSIF operator = '' THEN
-    	EXEC := STR;
+    	EXEC := str;
     	RETURN;
-    END_IF
-    IF operator = '' THEN
+    END_IF;
+    IF operator = '^' THEN
     	EXEC := REAL_TO_STRING(EXPT(R1, R2));
     ELSIF operator = 'SQRT' THEN
     	EXEC := REAL_TO_STRING(SQRT(R2));
     ELSIF operator = 'SIN' THEN
-    	EXEC := REAL_TO_STRING(SIN(R2));
+    	EXEC := REAL_TO_STRING(SIN(r2));
     ELSIF operator = 'COS' THEN
-    	EXEC := REAL_TO_STRING(COS(R2));
+    	EXEC := REAL_TO_STRING(COS(r2));
     ELSIF operator = 'TAN' THEN
     	EXEC := REAL_TO_STRING(TAN(R2));
     ELSIF operator = '*' THEN
     	EXEC := REAL_TO_STRING(R1 * R2);
     ELSIF operator = '/' THEN
-    	IF R2 <> 0 THEN EXEC := REAL_TO_STRING(R1 / R2); ELSE EXEC := 'ERROR'; END_IF
+    	IF R2 <> 0 THEN EXEC := REAL_TO_STRING(R1 / R2); ELSE EXEC := 'ERROR'; END_IF;
     ELSIF operator = '+' THEN
-    	EXEC := REAL_TO_STRING(R1 + R2);
+    	EXEC := REAL_TO_STRING(r1 + r2);
     ELSIF operator = '-' THEN
-    	EXEC := REAL_TO_STRING(R1 - R2);
+    	EXEC := REAL_TO_STRING(r1 - r2);
     ELSE
     	EXEC := 'ERROR';
-    END_IF
+    END_IF;
 
     IF EXEC = 'ERROR' THEN
     	RETURN;
@@ -46,7 +46,7 @@ FUNCTION EXEC
     (* some systems deliver n. instead of n.0 ! *)
     ELSIF RIGHT(EXEC,1) = '.' THEN
     	EXEC := CONCAT(EXEC,'0');
-    END_IF
+    END_IF;
 
 
     (* revision history

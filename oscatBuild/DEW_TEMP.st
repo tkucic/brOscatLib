@@ -1,17 +1,17 @@
 FUNCTION DEW_TEMP
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=436*)
-    IF RH > 0.0 THEN
+    IF rh > 0.0 THEN
     (*	old code was rewritten for better performance
     	SDD := 6.1078*EXPT(10,(a*T)/(b+T));
     	DD := RH/100 * SDD;
     	V := LOG(DD/6.1078);
-    	DEW_TEMP := b*V/(a-V);
+    	dew_temp := b*V/(a-v);
     *)
-    	V := LOG(RH * 0.01 * EXP10((a*T) / (b+T)));
+    	V := LOG(RH * 0.01 * OSCAT_BASIC.EXP10((a*T) / (b+T)));
     	DEW_TEMP := b*V / (a-V);
     ELSE
-    	DEW_TEMP:= cT0;
-    END_IF
+    	DEW_TEMP:= OSCAT_BASIC.phys.T0;
+    END_IF;
 
     (* revision history
 
@@ -19,7 +19,7 @@ FUNCTION DEW_TEMP
     	original version created
 
     hm		29.4.2007	rev 1.1
-    	checked for RH not to be 0 because log(0) is not defined
+    	checked for rh not to be 0 because log(0) is not defined
 
     hm		13.9.2007	rev 1.2
     	code rewritten for better performance
@@ -58,11 +58,11 @@ FUNCTION DEW_TEMP
 
     Formeln:
 
-       1. SDD(T) = 6.1078 * 10((a*T)/(b+T))
+       1. SDD(T) = 6.1078 * 10^((a*T)/(b+T))
        2. DD(r,T) = r/100 * SDD(T)
        3. r(T,TD) = 100 * SDD(TD) / SDD(T)
-       4. TD(r,T) = b*V/(a-V) mit V(r,T) = log10(DD(r,T)/6.1078)
-       5. AF(r,TK) = 105 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 105 * mw/R* * SDD(TD)/TK 
+       4. TD(r,T) = b*v/(a-v) mit v(r,T) = log10(DD(r,T)/6.1078)
+       5. AF(r,TK) = 10^5 * mw/R* * DD(r,T)/TK; AF(TD,TK) = 10^5 * mw/R* * SDD(TD)/TK 
 
     *)
 END_FUNCTION

@@ -4,7 +4,7 @@ FUNCTION_BLOCK NET_VAR_BOOL8
     	init := TRUE;
     	X.ID_MAX := X.ID_MAX + USINT#1;
     	ID := USINT_TO_BYTE(X.ID_MAX);
-    END_IF
+    END_IF;
 
     IF X.STATE > BYTE#0 AND X.ERROR_ID = BYTE#0 THEN
     	index := X.index; (* PCWORX Workaround *)
@@ -16,7 +16,7 @@ FUNCTION_BLOCK NET_VAR_BOOL8
     			index := index + 1;
     			X.S_BUF.BUFFER[index] := BYTE#4; (* TYPE BOOL8 *)
     			index := index + 1;
-    			X.S_BUF.BUFFER[index] := BYTE_OF_BIT(IN1,IN2,IN3,IN4,IN5,IN6,IN7,IN8);
+    			X.S_BUF.BUFFER[index] := OSCAT_BASIC.BYTE_OF_BIT(IN1,IN2,IN3,IN4,IN5,IN6,IN7,IN8);
     			index := index + 1;
 
     		ELSIF X.STATE = BYTE#2 THEN (* Daten lesen *)
@@ -35,11 +35,11 @@ FUNCTION_BLOCK NET_VAR_BOOL8
     				OUT7 := BYTE_TO_BITS.B6;
     				OUT8 := BYTE_TO_BITS.B7;
     				index := index + 1;
-    			END_IF
-    		END_IF
+    			END_IF;
+    		END_IF;
     		X.index := index;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (* revision history
     ks	15.may. 2011	rev 1.0

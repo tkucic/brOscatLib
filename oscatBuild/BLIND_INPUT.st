@@ -1,83 +1,83 @@
 FUNCTION_BLOCK BLIND_INPUT
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=80*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     (* inputs S1 and S2 are debounced and then decoded for multiple clicks *)
-    s1e(IN := S1, pt := DEBOUNCE_TIME);
-    s2e(IN := S2, pt := DEBOUNCE_TIME);
-    s1d(IN := (s1e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND dir), t_long := CLICK_TIME);
-    s2d(IN := (s2e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND NOT dir), t_long := CLICK_TIME);
+    s1e(in := S1, pt := DEBOUNCE_TIME);
+    s2e(in := S2, pt := DEBOUNCE_TIME);
+    s1d(in := (s1e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND dir), t_long := CLICK_TIME);
+    s2d(in := (s2e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND NOT dir), t_long := CLICK_TIME);
 
-    (* if D1 and D2 are not toggle clear them to make sure they are only active for oine cycle *)
-    IF NOT D1_TOGGLE THEN D1 := FALSE; END_IF
-    IF NOT D2_TOGGLE THEN D2 := FALSE; END_IF
+    (* if d1 and d2 are not toggle clear them to make sure they are only active for oine cycle *)
+    IF NOT d1_toggle THEN d1 := FALSE; END_IF;
+    IF NOT d2_toggle THEN d2 := FALSE; END_IF;
 
     (* decode actions *)
-    IF (s1d.LONG AND s2d.LONG) OR (STATUS = 139) THEN
-       STATUS := 139;
-       IF NOT (s1d.LONG OR s2d.LONG)  THEN STATUS := 130; END_IF
+    IF (s1d.LONG AND s2d.LONG) OR (status = 139) THEN
+       status := 139;
+       IF NOT (s1d.LONG OR s2d.LONG)  THEN status := 130; END_IF;
     ELSIF s1d.tp_LONG THEN
-    	STATUS := 132;
+    	status := 132;
     ELSIF s2d.tp_LONG THEN
-    	STATUS := 133;
+    	status := 133;
     ELSIF  s1d.SINGLE THEN
-    	IF CLICK_EN THEN
+    	IF click_en THEN
     		(* if running then we stop otherwise start new direction *)
     		IF QU XOR QD THEN
-    			STATUS := 131;
+    			status := 131;
     		ELSE
-    			STATUS := 134;
+    			status := 134;
     			last := tx;
     			dir := NOT dir;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
     ELSIF  s2d.SINGLE THEN
-    	IF CLICK_EN THEN
+    	IF click_en THEN
     		(* if running then we stop otherwise start new direction *)
     		IF QU XOR QD THEN
-    			STATUS := 131;
+    			status := 131;
     		ELSE
-    			STATUS := 135;
+    			status := 135;
     			last := tx;
     			dir := NOT dir;
-    		END_IF
-    	END_IF
-    ELSIF IN THEN
-    	STATUS := 136;
+    		END_IF;
+    	END_IF;
+    ELSIF in THEN
+    	status := 136;
     	last := tx;
     ELSIF s1d.DOUBLE THEN
-    	IF DBL_CLK1 THEN
+    	IF dbl_clk1 THEN
     		(* a position need to be set for a double click on S1 *)
-    		STATUS := 137;
+    		status := 137;
     		last := tx;
     	ELSE
-    		(* toggle the output when DBL_CLK1 is not active *)
+    		(* toggle the output when dbl_clk1 is not active *)
     		D1 := NOT D1;
-    	END_IF
+    	END_IF;
     ELSIF s2d.DOUBLE THEN
-    	IF DBL_CLK2 THEN
+    	IF dbl_clk2 THEN
     		(* a position need to be set for a double click on S2 *)
-    		STATUS := 138;
+    		status := 138;
     		last := tx;
     	ELSE
-    		(* toggle the output when DBL_CLK2 is not active *)
-    		(* IN single switch mode we need to toggle D1 instead of D2 *)
-    		IF SINGLE_SWITCH THEN D1 := NOT D1; ELSE D2 := NOT D2; END_IF
-    	END_IF
-    END_IF
+    		(* toggle the output when dbl_clk2 is not active *)
+    		(* in single switch mode we need to toggle d1 instead of d2 *)
+    		IF single_switch THEN D1 := NOT D1; ELSE D2 := NOT D2; END_IF;
+    	END_IF;
+    END_IF;
 
 
     (* state machine *)
-    CASE STATUS OF
+    CASE status OF
     	0:		(* power up operation *)
-    			STATUS := 130;
+    			status := 130;
 
     	130:	(* automatic operation standby *)
-    			IF NOT MASTER_MODE THEN
+    			IF NOT master_mode THEN
     				PO := POS;
     				AO := ANG;
-    			END_IF
+    			END_IF;
     			QU := TRUE;
     			QD := TRUE;
 
@@ -87,55 +87,55 @@ FUNCTION_BLOCK BLIND_INPUT
     			PO := POS;
     			AO := ANG;
     			(* manual mode will be ended when timeout is reached *)
-    			IF tx - last >= MANUAL_TIMEOUT THEN
-    				STATUS := 130;
-    			END_IF
+    			IF tx - last >= manual_timeout THEN
+    				status := 130;
+    			END_IF;
 
     	132:	(* manual operation up *)
     			QU := TRUE;
     			QD := FALSE;
     			PO := POS; AO := ANG;
     			last := tx;
-    			IF NOT s1d.LONG THEN STATUS := 131; dir := NOT dir; END_IF
+    			IF NOT s1d.LONG THEN status := 131; dir := NOT dir; END_IF;
 
     	133:	(* manual operation down *)
     			QU := FALSE;
     			QD := TRUE;
     			PO := POS; AO := ANG;
     			last := tx;
-    			IF NOT s2d.LONG THEN	STATUS := 131; dir := NOT dir; END_IF
+    			IF NOT s2d.LONG THEN	status := 131; dir := NOT dir; END_IF;
 
     	134:	(* manual operation single click up *)
     			QU := TRUE;
     			QD := FALSE;
     			PO := POS; AO := ANG;
-    			IF tx - last >= MAX_RUNTIME THEN STATUS := 131; END_IF
+    			IF tx - last >= max_runtime THEN status := 131; END_IF;
 
     	135:	(* manual operation single click dn *)
     			QU := FALSE;
     			QD := TRUE;
     			PO := POS; AO := ANG;
-    			IF tx - last >= MAX_RUNTIME THEN STATUS := 131;	END_IF
+    			IF tx - last >= max_runtime THEN status := 131;	END_IF;
 
-    	136:	(* forced input IN = true *)
+    	136:	(* forced input in = true *)
     			QU := TRUE;
     			QD := TRUE;
     			PO := PI; AO := AI;
-    			IF tx-last >= MAX_RUNTIME THEN STATUS := 130; END_IF
+    			IF tx-last >= max_runtime THEN status := 130; END_IF;
 
     	137:	(* double click1 position *)
     			QU := TRUE;
     			QD := TRUE;
     			PO := DBL_POS1;
     			AO := DBL_ANG1;
-    			IF tx - last >= MAX_RUNTIME THEN STATUS := 131; END_IF
+    			IF tx - last >= max_runtime THEN status := 131; END_IF;
 
     	138:	(* double click2 position *)
     			QU := TRUE;
     			QD := TRUE;
     			PO := DBL_POS2;
     			AO := DBL_ANG2;
-    			IF tx - last >= MAX_RUNTIME THEN STATUS := 131; END_IF
+    			IF tx - last >= max_runtime THEN status := 131; END_IF;
 
     	   139:   (* manual operation standby *)
     	         QU := FALSE;
@@ -143,7 +143,7 @@ FUNCTION_BLOCK BLIND_INPUT
     	         PO := POS;
     	         AO := ANG;
 
-    END_CASE
+    END_CASE;
 
 
     (* revision history
@@ -151,14 +151,14 @@ FUNCTION_BLOCK BLIND_INPUT
     	original release
 
     hm	6. oct 2007		rev 1.1
-    	renamed ps and as to PO and AO
+    	renamed ps and as to po and ao
 
     hm	30. dec 2007	rev 1.2
     	added click_timeout variable and function
 
     hm	16. jul. 2008	rev 1.3
     	rewirtten code to allow for more functionality
-    	added single click mode with SINGLE_SWITCH.
+    	added single click mode with single_switch.
     	added Debounce for inputs S1 and S2
     	added double_click functionality
 
@@ -170,7 +170,7 @@ FUNCTION_BLOCK BLIND_INPUT
     	added automatic mode for IN
 
     hm	27. jul 2009	rev 1.6
-    	changed STATUS 0 to 130
+    	changed status 0 to 130
 
     HF	12. nov. 2009	rev 1.7
     	added state 139

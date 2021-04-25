@@ -7,7 +7,7 @@ FUNCTION FILE_PATH_SPLIT
     IF c = 0 THEN
     	FILE_PATH_SPLIT := FALSE;
     	RETURN;
-    END_IF
+    END_IF;
 
     FOR b := 1 TO c DO
     	d := MID(FILENAME, 1, b);
@@ -15,16 +15,16 @@ FUNCTION FILE_PATH_SPLIT
     		p1 := b;
     	ELSIF d = '/' OR d = '\' THEN
     		p2 := b;
-    	END_IF
-    END_FOR
+    	END_IF;
+    END_FOR;
 
     IF p1 = 2 THEN
     	X.DRIVE := LEFT(FILENAME,p1);
-    END_IF
+    END_IF;
 
     IF p2 > 0 AND p2 > p1 THEN
     	X.DIRECTORY := MID(FILENAME,p2 - p1,p1+1); (* len , pos *)
-    END_IF
+    END_IF;
 
     X.FILENAME := RIGHT(FILENAME,c - MAX (p1,p2));
     FILE_PATH_SPLIT := TRUE;

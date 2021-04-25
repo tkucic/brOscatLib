@@ -9,7 +9,7 @@ FUNCTION_BLOCK GEN_PW2
     	init := TRUE;
     	TH := T#0s;
     	TL := T#0s;
-    END_IF
+    END_IF;
 
     (* timing selection *)
     IF TS THEN
@@ -18,7 +18,7 @@ FUNCTION_BLOCK GEN_PW2
     ELSE
     	t_high := TH1;
     	t_low := TL1;
-    END_IF
+    END_IF;
 
     (* normal operation *)
     IF ENQ THEN
@@ -30,7 +30,7 @@ FUNCTION_BLOCK GEN_PW2
     			TL := T#0s;
     		ELSE
     			TL := et;
-    		END_IF
+    		END_IF;
     	ELSE
     		IF et >= t_high THEN
     			Q := FALSE;
@@ -38,14 +38,14 @@ FUNCTION_BLOCK GEN_PW2
     			TH := T#0s;
     		ELSE
     			TH := et;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
     ELSE
     	Q := FALSE;
     	TH := T#0s;
     	TL := T#0s;
     	start := tx;
-    END_IF
+    END_IF;
 
 
 

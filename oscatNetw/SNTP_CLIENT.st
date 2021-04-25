@@ -1,7 +1,7 @@
 FUNCTION_BLOCK SNTP_CLIENT
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=127*)
     (* Domain Name System (query) *)
-    tx := T_PLC_MS(); (* read system time *)
+    tx := OSCAT_BASIC.T_PLC_MS(); (* read system time *)
 
     CASE state OF
     00: (* auf positive Flanke SET warten *)
@@ -15,9 +15,9 @@ FUNCTION_BLOCK SNTP_CLIENT
     		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'SNTP: S00 START';
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
-    	END_IF
+    	END_IF;
 
     10: (* Bei IP_Control anmelden und auf freigabe warten *)
     	IF ip_state = BYTE#3 THEN
@@ -25,7 +25,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     		S_BUF.BUFFER[00] := BYTE#16#1B;
     		FOR i := 1 TO 47 DO
     			S_BUF.BUFFER[i] := BYTE#16#00;
-    		END_FOR
+    		END_FOR;
 
     		last := tx; (* aktuellen time wert sichern *)
     		state := 30;
@@ -43,9 +43,9 @@ FUNCTION_BLOCK SNTP_CLIENT
         		(*IF _debug_enable THEN
           			LOG_CL.NEW_MSG := 'SNTP: S10 SEND';
           			LOG_MSG();
-        		END_IF*)
+        		END_IF;*)
         		(*########################################################################*)
-    	END_IF
+    	END_IF;
 
     30:
     	IF IP_C.ERROR <> DWORD#00 THEN
@@ -58,17 +58,17 @@ FUNCTION_BLOCK SNTP_CLIENT
           			LOG_CL.NEW_MSG := 'SNTP: S30 ERROR ~1';
           			LOG_CL.PRINTF[1] := DWORD_TO_STRING(ERROR);
           			LOG_MSG();
-        		END_IF*)
+        		END_IF;*)
         		(*########################################################################*)
 
     	ELSIF S_BUF.SIZE = UINT#0 AND R_BUF.SIZE >= UINT#48 THEN (* länge der empfangenen Daten prüfen *)
 
     		(* Umrechnung SNTP Timestamp Base 1900-01-01 -> Unix 1970-01-01 = +2208988800 sekunden*)
-    		UDT := DWORD_TO_DT(DWORD_OF_BYTE(R_BUF.BUFFER[40],R_BUF.BUFFER[41],R_BUF.BUFFER[42],R_BUF.BUFFER[43]) - DWORD#2208988800);
+    		UDT := DWORD_TO_DT(OSCAT_BASIC.DWORD_OF_BYTE(R_BUF.BUFFER[40],R_BUF.BUFFER[41],R_BUF.BUFFER[42],R_BUF.BUFFER[43]) - DWORD#2208988800);
 
     		(* Original-Sekundenanteile sind als 32 Bit Fractal dargestellt *)
     		(* ms nur mit veringerte Auflösung berechnen 1/65535 -> Highword verwenden *)
-    		XMS := DWORD_TO_INT(SHR(DINT_TO_DWORD(WORD_TO_DINT(WORD_OF_BYTE(R_BUF.BUFFER[44],R_BUF.BUFFER[45])) * DINT#1000),16));
+    		XMS := DWORD_TO_INT(SHR(DINT_TO_DWORD(WORD_TO_DINT(OSCAT_BASIC.WORD_OF_BYTE(R_BUF.BUFFER[44],R_BUF.BUFFER[45])) * DINT#1000),16));
     		(* Zeitdifferenz (Laufzeitfehler) zwischen Send und Receive /2 teilen und addieren *)
     		XMS := XMS + DWORD_TO_INT(SHR(tx - last,1));
 
@@ -80,22 +80,22 @@ FUNCTION_BLOCK SNTP_CLIENT
         		(*IF _debug_enable THEN
             			LOG_CL.NEW_MSG := 'SNTP: S30 OK';
             			LOG_MSG();
-        		END_IF*)
+        		END_IF;*)
         		(*########################################################################*)
 
-    	END_IF
+    	END_IF;
 
     	IF state = 0 THEN
     		IP_C.R_OBSERVE := FALSE; (* Datenempfang ueberwachen *)
     		ip_state := BYTE#4;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     activate_last := ACTIVATE; (* letzten Status sichern zur Flankenerkennung *)
 
     (* IP_FIFO *)
-    IP_FIFO(FIFO:=IP_C.FIFO,state:=ip_state,ID:=ip_id);
+    IP_FIFO(FIFO:=IP_C.FIFO,STATE:=ip_state,ID:=ip_id);
 
     (* revision history
     ks	18. oct. 2008	rev 1.0
@@ -192,7 +192,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Ottawa, Ontario, Kanada: National Research Council of Canada
     time.chu.nrc.ca
     Servicebereich: Kanada 
-    • Raleigh, North Carolina: North Carolina state University
+    • Raleigh, North Carolina: North Carolina State University
     152.1.58.124: terrapin.csc.ncsu.edu
     Servicebereich: Südosten der USA 
     • Cambridge, Massachusetts: MIT Information Systems
@@ -228,7 +228,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Newark, Delaware: Conectiv Communications
     138.39.7.20: ntp1.delmarva.com
     Servicebereich: Cable & Wireless Network (früher MCInet) 
-    • University Park, Pennsylvania: Penn state University
+    • University Park, Pennsylvania: Penn State University
     128.118.46.3: otc1.psu.edu
     Servicebereich: NSFNET, PREPNET und JvNCnet  
 
@@ -362,7 +362,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Coos Bay, Oregon: Koala Computers
     207.48.109.6: tick.koalas.com
     Servicebereich: Nordwesten der USA  
-    • University Park, Pennsylvania: Penn state University
+    • University Park, Pennsylvania: Penn State University
     128.118.25.3: clock.psu.edu
     Servicebereich: Internet2, vBNS, CERFnet(AT&T IP Services), PSC/NCNE und CASC 
     • Pittsburgh, Pennsylvania: Pittsburgh Supercomputing Center
@@ -392,7 +392,7 @@ FUNCTION_BLOCK SNTP_CLIENT
     • Arlington, Virginia: Center for Seismic Studies
     140.162.1.3: ntp.cmr.gov
     Servicebereich: NSFNET und SURA-Bereich  
-    • Richland, Washington: Washington state University 
+    • Richland, Washington: Washington State University 
     192.31.216.30: clock.tricity.wsu.edu
     Servicebereich: NSFNET und NorthWestNet  
     • Washington, USA: Mill Creek

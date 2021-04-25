@@ -1,31 +1,31 @@
 FUNCTION _ARRAY_MEDIAN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=73*)
-    _ARRAY_SORT(PT,SIZE);
-    stop := SHR(SIZE,2)-1;
+    _ARRAY_SORT(pt,size);
+    stop := SHR(size,2)-1;
     IF EVEN(UINT_TO_INT(stop)) THEN
-    	_ARRAY_MEDIAN := PT[SHR(stop,1)];
+    	_ARRAY_MEDIAN := pt^[SHR(stop,1)];
     ELSE
     	i := SHR(stop,1);
-    	_ARRAY_MEDIAN := (PT[i] + PT[i+1]) * 0.5;
-    END_IF
+    	_ARRAY_MEDIAN := (pt^[i] + pt^[i+1]) * 0.5;
+    END_IF;
 
     (* old code
-    stop := (SIZE - SIZEOF(PT)) / SIZEOF(PT);
+    stop := (size - SIZEOF(pt)) / SIZEOF(pt);
     FOR i := 0 TO stop - 1 DO
     	FOR m := i + 1 TO stop DO
-    		IF PT[i] > PT[m] THEN
-    			temp := PT[i];
-    			PT[i] := PT[m];
-    			PT[m] := temp;
-    		END_IF
-    	END_FOR
-    END_FOR
+    		IF pt^[i] > pt^[m] THEN
+    			temp := pt^[i];
+    			pt^[i] := pt^[m];
+    			pt^[m] := temp;
+    		END_IF;
+    	END_FOR;
+    END_FOR;
     IF even(stop) THEN
-    	_ARRAY_MEDIAN := PT[stop/2];
+    	_array_median := pt^[stop/2];
     ELSE
     	i := stop/2;
-    	_ARRAY_MEDIAN := (PT[i] + PT[i+1])/2;
-    END_IF
+    	_array_median := (pt^[i] + pt^[i+1])/2;
+    END_IF;
     *)
     (* revision history
     hm 	3.3.2007		rev 1.1
@@ -38,10 +38,10 @@ FUNCTION _ARRAY_MEDIAN
     	deleted unused variables m and temp
 
     hm		14. nov 2007	rev 1.4
-    	corrected a problem with SIZE calculation
+    	corrected a problem with size calculation
 
     hm		16.3. 2008		rev 1.5
-    	changed type of input SIZE to uint
+    	changed type of input size to uint
     	performance improvements
     *)
 END_FUNCTION

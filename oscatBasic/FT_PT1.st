@@ -4,20 +4,20 @@ FUNCTION_BLOCK FT_PT1
     tx := T_PLC_US();
 
     (* startup initialisation *)
-    IF NOT init OR T = T#0s THEN
+    IF NOT init OR T = t#0s THEN
     	init := TRUE;
-    	OUT := K * IN;
+    	out := K * in;
     ELSE
-    	OUT := OUT + (IN * K - OUT) * DWORD_TO_REAL(tx - last) / TIME_TO_REAL(T) * 1.0E-3;
-    	IF ABS(OUT) < 1.0E-20 THEN OUT := 0.0; END_IF
-    END_IF
+    	out := out + (in * K - out) * DWORD_TO_REAL(Tx - last) / TIME_TO_REAL(T) * 1.0E-3;
+    	IF ABS(out) < 1.0E-20 THEN out := 0.0; END_IF;
+    END_IF;
     last := tx;
 
 
     (*
     hm 1.1.2007	rev 1.1
     	corrected error while startup value was not correct
-    	for very small time values real output would run OUT of range.
+    	for very small time values real output would run out of range.
 
     hm 3.1.2007	rev 1.2
     	corrected an error for falling edge failures.
@@ -31,10 +31,10 @@ FUNCTION_BLOCK FT_PT1
     	increased internal accuracy to Microseconds instead of Milliseconds
 
     hm	23. oct 2007	rev 1.5
-    	added OUT := IN to the init statements
+    	added out := in to the init statements
 
     hm	30. nov 2007	rev 1.6
-    	changed OUT to be K * IN during initialization
+    	changed out to be K * in during initialization
 
     hm	5. jan 2008	rev 1.7
     	improved code for better performance
@@ -49,6 +49,6 @@ FUNCTION_BLOCK FT_PT1
     	real constants updated to new systax using dot
 
     hm	18. jan. 2011	rev 1.11
-    	avoid underrun of OUT
+    	avoid underrun of out
     *)
 END_FUNCTION_BLOCK

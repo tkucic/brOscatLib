@@ -17,7 +17,7 @@ FUNCTION_BLOCK FTP_CLIENT
     		IF LEN(URL_DATA.USER) = 0 THEN
     			URL_DATA.USER := 'Anonymous';
     			URL_DATA.PASSWORD := 'User@';
-    		END_IF
+    		END_IF;
 
     		FILE_PATH_SPLIT(FILENAME:=FILENAME,X:=fpd); (* Datei-Path zerlegen *)
     		str1 := fpd.FILENAME; (* zwischenspeichern *)
@@ -26,9 +26,9 @@ FUNCTION_BLOCK FTP_CLIENT
     			ftp_path := CONCAT(URL_DATA.PATH,str1);
     		ELSE
     			ftp_path := URL_DATA.PATH;
-    		END_IF
+    		END_IF;
     		step := 10;
-    	END_IF
+    	END_IF;
 
     10:	IF DNS_CLIENT.DONE THEN
     		step := 20;
@@ -36,7 +36,7 @@ FUNCTION_BLOCK FTP_CLIENT
     		ERROR_C := DNS_CLIENT.ERROR;
     		ERROR_T := BYTE#1;
     		step := 980;
-    	END_IF
+    	END_IF;
 
     20:	(* FTP Steuerkanal einrichten *)
     	IP_C1.C_PORT := WORD#21; (* Portnummer eintragen *)
@@ -53,7 +53,7 @@ FUNCTION_BLOCK FTP_CLIENT
     30:	IF rcv_state = 220 THEN (* 220 = Service ready for new user *)
     		snd_text := CONCAT('USER ',URL_DATA.USER);
     		next_step := 40;
-    	END_IF
+    	END_IF;
 
     40:	IF rcv_state = 331 THEN (* 331 = User name okay, need password *)
     		snd_text := CONCAT('PASS ',URL_DATA.PASSWORD);
@@ -62,12 +62,12 @@ FUNCTION_BLOCK FTP_CLIENT
     		next_step := 50;
     	ELSIF rcv_state = 220 THEN (* 220 = Service ready for new user *)
     		next_step := 20; (* WORK verbindung sollte ab/aufgebaut werden *)
-    	END_IF
+    	END_IF;
 
     50:	IF rcv_state = 230 THEN (* 230 = User logged in, proceed *)
     		snd_text := 'TYPE I';  (* binären Modus aktivieren *)
     		next_step := 54;
-    	END_IF
+    	END_IF;
 
     54:	IF rcv_state = 200 THEN (* 200 = Command okay *)
     		IF FTP_DOWNLOAD THEN (* Datei von FTP Empfangen *)
@@ -75,19 +75,19 @@ FUNCTION_BLOCK FTP_CLIENT
     			next_step := 56;
     		ELSE
     			step := 60;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     56:	IF rcv_state = 213 THEN (* 213 Filesize *)
     		str1 := ELEMENT_GET(SEP:=BYTE#32,POS:=1,ELEMENT:=rcv_text);
     		ftp_file_size := STRING_TO_UDINT(str1); (* Dateigroesse in bytes gestimmen *)
     		step := 60;
-    	END_IF
+    	END_IF;
 
     60:	IF FTP_ACTIV THEN (* FTP Server aktiv *)
     		IF URL_DATA.PORT = WORD#0 THEN
     			URL_DATA.PORT := WORD#20; (* Standard Datenkanal *)
-    		END_IF
+    		END_IF;
     		str2 := '';
     		dw_tmp := PLC_IP4;
     		FOR idx1 := 0 TO 5 DO
@@ -95,12 +95,12 @@ FUNCTION_BLOCK FTP_CLIENT
     				dw_tmp := ROR(WORD_TO_DWORD(URL_DATA.PORT),8);
     			ELSE
     				dw_tmp := ROL(dw_tmp,8);
-    			END_IF
+    			END_IF;
     			str2 := CONCAT(str2,BYTE_TO_STRING(DWORD_TO_BYTE(dw_tmp)));
     			IF idx1 < 5 THEN
     				str2 := CONCAT(str2,',');
-    			END_IF
-    		END_FOR
+    			END_IF;
+    		END_FOR;
     		dw_tmp := DNS_CLIENT.IP4; (* IP eintragen *)
     		w_tmp := URL_DATA.PORT; (* Port Nummer des Datenkanals *)
     		snd_text := CONCAT('PORT ',str2); (* FTP Server in den aktiv-mode schalten *)
@@ -108,7 +108,7 @@ FUNCTION_BLOCK FTP_CLIENT
     	ELSE
     		snd_text := 'PASV';  (* FTP Server in den passiv-mode schalten *)
     		next_step := 70;
-    	END_IF
+    	END_IF;
     	step := 999; (* Warten auf next_step *)
 
     70:	IF rcv_state = 227 THEN (* 227 = Entered Passive Mode (213,202,225,43,212,186) *)
@@ -119,16 +119,16 @@ FUNCTION_BLOCK FTP_CLIENT
     			FOR idx1 := 0 TO 5 DO
     				str2 := ELEMENT_GET(SEP:=BYTE#44,POS:=idx1,ELEMENT:=str1);
     				byar[idx1] := STRING_TO_BYTE(str2);
-    			END_FOR
-    			dw_tmp := DWORD_OF_BYTE(byar[0],byar[1],byar[2],byar[3]); (* IP Adresse des Datenkanals *)
-    			w_tmp := WORD_OF_BYTE(byar[4],byar[5]); (* Port Nummer des Datenkanals *)
-    		END_IF
+    			END_FOR;
+    			dw_tmp := OSCAT_BASIC.DWORD_OF_BYTE(byar[0],byar[1],byar[2],byar[3]); (* IP Adresse des Datenkanals *)
+    			w_tmp := OSCAT_BASIC.WORD_OF_BYTE(byar[4],byar[5]); (* Port Nummer des Datenkanals *)
+    		END_IF;
     		step := 100;
-    	END_IF
+    	END_IF;
 
     80:	IF rcv_state = 200 THEN (* 200 = PORT command successful *)
     		step := 100;
-    	END_IF
+    	END_IF;
 
     100:IP_C2.C_MODE := SEL(FTP_ACTIV,BYTE#0,BYTE#2); (* Aktiv = Mode 2: TCP+PASSIV+PORT / passiv = Mode 0: TCP+ACTIV+PORT *)
     	IP_C2.C_IP := dw_tmp; (* IP Adresse des Datenkanals *)
@@ -148,14 +148,14 @@ FUNCTION_BLOCK FTP_CLIENT
     			next_step := 140;
     			snd_text := CONCAT(snd_text, ftp_path); (* STORE /PFAD/FILENAME *)
     			step := 999; (* Warten auf next_step *)
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     (* ============== File an FTP senden ================ *)
 
     140:IF rcv_state = 125 OR rcv_state = 150 THEN (* 125 = Data connection already open / 150 = File status okay; about to open data connection *)
     		step := 160;
-    	END_IF
+    	END_IF;
 
     160:FSD.FILENAME := FILENAME; (* Dateiname *)
     	FSD.MODE := BYTE#1; (* vorhandene Datei zum lesen öffnen *)
@@ -167,7 +167,7 @@ FUNCTION_BLOCK FTP_CLIENT
     200:IF FSD.MODE = BYTE#0 AND FSD.ERROR = BYTE#0 THEN
     		IP_C2.MAILBOX[2] := BYTE#0; (* IP Senden erlauben *)
     		step := 210;
-    	END_IF
+    	END_IF;
 
     210:IF S_BUF2.SIZE = UINT#0 THEN (* warten bis alle daten gesendet sind *)
     		IF FSD.FILE_SIZE - FSD.OFFSET > UDINT#0 THEN
@@ -178,14 +178,14 @@ FUNCTION_BLOCK FTP_CLIENT
     		ELSE
     			IP_C2.C_ENABLE := FALSE; (* FTP Datenkanal schliessen *)
     			step := 300;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     300:IF rcv_state = 226 THEN (* 226 Closing data connection. Requested file action successful  *)
     		snd_text := 'QUIT';
     		ip_c1_red_disable := TRUE;
     		next_step := 320;
-    	END_IF
+    	END_IF;
 
     320:IF rcv_state = 221 OR TON_WAIT.ET > timeout3  THEN (* 221 Service closing control connection *)
     		IP_C1.C_ENABLE := FALSE; (* FTP Steuerkanal schliessen *)
@@ -194,12 +194,12 @@ FUNCTION_BLOCK FTP_CLIENT
     			step := 340;
     		ELSE
     			step := 900;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     340:IF FSD.MODE = BYTE#0 AND FSD.ERROR = BYTE#0 THEN
     		step := 900;
-    	END_IF
+    	END_IF;
 
     (*  ============== File vom FTP Empfangen  ============== *)
 
@@ -211,7 +211,7 @@ FUNCTION_BLOCK FTP_CLIENT
     410:IF rcv_state = 125 OR rcv_state = 150 THEN (* 125 = Data connection already open / 150 = File status okay; about to open data connection *)
     		IP_C2.R_OBSERVE := TRUE; (* Empfangsueberwachung *)
     		step := 420;
-    	END_IF
+    	END_IF;
 
     420:FSD.FILENAME := FILENAME; (* Dateiname *)
     	FSD.MODE := BYTE#3; (* Datei neu anlegen *)
@@ -226,13 +226,13 @@ FUNCTION_BLOCK FTP_CLIENT
     		IP_C2.C_ENABLE := FALSE; (* FTP Datenkanal schliessen *)
     		ip_c2_red_disable := TRUE;
     		step := 700;
-    	END_IF
+    	END_IF;
 
     460:IF FSD.MODE = BYTE#0 AND FSD.ERROR = BYTE#0 THEN (* warten bis Daten geschreiben wurden *)
     		R_BUF2.SIZE := UINT#0; (* Daten löschen *)
     		IP_C2.MAILBOX[3] := BYTE#0; (* IP Empfang wieder erlauben *)
     		step := 440;
-    	END_IF
+    	END_IF;
 
     (* ================================================== *)
 
@@ -242,12 +242,12 @@ FUNCTION_BLOCK FTP_CLIENT
     			next_step := 720;
     		ELSE
     			step := 740;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     720:IF rcv_state = 250 THEN (* 250 Requested file action okay, completed *)
     		step := 740;
-    	END_IF
+    	END_IF;
 
     740:snd_text := 'QUIT';
     	ip_c1_red_disable := TRUE;
@@ -261,12 +261,12 @@ FUNCTION_BLOCK FTP_CLIENT
     			step := 780;
     		ELSE
     			step := 900;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     780:IF FSD.MODE = BYTE#0 AND FSD.ERROR = BYTE#0 THEN
     		step := 900;
-    	END_IF
+    	END_IF;
 
     (* ================================================== *)
 
@@ -289,11 +289,11 @@ FUNCTION_BLOCK FTP_CLIENT
 
     990:IF IP_C1.C_STATE = BYTE#0 AND IP_C2.C_STATE = BYTE#0 AND FSD.FILE_OPEN = FALSE THEN
     		step := 0;
-    	END_IF
+    	END_IF;
 
     999: ; (* Dummy Schritt, warten bis neuer schritt durch "next_step" aktiv wird *)
 
-    END_CASE
+    END_CASE;
 
     (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -303,16 +303,16 @@ FUNCTION_BLOCK FTP_CLIENT
     		REPEAT (* zeilenterminierung erkennen und echtes TEXT-Ende bestimmen *)
     			idx1 := idx1 - 1;
     		UNTIL idx1 = 0 OR R_BUF1.BUFFER[idx1] >= BYTE#32 (* TRUE = EXIT *)
-    		END_REPEAT
+    		END_REPEAT;
     		idx1 := idx1 + 1; (* index auf SIZE umrechnen *)
-    		rcv_text := BUFFER_TO_STRING(PT:=ADR(R_BUF1.BUFFER),SIZE:=idx1,START:=0,STOP:=STRING_LENGTH-1);
+    		rcv_text := OSCAT_BASIC.BUFFER_TO_STRING(PT:=ADR(R_BUF1.BUFFER),SIZE:=idx1,START:=0,STOP:=OSCAT_BASIC.STRING_LENGTH-1);
     		IF LEN(rcv_text) >= 3 THEN (* Statuscode prüfen und auswerten *)
     			str1 := LEFT(rcv_text,3);
-    			IF IS_NUM(STR:=str1) THEN (* enthält nur Zahlen ? *)
+    			IF OSCAT_BASIC.IS_NUM(STR:=str1) THEN (* enthält nur Zahlen ? *)
     				rcv_state := STRING_TO_INT(str1);
-    			END_IF
+    			END_IF;
     			IP_C1.R_OBSERVE := FALSE;
-    		END_IF
+    		END_IF;
     		R_BUF1.SIZE := UINT#0; (* daten löschen *)
 
     	        (*####################  DEBUG-MESSAGE  ###################################*)
@@ -320,11 +320,11 @@ FUNCTION_BLOCK FTP_CLIENT
     	          LOG_CL.NEW_MSG := 'RCV: >~1<';
     	          LOG_CL.PRINTF[1] := rcv_text;
     	          LOG_MSG();
-    	        END_IF*)
+    	        END_IF;*)
     	        (*########################################################################*)
 
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     (* automatisches Datensenden *)
 
@@ -336,9 +336,9 @@ FUNCTION_BLOCK FTP_CLIENT
     	          LOG_CL.NEW_MSG := 'SND: >~1<';
     	          LOG_CL.PRINTF[1] := snd_text;
     	          LOG_MSG();
-    	        END_IF*)
+    	        END_IF;*)
     	        (*########################################################################*)
-    		_STRING_TO_BUFFER(str:=snd_text,pos:=0,pt:=ADR(S_BUF1.BUFFER),size:=SIZEOF(S_BUF1.BUFFER)); (* String in puffer kopieren *)
+    		OSCAT_BASIC._STRING_TO_BUFFER(str:=snd_text,pos:=0,pt:=ADR(S_BUF1.BUFFER),size:=SIZEOF(S_BUF1.BUFFER)); (* String in puffer kopieren *)
     		idx1 := LEN(snd_text);
     		S_BUF1.BUFFER[idx1] := BYTE#16#0D;
     		idx1 := idx1 + 1;
@@ -350,14 +350,14 @@ FUNCTION_BLOCK FTP_CLIENT
     		rcv_state := 9999; (* letzen FTP Status löschen *)
     		snd_text := '';
     		snd_step := 10;
-    	END_IF
+    	END_IF;
 
     10:	IF S_BUF1.SIZE = UINT#0 THEN (* warten bis alle daten gesendet sind *)
     		step := next_step;
     		snd_step := 0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* Globale Fehlerbehandlung für Haupt-Routine *)
     IF ERROR_T = BYTE#0 AND step > 20 THEN (* noch kein Fehler gespeichert und Hauptroutine aktiv *)
@@ -367,31 +367,31 @@ FUNCTION_BLOCK FTP_CLIENT
     			ERROR_C := IP_C1.ERROR;
     			ERROR_T := BYTE#2;
     			step := 980;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     	IF IP_C2.ERROR > DWORD#0 AND IP_C2.C_ENABLE AND NOT IP_C2.TIME_RESET THEN  (* IP Control 2 *)
     		IF ip_c2_red_disable = FALSE OR IP_C2.ERROR <> DWORD#16#FD000000 THEN
     			ERROR_C := IP_C2.ERROR;
     			ERROR_T := BYTE#3;
     			step := 980;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     	IF FSD.MODE = BYTE#0 THEN
     		IF FSD.ERROR > BYTE#0 THEN
     			ERROR_C := BYTE_TO_DWORD(FSD.ERROR);
     			ERROR_T := BYTE#4; (* Dateizugriff *)
     			step := 980;
-    		END_IF
-    	END_IF
-    END_IF
+    		END_IF;
+    	END_IF;
+    END_IF;
 
     IF TON_WAIT.Q THEN (* Ablaufstörung - Schrittkette *)
     	ERROR_C := SHL(INT_TO_DWORD(step),16) OR INT_TO_DWORD(rcv_state); (* aktuellen Schritt und letzten FTP Status eintragen *)
     	ERROR_T := BYTE#5;
     	step := 980;
-    END_IF
+    END_IF;
 
     (* ######################################################## *)
 
@@ -408,7 +408,7 @@ FUNCTION_BLOCK FTP_CLIENT
     	FS(FSD:=FSD,PT:=R_BUF2); (* Datei von FTP empfangen *)
     ELSE
     	FS(FSD:=FSD,PT:=S_BUF2); (* Datei an FTP senden *)
-    END_IF
+    END_IF;
 
     (* revision history
     ks	05. may 2011	rev 1.3

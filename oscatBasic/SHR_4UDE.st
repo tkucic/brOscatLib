@@ -1,15 +1,15 @@
 FUNCTION_BLOCK SHR_4UDE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=250*)
-    (* trig.Q signals a rising edge on CLK *)
-    trig(CLK := CLK);
+    (* trig.Q signals a rising edge on clk *)
+    trig(clk := clk);
 
-    IF SET OR RST THEN
+    IF set OR rst THEN
     	Q0 := NOT RST;
     	Q1 := Q0;
     	Q2 := Q0;
     	Q3 := Q0;
     ELSIF trig.Q THEN
-    	IF DN THEN
+    	IF dn THEN
     		Q0 := Q1;
     		Q1 := Q2;
     		Q2 := Q3;
@@ -19,8 +19,8 @@ FUNCTION_BLOCK SHR_4UDE
     		Q2 := Q1;
     		Q1 := Q0;
     		Q0 := D0;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
 
 

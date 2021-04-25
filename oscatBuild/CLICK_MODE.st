@@ -1,23 +1,23 @@
 FUNCTION_BLOCK CLICK_MODE
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=49*)
-    (* when input goes high start the Timer to decode pulses *)
-    Timer(IN := IN, PT := T_LONG);
-    SINGLE := FALSE;
-    DOUBLE := FALSE;
+    (* when input goes high start the timer to decode pulses *)
+    timer(in := IN, PT := T_LONG);
+    single := FALSE;
+    double := FALSE;
 
-    IF Timer.Q THEN
-    	(* decode pulses while the Timer is active *)
-    	IF NOT IN AND last THEN	cnt := cnt + 1; END_IF
+    IF timer.Q THEN
+    	(* decode pulses while the timer is active *)
+    	IF NOT in AND last THEN	cnt := cnt + 1; END_IF;
     ELSE
     	CASE cnt OF
-    		1 : SINGLE := TRUE;
-    		2 : DOUBLE := TRUE;
-    	END_CASE
+    		1 : single := TRUE;
+    		2 : double := TRUE;
+    	END_CASE;
     	cnt := 0;
-    END_IF
-    last := IN;
-    TP_LONG := NOT Timer.Q AND (NOT LONG) AND IN;
-    LONG := NOT Timer.Q AND IN;
+    END_IF;
+    last := in;
+    TP_LONG := NOT timer.Q AND (NOT LONG) AND IN;
+    LONG := NOT timer.Q AND in;
 
 
 

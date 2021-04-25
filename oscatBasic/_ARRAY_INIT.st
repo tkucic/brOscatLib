@@ -1,11 +1,11 @@
 FUNCTION _ARRAY_INIT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=72*)
-    stop := SHR(SIZE,2)-1;
+    stop := SHR(size,2)-1;
     FOR i := 0 TO stop DO
-    	PT[i] := INIT;
-    END_FOR
+    	pt^[i] := init;
+    END_FOR;
 
-    _ARRAY_INIT := TRUE;
+    _array_init := TRUE;
 
     (* revision History
 
@@ -17,6 +17,6 @@ FUNCTION _ARRAY_INIT
     	changed stop calculation to be more efficient
 
     hm	16.3. 2008		rev 1.3
-    	changed type of input SIZE to uint
+    	changed type of input size to uint
     *)
 END_FUNCTION

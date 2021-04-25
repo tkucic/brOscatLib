@@ -4,7 +4,7 @@ FUNCTION MUX_4
     	MUX_4 := SEL(A0, D2, D3);
     ELSE
     	MUX_4 := SEL(A0, D0, D1);
-    END_IF
+    END_IF;
 
 
     (*

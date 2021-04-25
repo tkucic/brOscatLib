@@ -1,6 +1,6 @@
 FUNCTION HYPOT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=55*)
-    HYPOT := SQRT(X*X + Y*Y);
+    HYPOT := SQRT(x*x + y*y);
 
 
     (* revision history

@@ -3,14 +3,14 @@ FUNCTION REAL_TO_STRF
     (* LIMIT N to 0 .. 7 *)
     N := LIMIT(0,N,7);
     (* round the input to N digits and convert to string *)
-    O := ABS(IN) * EXP10(N);
+    O := ABS(in) * EXP10(N);
     REAL_TO_STRF := DINT_TO_STRING(REAL_TO_DINT(O));
-    (* add zeroes IN front to make sure sting is at least 8 digits long *)
-    FOR i := LEN(REAL_TO_STRF) TO N DO REAL_TO_STRF := CONCAT('0', REAL_TO_STRF); END_FOR
-    (* add a dot if N > 0 *)
-    IF N > 0 THEN REAL_TO_STRF := INSERT(REAL_TO_STRF, D, LEN(REAL_TO_STRF) - N); END_IF
-    (* add a minus sign if IN is negative *)
-    IF IN < 0 THEN REAL_TO_STRF := CONCAT('-', REAL_TO_STRF); END_IF
+    (* add zeroes in front to make sure sting is at least 8 digits long *)
+    FOR i := LEN(REAL_TO_STRF) TO N DO REAL_TO_STRF := CONCAT('0', REAL_TO_STRF); END_FOR;
+    (* add a dot if n > 0 *)
+    IF n > 0 THEN REAL_TO_STRF := INSERT(REAL_TO_STRF, D, LEN(REAL_TO_STRF) - N); END_IF;
+    (* add a minus sign if in is negative *)
+    IF in < 0 THEN REAL_TO_STRF := CONCAT('-', REAL_TO_STRF); END_IF;
 
 
     (* revision history

@@ -8,7 +8,7 @@ FUNCTION_BLOCK GET_WAN_IP
     		DONE := FALSE;
     		ERROR_C := DWORD#0;
     		ERROR_T := BYTE#0;
-    	END_IF
+    	END_IF;
 
     20: (* URL for DNS UND HTTP-GET *)
     	URL_DATA := STRING_TO_URL(STR:='checkip.dyndns.com',DEFAULT_PROTOCOL:='',DEFAULT_PATH:='');
@@ -22,7 +22,7 @@ FUNCTION_BLOCK GET_WAN_IP
     		ERROR_C := DNS_CLIENT.ERROR;
     		ERROR_T := BYTE#01;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     60:
     	IF HTTP_GET.DONE THEN
@@ -32,7 +32,7 @@ FUNCTION_BLOCK GET_WAN_IP
     		ERROR_C := HTTP_GET.ERROR;
     		ERROR_T := BYTE#02;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     80:
     	(* Als Antwort wird folgende HTML Seite empfangen , hier muss die IP-Adresse herauskopiert werden *)
@@ -43,19 +43,19 @@ FUNCTION_BLOCK GET_WAN_IP
     		IF R_BUF.BUFFER[i1] = BYTE#58 THEN (* suche ':' *)
     			p1 := i1 + 2;
     			EXIT;
-    		END_IF
-    	END_FOR
+    		END_IF;
+    	END_FOR;
 
     	p3 := p1 + 15;
     	IF p1 > 0 AND p3 < UINT_TO_INT(HTTP_GET.BODY_STOP) THEN
     		FOR p2 := p1 TO p3 DO
     			IF R_BUF.BUFFER[p2] <> BYTE#60 THEN (* suche '<' *)
-    				st_ip := CONCAT(st_ip,CHR_TO_STRING(C:=R_BUF.BUFFER[p2]));
+    				st_ip := CONCAT(st_ip,OSCAT_BASIC.CHR_TO_STRING(C:=R_BUF.BUFFER[p2]));
     			ELSE
     				EXIT;
-    			END_IF
-    		END_FOR
-    	END_IF
+    			END_IF;
+    		END_FOR;
+    	END_IF;
 
     	WAN_IP4 := IP4_DECODE(STR:=st_ip);
 
@@ -66,7 +66,7 @@ FUNCTION_BLOCK GET_WAN_IP
     	ELSE
     		ERROR_C := DWORD#01; (* keine gültige IP gefunden *)
     		ERROR_T := BYTE#03;
-    	END_IF
+    	END_IF;
     	state := 100;
 
     100:
@@ -74,9 +74,9 @@ FUNCTION_BLOCK GET_WAN_IP
     	IF (NOT HTTP_GET.DONE) THEN
     		state := 0;
     		DONE := ERROR_T = BYTE#0;
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* ---------------- DNS --------------- *)
     DNS_CLIENT(	IP_C:=IP_C,

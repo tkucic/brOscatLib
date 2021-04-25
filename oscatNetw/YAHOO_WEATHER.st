@@ -1,7 +1,7 @@
 FUNCTION_BLOCK YAHOO_WEATHER
     (*http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=207*)
     (* read system time *)
-    tx := T_PLC_MS();
+    tx := OSCAT_BASIC.T_PLC_MS();
 
     CASE state OF
 
@@ -15,7 +15,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		repeat_count := USINT#0;
     		repeat_request := FALSE;
       		URL_DATA.DOMAIN := 'query.yahooapis.com'; (* Domainname für DNS_CLIENT *)
-    	END_IF
+    	END_IF;
 
     40:	IF DNS_CLIENT.DONE THEN
     		state := 50;
@@ -24,24 +24,24 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		ERROR_C := DNS_CLIENT.ERROR;
     		ERROR_T := BYTE#01;
     		state   := 100;
-    	END_IF
+    	END_IF;
 
-    50:   	(* Teil 1: http://query.yahooapis.com/v1/public/yql?q=select%20units,wind,atmosphere,astronomy,LOCATION%20from%20weather.forecast%20where%20woeid=551801%20AND%20u=%27c%27
+    50:   	(* Teil 1: http://query.yahooapis.com/v1/public/yql?q=select%20units,wind,atmosphere,astronomy,location%20from%20weather.forecast%20where%20woeid=551801%20AND%20u=%27c%27
                  Teil 2: http://query.yahooapis.com/v1/public/yql?q=select%20item%20from%20weather.forecast%20where%20woeid=551801%20AND%20u=%27c%27 *)
 
     	IF cycle = 0 THEN
-      		URL_DATA.QUERY := 'q=select%20units,wind,atmosphere,astronomy,LOCATION%20from%20weather.forecast%20where%20woeid='; (* Teil 1 - infos *)
+      		URL_DATA.QUERY := 'q=select%20units,wind,atmosphere,astronomy,location%20from%20weather.forecast%20where%20woeid='; (* Teil 1 - infos *)
       	ELSE
       		URL_DATA.QUERY := 'q=select%20item%20from%20weather.forecast%20where%20woeid='; (* Teil 2 - Tagesdaten *)
-      	END_IF
+      	END_IF;
 
-      	URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,LOCATION); (* LOCATION *)
+      	URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,LOCATION); (* location *)
 
       	IF UNITS THEN
         		URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,'%20and%20u=%27f%27'); (* fahrenheit *)
       	ELSE
         		URL_DATA.QUERY := CONCAT(URL_DATA.QUERY,'%20and%20u=%27c%27'); (* celsius *)
-      	END_IF
+      	END_IF;
 
       	URL_DATA.PATH := '/v1/public/yql';
 
@@ -59,7 +59,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		ERROR_C := HTTP_GET.ERROR;
     		ERROR_T := BYTE#02;
     		state := 100;
-    	END_IF
+    	END_IF;
 
     80: XML_READER(CTRL:=CTRL,BUF:=R_BUF.BUFFER); (* XML Daten seriell lesen *)
     	IF CTRL.TYP < 98 THEN (* nur auswerten wenn kein Watchdog durchlauf *)
@@ -67,12 +67,12 @@ FUNCTION_BLOCK YAHOO_WEATHER
     		value_real := 0.0;
     		(* automatische konvertierung in real und int ausführen *)
     		IF LEN(CTRL.VALUE) <= 20 THEN
-    			v_real:=FLOAT_TO_REAL(FLT:=CTRL.VALUE);
-    			IF CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten kann Twincat 2.x abstürzen !!!!  *)
+    			v_real:=OSCAT_BASIC.FLOAT_TO_REAL(FLT:=CTRL.VALUE);
+    			IF OSCAT_BASIC.CHK_REAL(v_real) = 0 THEN (* !!! prüft auf gültigen REAL Wert, ansonsten kann Twincat 2.x abstürzen !!!!  *)
     				value_real := v_real;
     				value_int := REAL_TO_INT(value_real);
-    			END_IF
-    		END_IF
+    			END_IF;
+    		END_IF;
 
     		(*####################  DEBUG-MESSAGE  ###################################*)
     		(*IF _debug_enable THEN
@@ -82,11 +82,11 @@ FUNCTION_BLOCK YAHOO_WEATHER
     			LOG_CL.PRINTF[4] := CTRL.ELEMENT;
     			LOG_CL.PRINTF[5] := CTRL.VALUE;
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
     		(* Antwortdaten stehen noch nicht bereit -> Warten und Abfrage wiederholen *)
-    		IF CTRL.COUNT = 7 AND (CTRL.VALUE = '0')  THEN
+    		IF ctrl.COUNT = 7 AND (ctrl.VALUE = '0')  THEN
 
     			repeat_count := repeat_count + USINT#1;
 
@@ -108,12 +108,12 @@ FUNCTION_BLOCK YAHOO_WEATHER
     					LOG_CL.PRINTF[2] := INT_TO_STRING(cycle);
     					LOG_CL.PRINTF[3] := USINT_TO_STRING(repeat_count);
     					LOG_MSG();
-    				END_IF*)
+    				END_IF;*)
     				(*########################################################################*)
 
-    			END_IF
+    			END_IF;
 
-    		END_IF
+    		END_IF;
 
     		IF cycle = 0 THEN
     	      		(* ------------ Teil 1 --------------*)
@@ -134,7 +134,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     	        		039: YW.unit_pressure := CTRL.VALUE;
     	        		040: YW.unit_speed := CTRL.VALUE;
     	        		041: YW.unit_temperature := CTRL.VALUE;
-    	      		END_CASE
+    	      		END_CASE;
     	    	ELSE
     	      		(* ------------ Teil 2 --------------*)
     	      		CASE UINT_TO_INT(CTRL.COUNT) OF
@@ -164,12 +164,12 @@ FUNCTION_BLOCK YAHOO_WEATHER
     					3:	YW.FORECAST_DAY[day_idx].HIGH_TEMP := value_int;
     					4:	YW.FORECAST_DAY[day_idx].LOW_TEMP := value_int;
     					5:	YW.FORECAST_DAY[day_idx].TEXT := CTRL.VALUE;
-    	      	  		END_CASE
-    	      		END_CASE
-    	    	END_IF
+    	      	  		END_CASE;
+    	      		END_CASE;
+    	    	END_IF;
     	ELSIF CTRL.TYP = 99 THEN (* EXIT - letztes Element gelesen *)
     		state := 100;
-    	END_IF
+    	END_IF;
 
     100:	(* UNLOCK HTTP DATA *)
     	IF (NOT HTTP_GET.DONE) THEN
@@ -187,8 +187,8 @@ FUNCTION_BLOCK YAHOO_WEATHER
     	    		state := 0;
     	    		BUSY  := FALSE;
     	    		DONE := ERROR_T = BYTE#0;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     110: (* REPEAT REQUEST - WAIT TIME *)
     	IF tx > repeat_tx + repeat_wait_time THEN
@@ -199,15 +199,15 @@ FUNCTION_BLOCK YAHOO_WEATHER
     			LOG_CL.PRINTF[2] := INT_TO_STRING(cycle);
     			LOG_CL.PRINTF[3] := USINT_TO_STRING(repeat_count);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(*########################################################################*)
 
     		repeat_request := FALSE;
     		state := 50;
 
-    	END_IF
+    	END_IF;
 
-    END_CASE
+    END_CASE;
 
     (* ---------------- DNS --------------- *)
     DNS_CLIENT(	IP_C:=IP_C,
@@ -250,13 +250,13 @@ FUNCTION_BLOCK YAHOO_WEATHER
     (*####################  DEBUG-MESSAGE  ###################################*)
     (*IF _debug_enable THEN
     	IF state <> _debug_state_last THEN
-    		LOG_CL.NEW_MSG := 'YW-step: /last ~1 /New ~2';
+    		LOG_CL.NEW_MSG := 'yw-step: /last ~1 /New ~2';
     		LOG_CL.PRINTF[1] := INT_TO_STRING(_debug_state_last);
     		LOG_CL.PRINTF[2] := INT_TO_STRING(state);
     		LOG_MSG();
     		_debug_state_last := state;
-    	END_IF
-    END_IF*)
+    	END_IF;
+    END_IF;*)
     (*########################################################################*)
 
     (* revision history
@@ -267,7 +267,7 @@ FUNCTION_BLOCK YAHOO_WEATHER
     	YAHOO_WEATHER_DATA
 
     ks	24. sep. 2010	rev 1.2
-    	new URL-LOCATION-parameter and REAL_CHECK (TwinCat BUG) 
+    	new URL-Location-parameter and REAL_CHECK (TwinCat BUG) 
 
     ks	04. may. 2011	rev 1.3
     	neue elemente:  CUR_CONDITIONS_ICON, FORCAST_TODAY_ICON, FORCAST_TOMORROW_ICON

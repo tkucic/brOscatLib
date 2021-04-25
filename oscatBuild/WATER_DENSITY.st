@@ -3,7 +3,7 @@ FUNCTION WATER_DENSITY
     T2 := T * T;
     T4 := T2 * T2;
     WATER_DENSITY := (a0 + a1*T + a2*T2 + a3*T2*T + a4*T4 + a5*T4*T) / (1.0 + b*T);
-    IF SAT THEN WATER_DENSITY := WATER_DENSITY - 0.004612 + 0.000106 * T; END_IF
+    IF sat THEN WATER_DENSITY := WATER_DENSITY - 0.004612 + 0.000106 * T; END_IF;
 
 
     (* revision history

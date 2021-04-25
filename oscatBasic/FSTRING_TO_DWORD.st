@@ -2,17 +2,17 @@ FUNCTION FSTRING_TO_DWORD
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=162*)
     IF LEFT(IN, 2) = '2#' THEN
     	(* we need to convert binary *)
-    	FSTRING_TO_DWORD := BIN_TO_DWORD(RIGHT(IN, LEN(IN) - 2));
-    ELSIF LEFT(IN, 2) = '8#' THEN
+    	FSTRING_TO_DWORD := BIN_TO_DWORD(RIGHT(in, LEN(in) - 2));
+    ELSIF LEFT(in, 2) = '8#' THEN
     	(* weneed to convert octals *)
-    	FSTRING_TO_DWORD := OCT_TO_DWORD(RIGHT(IN, LEN(IN) - 2));
-    ELSIF LEFT(IN, 3) = '16#' THEN
+    	FSTRING_TO_DWORD := OCT_TO_DWORD(RIGHT(in, LEN(in) - 2));
+    ELSIF LEFT(in, 3) = '16#' THEN
     	(* we need to convert hexadecimal *)
-    	FSTRING_TO_DWORD := HEX_TO_DWORD(RIGHT(IN, LEN(IN) - 3));
+    	FSTRING_TO_DWORD := HEX_TO_DWORD(RIGHT(in, LEN(in) - 3));
     ELSE
     	(* we assume decimal representation *)
-    	FSTRING_TO_DWORD := DEC_TO_DWORD(CLEAN(IN,'0123456789'));
-    END_IF
+    	FSTRING_TO_DWORD := DEC_TO_DWORD(CLEAN(in,'0123456789'));
+    END_IF;
 
 
     (* revision histroy

@@ -3,21 +3,21 @@ FUNCTION_BLOCK FLOW_CONTROL
     STATUS := 100;
     IF RST THEN
     	Q := FALSE;
-    	timer(RST := TRUE);
+    	timer(rst := TRUE);
     	timer.RST := FALSE;
     	STATUS := 103;
     ELSIF ENQ THEN
     	IF IN THEN
-    		STATUS := 101;
-    	END_IF
+    		status := 101;
+    	END_IF;
     	IF REQ THEN
     		(* timer will generate a timed pulse after TP goes high *)
     		timer.PT1 := T_AUTO;
     		timer.PTD := T_DELAY;
     		timer.IN := TRUE;
     		STATUS := 102;
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
 
     (* set output and run timer *)

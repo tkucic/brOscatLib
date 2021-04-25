@@ -1,19 +1,19 @@
 FUNCTION_BLOCK BLIND_CONTROL_S
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=78*)
     
-    (* STATUS definition
-    	121 = manual UP				manual UP operation UP = true and DN = false
+    (* status definition
+    	121 = manual up				manual up operation UP = true and DN = false
     	122 = manual down			manual down operation DN = true and UP = false
     	123 = auto positioning		automatic mode DN = UP = TRUE
     	124 = revert					revert from top or bottom
     	125 = nothing					default input for S_IN
     	127 = Lockout time			lockout between directional change
-    	128 = calibrate				calibrate after power UP
+    	128 = calibrate				calibrate after power up
     	129 = extend					extend runtime at top or bottom for continuous calibration
     *)
 
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := DWORD_TO_TIME(OSCAT_BASIC.T_PLC_MS());
 
     (* check inputs and start state machine *)
     IF UP  AND NOT DN THEN
@@ -28,19 +28,19 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	(* manual standby mode *)
     	rmp.IN := PI;
     	STATUS := S_IN;
-    END_IF
+    END_IF;
 
-    (* simulate POS output *)
+    (* simulate pos output *)
     rmp(E := UP OR DN, TR := T_UP, TF := T_DN, TL := T_LOCKOUT, OUT := POS);
 
     (* state machine *)
     CASE STATUS OF
-    	0:		(* power UP init *)
+    	0:		(* power up init *)
     		last := tx;
     		PI_last := PI XOR BYTE#255;
     		STATUS := 128;		(* calibrate *)
 
-    	121: 	(* manual UP *)
+    	121: 	(* manual up *)
     		MU := TRUE;
     		MD := FALSE;
     		IF POS >= (BYTE#255 - EXT_TRIG) THEN
@@ -48,7 +48,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     			POS := 255;
     			last := tx;
     			STATUS := 129;	(* extend *)
-    		END_IF
+    		END_IF;
 
     	122:	(* manual down *)
     		MD := TRUE;
@@ -58,7 +58,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     			POS := 0;
     			last := tx;
     			STATUS := 129;	(* extend *)
-    		END_IF
+    		END_IF;
 
     	123:	(* auto positioning *)
     		MD := rmp.DN;
@@ -77,8 +77,8 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     				STATUS := 129;	(* extend *)
     			ELSE
     				STATUS := S_IN;
-    			END_IF
-    		END_IF
+    			END_IF;
+    		END_IF;
 
     	124:	(* revert from top or bottom *)
     		MD := rmp.DN;
@@ -87,12 +87,12 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     (*		IF POS = rmp.IN THEN  *)
     			PI_last := PI;
     			STATUS := S_IN;
-    		END_IF
+    		END_IF;
 
     	127:	(* lockout time *)
     		IF (tx - last) >= T_LOCKOUT THEN
     				STATUS := S_IN;
-    		END_IF
+    		END_IF;
 
     	128:	(* calibration *)
     		MU := TRUE;
@@ -102,7 +102,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     			MU := FALSE;
     			last := tx;
     			STATUS := 127;	(* lockout *)
-    		END_IF
+    		END_IF;
 
     	129: (* extend mode *)
     		IF (tx - last) >= T_EXT THEN
@@ -110,7 +110,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     			MD := FALSE;
     			last := tx;
     			STATUS := 127;	(* lockout *)
-    		END_IF
+    		END_IF;
 
     ELSE
     	MU := FALSE;
@@ -122,13 +122,13 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	ELSIF POS = 0 AND RU THEN
     		rmp.IN := R_POS_BOT;
     		STATUS := 124;	(* revert *)
-    	ELSIF POS = 255 AND RD THEN
+    	ELSIF pos = 255 AND RD THEN
     		rmp.IN := R_POS_TOP;
     		STATUS := 124;	(* revert *)
     	ELSE
     		STATUS := S_IN;
-    	END_IF
-    END_CASE
+    	END_IF;
+    END_CASE;
 
 
 

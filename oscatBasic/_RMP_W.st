@@ -3,27 +3,27 @@ FUNCTION_BLOCK _RMP_W
     tx := T_PLC_MS();
     IF E AND init THEN
     	(* we need to set tl = tx when direction changes *)
-    	IF DIR XOR last_dir THEN
+    	IF dir XOR last_dir THEN
     	 tl := tx;
-    	 last_dir := DIR;
-    	END_IF
+    	 last_dir := dir;
+    	END_IF;
     	(* check_elapsed time and calculate only if necessary *)
-    	IF TR > t#0s THEN
+    	IF tr > t#0s THEN
     		step := DWORD_TO_DINT(SHL(tx-tl, 16) / TIME_TO_DWORD(TR));
     	ELSE
     		step := 65535;
-    	END_IF
+    	END_IF;
     	IF step > 0 THEN
     		(* perform the step on the ramp *)
     		tl := tx;
     		(* calculate the step response *)
-    		IF NOT DIR THEN step := - step; END_IF
-    		RMP := DINT_TO_WORD(LIMIT(0, WORD_TO_DINT(RMP) + step, 65535));
-    	END_IF
+    		IF NOT dir THEN step := - step; END_IF;
+    		rmp := DINT_TO_WORD(LIMIT(0, WORD_TO_DINT(rmp) + step, 65535));
+    	END_IF;
     ELSE
     	tl := tx;
     	init := TRUE;
-    END_IF
+    END_IF;
 
 
     (* revison history

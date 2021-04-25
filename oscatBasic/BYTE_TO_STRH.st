@@ -3,30 +3,30 @@ FUNCTION BYTE_TO_STRH
     (* read pointer to output string *)
     PT := ADR(BYTE_TO_STRH);
     (* calculate high order hex value *)
-    temp := SHR(IN,4);
+    temp := SHR(in,4);
     (* convert value to hex character *)
-    IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
+    IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF;
     (* write friat character to output string *)
-    PT := temp;
+    PT^ := temp;
     (* calculate low order hex value *)
-    temp := IN AND 2#00001111;
-    IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
+    temp := in AND 2#00001111;
+    IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF;
     (* increment pointer and wirte low order character *)
-    PT := PT + 1;
-    PT := temp;
+    pt := pt + 1;
+    pt^ := temp;
     (* set pointer at the end of the output string and close the string with 0 *)
-    PT := PT + 1;
-    PT:= 0;
+    pt := pt + 1;
+    pt^:= 0;
 
 
     (* code before rev 1.2
     FOR i := 1 TO 2 DO
-    	X := IN AND 2#1111;
-    	IF X <= 9 THEN X := X + 48; ELSE X := X + 55; END_IF
+    	X := in AND 2#1111;
+    	IF X <= 9 THEN X := X + 48; ELSE X := X + 55; END_IF;
     	Cx := CHR(X);
     	temp := CONCAT(Cx, temp);
-    	IN := SHR(IN,4);
-    END_FOR
+    	in := SHR(in,4);
+    END_FOR;
     BYTE_TO_STRH := temp;
     *)
 

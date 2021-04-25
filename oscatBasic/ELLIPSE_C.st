@@ -1,6 +1,6 @@
 FUNCTION ELLIPSE_C
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=106*)
-    ELLIPSE_C := cPI * (3.0 * (R1+R2) - SQRT((3.0 * R1 + R2) * (3.0 * R2 + R1)));
+    ELLIPSE_C := math.PI * (3.0 * (R1+R2) - SQRT((3.0 * r1 + R2) * (3.0 * r2 + r1)));
 
     (* revision histroy
     hm	16. oct 2007	rev 1.0

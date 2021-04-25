@@ -1,30 +1,30 @@
 FUNCTION_BLOCK FT_INT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=400*)
-    IF RST THEN
-    	OUT := 0.0;
+    IF rst THEN
+    	out := 0.0;
     ELSE
-    	INTeg(X := IN, E := RUN, K := K, Y := OUT);
-    END_IF
+    	integ(X := IN, E := RUN, K := K, Y := out);
+    END_IF;
 
     (* limit the outputs *)
-    IF OUT >= OUT_MAX THEN
-    	OUT := OUT_MAX;
+    IF out >= OUT_MAX THEN
+    	out := out_max;
     	LIM := TRUE;
-    ELSIF OUT <= OUT_MIN THEN
-    	OUT := OUT_MIN;
-    	LIM := TRUE;
+    ELSIF out <= out_min THEN
+    	out := out_min;
+    	lim := TRUE;
     ELSE
-    	LIM := FALSE;
-    END_IF
+    	lim := FALSE;
+    END_IF;
 
 
     (*
     hm 13.12.2006	rev 1.1
     	changed to "trapezregel" which increases accuracy
-    	before OUT := OUT + IN * time new: OUT := OUT + (IN + in_last) / 2 * time
+    	before out := out + in * time new: out := out + (in + in_last) / 2 * time
 
     hm 15.1.2007		rev 1.2
-    	added default for K to be 1.
+    	added default for k to be 1.
 
     hm	15.9.2007		rev 1.3
     	replaced time() with T_PLC_US for compatibility and performance reason
@@ -38,7 +38,7 @@ FUNCTION_BLOCK FT_INT
     	changed code for better performance
 
     hm	5. jan 2008		rev 1.6
-    	further improvements IN performance
+    	further improvements in performance
 
     hm	8. feb 2008		rev 1.7
     	deleted limits +/- 1000 now limit is the range of real
@@ -47,7 +47,7 @@ FUNCTION_BLOCK FT_INT
     	deleted unusfull output ET
 
     hm	13. mar 2008	rev 1.8
-    	changed preset value OUT_MIN to -1e37.
+    	changed preset value out_min to -1e37.
     	stop integrator at the limits.
 
     hm	16. mar 2008	rev 1.9
@@ -55,7 +55,7 @@ FUNCTION_BLOCK FT_INT
 
     hm	2. jun. 2008	rev 2.0
     	rewritten with clear code
-    	limits can now be set without RUN
+    	limits can now be set without run
 
     hm	3. nov. 2008	rev 2.1
     	optimized code using INTEGRATE and LIMX

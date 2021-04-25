@@ -1,6 +1,6 @@
 FUNCTION WORD_TO_RANGE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=316*)
-    WORD_TO_RANGE := (HIGH - LOW) * WORD_TO_REAL(X) * 0.00001525902189669640 + LOW;
+    WORD_TO_RANGE := (high - low) * WORD_TO_REAL(X) * 0.00001525902189669640 + low;
 
 
     (* revision history

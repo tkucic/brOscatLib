@@ -10,7 +10,7 @@ FUNCTION DAYS_IN_MONTH
     		306..335:	DAYS_IN_MONTH := 30;
     	ELSE
     		DAYS_IN_MONTH := 31;
-    	END_CASE
+    	END_CASE;
     ELSE
     	CASE DAYS_IN_MONTH OF
     		32..59	:	DAYS_IN_MONTH := 28;
@@ -20,8 +20,8 @@ FUNCTION DAYS_IN_MONTH
     		305..334:	DAYS_IN_MONTH := 30;
     	ELSE
     		DAYS_IN_MONTH := 31;
-    	END_CASE
-    END_IF
+    	END_CASE;
+    END_IF;
 
 
 

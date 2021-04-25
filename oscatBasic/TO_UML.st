@@ -1,6 +1,6 @@
 FUNCTION TO_UML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180*)
-    CASE IN OF
+    CASE in OF
     	196:	(* Ä *)
     		TO_UML := 'Ae';
     	214:	(* Ö *)
@@ -17,7 +17,7 @@ FUNCTION TO_UML
     		TO_UML := 'ue';
     ELSE
     	TO_UML := CHR_TO_STRING(IN);
-    END_CASE
+    END_CASE;
 
 
 

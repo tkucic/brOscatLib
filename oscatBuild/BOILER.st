@@ -1,70 +1,70 @@
 FUNCTION_BLOCK BOILER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=428*)
     (* read sensors and check for valid data *)
-    IF T_UPPER > T_PROTECT_HIGH THEN
-    	STATUS := 1;
-    	HEAT := FALSE;
-    	ERROR := TRUE;
-    ELSIF T_UPPER < T_PROTECT_LOW THEN
-    	STATUS := 2;
-    	HEAT :=	TRUE;
-    	ERROR := TRUE;
-    ELSIF T_LOWER > T_PROTECT_HIGH AND T_LOWER_ENABLE THEN
-    	STATUS := 3;
-    	HEAT := FALSE;
-    	ERROR := TRUE;
-    ELSIF T_LOWER < T_PROTECT_LOW AND T_LOWER_ENABLE THEN
-    	STATUS := 4;
-    	HEAT := TRUE;
-    	ERROR := TRUE;
-    ELSIF NOT PRESSURE THEN
-    	STATUS := 5;
-    	HEAT := FALSE;
-    	ERROR := TRUE;
-    ELSIF REQ_1 OR REQ_2 OR ENABLE OR BOOST THEN
-    	ERROR := FALSE;
+    IF t_upper > t_protect_high THEN
+    	status := 1;
+    	heat := FALSE;
+    	error := TRUE;
+    ELSIF t_upper < t_protect_low THEN
+    	status := 2;
+    	heat :=	TRUE;
+    	error := TRUE;
+    ELSIF t_lower > T_protect_high AND t_lower_enable THEN
+    	status := 3;
+    	heat := FALSE;
+    	error := TRUE;
+    ELSIF t_lower < t_protect_low AND t_lower_enable THEN
+    	status := 4;
+    	heat := TRUE;
+    	error := TRUE;
+    ELSIF NOT pressure THEN
+    	status := 5;
+    	heat := FALSE;
+    	error := TRUE;
+    ELSIF req_1 OR req_2 OR enable OR boost THEN
+    	error := FALSE;
 
-    	(* determine if HEAT needs to be turned on *)
-    	IF BOOST AND NOT edge_ AND T_UPPER < T_UPPER_MAX THEN
-    		STATUS := 101;
-    		HEAT := TRUE;
+    	(* determine if heat needs to be turned on *)
+    	IF boost AND NOT edge AND t_upper < t_upper_max THEN
+    		status := 101;
+    		heat := TRUE;
     		boost_mode := TRUE;
-    	ELSIF ENABLE AND T_UPPER < T_UPPER_MIN THEN
-    		STATUS := 102;
-    		HEAT := TRUE;
-    	ELSIF REQ_1 AND T_UPPER < T_REQUEST_1 THEN
-    		STATUS := 103;
-    		HEAT := TRUE;
-    	ELSIF REQ_2 AND T_UPPER < T_REQUEST_2 THEN
-    		STATUS := 104;
-    		HEAT := TRUE;
-    	END_IF
+    	ELSIF enable AND t_upper < T_upper_min THEN
+    		status := 102;
+    		heat := TRUE;
+    	ELSIF req_1 AND t_upper < T_request_1 THEN
+    		status := 103;
+    		heat := TRUE;
+    	ELSIF req_2 AND t_upper < t_request_2 THEN
+    		status := 104;
+    		heat := TRUE;
+    	END_IF;
 
     	(* determine the shut off temperature *)
-    	IF HEAT THEN
-    		IF (ENABLE OR boost_mode) THEN
+    	IF heat THEN
+    		IF (enable OR boost_mode) THEN
     			flag_0 := TRUE;
-    			IF T_LOWER_ENABLE AND T_LOWER > T_LOWER_MAX THEN
+    			IF T_lower_enable AND T_lower > T_lower_max THEN
     				flag_0 := boost_mode := FALSE;
-    			ELSIF NOT T_LOWER_ENABLE AND T_UPPER > T_UPPER_MAX THEN
+    			ELSIF NOT T_lower_enable AND T_upper > T_upper_max THEN
     				flag_0 := boost_mode := FALSE;
-    			END_IF
+    			END_IF;
     		ELSE
     			flag_0 := FALSE;
-    		END_IF
-    		flag_1 := (REQ_1 AND T_UPPER > T_REQUEST_1 + T_REQUEST_HYS) AND REQ_1;
-    		flag_2 := (REQ_2 AND T_UPPER > T_REQUEST_2 + T_REQUEST_HYS) AND REQ_2;
+    		END_IF;
+    		flag_1 := (req_1 AND T_upper > T_request_1 + T_request_hys) AND req_1;
+    		flag_2 := (req_2 AND T_upper > T_request_2 + T_request_hys) AND req_2;
 
-    		(* shut off HEAT if no longer needed *)
-    		HEAT := flag_0 OR flag_1 OR flag_2;
-    		IF HEAT = FALSE THEN STATUS := 100; END_IF
-    	END_IF
+    		(* shut off heat if no longer needed *)
+    		heat := flag_0 OR flag_1 OR flag_2;
+    		IF heat = FALSE THEN status := 100; END_IF;
+    	END_IF;
     ELSE
-    	STATUS := 100;
-    	HEAT := FALSE;
-    	ERROR := FALSE;
-    END_IF
-    edge_ := BOOST;
+    	status := 100;
+    	heat := FALSE;
+    	error := FALSE;
+    END_IF;
+    edge := boost;
 
 
     (* revision history

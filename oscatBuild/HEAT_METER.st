@@ -1,40 +1,40 @@
 FUNCTION_BLOCK HEAT_METER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=436*)
-    IF RST THEN
-    	int1(RST := TRUE);
-    	int1.RST := FALSE;
+    IF rst THEN
+    	int1(rst := TRUE);
+    	int1.rst := FALSE;
     	C := 0.0;
     	Y := 0.0;
-    ELSIF E THEN
-    	x := (WATER_DENSITY(SEL(RETURN_METER, TF, TR), FALSE) * (WATER_ENTHALPY(TF) - WATER_ENTHALPY(TR)) * (1.0 - CONTENT) + CP * DENSITY * CONTENT * (TF-TR));
-    END_IF
+    ELSIF e THEN
+    	X := (WATER_DENSITY(SEL(return_meter, TF, TR), FALSE) * (WATER_ENTHALPY(TF) - WATER_ENTHALPY(TR)) * (1.0 - content) + CP * Density * content * (TF-TR));
+    END_IF;
 
     (* integrate or add consumption *)
-    int1(run := NOT PULSE_MODE AND E, in := x * LPH * 2.77777777777E-4);
-    IF PULSE_MODE THEN
-    	IF NOT edge_ AND E THEN Y := Y + x * LPH; END_IF
+    int1(run := NOT pulse_mode AND e, in := X * LPH * 2.77777777777E-4);
+    IF pulse_mode THEN
+    	IF NOT edge AND E THEN Y := Y + X * LPH; END_IF;
     ELSE
     	Y := int1.Out;
-    END_IF
+    END_IF;
 
-    (* store the value of E *)
-    edge_ := E;
+    (* store the value of e *)
+    edge := e;
 
     (* read system_time *)
-    tx := T_PLC_MS();
+    tx := OSCAT_BASIC.T_PLC_MS();
 
     (* only init at startup necessary *)
     IF NOT init THEN
     	init := TRUE;
     	last := tx;
-    END_IF
+    END_IF;
 
     (* calculate the current consumption *)
-    IF (tx - last >= TIME_TO_DWORD(AVG_TIME)) AND (AVG_TIME > T#0s) THEN
+    IF (tx - last >= TIME_TO_DWORD(AVG_TIME)) AND (avg_time > T#0s) THEN
     	last := tx;
-    	C := (Y - y_last) * 3.6E6 / DWORD_TO_REAL(TIME_TO_DWORD(AVG_TIME));
-    	y_last := Y;
-    END_IF
+    	C := (Y - Y_last) * 3.6E6 / DWORD_TO_REAL(TIME_TO_DWORD(AVG_TIME));
+    	Y_last := Y;
+    END_IF;
 
 
 
@@ -43,7 +43,7 @@ FUNCTION_BLOCK HEAT_METER
     	original version
 
     hm	24. dec. 2007	rev 1.1
-    	added config variable RETURN_METER
+    	added config variable return_meter
     	added output C for current consumption
 
     hm	6. mar. 2008	rev 1.2
@@ -72,7 +72,7 @@ FUNCTION_BLOCK HEAT_METER
     	output C is now calculated correctly
 
     hm	23. jan. 2011	rev 1.10
-    	corrected an error with PULSE_MODE
+    	corrected an error with pulse_mode
     *)
 
 END_FUNCTION_BLOCK

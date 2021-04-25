@@ -5,8 +5,8 @@ FUNCTION TANH
     ELSIF X < -20.0 THEN
     	TANH := -1.0;
     ELSE
-    	TANH := 1.0 - 2.0 / (EXP(2.0 * X) + 1.0);
-    END_IF
+    	TANH := 1.0 - 2.0 / (EXP(2.0 * x) + 1.0);
+    END_IF;
 
 
     (* revision hisdtory

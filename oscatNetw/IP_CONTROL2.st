@@ -5,30 +5,30 @@ FUNCTION_BLOCK IP_CONTROL2
     	IF IP_C.FIFO.ID > BYTE#0 THEN
     		debug_index := IP_C.FIFO.NR;
     		debug_ID := BYTE_TO_INT(IP_C.FIFO.X[debug_index]);
-    	END_IF
-    END_IF*)
+    	END_IF;
+    END_IF;*)
     (* -----------------------------------------------------------------------------*)
 
     (* read system time *)
-    tx := T_PLC_MS();
+    tx := OSCAT_BASIC.T_PLC_MS();
 
-    IF IP_C.c_port = 0 THEN
-    	IP_C.c_port := PORT; (* uebergebenen PORT durch parametrierten PORT ersetzen *)
-    END_IF
-    IF IP_C.c_ip = 0 AND IP_C.c_mode < 4 THEN
-    	IP_C.c_ip := IP; (* uebergebene IP durch paramtrierte IP ersetzen *)
-    END_IF
+    IF IP_C.C_PORT = 0 THEN
+    	IP_C.C_PORT := PORT; (* uebergebenen PORT durch parametrierten PORT ersetzen *)
+    END_IF;
+    IF IP_C.C_IP = 0 AND IP_C.C_MODE < 4 THEN
+    	IP_C.C_IP := IP; (* uebergebene IP durch paramtrierte IP ersetzen *)
+    END_IF;
 
-    new_connection := c_ip <> IP_C.c_ip OR c_mode <> IP_C.c_mode OR c_port <> IP_C.c_port; (* neue Verbindungs erwünscht ? *)
-    c_enable := IP_C.c_enable AND NOT new_connection;
+    new_connection := c_ip <> IP_C.C_IP OR c_mode <> IP_C.C_MODE OR c_port <> IP_C.C_PORT; (* neue Verbindungs erwünscht ? *)
+    c_enable := IP_C.C_ENABLE AND NOT new_connection;
 
-    IF IP_C.c_enable AND IP_C.ERROR = 0 AND state = STOP THEN (* Freigabe,kein Fehler,kein socket offen *)
-    	c_ip   := IP_C.c_ip;
-    	c_mode := IP_C.c_mode;
-    	c_port := IP_C.c_port;
+    IF IP_C.C_ENABLE AND IP_C.ERROR = 0 AND state = STOP THEN (* Freigabe,kein Fehler,kein Socket offen *)
+    	c_ip   := IP_C.C_IP;
+    	c_mode := IP_C.C_MODE;
+    	c_port := IP_C.C_PORT;
     	plc_841 := SYSLIBSOCKETS_OPTION.1; (* Bit 1 = WAGO 750-841 *)
     	plc_881 := SYSLIBSOCKETS_OPTION.2; (* Bit 1 = WAGO 750-881 *)
-    	udp_mode := c_mode.0; (* Mode 1,3,5 = udp *)
+    	udp_mode := C_MODE.0; (* Mode 1,3,5 = udp *)
 
     	error_time := TIME_TO_DWORD(MAX(T#200ms,TIME_OUT));
     	IP_C.TIME_RESET := TRUE; (* Alle Timer ruecksetzen *)
@@ -36,26 +36,26 @@ FUNCTION_BLOCK IP_CONTROL2
     	r_max_size := SIZEOF(R_BUF.BUFFER);
     	s_max_size := SIZEOF(S_BUF.BUFFER);
 
-    	IF c_mode.0 THEN (* Mode: 1,3,5 = UDP CLIENT/SERVER *)
+    	IF C_MODE.0 THEN (* Mode: 1,3,5 = UDP CLIENT/SERVER *)
     		state := UDP_INIT;
-    	ELSIF c_mode = 0 THEN (* Mode: 0 = TCP CLIENT *)
+    	ELSIF C_MODE = 0 THEN (* Mode: 0 = TCP CLIENT *)
     		state := TC_INIT;
     	ELSE
     		state := TS_INIT; (* Mode: 2,4 = TCP SERVER *)
-    	END_IF
+    	END_IF;
 
     	(* ---------------------- Debug-Message ----------------------------*)
     	(*IF _debug_enable THEN
     		LOG_CL.NEW_MSG := 'IP_CON: MODE ~1 / IP ~2 / PORT ~3 /ID ~6';
-    		LOG_CL.PRINTF[1] := BYTE_TO_STRING(c_mode);
+    		LOG_CL.PRINTF[1] := BYTE_TO_STRING(C_MODE);
     		LOG_CL.PRINTF[2] := IP4_TO_STRING(c_ip);
     		LOG_CL.PRINTF[3] := WORD_TO_STRING(c_port);
     		LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     		LOG_MSG();
-    	END_IF*)
+    	END_IF;*)
     	(* -----------------------------------------------------------------------------*)
 
-    END_IF
+    END_IF;
 
     (* ---------------------- Debug-Message ----------------------------*)
     (*IF  _debug_enable THEN
@@ -65,8 +65,8 @@ FUNCTION_BLOCK IP_CONTROL2
     		LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     		LOG_MSG();
     		state_last := state;
-    	END_IF
-    END_IF*)
+    	END_IF;
+    END_IF;*)
     (* -----------------------------------------------------------------------------*)
 
     IF IP_C.TIME_RESET THEN (* Alle Timer ruecksetzen *)
@@ -78,7 +78,7 @@ FUNCTION_BLOCK IP_CONTROL2
     	c_status := BYTE#0; (* letzten Connect Fehler rücksetzen *)
     	s_status := BYTE#0; (* letzten Send Fehler rücksetzen *)
     	r_status := BYTE#0; (* letzten Receive Fehler rücksetzen *)
-    END_IF
+    END_IF;
 
     (* ---------------------------------------------- *)
 
@@ -103,12 +103,12 @@ FUNCTION_BLOCK IP_CONTROL2
     			ELSE
     				c_status := 2; (* SysSockBind failed *)
     				state := C_CLOSE;
-    			END_IF
+    			END_IF;
     		ELSE
     			c_ready := TRUE; (* Connected *)
     			state:= C_WAIT;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     (* ---------------------------------------------- *)
 
@@ -120,14 +120,14 @@ FUNCTION_BLOCK IP_CONTROL2
     	ELSE
     		IF plc_841 OR plc_881 THEN
     			SysSockSetOption(socket,6,SOCKET_TCP_NODELAY, ADR(dint_true), SIZEOF(dint_true)); (* Set Push-Bit *)
-    		END_IF
+    		END_IF;
     		SysSockIoctl(socket, SOCKET_FIONBIO, ADR(dint_true)); (* NonBlocking mode *)
     		sockaddr.sin_family := SOCKET_AF_INET;
     		sockaddr.sin_port := SysSockNtohs(c_port);
     		sockaddr.sin_addr := SysSockNtohl(c_ip);
     		c_select := FALSE;
     		state := TC_CONNECT;
-    	END_IF
+    	END_IF;
 
     (* ---------------------------------------------- *)
 
@@ -142,7 +142,7 @@ FUNCTION_BLOCK IP_CONTROL2
     			ELSE
     				(* Connect durchgeführt, aber noch nicht verbunden, dann optional mit select-abfrage weitermachen *)
     				c_select := SYSLIBSOCKETS_OPTION.0; (* Bit 0 = TCP-Client - use SysSockselect *)
-    			END_IF
+    			END_IF;
     		ELSE
     			c_Timeout.tv_sec := 0;
     			c_Timeout.tv_usec := 0;
@@ -151,14 +151,14 @@ FUNCTION_BLOCK IP_CONTROL2
     			IF SysSockSelect(SOCKET_FD_SETSIZE,0,ADR(c_fdWrite),0, ADR(c_Timeout)) > 0 THEN
     				c_ready := TRUE; (* Connected *)
     				state:= C_WAIT;
-    			END_IF
-    		END_IF
-    	END_IF
+    			END_IF;
+    		END_IF;
+    	END_IF;
 
     (* ---------------------------------------------- *)
 
     TS_INIT: (* TCP-SERVER (PASSIV) *)
-    	server_socket := SysSockCreate(SOCKET_AF_INET, SOCKET_STREAM, SOCKET_IPPROTO_IP); (* Create socket *)
+    	server_socket := SysSockCreate(SOCKET_AF_INET, SOCKET_STREAM, SOCKET_IPPROTO_IP); (* Create Socket *)
     	IF server_socket = SOCKET_INVALID THEN
     		c_status := 1; (* SysSockCreate failed *)
     		state:= C_CLOSE;
@@ -176,8 +176,8 @@ FUNCTION_BLOCK IP_CONTROL2
     		ELSE
     			SysSockIoctl(server_socket, SOCKET_FIONBIO, ADR(dint_true)); (* NonBlocking mode *)
     			state:= TS_OPEN;
-    		END_IF
-    	END_IF
+    		END_IF;
+    	END_IF;
 
     (* ---------------------------------------------- *)
 
@@ -191,14 +191,14 @@ FUNCTION_BLOCK IP_CONTROL2
     		ELSE
     			IF plc_841 OR plc_881 THEN
     				SysSockSetOption(socket, 6, SOCKET_TCP_NODELAY, ADR(dint_true), SIZEOF(dint_true)); (* Set Push-Bit *)
-    			END_IF
+    			END_IF;
     			SysSockIoctl(socket, SOCKET_FIONBIO, ADR(dint_true)); (* NonBlocking mode *)
     			c_ready := TRUE; (* Connected *)
     			state := C_WAIT;
-    		END_IF
+    		END_IF;
     	ELSIF NOT c_enable THEN (* keine freigabe mehr ? *)
     			state:= C_CLOSE;
-    	END_IF
+    	END_IF;
 
     (* ---------------------------------------------- *)
 
@@ -214,19 +214,19 @@ FUNCTION_BLOCK IP_CONTROL2
     	IF socket >= 0 THEN
     		IF (NOT plc_841) AND (NOT plc_881) THEN
     			SysSockShutdown(socket, 0); (* 870 *)
-    		END_IF
+    		END_IF;
     		SysSockClose(socket);
     		socket := SOCKET_INVALID;
     	END_IF
     	IF server_socket >= 0 THEN
     		IF (NOT plc_841) AND (NOT plc_881) THEN
     			SysSockShutdown(server_socket, 0); (* 870 *)
-    		END_IF
+    		END_IF;
     		SysSockClose(server_socket);
     		server_socket := SOCKET_INVALID;
     	END_IF
     	state:= STOP;
-    END_CASE
+    END_CASE;
 
     (* ---------------------------------------------- *)
 
@@ -239,11 +239,11 @@ FUNCTION_BLOCK IP_CONTROL2
     			LOG_CL.NEW_MSG := 'IP_CON: CONNECTED -IP_ID ~6';
     			LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------------------*)
     	ELSE
     		IP_C.C_STATE := 255; (* Verbindung ist aufgebaut *)
-    	END_IF
+    	END_IF;
     ELSE
     	IF c_ready_old THEN (* Verbindung abgebaut - negative Flanke erkannt *)
     		IP_C.C_STATE := 1;
@@ -255,17 +255,17 @@ FUNCTION_BLOCK IP_CONTROL2
     			s_req := FALSE; (* Sendefreigabe rücksetzen *)
     			S_BUF.SIZE := 0; (* Sendelänge löschen *)
     			(* IP_C.TIME_RESET := TRUE; *) (* Alle Timer ruecksetzen *)
-    		END_IF
+    		END_IF;
     		(* ---------------------- Debug-Message ----------------------------*)
     		(*IF _debug_enable THEN
     			LOG_CL.NEW_MSG := 'IP_CON: DISCONNECTED';
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------------------*)
     	ELSE
     		IP_C.C_STATE := 0; (* Verbindung ist abgebaut *)
-    	END_IF
-    END_IF
+    	END_IF;
+    END_IF;
 
     c_ready_old := c_ready;
 
@@ -277,7 +277,7 @@ FUNCTION_BLOCK IP_CONTROL2
     	IF R_BUF.SIZE >= INT_TO_UINT(r_max_size) THEN
     		R_BUF.SIZE := UINT#0;
     		r_status := 254; (* Empfangsbuffer wegen Überlauf rückgesetzt *)
-    	END_IF
+    	END_IF;
 
     	r_offset := SEL(udp_mode,UINT_TO_INT(R_BUF.SIZE),0);
     	r_count := r_max_size - r_offset;
@@ -290,11 +290,11 @@ FUNCTION_BLOCK IP_CONTROL2
     			R_BUF.SIZE := UINT#0;
     			sockaddr.sin_port := SysSockNtohs(c_port);
     			sockaddr.sin_addr := SysSockNtohl(c_ip);
-    		END_IF
+    		END_IF;
 
     	ELSE
     		bytes_received := SysSockRecv(socket, ADR(R_BUF.BUFFER[r_offset]), r_count, 0);
-    	END_IF
+    	END_IF;
 
     	(*UDP: IPC returns -1 if no data available or error occured,841 returns -1 if error occured and 0 if no data available*)
     	CASE bytes_received OF
@@ -302,12 +302,12 @@ FUNCTION_BLOCK IP_CONTROL2
     	 0: IF NOT udp_mode THEN (* TCP-Mode: socket wurde von remote geschlossen *)
     			c_status := 253;
     			c_ready := FALSE;
-    		END_IF
+    		END_IF;
     	ELSE (* daten wurden empfangen *)
       		r_time := tx; (* Receive Timer ruecksetzen *)
     		R_BUF.SIZE := INT_TO_UINT(r_offset + DINT_TO_UINT(bytes_received)); (* aktuelle buffersize eintragen *)
     		IP_C.MAILBOX[1] := IP_C.MAILBOX[1] + 1; (* Receive Info *)
-    		IF IP_C.MAILBOX[1] = 0 THEN IP_C.MAILBOX[1] := 1; END_IF
+    		IF IP_C.MAILBOX[1] = 0 THEN IP_C.MAILBOX[1] := 1; END_IF;
 
     		(* ---------------------- Debug-Message ----------------------------*)
     		(*IF _debug_enable THEN
@@ -317,11 +317,11 @@ FUNCTION_BLOCK IP_CONTROL2
     			LOG_CL.PRINTF[3] := UINT_TO_STRING(R_BUF.SIZE);
     			LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------------------*)
 
     	END_CASE
-    END_IF
+    END_IF;
 
     (* ---------------------------------------------- *)
 
@@ -337,12 +337,12 @@ FUNCTION_BLOCK IP_CONTROL2
     			(* ---------------------- Debug-Message ----------------------------*)
     			(*IF _debug_enable THEN
     				LOG_CL.NEW_MSG := 'IP_SEN INIT: TOTAL: ~1 -IP_ID ~6';
-    				LOG_CL.PRINTF[1] := INT_TO_STRING(s_total);
+    				LOG_CL.PRINTF[1] := INT_TO_STRING(S_TOTAL);
     				LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     				LOG_MSG();
-    			END_IF*)
+    			END_IF;*)
     			(* -----------------------------------------------------------------------------*)
-    		END_IF
+    		END_IF;
 
     		IF s_done OR s_start THEN (* Daten senden aktiv *)
 
@@ -355,12 +355,12 @@ FUNCTION_BLOCK IP_CONTROL2
     				(* ---------------------- Debug-Message ----------------------------*)
     				(*IF _debug_enable THEN
     					LOG_CL.NEW_MSG := 'IP_SEN DATA: POS: ~1 : SIZE: ~2 TOTAL ~3 -IP_ID ~6';
-    					LOG_CL.PRINTF[1] := INT_TO_STRING(s_cur_pos);
-    					LOG_CL.PRINTF[2] := INT_TO_STRING(s_cur_size);
-    					LOG_CL.PRINTF[3] := INT_TO_STRING(s_total);
+    					LOG_CL.PRINTF[1] := INT_TO_STRING(S_CUR_POS);
+    					LOG_CL.PRINTF[2] := INT_TO_STRING(S_CUR_SIZE);
+    					LOG_CL.PRINTF[3] := INT_TO_STRING(S_TOTAL);
     					LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     					LOG_MSG();
-    				END_IF*)
+    				END_IF;*)
     				(* -----------------------------------------------------------------------------*)
 
     				s_time := tx; (* Send Timer ruecksetzen *)
@@ -377,12 +377,12 @@ FUNCTION_BLOCK IP_CONTROL2
     					LOG_CL.NEW_MSG := 'IP_SEN FINISH -IP_ID ~6';
     					LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     					LOG_MSG();
-    				END_IF*)
+    				END_IF;*)
     				(* -----------------------------------------------------------------------------*)
-    			END_IF
-    		END_IF
-    	END_IF
-    END_IF
+    			END_IF;
+    		END_IF;
+    	END_IF;
+    END_IF;
 
     IF s_req THEN
     	s_done := FALSE;
@@ -390,14 +390,14 @@ FUNCTION_BLOCK IP_CONTROL2
     		bytes_sent := SysSockSendTo(socket, ADR(S_BUF.BUFFER[s_cur_pos]), s_cur_size, 0, ADR(sockaddr), SIZEOF(sockaddr));
     	ELSE
     		bytes_sent := SysSockSend(socket, ADR(S_BUF.BUFFER[s_cur_pos]), s_cur_size, 0);
-    	END_IF
+    	END_IF;
 
     	CASE bytes_sent OF
     	-2147483648..-1:	; (* ERROR: Noch nicht bereit um Daten aufzunehmen -> nächsten Zyklus wieder probieren *)
     	 0: IF NOT udp_mode THEN (* TCP-Mode: socket wurde von remote geschlossen *)
     			c_status := 253;
     			c_ready := FALSE;
-    		END_IF
+    		END_IF;
     	ELSE
     		s_done := TRUE;
     		s_cur_size := DINT_TO_INT(bytes_sent); (* Anzahl der wirklich versendeten Bytes übernehmen *)
@@ -407,28 +407,28 @@ FUNCTION_BLOCK IP_CONTROL2
     			LOG_CL.PRINTF[1] := DINT_TO_STRING(s_cur_size);
     			LOG_CL.PRINTF[6] := INT_TO_STRING(debug_ID);
     			LOG_MSG();
-    		END_IF*)
+    		END_IF;*)
     		(* -----------------------------------------------------------------------------*)
     	END_CASE
-    END_IF
+    END_IF;
 
     (* ---------------------------------------------- *)
 
     IF IP_C.R_OBSERVE = FALSE OR s_active THEN
         r_time := tx;
-    END_IF
+    END_IF;
 
     IF c_status = 0 AND tx - c_time > error_time AND c_enable AND NOT c_ready AND c_mode < 2 THEN (* Connect Timeout *)
     	c_status := 255; (* Timeout-Fehler ausgeben *)
-    END_IF
+    END_IF;
     IF s_status = 0 AND tx - s_time > error_time AND s_active THEN (* Send Timeout *)
     	s_status := 255; (* Timeout-Fehler ausgeben *)
-    END_IF
+    END_IF;
     IF r_status = 0 AND tx - r_time > error_time AND c_ready AND IP_C.R_OBSERVE THEN (* Receive Timeout *)
     	r_status := 255; (* Timeout-Fehler ausgeben *)
-    END_IF
+    END_IF;
 
-    IP_C.ERROR := DWORD_OF_BYTE(c_status,s_status,r_status,0);
+    IP_C.ERROR := OSCAT_BASIC.DWORD_OF_BYTE(c_status,s_status,r_status,0);
 
     (* ---------------------- Debug-Message ----------------------------*)
     (*IF  _debug_enable THEN
@@ -440,15 +440,15 @@ FUNCTION_BLOCK IP_CONTROL2
 
     		debug_lasterror := IP_C.ERROR;
     		debug_last_id := debug_ID;
-    	END_IF
-    END_IF*)
+    	END_IF;
+    END_IF;*)
     (* -----------------------------------------------------------------------------*)
 
     (* revision history
     ks	18. oct. 2008	rev 1.0
     	original version
     ks	05. jan. 2009	rev 1.1
-    	zusätzlichen Parameter "PORT" hinzugefügt, und Code bei Verbindungsaufbau angepasst
+    	zusätzlichen Parameter "Port" hinzugefügt, und Code bei Verbindungsaufbau angepasst
     ks	28. feb. 2009	rev 1.2
     	connect code angepasst und verkürzung der zyklen bei Send
     ks	20. oct. 2009	rev 1.3
