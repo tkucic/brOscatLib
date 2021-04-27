@@ -1,13 +1,13 @@
 FUNCTION IS_NUM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=168*)
-    pt := ADR(STR);
+    pt ACCESS ADR(STR);
     L := LEN(STR);
     FOR pos := 1 TO L DO
-    	IF NOT (ISC_NUM(pt)) THEN
+    	IF NOT ISC_NUM(pt) THEN
     		IS_NUM := FALSE;
     		RETURN;
     	END_IF
-        	pt := pt + 1;
+        	pt ACCESS (ADR(pt) + 1);
     END_FOR
     IS_NUM := L > 0;
 

@@ -1,21 +1,23 @@
 FUNCTION BYTE_TO_STRH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146*)
     (* read pointer to output string *)
-    PT := ADR(BYTE_TO_STRH);
+    PT ACCESS ADR(BYTE_TO_STRH);
     (* calculate high order hex value *)
     temp := SHR(IN,4);
+    intTemp := BYTE_TO_USINT(temp);
     (* convert value to hex character *)
-    IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
+    IF intTemp <= 9 THEN temp := USINT_TO_BYTE(intTemp + 48); ELSE temp := USINT_TO_BYTE(intTemp + 55); END_IF
     (* write friat character to output string *)
     PT := temp;
     (* calculate low order hex value *)
     temp := IN AND 2#00001111;
-    IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
+    intTemp := BYTE_TO_USINT(temp);
+    IF intTemp <= 9 THEN temp := USINT_TO_BYTE(intTemp + 48); ELSE temp := USINT_TO_BYTE(intTemp + 55); END_IF
     (* increment pointer and wirte low order character *)
-    PT := PT + 1;
+    PT ACCESS (ADR(PT) + 1);
     PT := temp;
     (* set pointer at the end of the output string and close the string with 0 *)
-    PT := PT + 1;
+    PT ACCESS (ADR(PT) + 1);
     PT:= 0;
 
 

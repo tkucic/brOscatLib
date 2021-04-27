@@ -1,18 +1,19 @@
 FUNCTION DWORD_TO_STRH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154*)
     (* read output adress to pointer *)
-    pt := ADR(DWORD_TO_STRH) + 8;
+    pt ACCESS (ADR(DWORD_TO_STRH) + 8);
     (* wirte the closing byte for the string *)
     pt:= 0;
 
     (* write the 8 hex characters backwards *)
     FOR i := 1 TO 8 DO;
     	(* decrement the pointer *)
-    	pt := pt - 1;
+    	pt ACCESS (ADR(pt) - 1);
     	(* read the lowest order hex value *)
     	temp := DWORD_TO_BYTE(IN AND 16#0000000F);
+        intTemp := BYTE_TO_USINT(temp);
     	(* convert value to hex character *)
-    	IF temp <= 9 THEN temp := temp + 48; ELSE temp := temp + 55; END_IF
+    	IF intTemp <= 9 THEN temp := USINT_TO_BYTE(intTemp + 48); ELSE temp := USINT_TO_BYTE(intTemp + 55); END_IF
     	(* write character to output string *)
     	pt := temp;
     	(* shift IN for nect hex character *)

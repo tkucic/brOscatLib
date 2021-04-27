@@ -4,7 +4,7 @@ FUNCTION CODE
     	CODE := 0;
     	RETURN;
     ELSE
-    	PT := ADR(STR) + INT_TO_DWORD(POS - 1);
+    	PT ACCESS (ADR(STR) + POS - 1);
     	CODE := PT;
     END_IF
 

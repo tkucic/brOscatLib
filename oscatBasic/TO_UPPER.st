@@ -1,8 +1,9 @@
 FUNCTION TO_UPPER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180*)
-    IF IN > 96 AND IN < 123 THEN
+    byteAsInt := BYTE_TO_USINT(IN);
+    IF byteAsInt > 96 AND byteAsInt < 123 THEN
        TO_UPPER := IN AND 16#DF;
-    ELSIF IN > 223 AND IN <> 247 AND IN <> 255 AND cEXTENDED_ASCII THEN
+    ELSIF byteAsInt > 223 AND byteAsInt <> 247 AND byteAsInt <> 255 AND cEXTENDED_ASCII THEN
        TO_UPPER := IN AND 16#DF;
     ELSE
        TO_UPPER := IN;

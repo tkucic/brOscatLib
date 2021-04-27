@@ -1,6 +1,6 @@
 FUNCTION TO_UML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180*)
-    CASE IN OF
+    CASE BYTE_TO_USINT(IN) OF
     	196:	(* Ä *)
     		RETVAL := 'Ae';
     	214:	(* Ö *)

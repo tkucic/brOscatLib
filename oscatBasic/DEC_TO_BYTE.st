@@ -1,15 +1,16 @@
 FUNCTION DEC_TO_BYTE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150*)
-    pt := ADR(DEC);
+    pt ACCESS ADR(DEC);
     stop := LEN(DEC);
     FOR i := 1 TO stop DO
     	(* read the first character and subtract 48 to get value in decimal 0 = 48 *)
     	X := pt;
+        intX := BYTE_TO_USINT(X);
     	(* calculate the value of the digit *)
-    	IF X > 47 AND X < 58 THEN
-    		DEC_TO_BYTE := DEC_TO_BYTE * 10 + X - 48;
+    	IF intX > 47 AND intX < 58 THEN
+    		DEC_TO_BYTE := USINT_TO_BYTE(BYTE_TO_USINT(DEC_TO_BYTE) * 10 + intX - 48);
     	END_IF
-    	pt := pt + 1;
+    	pt ACCESS (ADR(pt) + 1);
     END_FOR
 
 

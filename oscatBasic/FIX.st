@@ -19,7 +19,7 @@ FUNCTION FIX
     	FILL(C,SHR(N+1,1), SX);
     	RETVAL := CONCAT(STR,SX);
     	SX := LEFT(SX,SHR(N,1));
-    	RETVAL := CONCAT(SX,FIX);
+    	RETVAL := CONCAT(SX,RETVAL);
     ELSE
     	(* connect fill characters at the end *)
     	FILL(C,N, SX);

@@ -591,6 +591,7 @@ FUNCTION BYTE_TO_STRH : BOOL (* String *) (* http://www.oscat.de/images/OSCATBas
 	VAR
 		temp : BYTE;
 		PT : REFERENCE TO BYTE;
+		intTemp : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -1703,6 +1704,7 @@ FUNCTION DEC_TO_BYTE : BYTE (* String *) (* http://www.oscat.de/images/OSCATBasi
 		i : INT;
 		X : BYTE;
 		stop : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -1715,6 +1717,7 @@ FUNCTION DEC_TO_DWORD : DWORD (* String *) (* http://www.oscat.de/images/OSCATBa
 		i : INT;
 		X : BYTE;
 		stop : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -1728,6 +1731,7 @@ FUNCTION DEC_TO_INT : INT (* String *) (* http://www.oscat.de/images/OSCATBasic/
 		X : BYTE;
 		sign : BOOL;
 		stop : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -1994,6 +1998,9 @@ FUNCTION DWORD_TO_STRF : BOOL (* String *) (* http://www.oscat.de/images/OSCATBa
 	VAR_IN_OUT
 		RETVAL : STRING[20]; (*Return value of the function*)
 	END_VAR
+	VAR
+		temp : STRING[80];
+	END_VAR
 END_FUNCTION
 
 FUNCTION DWORD_TO_STRH : BOOL (* String *) (* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154 *)
@@ -2007,6 +2014,7 @@ FUNCTION DWORD_TO_STRH : BOOL (* String *) (* http://www.oscat.de/images/OSCATBa
 		i : INT;
 		temp : BYTE;
 		pt : REFERENCE TO BYTE;
+		intTemp : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -2279,6 +2287,7 @@ FUNCTION EXEC : BOOL (* String *) (* http://www.oscat.de/images/OSCATBasic/oscat
 		R1 : REAL;
 		R2 : REAL;
 		operator : STRING[10];
+		temp : STRING[80];
 	END_VAR
 END_FUNCTION
 
@@ -2700,6 +2709,7 @@ FUNCTION FLOAT_TO_REAL : REAL (* String *) (* http://www.oscat.de/images/OSCATBa
 		stop : INT;
 		tmp : DINT;
 		d : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -3567,6 +3577,7 @@ FUNCTION HEX_TO_BYTE : BYTE (* String *) (* http://www.oscat.de/images/OSCATBasi
 		i : INT;
 		X : BYTE;
 		stop : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -3579,6 +3590,7 @@ FUNCTION HEX_TO_DWORD : DWORD (* String *) (* http://www.oscat.de/images/OSCATBa
 		i : INT;
 		X : BYTE;
 		stop : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -4662,6 +4674,7 @@ FUNCTION OCT_TO_BYTE : BYTE (* String *) (* http://www.oscat.de/images/OSCATBasi
 		i : INT;
 		X : BYTE;
 		stop : INT;
+		intX : USINT;
 	END_VAR
 END_FUNCTION
 
@@ -4674,6 +4687,8 @@ FUNCTION OCT_TO_DWORD : DWORD (* String *) (* http://www.oscat.de/images/OSCATBa
 		i : INT;
 		X : BYTE;
 		stop : INT;
+		intX : USINT;
+		temp : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -6457,6 +6472,9 @@ FUNCTION TO_LOWER : BYTE (* String *) (* http://www.oscat.de/images/OSCATBasic/o
 	VAR_INPUT
 		IN : BYTE;
 	END_VAR
+	VAR
+		byteAsInt : USINT;
+	END_VAR
 END_FUNCTION
 
 FUNCTION TO_UML : BOOL (* String *) (* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
@@ -6471,6 +6489,9 @@ END_FUNCTION
 FUNCTION TO_UPPER : BYTE (* String *) (* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
 	VAR_INPUT
 		IN : BYTE;
+	END_VAR
+	VAR
+		byteAsInt : USINT;
 	END_VAR
 END_FUNCTION
 

@@ -1,6 +1,6 @@
 FUNCTION FIND_CTRL
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=157*)
-    pt := ADR(STR);
+    pt ACCESS ADR(STR);
     stop := LEN(STR);
     FOR i := MAX(POS,1) TO stop DO;
     	x := pt[i];

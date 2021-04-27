@@ -1,12 +1,13 @@
 FUNCTION LOWERCASE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=172*)
-    PT := ADR(LOWERCASE);
-    LOWERCASE := STR;
+    PT ACCESS ADR(RETVAL);
+    RETVAL := STR;
     l := LEN(STR);
     FOR pos := 1 TO l DO
     	PT := TO_LOWER(PT);
-    	PT := PT + 1;
+    	PT ACCESS (ADR(PT) + 1);
     END_FOR
+    LOWERCASE := TRUE;
 
     (* revision histroy
     hm	6. oct. 2006	rev 1.0

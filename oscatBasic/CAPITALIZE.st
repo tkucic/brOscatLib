@@ -1,13 +1,13 @@
 FUNCTION CAPITALIZE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146*)
-    PT := ADR(RETVAL);
+    PT ACCESS ADR(RETVAL);
     RETVAL := STR;
     L := LEN(STR);
     FOR pos := 1 TO L DO
     	IF first THEN PT := TO_UPPER(PT);	END_IF
     	(* remember in first if the next char needs to capitalized *)
     	first := PT= 32;
-    	PT := PT + 1;
+    	PT ACCESS (ADR(PT) + 1);
     END_FOR
     CAPITALIZE := TRUE;
     (* revision histroy

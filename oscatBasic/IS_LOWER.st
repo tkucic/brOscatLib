@@ -1,13 +1,13 @@
 FUNCTION IS_LOWER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=167*)
-    pt := ADR(STR);
+    pt ACCESS ADR(STR);
     l := LEN(STR);
     FOR pos := 1 TO l DO
-    	IF NOT (ISC_LOWER(pt)) THEN
+    	IF NOT ISC_LOWER(pt) THEN
     		IS_LOWER := FALSE;
     		RETURN;
     	END_IF
-        	pt := pt + 1;
+        	pt ACCESS (ADR(pt) + 1);
     END_FOR
     IS_LOWER := l > 0;
 

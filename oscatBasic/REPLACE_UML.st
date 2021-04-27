@@ -1,10 +1,10 @@
 FUNCTION REPLACE_UML
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=178*)
-    pt := ADR(STR);
-    pto := ADR(REPLACE_UML);
-    ptm := pto + INT_TO_DWORD(STRING_LENGTH);
-    pt1 := ADR(su);
-    pt2 := pt1 + 1;
+    pt ACCESS ADR(STR);
+    pto ACCESS ADR(RETVAL);
+    ptm ACCESS (ADR(pto) + INT_TO_UDINT(STRING_LENGTH));
+    pt1 ACCESS ADR(su);
+    pt2 ACCESS (ADR(pt1) + 1);
     L := LEN(STR);
     WHILE pos < L AND pos < STRING_LENGTH DO
     	IF pt < 127 THEN
@@ -12,23 +12,23 @@ FUNCTION REPLACE_UML
     		pto := pt;
     	ELSE
     		(* convert the uml character *)
-    		su := TO_UML(pt);
+    		TO_UML(pt, su);
     		(* we must make sure pointer are not out of range *)
     		pto := pt1;
-    		IF pto < ptm AND pt2 > 0 THEN
-    			pto := pto + 1;
+    		IF ADR(pto) < ADR(ptm) AND pt2 > 0 THEN
+    			pto ACCESS (ADR(pto) + 1);
     			pto := pt2;
     		END_IF
     	END_IF
     	(* increment pointers *)
-    	pt := pt + 1;
-    	pto := pto + 1;
+    	pt ACCESS (ADR(pt) + 1);
+    	pto ACCESS (ADR(pto) + 1);
     	pos := pos + 1;
     END_WHILE
 
     (* properly close the output string *)
     pto := 0;
-
+    REPLACE_UML := TRUE;
 
     (* revision history
     hm	29. feb 2008	rev 1.0

@@ -1,11 +1,11 @@
 FUNCTION COUNT_CHAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=150*)
-    pt := ADR(STR);
+    pt ACCESS ADR(STR);
     l := LEN(STR);
     COUNT_CHAR := 0;
     FOR pos := 1 TO l DO
     	IF pt = CHR THEN COUNT_CHAR := COUNT_CHAR + 1; END_IF
-        pt := pt + 1;
+        pt ACCESS (ADR(pt) + 1);
     END_FOR
 
 
