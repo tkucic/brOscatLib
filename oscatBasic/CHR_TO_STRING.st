@@ -1,10 +1,11 @@
 FUNCTION CHR_TO_STRING
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=148*)
-    PT := ADR(RETVAL);
-    PT := C;
-    PT := PT + 1;
-    PT := 0;
+    PT ACCESS ADR(RETVAL); //Assign the return value address to pointer
+    PT := C; // set the pointers value to C
+    PT ACCESS (ADR(PT) + 1) //increment the pointers value by one to get the next byte of the return string. STRING[1] is two bytes long
+    PT := 0; //Set the pointer to 0
     CHR_TO_STRING := TRUE;
+
     (* revision history
     hm	16 jan 2007		rev 1.0
     	original version

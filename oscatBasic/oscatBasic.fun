@@ -6461,7 +6461,7 @@ END_FUNCTION
 
 FUNCTION TO_UML : BOOL (* String *) (* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=180 *)
 	VAR_INPUT
-		IN : USINT;
+		IN : BYTE;
 	END_VAR
 	VAR_IN_OUT
 		RETVAL : STRING[2]; (*Return value of the function*)
