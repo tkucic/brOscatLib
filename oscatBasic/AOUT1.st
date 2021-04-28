@@ -12,8 +12,8 @@ FUNCTION AOUT1
     in2 := LIMIT(LOW, in2, HIGH);
 
     (* Berechne den Ausgangswert *)
-    AOUT1 := SHL(REAL_TO_DWORD((in2 - LOW) / (HIGH - LOW) * DWORD_TO_REAL(SHL(ff,BIT_N - BIT_0 + 1) -1)),BIT_0);
-    IF sx THEN AOUT1 := SHL(ff,SIGN) OR AOUT1; END_IF
+    AOUT1 := SHL(REAL_TO_DWORD((in2 - LOW) / (HIGH - LOW) * UDINT_TO_REAL(SHL(ff,BIT_N - BIT_0 + 1) -1)),BIT_0);
+    IF sx THEN AOUT1 := UDINT_TO_DWORD(SHL(ff,SIGN) OR DWORD_TO_UDINT(AOUT1)); END_IF
 
 
     (* revision history

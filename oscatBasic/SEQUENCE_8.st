@@ -1,7 +1,7 @@
 FUNCTION_BLOCK SEQUENCE_8
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=203*)
     (* read sps timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* initialize on startup *)
     IF NOT init THEN

@@ -8,16 +8,16 @@ FUNCTION_BLOCK FILTER_MAV_W
     	init := TRUE;
     	tmp := UINT_TO_INT(N) - 1;
     	FOR i := 1 TO tmp DO
-    		buffer[i] := X;
+    		buffer[i] := WORD_TO_UINT(X);
     	END_FOR
-    	sum := Y * N;
+    	sum := WORD_TO_UINT(Y) * N;
     	Y := X;
     ELSE
     	tmp := UINT_TO_INT(N);
     	i := INC1(i, tmp);
-    	sum := sum + X - buffer[i];
-    	Y := DWORD_TO_WORD(sum / N);
-    	buffer[i] := X;
+    	sum := sum + WORD_TO_UINT(X) - buffer[i];
+    	Y := UDINT_TO_WORD(sum / N);
+    	buffer[i] := WORD_TO_UINT(X);
     END_IF
 
 

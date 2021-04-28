@@ -1,7 +1,7 @@
 FUNCTION LIST_INSERT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=486*)
     (* load pointers *)
-    pt := ADR(LIST);
+    pt ACCESS ADR(LIST);
 
     IF LEN(INS) + 1 + LEN(LIST) > LIST_LENGTH THEN
     	LIST_INSERT := FALSE;

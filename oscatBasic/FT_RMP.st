@@ -1,7 +1,7 @@
 FUNCTION_BLOCK FT_RMP
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=100*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS()) - last;
+    tx := UDINT_TO_TIME(T_PLC_MS()) - last;
 
     IF NOT init THEN
     	init := TRUE;

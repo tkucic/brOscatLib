@@ -7,12 +7,12 @@ FUNCTION_BLOCK CLK_PULSE
     IF NOT init OR RST THEN
     	init := TRUE;
     	CNT := 0;
-    	tn := tx - TIME_TO_DWORD(PT);
+    	tn := tx - TIME_TO_UDINT(PT);
     	RUN := FALSE;
-    ELSIF (CNT < N OR N = 0) AND tx - tn >= TIME_TO_DWORD(PT) THEN		(* generate a pulse *)
+    ELSIF (CNT < N OR N = 0) AND tx - tn >= TIME_TO_UDINT(PT) THEN		(* generate a pulse *)
     	CNT := CNT + 1;
     	Q := TRUE;
-    	tn := tn + TIME_TO_DWORD(PT);
+    	tn := tn + TIME_TO_UDINT(PT);
     END_IF
 
 

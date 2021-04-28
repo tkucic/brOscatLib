@@ -1,7 +1,7 @@
 FUNCTION_BLOCK TMAX
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=204*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     Z := FALSE;
 

@@ -7,9 +7,9 @@ FUNCTION_BLOCK GEN_SQ
     	init := TRUE;
     	tn := tx;
     	Q := TRUE;
-    ELSIF tx - tn >= SHR(TIME_TO_DWORD(PT),1) THEN
+    ELSIF tx - tn >= SHR(TIME_TO_UDINT(PT),1) THEN
     	Q := NOT Q;
-    	tn := tn + SHR(TIME_TO_DWORD(PT),1);
+    	tn := tn + SHR(TIME_TO_UDINT(PT),1);
     END_IF
 
 

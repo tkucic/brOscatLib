@@ -1,7 +1,7 @@
 FUNCTION LIST_GET
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=485*)
-    pt := ADR(LIST);							(* load pointers *)
-    po := ADR(LIST_GET);
+    pt ACCESS ADR(LIST);							(* load pointers *)
+    po ACCESS ADR(LIST_GET);
 
     REPEAT
     	c := pt[i];

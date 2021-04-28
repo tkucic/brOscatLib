@@ -1,6 +1,6 @@
 FUNCTION LIST_LEN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=487*)
-    pt := ADR(LIST);
+    pt ACCESS ADR(LIST);
     LIST_LEN := 0;
     REPEAT
     	c := pt[pos];

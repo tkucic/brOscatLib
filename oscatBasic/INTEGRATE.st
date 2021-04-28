@@ -7,7 +7,7 @@ FUNCTION_BLOCK INTEGRATE
     	init := TRUE;
     	X_last := X;
     ELSIF E THEN
-    	Y := (X + X_last) * 0.5E-3 * DWORD_TO_REAL(tx-last) * K + Y;
+    	Y := (X + X_last) * 0.5E-3 * UDINT_TO_REAL(tx-last) * K + Y;
     	X_last := X;
     END_IF
     last := tx;

@@ -11,9 +11,9 @@ FUNCTION_BLOCK FILTER_W
     ELSIF Y = X THEN
     	last := tx;
     ELSE
-    	tmp :=  WORD_TO_DWORD(X - Y) * (tx - last) / TIME_TO_DWORD(T);
+    	tmp :=  (WORD_TO_UINT(X) - WORD_TO_UINT(Y)) * (tx - last) / TIME_TO_UDINT(T);
     	IF tmp <> 0 THEN
-    		Y := DINT_TO_WORD(WORD_TO_DINT(Y) + DWORD_TO_DINT(tmp));
+    		Y := DINT_TO_WORD(WORD_TO_DINT(Y) + UDINT_TO_DINT(tmp));
     		last := tx;
     	END_IF
     END_IF

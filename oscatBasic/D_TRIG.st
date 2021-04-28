@@ -1,7 +1,7 @@
 FUNCTION_BLOCK D_TRIG
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=195*)
     Q := IN <> last_in;
-    X := IN - last_in;
+    X := UDINT_TO_DWORD(DWORD_TO_UDINT(IN) - DWORD_TO_UDINT(last_in));
     last_in := IN;
 
 

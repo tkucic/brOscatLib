@@ -1,8 +1,8 @@
 FUNCTION LIST_RETRIEVE
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=488*)
     (* load pointers *)
-    pt := ADR(LIST);
-    po := ADR(LIST_RETRIEVE);
+    pt ACCESS ADR(LIST);
+    po ACCESS ADR(RETVAL);
 
     IF POS > 0 THEN
     	FOR i := 1 TO LIST_LENGTH DO
@@ -10,6 +10,7 @@ FUNCTION LIST_RETRIEVE
     		IF c = 0 THEN
     			po[o] := 0;
     			IF cnt < POS THEN pt[w + 1] := 0; ELSE pt[w] := 0; END_IF
+                LIST_RETRIEVE := TRUE;
     			RETURN;
     		ELSIF cnt = POS AND c <> SEP THEN				(* we have found the element *)
     			po[o] := pt[i];
@@ -23,9 +24,10 @@ FUNCTION LIST_RETRIEVE
     		IF c = SEP THEN cnt := cnt + 1; END_IF
     	END_FOR
     ELSE
-    	LIST_RETRIEVE := '';
+    	RETVAL := '';
+        LIST_RETRIEVE := FALSE;
     END_IF
-
+    
 
     (* revision histroy
     hm	28. jun. 2008	rev 1.0

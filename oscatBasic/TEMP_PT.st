@@ -10,7 +10,7 @@ FUNCTION TEMP_PT
     		TEMP_PT := (-X + SQRT(t1)) / (2.0 * Y);
     	END_IF
     ELSE
-    	pt := ADR(step);
+    	pt ACCESS ADR(step);
     	(* since the formula cannot be solved this is A successive approximation *)
     	TEMP_PT := -100.0;
     	WHILE step > accuracy DO

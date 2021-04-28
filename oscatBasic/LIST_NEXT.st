@@ -1,7 +1,7 @@
 FUNCTION_BLOCK LIST_NEXT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=487*)
-    pt := ADR(LIST);
-    po := ADR(LEL);
+    pt ACCESS ADR(LIST);
+    po ACCESS ADR(LEL);
 
     IF RST THEN
     	pos := 1;

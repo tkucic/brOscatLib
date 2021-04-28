@@ -1,7 +1,7 @@
 FUNCTION RDM
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=62*)
     tn := T_PLC_MS();
-    tc := BIT_COUNT(tn);
+    tc := BIT_COUNT(UDINT_TO_DWORD(tn));
     tn.31 := tn.2;
     tn.30 := tn.5;
     tn.29 := tn.4;
@@ -10,9 +10,9 @@ FUNCTION RDM
     tn.26 := tn.7;
     tn.25 := tn.6;
     tn.24 := tn.3;
-    tn := ROL(tn,BIT_COUNT(tn)) OR 16#80000001;
-    tn := tn MOD 71474513 + INT_TO_DWORD(tc + 77);
-    RDM := FRACT(DWORD_TO_REAL(tn) / 10000000.0 * (ce - LIMIT(0.0,LAST,1.0)));
+    tn := ROL(tn,BIT_COUNT(UDINT_TO_DWORD(tn))) OR 16#80000001;
+    tn := tn MOD 71474513 + INT_TO_UDINT(tc + 77);
+    RDM := FRACT(UDINT_TO_REAL(tn) / 10000000.0 * (ce - LIMIT(0.0,LAST,1.0)));
 
 
     (*

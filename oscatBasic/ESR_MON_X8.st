@@ -1,7 +1,7 @@
 FUNCTION_BLOCK ESR_MON_X8
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=36*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     ESR_FLAG := FALSE;
     ESR_OUT[3].TYP := 0;
@@ -19,7 +19,7 @@ FUNCTION_BLOCK ESR_MON_X8
     	ESR_FLAG := TRUE;
     END_IF
     IF S1 <> x1 AND ((S1 < 100) OR (S1 > 99 AND S1 < 200 AND MODE >= 2) OR (S1 > 199 AND MODE = 3)) THEN
-    	STATUS_TO_ESR(S1, A1, DT_IN, tx,ESR_OUT[cnt] := );
+    	STATUS_TO_ESR(S1, A1, DT_IN, tx,ESR_OUT[cnt]);
     	x1 := S1;
     	cnt := cnt + 1;
     	ESR_FLAG := TRUE;

@@ -7,7 +7,7 @@ FUNCTION AIN
     ELSE
     	sx := FALSE;
     END_IF
-    temp1 := SHR(ff, 32-BITS);
+    temp1 := SHR(ff, 32-BYTE_TO_USINT(BITS));
     temp2 := IN AND temp1;
     AIN := (HIGH - LOW) * DWORD_TO_REAL(temp2) / DWORD_TO_REAL(temp1) + LOW;
     IF sx THEN AIN := -AIN; END_IF

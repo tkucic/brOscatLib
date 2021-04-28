@@ -1,7 +1,7 @@
 FUNCTION_BLOCK CYCLE_4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=194*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
     (* init on first cycle *)
     IF NOT init THEN
     	init := TRUE;

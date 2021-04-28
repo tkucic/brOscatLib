@@ -1,6 +1,6 @@
 FUNCTION _ARRAY_MEDIAN
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=73*)
-    _ARRAY_SORT(PT,SIZE);
+    _ARRAY_SORT(ADR(PT),SIZE);
     stop := SHR(SIZE,2)-1;
     IF EVEN(UINT_TO_INT(stop)) THEN
     	_ARRAY_MEDIAN := PT[SHR(stop,1)];

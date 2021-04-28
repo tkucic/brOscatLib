@@ -61,7 +61,9 @@ FUNCTION_BLOCK AIN1 (* Signal processing *) (* http://www.oscat.de/images/OSCATB
 		OVERFLOW : BOOL;
 	END_VAR
 	VAR
-		tB : DWORD;
+		tB : UDINT;
+		_CODE_MIN : UDINT;
+		_CODE_MAX : UDINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -94,7 +96,7 @@ FUNCTION AOUT : DWORD (* Signal processing *) (* http://www.oscat.de/images/OSCA
 		HIGH : REAL := 10;
 	END_VAR
 	VAR CONSTANT
-		ff : DWORD := 2#1;
+		ff : UDINT := 2#1;
 	END_VAR
 	VAR
 		in2 : REAL;
@@ -112,7 +114,7 @@ FUNCTION AOUT1 : DWORD (* Signal processing *) (* http://www.oscat.de/images/OSC
 		HIGH : REAL := 10;
 	END_VAR
 	VAR CONSTANT
-		ff : DWORD := 2#1;
+		ff : UDINT := 2#1;
 	END_VAR
 	VAR
 		sx : BOOL;
@@ -159,8 +161,8 @@ FUNCTION ARRAY_MAX : REAL (* Array *) (* http://www.oscat.de/images/OSCATBasic/o
 		SIZE : UINT;
 	END_VAR
 	VAR
-		i : UINT;
-		stop : UINT;
+		i : UDINT;
+		stop : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -170,8 +172,8 @@ FUNCTION ARRAY_MIN : REAL (* Array *) (* http://www.oscat.de/images/OSCATBasic/o
 		SIZE : UINT;
 	END_VAR
 	VAR
-		i : UINT;
-		stop : UINT;
+		i : UDINT;
+		stop : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -188,8 +190,8 @@ FUNCTION ARRAY_SPR : REAL (* Array *) (* http://www.oscat.de/images/OSCATBasic/o
 		SIZE : UINT;
 	END_VAR
 	VAR
-		i : UINT;
-		stop : UINT;
+		i : UDINT;
+		stop : UDINT;
 		array_max : REAL;
 		array_min : REAL;
 	END_VAR
@@ -201,8 +203,8 @@ FUNCTION ARRAY_SUM : REAL (* Array *) (* http://www.oscat.de/images/OSCATBasic/o
 		SIZE : UINT;
 	END_VAR
 	VAR
-		i : UINT;
-		stop : UINT;
+		i : UDINT;
+		stop : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -1003,7 +1005,7 @@ FUNCTION_BLOCK CLK_DIV (* Generators *) (* http://www.oscat.de/images/OSCATBasic
 		Q7 : BOOL;
 	END_VAR
 	VAR
-		cnt : BYTE;
+		cnt : USINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -1016,7 +1018,7 @@ FUNCTION_BLOCK CLK_N (* Generators *) (* http://www.oscat.de/images/OSCATBasic/o
 	END_VAR
 	VAR
 		edge_ : BOOL;
-		stime : DWORD;
+		stime : UDINT;
 		clk : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
@@ -1047,8 +1049,8 @@ FUNCTION_BLOCK CLK_PULSE (* Generators *) (* http://www.oscat.de/images/OSCATBas
 		RUN : BOOL;
 	END_VAR
 	VAR
-		tx : DWORD;
-		tn : DWORD;
+		tx : UDINT;
+		tn : UDINT;
 		init : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
@@ -1210,6 +1212,10 @@ FUNCTION_BLOCK COUNT_DR (* FF Edge triggered *) (* http://www.oscat.de/images/OS
 	VAR
 		last_up : BOOL;
 		last_dn : BOOL;
+		_MX : UDINT;
+		_STEP : UDINT;
+		_IN : UDINT;
+		_CNT : UDINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -1915,7 +1921,7 @@ FUNCTION_BLOCK DT_SIMU (* Measurements *) (* http://www.oscat.de/images/OSCATBas
 		DTS : DATE_AND_TIME;
 	END_VAR
 	VAR
-		tc : DWORD;
+		tc : UDINT;
 		init : BOOL;
 		last : UDINT;
 		tx : UDINT;
@@ -2527,7 +2533,7 @@ FUNCTION_BLOCK FILTER_MAV_DW (* Signal processing *) (* http://www.oscat.de/imag
 	END_VAR
 	VAR
 		init : BOOL;
-		buffer : ARRAY[0..31] OF DWORD;
+		buffer : ARRAY[0..31] OF UDINT;
 		i : INT;
 		tmp : INT;
 	END_VAR
@@ -2544,9 +2550,9 @@ FUNCTION_BLOCK FILTER_MAV_W (* Signal processing *) (* http://www.oscat.de/image
 	END_VAR
 	VAR
 		init : BOOL;
-		buffer : ARRAY[1..32] OF WORD;
+		buffer : ARRAY[1..32] OF UINT;
 		i : INT;
-		sum : DWORD;
+		sum : UDINT;
 		tmp : INT;
 	END_VAR
 END_FUNCTION_BLOCK
@@ -2563,7 +2569,7 @@ FUNCTION_BLOCK FILTER_W (* Signal processing *) (* http://www.oscat.de/images/OS
 		last : UDINT;
 		tx : UDINT;
 		init : BOOL;
-		tmp : DWORD;
+		tmp : UDINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -3523,8 +3529,8 @@ FUNCTION_BLOCK GEN_SQ (* Generators *) (* http://www.oscat.de/images/OSCATBasic/
 		Q : BOOL;
 	END_VAR
 	VAR
-		tn : DWORD;
-		tx : DWORD;
+		tn : UDINT;
+		tx : UDINT;
 		init : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
@@ -5028,7 +5034,7 @@ FUNCTION RDM : REAL (* Mathematical *) (* http://www.oscat.de/images/OSCATBasic/
 		LAST : REAL;
 	END_VAR
 	VAR
-		tn : DWORD;
+		tn : UDINT;
 		tc : INT;
 	END_VAR
 END_FUNCTION
@@ -5353,6 +5359,10 @@ FUNCTION SCALE_B : REAL (* Signal processing *) (* http://www.oscat.de/images/OS
 		O_LO : REAL;
 		O_HI : REAL;
 	END_VAR
+	VAR
+		_I_HI : USINT;
+		_I_LO : USINT;
+	END_VAR
 END_FUNCTION
 
 FUNCTION SCALE_B2 : REAL (* Signal processing *) (* http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=290 *)
@@ -5425,6 +5435,10 @@ FUNCTION SCALE_D : REAL (* Signal processing *) (* http://www.oscat.de/images/OS
 		I_HI : DWORD;
 		O_LO : REAL;
 		O_HI : REAL;
+	END_VAR
+	VAR
+		_I_HI : UDINT;
+		_I_LO : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -6358,7 +6372,7 @@ FUNCTION TEMP_PT : REAL (* Sensor *) (* http://www.oscat.de/images/OSCATBasic/os
 		X : REAL;
 		Y : REAL;
 		t1 : REAL;
-		pt : REFERENCE TO DWORD;
+		pt : REFERENCE TO UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -6571,7 +6585,7 @@ FUNCTION_BLOCK TREND_DW (* Signal processing *) (* http://www.oscat.de/images/OS
 		D : DWORD;
 	END_VAR
 	VAR
-		last_X : DWORD;
+		last_X : UDINT;
 	END_VAR
 END_FUNCTION_BLOCK
 

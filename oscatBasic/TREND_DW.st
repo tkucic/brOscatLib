@@ -1,21 +1,21 @@
 FUNCTION_BLOCK TREND_DW
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=315*)
-    IF X > last_X THEN
+    IF DWORD_TO_UDINT(X) > last_X THEN
     	TU := TRUE;
     	TD := FALSE;
-    	D := X - last_X;
+    	D := UDINT_TO_DWORD(DWORD_TO_UDINT(X) - last_X);
     	Q := TRUE;
-    ELSIF X < last_X THEN
+    ELSIF DWORD_TO_UDINT(X) < last_X THEN
     	TD := TRUE;
     	TU := FALSE;
-    	D := last_X - X;
+    	D := UDINT_TO_DWORD(last_X - DWORD_TO_UDINT(X));
     	Q := FALSE;
     ELSE
     	TU := FALSE;
     	TD := FALSE;
     	D := 0;
     END_IF
-    last_X := X;
+    last_X := DWORD_TO_UDINT(X);
 
 
 

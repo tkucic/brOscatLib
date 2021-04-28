@@ -1,11 +1,11 @@
 FUNCTION_BLOCK ESR_MON_R4
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=35*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
-    p0 := ADR(R0);
-    p1 := ADR(R1);
-    p2 := ADR(R2);
-    p3 := ADR(R3);
+    tx := UDINT_TO_TIME(T_PLC_MS());
+    p0 ACCESS ADR(R0);
+    p1 ACCESS ADR(R1);
+    p2 ACCESS ADR(R2);
+    p3 ACCESS ADR(R3);
 
     ESR_FLAG := FALSE;
     ESR_OUT[3].TYP := 0;

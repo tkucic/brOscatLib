@@ -1,7 +1,7 @@
 FUNCTION_BLOCK TP_X
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=208*)
     (* read system_time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* rising edge_ trigger *)
     IF IN AND NOT edge_ THEN

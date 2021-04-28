@@ -3,7 +3,7 @@ FUNCTION_BLOCK _RMP_B
     (* read system timer *)
     tx := UDINT_TO_TIME(T_PLC_MS());
 
-    IF E AND init AND (DIR = last_dir) AND (RMP <> SEL(DIR, 0, 255)) AND TR = tn THEN
+    IF E AND init AND (DIR = last_dir) AND (BYTE_TO_USINT(RMP) <> SEL(DIR, 0, 255)) AND TR = tn THEN
     	RMP := FRMP_B(start, DIR, tx - tl, TR);
     ELSE
     	init := TRUE;

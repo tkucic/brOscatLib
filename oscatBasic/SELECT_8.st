@@ -3,7 +3,7 @@ FUNCTION_BLOCK SELECT_8
     IF RST THEN
     	STATE := 0;
     ELSIF SET THEN
-    	STATE := IN;
+    	STATE := BYTE_TO_INT(IN);
     ELSIF UP AND NOT last_up THEN
     	STATE := INC(STATE,1,7);
     ELSIF DN AND NOT last_dn THEN

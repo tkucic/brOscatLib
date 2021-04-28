@@ -8,14 +8,14 @@ FUNCTION_BLOCK FILTER_MAV_DW
     	init := TRUE;
     	tmp := UINT_TO_INT(N)-1;
     	FOR i := 0 TO tmp DO
-    		buffer[i] := X;
+    		buffer[i] := DWORD_TO_UDINT(X);
     	END_FOR
     	Y := X;
     ELSE
     	tmp := UINT_TO_INT(N);
     	i := INC1(i, tmp);
-    	Y := Y + (X - buffer[i]) / N;
-    	buffer[i] := X;
+    	Y := UDINT_TO_DWORD(DWORD_TO_UDINT(Y) + (DWORD_TO_UDINT(X) - buffer[i]) / N);
+    	buffer[i] := DWORD_TO_UDINT(X);
     END_IF
 
 
