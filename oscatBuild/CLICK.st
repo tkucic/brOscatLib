@@ -4,7 +4,7 @@ FUNCTION_BLOCK CLICK
     s_in(IN := IN, TD := T_DEBOUNCE, TR := T_RECONFIG);
 
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* count the mumber of clicks *)
     IF s_in.Q XOR Q THEN

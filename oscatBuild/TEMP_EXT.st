@@ -9,7 +9,7 @@ FUNCTION_BLOCK TEMP_EXT
     END_IF
 
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* for efficiency exit isf this program has been executed less then 1min ago *)
     IF tx - last_run < CYCLE_TIME THEN RETURN; END_IF

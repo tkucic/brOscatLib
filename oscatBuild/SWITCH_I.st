@@ -1,7 +1,7 @@
 FUNCTION_BLOCK SWITCH_I
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=58*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* asynchronous SET and reset first *)
     IF SET AND NOT RST THEN

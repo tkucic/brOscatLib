@@ -1,7 +1,7 @@
 FUNCTION_BLOCK BLIND_INPUT
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=80*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* inputs S1 and S2 are debounced and then decoded for multiple clicks *)
     s1e(IN := S1, pt := DEBOUNCE_TIME);

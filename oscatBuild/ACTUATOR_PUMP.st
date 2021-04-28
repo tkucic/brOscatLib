@@ -1,6 +1,6 @@
 FUNCTION_BLOCK ACTUATOR_PUMP
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=16*)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     IF NOT init THEN
     	init := TRUE;

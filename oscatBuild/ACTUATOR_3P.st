@@ -1,7 +1,7 @@
 FUNCTION_BLOCK ACTUATOR_3P
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=13*)
     (* read system timer *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* check TEST input *)
     IF TEST THEN

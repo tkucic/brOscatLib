@@ -1,7 +1,7 @@
 FUNCTION_BLOCK ACTUATOR_UD
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=17*)
     (* read system time *)
-    tx := DWORD_TO_TIME(T_PLC_MS());
+    tx := UDINT_TO_TIME(T_PLC_MS());
 
     IF NOT init THEN
     	(* INITIALIZATION AT FIRST CALL *)
