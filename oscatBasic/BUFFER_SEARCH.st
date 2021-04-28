@@ -1,6 +1,6 @@
 FUNCTION BUFFER_SEARCH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=481*)
-    ps := ADR(STR);
+    ps ACCESS ADR(STR);
     lx := LEN(STR);
     end := MIN(SIZE - lx, SIZE - 1);
     lx := lx - 1;

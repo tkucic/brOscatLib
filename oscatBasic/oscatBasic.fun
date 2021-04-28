@@ -7041,9 +7041,9 @@ FUNCTION _BUFFER_CLEAR : BOOL (* Buffer Management *) (* http://www.oscat.de/ima
 	END_VAR
 	VAR
 		ptw : REFERENCE TO DWORD;
-		temp : DWORD;
-		end : DWORD;
-		end32 : DWORD;
+		temp : UDINT;
+		end : UDINT;
+		end32 : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -7055,9 +7055,9 @@ FUNCTION _BUFFER_INIT : BOOL (* Buffer Management *) (* http://www.oscat.de/imag
 	END_VAR
 	VAR
 		ptw : REFERENCE TO DWORD;
-		temp : DWORD;
-		end : DWORD;
-		end32 : DWORD;
+		temp : UDINT;
+		end : UDINT;
+		end32 : UDINT;
 	END_VAR
 END_FUNCTION
 

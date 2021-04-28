@@ -1,11 +1,11 @@
 FUNCTION _STRING_TO_BUFFER
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=479*)
-    ps := ADR(STR);
+    ps ACCESS ADR(STR);
     end := MIN(POS + LEN(STR), UINT_TO_INT(SIZE));
     IF end > 0 THEN end := end -1; END_IF
     FOR i := POS TO end DO
     	PT[i] := ps;
-    	ps := ps + 1;
+    	ps ACCESS (ADR(ps) + 1);
     END_FOR
 
     _STRING_TO_BUFFER := i;

@@ -7,7 +7,7 @@ FUNCTION _BUFFER_INSERT
     	PT[i] := PT[i-lx];
     END_FOR
     (* copy the string *)
-    _BUFFER_INSERT := _STRING_TO_BUFFER(STR, POS, PT, SIZE);
+    _BUFFER_INSERT := _STRING_TO_BUFFER(STR, POS, ADR(PT), SIZE);
 
 
     (* revision History

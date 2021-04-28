@@ -2,25 +2,25 @@ FUNCTION _BUFFER_CLEAR
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477*)
     (* this routine uses 32 bit access to gain speed *)
     (* first access bytes till pointer is aligned for 32 bit access *)
-    temp := PT;
-    end := temp + UINT_TO_DWORD(SIZE);
+    temp := ADR(PT);
+    end := temp + SIZE;
     end32 := end - 3;
-    WHILE (PT < end) AND ((temp AND 16#00000003) > 0) DO
+    WHILE (ADR(PT) < end) AND ((temp AND 16#00000003) > 0) DO
     	PT := 0;
-    	PT := PT + 1;
+    	PT ACCESS (ADR(PT) + 1);
     	temp := temp + 1;
     END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
-    ptw := PT;
-    WHILE ptw < end32 DO (* *)
+    ptw ACCESS ADR(PT);
+    WHILE ADR(ptw) < end32 DO (* *)
     	ptw := 0;
-    	ptw := ptw + 4;
+    	ptw ACCESS (ADR(ptw) + 4);
     END_WHILE
     (* copy the remaining bytes in byte mode *)
-    PT := ptw;
-    WHILE PT < end DO
+    PT ACCESS ADR(ptw);
+    WHILE ADR(PT) < end DO
     	PT := 0;
-    	PT := PT + 1;
+    	PT ACCESS (ADR(PT) + 1);
     END_WHILE
 
     _BUFFER_CLEAR := TRUE;

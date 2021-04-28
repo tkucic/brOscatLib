@@ -2,26 +2,26 @@ FUNCTION _BUFFER_INIT
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=477*)
     (* this routine uses 32 bit access to gain speed *)
     (* first access bytes till pointer is aligned for 32 bit access *)
-    temp := PT;
-    end := temp + UINT_TO_DWORD(SIZE);
+    temp := ADR(PT);
+    end := temp + SIZE;
     end32 := end - 3;
-    WHILE (PT < end) AND ((temp AND 16#00000003) > 0) DO
+    WHILE (ADR(PT) < end) AND ((temp AND 16#00000003) > 0) DO
     	PT := INIT;
-    	PT := PT + 1;
+        PT ACCESS (ADR(PT) + 1);
     	temp := temp + 1;
     END_WHILE
     (* pointer is aligned, now copy 32 bits at a time *)
-    ptw := PT;
-    temp := SHL(BYTE_TO_DWORD(INIT),24) OR SHL(BYTE_TO_DWORD(INIT),16) OR SHL(BYTE_TO_DWORD(INIT),8) OR BYTE_TO_DWORD(INIT);
-    WHILE ptw < end32 DO
-    	ptw := temp;
-    	ptw := ptw + 4;
+    ptw ACCESS ADR(PT);
+    temp := SHL(BYTE_TO_UDINT(INIT),24) OR SHL(BYTE_TO_UDINT(INIT),16) OR SHL(BYTE_TO_UDINT(INIT),8) OR BYTE_TO_UDINT(INIT);
+    WHILE ADR(ptw) < end32 DO
+    	ptw := UDINT_TO_DWORD(temp);
+    	ptw ACCESS (ADR(ptw) + 4);
     END_WHILE
     (* copy the remaining bytes in byte mode *)
-    PT := ptw;
-    WHILE PT < end DO
+    PT ACCESS ADR(ptw);
+    WHILE ADR(PT) < end DO
     	PT := INIT;
-    	PT := PT + 1;
+    	PT ACCESS (ADR(PT) + 1);
     END_WHILE
 
     _BUFFER_INIT := TRUE;

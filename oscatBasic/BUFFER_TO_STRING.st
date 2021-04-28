@@ -1,6 +1,6 @@
 FUNCTION BUFFER_TO_STRING
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=482*)
-    ps := ADR(BUFFER_TO_STRING);
+    ps ACCESS ADR(RETVAL);
     IF SIZE = 0 THEN RETURN; END_IF
     sta := MIN(START, SIZE -1);
     stp := MIN(STOP, SIZE -1);
@@ -12,13 +12,14 @@ FUNCTION BUFFER_TO_STRING
 
     FOR i := sta TO stp DO
     	ps := PT[i];
-    	ps := ps + 1;
+    	ps ACCESS (ADR(ps) + 1);
     END_FOR
 
     (* terminate the string *)
 
     ps := 0;
-
+    BUFFER_TO_STRING := TRUE;
+    
 
 
     (* revision History
