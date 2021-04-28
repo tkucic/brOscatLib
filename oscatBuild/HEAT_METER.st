@@ -10,11 +10,11 @@ FUNCTION_BLOCK HEAT_METER
     END_IF
 
     (* integrate or add consumption *)
-    int1(run := NOT PULSE_MODE AND E, in := x * LPH * 2.77777777777E-4);
+    int1(RUN := NOT PULSE_MODE AND E, IN := x * LPH * 2.77777777777E-4);
     IF PULSE_MODE THEN
     	IF NOT edge_ AND E THEN Y := Y + x * LPH; END_IF
     ELSE
-    	Y := int1.Out;
+    	Y := int1.OUT;
     END_IF
 
     (* store the value of E *)

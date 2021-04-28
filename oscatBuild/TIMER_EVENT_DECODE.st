@@ -25,37 +25,37 @@ FUNCTION TIMER_EVENT_DECODE
     		tmp := MID(EVENT, pos - start, start);
     		CASE step OF
     			0:	(* read type *)
-    				TIMER_EVENT_DECODE.typ := FSTRING_TO_BYTE(tmp);
+    				RETVAL.TYP := FSTRING_TO_BYTE(tmp);
 
     			1:	(* read channel *)
-    				TIMER_EVENT_DECODE.channel := FSTRING_TO_BYTE(tmp);
+    				RETVAL.CHANNEL := FSTRING_TO_BYTE(tmp);
 
     			2:	(* read day *)
     				IF IS_CC(tmp,'0123456789abcdefABCDEF#') THEN
-    					TIMER_EVENT_DECODE.day := FSTRING_TO_BYTE(tmp);
-    				ELSIF TIMER_EVENT_DECODE.typ = 2 THEN
-    					TIMER_EVENT_DECODE.DAY := FSTRING_TO_WEEK(tmp, LANG);
+    					RETVAL.DAY := FSTRING_TO_BYTE(tmp);
+    				ELSIF RETVAL.TYP = 2 THEN
+    					RETVAL.DAY := FSTRING_TO_WEEK(tmp, LANG);
     				ELSE
-    					TIMER_EVENT_DECODE.DAY := INT_TO_BYTE(FSTRING_TO_WEEKDAY(tmp, LANG));
+    					RETVAL.DAY := INT_TO_BYTE(FSTRING_TO_WEEKDAY(tmp, LANG));
     				END_IF
 
     			3:	(* read start *)
-    				TIMER_EVENT_DECODE.start := STRING_TO_TOD(tmp);
+    				RETVAL.START := STRING_TO_TOD(tmp);
 
     			4:	(* read duaration *)
-    				TIMER_EVENT_DECODE.duration := STRING_TO_TIME(tmp);
+    				RETVAL.DURATION := STRING_TO_TIME(tmp);
 
     			5:	(* read land *)
-    				TIMER_EVENT_DECODE.land := FSTRING_TO_BYTE(tmp);
+    				RETVAL.LAND := FSTRING_TO_BYTE(tmp);
 
     			6:	(* read lor *)
-    				TIMER_EVENT_DECODE.LOR := FSTRING_TO_BYTE(tmp);
+    				RETVAL.LOR := FSTRING_TO_BYTE(tmp);
     		END_CASE
     		start := pos + 1;
     		step := step + 1;
     	END_IF
     END_FOR
-
+    TIMER_EVENT_DECODE := TRUE;
 
 
 

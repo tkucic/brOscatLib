@@ -40,30 +40,30 @@ FUNCTION_BLOCK SWITCH_X
     IF T2.Q AND NOT E2 THEN x2 := TRUE; END_IF
 
     IF T1.Q THEN
-    	IF T3.q THEN
+    	IF T3.Q THEN
     		Q31 := TRUE;
     		x1 := FALSE;
-    	ELSIF T4.q THEN
+    	ELSIF T4.Q THEN
     		Q41 := TRUE;
     		x1 := FALSE;
-    	ELSIF T5.q THEN
+    	ELSIF T5.Q THEN
     		Q51 := TRUE;
     		x1 := FALSE;
-    	ELSIF T6.q THEN
+    	ELSIF T6.Q THEN
     		Q61 := TRUE;
     		x1 := FALSE;
     	END_IF
     ELSIF T2.Q THEN
-    	IF T3.q THEN
+    	IF T3.Q THEN
     		Q32 := TRUE;
     		x2 := FALSE;
-    	ELSIF T4.q THEN
+    	ELSIF T4.Q THEN
     		Q42 := TRUE;
     		x2 := FALSE;
-    	ELSIF T5.q THEN
+    	ELSIF T5.Q THEN
     		Q52 := TRUE;
     		x2 := FALSE;
-    	ELSIF T6.q THEN
+    	ELSIF T6.Q THEN
     		Q62 := TRUE;
     		x2 := FALSE;
     	END_IF

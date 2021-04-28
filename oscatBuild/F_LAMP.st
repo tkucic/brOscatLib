@@ -1,6 +1,6 @@
 FUNCTION_BLOCK F_LAMP
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=54*)
-    runtime(in := SWITCH, seconds := ONTIME, CYCLES := CYCLES);
+    runtime(IN := SWITCH, SECONDS := ONTIME, CYCLES := CYCLES);
 
     IF RST THEN
     	ONTIME := 0;

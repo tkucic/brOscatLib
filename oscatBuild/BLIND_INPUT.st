@@ -4,10 +4,10 @@ FUNCTION_BLOCK BLIND_INPUT
     tx := UDINT_TO_TIME(T_PLC_MS());
 
     (* inputs S1 and S2 are debounced and then decoded for multiple clicks *)
-    s1e(IN := S1, pt := DEBOUNCE_TIME);
-    s2e(IN := S2, pt := DEBOUNCE_TIME);
-    s1d(IN := (s1e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND dir), t_long := CLICK_TIME);
-    s2d(IN := (s2e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND NOT dir), t_long := CLICK_TIME);
+    s1e(IN := S1, PT := DEBOUNCE_TIME);
+    s2e(IN := S2, PT := DEBOUNCE_TIME);
+    s1d(IN := (s1e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND dir), T_LONG := CLICK_TIME);
+    s2d(IN := (s2e.Q AND NOT SINGLE_SWITCH) OR (s1e.Q AND SINGLE_SWITCH AND NOT dir), T_LONG := CLICK_TIME);
 
     (* if D1 and D2 are not toggle clear them to make sure they are only active for oine cycle *)
     IF NOT D1_TOGGLE THEN D1 := FALSE; END_IF
@@ -17,9 +17,9 @@ FUNCTION_BLOCK BLIND_INPUT
     IF (s1d.LONG AND s2d.LONG) OR (STATUS = 139) THEN
        STATUS := 139;
        IF NOT (s1d.LONG OR s2d.LONG)  THEN STATUS := 130; END_IF
-    ELSIF s1d.tp_LONG THEN
+    ELSIF s1d.TP_LONG THEN
     	STATUS := 132;
-    ELSIF s2d.tp_LONG THEN
+    ELSIF s2d.TP_LONG THEN
     	STATUS := 133;
     ELSIF  s1d.SINGLE THEN
     	IF CLICK_EN THEN
@@ -69,7 +69,7 @@ FUNCTION_BLOCK BLIND_INPUT
 
 
     (* state machine *)
-    CASE STATUS OF
+    CASE BYTE_TO_USINT(STATUS) OF
     	0:		(* power up operation *)
     			STATUS := 130;
 

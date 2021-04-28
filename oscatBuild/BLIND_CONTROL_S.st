@@ -34,7 +34,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     rmp(E := UP OR DN, TR := T_UP, TF := T_DN, TL := T_LOCKOUT, OUT := POS);
 
     (* state machine *)
-    CASE STATUS OF
+    CASE BYTE_TO_USINT(STATUS) OF
     	0:		(* power UP init *)
     		last := tx;
     		PI_last := PI XOR BYTE#255;

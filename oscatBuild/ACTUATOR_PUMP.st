@@ -26,7 +26,7 @@ FUNCTION_BLOCK ACTUATOR_PUMP
     	PUMP := TRUE;
     END_IF
 
-    meter(IN := PUMP, seconds := RUNTIME, CYCLES := CYCLES);
+    meter(IN := PUMP, SECONDS := RUNTIME, CYCLES := CYCLES);
     old_man := MANUAL;
 
 

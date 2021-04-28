@@ -17,7 +17,7 @@ FUNCTION_BLOCK TIMER_2
     wday := DAY_OF_WEEK(dat);
 
     (* calculate if any action is necessary today *)
-    CASE MODE OF
+    CASE BYTE_TO_USINT(MODE) OF
     	1..7:	(* mondays to fridays *)
     		enabled := wday = BYTE_TO_INT(MODE);
     	11:	(* every day *)

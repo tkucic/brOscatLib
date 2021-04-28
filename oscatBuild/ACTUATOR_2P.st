@@ -1,19 +1,19 @@
 FUNCTION_BLOCK ACTUATOR_2P
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=12*)
     (* run the autorun timer *)
-    timer(trun := SELF_ACT_PULSE * (2 * SELF_ACT_CYCLES), toff := SELF_ACT_TIME, TEST := TEST, ARE := ARE, ARX := ARX);
+    timer(TRUN := SELF_ACT_PULSE * (2 * SELF_ACT_CYCLES), TOFF := SELF_ACT_TIME, TEST := TEST, ARE := ARE, ARX := ARX);
     ARO := timer.ARO;
 
     (* run the pulse width generator *)
     IF ARO THEN
     	pwgen(PTL := SELF_ACT_PULSE, PTH := SELF_ACT_PULSE);
     	OUT := pwgen.Q;
-    ELSIF IN < SENS THEN
+    ELSIF BYTE_TO_USINT(IN) < BYTE_TO_USINT(SENS) THEN
     	OUT := FALSE;
-    ELSIF IN > BYTE#255 - SENS THEN
+    ELSIF BYTE_TO_USINT(IN) > 255 - BYTE_TO_USINT(SENS) THEN
     	OUT := TRUE;
     ELSE
-    	pwgen.PTH := (CYCLE_TIME * BAND_B(IN,SENS)) / 255;
+    	pwgen.PTH := (CYCLE_TIME * BYTE_TO_USINT(BAND_B(IN,SENS))) / 255;
     	pwgen.PTL := CYCLE_TIME - pwgen.PTH;
     	pwgen();
     	OUT := pwgen.Q;

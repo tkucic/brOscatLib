@@ -1,15 +1,15 @@
 FUNCTION_BLOCK BLIND_ACTUATOR
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=74*)
     (* make sure only one motor is active at a given time *)
-    lock(i1 := UP, I2 := DN, TL := T_LOCKOUT);
+    lock(I1 := UP, I2 := DN, TL := T_LOCKOUT);
 
     (* ramp UP or down to simulate the angle position of the blind slats *)
-    angle(e := lock.Q1 OR lock.Q2, UP := lock.Q1, PT := T_ANGLE);
-    position(e := lock.Q1 AND angle.high OR lock.Q2 AND angle.low, UP := lock.Q1, PT := T_UD);
+    angle(E := lock.Q1 OR lock.Q2, UP := lock.Q1, PT := T_ANGLE);
+    position(E := lock.Q1 AND angle.HIGH OR lock.Q2 AND angle.LOW, UP := lock.Q1, PT := T_UD);
 
     (* set the outputs *)
-    POS := position.Out;
-    ANG := angle.Out;
+    POS := position.OUT;
+    ANG := angle.OUT;
 
     (* set the outputs *)
     QU := lock.Q1;

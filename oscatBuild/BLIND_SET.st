@@ -11,7 +11,7 @@ FUNCTION_BLOCK BLIND_SET
     END_IF
 
     (* state machine *)
-    CASE STATUS OF
+    CASE BYTE_TO_USINT(STATUS) OF
     	0: (* power on state *)
     		STATUS := S_IN;
 

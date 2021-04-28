@@ -4,44 +4,44 @@ FUNCTION_BLOCK LEGIONELLA
     IF NOT init THEN
     	init := TRUE;
     	X1.DAY := SHR(BYTE#128,DAY);
-    	X1.start := T_START;
-    	x3.low := TEMP_OFFSET + TEMP_SET;
-    	x3.high := TEMP_HYS + x3.low;
-    	x2.wait0 := T_MAX_HEAT;
-    	x2.delay0 := TP_0;
-    	x2.delay1 := TP_1;
-    	x2.delay2 := TP_2;
-    	x2.delay3 := TP_3;
-    	x2.delay4 := TP_4;
-    	x2.delay5 := TP_5;
-    	x2.delay6 := TP_6;
-    	x2.delay7 := TP_7;
-    	x2.wait1 := T_MAX_RET;
-    	x2.wait2 := T_MAX_RET;
-    	x2.wait3 := T_MAX_RET;
-    	x2.wait4 := T_MAX_RET;
-    	x2.wait5 := T_MAX_RET;
-    	x2.wait6 := T_MAX_RET;
-    	x2.wait7 := T_MAX_RET;
+    	X1.START := T_START;
+    	x3.LOW := TEMP_OFFSET + TEMP_SET;
+    	x3.HIGH := TEMP_HYS + x3.LOW;
+    	x2.WAIT0 := T_MAX_HEAT;
+    	x2.DELAY0 := TP_0;
+    	x2.DELAY1 := TP_1;
+    	x2.DELAY2 := TP_2;
+    	x2.DELAY3 := TP_3;
+    	x2.DELAY4 := TP_4;
+    	x2.DELAY5 := TP_5;
+    	x2.DELAY6 := TP_6;
+    	x2.DELAY7 := TP_7;
+    	x2.WAIT1 := T_MAX_RET;
+    	x2.WAIT2 := T_MAX_RET;
+    	x2.WAIT3 := T_MAX_RET;
+    	x2.WAIT4 := T_MAX_RET;
+    	x2.WAIT5 := T_MAX_RET;
+    	x2.WAIT6 := T_MAX_RET;
+    	x2.WAIT7 := T_MAX_RET;
     	x2();
     END_IF
 
     (* oerational code *)
-    X1(DTi := DT_IN);
+    X1(DTI := DT_IN);
     IF X1.Q OR MANUAL OR x2.RUN THEN
-    	x3(in := TEMP_BOILER);
-    	x2.in0 := x3.Q OR x3.win;
-    	x2.in1 := TEMP_RETURN >= TEMP_SET;
-    	x2.in2 := x2.in1;
-    	x2.in3 := x2.in1;
-    	x2.in4 := x2.in1;
-    	x2.in5 := x2.in1;
-    	x2.in6 := x2.in1;
-    	x2.in7 := x2.in1;
+    	x3(IN := TEMP_BOILER);
+    	x2.IN0 := x3.Q OR x3.WIN;
+    	x2.IN1 := TEMP_RETURN >= TEMP_SET;
+    	x2.IN2 := x2.IN1;
+    	x2.IN3 := x2.IN1;
+    	x2.IN4 := x2.IN1;
+    	x2.IN5 := x2.IN1;
+    	x2.IN6 := x2.IN1;
+    	x2.IN7 := x2.IN1;
     	x2.RST := RST;
-    	x2(start := X1.Q OR MANUAL);
+    	x2(START := X1.Q OR MANUAL);
     	RUN := x2.RUN;
-    	PUMP := x2.qx;
+    	PUMP := x2.QX;
     	HEAT := NOT x3.Q AND x2.RUN;
     	VALVE0 := x2.Q0;
     	VALVE1 := x2.Q1;
@@ -51,10 +51,10 @@ FUNCTION_BLOCK LEGIONELLA
     	VALVE5 := x2.Q5;
     	VALVE6 := x2.Q6;
     	VALVE7 := x2.Q7;
-    	PUMP := x2.qx;
+    	PUMP := x2.QX;
     	STATUS := x2.STATUS;
     ELSE;
-    	x2(start :=0);
+    	x2(START :=0);
     	STATUS := x2.STATUS;
     END_IF
 

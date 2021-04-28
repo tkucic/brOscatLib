@@ -1,12 +1,12 @@
 FUNCTION_BLOCK BLIND_SCENE
     (*http://www.oscat.de/images/OSCATBuilding/oscat_building100_en.pdf#page=87*)
     (* delete all bits except the lower 4 of SCENE *)
-    x := SCENE AND 16#0F;
+    x := BYTE_TO_USINT(SCENE AND 16#0F);
 
     IF ENABLE AND sx[x,2] > 0 AND UP AND DN THEN
     	PO := sx[x,0];
     	AO := sx[x,1];
-    	STATUS := 160 + x;  (* STATUS number is 160 to 175 for the 16 scenes *)
+    	STATUS := USINT_TO_BYTE(160 + x);  (* STATUS number is 160 to 175 for the 16 scenes *)
     	QU := TRUE;
     	QD := TRUE;
     ELSE

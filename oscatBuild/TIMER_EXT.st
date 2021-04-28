@@ -15,7 +15,7 @@ FUNCTION_BLOCK TIMER_EXT
     tl := tx;
 
     (* debounce *)
-    deb(in := SWITCH, TD := T_DEBOUNCE, PM := TRUE);
+    deb(IN := SWITCH, TD := T_DEBOUNCE, PM := TRUE);
 
     (* read time of day and strip OFF all milliseconds *)
     tdx := DT_TO_TOD(DT_IN);
@@ -59,7 +59,7 @@ FUNCTION_BLOCK TIMER_EXT
 
 
     (* mnaual and output control *)
-    mx(in := qx, ENA := ENA, ON := ON, OFF := OFF, MAN := MAN);
+    mx(IN := qx, ENA := ENA, ON := ON, OFF := OFF, MAN := MAN);
     Q := mx.Q;
 
     (* set the STATUS output *)

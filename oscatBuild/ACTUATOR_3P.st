@@ -10,7 +10,7 @@ FUNCTION_BLOCK ACTUATOR_3P
     	ARX := TRUE;
     END_IF
 
-    CASE STATUS OF
+    CASE BYTE_TO_USINT(STATUS) OF
     	0:	(* power on setup *)
     		IF ARE AND NOT ARX THEN
     			STATUS := 103;
@@ -106,7 +106,7 @@ FUNCTION_BLOCK ACTUATOR_3P
 
     (* adjust position if end switch is active *)
     IF SWITCH_AVAIL AND END_POS THEN
-    	POS := SEL(POS > 127, 0, 255);
+    	POS := USINT_TO_BYTE(SEL(BYTE_TO_USINT(POS) > 127, 0, 255));
     	next_cal := tx + T_CAL;
     END_IF
 

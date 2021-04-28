@@ -38,7 +38,7 @@ FUNCTION_BLOCK BURNER
     IF (STATUS > 0 AND STATUS < 100) OR RST THEN RETURN; END_IF
 
     (* start sequence *)
-    CASE state OF
+    CASE BYTE_TO_USINT(state) OF
 
     1:	(* IN signal starts oil pre heating *)
     	IF IN AND FLAME THEN
@@ -150,8 +150,8 @@ FUNCTION_BLOCK BURNER
     END_IF
 
     (* runtimezähler *)
-    timer1(IN := FLAME AND IN AND MOTOR AND COIL1 AND NOT COIL2, seconds := RUNTIME1, CYCLES := CYCLES);
-    timer2(IN := FLAME AND IN AND MOTOR AND COIL1 AND COIL2, seconds := RUNTIME2, CYCLES := cycles2);
+    timer1(IN := FLAME AND IN AND MOTOR AND COIL1 AND NOT COIL2, SECONDS := RUNTIME1, CYCLES := CYCLES);
+    timer2(IN := FLAME AND IN AND MOTOR AND COIL1 AND COIL2, SECONDS := RUNTIME2, CYCLES := cycles2);
     KWH := UDINT_TO_REAL(RUNTIME1) * KW1 / 3600.0 + UDINT_TO_REAL(RUNTIME2) * KW2 / 3600.0;
 
     (* zeit fuer naechsten aufruf merken *)

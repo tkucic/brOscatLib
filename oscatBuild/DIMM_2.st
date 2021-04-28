@@ -3,8 +3,8 @@ FUNCTION_BLOCK DIMM_2
     (* debouncing for inputs I1 and I2 *)
     t1(IN := I1, PT := T_DEBOUNCE);
     t2(IN := I2, PT := T_DEBOUNCE);
-    dc1(in := t1.Q, T_LONG := T_DIMM_START);
-    dc2(in := t2.Q, T_LONG := T_DIMM_START);
+    dc1(IN := t1.Q, T_LONG := T_DIMM_START);
+    dc2(IN := t2.Q, T_LONG := T_DIMM_START);
 
 
     IF RST THEN
@@ -56,14 +56,14 @@ FUNCTION_BLOCK DIMM_2
 
 
     (* while dimming is active ramp the output OUT up or down *)
-    dim(dir := dc2.LONG, e := dc1.LONG OR dc2.LONG , TR := T_DIMM, rmp := OUT);
+    dim(DIR := dc2.LONG, E := dc1.LONG OR dc2.LONG , TR := T_DIMM, RMP := OUT);
 
     (* turn off output if a value of 0 is reached *)
     IF OUT = 0 THEN Q := FALSE; END_IF
 
     (* limit the maximum runtime *)
     IF T_ON_MAX > t#0s THEN
-    	t3(in := Q, pt := T_ON_MAX);
+    	t3(IN := Q, PT := T_ON_MAX);
     	Q := Q XOR t3.Q;
     END_IF
 

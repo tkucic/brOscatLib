@@ -7,7 +7,7 @@ FUNCTION_BLOCK SW_RECONFIG
     	(* generate output *)
     	Q := T1.Q XOR INV;
     	(* reconfiguration timer *)
-    	T2(IN := Q, pt := TR);
+    	T2(IN := Q, PT := TR);
     	(* when T2.Q goes high then reverse INV *)
     	IF T2.Q THEN INV := NOT INV; END_IF
     ELSE

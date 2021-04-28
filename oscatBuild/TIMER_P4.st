@@ -6,7 +6,7 @@ FUNCTION_BLOCK TIMER_P4
     	(* reset all events to last active on 1.1.1970 *)
     	last_execute := DT#1970-1-1-00:00;
     	FOR pos := 0 TO array_max DO
-    		IF (PROG[pos].channel >= OFS) AND (PROG[pos].channel < (OFS + 4)) THEN PROG[pos].LAST := last_execute; END_IF
+    		IF (PROG[pos].CHANNEL >= OFS) AND (PROG[pos].CHANNEL < (OFS + 4)) THEN PROG[pos].LAST := last_execute; END_IF
     	END_FOR
 
     	(* reset all set markers and logic masks *)
@@ -28,78 +28,78 @@ FUNCTION_BLOCK TIMER_P4
     	(* search the array PROG for timer events *)
     	FOR pos := 0 TO array_max DO
     		event := PROG[pos];
-    		channel := event.channel - OFS;
+    		channel := event.CHANNEL - OFS;
     		IF (event.TYP > 0) AND (channel >= 0) AND (channel <= channel_max) THEN
     			ma[channel] := event.LAND;
     			mo[channel] := event.LOR;
-    			CASE event.TYP OF
+    			CASE BYTE_TO_USINT(event.TYP) OF
     				1:	(* daily event *)
-    					start := day_start + TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(event.START);
     					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				2: 	(* event by selected weekdays *)
     					IF (SHR(BYTE#128, DAY_OF_WEEK(DT_TO_DATE(DTIME))) AND event.DAY) > 0 THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				3:	(* event every N days *)
     					IF current_day MOD event.DAY = 0 THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				10:	(* weekly event exactly once a week the weekday is specified in day, 1= mo *)
     					IF DAY_OF_WEEK(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				20:	(* monthly event *)
     					IF DAY_OF_MONTH(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				21:	(* event on last day of month *)
     					IF DT_TO_DATE(DTIME) = MONTH_END(DT_TO_DATE(DTIME)) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				30:	(* yearly event on a specific day specified in day *)
     					IF DAY_OF_YEAR(DT_TO_DATE(DTIME)) = BYTE_TO_INT(event.DAY) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				31:	(* event on last day of year *)
     					IF DT_TO_DATE(DTIME) = YEAR_END(YEAR_OF_DATE(DT_TO_DATE(DTIME))) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				40:	(* event on leap days *)
     					IF LEAP_DAY(DT_TO_DATE(DTIME)) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				41: (* event on holidays *)
     					IF HOLY THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				42: (* event on holidays and weekends *)
     					IF (HOLY OR (DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 6) OR (DAY_OF_WEEK(DT_TO_DATE(DTIME)) = 7)) THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
     				43:	(* event on workdays mo-FR and no holiday *)
     					IF DAY_OF_WEEK(DT_TO_DATE(DTIME)) < 6 THEN
-    						start := day_start + TOD_TO_TIME(event.start);
+    						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
 
@@ -110,7 +110,7 @@ FUNCTION_BLOCK TIMER_P4
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
-    					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.START);
     					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				51:	(* event before reference time *)
@@ -120,7 +120,7 @@ FUNCTION_BLOCK TIMER_P4
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
-    					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.START);
     					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				52 : (* set output at specific time + offset  *)
@@ -130,7 +130,7 @@ FUNCTION_BLOCK TIMER_P4
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
-    					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.START);
     					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := TRUE;
     						PROG[pos].LAST := day_start;
@@ -143,7 +143,7 @@ FUNCTION_BLOCK TIMER_P4
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
-    					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(tx) + TOD_TO_TIME(event.START);
     					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := FALSE;
     						PROG[pos].LAST := day_start;
@@ -156,7 +156,7 @@ FUNCTION_BLOCK TIMER_P4
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
-    					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.START);
     					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := TRUE;
     						PROG[pos].LAST := day_start;
@@ -169,7 +169,7 @@ FUNCTION_BLOCK TIMER_P4
     					ELSE
     						tx := TOD#00:00;
     					END_CASE
-    					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.start);
+    					start := day_start + TOD_TO_TIME(tx) - TOD_TO_TIME(event.START);
     					IF DTIME >= start AND day_start > event.LAST THEN
     						qs[channel] := FALSE;
     						PROG[pos].LAST := day_start;
