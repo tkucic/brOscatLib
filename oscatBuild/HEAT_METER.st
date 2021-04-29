@@ -30,9 +30,9 @@ FUNCTION_BLOCK HEAT_METER
     END_IF
 
     (* calculate the current consumption *)
-    IF (tx - last >= TIME_TO_DWORD(AVG_TIME)) AND (AVG_TIME > T#0s) THEN
+    IF (tx - last >= TIME_TO_UDINT(AVG_TIME)) AND (AVG_TIME > T#0s) THEN
     	last := tx;
-    	C := (Y - y_last) * 3.6E6 / DWORD_TO_REAL(TIME_TO_DWORD(AVG_TIME));
+    	C := (Y - y_last) * 3.6E6 / UDINT_TO_REAL(TIME_TO_UDINT(AVG_TIME));
     	y_last := Y;
     END_IF
 

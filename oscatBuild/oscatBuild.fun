@@ -73,6 +73,10 @@ FUNCTION_BLOCK ACTUATOR_A (* Actuators *) (* http://www.oscat.de/images/OSCATBui
 	VAR
 		timer : CYCLE_4;
 		dx_edge : BOOL;
+		_OUT_MAX : UINT;
+		_OUT_MIN : UINT;
+		_I1 : USINT;
+		_I2 : USINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -520,8 +524,8 @@ FUNCTION_BLOCK TIMER_EXT (* Electrical *) (* http://www.oscat.de/images/OSCATBui
 		tdx : TIME_OF_DAY;
 		wdx : INT;
 		tc : TIME;
-		tx : DWORD;
-		tl : DWORD;
+		tx : UDINT;
+		tl : UDINT;
 		qx : BOOL;
 		init : BOOL;
 	END_VAR
@@ -738,8 +742,8 @@ FUNCTION_BLOCK HEAT_METER (* HLK *) (* http://www.oscat.de/images/OSCATBasic/osc
 		Y : REAL;
 	END_VAR
 	VAR
-		tx : DWORD;
-		last : DWORD;
+		tx : UDINT;
+		last : UDINT;
 		int1 : FT_INT2;
 		edge_ : BOOL;
 		x : REAL;

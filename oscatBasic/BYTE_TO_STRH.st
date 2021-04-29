@@ -1,7 +1,7 @@
 FUNCTION BYTE_TO_STRH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=146*)
     (* read pointer to output string *)
-    PT ACCESS ADR(BYTE_TO_STRH);
+    PT ACCESS ADR(RETVAL);
     (* calculate high order hex value *)
     temp := SHR(IN,4);
     intTemp := BYTE_TO_USINT(temp);
@@ -19,8 +19,7 @@ FUNCTION BYTE_TO_STRH
     (* set pointer at the end of the output string and close the string with 0 *)
     PT ACCESS (ADR(PT) + 1);
     PT:= 0;
-
-
+    BYTE_TO_STRH := TRUE;
     (* code before rev 1.2
     FOR i := 1 TO 2 DO
     	X := IN AND 2#1111;

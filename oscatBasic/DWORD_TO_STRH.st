@@ -1,7 +1,7 @@
 FUNCTION DWORD_TO_STRH
     (*http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=154*)
     (* read output adress to pointer *)
-    pt ACCESS (ADR(DWORD_TO_STRH) + 8);
+    pt ACCESS (ADR(RETVAL) + 8);
     (* wirte the closing byte for the string *)
     pt:= 0;
 
@@ -19,7 +19,7 @@ FUNCTION DWORD_TO_STRH
     	(* shift IN for nect hex character *)
     	IN := SHR(IN,4);
     END_FOR
-
+    DWORD_TO_STRH := TRUE;
 
     (* code beofre rev 1.2
     FOR i := 1 TO 8 DO

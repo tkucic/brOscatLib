@@ -10,10 +10,14 @@ FUNCTION_BLOCK ACTUATOR_A
     	1:	(* self_act max value *)
     		Y := OUT_MAX;
     	3:	(* normal operation *)
+            _OUT_MAX := WORD_TO_UINT(OUT_MAX);
+            _OUT_MIN := WORD_TO_UINT(OUT_MIN);
+            _I1 := BYTE_TO_USINT(I1);
+            _I2 := BYTE_TO_USINT(I2);
     		IF RV THEN
-    			Y := UINT_TO_WORD(WORD_TO_UINT(OUT_MAX) - (WORD_TO_UINT(OUT_MAX) - WORD_TO_UINT(OUT_MIN)) * SEL(IS, BYTE_TO_USINT(I1), BYTE_TO_USINT(I2))) / 255);
+    			Y := UINT_TO_WORD((_OUT_MAX - (_OUT_MAX - _OUT_MIN) * SEL(IS, _I1, _I1)) / 255);
     		ELSE
-    			Y := UINT_TO_WORD((WORD_TO_UINT(OUT_MAX) - WORD_TO_UINT(OUT_MIN)) * SEL(IS, BYTE_TO_USINT(I1), BYTE_TO_USINT(I2)) / 255 + WORD_TO_UINT(OUT_MIN));
+    			Y := UINT_TO_WORD((_OUT_MAX - _OUT_MIN) * SEL(IS, _I1, _I1) / 255 + _OUT_MIN);
     		END_IF
     END_CASE
 

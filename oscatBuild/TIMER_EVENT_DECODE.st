@@ -16,7 +16,7 @@ FUNCTION TIMER_EVENT_DECODE
     (* check for start and ending character *)
     IF (LEFT(EVENT,1) <> '<') AND (RIGHT(EVENT,1) <> '>') THEN RETURN; END_IF
     stop := LEN(EVENT);
-    pt := ADR(EVENT);
+    pt ACCESS ADR(EVENT);
     start := 2;
 
     (* parse the string for next ; *)

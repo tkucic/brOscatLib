@@ -15,7 +15,7 @@ FUNCTION_BLOCK T_AVG24
     	TA := (INT_TO_REAL(ft1.Y) * 0.1 + OFS) * SCALE;
     	T24 := (DINT_TO_REAL(sum) * 0.00208333333333 + OFS) * SCALE;
     	TP := TRUE;
-    ELSIF DT_TO_DWORD(DTI) / 60 MOD 30 = 0 AND DTI > last THEN
+    ELSIF DT_TO_UDINT(DTI) / 60 MOD 30 = 0 AND DTI > last THEN
     	(* make sure we onlyexecute once every 30 mins *)
     	last := DTI + T#1m;
     	(* sample the temperature every 30 mins and store in ring buffer samples *)

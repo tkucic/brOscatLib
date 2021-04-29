@@ -19,7 +19,7 @@ FUNCTION_BLOCK TEMP_EXT
     day := DT_TO_TOD(DT_IN) >= START_DAY AND  DT_TO_TOD(DT_IN) < START_NIGHT;
 
     (* read the correct external temperature depending on the T_EXT_CONFIG setting *)
-    T_EXT := MULTI_IN(T_EXT1, T_EXT2, T_EXT3, T_EXT_DEFAULT, T_EXT_MIN, T_EXT_MAX, T_EXT_CONFIG);
+    T_EXT := MULTI_IN(T_EXT1, T_EXT2, T_EXT3, T_EXT_DEFAULT, T_EXT_MIN, T_EXT_MAX, BYTE_TO_USINT(T_EXT_CONFIG));
 
     (* dtermine heating *)
     IF (heat_start <= heat_stop AND xdate >= heat_start AND xdate <= heat_stop) OR (heat_start > heat_stop AND (xdate >= heat_start OR xdate <= heat_stop)) THEN

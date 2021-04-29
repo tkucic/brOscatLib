@@ -13,26 +13,26 @@ FUNCTION_BLOCK BLIND_CONTROL
     IF UP AND DN THEN
     	(* automatic modus detected *)
     	(* first find correct position *)
-    	IF BYTE_TO_INT(act.POS) < BYTE_TO_INT(PI) - delta THEN
+    	IF BYTE_TO_INT(act.POS) < BYTE_TO_INT(PI) - BYTE_TO_INT(delta) THEN
     		act.UP := TRUE;
     		act.DN := FALSE;
     		delta := 0;
     		STATUS := 121;
-    	ELSIF BYTE_TO_INT(act.POS) > BYTE_TO_INT(PI) + delta THEN
+    	ELSIF BYTE_TO_INT(act.POS) > BYTE_TO_INT(PI) + BYTE_TO_INT(delta) THEN
     		act.UP := FALSE;
     		act.DN := TRUE;
     		delta := 0;
     		STATUS := 122;
     	(* regulate angle *)
-    	ELSIF BYTE_TO_INT(act.ANG) < BYTE_TO_INT(AI) - delta AND T_ANGLE > T#100ms THEN
+    	ELSIF BYTE_TO_INT(act.ANG) < BYTE_TO_INT(AI) - BYTE_TO_INT(delta) AND T_ANGLE > T#100ms THEN
     		act.UP := TRUE;
     		act.DN := FALSE;
-    		delta := SENS/2;
+    		delta := USINT_TO_BYTE(BYTE_TO_USINT(SENS)/2);
     		STATUS := 123;
-    	ELSIF BYTE_TO_INT(act.ANG) > BYTE_TO_INT(AI) + delta AND T_ANGLE > T#100ms THEN
+    	ELSIF BYTE_TO_INT(act.ANG) > BYTE_TO_INT(AI) + BYTE_TO_INT(delta) AND T_ANGLE > T#100ms THEN
     		act.UP := FALSE;
     		act.DN := TRUE;
-    		delta := SENS/2;
+    		delta := USINT_TO_BYTE(BYTE_TO_USINT(SENS)/2);
     		STATUS := 124;
     	(* correct position reached *)
     	ELSE

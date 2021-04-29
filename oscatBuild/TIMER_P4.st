@@ -6,7 +6,7 @@ FUNCTION_BLOCK TIMER_P4
     	(* reset all events to last active on 1.1.1970 *)
     	last_execute := DT#1970-1-1-00:00;
     	FOR pos := 0 TO array_max DO
-    		IF (PROG[pos].CHANNEL >= OFS) AND (PROG[pos].CHANNEL < (OFS + 4)) THEN PROG[pos].LAST := last_execute; END_IF
+    		IF (BYTE_TO_USINT(PROG[pos].CHANNEL) >= BYTE_TO_USINT(OFS)) AND (BYTE_TO_USINT(PROG[pos].CHANNEL) < (BYTE_TO_USINT(OFS) + 4)) THEN PROG[pos].LAST := last_execute; END_IF
     	END_FOR
 
     	(* reset all set markers and logic masks *)
@@ -28,7 +28,7 @@ FUNCTION_BLOCK TIMER_P4
     	(* search the array PROG for timer events *)
     	FOR pos := 0 TO array_max DO
     		event := PROG[pos];
-    		channel := event.CHANNEL - OFS;
+    		channel := BYTE_TO_INT(event.CHANNEL) - BYTE_TO_INT(OFS);
     		IF (event.TYP > 0) AND (channel >= 0) AND (channel <= channel_max) THEN
     			ma[channel] := event.LAND;
     			mo[channel] := event.LOR;
@@ -44,7 +44,7 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				3:	(* event every N days *)
-    					IF current_day MOD event.DAY = 0 THEN
+    					IF current_day MOD BYTE_TO_DINT(event.DAY) = 0 THEN
     						start := day_start + TOD_TO_TIME(event.START);
     						qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
     					END_IF
@@ -104,7 +104,7 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				50: (* event after reference time *)
-    					CASE PROG[pos].DAY OF
+    					CASE BYTE_TO_USINT(PROG[pos].DAY) OF
     						0:	tx := TREF_0;
     						1:	tx := TREF_1;
     					ELSE
@@ -114,7 +114,7 @@ FUNCTION_BLOCK TIMER_P4
     					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				51:	(* event before reference time *)
-    					CASE PROG[pos].DAY OF
+    					CASE BYTE_TO_USINT(PROG[pos].DAY) OF
     						0:	tx := TREF_0;
     						1:	tx := TREF_1;
     					ELSE
@@ -124,7 +124,7 @@ FUNCTION_BLOCK TIMER_P4
     					qn[channel] := DTIME >= start AND DTIME <= start + event.DURATION;
 
     				52 : (* set output at specific time + offset  *)
-    					CASE PROG[pos].DAY OF
+    					CASE BYTE_TO_USINT(PROG[pos].DAY) OF
     						0:	tx := TREF_0;
     						1:	tx := TREF_1;
     					ELSE
@@ -137,7 +137,7 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				53 : (* reset output at specific time + offset *)
-    					CASE PROG[pos].DAY OF
+    					CASE BYTE_TO_USINT(PROG[pos].DAY) OF
     						0:	tx := TREF_0;
     						1:	tx := TREF_1;
     					ELSE
@@ -150,7 +150,7 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				54 : (* set output at specific time - offset  *)
-    					CASE PROG[pos].DAY OF
+    					CASE BYTE_TO_USINT(PROG[pos].DAY) OF
     						0:	tx := TREF_0;
     						1:	tx := TREF_1;
     					ELSE
@@ -163,7 +163,7 @@ FUNCTION_BLOCK TIMER_P4
     					END_IF
 
     				55 : (* reset output at specific time - offset *)
-    					CASE PROG[pos].DAY OF
+    					CASE BYTE_TO_USINT(PROG[pos].DAY) OF
     						0:	tx := TREF_0;
     						1:	tx := TREF_1;
     					ELSE

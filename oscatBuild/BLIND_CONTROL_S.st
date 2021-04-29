@@ -43,7 +43,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	121: 	(* manual UP *)
     		MU := TRUE;
     		MD := FALSE;
-    		IF POS >= (BYTE#255 - EXT_TRIG) THEN
+    		IF BYTE_TO_USINT(POS) >= (255 - BYTE_TO_USINT(EXT_TRIG)) THEN
     			(* extend cycle if top is reached *)
     			POS := 255;
     			last := tx;
@@ -53,7 +53,7 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     	122:	(* manual down *)
     		MD := TRUE;
     		MU := FALSE;
-    		IF POS <= EXT_TRIG THEN
+    		IF BYTE_TO_USINT(POS) <= BYTE_TO_USINT(EXT_TRIG) THEN
     			(* extend cycle if bottom is reached *)
     			POS := 0;
     			last := tx;
@@ -65,12 +65,12 @@ FUNCTION_BLOCK BLIND_CONTROL_S
     		MU := rmp.UP;
     		IF NOT (rmp.DN OR rmp.UP) THEN
     			(* automatic position is reached *)
-    			IF POS <= EXT_TRIG THEN
+    			IF BYTE_TO_USINT(POS) <= BYTE_TO_USINT(EXT_TRIG) THEN
     				(* extend at bottom *)
     				MD := TRUE;
     				last := tx;
     				STATUS := 129;	(* extend *)
-    			ELSIF POS >= (BYTE#255 - EXT_TRIG)  THEN
+    			ELSIF BYTE_TO_USINT(POS) >= (255 - BYTE_TO_USINT(EXT_TRIG))  THEN
     				(* extend at top *)
     				MU := TRUE;
     				last := tx;
