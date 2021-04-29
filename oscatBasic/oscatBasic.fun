@@ -4694,7 +4694,6 @@ FUNCTION OCT_TO_DWORD : DWORD (* String *) (* http://www.oscat.de/images/OSCATBa
 		X : BYTE;
 		stop : INT;
 		intX : USINT;
-		temp : UDINT;
 	END_VAR
 END_FUNCTION
 
@@ -5791,9 +5790,7 @@ FUNCTION SET_DATE : DATE (* Time and date *) (* http://www.oscat.de/images/OSCAT
 		DAY : INT;
 	END_VAR
 	VAR
-		count : INT;
 		ofs : ARRAY[1..12] OF INT := [0,31,59,90,120,151,181,212,243,273,304,334];
-		ENDIF : BOOL;
 	END_VAR
 END_FUNCTION
 
