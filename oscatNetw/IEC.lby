@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.6.4.67 SP?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
 <Library Version="1.35.2" SubType="IEC" Description="Oscat Network library" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported data types">oscatNetw.typ</File>
@@ -135,5 +135,6 @@
   <Dependencies>
     <Dependency ObjectName="standard" />
     <Dependency ObjectName="oscatBasic" />
+    <Dependency ObjectName="AsIecCon" />
   </Dependencies>
 </Library>

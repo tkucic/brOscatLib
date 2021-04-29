@@ -391,7 +391,7 @@ FUNCTION_BLOCK DLOG_STORE_RRD (* Data logging *)(* http://www.oscat.de/images/OS
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
         R_BUF : NETWORK_BUFFER;
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         HTTP_GET : HTTP_GET;
         IPC : IP_CONTROL;
@@ -403,7 +403,7 @@ FUNCTION_BLOCK DLOG_STORE_RRD (* Data logging *)(* http://www.oscat.de/images/OS
         step_1 : INT;
         step_2 : INT;
         sep_char : STRING[1];
-        url_query : STRING[STRING_LENGTH];
+        URL_query : STRING[STRING_LENGTH];
         n : INT;
     END_VAR
 END_FUNCTION_BLOCK
@@ -448,7 +448,7 @@ FUNCTION_BLOCK MYSQL_CONTROL (* Database *)(* http://www.oscat.de/images/OSCATBa
     END_VAR
     VAR 
         IP_C : IP_C;
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         IPC : IP_CONTROL;
         step : INT;
@@ -1015,7 +1015,7 @@ FUNCTION_BLOCK DNS_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwor
         state : INT;
         domain_copy : STRING[255];
         activate_last : BOOL;
-        url_length : INT;
+        URL_length : INT;
         char : BYTE;
         char_count : INT;
         tid : BYTE;
@@ -1052,7 +1052,7 @@ FUNCTION_BLOCK DNS_DYN (* Network *)(* http://www.oscat.de/images/OSCATNetwork/o
         DNS_CLIENT : DNS_CLIENT;
         HTTP_GET : HTTP_GET;
         BASE64_ENCODE_STR : BASE64_ENCODE_STR;
-        URL_DATA : url;
+        URL_DATA : URL;
         update_last : BOOL;
         state : INT;
         base64_done : BOOL;
@@ -1118,7 +1118,7 @@ FUNCTION_BLOCK FTP_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwor
         S_BUF2 : NETWORK_BUFFER;
         R_BUF1 : NETWORK_BUFFER;
         R_BUF2 : NETWORK_BUFFER;
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         IPC1 : IP_CONTROL;
         IPC2 : IP_CONTROL;
@@ -1166,7 +1166,7 @@ FUNCTION_BLOCK GET_WAN_IP (* Network *)(* http://www.oscat.de/images/OSCATNetwor
         ERROR_T : BYTE;
     END_VAR
     VAR 
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         HTTP_GET : HTTP_GET;
         activate_last : BOOL;
@@ -1181,7 +1181,7 @@ FUNCTION_BLOCK GET_WAN_IP (* Network *)(* http://www.oscat.de/images/OSCATNetwor
 END_FUNCTION_BLOCK
 FUNCTION_BLOCK HTTP_GET (* Network *)(* http://www.oscat.de/images/OSCATNetwork/oscat_netlib121_en.pdf#page=98 *)
     VAR_IN_OUT 
-        URL_DATA : url;
+        URL_DATA : URL;
         IP_C : IP_C; (* IP_Control Verwaltungsstruktur *)
         S_BUF : NETWORK_BUFFER;
         R_BUF : NETWORK_BUFFER;
@@ -1248,7 +1248,7 @@ FUNCTION_BLOCK IP2GEO (* Network *)(* http://www.oscat.de/images/OSCATNetwork/os
     VAR 
         CTRL : XML_CONTROL;
         XML_READER : XML_READER;
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         HTTP_GET : HTTP_GET;
         last_state : BOOL;
@@ -1461,7 +1461,7 @@ FUNCTION_BLOCK SMTP_CLIENT (* Network *)(* http://www.oscat.de/images/OSCATNetwo
         S_BUF : NETWORK_BUFFER;
         R_BUF : NETWORK_BUFFER;
         F_BUF : NETWORK_BUFFER;
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         IPC : IP_CONTROL;
         FS : FILE_SERVER;
@@ -1592,7 +1592,7 @@ FUNCTION_BLOCK SPIDER_ACCESS (* Network *)(* http://www.oscat.de/images/OSCATNet
     VAR 
         state : INT;
         st_tmp : STRING[STRING_LENGTH];
-        URL_DATA : url;
+        URL_DATA : URL;
         HTTP_GET : HTTP_GET;
         value_len : UINT;
         body_len : UINT;
@@ -2154,7 +2154,7 @@ FUNCTION_BLOCK WORLD_WEATHER (* Weather *)(* http://www.oscat.de/images/OSCATNet
         ERROR_T : BYTE;
     END_VAR
     VAR 
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         HTTP_GET : HTTP_GET;
         CPB : CSV_PARSER_BUF;
@@ -2163,7 +2163,7 @@ FUNCTION_BLOCK WORLD_WEATHER (* Weather *)(* http://www.oscat.de/images/OSCATNet
         value_real : REAL;
         v_real : REAL;
         state : INT;
-        url_str : STRING[STRING_LENGTH];
+        URL_str : STRING[STRING_LENGTH];
         offset : UDINT;
         size : INT;
         sep : BYTE;
@@ -2226,7 +2226,7 @@ FUNCTION_BLOCK YAHOO_WEATHER (* Weather *)(* http://www.oscat.de/images/OSCATNet
     VAR 
         CTRL : XML_CONTROL;
         XML_READER : XML_READER;
-        URL_DATA : url;
+        URL_DATA : URL;
         DNS_CLIENT : DNS_CLIENT;
         HTTP_GET : HTTP_GET;
         activate_last : BOOL;
