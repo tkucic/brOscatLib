@@ -1,0 +1,10 @@
+VAR 
+    vTestCases : ARRAY[0..20] OF utTestCase; (*Definition of all test cases for this POU*)
+    testRunner : utTestSuite; (*Test Suite fb instance to run the tests*)
+    vRunAll : BOOL; (*Manual command to run all tests for this POU*)
+    vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
+END_VAR
+VAR 
+    FF_D4E_inst1 : FF_D4E; (*Instancefor the test case 1 of the POU under test*)
+    FF_D4E_inst2 : FF_D4E; (*Instancefor the test case 2 of the POU under test*)
+END_VAR
