@@ -3,6 +3,7 @@
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="File" Description="Package variables">PackageVars.var</Object>
+    <Object Type="Program" Language="IEC">main</Object>
     <Object Type="Program" Language="IEC">test__BUFFER_CLEAR</Object>
     <Object Type="Program" Language="IEC">test__BUFFER_INIT</Object>
     <Object Type="Program" Language="IEC">test__BUFFER_INSERT</Object>
