@@ -1,5 +1,6 @@
 PROGRAM _CYCLIC
-    (**)
+    (*This PRG tests the functionality of the CAUCHYCD as described in the function description
+	http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=43*)
     (*Run the test cases*)
     TEST_CASE_1_SETUP;
     TEST_CASE_1_EXEC;

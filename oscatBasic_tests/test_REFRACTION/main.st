@@ -1,5 +1,6 @@
 PROGRAM _CYCLIC
-    (**)
+    (*This PRG tests the functionality of the REFRACTION as described in the function description
+	http://www.oscat.de/images/OSCATBasic/oscat_basic333_en.pdf#page=132*)
     (*Run the test cases*)
     TEST_CASE_1_SETUP;
     TEST_CASE_1_EXEC;
