@@ -25,7 +25,7 @@ ACTION TEST_CASE_2_SETUP :
     	vTestCases[1].desc[2] := '';
     	
     	(*Setup needed variables*)
-    0END_IF
+    END_IF
 END_ACTION
 ACTION TEST_CASE_2_EXEC :
     IF vTestCases[1].state = ut_RUNNING THEN
