@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    FF_JKE_inst1 : FF_JKE; (*Instancefor the test case 1 of the POU under test*)
-    FF_JKE_inst2 : FF_JKE; (*Instancefor the test case 2 of the POU under test*)
+    FF_JKE_inst1 : FF_JKE; (*Instance for the test case 1 of the POU under test*)
+    FF_JKE_inst2 : FF_JKE; (*Instance for the test case 2 of the POU under test*)
 END_VAR

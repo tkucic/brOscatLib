@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    TREND_DW_inst1 : TREND_DW; (*Instancefor the test case 1 of the POU under test*)
-    TREND_DW_inst2 : TREND_DW; (*Instancefor the test case 2 of the POU under test*)
+    TREND_DW_inst1 : TREND_DW; (*Instance for the test case 1 of the POU under test*)
+    TREND_DW_inst2 : TREND_DW; (*Instance for the test case 2 of the POU under test*)
 END_VAR

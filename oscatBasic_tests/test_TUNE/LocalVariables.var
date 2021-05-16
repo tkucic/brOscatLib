@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    TUNE_inst1 : TUNE; (*Instancefor the test case 1 of the POU under test*)
-    TUNE_inst2 : TUNE; (*Instancefor the test case 2 of the POU under test*)
+    TUNE_inst1 : TUNE; (*Instance for the test case 1 of the POU under test*)
+    TUNE_inst2 : TUNE; (*Instance for the test case 2 of the POU under test*)
 END_VAR

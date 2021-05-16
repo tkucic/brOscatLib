@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    CALENDAR_CALC_inst1 : CALENDAR_CALC; (*Instancefor the test case 1 of the POU under test*)
-    CALENDAR_CALC_inst2 : CALENDAR_CALC; (*Instancefor the test case 2 of the POU under test*)
+    CALENDAR_CALC_inst1 : CALENDAR_CALC; (*Instance for the test case 1 of the POU under test*)
+    CALENDAR_CALC_inst2 : CALENDAR_CALC; (*Instance for the test case 2 of the POU under test*)
 END_VAR

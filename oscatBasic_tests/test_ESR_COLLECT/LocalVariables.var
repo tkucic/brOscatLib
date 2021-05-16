@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    ESR_COLLECT_inst1 : ESR_COLLECT; (*Instancefor the test case 1 of the POU under test*)
-    ESR_COLLECT_inst2 : ESR_COLLECT; (*Instancefor the test case 2 of the POU under test*)
+    ESR_COLLECT_inst1 : ESR_COLLECT; (*Instance for the test case 1 of the POU under test*)
+    ESR_COLLECT_inst2 : ESR_COLLECT; (*Instance for the test case 2 of the POU under test*)
 END_VAR

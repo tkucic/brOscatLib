@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    MESSAGE_8_inst1 : MESSAGE_8; (*Instancefor the test case 1 of the POU under test*)
-    MESSAGE_8_inst2 : MESSAGE_8; (*Instancefor the test case 2 of the POU under test*)
+    MESSAGE_8_inst1 : MESSAGE_8; (*Instance for the test case 1 of the POU under test*)
+    MESSAGE_8_inst2 : MESSAGE_8; (*Instance for the test case 2 of the POU under test*)
 END_VAR

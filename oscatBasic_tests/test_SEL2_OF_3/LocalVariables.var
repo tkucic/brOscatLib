@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    SEL2_OF_3_inst1 : SEL2_OF_3; (*Instancefor the test case 1 of the POU under test*)
-    SEL2_OF_3_inst2 : SEL2_OF_3; (*Instancefor the test case 2 of the POU under test*)
+    SEL2_OF_3_inst1 : SEL2_OF_3; (*Instance for the test case 1 of the POU under test*)
+    SEL2_OF_3_inst2 : SEL2_OF_3; (*Instance for the test case 2 of the POU under test*)
 END_VAR

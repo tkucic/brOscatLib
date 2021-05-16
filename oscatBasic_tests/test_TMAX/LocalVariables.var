@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    TMAX_inst1 : TMAX; (*Instancefor the test case 1 of the POU under test*)
-    TMAX_inst2 : TMAX; (*Instancefor the test case 2 of the POU under test*)
+    TMAX_inst1 : TMAX; (*Instance for the test case 1 of the POU under test*)
+    TMAX_inst2 : TMAX; (*Instance for the test case 2 of the POU under test*)
 END_VAR

@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    DRIVER_4C_inst1 : DRIVER_4C; (*Instancefor the test case 1 of the POU under test*)
-    DRIVER_4C_inst2 : DRIVER_4C; (*Instancefor the test case 2 of the POU under test*)
+    DRIVER_4C_inst1 : DRIVER_4C; (*Instance for the test case 1 of the POU under test*)
+    DRIVER_4C_inst2 : DRIVER_4C; (*Instance for the test case 2 of the POU under test*)
 END_VAR

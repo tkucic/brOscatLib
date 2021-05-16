@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    CLK_N_inst1 : CLK_N; (*Instancefor the test case 1 of the POU under test*)
-    CLK_N_inst2 : CLK_N; (*Instancefor the test case 2 of the POU under test*)
+    CLK_N_inst1 : CLK_N; (*Instance for the test case 1 of the POU under test*)
+    CLK_N_inst2 : CLK_N; (*Instance for the test case 2 of the POU under test*)
 END_VAR

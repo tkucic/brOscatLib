@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    FIFO_32_inst1 : FIFO_32; (*Instancefor the test case 1 of the POU under test*)
-    FIFO_32_inst2 : FIFO_32; (*Instancefor the test case 2 of the POU under test*)
+    FIFO_32_inst1 : FIFO_32; (*Instance for the test case 1 of the POU under test*)
+    FIFO_32_inst2 : FIFO_32; (*Instance for the test case 2 of the POU under test*)
 END_VAR

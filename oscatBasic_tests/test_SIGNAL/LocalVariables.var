@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    SIGNAL_inst1 : SIGNAL; (*Instancefor the test case 1 of the POU under test*)
-    SIGNAL_inst2 : SIGNAL; (*Instancefor the test case 2 of the POU under test*)
+    SIGNAL_inst1 : SIGNAL; (*Instance for the test case 1 of the POU under test*)
+    SIGNAL_inst2 : SIGNAL; (*Instance for the test case 2 of the POU under test*)
 END_VAR

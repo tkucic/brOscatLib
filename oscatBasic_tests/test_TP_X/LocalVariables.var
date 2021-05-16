@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    TP_X_inst1 : TP_X; (*Instancefor the test case 1 of the POU under test*)
-    TP_X_inst2 : TP_X; (*Instancefor the test case 2 of the POU under test*)
+    TP_X_inst1 : TP_X; (*Instance for the test case 1 of the POU under test*)
+    TP_X_inst2 : TP_X; (*Instance for the test case 2 of the POU under test*)
 END_VAR

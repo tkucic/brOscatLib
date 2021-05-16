@@ -5,6 +5,6 @@ VAR
     vResetAll : BOOL; (*Manual command to reset all tests for this POU*)
 END_VAR
 VAR 
-    ASTRO_inst1 : ASTRO; (*Instancefor the test case 1 of the POU under test*)
-    ASTRO_inst2 : ASTRO; (*Instancefor the test case 2 of the POU under test*)
+    ASTRO_inst1 : ASTRO; (*Instance for the test case 1 of the POU under test*)
+    ASTRO_inst2 : ASTRO; (*Instance for the test case 2 of the POU under test*)
 END_VAR
